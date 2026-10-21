@@ -27,6 +27,6 @@ The owner's newer decision is to treat Web, Android and iOS as equal target plat
 
 ## Development workflow
 
-Read `AGENTS.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_PLAN.md` and `docs/CI_SETUP.md`. Every iteration uses a scoped PR. The CI workflow is configured for non-draft PRs but the account billing limit must be verified before enabling runner usage. Do not claim green tests before a real run; do not automatically deploy or release.
+Read `AGENTS.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_PLAN.md` and `docs/CI_SETUP.md`. Every iteration uses a scoped PR. Public-repository GitHub Actions CI validates non-draft PRs on standard GitHub-hosted runners. The Godot bootstrap has passed its first CI smoke test; full gameplay, Web/Android/iOS exports and real-device acceptance remain unverified. Branch ruleset enforcement must be enabled separately in GitHub settings. Do not claim green tests before a real run; do not automatically deploy or release.
 
 **Validation status:** GitHub repository content committed; Godot editor import, headless checks, browser export and device tests have not yet run in this environment.

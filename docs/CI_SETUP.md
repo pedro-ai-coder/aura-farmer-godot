@@ -1,58 +1,53 @@
-# Godot CI setup and zero-additional-cost safeguards
+# Godot CI and branch protection
 
-This guide describes the lightweight pull-request check for the Godot edition of Aura Farmer. Gameplay and platform decisions are specified only by docs/GDD.md, not by this operational guide.
+This document describes the lightweight pull-request validation configured in the **public** Aura Farmer Godot repository. The only authority for gameplay and product decisions is `docs/GDD.md`.
 
-## What is included
+## Implemented CI
 
-- Workflow: .github/workflows/godot-ci.yml
-- Event: pull requests into main; no push, periodic, release, deployment or upload triggers
-- Draft PRs: job skipped until Ready for review (which triggers the check)
-- Runner: one Ubuntu GitHub-hosted runner, with an 8-minute maximum job duration
-- Resource controls: cancel superseded PR runs; download/cache the editor; no export templates or platform build matrix
-- Permissions: read-only contents; checkout credentials are not persisted; both third-party actions are pinned to immutable commit SHA values
-- Editor: Godot 4.7.2, GDScript-only
-- Validation: engine version, canonical GDD presence, Godot resource import, foundational contract tests, and a brief main-scene boot check
-- Error handling: reject a failed command or critical Godot parser/runtime errors in its console log
-- Required status-check job name: godot-validation (workflow: Godot CI)
+- Workflow: `.github/workflows/godot-ci.yml`; runs on PRs targeting `main` when opened, updated, reopened, or marked Ready for review. Draft PRs skip the job.
+- Job name: **`godot-validation`** (workflow name: **Godot CI**).
+- One Linux GitHub-hosted runner, eight-minute job timeout, cancel superseded runs, no deployment, no export templates or platform matrix.
+- Read-only GitHub token and pinned GitHub Action commit IDs.
+- Godot 4.7.2 GDScript editor import, essential GDD rule contracts, and main-scene headless smoke test.
+- First verified green run: https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/39604186885 (attempt 2).
+- CI setup merged in PR #3: https://github.com/pedro-ai-coder/aura-farmer-godot/pull/3.
 
-The job does not test a finished playthrough, frame-rate targets, exported Web builds, Android installs or iOS installs. These will require later explicit tests, export presets, hardware and separate decisions.
+A successfully booted scene is **not** a complete playable game or Web/Android/iOS export. Future acceptance must include a full solo run, measured performance, mobile input, exports, persistence and real hardware testing.
 
-## Before enabling runner usage — owner action
+## GitHub Actions cost model
 
-This repository is **private**. A hosted GitHub Actions job consumes account minutes, even if its cost is covered by included quota. An 8-minute timeout alone does NOT guarantee zero extra charges. The connected GitHub integration cannot read or change the account's billing budget.
+This repository is **public**. Standard GitHub-hosted runner minutes for public repositories are free on GitHub Actions. The old private-repository minutes exhaustion no longer blocks the confirmed CI run. **Do not** adopt larger paid runners, third-party billed services or paid release automation without explicit owner approval. If repository visibility changes back to private, review account minutes and billing caps first.
 
-1. Open https://github.com/settings/billing and review Actions usage, remaining included minutes and account spending budgets.
-2. Set a strict zero-additional-spend Actions budget and enable blocking further usage when its budget limit is reached, where available for the current account. If that cannot be verified, leave the CI pull request in **Draft**.
-3. Open https://github.com/pedro-ai-coder/aura-farmer-godot/settings/actions and verify actions are allowed, including the two pinned actions used here. Keep the workflow token read-only and avoid allowing secrets in fork PR jobs.
-4. Mark the CI PR **Ready for review**; watch the resulting godot-validation check. Investigate failures instead of merging on a pending/skipped check.
-5. Review the PR and merge only after the workflow actually succeeds and normal owner review requirements are met.
+The eight-minute timeout limits runaway individual jobs; it is not a spending limit for other paid services. This repository does not include paid services or secrets in its workflow.
 
-The CI installation PR intentionally starts as a draft to avoid unreviewed runner consumption. Once merged, this workflow will evaluate future ready-for-review PRs into main. Existing PRs may need a head commit update or reopen before they receive a fresh CI check; never count the absence of a check as success.
+## Enforce checks on main — manual owner step
 
-## Enforcing green CI on main
+The GitHub connector can merge pull requests and inspect rulesets, but it **cannot create or change repository branch rulesets**. These settings require the repository owner's GitHub web UI.
 
-Branch protection is distinct from a CI workflow and is not currently writable through the GitHub connection.
+1. Open https://github.com/pedro-ai-coder/aura-farmer-godot/settings/rules and choose **New ruleset → New branch ruleset**.
+2. Ruleset name: `Protect main`. Enforcement: **Active**.
+3. Under **Target branches**, target the repository default branch (`main`).
+4. Under **Branch protections**, enable **Require a pull request before merging**.
+5. Enable **Require status checks to pass before merging**, add exactly **`godot-validation`** (provider GitHub Actions), then confirm/add that check.
+6. Enable **Block force pushes** and **Restrict deletions**.
+7. Avoid granting unnecessary bypass permissions; save/create the ruleset.
+8. Verify on GitHub that the ruleset is active and targets `main`. Then confirm from the GitHub API that `main` is protected and a `godot-validation` check is required on future PRs.
 
-1. After at least one successful workflow run, go to https://github.com/pedro-ai-coder/aura-farmer-godot/settings/rules.
-2. If account plan and repository visibility support it, add an **active** branch ruleset targeting main.
-3. Require pull requests, require the godot-validation status check, block force pushes and deletions, and review bypass permissions.
-4. Verify effective enforcement with a test PR. If rule activation is not offered, do not assume merges are blocked.
+For a single-owner repository, **requiring an additional reviewer's approval** can make merging impossible; keep required approvals at zero unless an independent reviewer is available. The PR rule still requires every change to be proposed via PR. Do not enable `Require branches to be up to date` until the workflow/rebase policy is tested.
 
-GitHub Free generally supports rulesets for public repositories, not private repositories. Private ruleset enforcement may require GitHub Pro, Team, or Enterprise. Do not upgrade or make the repository public automatically: both are separate owner decisions. Without enforced rules, CI is advisory and merges must remain a deliberate review action.
+The public repository supports GitHub Free rulesets; there is no reason to make the repository private or buy an upgrade for these protections. Until an active ruleset is configured, **CI is advisory and GitHub may allow a merge that bypasses failed checks**.
 
-## Running checks locally
+## Local reproduction
 
-With Godot 4.7.2 installed on PATH as godot or godot4:
+```bash
+bash scripts/validate.sh
+```
 
-    bash scripts/validate.sh
+Requires the Godot 4.7.2 editor binary installed on the PATH as `godot` or `godot4`. Fails for command errors or parser/runtime errors emitted in logs.
 
-The script exits nonzero for missing Godot, a failed import/test/scene step or Godot parser/resource/runtime errors in its logs.
+## Project boundaries
 
-## Scope boundaries
-
-- No changes to the original Phaser repository
-- No new game mechanics, characters or art
-- No recurring tasks or release workflow
-- No required secrets
-- No automatic merges
-- No promised zero-cost guarantee until account-level billing controls have been configured and verified
+- No automatic merging or releases.
+- No new characters, art or gameplay rules from CI work.
+- Original Phaser repository stays intact.
+- Future Web, Android and iOS proof must be obtained independently of this lightweight job.
