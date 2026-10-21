@@ -4,6 +4,7 @@ const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const WeaponVisualsScript = preload("res://scripts/weapon_visuals.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
+const SoloWorldRulesScript = preload("res://scripts/solo_world_rules.gd")
 const SoloPassiveRulesScript = preload("res://scripts/solo_passive_rules.gd")
 ## Initial GDD-grounded playable solo slice.
 ## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
@@ -444,14 +445,7 @@ func _move_player(dt: float) -> void:
         movement_direction = direction
     var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
-    var desired := player_pos + direction * speed * dt
-    desired.x = clampf(desired.x, 50.0, FIELD.size.x - 50.0)
-    desired.y = clampf(desired.y, 50.0, FIELD.size.y - 50.0)
-    for obstacle: Vector2 in COVERS:
-        if desired.distance_to(obstacle) < 46.0:
-            var away := (desired - obstacle).normalized()
-            desired = obstacle + away * 46.0
-    player_pos = desired
+    player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
 
 func _spawn_logic(dt: float) -> void:
     if not boss_spawned and event_index < SoloEnemyRulesScript.EVENT_SCHEDULE.size() and run_time >= float(SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]["at"]):
@@ -482,14 +476,10 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var stats: Dictionary = SoloEnemyRulesScript.DATA[kind]
     var pos: Vector2 = special.get("pos", Vector2.ZERO)
     if not special.has("pos"):
-        var found := false
-        for attempt in range(35):
-            pos = Vector2(rng.randf_range(60.0, 1388.0), rng.randf_range(60.0, 1026.0))
-            if pos.distance_to(player_pos) >= 260.0:
-                found = true
-                break
-        if not found:
-            pos = Vector2(80.0, 80.0)
+        var candidate = SoloWorldRulesScript.spawn_point(player_pos, rng)
+        if candidate == null:
+            return
+        pos = candidate
     var boss_kind: bool = bool(stats["boss"])
     var hp_base: float = float(stats["hp"]) * (1.0 if boss_kind else float(WAVE_HP[wave - 1]))
     var damage: float = float(stats["damage"]) * (1.0 if boss_kind else float(WAVE_DAMAGE[wave - 1]))
@@ -614,9 +604,11 @@ func _step_enemies(dt: float) -> void:
                 enemy["phase"] = ""
                 speed = float(enemy["speed"])
         if distance > float(enemy["radius"]) + 19.0:
-            var destination: Vector2 = pos + direction * speed * dt
-            destination.x = clampf(destination.x, 20.0, FIELD.size.x - 20.0)
-            destination.y = clampf(destination.y, 20.0, FIELD.size.y - 20.0)
+            var step: Vector2 = direction * speed * dt
+            var destination: Vector2 = SoloWorldRulesScript.move(pos, step, float(enemy["radius"]))
+            if speed > 0.0 and destination.distance_to(pos) < speed * dt * 0.2:
+                var sidestep := Vector2(-direction.y, direction.x) * speed * dt
+                destination = SoloWorldRulesScript.move(pos, sidestep, float(enemy["radius"]))
             enemy["pos"] = destination
         enemy["hit_cooldown"] = maxf(0.0, float(enemy["hit_cooldown"]) - dt)
         if distance <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0:
