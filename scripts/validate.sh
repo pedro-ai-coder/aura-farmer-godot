@@ -37,6 +37,7 @@ run_check() {
 
 run_check import --headless --path . --import
 run_check contracts --headless --path . --script res://tests/test_game_rules.gd
+run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10
 
 echo "PASS: Godot import, GDD rule contracts, and main scene smoke test."
