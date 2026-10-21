@@ -73,7 +73,7 @@ func draw_hero(canvas: CanvasItem, pos: Vector2, hero_id: String, time: float, m
         var heading := int(round(movement.angle() / (PI / 4.0)))
         var direction := posmod(heading, 8)
         if hero_id == "alpha" and direction >= 5 and has("alpha-rear-v2"):
-            var row := [8, 4, 0][direction - 5]
+            var row: int = int([8, 4, 0][direction - 5])
             _frame(canvas, texture("alpha-rear-v2"), REAR_FRAMES["alpha"][row + step], pos, RENDERED_HERO_HEIGHT, false)
             return true
         if hero_id == "cool-kid" and direction == 6 and has("cool-kid-rear-v2"):
