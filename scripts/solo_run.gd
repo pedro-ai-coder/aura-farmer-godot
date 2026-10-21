@@ -1,4 +1,6 @@
 extends Node2D
+
+const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 ## Initial GDD-grounded playable solo slice.
 ## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
 
@@ -40,6 +42,8 @@ const EVENTS := [
     {"at": 735.0, "name": "Doomscroll Prime", "hp": 5200.0}
 ]
 
+var art = ApprovedVisualsScript.new()
+var movement_direction := Vector2.DOWN
 var mode := "menu"
 var hero: Dictionary = {}
 var player_pos := Vector2(724.0, 540.0)
@@ -80,6 +84,10 @@ var headline: Label
 var metrics: Label
 var notice: Label
 var menu_buttons: Array[Button] = []
+var hero_portraits: Array[TextureRect] = []
+var modal_dim: ColorRect
+var hud_top: ColorRect
+var hud_bottom: ColorRect
 var offer_buttons: Array[Button] = []
 var flex_button: Button
 var pause_button: Button
@@ -95,13 +103,40 @@ func _ready() -> void:
     add_child(camera)
     layer = CanvasLayer.new()
     add_child(layer)
+    hud_top = ColorRect.new()
+    hud_top.color = Color(0.055, 0.07, 0.11, 0.91)
+    hud_top.position = Vector2.ZERO
+    hud_top.size = Vector2(1280.0, 100.0)
+    hud_top.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    layer.add_child(hud_top)
+    hud_bottom = ColorRect.new()
+    hud_bottom.color = Color(0.055, 0.07, 0.11, 0.87)
+    hud_bottom.position = Vector2(0.0, 615.0)
+    hud_bottom.size = Vector2(1280.0, 105.0)
+    hud_bottom.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    layer.add_child(hud_bottom)
+    modal_dim = ColorRect.new()
+    modal_dim.color = Color(0.03, 0.04, 0.07, 0.73)
+    modal_dim.position = Vector2.ZERO
+    modal_dim.size = Vector2(1280.0, 720.0)
+    modal_dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    layer.add_child(modal_dim)
     headline = _make_label(Vector2(25, 18), 26)
     metrics = _make_label(Vector2(25, 53), 17)
     notice = _make_label(Vector2(235, 145), 28)
     for i in range(3):
-        var menu_b = _make_button("", Vector2(405, 295 + 77 * i), Vector2(470, 61))
+        var menu_b = _make_button("", Vector2(115 + 350 * i, 527), Vector2(330, 73))
         menu_b.pressed.connect(start_run.bind(i))
         menu_buttons.append(menu_b)
+        var portrait := TextureRect.new()
+        portrait.position = Vector2(158 + 350 * i, 272)
+        portrait.size = Vector2(245, 244)
+        portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+        portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        portrait.texture = art.texture(HEROES[i]["id"])
+        portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        layer.add_child(portrait)
+        hero_portraits.append(portrait)
         var offer_b = _make_button("", Vector2(325, 288 + 82 * i), Vector2(630, 68))
         offer_b.pressed.connect(pick_upgrade.bind(i))
         offer_buttons.append(offer_b)
@@ -129,12 +164,33 @@ func _make_button(caption: String, pos: Vector2, dimensions: Vector2) -> Button:
     button.size = dimensions
     button.add_theme_font_size_override("font_size", 19)
     layer.add_child(button)
+    _style_button(button)
     return button
 
+func _style_button(button: Button) -> void:
+    for state in ["normal", "hover", "pressed", "disabled"]:
+        var style := StyleBoxFlat.new()
+        style.bg_color = Color(0.11, 0.16, 0.25, 0.94)
+        if state == "hover" or state == "pressed":
+            style.bg_color = Color(0.22, 0.35, 0.50, 0.99)
+        if state == "disabled":
+            style.bg_color = Color(0.13, 0.14, 0.17, 0.85)
+        style.border_color = Color(0.87, 0.67, 0.29, 0.85)
+        style.set_border_width_all(2)
+        style.set_corner_radius_all(10)
+        button.add_theme_stylebox_override(state, style)
+    button.add_theme_color_override("font_color", Color(0.98, 0.95, 0.82))
+    button.add_theme_color_override("font_hover_color", Color(1.0, 1.0, 1.0))
+    button.add_theme_font_size_override("font_size", 19)
+
 func _show_ui() -> void:
+    hud_top.visible = mode != "menu"
+    hud_bottom.visible = mode == "playing" or mode == "paused"
+    modal_dim.visible = mode == "choice" or mode == "paused" or mode == "lost" or mode == "won"
     for i in range(3):
+        hero_portraits[i].visible = mode == "menu"
         menu_buttons[i].visible = mode == "menu"
-        menu_buttons[i].text = "%d   %s  /  %s" % [i + 1, HEROES[i]["name"], HEROES[i]["flex"]]
+        menu_buttons[i].text = "%d   %s   ·   %s" % [i + 1, HEROES[i]["name"], HEROES[i]["flex"]]
         offer_buttons[i].visible = mode == "choice"
         if mode == "choice" and i < selection.size():
             offer_buttons[i].text = "%d   %s" % [i + 1, selection[i]["label"]]
@@ -145,10 +201,18 @@ func _show_ui() -> void:
 
 func _update_text() -> void:
     if mode == "menu":
-        headline.text = "AURA FARMER  /  GODOT PLAYABLE SLICE"
-        metrics.text = "WASD / arrows to move  ·  SPACE for Flex  ·  P to pause  ·  drag on left side to move on touch"
-        notice.text = "CHOOSE YOUR HERO"
+        headline.text = "AURA FARMER"
+        headline.position = Vector2(82, 40)
+        headline.add_theme_font_size_override("font_size", 54)
+        metrics.text = "RUIN ALLEY  ·  FIVE WAVES  ·  ONE BIG HATER  ·  STARTER SOLO DEMO"
+        metrics.position = Vector2(86, 120)
+        notice.text = "CHOOSE YOUR ENERGY"
+        notice.position = Vector2(448, 204)
         return
+    headline.position = Vector2(25, 16)
+    headline.add_theme_font_size_override("font_size", 26)
+    metrics.position = Vector2(25, 55)
+    notice.position = Vector2(345, 184)
     headline.text = "%s   /   %s   /   %02d:%02d" % [hero["name"], "BIG HATER" if boss_spawned else WAVE_NAMES[wave - 1], int(run_time) / 60, int(run_time) % 60]
     var flex_label = "READY" if aura >= 100.0 and flex_lock <= 0.0 else "%.0f / 100" % aura
     metrics.text = "HP %.0f/%.0f   Shield %.0f   LV %d   XP %.0f/%.0f   Aura %s   Kills %d   Weapons %d/3   Passives %d/5" % [hp, max_hp, shield, level, xp, float(30 + 8 * level + level * level), flex_label, kills, weapons.size(), passives.size()]
@@ -172,6 +236,7 @@ func start_run(index: int) -> void:
     hero_index = index
     hero = HEROES[index].duplicate(true)
     player_pos = Vector2(724, 540)
+    movement_direction = Vector2.DOWN
     hp = hero["hp"]
     max_hp = hp
     shield = 0.0
@@ -242,6 +307,8 @@ func _move_player(dt: float) -> void:
     var axis = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
     var wasd := Vector2(float(Input.is_key_pressed(KEY_D)) - float(Input.is_key_pressed(KEY_A)), float(Input.is_key_pressed(KEY_S)) - float(Input.is_key_pressed(KEY_W)))
     var direction: Vector2 = (axis + wasd + touch_direction).limit_length(1.0)
+    if direction.length_squared() > 0.01:
+        movement_direction = direction
     var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
     var desired := player_pos + direction * speed * dt
@@ -574,17 +641,23 @@ func _input(event: InputEvent) -> void:
         touch_direction = (event.position - touch_origin).limit_length(85.0) / 85.0
 
 func _draw() -> void:
-    draw_rect(FIELD, Color(0.12, 0.15, 0.22))
-    for gx in range(0, 1449, 128):
-        draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
-    for gy in range(0, 1087, 128):
-        draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
+    if mode == "menu":
+        if not art.draw_backdrop(self, "main-menu", FIELD):
+            draw_rect(FIELD, Color(0.12, 0.15, 0.22))
+        draw_rect(FIELD, Color(0.025, 0.035, 0.06, 0.67))
+        return
+    var approved_map: bool = art.draw_backdrop(self, "ruin-alley", FIELD)
+    if not approved_map:
+        draw_rect(FIELD, Color(0.12, 0.15, 0.22))
+    if not approved_map:
+        for gx in range(0, 1449, 128):
+            draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
+        for gy in range(0, 1087, 128):
+            draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
     for cover: Vector2 in COVERS:
         draw_circle(cover, 31.0, Color(0.28, 0.30, 0.34))
         draw_arc(cover, 32.0, 0.0, TAU, 24, Color(0.70, 0.62, 0.46), 4.0)
-    if mode == "menu":
-        return
     for drop: Dictionary in pickups:
         var color := Color(0.31, 0.93, 0.86)
         if drop["kind"] == "snack":
@@ -601,7 +674,8 @@ func _draw() -> void:
             color = Color(0.79, 0.38, 0.98)
         elif e["kind"] == "boss":
             color = Color(0.99, 0.30, 0.25)
-        draw_circle(e["pos"], radius, color)
+        if not art.draw_enemy(self, e):
+            draw_circle(e["pos"], radius, color)
         draw_circle(e["pos"] + Vector2(-5, -4), 2.0, Color(0.15, 0.12, 0.18))
         draw_circle(e["pos"] + Vector2(5, -4), 2.0, Color(0.15, 0.12, 0.18))
         draw_rect(Rect2(e["pos"] + Vector2(-radius, -radius - 13), Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
@@ -610,9 +684,10 @@ func _draw() -> void:
         draw_line(player_pos, attack_target, Color(0.99, 0.87, 0.42, 0.6), 5.0)
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
-    draw_circle(player_pos, 16.0, hero["color"])
-    draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
-    draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
-    draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
+    if not art.draw_hero(self, player_pos, str(hero["id"]), run_time, movement_direction, flex_time > 0.0, attack_flash > 0.0):
+        draw_circle(player_pos, 16.0, hero["color"])
+        draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
+        draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
+        draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
     draw_rect(Rect2(player_pos + Vector2(-23, -31), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -31), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
