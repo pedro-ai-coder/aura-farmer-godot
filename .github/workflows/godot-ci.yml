@@ -42,6 +42,10 @@ jobs:
           test -s docs/GDD.md
           test -f project.godot
 
+      - name: Download and verify approved Phaser artwork
+        shell: bash
+        run: python3 scripts/sync_approved_assets.py
+
       - name: Import, test and smoke-test project
         shell: bash
         run: bash scripts/validate.sh
