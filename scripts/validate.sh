@@ -38,6 +38,7 @@ run_check() {
 run_check import --headless --path . --import
 run_check contracts --headless --path . --script res://tests/test_game_rules.gd
 run_check catalog --headless --path . --script res://tests/test_solo_offer_rules.gd
+run_check legendary --headless --path . --script res://tests/test_legendary_offer.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10

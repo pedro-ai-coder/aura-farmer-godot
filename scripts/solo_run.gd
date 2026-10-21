@@ -71,6 +71,10 @@ var pending_choices := 0
 var selection: Array[Dictionary] = []
 var replace_card: Dictionary = {}
 var replace_options: Array[Dictionary] = []
+var legendary_offers: Array[Dictionary] = []
+var legendary_spent := false
+var legendary_first_shown := false
+var legendary_second_shown := false
 var weapons: Array[Dictionary] = []
 var passives: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
@@ -95,6 +99,8 @@ var offer_buttons: Array[Button] = []
 var flex_button: Button
 var pause_button: Button
 var restart_button: Button
+var legendary_button: Button
+var defer_button: Button
 var status_timer := 0.0
 
 func _ready() -> void:
@@ -147,6 +153,13 @@ func _ready() -> void:
         var extra_offer = _make_button("", Vector2(325, 288 + 82 * extra), Vector2(630, 68))
         extra_offer.pressed.connect(pick_upgrade.bind(extra))
         offer_buttons.append(extra_offer)
+    var sixth_offer = _make_button("", Vector2(325, 625), Vector2(630, 68))
+    sixth_offer.pressed.connect(pick_upgrade.bind(5))
+    offer_buttons.append(sixth_offer)
+    legendary_button = _make_button("LEGENDARY [L]", Vector2(737, 635), Vector2(246, 65))
+    legendary_button.pressed.connect(_open_legendary)
+    defer_button = _make_button("DECIDE LATER", Vector2(500, 614), Vector2(280, 64))
+    defer_button.pressed.connect(_defer_legendary)
     flex_button = _make_button("FLEX [SPACE]", Vector2(1002, 635), Vector2(245, 65))
     flex_button.pressed.connect(_use_flex)
     pause_button = _make_button("PAUSE [P]", Vector2(1083, 20), Vector2(168, 46))
@@ -193,17 +206,27 @@ func _style_button(button: Button) -> void:
 func _show_ui() -> void:
     hud_top.visible = mode != "menu"
     hud_bottom.visible = mode == "playing" or mode == "paused"
-    modal_dim.visible = mode == "choice" or mode == "replace" or mode == "paused" or mode == "lost" or mode == "won"
+    modal_dim.visible = mode == "choice" or mode == "replace" or mode == "legendary" or mode == "paused" or mode == "lost" or mode == "won"
     for i in range(3):
         hero_portraits[i].visible = mode == "menu"
         menu_buttons[i].visible = mode == "menu"
         menu_buttons[i].text = "%d   %s   ·   %s" % [i + 1, HEROES[i]["name"], HEROES[i]["flex"]]
     for i in range(offer_buttons.size()):
-        offer_buttons[i].visible = (mode == "choice" and i < selection.size()) or (mode == "replace" and i < replace_options.size())
-        if mode == "choice" and i < selection.size():
-            offer_buttons[i].text = "%d   %s" % [i + 1, selection[i]["label"]]
-        elif mode == "replace" and i < replace_options.size():
-            offer_buttons[i].text = "%d   REPLACE %s" % [i + 1, replace_options[i]["label"]]
+        offer_buttons[i].visible = (mode == "choice" and i < selection.size()) or (mode == "replace" and i < replace_options.size()) or (mode == "legendary" and i < legendary_offers.size())
+        if mode == "legendary":
+            offer_buttons[i].position = Vector2(72.0 + 582.0 * (i % 2), 254.0 + 92.0 * int(i / 2))
+            offer_buttons[i].size = Vector2(548.0, 76.0)
+            if i < legendary_offers.size():
+                offer_buttons[i].text = "%d   %s" % [i + 1, legendary_offers[i]["label"]]
+        else:
+            offer_buttons[i].position = Vector2(325.0, 268.0 + 74.0 * i)
+            offer_buttons[i].size = Vector2(630.0, 67.0)
+            if mode == "choice" and i < selection.size():
+                offer_buttons[i].text = "%d   %s" % [i + 1, selection[i]["label"]]
+            elif mode == "replace" and i < replace_options.size():
+                offer_buttons[i].text = "%d   REPLACE %s" % [i + 1, replace_options[i]["label"]]
+    legendary_button.visible = mode == "playing" and run_time >= 540.0 and run_time < 895.0 and not legendary_spent and not legendary_offers.is_empty()
+    defer_button.visible = mode == "legendary"
     flex_button.visible = mode == "playing"
     pause_button.visible = mode == "playing" or mode == "paused"
     pause_button.text = "RESUME [P]" if mode == "paused" else "PAUSE [P]"
@@ -229,6 +252,8 @@ func _update_text() -> void:
     flex_button.disabled = aura < 100.0 or flex_lock > 0.0
     if mode == "choice":
         notice.text = "LEVEL %d — CHOOSE AN UPGRADE" % level
+    elif mode == "legendary":
+        notice.text = "ONE LEGENDARY PER RUN · CHOOSE OR DEFER"
     elif mode == "replace":
         notice.text = "CHOOSE AN EQUIPPED ITEM TO REPLACE"
     elif mode == "paused":
@@ -266,6 +291,10 @@ func start_run(index: int) -> void:
     spawn_timer = 0.7
     hurt_timer = 0.0
     pending_choices = 0
+    legendary_offers.clear()
+    legendary_spent = false
+    legendary_first_shown = false
+    legendary_second_shown = false
     replace_card.clear()
     replace_options.clear()
     weapons = [{"id": hero["starter"], "level": 1, "rarity": "common", "timer": 0.0}]
@@ -314,7 +343,8 @@ func _advance(dt: float) -> void:
     _collect_drops()
     if mode != "playing":
         return
-    if pending_choices > 0:
+    _check_legendary_window()
+    if mode == "playing" and pending_choices > 0:
         _open_choice()
 
 func _move_player(dt: float) -> void:
@@ -506,6 +536,62 @@ func _passive_level(id: String) -> int:
             return int(passive["level"])
     return 0
 
+func _generate_legendary_offers() -> void:
+    if not legendary_offers.is_empty():
+        return
+    var legendary_ids: Array[String] = []
+    for id in SoloOfferRulesScript.PASSIVE_DATA.keys():
+        if SoloOfferRulesScript.PASSIVE_DATA[id]["rarity"] == "legendary":
+            legendary_ids.append(id)
+    for i in range(legendary_ids.size() - 1, 0, -1):
+        var swap_index := rng.randi_range(0, i)
+        var saved: String = legendary_ids[i]
+        legendary_ids[i] = legendary_ids[swap_index]
+        legendary_ids[swap_index] = saved
+    for i in range(3):
+        var id: String = legendary_ids[i]
+        var definition: Dictionary = SoloOfferRulesScript.PASSIVE_DATA[id]
+        legendary_offers.append({"type":"passive", "id":id, "rarity":"legendary", "level":1, "label":str(definition["name"]) + " · LEGENDARY PASSIVE"})
+    for id in WEAPONS.keys():
+        if WEAPONS[id]["role"] != hero["role"]:
+            continue
+        var equipped := false
+        for weapon in weapons:
+            if weapon["id"] == id:
+                equipped = true
+                break
+        legendary_offers.append({"type":"promote_weapon" if equipped else "weapon", "id":id, "rarity":"legendary", "level":1, "label":str(WEAPONS[id]["name"]) + " · LEGENDARY WEAPON"})
+
+func _open_legendary() -> void:
+    if mode != "playing" or legendary_spent or run_time < 540.0 or run_time >= 895.0:
+        return
+    _generate_legendary_offers()
+    if legendary_offers.size() != 6:
+        push_error("Six legal GDD legendary choices are required")
+        return
+    if run_time >= 720.0:
+        legendary_second_shown = true
+    else:
+        legendary_first_shown = true
+    mode = "legendary"
+    _show_ui()
+
+func _defer_legendary() -> void:
+    if mode != "legendary":
+        return
+    mode = "playing"
+    _show_ui()
+    if pending_choices > 0:
+        _open_choice()
+
+func _check_legendary_window() -> void:
+    if mode != "playing" or legendary_spent or run_time >= 895.0:
+        return
+    if run_time >= 720.0 and not legendary_second_shown:
+        _open_legendary()
+    elif run_time >= 540.0 and not legendary_first_shown:
+        _open_legendary()
+
 func _open_choice() -> void:
     if pending_choices <= 0 or mode != "playing":
         return
@@ -571,7 +657,10 @@ func _apply_card(card: Dictionary, replace_id: String = "") -> void:
                         max_hp += additional_hp
                         hp = minf(max_hp, hp + additional_hp)
                     break
-    pending_choices -= 1
+    if card.get("rarity", "") == "legendary":
+        legendary_spent = true
+    else:
+        pending_choices -= 1
     replace_card.clear()
     replace_options.clear()
     mode = "playing"
@@ -583,6 +672,10 @@ func pick_upgrade(index: int) -> void:
     if mode == "replace":
         if index >= 0 and index < replace_options.size() and not replace_card.is_empty():
             _apply_card(replace_card, str(replace_options[index]["id"]))
+        return
+    if mode == "legendary":
+        if index >= 0 and index < legendary_offers.size():
+            _apply_card(legendary_offers[index])
         return
     if mode != "choice" or index < 0 or index >= selection.size():
         return
@@ -653,11 +746,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
         return
     if event.keycode == KEY_P or event.keycode == KEY_ESCAPE:
         _toggle_pause()
-    if event.keycode == KEY_SPACE:
+    if event.keycode == KEY_SPACE or event.keycode == KEY_E:
         _use_flex()
+    if event.keycode == KEY_L:
+        _open_legendary()
     if mode == "menu" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
         start_run(event.keycode - KEY_1)
-    elif (mode == "choice" or mode == "replace") and event.keycode >= KEY_1 and event.keycode <= KEY_5:
+    elif (mode == "choice" or mode == "replace" or mode == "legendary") and event.keycode >= KEY_1 and event.keycode <= KEY_6:
         pick_upgrade(event.keycode - KEY_1)
 
 func _input(event: InputEvent) -> void:
