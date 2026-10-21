@@ -1,0 +1,26 @@
+# Godot generated data
+.godot/
+.import/
+*.translation
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build artifacts and signing material
+build/
+dist/
+exports/
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+*.provisionprofile
+*.key
+.env
+.env.*
+
+# Test reports
+reports/
