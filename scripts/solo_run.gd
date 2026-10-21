@@ -1,6 +1,7 @@
 extends Node2D
 
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
+const WeaponVisualsScript = preload("res://scripts/weapon_visuals.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
 const SoloPassiveRulesScript = preload("res://scripts/solo_passive_rules.gd")
@@ -68,6 +69,7 @@ var boss_spawned := false
 var spawn_timer := 0.7
 var hurt_timer := 0.0
 var attack_flash := 0.0
+var attack_visuals: Array[Dictionary] = []
 var attack_target := Vector2.ZERO
 var pending_choices := 0
 var selection: Array[Dictionary] = []
@@ -295,6 +297,7 @@ func start_run(index: int) -> void:
     flex_age = 0.0
     hurt_timer = 0.0
     attack_flash = 0.0
+    attack_visuals.clear()
     run_time = 0.0
     level = 1
     xp = 0.0
@@ -337,6 +340,10 @@ func _process(delta: float) -> void:
         var dt := minf(delta, 0.05)
         _advance(dt)
     attack_flash = maxf(attack_flash - delta, 0.0)
+    for effect: Dictionary in attack_visuals.duplicate():
+        effect["life"] = float(effect["life"]) - delta
+        if float(effect["life"]) <= 0.0:
+            attack_visuals.erase(effect)
     camera.position = camera.position.lerp(player_pos, minf(1.0, delta * 8.0))
     status_timer -= delta
     if status_timer <= 0.0:
@@ -759,6 +766,13 @@ func _fire_weapons(dt: float) -> void:
             hits = 1
         if hits > 0:
             _primary_activation(Vector2(closest["pos"]))
+            # The actual combat hit is already resolved above; this is visual only.
+            if attack_visuals.size() >= 12:
+                attack_visuals.pop_front()
+            attack_visuals.append({
+                "id": str(weapon["id"]), "origin": player_pos,
+                "target": Vector2(closest["pos"]), "life": 0.18
+            })
             attack_flash = 0.12
             attack_target = closest["pos"]
             if weapon["id"] == "cope-shield":
@@ -1156,8 +1170,8 @@ func _draw() -> void:
         var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
-    if attack_flash > 0.0:
-        draw_line(player_pos, attack_target, Color(0.99, 0.87, 0.42, 0.6), 5.0)
+    for effect: Dictionary in attack_visuals:
+        WeaponVisualsScript.draw_attack(self, effect)
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
     _draw_contact_shadow(player_pos, 19.0)
