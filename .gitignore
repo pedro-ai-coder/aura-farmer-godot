@@ -24,3 +24,6 @@ exports/
 
 # Test reports
 reports/
+
+# Generated Web export (deployed via Vercel, not committed)
+build/
