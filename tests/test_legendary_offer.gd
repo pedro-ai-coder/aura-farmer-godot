@@ -12,6 +12,7 @@ func _initialize() -> void:
 func _verify() -> void:
     var game = load("res://scenes/main.tscn").instantiate()
     get_root().add_child(game)
+    var catalog: Dictionary = game.get("WEAPONS")
     for hero in range(3):
         game.call("start_run", hero)
         game.set("run_time", 540.0)
@@ -32,9 +33,12 @@ func _verify() -> void:
                 passive_count += 1
             else:
                 weapon_count += 1
-                _expect(game.WEAPONS[card["id"]]["role"] == game.get("hero")["role"], "Legendary weapon role")
+                _expect(catalog[card["id"]]["role"] == game.get("hero")["role"], "Legendary weapon role")
         _expect(passive_count == 3 and weapon_count == 3, "Three passives and three weapons")
-        _expect((options as Array).size() == (options as Array).duplicate().size(), "Cached offer sizing")
+        var unique_ids: Dictionary = {}
+        for id in options:
+            unique_ids[id] = true
+        _expect(unique_ids.size() == 6, "No duplicate legendary card IDs")
         game.call("_defer_legendary")
         _expect(game.get("mode") == "playing", "Deferring resumes run")
         game.set("run_time", 720.0)
