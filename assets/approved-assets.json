@@ -97,6 +97,30 @@
       "destination": "assets/approved/alpha-rear-v2.png",
       "bytes": 1475395,
       "git_blob_sha1": "4fde150888b84666209ef6cbcd2afce4ca87f04d"
+    },
+    {
+      "source_path": "public/assets/runtime/enemies-a-v2.png",
+      "destination": "assets/approved/enemies-a-v2.png",
+      "bytes": 2228162,
+      "git_blob_sha1": "6617f8f762bab31295a886c5367034b54af81c34"
+    },
+    {
+      "source_path": "public/assets/runtime/enemies-b-v2.png",
+      "destination": "assets/approved/enemies-b-v2.png",
+      "bytes": 2097523,
+      "git_blob_sha1": "3b59147c26b8824f3f961bc73855152ffe7e018f"
+    },
+    {
+      "source_path": "public/assets/runtime/events-v2.png",
+      "destination": "assets/approved/events-v2.png",
+      "bytes": 2567969,
+      "git_blob_sha1": "7beb2e2d1aee4b17d57ace14d9d21aa3c632afc3"
+    },
+    {
+      "source_path": "public/assets/runtime/haters-v2.png",
+      "destination": "assets/approved/haters-v2.png",
+      "bytes": 2319510,
+      "git_blob_sha1": "7f35a57dda8aebd3050ee040e2799321b86cdef5"
     }
   ]
 }

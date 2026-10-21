@@ -1,6 +1,6 @@
 extends SceneTree
 
-## Verifies the original Phaser assets really reached the Godot runtime.
+## Verifies Phaser-approved artwork, including all original masked enemy animations.
 ## The GitHub workflow must download and hash-check them before importing.
 
 func _initialize() -> void:
@@ -13,7 +13,8 @@ func _check() -> void:
         "sigma", "cool-kid", "alpha",
         "sigma-atlas", "cool-kid-atlas", "alpha-atlas",
         "cool-kid-flex-v2", "cool-kid-rear-v2", "alpha-rear-v2",
-        "phone-guy", "hater", "big-hater"
+        "phone-guy", "hater", "big-hater",
+        "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2"
     ]
     var missing: Array[String] = []
     for name in required:
@@ -22,8 +23,18 @@ func _check() -> void:
             missing.append(name)
         elif texture.get_width() <= 0 or texture.get_height() <= 0:
             missing.append(name + " (invalid dimensions)")
+    for kind in [
+        "npc", "hater", "reply-goblin", "beta", "ratio-ram", "doomscroller",
+        "hype-bot", "fanum-leech", "ping-sniper", "copium-puffer",
+        "comment-mod", "reply-guy", "mod-supremo", "ohio-express",
+        "doomscroll-prime", "boss", "boss-berserk"
+    ]:
+        for frame in [0, 4, 7]:
+            var sprite: Texture2D = visuals.enemy_frame(kind, frame)
+            if sprite == null or sprite.get_width() <= 0 or sprite.get_height() <= 0:
+                missing.append(kind + " (frame " + str(frame) + ")")
     if missing.is_empty():
-        print("PASS: All 14 approved art assets loaded as real Godot textures")
+        print("PASS: All 18 approved art assets and 17 enemy animations loaded as Godot textures")
         quit(0)
     else:
         for name in missing:

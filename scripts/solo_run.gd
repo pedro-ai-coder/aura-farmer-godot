@@ -667,6 +667,7 @@ func _hit_enemy(enemy: Dictionary, amount: float) -> void:
         var blocked: float = minf(amount, float(enemy["shield"]))
         enemy["shield"] = float(enemy["shield"]) - blocked
         amount -= blocked
+    enemy["hurt_at"] = run_time
     enemy["hp"] = float(enemy["hp"]) - amount
     if float(enemy["hp"]) <= 0.0:
         if enemy["kind"] == "copium-puffer":
@@ -947,6 +948,41 @@ func _input(event: InputEvent) -> void:
     if event is InputEventScreenDrag and touch_active:
         touch_direction = (event.position - touch_origin).limit_length(85.0) / 85.0
 
+## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
+func _draw_contact_shadow(at: Vector2, radius: float) -> void:
+    draw_set_transform(at + Vector2(3.0, 5.0), 0.0, Vector2(1.05, 0.30))
+    draw_circle(Vector2.ZERO, radius, Color(0.14, 0.20, 0.29, 0.23))
+    draw_set_transform(Vector2.ZERO)
+
+func _draw_pickup(drop: Dictionary) -> void:
+    var at: Vector2 = drop["pos"]
+    var kind := str(drop["kind"])
+    var ink := Color(0.14, 0.20, 0.29)
+    var paper := Color(0.97, 0.93, 0.80)
+    if kind == "aura":
+        var pulse := 1.0 + 0.08 * sin(run_time * 5.0 + at.x * 0.05)
+        var diamond := PackedVector2Array([
+            at + Vector2(0, -12) * pulse, at + Vector2(9, 0) * pulse,
+            at + Vector2(0, 12) * pulse, at + Vector2(-9, 0) * pulse
+        ])
+        draw_colored_polygon(diamond, ink)
+        draw_colored_polygon(PackedVector2Array([
+            at + Vector2(0, -9) * pulse, at + Vector2(6, 0) * pulse,
+            at + Vector2(0, 9) * pulse, at + Vector2(-6, 0) * pulse
+        ]), Color(0.24, 0.90, 0.82))
+        draw_line(at + Vector2(0, -8), at + Vector2(0, 6), paper, 1.5)
+    elif kind == "snack":
+        draw_circle(at, 16.0, ink)
+        draw_rect(Rect2(at - Vector2(12, 12), Vector2(24, 24)), Color(0.44, 0.81, 0.61))
+        draw_rect(Rect2(at - Vector2(3, 9), Vector2(6, 18)), paper)
+        draw_rect(Rect2(at - Vector2(9, 3), Vector2(18, 6)), paper)
+    elif kind == "magnet":
+        draw_circle(at, 16.0, ink)
+        draw_arc(at + Vector2(0, -2), 9.0, 0.0, PI, 16, paper, 8.0)
+        draw_arc(at + Vector2(0, -2), 9.0, 0.0, PI, 16, Color(0.58, 0.46, 0.82), 5.0)
+        draw_line(at + Vector2(-9, -4), at + Vector2(-9, -11), paper, 5.0)
+        draw_line(at + Vector2(9, -4), at + Vector2(9, -11), paper, 5.0)
+
 func _draw() -> void:
     if mode == "menu":
         if not art.draw_backdrop(self, "main-menu", FIELD):
@@ -962,23 +998,23 @@ func _draw() -> void:
         for gy in range(0, 1087, 128):
             draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    # Approved map remains visible: ground contacts indicate solid covers,
+    # instead of drawing unrelated opaque grey debug discs over the painting.
     for cover: Vector2 in COVERS:
-        draw_circle(cover, 31.0, Color(0.28, 0.30, 0.34))
-        draw_arc(cover, 32.0, 0.0, TAU, 24, Color(0.70, 0.62, 0.46), 4.0)
+        _draw_contact_shadow(cover + Vector2(4, 3), 34.0)
+        draw_arc(cover + Vector2(0, 1), 28.0, PI * 0.12, PI * 0.88, 16, Color(0.97, 0.93, 0.80, 0.42), 2.0)
     for drop: Dictionary in pickups:
-        var color := Color(0.31, 0.93, 0.86)
-        if drop["kind"] == "snack":
-            color = Color(0.35, 0.95, 0.42)
-        elif drop["kind"] == "magnet":
-            color = Color(0.93, 0.52, 0.96)
-        draw_circle(drop["pos"], 7.0 if drop["kind"] == "aura" else 12.0, color)
+        _draw_pickup(drop)
     for zone: Dictionary in hazard_zones:
         if run_time < float(zone["at"]):
             draw_arc(Vector2(zone["pos"]), float(zone["radius"]), 0.0, TAU, 48, Color(1.0, 0.61, 0.22, 0.8), 4.0)
         else:
             draw_arc(Vector2(zone["pos"]), float(zone["radius"]), 0.0, TAU, 48, Color(0.98, 0.29, 0.31, 0.8), 6.0)
     for shot: Dictionary in hostile_shots:
-        draw_circle(shot["pos"], float(shot["radius"]), Color(1.0, 0.37, 0.47))
+        var shot_pos: Vector2 = shot["pos"]
+        var shot_dir: Vector2 = shot["dir"]
+        draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
+        draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
     for e: Dictionary in enemies:
         var radius: float = float(e["radius"])
         var color := Color(0.89, 0.33, 0.40)
@@ -991,20 +1027,23 @@ func _draw() -> void:
         if e["phase"] == "warning" or e["phase"] == "charge-warning":
             var locked: Vector2 = e["locked_direction"]
             draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
-        if not art.draw_enemy(self, e):
+        _draw_contact_shadow(e["pos"], radius)
+        if not art.draw_enemy(self, e, run_time):
             draw_circle(e["pos"], radius, color)
-        draw_circle(e["pos"] + Vector2(-5, -4), 2.0, Color(0.15, 0.12, 0.18))
-        draw_circle(e["pos"] + Vector2(5, -4), 2.0, Color(0.15, 0.12, 0.18))
-        draw_rect(Rect2(e["pos"] + Vector2(-radius, -radius - 13), Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
-        draw_rect(Rect2(e["pos"] + Vector2(-radius, -radius - 13), Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+        var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
+        var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
+        draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
+        draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
     if attack_flash > 0.0:
         draw_line(player_pos, attack_target, Color(0.99, 0.87, 0.42, 0.6), 5.0)
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
+    _draw_contact_shadow(player_pos, 19.0)
     if not art.draw_hero(self, player_pos, str(hero["id"]), run_time, movement_direction, flex_time > 0.0, attack_flash > 0.0):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
         draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
         draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
-    draw_rect(Rect2(player_pos + Vector2(-23, -31), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
-    draw_rect(Rect2(player_pos + Vector2(-23, -31), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
+    # Hero art uses a foot pivot: keep the health bar above the head.
+    draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
+    draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
