@@ -42,6 +42,7 @@ run_check legendary --headless --path . --script res://tests/test_legendary_offe
 run_check bestiary --headless --path . --script res://tests/test_enemy_patterns.gd
 run_check passive-effects --headless --path . --script res://tests/test_passive_effects.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
+run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
 run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10
 
