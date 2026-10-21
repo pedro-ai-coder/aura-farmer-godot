@@ -51,7 +51,7 @@ func _verify() -> void:
         game.call("_open_choice")
         _assert(game.get("mode") == "choice", "Experience opens a modal")
         game.call("pick_upgrade", 0)
-        _assert(game.get("mode") == "playing" or game.get("mode") == "replace", "Selected card must resume or request replacement")
+        _assert(game.get("mode") == "playing" or game.get("mode") == "replace" or (game.get("mode") == "choice" and int(game.get("pending_choices")) > 0), "Selected card must resume, request replacement or open queued choice")
 
     game.queue_free()
     if problems.is_empty():
