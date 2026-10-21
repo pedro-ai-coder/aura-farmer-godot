@@ -21,9 +21,7 @@ The grid and circle are diagnostic placeholders, **not** approved art. This init
 
 ## Source of truth
 
-The complete GDD is committed at `docs/GDD.md`, preserved byte-for-byte from a pinned revision of the original repository. Provenance is documented in `docs/GDD_SOURCE.md`.
-
-The owner's newer decision is to treat Web, Android and iOS as equal target platforms. That decision still needs to be integrated into the GDD; external plans cannot silently change gameplay rules.
+The authoritative Godot specification is `docs/GDD.md`. Its **§23 (21 October 2026)** records the approved equal-priority **Web, Android and iOS** targets. The original GDD was imported unchanged and then explicitly amended here; `docs/GDD_SOURCE.md` records the pinned source and amendment. External migration plans cannot override gameplay requirements.
 
 ## Development workflow
 
