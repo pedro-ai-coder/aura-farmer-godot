@@ -1,6 +1,7 @@
 extends Node2D
 
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
+const FloatingJoystickScript = preload("res://scripts/floating_joystick.gd")
 const WeaponVisualsScript = preload("res://scripts/weapon_visuals.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
@@ -98,8 +99,10 @@ var rng := RandomNumberGenerator.new()
 var hero_index := 0
 var profile: Dictionary = {"runs": 0, "wins": 0, "best_wave": 1, "total_kills": 0}
 var touch_active := false
+var touch_index := -1
 var touch_origin := Vector2.ZERO
 var touch_direction := Vector2.ZERO
+var touch_joystick: Control
 var camera: Camera2D
 var layer: CanvasLayer
 var headline: Label
@@ -127,6 +130,12 @@ func _ready() -> void:
     add_child(camera)
     layer = CanvasLayer.new()
     add_child(layer)
+    touch_joystick = FloatingJoystickScript.new()
+    touch_joystick.position = Vector2.ZERO
+    touch_joystick.size = Vector2(1280.0, 720.0)
+    touch_joystick.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    touch_joystick.visible = false
+    layer.add_child(touch_joystick)
     hud_top = ColorRect.new()
     hud_top.color = Color(0.055, 0.07, 0.11, 0.91)
     hud_top.position = Vector2.ZERO
@@ -299,6 +308,7 @@ func start_run(index: int) -> void:
     hurt_timer = 0.0
     attack_flash = 0.0
     attack_visuals.clear()
+    _clear_touch()
     run_time = 0.0
     level = 1
     xp = 0.0
@@ -1011,14 +1021,17 @@ func _use_flex() -> void:
 func _toggle_pause() -> void:
     if mode == "playing":
         mode = "paused"
+        _clear_touch()
     elif mode == "paused":
         mode = "playing"
+        _clear_touch()
     _show_ui()
 
 func _finish(won: bool) -> void:
     if mode != "playing":
         return
     mode = "won" if won else "lost"
+    _clear_touch()
     profile["runs"] = int(profile.get("runs", 0)) + 1
     if won:
         profile["wins"] = int(profile.get("wins", 0)) + 1
@@ -1045,8 +1058,7 @@ func _save_profile() -> void:
 
 func _return_to_menu() -> void:
     mode = "menu"
-    touch_active = false
-    touch_direction = Vector2.ZERO
+    _clear_touch()
     _show_ui()
     _update_text()
 
@@ -1064,17 +1076,31 @@ func _unhandled_key_input(event: InputEvent) -> void:
     elif (mode == "choice" or mode == "replace" or mode == "legendary") and event.keycode >= KEY_1 and event.keycode <= KEY_6:
         pick_upgrade(event.keycode - KEY_1)
 
+func _clear_touch() -> void:
+    touch_active = false
+    touch_index = -1
+    touch_origin = Vector2.ZERO
+    touch_direction = Vector2.ZERO
+    if touch_joystick != null:
+        touch_joystick.call("reset")
+
+func _notification(what: int) -> void:
+    if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+        _clear_touch()
+
 func _input(event: InputEvent) -> void:
     if event is InputEventScreenTouch:
-        if event.pressed and event.position.x < 475.0 and event.position.y > 185.0 and mode == "playing":
+        if event.index == touch_index and (not event.pressed or event.canceled):
+            _clear_touch()
+        elif event.pressed and not touch_active and mode == "playing" and event.position.x < 475.0 and event.position.y > 185.0:
             touch_active = true
+            touch_index = event.index
             touch_origin = event.position
             touch_direction = Vector2.ZERO
-        elif not event.pressed:
-            touch_active = false
-            touch_direction = Vector2.ZERO
-    if event is InputEventScreenDrag and touch_active:
+            touch_joystick.call("show_at", touch_origin, touch_direction)
+    elif event is InputEventScreenDrag and touch_active and event.index == touch_index and mode == "playing":
         touch_direction = (event.position - touch_origin).limit_length(85.0) / 85.0
+        touch_joystick.call("show_at", touch_origin, touch_direction)
 
 ## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
 func _draw_contact_shadow(at: Vector2, radius: float) -> void:
