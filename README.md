@@ -27,6 +27,6 @@ The owner's newer decision is to treat Web, Android and iOS as equal target plat
 
 ## Development workflow
 
-Read `AGENTS.md`, `docs/ARCHITECTURE.md` and `docs/MIGRATION_PLAN.md`. Every task uses its own branch and PR. Do not declare tests green without running them or enable billable CI. There are no automatic releases.
+Read `AGENTS.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_PLAN.md` and `docs/CI_SETUP.md`. Every iteration uses a scoped PR. The CI workflow is configured for non-draft PRs but the account billing limit must be verified before enabling runner usage. Do not claim green tests before a real run; do not automatically deploy or release.
 
 **Validation status:** GitHub repository content committed; Godot editor import, headless checks, browser export and device tests have not yet run in this environment.
