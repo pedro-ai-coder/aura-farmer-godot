@@ -1,5 +1,7 @@
 # Aura Farmer — GDD V2.0 · Base consolidada para refactor
 
+> **Approved platform amendment — 21 October 2026:** The Godot edition is a shared cross-platform product targeting **Web, Android and iOS with equal priority**. The new §23 below supersedes all earlier references to "browser-only" milestones, native applications as future/nice-to-have, and a Web-first platform sequence. Historical delivery reports remain historical facts. It does **not** expand the approved solo character, weapon, or passive roster, nor authorize release, extra costs or gameplay rule changes.
+
 **Revisão:** 14 outubro 2026. **Estado:** base de design consolidada para o refactor do repositório existente. Direção visual A e primeiro lote de assets aprovados pelo criador; implementação e validação em runtime ainda pendentes. As decisões expressas pelo criador são requisitos. Em 14 outubro 2026, o criador aprovou todas as alterações propostas no ponto 20 da V1.1: catálogo final, nomenclatura, kits, valores iniciais, pausa co-op, revive, XP e oferta lendária operacional. Os valores ficam aprovados para implementação e sujeitos a balanceamento, ainda sem validação em jogo. Este documento não declara funcionalidades implementadas nem lançamento aprovado.
 
 
@@ -516,6 +518,47 @@ Consulta: 14 outubro 2026. As referências fundamentam princípios; tempos, dama
 
 **Revisões anteriores:** Wild removido dos modos ativos. Separados nível da run, waves, aura e progressão externa. Adicionadas ações/cadências de nove armas, efeitos/triggers de 28 passivas, nove fichas de personagem com Flex, onze inimigos, quatro eventos de boss e Big Hater com soft enrage quantitativo. Corrigida distribuição de passivas para 10/8/6/4. Definidas propostas para XP partilhada, calendário das waves, janela lendária, pausa co-op e regras anti-recursão. Preservados sem anúncio/publicidade, demo web/Discord e contrato de testes antes de declarar pronto.
 
+
+## 23. Approved platform and engine strategy — 21 October 2026 (Godot edition)
+
+**Decision and precedence.** Aura Farmer's Godot edition has three **equally important target platforms: Web, Android and iOS**. No platform is a lesser tier, optional stretch goal or merely a wrapper assumed to work. This approved 21 October 2026 decision supersedes contradictory platform-priority wording in the 14–16 October historical sections (including the former browser-only demo plan in §17, native apps as future scope in §20/B.6, and the original browser/Discord-first delivery order). Those older records remain evidence of prior implementation and are not the new release contract. All other approved gameplay, catalog, artwork and balance rules remain unchanged.
+
+### 23.1 Engine and independent codebase
+
+The new edition uses **Godot 4, GDScript and a renderer compatible with Web export**; its source is maintained in `pedro-ai-coder/aura-farmer-godot`. The existing Phaser + TypeScript + Vite repository is the current reference implementation and migration source, **not** a dependency required at runtime or something to overwrite. The Godot repository must hold its own canonical `docs/GDD.md`. Keep identifiers, formulas, seeds and gameplay outcomes consistent with this GDD during the port. A future change of engine or parity contract requires a recorded GDD decision.
+
+### 23.2 Common content and MVP scope
+
+- The **first cross-platform solo playable slice** stays scoped to **Sigma, Cool Kid and Alpha Chad**, the approved **nine weapons**, **three weapon slots**, **five passive slots**, and the explicit **23-passive demo subset** until a separate content-expansion decision is approved. The full nine-character and 28-passive catalog remains a future content milestone, not an implicit requirement for the first solo slice.
+- Retain a single Aura with each hero's own Flex, five waves, events, Big Hater, equipment rarity caps (common 4, rare 3, epic 2, legendary 1), meaningful pickups, victory, defeat, restart, the approved Cartoon Arcade identity and the current GDD's combat rules. Do not create or redesign characters during platform foundation work.
+- All three targets use the **same simulation rules, content catalog, balance parameters, seeds and state transitions**. Platform adapters may change input handling, screen layout, rendering quality, audio integration and lifecycle without silently changing XP, damage, spawn rates or drop probabilities.
+- Discord Activity, online co-op, ranked, PvP, account systems, monetization and additional maps/characters remain separate later milestones, not dependencies for the first playable three-platform slice.
+
+### 23.3 Platform requirements
+
+| Target | Mandatory support and verification |
+|---|---|
+| Web | Desktop and supported mobile browsers; viewport scaling, keyboard/touch support, pause/resume, sound, persistence, and a full playable run verified in a real browser |
+| Android | Installable native build, touch controls, landscape/safe areas, focus/background lifecycle, sound, durable local saves, and a real-device full run |
+| iOS | Installable signed native test build, touch controls, orientation and safe areas, suspend/resume, audio, durable local saves, and a real-device full run using macOS/Xcode signing where required |
+
+The same gameplay must be accessible on each target; a successful Web export does not prove native support. Do not announce Android/iOS support on the basis of mockups or emulation alone. Input must remain usable if orientation lock or fullscreen is refused by the OS. Support reduced motion and effects budgets appropriate to each hardware profile.
+
+### 23.4 Save migration and privacy
+
+Preserve all existing stable character, weapon and passive identifiers. The legacy Phaser Web implementation stores `aura-farmer:profile:v2` (with a compatible v1 fallback at `aura-farmer:profile:v1`); a Godot save adapter must provide **versioned, tested conversion** preserving valid unlocks, selected hero, aggregated progress, settings and historical results. Do not destroy old browser data, fabricate missing records or carry in-run equipment into new runs. Browser localStorage is not automatically available to native Android/iOS installations: **cross-device/cloud sync is not implied**. If user-controlled import/export is added, validate integrity and require explicit user action for transfer; never silently upload private progress.
+
+### 23.5 Equal-priority delivery gates
+
+1. Maintain an independent, tested shared Godot core before platform-specific changes. Each iteration identifies GDD clauses, input/output contracts, and reproducible test evidence.
+2. Validate content/rule parity in deterministic tests across the common core, including save migration, modal pause behavior, combat rules, XP, Aura, equipment caps, wave timing and boss outcomes.
+3. Develop Web, Android and iOS export/input/lifecycle capabilities as **parallel first-class workstreams** once the shared slice is playable, rather than shipping an unfinished native build as a Web afterthought.
+4. Each platform must demonstrate start, play, upgrade, use Flex, survive waves, reach boss, win/lose, pause/restart and preserve progress in a representative environment. Test both ordinary and reduced-performance settings; capture actual frame times and identify devices used. Apply §16's initial 60 FPS reference desktop / stable 30 FPS reduced-profile goals subject to profiling, not guessed hardware claims.
+5. **Cross-platform private demo readiness** requires all three platform gates plus shared gameplay and visual acceptance. If one platform is blocked, report the individual status honestly; do not call the combined delivery complete. The first private test build does not automatically authorize store release, publicity, production deployment or paid services.
+
+### 23.6 Migration execution and precedence
+
+Source repository: `pedro-ai-coder/aura-farmer`; new repository: `pedro-ai-coder/aura-farmer-godot`. Preserve original assets/metadata, saves and IDs; make migration changes in isolated PRs; check all source branches/PRs before selecting source files (notably the Ruin Alley expansion work in PR #102). Keep the source project intact. Code, technical documents, PR descriptions and downstream external deliverables should be written in English. The GDD remains the sole authority for approved gameplay and platform requirements; migration inventory documents are **evidence**, not alternative specifications. All merges and release actions remain subject to the project's current authorized workflow and required test gates.
 
 # Anexo A — Identidade visual e contrato de produção
 
