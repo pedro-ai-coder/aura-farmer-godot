@@ -1,0 +1,618 @@
+extends Node2D
+## Initial GDD-grounded playable solo slice.
+## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
+
+const HEROES := [
+    {"id": "sigma", "name": "THE SIGMA", "role": "ranged", "hp": 100.0, "speed": 180.0, "power": 100.0, "resist": 0.0, "starter": "no-cap", "flex": "Sigma Stare", "duration": 6.0, "color": Color(0.95, 0.71, 0.28)},
+    {"id": "cool-kid", "name": "COOL KID", "role": "melee", "hp": 110.0, "speed": 190.0, "power": 95.0, "resist": 0.05, "starter": "keyboard-warrior", "flex": "Giga Chad Rampage", "duration": 5.0, "color": Color(0.37, 0.69, 0.96)},
+    {"id": "alpha", "name": "ALPHA CHAD", "role": "tank", "hp": 140.0, "speed": 160.0, "power": 90.0, "resist": 0.15, "starter": "cope-shield", "flex": "Alpha Hold", "duration": 6.0, "color": Color(0.82, 0.45, 0.69)}
+]
+const WEAPONS := {
+    "ratio-blaster": {"name": "Ratio Blaster", "role": "ranged", "interval": 0.65, "range": 520.0, "power": 0.20, "shape": "shot"},
+    "no-cap": {"name": "No Cap", "role": "ranged", "interval": 1.60, "range": 600.0, "power": 0.50, "shape": "line"},
+    "brainrot-feed": {"name": "Brainrot Feed", "role": "ranged", "interval": 3.0, "range": 480.0, "power": 0.65, "shape": "blast"},
+    "keyboard-warrior": {"name": "Keyboard Warrior", "role": "melee", "interval": 0.75, "range": 95.0, "power": 0.36, "shape": "cone"},
+    "ban-hammer": {"name": "Ban Hammer", "role": "melee", "interval": 2.40, "range": 125.0, "power": 0.90, "shape": "cone"},
+    "touch-grass": {"name": "Touch Grass", "role": "melee", "interval": 1.50, "range": 145.0, "power": 0.40, "shape": "cone"},
+    "cope-shield": {"name": "Cope Shield", "role": "tank", "interval": 2.00, "range": 100.0, "power": 0.45, "shape": "cone"},
+    "chad-hands": {"name": "Chad Hands", "role": "tank", "interval": 1.20, "range": 90.0, "power": 0.44, "shape": "cone"},
+    "personal-space": {"name": "Personal Space", "role": "tank", "interval": 2.80, "range": 135.0, "power": 0.40, "shape": "pulse"}
+}
+const PASSIVES := [
+    "main-character", "terminally-online", "built-different", "thick-skin", "caught-4k",
+    "big-meme", "timeline", "hands-on-sight", "cope-harder", "certified-w",
+    "no-cap-streak", "w-wifi", "let-him-cook", "homie-check", "big-chad",
+    "its-over", "aura-viral", "so-back", "six-to-seven",
+    "absolute-cinema", "w-squad", "too-sigma", "no-u"
+]
+const WAVE_NAMES := ["FIRST POST", "COMMENT SECTION", "GOING VIRAL", "CANCEL STORM", "FINAL RATIO"]
+const WAVE_HP := [1.0, 1.30, 1.65, 2.05, 2.50]
+const WAVE_DAMAGE := [1.0, 1.15, 1.30, 1.50, 1.75]
+const WAVE_DENSITY := [1.0, 1.20, 1.40, 1.65, 1.90]
+const FIELD := Rect2(0.0, 0.0, 1448.0, 1086.0)
+const COVERS := [Vector2(600.0, 550.0), Vector2(940.0, 680.0)]
+const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
+const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
+const EVENTS := [
+    {"at": 195.0, "name": "Reply Guy", "hp": 1400.0},
+    {"at": 375.0, "name": "Mod Supremo", "hp": 3200.0},
+    {"at": 555.0, "name": "Ohio Express", "hp": 2800.0},
+    {"at": 735.0, "name": "Doomscroll Prime", "hp": 5200.0}
+]
+
+var mode := "menu"
+var hero: Dictionary = {}
+var player_pos := Vector2(724.0, 540.0)
+var hp := 100.0
+var max_hp := 100.0
+var shield := 0.0
+var aura := 0.0
+var flex_time := 0.0
+var flex_lock := 0.0
+var flex_age := 0.0
+var run_time := 0.0
+var level := 1
+var xp := 0.0
+var total_xp := 0.0
+var kills := 0
+var wave := 1
+var event_index := 0
+var boss_spawned := false
+var spawn_timer := 0.7
+var hurt_timer := 0.0
+var attack_flash := 0.0
+var attack_target := Vector2.ZERO
+var pending_choices := 0
+var selection: Array[Dictionary] = []
+var weapons: Array[Dictionary] = []
+var passives: Array[Dictionary] = []
+var enemies: Array[Dictionary] = []
+var pickups: Array[Dictionary] = []
+var rng := RandomNumberGenerator.new()
+var hero_index := 0
+var profile: Dictionary = {"runs": 0, "wins": 0, "best_wave": 1, "total_kills": 0}
+var touch_active := false
+var touch_origin := Vector2.ZERO
+var touch_direction := Vector2.ZERO
+var camera: Camera2D
+var layer: CanvasLayer
+var headline: Label
+var metrics: Label
+var notice: Label
+var menu_buttons: Array[Button] = []
+var offer_buttons: Array[Button] = []
+var flex_button: Button
+var pause_button: Button
+var restart_button: Button
+var status_timer := 0.0
+
+func _ready() -> void:
+    rng.seed = 451
+    _load_profile()
+    camera = Camera2D.new()
+    camera.enabled = true
+    camera.zoom = Vector2(0.94, 0.94)
+    add_child(camera)
+    layer = CanvasLayer.new()
+    add_child(layer)
+    headline = _make_label(Vector2(25, 18), 26)
+    metrics = _make_label(Vector2(25, 53), 17)
+    notice = _make_label(Vector2(235, 145), 28)
+    for i in range(3):
+        var menu_b = _make_button("", Vector2(405, 295 + 77 * i), Vector2(470, 61))
+        menu_b.pressed.connect(start_run.bind(i))
+        menu_buttons.append(menu_b)
+        var offer_b = _make_button("", Vector2(325, 288 + 82 * i), Vector2(630, 68))
+        offer_b.pressed.connect(pick_upgrade.bind(i))
+        offer_buttons.append(offer_b)
+    flex_button = _make_button("FLEX [SPACE]", Vector2(1002, 635), Vector2(245, 65))
+    flex_button.pressed.connect(_use_flex)
+    pause_button = _make_button("PAUSE [P]", Vector2(1083, 20), Vector2(168, 46))
+    pause_button.pressed.connect(_toggle_pause)
+    restart_button = _make_button("RETURN TO MENU", Vector2(465, 593), Vector2(350, 58))
+    restart_button.pressed.connect(_return_to_menu)
+    _show_ui()
+    _update_text()
+
+func _make_label(pos: Vector2, font_size: int) -> Label:
+    var label = Label.new()
+    label.position = pos
+    label.add_theme_font_size_override("font_size", font_size)
+    label.add_theme_color_override("font_color", Color(0.96, 0.95, 0.86))
+    layer.add_child(label)
+    return label
+
+func _make_button(caption: String, pos: Vector2, dimensions: Vector2) -> Button:
+    var button = Button.new()
+    button.text = caption
+    button.position = pos
+    button.size = dimensions
+    button.add_theme_font_size_override("font_size", 19)
+    layer.add_child(button)
+    return button
+
+func _show_ui() -> void:
+    for i in range(3):
+        menu_buttons[i].visible = mode == "menu"
+        menu_buttons[i].text = "%d   %s  /  %s" % [i + 1, HEROES[i]["name"], HEROES[i]["flex"]]
+        offer_buttons[i].visible = mode == "choice"
+        if mode == "choice" and i < selection.size():
+            offer_buttons[i].text = "%d   %s" % [i + 1, selection[i]["label"]]
+    flex_button.visible = mode == "playing"
+    pause_button.visible = mode == "playing" or mode == "paused"
+    pause_button.text = "RESUME [P]" if mode == "paused" else "PAUSE [P]"
+    restart_button.visible = mode == "lost" or mode == "won" or mode == "paused"
+
+func _update_text() -> void:
+    if mode == "menu":
+        headline.text = "AURA FARMER  /  GODOT PLAYABLE SLICE"
+        metrics.text = "WASD / arrows to move  ·  SPACE for Flex  ·  P to pause  ·  drag on left side to move on touch"
+        notice.text = "CHOOSE YOUR HERO"
+        return
+    headline.text = "%s   /   %s   /   %02d:%02d" % [hero["name"], "BIG HATER" if boss_spawned else WAVE_NAMES[wave - 1], int(run_time) / 60, int(run_time) % 60]
+    var flex_label = "READY" if aura >= 100.0 and flex_lock <= 0.0 else "%.0f / 100" % aura
+    metrics.text = "HP %.0f/%.0f   Shield %.0f   LV %d   XP %.0f/%.0f   Aura %s   Kills %d   Weapons %d/3   Passives %d/5" % [hp, max_hp, shield, level, xp, float(30 + 8 * level + level * level), flex_label, kills, weapons.size(), passives.size()]
+    flex_button.disabled = aura < 100.0 or flex_lock > 0.0
+    if mode == "choice":
+        notice.text = "LEVEL %d — CHOOSE AN UPGRADE" % level
+    elif mode == "paused":
+        notice.text = "PAUSED"
+    elif mode == "lost":
+        notice.text = "DEFEAT  /  REACHED WAVE %d" % wave
+    elif mode == "won":
+        notice.text = "VICTORY  /  BIG HATER DEFEATED"
+    elif flex_time > 0.0:
+        notice.text = "%s  %.1fs" % [hero["flex"], flex_time]
+    else:
+        notice.text = ""
+
+func start_run(index: int) -> void:
+    if index < 0 or index >= HEROES.size():
+        return
+    hero_index = index
+    hero = HEROES[index].duplicate(true)
+    player_pos = Vector2(724, 540)
+    hp = hero["hp"]
+    max_hp = hp
+    shield = 0.0
+    aura = 0.0
+    flex_time = 0.0
+    flex_lock = 0.0
+    run_time = 0.0
+    level = 1
+    xp = 0.0
+    total_xp = 0.0
+    kills = 0
+    wave = 1
+    event_index = 0
+    boss_spawned = false
+    spawn_timer = 0.7
+    hurt_timer = 0.0
+    pending_choices = 0
+    weapons = [{"id": hero["starter"], "level": 1, "rarity": "common", "timer": 0.0}]
+    passives.clear()
+    enemies.clear()
+    pickups.clear()
+    rng.seed = 451 + 17 * index
+    mode = "playing"
+    _show_ui()
+    _update_text()
+    camera.position = player_pos
+
+func _process(delta: float) -> void:
+    if mode == "playing":
+        var dt := minf(delta, 0.05)
+        _advance(dt)
+    attack_flash = maxf(attack_flash - delta, 0.0)
+    camera.position = camera.position.lerp(player_pos, minf(1.0, delta * 8.0))
+    status_timer -= delta
+    if status_timer <= 0.0:
+        status_timer = 0.10
+        _update_text()
+    queue_redraw()
+
+func _advance(dt: float) -> void:
+    run_time += dt
+    hurt_timer = maxf(0.0, hurt_timer - dt)
+    flex_lock = maxf(0.0, flex_lock - dt)
+    if flex_time > 0.0:
+        flex_time = maxf(0.0, flex_time - dt)
+        flex_age += dt
+        if hero["id"] == "alpha" and (absf(flex_age - 2.0) < dt or absf(flex_age - 4.0) < dt):
+            _damage_nearby(150.0, 0.40 * hero["power"])
+    else:
+        aura = minf(100.0, aura + 0.5 * dt)
+    _move_player(dt)
+    var new_wave := mini(5, 1 + int(run_time / 180.0))
+    if new_wave != wave and not boss_spawned:
+        wave = new_wave
+        _gain_xp(float(40 * wave))
+    _spawn_logic(dt)
+    _step_enemies(dt)
+    if mode != "playing":
+        return
+    _fire_weapons(dt)
+    _collect_drops()
+    if mode != "playing":
+        return
+    if pending_choices > 0:
+        _open_choice()
+
+func _move_player(dt: float) -> void:
+    var axis = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+    var wasd := Vector2(float(Input.is_key_pressed(KEY_D)) - float(Input.is_key_pressed(KEY_A)), float(Input.is_key_pressed(KEY_S)) - float(Input.is_key_pressed(KEY_W)))
+    var direction: Vector2 = (axis + wasd + touch_direction).limit_length(1.0)
+    var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
+    speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
+    var desired := player_pos + direction * speed * dt
+    desired.x = clampf(desired.x, 50.0, FIELD.size.x - 50.0)
+    desired.y = clampf(desired.y, 50.0, FIELD.size.y - 50.0)
+    for obstacle: Vector2 in COVERS:
+        if desired.distance_to(obstacle) < 46.0:
+            var away := (desired - obstacle).normalized()
+            desired = obstacle + away * 46.0
+    player_pos = desired
+
+func _spawn_logic(dt: float) -> void:
+    if not boss_spawned and event_index < EVENTS.size() and run_time >= float(EVENTS[event_index]["at"]):
+        _spawn_enemy("event", EVENTS[event_index])
+        event_index += 1
+    if not boss_spawned and run_time >= 900.0:
+        boss_spawned = true
+        enemies.clear()
+        _spawn_enemy("boss", {"name": "BIG HATER", "hp": 30000.0})
+    spawn_timer -= dt
+    if spawn_timer > 0.0 or enemies.size() >= 100:
+        return
+    var idx := wave - 1
+    spawn_timer = 1.0 / (0.8 * float(WAVE_DENSITY[idx]))
+    if boss_spawned:
+        spawn_timer = 5.0
+    else:
+        _spawn_enemy("hater" if wave > 1 and rng.randf() < 0.27 else "npc")
+
+func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
+    var pos := Vector2.ZERO
+    var found := false
+    for attempt in range(35):
+        pos = Vector2(rng.randf_range(60.0, 1388.0), rng.randf_range(60.0, 1026.0))
+        if pos.distance_to(player_pos) >= 260.0:
+            found = true
+            break
+    if not found:
+        pos = Vector2(80, 80)
+    var hp_base := 35.0 if kind == "npc" else 50.0
+    var speed := 75.0 if kind == "npc" else 60.0
+    var xp_value := 5 if kind == "npc" else 8
+    var radius := 15.0 if kind == "npc" else 17.0
+    var damage := 8.0 if kind == "npc" else 10.0
+    if kind == "event" or kind == "boss":
+        hp_base = float(special["hp"])
+        speed = 35.0 if kind == "event" else 22.0
+        damage = 19.0 if kind == "event" else 12.0
+        xp_value = 120 if kind == "event" else 0
+        radius = 34.0 if kind == "event" else 48.0
+    else:
+        hp_base *= float(WAVE_HP[wave - 1])
+        damage *= float(WAVE_DAMAGE[wave - 1])
+    enemies.append({"pos": pos, "hp": hp_base, "max": hp_base, "speed": speed, "radius": radius, "damage": damage, "xp": xp_value, "kind": kind, "hit_cooldown": 0.0, "name": special.get("name", kind.to_upper())})
+
+func _step_enemies(dt: float) -> void:
+    for enemy: Dictionary in enemies:
+        var pos: Vector2 = enemy["pos"]
+        var vector: Vector2 = player_pos - pos
+        var dist := vector.length()
+        if dist > float(enemy["radius"]) + 19.0:
+            enemy["pos"] = pos + vector.normalized() * float(enemy["speed"]) * dt
+        enemy["hit_cooldown"] = maxf(0.0, float(enemy["hit_cooldown"]) - dt)
+        if dist <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0 and hurt_timer == 0.0:
+            enemy["hit_cooldown"] = 0.75
+            hurt_timer = 0.25
+            if hero["id"] == "cool-kid" and flex_time > 0.0 and enemy["kind"] != "boss" and enemy["kind"] != "event":
+                _hit_enemy(enemy, 0.35 * float(hero["power"]))
+            else:
+                var incoming: float = float(enemy["damage"]) * (1.0 - float(hero["resist"]))
+                incoming *= 1.0 - minf(0.45, 0.03 * float(_passive_level("thick-skin")))
+                if hero["id"] == "cool-kid" and flex_time > 0.0:
+                    incoming *= 0.5
+                var absorbed := minf(shield, incoming)
+                shield -= absorbed
+                hp -= incoming - absorbed
+                if hp <= 0.0:
+                    hp = 0.0
+                    _finish(false)
+                    return
+
+func _fire_weapons(dt: float) -> void:
+    for weapon: Dictionary in weapons:
+        weapon["timer"] = maxf(0.0, float(weapon["timer"]) - dt)
+        if float(weapon["timer"]) > 0.0:
+            continue
+        var config: Dictionary = WEAPONS[weapon["id"]]
+        var closest: Dictionary = {}
+        var closest_dist := 100000.0
+        for enemy: Dictionary in enemies:
+            var distance := player_pos.distance_to(enemy["pos"])
+            if distance <= float(config["range"]) and distance < closest_dist:
+                closest = enemy
+                closest_dist = distance
+        if closest.is_empty():
+            weapon["timer"] = 0.10
+            continue
+        var frequency := minf(1.0, 0.05 * float(_passive_level("terminally-online")))
+        weapon["timer"] = maxf(0.20, float(config["interval"]) * pow(0.95, int(weapon["level"])) / (1.0 + frequency))
+        var power := float(hero["power"]) * float(config["power"])
+        power *= float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * (int(weapon["level"]) - 1))
+        power *= 1.0 + 0.01 * (level - 1) + 0.06 * float(_passive_level("main-character"))
+        if hero["id"] == "sigma" and flex_time > 0.0:
+            power *= 1.4
+        var shape: String = config["shape"]
+        var hits := 0
+        if shape == "pulse" or shape == "blast" or shape == "cone":
+            var center: Vector2 = player_pos if shape != "blast" else closest["pos"]
+            var radius: float = float(config["range"]) if shape != "blast" else 100.0
+            for e: Dictionary in enemies.duplicate():
+                if center.distance_to(e["pos"]) <= radius:
+                    _hit_enemy(e, power)
+                    hits += 1
+        elif shape == "line":
+            var heading: Vector2 = (closest["pos"] - player_pos).normalized()
+            for e: Dictionary in enemies.duplicate():
+                var offset: Vector2 = e["pos"] - player_pos
+                if offset.length() <= 600.0 and absf(heading.cross(offset)) <= 36.0 and heading.dot(offset) > 0.0:
+                    _hit_enemy(e, power)
+                    hits += 1
+                    if hits == 4:
+                        break
+        else:
+            _hit_enemy(closest, power)
+            hits = 1
+        if hits > 0:
+            if flex_time <= 0.0:
+                aura = minf(100.0, aura + 1.0)
+            attack_flash = 0.12
+            attack_target = closest["pos"]
+            if weapon["id"] == "cope-shield":
+                shield = minf(max_hp * 0.40, shield + max_hp * 0.04)
+
+func _hit_enemy(enemy: Dictionary, amount: float) -> void:
+    if not enemies.has(enemy):
+        return
+    enemy["hp"] = float(enemy["hp"]) - amount
+    if float(enemy["hp"]) <= 0.0:
+        enemies.erase(enemy)
+        kills += 1
+        if enemy["kind"] == "boss":
+            _finish(true)
+            return
+        pickups.append({"pos": enemy["pos"], "xp": float(enemy["xp"]), "kind": "aura"})
+        var chance := rng.randf()
+        if chance < 0.020:
+            pickups.append({"pos": enemy["pos"] + Vector2(19, 0), "xp": 0.0, "kind": "snack"})
+        elif chance < 0.030:
+            pickups.append({"pos": enemy["pos"] + Vector2(19, 0), "xp": 0.0, "kind": "magnet"})
+        if enemy["kind"] == "event" and flex_time <= 0.0:
+            aura = minf(100.0, aura + 10.0)
+
+func _collect_drops() -> void:
+    for drop: Dictionary in pickups.duplicate():
+        if player_pos.distance_to(drop["pos"]) > 45.0:
+            continue
+        pickups.erase(drop)
+        if drop["kind"] == "snack":
+            hp = minf(max_hp, hp + 0.15 * max_hp)
+        elif drop["kind"] == "magnet":
+            for item: Dictionary in pickups.duplicate():
+                if item["kind"] == "aura":
+                    _gain_xp(float(item["xp"]))
+                    pickups.erase(item)
+        else:
+            _gain_xp(float(drop["xp"]))
+
+func _gain_xp(amount: float) -> void:
+    total_xp += amount
+    xp += amount
+    while level < 25 and xp >= float(30 + 8 * level + level * level):
+        xp -= float(30 + 8 * level + level * level)
+        level += 1
+        max_hp += 2.0
+        hp = minf(max_hp, hp + 2.0)
+        pending_choices += 1
+
+func _passive_level(id: String) -> int:
+    for passive: Dictionary in passives:
+        if passive["id"] == id:
+            return int(passive["level"])
+    return 0
+
+func _open_choice() -> void:
+    if pending_choices <= 0 or mode != "playing":
+        return
+    selection.clear()
+    var pool: Array[Dictionary] = []
+    for id in WEAPONS.keys():
+        if WEAPONS[id]["role"] != hero["role"]:
+            continue
+        var already := false
+        for weapon: Dictionary in weapons:
+            if weapon["id"] == id:
+                already = true
+        if not already and weapons.size() < 3:
+            pool.append({"type": "weapon", "id": id, "label": "Equip " + str(WEAPONS[id]["name"])})
+    for weapon: Dictionary in weapons:
+        if int(weapon["level"]) < int(CAP_LEVELS[weapon["rarity"]]):
+            pool.append({"type": "upgrade_weapon", "id": weapon["id"], "label": "Upgrade " + str(WEAPONS[weapon["id"]]["name"])})
+    for id: String in PASSIVES:
+        var existing := false
+        for passive: Dictionary in passives:
+            if passive["id"] == id:
+                existing = true
+                if int(passive["level"]) < int(CAP_LEVELS[passive["rarity"]]):
+                    pool.append({"type": "upgrade_passive", "id": id, "label": "Upgrade " + id.replace("-", " ").capitalize()})
+        if not existing and passives.size() < 5:
+            pool.append({"type": "passive", "id": id, "label": "Acquire " + id.replace("-", " ").capitalize()})
+    while selection.size() < 3:
+        if pool.is_empty():
+            selection.append({"type": "heal", "label": "Recover 8% maximum HP"})
+            continue
+        var idx := rng.randi_range(0, pool.size() - 1)
+        selection.append(pool[idx])
+        pool.remove_at(idx)
+    mode = "choice"
+    _show_ui()
+
+func pick_upgrade(index: int) -> void:
+    if mode != "choice" or index < 0 or index >= selection.size():
+        return
+    var card: Dictionary = selection[index]
+    if card["type"] == "weapon":
+        weapons.append({"id": card["id"], "level": 1, "rarity": "common", "timer": 0.0})
+    elif card["type"] == "upgrade_weapon":
+        for weapon: Dictionary in weapons:
+            if weapon["id"] == card["id"]:
+                weapon["level"] = mini(int(CAP_LEVELS[weapon["rarity"]]), int(weapon["level"]) + 1)
+    elif card["type"] == "passive":
+        passives.append({"id": card["id"], "level": 1, "rarity": "common"})
+        if card["id"] == "built-different":
+            max_hp *= 1.08
+    elif card["type"] == "upgrade_passive":
+        for passive: Dictionary in passives:
+            if passive["id"] == card["id"]:
+                passive["level"] = mini(int(CAP_LEVELS[passive["rarity"]]), int(passive["level"]) + 1)
+                if card["id"] == "built-different":
+                    max_hp *= 1.08
+    else:
+        hp = minf(max_hp, hp + max_hp * 0.08)
+    pending_choices -= 1
+    mode = "playing"
+    _show_ui()
+    if pending_choices > 0:
+        _open_choice()
+
+func _damage_nearby(radius: float, amount: float) -> void:
+    for e: Dictionary in enemies.duplicate():
+        if player_pos.distance_to(e["pos"]) <= radius:
+            _hit_enemy(e, amount)
+
+func _use_flex() -> void:
+    if mode != "playing" or aura < 100.0 or flex_lock > 0.0:
+        return
+    if hero["id"] == "sigma" and enemies.is_empty():
+        return
+    aura = 0.0
+    flex_time = float(hero["duration"])
+    flex_lock = 30.0
+    flex_age = 0.0
+    if hero["id"] == "alpha":
+        shield = minf(0.40 * max_hp, shield + 0.25 * max_hp)
+        _damage_nearby(150.0, 0.40 * float(hero["power"]))
+
+func _toggle_pause() -> void:
+    if mode == "playing":
+        mode = "paused"
+    elif mode == "paused":
+        mode = "playing"
+    _show_ui()
+
+func _finish(won: bool) -> void:
+    if mode != "playing":
+        return
+    mode = "won" if won else "lost"
+    profile["runs"] = int(profile.get("runs", 0)) + 1
+    if won:
+        profile["wins"] = int(profile.get("wins", 0)) + 1
+    profile["best_wave"] = maxi(int(profile.get("best_wave", 1)), wave)
+    profile["total_kills"] = int(profile.get("total_kills", 0)) + kills
+    _save_profile()
+    _show_ui()
+
+func _load_profile() -> void:
+    if not FileAccess.file_exists("user://godot_slice_profile_v1.json"):
+        return
+    var file := FileAccess.open("user://godot_slice_profile_v1.json", FileAccess.READ)
+    if file == null:
+        return
+    var parsed = JSON.parse_string(file.get_as_text())
+    if parsed is Dictionary and int(parsed.get("version", 0)) == 1:
+        profile = parsed
+
+func _save_profile() -> void:
+    var file := FileAccess.open("user://godot_slice_profile_v1.json", FileAccess.WRITE)
+    if file != null:
+        profile["version"] = 1
+        file.store_string(JSON.stringify(profile))
+
+func _return_to_menu() -> void:
+    mode = "menu"
+    touch_active = false
+    touch_direction = Vector2.ZERO
+    _show_ui()
+    _update_text()
+
+func _unhandled_key_input(event: InputEvent) -> void:
+    if not event.pressed or event.echo:
+        return
+    if event.keycode == KEY_P or event.keycode == KEY_ESCAPE:
+        _toggle_pause()
+    if event.keycode == KEY_SPACE:
+        _use_flex()
+    if mode == "menu" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
+        start_run(event.keycode - KEY_1)
+    elif mode == "choice" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
+        pick_upgrade(event.keycode - KEY_1)
+
+func _input(event: InputEvent) -> void:
+    if event is InputEventScreenTouch:
+        if event.pressed and event.position.x < 475.0 and event.position.y > 185.0 and mode == "playing":
+            touch_active = true
+            touch_origin = event.position
+            touch_direction = Vector2.ZERO
+        elif not event.pressed:
+            touch_active = false
+            touch_direction = Vector2.ZERO
+    if event is InputEventScreenDrag and touch_active:
+        touch_direction = (event.position - touch_origin).limit_length(85.0) / 85.0
+
+func _draw() -> void:
+    draw_rect(FIELD, Color(0.12, 0.15, 0.22))
+    for gx in range(0, 1449, 128):
+        draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
+    for gy in range(0, 1087, 128):
+        draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
+    draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    for cover: Vector2 in COVERS:
+        draw_circle(cover, 31.0, Color(0.28, 0.30, 0.34))
+        draw_arc(cover, 32.0, 0.0, TAU, 24, Color(0.70, 0.62, 0.46), 4.0)
+    if mode == "menu":
+        return
+    for drop: Dictionary in pickups:
+        var color := Color(0.31, 0.93, 0.86)
+        if drop["kind"] == "snack":
+            color = Color(0.35, 0.95, 0.42)
+        elif drop["kind"] == "magnet":
+            color = Color(0.93, 0.52, 0.96)
+        draw_circle(drop["pos"], 7.0 if drop["kind"] == "aura" else 12.0, color)
+    for e: Dictionary in enemies:
+        var radius: float = float(e["radius"])
+        var color := Color(0.89, 0.33, 0.40)
+        if e["kind"] == "hater":
+            color = Color(0.92, 0.49, 0.64)
+        elif e["kind"] == "event":
+            color = Color(0.79, 0.38, 0.98)
+        elif e["kind"] == "boss":
+            color = Color(0.99, 0.30, 0.25)
+        draw_circle(e["pos"], radius, color)
+        draw_circle(e["pos"] + Vector2(-5, -4), 2.0, Color(0.15, 0.12, 0.18))
+        draw_circle(e["pos"] + Vector2(5, -4), 2.0, Color(0.15, 0.12, 0.18))
+        draw_rect(Rect2(e["pos"] + Vector2(-radius, -radius - 13), Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
+        draw_rect(Rect2(e["pos"] + Vector2(-radius, -radius - 13), Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+    if attack_flash > 0.0:
+        draw_line(player_pos, attack_target, Color(0.99, 0.87, 0.42, 0.6), 5.0)
+    if flex_time > 0.0:
+        draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
+    draw_circle(player_pos, 16.0, hero["color"])
+    draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
+    draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
+    draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
+    draw_rect(Rect2(player_pos + Vector2(-23, -31), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
+    draw_rect(Rect2(player_pos + Vector2(-23, -31), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))

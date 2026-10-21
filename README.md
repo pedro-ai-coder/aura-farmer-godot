@@ -28,3 +28,8 @@ The authoritative Godot specification is `docs/GDD.md`. Its **§23 (21 October 2
 Read `AGENTS.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_PLAN.md` and `docs/CI_SETUP.md`. Every iteration uses a scoped PR. Public-repository GitHub Actions CI validates non-draft PRs on standard GitHub-hosted runners. The Godot bootstrap has passed its first CI smoke test; full gameplay, Web/Android/iOS exports and real-device acceptance remain unverified. Branch ruleset enforcement must be enabled separately in GitHub settings. Do not claim green tests before a real run; do not automatically deploy or release.
 
 **Validation status:** GitHub repository content committed; Godot editor import, headless checks, browser export and device tests have not yet run in this environment.
+
+
+## Playable slice (experimental)
+
+An initial Godot solo gameplay scene is available after importing `project.godot`. Choose Sigma, Cool Kid or Alpha Chad (buttons or keyboard 1–3), move with WASD/arrows or a touch drag on the left, and trigger Flex with SPACE or the touch button. Automatic attacks, upgrades, XP and a timed run are present. See `docs/PLAYABLE_SLICE.md` for substantial gameplay/visual and save migration gaps; this is NOT the finished GDD demo.
