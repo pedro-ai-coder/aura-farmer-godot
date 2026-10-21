@@ -40,6 +40,7 @@ run_check contracts --headless --path . --script res://tests/test_game_rules.gd
 run_check catalog --headless --path . --script res://tests/test_solo_offer_rules.gd
 run_check legendary --headless --path . --script res://tests/test_legendary_offer.gd
 run_check bestiary --headless --path . --script res://tests/test_enemy_patterns.gd
+run_check ruin-alley --headless --path . --script res://tests/test_solo_world_rules.gd
 run_check passive-effects --headless --path . --script res://tests/test_passive_effects.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
