@@ -68,6 +68,8 @@ if [[ "${GODOT_SKIP_TEMPLATE_DOWNLOAD:-0}" != "1" ]]; then
     done
 fi
 
+python3 scripts/sync_approved_assets.py
+
 echo "Godot executable: $GODOT"
 "$GODOT" --version
 "$GODOT" --headless --path . --import
