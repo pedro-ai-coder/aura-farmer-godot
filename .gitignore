@@ -27,3 +27,6 @@ reports/
 
 # Generated Web export (deployed via Vercel, not committed)
 build/
+
+# Source-approved artwork fetched and SHA-verified during Web builds
+assets/approved/*.png
