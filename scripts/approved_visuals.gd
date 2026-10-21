@@ -10,19 +10,34 @@ const REAR_FRAMES: Dictionary = {"alpha":[[44,27,287,321],[418,26,276,305],[763,
 const FLEX_FRAMES: Array = [[50,122,346,286],[534,30,364,377],[1052,55,313,352],[1517,51,327,356],[80,443,278,339],[556,440,308,344],[1022,489,364,293],[1562,437,255,352]]
 const RENDERED_HERO_HEIGHT := 70.0
 
+## Exact frame masks from Phaser; cache clipped image textures per enemy animation frame.
+## Rendering is presentation-only and never consumes gameplay RNG.
 var textures: Dictionary = {}
+var enemy_rows: Dictionary = {}
+var enemy_images: Dictionary = {}
+var enemy_frame_cache: Dictionary = {}
 
 func _init() -> void:
     for asset_name in [
         "ruin-alley", "main-menu", "sigma", "cool-kid", "alpha",
         "phone-guy", "hater", "big-hater", "sigma-atlas", "cool-kid-atlas",
-        "alpha-atlas", "cool-kid-flex-v2", "cool-kid-rear-v2", "alpha-rear-v2"
+        "alpha-atlas", "cool-kid-flex-v2", "cool-kid-rear-v2", "alpha-rear-v2",
+        "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2"
     ]:
         var path: String = ROOT + asset_name + ".png"
         if ResourceLoader.exists(path):
             var resource = load(path)
             if resource is Texture2D:
                 textures[asset_name] = resource
+    var frame_path := "res://assets/approved-enemy-frames.json"
+    if FileAccess.file_exists(frame_path):
+        var parsed = JSON.parse_string(FileAccess.get_file_as_string(frame_path))
+        if parsed is Dictionary:
+            enemy_rows = parsed
+        else:
+            push_error("Invalid approved enemy atlas frame data")
+    else:
+        push_error("Missing approved enemy atlas frame data")
 
 func texture(name: String) -> Texture2D:
     return textures.get(name) as Texture2D
@@ -91,24 +106,70 @@ func draw_hero(canvas: CanvasItem, pos: Vector2, hero_id: String, time: float, m
     _frame(canvas, atlas, frames[idle_index], pos, RENDERED_HERO_HEIGHT, facing_left)
     return true
 
-func draw_enemy(canvas: CanvasItem, enemy: Dictionary) -> bool:
+func enemy_frame(kind: String, frame_index: int) -> Texture2D:
+    if not enemy_rows.has(kind):
+        return null
+    var cache_key := kind + ":" + str(frame_index)
+    if enemy_frame_cache.has(cache_key):
+        return enemy_frame_cache[cache_key]["texture"] as Texture2D
+    var row: Dictionary = enemy_rows[kind]
+    var index := posmod(frame_index, int(row["sourceFrames"].size()))
+    var source_name: String = row["source"]
+    var source_texture: Texture2D = texture(source_name)
+    if source_texture == null:
+        return null
+    if not enemy_images.has(source_name):
+        var source_image := source_texture.get_image()
+        if source_image == null:
+            return null
+        source_image.convert(Image.FORMAT_RGBA8)
+        enemy_images[source_name] = source_image
+    var src: Image = enemy_images[source_name]
+    var region: Array = row["sourceFrames"][index]
+    var w := int(region[2])
+    var h := int(region[3])
+    var image := Image.create_empty(w, h, false, Image.FORMAT_RGBA8)
+    image.fill(Color.TRANSPARENT)
+    for clip: Array in row["masks"][index]:
+        var x := int(clip[0])
+        var y := int(clip[1])
+        var clip_w := int(clip[2])
+        var clip_h := int(clip[3])
+        image.blit_rect(src, Rect2i(int(region[0]) + x, int(region[1]) + y, clip_w, clip_h), Vector2i(x, y))
+    var frame_texture := ImageTexture.create_from_image(image)
+    var pivot: Array = row["frames"][index]
+    enemy_frame_cache[cache_key] = {
+        "texture": frame_texture, "pivot": Vector2(float(pivot[0]), float(pivot[1])),
+        "height": float(row["height"])
+    }
+    return frame_texture
+
+func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0) -> bool:
     var kind: String = enemy.get("kind", "npc")
-    var sprite := "phone-guy"
-    if kind == "hater":
-        sprite = "hater"
-    elif kind == "boss" or kind == "event":
-        sprite = "big-hater" if kind == "boss" else "hater"
-    var image: Texture2D = texture(sprite)
+    if kind == "boss" and animation_time >= 1080.0:
+        kind = "boss-berserk"
+    if not enemy_rows.has(kind):
+        return false
+    var frame_index := int(animation_time * 7.0) % 4
+    var phase := str(enemy.get("phase", ""))
+    if phase == "warning" or phase == "charge-warning":
+        frame_index = 4
+    elif phase == "charging":
+        frame_index = 5
+    elif animation_time - float(enemy.get("hurt_at", -100.0)) < 0.16:
+        frame_index = 6
+    elif float(enemy.get("speed", 0.0)) < 0.01:
+        frame_index = 0
+    var image: Texture2D = enemy_frame(kind, frame_index)
     if image == null:
         return false
-    var size: Vector2 = image.get_size()
-    var target_height: float = 69.0
-    if kind == "event":
-        target_height = 105.0
-    elif kind == "boss":
-        target_height = 140.0
-    var width: float = target_height * size.x / maxf(size.y, 1.0)
+    var cache_key := kind + ":" + str(frame_index)
+    var data: Dictionary = enemy_frame_cache[cache_key]
+    var scale: float = maxf(52.0, float(enemy.get("radius", 15.0)) * (2.6 if kind == "boss" or kind == "boss-berserk" else 3.1)) / maxf(1.0, float(data["height"]))
+    var pivot: Vector2 = data["pivot"]
     var position: Vector2 = enemy["pos"]
-    canvas.draw_texture_rect(image,
-        Rect2(position.x - width * 0.5, position.y - target_height * 0.86, width, target_height), false)
+    var face_left: bool = Vector2(enemy.get("locked_direction", Vector2.RIGHT)).x < -0.05
+    canvas.draw_set_transform(position, 0.0, Vector2(-1.0, 1.0) if face_left else Vector2.ONE)
+    canvas.draw_texture_rect(image, Rect2(-pivot * scale, image.get_size() * scale), false)
+    canvas.draw_set_transform(Vector2.ZERO)
     return true
