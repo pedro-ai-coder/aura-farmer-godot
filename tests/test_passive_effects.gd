@@ -56,7 +56,8 @@ func _verify() -> void:
 
     game.call("start_run", 2)
     game.set("passives", [{"id":"so-back","rarity":"epic","level":1}, {"id":"too-sigma","rarity":"legendary","level":1}])
-    game.call("_deal_damage_to_player", 117.0)
+    game.call("_deal_damage_to_player", 125.0)
+    _expect(float(game.get("hp")) > 0.0 and float(game.get("hp")) < float(game.get("max_hp")) * 0.25, "Damage crosses both nonfatal HP thresholds")
     var timers: Dictionary = game.get("passive_timers")
     _expect(float(timers.get("so_back_ready", 0.0)) > 0.0, "We Are So Back activates only after nonfatal threshold crossing")
     _expect(float(timers.get("too_sigma_ready", 0.0)) > 0.0, "Too Sigma to Fall triggers on nonfatal threshold crossing")
