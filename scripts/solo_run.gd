@@ -2,6 +2,7 @@ extends Node2D
 
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
+const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
 ## Initial GDD-grounded playable solo slice.
 ## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
 
@@ -78,6 +79,8 @@ var legendary_second_shown := false
 var weapons: Array[Dictionary] = []
 var passives: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
+var hostile_shots: Array[Dictionary] = []
+var hazard_zones: Array[Dictionary] = []
 var pickups: Array[Dictionary] = []
 var rng := RandomNumberGenerator.new()
 var hero_index := 0
@@ -300,6 +303,8 @@ func start_run(index: int) -> void:
     weapons = [{"id": hero["starter"], "level": 1, "rarity": "common", "timer": 0.0}]
     passives.clear()
     enemies.clear()
+    hostile_shots.clear()
+    hazard_zones.clear()
     pickups.clear()
     rng.seed = 451 + 17 * index
     mode = "playing"
@@ -337,6 +342,8 @@ func _advance(dt: float) -> void:
         _gain_xp(float(40 * wave))
     _spawn_logic(dt)
     _step_enemies(dt)
+    _step_hostile_shots(dt)
+    _step_hazards()
     if mode != "playing":
         return
     _fire_weapons(dt)
@@ -365,13 +372,16 @@ func _move_player(dt: float) -> void:
     player_pos = desired
 
 func _spawn_logic(dt: float) -> void:
-    if not boss_spawned and event_index < EVENTS.size() and run_time >= float(EVENTS[event_index]["at"]):
-        _spawn_enemy("event", EVENTS[event_index])
+    if not boss_spawned and event_index < SoloEnemyRulesScript.EVENT_SCHEDULE.size() and run_time >= float(SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]["at"]):
+        var event: Dictionary = SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]
+        _spawn_enemy(str(event["kind"]))
         event_index += 1
     if not boss_spawned and run_time >= 900.0:
         boss_spawned = true
         enemies.clear()
-        _spawn_enemy("boss", {"name": "BIG HATER", "hp": 30000.0})
+        hostile_shots.clear()
+        hazard_zones.clear()
+        _spawn_enemy("boss", {"pos":Vector2(724.0, 445.0)})
     spawn_timer -= dt
     if spawn_timer > 0.0 or enemies.size() >= 100:
         return
@@ -380,59 +390,223 @@ func _spawn_logic(dt: float) -> void:
     if boss_spawned:
         spawn_timer = 5.0
     else:
-        _spawn_enemy("hater" if wave > 1 and rng.randf() < 0.27 else "npc")
+        var selected: String = SoloEnemyRulesScript.spawn_kind(wave, run_time, rng)
+        _spawn_enemy(selected)
 
 func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
-    var pos := Vector2.ZERO
-    var found := false
-    for attempt in range(35):
-        pos = Vector2(rng.randf_range(60.0, 1388.0), rng.randf_range(60.0, 1026.0))
-        if pos.distance_to(player_pos) >= 260.0:
-            found = true
-            break
-    if not found:
-        pos = Vector2(80, 80)
-    var hp_base := 35.0 if kind == "npc" else 50.0
-    var speed := 75.0 if kind == "npc" else 60.0
-    var xp_value := 5 if kind == "npc" else 8
-    var radius := 15.0 if kind == "npc" else 17.0
-    var damage := 8.0 if kind == "npc" else 10.0
-    if kind == "event" or kind == "boss":
-        hp_base = float(special["hp"])
-        speed = 35.0 if kind == "event" else 22.0
-        damage = 19.0 if kind == "event" else 12.0
-        xp_value = 120 if kind == "event" else 0
-        radius = 34.0 if kind == "event" else 48.0
-    else:
-        hp_base *= float(WAVE_HP[wave - 1])
-        damage *= float(WAVE_DAMAGE[wave - 1])
-    enemies.append({"pos": pos, "hp": hp_base, "max": hp_base, "speed": speed, "radius": radius, "damage": damage, "xp": xp_value, "kind": kind, "hit_cooldown": 0.0, "name": special.get("name", kind.to_upper())})
+    if not SoloEnemyRulesScript.DATA.has(kind):
+        push_error("Unknown GDD enemy ID: " + kind)
+        return
+    var stats: Dictionary = SoloEnemyRulesScript.DATA[kind]
+    var pos: Vector2 = special.get("pos", Vector2.ZERO)
+    if not special.has("pos"):
+        var found := false
+        for attempt in range(35):
+            pos = Vector2(rng.randf_range(60.0, 1388.0), rng.randf_range(60.0, 1026.0))
+            if pos.distance_to(player_pos) >= 260.0:
+                found = true
+                break
+        if not found:
+            pos = Vector2(80.0, 80.0)
+    var boss_kind: bool = bool(stats["boss"])
+    var hp_base: float = float(stats["hp"]) * (1.0 if boss_kind else float(WAVE_HP[wave - 1]))
+    var damage: float = float(stats["damage"]) * (1.0 if boss_kind else float(WAVE_DAMAGE[wave - 1]))
+    enemies.append({
+        "pos": pos, "hp": hp_base, "max": hp_base,
+        "speed": float(stats["speed"]), "radius": float(stats["radius"]),
+        "damage": damage, "xp": int(stats["xp"]), "kind": kind,
+        "hit_cooldown": 0.0, "name": stats["name"], "phase": "",
+        "next_attack": run_time + 2.0, "attack_at": 0.0,
+        "locked_direction": Vector2.RIGHT, "charge_until": 0.0,
+        "attack_slot": 0, "regen_stamp": int(run_time),
+        "shield": 0.0, "shield_until": 0.0, "hurt_at": -100.0
+    })
+
+func _deal_damage_to_player(amount: float) -> void:
+    if mode != "playing" or hurt_timer > 0.0:
+        return
+    hurt_timer = 0.25
+    var incoming: float = amount * (1.0 - float(hero["resist"]))
+    incoming *= 1.0 - minf(0.45, 0.03 * float(_passive_level("thick-skin")))
+    if hero["id"] == "cool-kid" and flex_time > 0.0:
+        incoming *= 0.5
+    var absorbed := minf(shield, incoming)
+    shield -= absorbed
+    hp = maxf(0.0, hp - incoming + absorbed)
+    if hp <= 0.0:
+        _finish(false)
+
+func _spawn_hostile_shot(enemy: Dictionary) -> void:
+    var dir: Vector2 = enemy["locked_direction"]
+    hostile_shots.append({
+        "pos":enemy["pos"], "dir":dir, "speed":450.0 if enemy["kind"] == "ping-sniper" else 180.0,
+        "remaining":800.0, "damage":float(enemy["damage"]), "radius":7.0
+    })
+
+func _step_hostile_shots(dt: float) -> void:
+    for shot: Dictionary in hostile_shots.duplicate():
+        var distance: float = float(shot["speed"]) * dt
+        var start: Vector2 = shot["pos"]
+        var ending: Vector2 = start + shot["dir"] * distance
+        shot["pos"] = ending
+        shot["remaining"] = float(shot["remaining"]) - distance
+        var blocked := false
+        for cover: Vector2 in COVERS:
+            if ending.distance_to(cover) < 36.0:
+                blocked = true
+                break
+        if blocked or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
+            hostile_shots.erase(shot)
+            continue
+        if ending.distance_to(player_pos) < 16.0 + float(shot["radius"]):
+            _deal_damage_to_player(float(shot["damage"]))
+            hostile_shots.erase(shot)
+
+func _schedule_hazard(point: Vector2, radius: float, delay: float, active_duration: float, damage: float, shape: String = "circle", heading: Vector2 = Vector2.RIGHT) -> void:
+    hazard_zones.append({
+        "pos":point, "radius":radius, "at":run_time + delay, "end":run_time + delay + active_duration,
+        "next_tick":run_time + delay, "damage":damage, "shape":shape, "dir":heading
+    })
+
+func _step_hazards() -> void:
+    for hazard: Dictionary in hazard_zones.duplicate():
+        if run_time > float(hazard["end"]):
+            hazard_zones.erase(hazard)
+            continue
+        if run_time < float(hazard["at"]) or run_time < float(hazard["next_tick"]):
+            continue
+        hazard["next_tick"] = run_time + 1.0
+        var offset: Vector2 = player_pos - Vector2(hazard["pos"])
+        var danger := false
+        if hazard["shape"] == "line":
+            var aim: Vector2 = hazard["dir"]
+            danger = offset.length() <= float(hazard["radius"]) and absf(aim.cross(offset)) <= 30.0 and aim.dot(offset) >= 0.0
+        elif hazard["shape"] == "ring":
+            danger = absf(offset.length() - float(hazard["radius"])) <= 32.0
+        elif hazard["shape"] == "cone":
+            danger = offset.length() <= float(hazard["radius"]) and hazard["dir"].dot(offset.normalized()) >= 0.5
+        else:
+            danger = offset.length() <= float(hazard["radius"])
+        if danger:
+            _deal_damage_to_player(float(hazard["damage"]))
 
 func _step_enemies(dt: float) -> void:
-    for enemy: Dictionary in enemies:
+    for enemy: Dictionary in enemies.duplicate():
+        if mode != "playing" or not enemies.has(enemy):
+            return
+        var kind: String = enemy["kind"]
         var pos: Vector2 = enemy["pos"]
-        var vector: Vector2 = player_pos - pos
-        var dist := vector.length()
-        if dist > float(enemy["radius"]) + 19.0:
-            enemy["pos"] = pos + vector.normalized() * float(enemy["speed"]) * dt
+        var to_player: Vector2 = player_pos - pos
+        var distance: float = to_player.length()
+        var direction: Vector2 = to_player.normalized() if distance > 0.01 else Vector2.RIGHT
+        var speed: float = float(enemy["speed"])
+        if kind == "terminal":
+            continue
+        if kind == "boss":
+            if run_time < 1080.0:
+                enemy["regen_stamp"] = int(run_time)
+            elif int(run_time) > int(enemy["regen_stamp"]):
+                enemy["hp"] = minf(float(enemy["max"]), float(enemy["hp"]) + float(enemy["max"]) * 0.001)
+                enemy["regen_stamp"] = int(run_time)
+
+        if kind == "hater" or kind == "ping-sniper":
+            var preferred: float = 260.0 if kind == "hater" else 400.0
+            if distance < preferred - 20.0:
+                direction = -direction
+            elif absf(distance - preferred) < 20.0:
+                speed = 0.0
+        if enemy["phase"] == "charging":
+            direction = enemy["locked_direction"]
+            speed = 320.0
+            if run_time >= float(enemy["charge_until"]):
+                enemy["phase"] = ""
+                speed = float(enemy["speed"])
+        if distance > float(enemy["radius"]) + 19.0:
+            var destination: Vector2 = pos + direction * speed * dt
+            destination.x = clampf(destination.x, 20.0, FIELD.size.x - 20.0)
+            destination.y = clampf(destination.y, 20.0, FIELD.size.y - 20.0)
+            enemy["pos"] = destination
         enemy["hit_cooldown"] = maxf(0.0, float(enemy["hit_cooldown"]) - dt)
-        if dist <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0 and hurt_timer == 0.0:
+        if distance <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0:
             enemy["hit_cooldown"] = 0.75
-            hurt_timer = 0.25
-            if hero["id"] == "cool-kid" and flex_time > 0.0 and enemy["kind"] != "boss" and enemy["kind"] != "event":
+            if hero["id"] == "cool-kid" and flex_time > 0.0 and not bool(SoloEnemyRulesScript.DATA[kind]["boss"]):
                 _hit_enemy(enemy, 0.35 * float(hero["power"]))
             else:
-                var incoming: float = float(enemy["damage"]) * (1.0 - float(hero["resist"]))
-                incoming *= 1.0 - minf(0.45, 0.03 * float(_passive_level("thick-skin")))
-                if hero["id"] == "cool-kid" and flex_time > 0.0:
-                    incoming *= 0.5
-                var absorbed := minf(shield, incoming)
-                shield -= absorbed
-                hp -= incoming - absorbed
-                if hp <= 0.0:
-                    hp = 0.0
-                    _finish(false)
-                    return
+                var boss_mult := 1.0
+                if kind == "boss" and run_time >= 1080.0:
+                    boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
+                _deal_damage_to_player(float(enemy["damage"]) * boss_mult)
+
+        if enemy["phase"] == "warning" and run_time >= float(enemy["attack_at"]):
+            _spawn_hostile_shot(enemy)
+            enemy["phase"] = ""
+            enemy["next_attack"] = run_time + (6.0 if kind == "ping-sniper" else 3.0)
+        elif (kind == "hater" or kind == "ping-sniper") and enemy["phase"] == "" and run_time >= float(enemy["next_attack"]):
+            enemy["phase"] = "warning"
+            enemy["attack_at"] = run_time + (1.2 if kind == "ping-sniper" else 0.6)
+            enemy["locked_direction"] = direction if speed >= 0.0 else -direction
+
+        if run_time < float(enemy["next_attack"]):
+            continue
+        if kind == "ratio-ram" or kind == "ohio-express":
+            if enemy["phase"] == "":
+                enemy["phase"] = "charge-warning"
+                enemy["attack_at"] = run_time + 0.9
+                enemy["locked_direction"] = to_player.normalized()
+            elif enemy["phase"] == "charge-warning" and run_time >= float(enemy["attack_at"]):
+                enemy["phase"] = "charging"
+                enemy["charge_until"] = run_time + 280.0 / 320.0
+                enemy["next_attack"] = run_time + 5.0
+        elif kind == "doomscroller":
+            _schedule_hazard(player_pos, 70.0, 1.0, 3.0, float(enemy["damage"]))
+            enemy["next_attack"] = run_time + 6.0
+        elif kind == "hype-bot":
+            var count := 0
+            for ally: Dictionary in enemies:
+                if ally != enemy and not bool(SoloEnemyRulesScript.DATA[ally["kind"]]["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 160.0:
+                    ally["shield"] = float(ally["max"]) * 0.15
+                    ally["shield_until"] = run_time + 4.0
+                    count += 1
+                    if count == 3: break
+            enemy["next_attack"] = run_time + 8.0
+        elif kind == "comment-mod":
+            var healed := 0
+            for ally: Dictionary in enemies:
+                if ally != enemy and ally["kind"] != "comment-mod" and not bool(SoloEnemyRulesScript.DATA[ally["kind"]]["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 180.0:
+                    ally["hp"] = minf(float(ally["max"]), float(ally["hp"]) + 0.08 * float(ally["max"]))
+                    healed += 1
+                    if healed == 3: break
+            enemy["next_attack"] = run_time + 8.0
+        elif kind == "fanum-leech":
+            if distance <= 200.0:
+                _schedule_hazard(pos, 240.0, 0.8, 2.4, 5.0, "line", to_player.normalized())
+            enemy["next_attack"] = run_time + 5.0
+        elif kind == "reply-guy":
+            _schedule_hazard(pos, 260.0, 0.8, 0.2, 18.0, "cone", to_player.normalized())
+            for i in range(4): _spawn_enemy("npc")
+            enemy["next_attack"] = run_time + 12.0
+        elif kind == "mod-supremo":
+            _schedule_hazard(pos, 500.0, 1.0, 0.2, 15.0, "line", to_player.normalized())
+            enemy["next_attack"] = run_time + 10.0
+        elif kind == "doomscroll-prime":
+            _schedule_hazard(player_pos, 100.0, 1.0, 3.0, 12.0)
+            enemy["next_attack"] = run_time + 7.0
+        elif kind == "boss":
+            var slot: int = int(enemy["attack_slot"]) % 4
+            enemy["attack_slot"] = slot + 1
+            var multi := 1.0 if run_time < 1080.0 else minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
+            if slot == 0:
+                _schedule_hazard(pos, 200.0, 1.0, 0.15, 35.0 * multi, "cone", to_player.normalized())
+            elif slot == 1:
+                _schedule_hazard(pos, 600.0, 1.2, 0.2, 30.0 * multi, "line", to_player.normalized())
+            elif slot == 2:
+                _schedule_hazard(pos, 280.0, 1.0, 1.5, 25.0 * multi, "ring")
+            else:
+                for i in range(4): _spawn_enemy("npc")
+                _spawn_enemy("hype-bot")
+            enemy["next_attack"] = run_time + (4.8 if run_time >= 1080.0 else 6.0)
+        else:
+            enemy["next_attack"] = run_time + 1.0
 
 func _fire_weapons(dt: float) -> void:
     for weapon: Dictionary in weapons:
@@ -489,8 +663,14 @@ func _fire_weapons(dt: float) -> void:
 func _hit_enemy(enemy: Dictionary, amount: float) -> void:
     if not enemies.has(enemy):
         return
+    if float(enemy.get("shield_until", 0.0)) > run_time and float(enemy.get("shield", 0.0)) > 0.0:
+        var blocked: float = minf(amount, float(enemy["shield"]))
+        enemy["shield"] = float(enemy["shield"]) - blocked
+        amount -= blocked
     enemy["hp"] = float(enemy["hp"]) - amount
     if float(enemy["hp"]) <= 0.0:
+        if enemy["kind"] == "copium-puffer":
+            _schedule_hazard(Vector2(enemy["pos"]), 80.0, 1.0, 3.0, 12.0)
         enemies.erase(enemy)
         kills += 1
         if enemy["kind"] == "boss":
@@ -502,7 +682,7 @@ func _hit_enemy(enemy: Dictionary, amount: float) -> void:
             pickups.append({"pos": enemy["pos"] + Vector2(19, 0), "xp": 0.0, "kind": "snack"})
         elif chance < 0.030:
             pickups.append({"pos": enemy["pos"] + Vector2(19, 0), "xp": 0.0, "kind": "magnet"})
-        if enemy["kind"] == "event" and flex_time <= 0.0:
+        if SoloEnemyRulesScript.is_event(str(enemy["kind"])) and flex_time <= 0.0:
             aura = minf(100.0, aura + 10.0)
 
 func _collect_drops() -> void:
@@ -792,15 +972,25 @@ func _draw() -> void:
         elif drop["kind"] == "magnet":
             color = Color(0.93, 0.52, 0.96)
         draw_circle(drop["pos"], 7.0 if drop["kind"] == "aura" else 12.0, color)
+    for zone: Dictionary in hazard_zones:
+        if run_time < float(zone["at"]):
+            draw_arc(Vector2(zone["pos"]), float(zone["radius"]), 0.0, TAU, 48, Color(1.0, 0.61, 0.22, 0.8), 4.0)
+        else:
+            draw_arc(Vector2(zone["pos"]), float(zone["radius"]), 0.0, TAU, 48, Color(0.98, 0.29, 0.31, 0.8), 6.0)
+    for shot: Dictionary in hostile_shots:
+        draw_circle(shot["pos"], float(shot["radius"]), Color(1.0, 0.37, 0.47))
     for e: Dictionary in enemies:
         var radius: float = float(e["radius"])
         var color := Color(0.89, 0.33, 0.40)
-        if e["kind"] == "hater":
+        if e["kind"] == "hater" or e["kind"] == "ping-sniper":
             color = Color(0.92, 0.49, 0.64)
-        elif e["kind"] == "event":
+        elif SoloEnemyRulesScript.is_event(str(e["kind"])):
             color = Color(0.79, 0.38, 0.98)
         elif e["kind"] == "boss":
             color = Color(0.99, 0.30, 0.25)
+        if e["phase"] == "warning" or e["phase"] == "charge-warning":
+            var locked: Vector2 = e["locked_direction"]
+            draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
         if not art.draw_enemy(self, e):
             draw_circle(e["pos"], radius, color)
         draw_circle(e["pos"] + Vector2(-5, -4), 2.0, Color(0.15, 0.12, 0.18))
