@@ -1,6 +1,7 @@
 extends Node2D
 
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
+const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 ## Initial GDD-grounded playable solo slice.
 ## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
 
@@ -68,6 +69,8 @@ var attack_flash := 0.0
 var attack_target := Vector2.ZERO
 var pending_choices := 0
 var selection: Array[Dictionary] = []
+var replace_card: Dictionary = {}
+var replace_options: Array[Dictionary] = []
 var weapons: Array[Dictionary] = []
 var passives: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
@@ -140,6 +143,10 @@ func _ready() -> void:
         var offer_b = _make_button("", Vector2(325, 288 + 82 * i), Vector2(630, 68))
         offer_b.pressed.connect(pick_upgrade.bind(i))
         offer_buttons.append(offer_b)
+    for extra in range(3, 5):
+        var extra_offer = _make_button("", Vector2(325, 288 + 82 * extra), Vector2(630, 68))
+        extra_offer.pressed.connect(pick_upgrade.bind(extra))
+        offer_buttons.append(extra_offer)
     flex_button = _make_button("FLEX [SPACE]", Vector2(1002, 635), Vector2(245, 65))
     flex_button.pressed.connect(_use_flex)
     pause_button = _make_button("PAUSE [P]", Vector2(1083, 20), Vector2(168, 46))
@@ -186,14 +193,17 @@ func _style_button(button: Button) -> void:
 func _show_ui() -> void:
     hud_top.visible = mode != "menu"
     hud_bottom.visible = mode == "playing" or mode == "paused"
-    modal_dim.visible = mode == "choice" or mode == "paused" or mode == "lost" or mode == "won"
+    modal_dim.visible = mode == "choice" or mode == "replace" or mode == "paused" or mode == "lost" or mode == "won"
     for i in range(3):
         hero_portraits[i].visible = mode == "menu"
         menu_buttons[i].visible = mode == "menu"
         menu_buttons[i].text = "%d   %s   ·   %s" % [i + 1, HEROES[i]["name"], HEROES[i]["flex"]]
-        offer_buttons[i].visible = mode == "choice"
+    for i in range(offer_buttons.size()):
+        offer_buttons[i].visible = (mode == "choice" and i < selection.size()) or (mode == "replace" and i < replace_options.size())
         if mode == "choice" and i < selection.size():
             offer_buttons[i].text = "%d   %s" % [i + 1, selection[i]["label"]]
+        elif mode == "replace" and i < replace_options.size():
+            offer_buttons[i].text = "%d   REPLACE %s" % [i + 1, replace_options[i]["label"]]
     flex_button.visible = mode == "playing"
     pause_button.visible = mode == "playing" or mode == "paused"
     pause_button.text = "RESUME [P]" if mode == "paused" else "PAUSE [P]"
@@ -219,6 +229,8 @@ func _update_text() -> void:
     flex_button.disabled = aura < 100.0 or flex_lock > 0.0
     if mode == "choice":
         notice.text = "LEVEL %d — CHOOSE AN UPGRADE" % level
+    elif mode == "replace":
+        notice.text = "CHOOSE AN EQUIPPED ITEM TO REPLACE"
     elif mode == "paused":
         notice.text = "PAUSED"
     elif mode == "lost":
@@ -254,6 +266,8 @@ func start_run(index: int) -> void:
     spawn_timer = 0.7
     hurt_timer = 0.0
     pending_choices = 0
+    replace_card.clear()
+    replace_options.clear()
     weapons = [{"id": hero["starter"], "level": 1, "rarity": "common", "timer": 0.0}]
     passives.clear()
     enemies.clear()
@@ -407,7 +421,7 @@ func _fire_weapons(dt: float) -> void:
             weapon["timer"] = 0.10
             continue
         var frequency := minf(1.0, 0.05 * float(_passive_level("terminally-online")))
-        weapon["timer"] = maxf(0.20, float(config["interval"]) * pow(0.95, int(weapon["level"])) / (1.0 + frequency))
+        weapon["timer"] = maxf(0.20, float(config["interval"]) * pow(0.95, int(weapon["level"]) - 1) / (1.0 + frequency))
         var power := float(hero["power"]) * float(config["power"])
         power *= float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * (int(weapon["level"]) - 1))
         power *= 1.0 + 0.01 * (level - 1) + 0.06 * float(_passive_level("main-character"))
@@ -496,65 +510,83 @@ func _open_choice() -> void:
     if pending_choices <= 0 or mode != "playing":
         return
     selection.clear()
-    var pool: Array[Dictionary] = []
-    for id in WEAPONS.keys():
-        if WEAPONS[id]["role"] != hero["role"]:
-            continue
-        var already := false
-        for weapon: Dictionary in weapons:
-            if weapon["id"] == id:
-                already = true
-        if not already and weapons.size() < 3:
-            pool.append({"type": "weapon", "id": id, "label": "Equip " + str(WEAPONS[id]["name"])})
-    for weapon: Dictionary in weapons:
-        if int(weapon["level"]) < int(CAP_LEVELS[weapon["rarity"]]):
-            pool.append({"type": "upgrade_weapon", "id": weapon["id"], "label": "Upgrade " + str(WEAPONS[weapon["id"]]["name"])})
-    for id: String in PASSIVES:
-        var existing := false
-        for passive: Dictionary in passives:
-            if passive["id"] == id:
-                existing = true
-                if int(passive["level"]) < int(CAP_LEVELS[passive["rarity"]]):
-                    pool.append({"type": "upgrade_passive", "id": id, "label": "Upgrade " + id.replace("-", " ").capitalize()})
-        if not existing and passives.size() < 5:
-            pool.append({"type": "passive", "id": id, "label": "Acquire " + id.replace("-", " ").capitalize()})
-    while selection.size() < 3:
-        if pool.is_empty():
-            selection.append({"type": "heal", "label": "Recover 8% maximum HP"})
-            continue
-        var idx := rng.randi_range(0, pool.size() - 1)
-        selection.append(pool[idx])
-        pool.remove_at(idx)
+    selection.append_array(SoloOfferRulesScript.choices(str(hero["role"]), wave, weapons, passives, WEAPONS, rng))
     mode = "choice"
     _show_ui()
 
-func pick_upgrade(index: int) -> void:
-    if mode != "choice" or index < 0 or index >= selection.size():
-        return
-    var card: Dictionary = selection[index]
-    if card["type"] == "weapon":
-        weapons.append({"id": card["id"], "level": 1, "rarity": "common", "timer": 0.0})
-    elif card["type"] == "upgrade_weapon":
-        for weapon: Dictionary in weapons:
-            if weapon["id"] == card["id"]:
-                weapon["level"] = mini(int(CAP_LEVELS[weapon["rarity"]]), int(weapon["level"]) + 1)
-    elif card["type"] == "passive":
-        passives.append({"id": card["id"], "level": 1, "rarity": "common"})
-        if card["id"] == "built-different":
-            max_hp *= 1.08
-    elif card["type"] == "upgrade_passive":
-        for passive: Dictionary in passives:
-            if passive["id"] == card["id"]:
-                passive["level"] = mini(int(CAP_LEVELS[passive["rarity"]]), int(passive["level"]) + 1)
-                if card["id"] == "built-different":
-                    max_hp *= 1.08
-    else:
+func _replace_target(card: Dictionary) -> void:
+    replace_card = card.duplicate(true)
+    replace_options.clear()
+    var inventory: Array[Dictionary] = weapons if card["type"] == "weapon" else passives
+    for item: Dictionary in inventory:
+        var name: String = str(WEAPONS[item["id"]]["name"]) if card["type"] == "weapon" else str(SoloOfferRulesScript.PASSIVE_DATA[item["id"]]["name"])
+        replace_options.append({"id":item["id"], "label":name + " / " + str(item["rarity"]).to_upper() + " LV " + str(item["level"])})
+    mode = "replace"
+    _show_ui()
+
+func _apply_card(card: Dictionary, replace_id: String = "") -> void:
+    if card["type"] == "heal":
         hp = minf(max_hp, hp + max_hp * 0.08)
+    else:
+        if not SoloOfferRulesScript.legal_item(str(card["id"]), str(card["rarity"]), int(card["level"]), str(hero["role"]), WEAPONS):
+            push_error("Refusing an illegal GDD item offer")
+            return
+        var kind: String = card["type"]
+        if kind == "weapon" and weapons.size() >= 3 and replace_id == "":
+            _replace_target(card)
+            return
+        if kind == "passive" and passives.size() >= 5 and replace_id == "":
+            _replace_target(card)
+            return
+        if kind == "weapon":
+            if replace_id != "":
+                for i in range(weapons.size()):
+                    if weapons[i]["id"] == replace_id:
+                        weapons.remove_at(i)
+                        break
+            weapons.append({"id": card["id"], "level":int(card["level"]), "rarity":card["rarity"], "timer":0.0})
+        elif kind == "passive":
+            if replace_id != "":
+                for i in range(passives.size()):
+                    if passives[i]["id"] == replace_id:
+                        passives.remove_at(i)
+                        break
+            passives.append({"id":card["id"], "level":int(card["level"]), "rarity":card["rarity"]})
+            if card["id"] == "built-different":
+                var additional_hp := max_hp * 0.08
+                max_hp += additional_hp
+                hp = minf(max_hp, hp + additional_hp)
+        elif kind == "upgrade_weapon" or kind == "promote_weapon":
+            for weapon: Dictionary in weapons:
+                if weapon["id"] == card["id"]:
+                    weapon["rarity"] = card["rarity"]
+                    weapon["level"] = int(card["level"])
+                    break
+        elif kind == "upgrade_passive":
+            for passive: Dictionary in passives:
+                if passive["id"] == card["id"]:
+                    passive["level"] = int(card["level"])
+                    if card["id"] == "built-different":
+                        var additional_hp := max_hp * 0.08
+                        max_hp += additional_hp
+                        hp = minf(max_hp, hp + additional_hp)
+                    break
     pending_choices -= 1
+    replace_card.clear()
+    replace_options.clear()
     mode = "playing"
     _show_ui()
     if pending_choices > 0:
         _open_choice()
+
+func pick_upgrade(index: int) -> void:
+    if mode == "replace":
+        if index >= 0 and index < replace_options.size() and not replace_card.is_empty():
+            _apply_card(replace_card, str(replace_options[index]["id"]))
+        return
+    if mode != "choice" or index < 0 or index >= selection.size():
+        return
+    _apply_card(selection[index])
 
 func _damage_nearby(radius: float, amount: float) -> void:
     for e: Dictionary in enemies.duplicate():
@@ -625,7 +657,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         _use_flex()
     if mode == "menu" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
         start_run(event.keycode - KEY_1)
-    elif mode == "choice" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
+    elif (mode == "choice" or mode == "replace") and event.keycode >= KEY_1 and event.keycode <= KEY_5:
         pick_upgrade(event.keycode - KEY_1)
 
 func _input(event: InputEvent) -> void:
