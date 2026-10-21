@@ -3,6 +3,7 @@ extends Node2D
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
+const SoloPassiveRulesScript = preload("res://scripts/solo_passive_rules.gd")
 ## Initial GDD-grounded playable solo slice.
 ## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
 
@@ -82,6 +83,14 @@ var enemies: Array[Dictionary] = []
 var hostile_shots: Array[Dictionary] = []
 var hazard_zones: Array[Dictionary] = []
 var pickups: Array[Dictionary] = []
+var passive_timers: Dictionary = {}
+var primary_hits := 0
+var directional_hits := 0
+var cook_stacks := 0
+var cook_expires := 0.0
+var aura_hits_bucket := -1
+var aura_hits_in_bucket := 0
+var sigma_target: Dictionary = {}
 var rng := RandomNumberGenerator.new()
 var hero_index := 0
 var profile: Dictionary = {"runs": 0, "wins": 0, "best_wave": 1, "total_kills": 0}
@@ -306,6 +315,14 @@ func start_run(index: int) -> void:
     hostile_shots.clear()
     hazard_zones.clear()
     pickups.clear()
+    passive_timers.clear()
+    primary_hits = 0
+    directional_hits = 0
+    cook_stacks = 0
+    cook_expires = 0.0
+    aura_hits_bucket = -1
+    aura_hits_in_bucket = 0
+    sigma_target.clear()
     rng.seed = 451 + 17 * index
     mode = "playing"
     _show_ui()
@@ -336,6 +353,7 @@ func _advance(dt: float) -> void:
     else:
         aura = minf(100.0, aura + 0.5 * dt)
     _move_player(dt)
+    _tick_passives(dt)
     var new_wave := mini(5, 1 + int(run_time / 180.0))
     if new_wave != wave and not boss_spawned:
         wave = new_wave
@@ -353,6 +371,60 @@ func _advance(dt: float) -> void:
     _check_legendary_window()
     if mode == "playing" and pending_choices > 0:
         _open_choice()
+
+func _tick_passives(dt: float) -> void:
+    # All passive clocks advance only inside _advance while the run is playing.
+    if _passive_level("w-wifi") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("wifi_next", 12.0)):
+        passive_timers["wifi_next"] = run_time + 12.0
+        passive_timers["wifi_until"] = run_time + 4.0
+        passive_timers["wifi_center"] = player_pos
+    if _passive_level("big-chad") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("big_chad_next", 10.0)):
+        passive_timers["big_chad_next"] = run_time + 10.0
+        var amount: float = max_hp * (0.05 + 0.02 * float(_passive_level("big-chad") - 1))
+        shield = minf(max_hp * 0.40, shield + amount * SoloPassiveRulesScript.support_scale(passives, hero["role"] == "tank"))
+    if _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
+        passive_timers["no_u_next"] = run_time + 15.0
+        _damage_nearby(200.0, 0.30 * float(hero["power"]))
+        for e: Dictionary in enemies:
+            if player_pos.distance_to(e["pos"]) <= 200.0:
+                var is_boss: bool = bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"])
+                e["weaken"] = 0.10 if is_boss else 0.20
+                e["weaken_until"] = run_time + (2.0 if is_boss else 4.0)
+    if int(passive_timers.get("so_back_remaining", 0)) > 0 and run_time >= float(passive_timers.get("so_back_next", 1e9)):
+        passive_timers["so_back_remaining"] = int(passive_timers["so_back_remaining"]) - 1
+        passive_timers["so_back_next"] = run_time + 1.0
+        var heal_total: float = 0.10 + 0.05 * float(_passive_level("so-back") - 1)
+        hp = minf(max_hp, hp + max_hp * heal_total * 0.20 * SoloPassiveRulesScript.support_scale(passives))
+
+func _primary_activation(target: Vector2) -> void:
+    primary_hits += 1
+    if aura_hits_bucket != int(run_time):
+        aura_hits_bucket = int(run_time)
+        aura_hits_in_bucket = 0
+    if flex_time <= 0.0 and aura_hits_in_bucket < 2:
+        aura = minf(100.0, aura + 1.0)
+        aura_hits_in_bucket += 1
+    if _passive_level("let-him-cook") > 0:
+        cook_stacks = mini(5, cook_stacks + 1)
+        cook_expires = run_time + 3.0
+    if _passive_level("homie-check") > 0 and run_time >= float(passive_timers.get("homie_ready", 0.0)):
+        var homie_count: int = int(passive_timers.get("homie_count", 0)) + 1
+        if homie_count >= 8:
+            homie_count = 0
+            passive_timers["homie_ready"] = run_time + 6.0
+            var healed: float = max_hp * (0.02 + 0.01 * float(_passive_level("homie-check")))
+            hp = minf(max_hp, hp + healed * SoloPassiveRulesScript.support_scale(passives))
+        passive_timers["homie_count"] = homie_count
+    if _passive_level("six-to-seven") > 0 and run_time >= float(passive_timers.get("six_ready", 0.0)):
+        var sixth_count: int = int(passive_timers.get("six_counter", 0)) + 1
+        if sixth_count >= 7:
+            sixth_count = 0
+            passive_timers["six_ready"] = run_time + 2.0
+            var amount: float = float(hero["power"]) * (0.35 + 0.15 * float(_passive_level("six-to-seven") - 1))
+            for e: Dictionary in enemies.duplicate():
+                if Vector2(e["pos"]).distance_to(target) <= 90.0:
+                    _hit_enemy(e, amount)
+        passive_timers["six_counter"] = sixth_count
 
 func _move_player(dt: float) -> void:
     var axis = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -426,6 +498,7 @@ func _deal_damage_to_player(amount: float) -> void:
     if mode != "playing" or hurt_timer > 0.0:
         return
     hurt_timer = 0.25
+    var old_hp := hp
     var incoming: float = amount * (1.0 - float(hero["resist"]))
     incoming *= 1.0 - minf(0.45, 0.03 * float(_passive_level("thick-skin")))
     if hero["id"] == "cool-kid" and flex_time > 0.0:
@@ -435,6 +508,15 @@ func _deal_damage_to_player(amount: float) -> void:
     hp = maxf(0.0, hp - incoming + absorbed)
     if hp <= 0.0:
         _finish(false)
+        return
+    if old_hp >= max_hp * 0.30 and hp < max_hp * 0.30 and _passive_level("so-back") > 0 and run_time >= float(passive_timers.get("so_back_ready", 0.0)):
+        passive_timers["so_back_ready"] = run_time + 45.0
+        passive_timers["so_back_remaining"] = 5
+        passive_timers["so_back_next"] = run_time + 1.0
+        shield = minf(max_hp * 0.40, shield + max_hp * 0.10 * SoloPassiveRulesScript.support_scale(passives))
+    if old_hp >= max_hp * 0.25 and hp < max_hp * 0.25 and _passive_level("too-sigma") > 0 and run_time >= float(passive_timers.get("too_sigma_ready", 0.0)):
+        passive_timers["too_sigma_ready"] = run_time + 60.0
+        shield = minf(max_hp * 0.40, shield + max_hp * 0.25 * SoloPassiveRulesScript.support_scale(passives))
 
 func _spawn_hostile_shot(enemy: Dictionary) -> void:
     var dir: Vector2 = enemy["locked_direction"]
@@ -535,7 +617,8 @@ func _step_enemies(dt: float) -> void:
                 var boss_mult := 1.0
                 if kind == "boss" and run_time >= 1080.0:
                     boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
-                _deal_damage_to_player(float(enemy["damage"]) * boss_mult)
+                var weaken: float = float(enemy.get("weaken", 0.0)) if run_time < float(enemy.get("weaken_until", -1.0)) else 0.0
+                _deal_damage_to_player(float(enemy["damage"]) * boss_mult * (1.0 - weaken))
 
         if enemy["phase"] == "warning" and run_time >= float(enemy["attack_at"]):
             _spawn_hostile_shot(enemy)
@@ -869,14 +952,26 @@ func _damage_nearby(radius: float, amount: float) -> void:
 func _use_flex() -> void:
     if mode != "playing" or aura < 100.0 or flex_lock > 0.0:
         return
-    if hero["id"] == "sigma" and enemies.is_empty():
-        return
+    sigma_target.clear()
+    if hero["id"] == "sigma":
+        var nearest := 1000000.0
+        for e: Dictionary in enemies:
+            var dist: float = player_pos.distance_to(e["pos"])
+            if dist < nearest and dist <= 600.0:
+                nearest = dist
+                sigma_target = e
+        if sigma_target.is_empty():
+            return
     aura = 0.0
     flex_time = float(hero["duration"])
     flex_lock = 30.0
     flex_age = 0.0
+    if _passive_level("aura-viral") > 0:
+        passive_timers["viral_until"] = run_time + 5.0
+    if _passive_level("w-squad") > 0:
+        passive_timers["w_squad_until"] = run_time + 6.0
     if hero["id"] == "alpha":
-        shield = minf(0.40 * max_hp, shield + 0.25 * max_hp)
+        shield = minf(max_hp * 0.40, shield + max_hp * 0.25 * SoloPassiveRulesScript.support_scale(passives, true))
         _damage_nearby(150.0, 0.40 * float(hero["power"]))
 
 func _toggle_pause() -> void:
