@@ -697,55 +697,79 @@ func _fire_weapons(dt: float) -> void:
         if float(weapon["timer"]) > 0.0:
             continue
         var config: Dictionary = WEAPONS[weapon["id"]]
+        var reach: float = float(config["range"])
+        if hero["role"] == "ranged":
+            reach *= SoloPassiveRulesScript.ranged_range_scale(passives)
         var closest: Dictionary = {}
         var closest_dist := 100000.0
         for enemy: Dictionary in enemies:
-            var distance := player_pos.distance_to(enemy["pos"])
-            if distance <= float(config["range"]) and distance < closest_dist:
+            var distance: float = player_pos.distance_to(enemy["pos"])
+            if distance <= reach and distance < closest_dist:
                 closest = enemy
                 closest_dist = distance
         if closest.is_empty():
             weapon["timer"] = 0.10
             continue
-        var frequency := minf(1.0, 0.05 * float(_passive_level("terminally-online")))
+        if hero["id"] == "sigma" and flex_time > 0.0 and not enemies.has(sigma_target):
+            sigma_target = closest
+        var frequency: float = SoloPassiveRulesScript.weapon_frequency(passives, passive_timers, run_time, player_pos)
         weapon["timer"] = maxf(0.20, float(config["interval"]) * pow(0.95, int(weapon["level"]) - 1) / (1.0 + frequency))
-        var power := float(hero["power"]) * float(config["power"])
-        power *= float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * (int(weapon["level"]) - 1))
-        power *= 1.0 + 0.01 * (level - 1) + 0.06 * float(_passive_level("main-character"))
-        if hero["id"] == "sigma" and flex_time > 0.0:
-            power *= 1.4
+        var power: float = float(hero["power"]) * float(config["power"])
+        power *= float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * float(int(weapon["level"]) - 1))
+        power *= SoloPassiveRulesScript.weapon_damage(passives, level, flex_time > 0.0, run_time, passive_timers, cook_stacks, cook_expires)
         var shape: String = config["shape"]
+        var streak := false
+        if shape == "shot" or shape == "line":
+            directional_hits += 1
+            streak = _passive_level("no-cap-streak") > 0 and directional_hits % 5 == 0
+        if streak:
+            power *= 1.10
         var hits := 0
         if shape == "pulse" or shape == "blast" or shape == "cone":
             var center: Vector2 = player_pos if shape != "blast" else closest["pos"]
-            var radius: float = float(config["range"]) if shape != "blast" else 100.0
+            var radius: float = (reach if shape != "blast" else 100.0) * SoloPassiveRulesScript.area_scale(passives)
+            var facing: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
+            var limit_cos := -1.0
+            if shape == "cone":
+                limit_cos = cos(deg_to_rad(50.0 if weapon["id"] == "keyboard-warrior" or weapon["id"] == "cope-shield" else 60.0))
+                if weapon["id"] == "touch-grass":
+                    limit_cos = 0.0
             for e: Dictionary in enemies.duplicate():
-                if center.distance_to(e["pos"]) <= radius:
-                    _hit_enemy(e, power)
+                var relative: Vector2 = Vector2(e["pos"]) - center
+                if relative.length() <= radius and (shape != "cone" or facing.dot(relative.normalized()) >= limit_cos):
+                    _hit_enemy(e, power, true)
                     hits += 1
         elif shape == "line":
-            var heading: Vector2 = (closest["pos"] - player_pos).normalized()
+            var heading: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
+            var max_pierce: int = 4 + (int(_passive_level("no-cap-streak")) if streak else 0)
+            if hero["id"] == "sigma" and flex_time > 0.0:
+                max_pierce += 1
             for e: Dictionary in enemies.duplicate():
-                var offset: Vector2 = e["pos"] - player_pos
-                if offset.length() <= 600.0 and absf(heading.cross(offset)) <= 36.0 and heading.dot(offset) > 0.0:
-                    _hit_enemy(e, power)
+                var offset: Vector2 = Vector2(e["pos"]) - player_pos
+                if offset.length() <= reach and absf(heading.cross(offset)) <= 36.0 and heading.dot(offset) > 0.0:
+                    _hit_enemy(e, power, true)
                     hits += 1
-                    if hits == 4:
+                    if hits >= max_pierce:
                         break
         else:
-            _hit_enemy(closest, power)
+            _hit_enemy(closest, power, true)
             hits = 1
         if hits > 0:
-            if flex_time <= 0.0:
-                aura = minf(100.0, aura + 1.0)
+            _primary_activation(Vector2(closest["pos"]))
             attack_flash = 0.12
             attack_target = closest["pos"]
             if weapon["id"] == "cope-shield":
-                shield = minf(max_hp * 0.40, shield + max_hp * 0.04)
+                shield = minf(max_hp * 0.40, shield + max_hp * 0.04 * SoloPassiveRulesScript.support_scale(passives, true))
 
-func _hit_enemy(enemy: Dictionary, amount: float) -> void:
+func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false) -> void:
     if not enemies.has(enemy):
         return
+    if primary:
+        amount *= SoloPassiveRulesScript.damage_to_target(passives, enemy, player_pos)
+        if hero["id"] == "sigma" and flex_time > 0.0 and enemy == sigma_target:
+            amount *= 1.40
+    if enemy["kind"] == "boss" and run_time >= 1080.0:
+        amount *= 0.65
     if float(enemy.get("shield_until", 0.0)) > run_time and float(enemy.get("shield", 0.0)) > 0.0:
         var blocked: float = minf(amount, float(enemy["shield"]))
         enemy["shield"] = float(enemy["shield"]) - blocked
