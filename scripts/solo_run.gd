@@ -84,6 +84,7 @@ var legendary_second_shown := false
 var weapons: Array[Dictionary] = []
 var passives: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
+var player_shots: Array[Dictionary] = []
 var hostile_shots: Array[Dictionary] = []
 var hazard_zones: Array[Dictionary] = []
 var pickups: Array[Dictionary] = []
@@ -329,6 +330,7 @@ func start_run(index: int) -> void:
     weapons = [{"id": hero["starter"], "level": 1, "rarity": "common", "timer": 0.0}]
     passives.clear()
     enemies.clear()
+    player_shots.clear()
     hostile_shots.clear()
     hazard_zones.clear()
     pickups.clear()
@@ -386,6 +388,7 @@ func _advance(dt: float) -> void:
     if mode != "playing":
         return
     _fire_weapons(dt)
+    _step_player_shots(dt)
     _collect_drops()
     if mode != "playing":
         return
@@ -716,7 +719,7 @@ func _fire_weapons(dt: float) -> void:
         var closest_dist := 100000.0
         for enemy: Dictionary in enemies:
             var distance: float = player_pos.distance_to(enemy["pos"])
-            if distance <= reach and distance < closest_dist:
+            if distance <= reach and distance < closest_dist and SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]):
                 closest = enemy
                 closest_dist = distance
         if closest.is_empty():
@@ -751,21 +754,19 @@ func _fire_weapons(dt: float) -> void:
                 if relative.length() <= radius and (shape != "cone" or facing.dot(relative.normalized()) >= limit_cos):
                     _hit_enemy(e, power, true)
                     hits += 1
-        elif shape == "line":
-            var heading: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
-            var max_pierce: int = 4 + (int(_passive_level("no-cap-streak")) if streak else 0)
-            if hero["id"] == "sigma" and flex_time > 0.0:
-                max_pierce += 1
-            for e: Dictionary in enemies.duplicate():
-                var offset: Vector2 = Vector2(e["pos"]) - player_pos
-                if offset.length() <= reach and absf(heading.cross(offset)) <= 36.0 and heading.dot(offset) > 0.0:
-                    _hit_enemy(e, power, true)
-                    hits += 1
-                    if hits >= max_pierce:
-                        break
         else:
-            _hit_enemy(closest, power, true)
-            hits = 1
+            var heading: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
+            var pierce: int = (4 if shape == "line" else 1) + (_passive_level("no-cap-streak") if streak else 0)
+            if hero["id"] == "sigma" and flex_time > 0.0:
+                pierce += 1
+            player_shots.append({
+                "id": str(weapon["id"]), "pos": player_pos, "direction": heading,
+                "speed": (750.0 if shape == "line" else 650.0) * reach / float(config["range"]),
+                "remaining": reach, "radius": 16.0 if shape == "line" else 6.0,
+                "damage": power, "pierce": pierce, "hit": [], "activated": false
+            })
+            attack_flash = 0.12
+            attack_target = closest["pos"]
         if hits > 0:
             _primary_activation(Vector2(closest["pos"]))
             # The actual combat hit is already resolved above; this is visual only.
@@ -779,6 +780,36 @@ func _fire_weapons(dt: float) -> void:
             attack_target = closest["pos"]
             if weapon["id"] == "cope-shield":
                 shield = minf(max_hp * 0.40, shield + max_hp * 0.04 * SoloPassiveRulesScript.support_scale(passives, true))
+
+func _step_player_shots(dt: float) -> void:
+    # Phaser weapons.ts/Run.resolveShots: real travel, cover, range and hit memory.
+    # Only the paused simulation clock calls this method; presentation consumes no RNG.
+    for shot: Dictionary in player_shots.duplicate():
+        if mode != "playing":
+            break
+        var previous: Vector2 = shot["pos"]
+        var travel: float = float(shot["speed"]) * dt
+        shot["pos"] = previous + Vector2(shot["direction"]) * travel
+        shot["remaining"] = float(shot["remaining"]) - travel
+        if float(shot["remaining"]) <= 0.0 or not SoloWorldRulesScript.clear_line(previous, shot["pos"]):
+            player_shots.erase(shot)
+            continue
+        for enemy: Dictionary in enemies.duplicate():
+            if mode != "playing":
+                break
+            if shot["hit"].has(enemy):
+                continue
+            if Vector2(shot["pos"]).distance_to(enemy["pos"]) > float(enemy["radius"]) + float(shot["radius"]):
+                continue
+            shot["hit"].append(enemy)
+            var impact: Vector2 = enemy["pos"]
+            _hit_enemy(enemy, float(shot["damage"]), true)
+            if not bool(shot["activated"]) and mode == "playing":
+                shot["activated"] = true
+                _primary_activation(impact)
+            if shot["hit"].size() >= int(shot["pierce"]):
+                player_shots.erase(shot)
+                break
 
 func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false) -> void:
     if not enemies.has(enemy):
@@ -1188,6 +1219,11 @@ func _draw() -> void:
         var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+    for shot: Dictionary in player_shots:
+        WeaponVisualsScript.draw_attack(self, {
+            "id": shot["id"], "origin": Vector2(shot["pos"]) - Vector2(shot["direction"]) * 24.0,
+            "target": shot["pos"], "life": 0.18
+        })
     for effect: Dictionary in attack_visuals:
         WeaponVisualsScript.draw_attack(self, effect)
     if flex_time > 0.0:
