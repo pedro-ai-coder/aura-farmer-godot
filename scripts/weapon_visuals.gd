@@ -95,7 +95,7 @@ static func draw_attack(canvas: CanvasItem, effect: Dictionary) -> void:
             canvas.draw_line(peak - forward * 4.0, target - sideways * 10.0, teal, 3.0)
         "fists":
             for sign_value in [-1.0, 1.0]:
-                var center := target + sideways * sign_value * 13.0
+                var center: Vector2 = target + sideways * float(sign_value) * 13.0
                 canvas.draw_rect(Rect2(center - Vector2(9, 9), Vector2(18, 18)), ink)
                 canvas.draw_rect(Rect2(center - Vector2(6, 6), Vector2(12, 12)), aura)
         "segments":
