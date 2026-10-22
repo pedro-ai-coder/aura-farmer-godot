@@ -15,9 +15,9 @@ func _verify() -> void:
     var rules = load("res://scripts/solo_enemy_rules.gd")
     _expect(rules.DATA.size() == 17, "Preserve all 17 source bestiary IDs")
     _expect(rules.EVENT_SCHEDULE.size() == 4, "Four approved timed events")
-    _expect(rules.spawn_pool(1, 60.0) == ["npc"], "Early wave one contains only NPC")
+    _expect(rules.spawn_pool(1, 59.99) == ["npc"], "Early wave one contains only NPC")
     var later: Array[String] = rules.spawn_pool(1, 100.0)
-    _expect(later.size() == 8 and later.count("hater") == 1, "Hater starts only after 90 seconds")
+    _expect(later.size() == 8 and later.count("hater") == 1, "Hater starts only after 60 seconds")
     _expect(rules.spawn_pool(2, 210.0).has("ratio-ram"), "Wave two contains Ratio Ram")
     _expect(rules.spawn_pool(3, 410.0).has("doomscroller"), "Wave three includes Doomscroller")
     _expect(rules.spawn_pool(4, 650.0).has("ping-sniper"), "Wave four includes Ping Sniper")
@@ -41,26 +41,26 @@ func _verify() -> void:
         game.call("_step_enemies", 0.05)
         _expect((game.get("hostile_shots") as Array).size() > 0, "Ranged warning launches projectile")
     game.call("start_run", 0)
-    game.set("run_time", 195.0)
+    game.set("run_time", 135.0)
     game.call("_spawn_logic", 0.05)
     var events: Array = game.get("enemies")
     var found_event := false
     for enemy in events:
         if enemy["kind"] == "reply-guy":
             found_event = true
-    _expect(found_event, "Reply Guy spawns at 3:15")
+    _expect(found_event, "Reply Guy spawns at 2:15")
     game.call("start_run", 0)
-    game.set("run_time", 900.0)
+    game.set("run_time", 600.0)
     game.call("_spawn_logic", 0.05)
     var bosses: Array = game.get("enemies")
-    _expect(bool(game.get("boss_spawned")), "Big Hater spawns at 15:00")
+    _expect(bool(game.get("boss_spawned")), "Big Hater spawns at 10:00")
     _expect(bosses.size() == 1 and bosses[0]["kind"] == "boss", "Boss transition retires other mobs")
     if bosses.size() == 1:
         bosses[0]["hp"] = 100.0
-        bosses[0]["regen_stamp"] = 1080
-        game.set("run_time", 1081.0)
+        bosses[0]["regen_stamp"] = 720
+        game.set("run_time", 721.0)
         game.call("_step_enemies", 0.05)
-        _expect(float(bosses[0]["hp"]) > 100.0, "Boss regenerates after 3-minute berserk threshold")
+        _expect(float(bosses[0]["hp"]) > 100.0, "Boss regenerates after 2-minute berserk threshold")
     game.queue_free()
     if problems.is_empty():
         print("PASS: 17 enemy IDs, wave pools, event/boss timing, telegraphed ranged attacks")

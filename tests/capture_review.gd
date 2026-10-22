@@ -17,7 +17,7 @@ func _capture() -> void:
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","boss","won","lost","options","profile_import","profile_export","dense"]:
+    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
@@ -36,12 +36,14 @@ func _capture() -> void:
             game._return_to_menu()
             if state == "profile_import": game._open_profile_import()
             else: game._open_profile_export()
-        elif state == "boss":
-            game.run_time = 900.0
+        elif state == "boss_warning":
+            game.run_time = 570.0
+        elif state in ["boss","berserk","last_effort"]:
+            game.run_time = 600.0
             game._spawn_logic(0.0)
-            game.run_time = 902.0
+            game.run_time = 602.0
             game._step_enemies(0.0)
-            game.run_time = 902.5
+            game.run_time = 602.5 if state == "boss" else (720.0 if state == "berserk" else 840.0)
         elif state == "dense":
             game.player_pos = Vector2(850,565)
             for i in range(80): game._spawn_enemy("npc" if i%3 else "hater")
@@ -49,7 +51,7 @@ func _capture() -> void:
             game._gain_xp(100.0)
             game._open_choice()
         elif state == "legendary":
-            game.run_time = 540.0
+            game.run_time = 360.0
             game._open_legendary()
         elif state == "paused": game._toggle_pause()
         elif state == "won" or state == "lost": game._finish(state == "won")

@@ -39,7 +39,7 @@ func _verify() -> void:
     game.set("player_pos", Vector2(700, 550))
     game.call("_spawn_enemy", "npc", {"pos": Vector2(850, 550)})
     game.call("_fire_weapons", 0.01)
-    game.set("run_time", 900.0)
+    game.set("run_time", 600.0)
     game.call("_spawn_logic", 0.0)
     _expect(game.get("player_shots").is_empty(), "Boss transition discards surviving player projectiles")
     _expect(game.get("weapon_areas").is_empty(), "Boss transition discards pending weapon areas")

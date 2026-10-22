@@ -72,9 +72,9 @@ func _verify() -> void:
             for item: Dictionary in game.weapons + game.passives:
                 _expect(int(item["level"]) <= int(game.CAP_LEVELS[item["rarity"]]), "Item levels remain legal throughout the run")
             _expect(is_finite(game.hp + game.xp + game.aura + float(game.run_metrics["damage"])), "Run numeric state remains finite")
-            if game.run_time >= 1200.0 and game.mode == "playing": break
+            if game.run_time >= 900.0 and game.mode == "playing": break
         _expect(waves == [1,2,3,4,5], "Every hero traverses all five waves without clock jumps")
-        _expect(game.run_time >= 900.0 and game.boss_spawned, "Every hero reaches the real boss transition")
+        _expect(game.run_time >= 600.0 and game.boss_spawned, "Every hero reaches the real boss transition")
         _expect(choices > 0 and legendary == 1, "Actual XP drops and one legendary use real confirmation flows")
         _expect(game.total_xp >= 560.0 and game.kills > 0, "Progression includes wave rewards and combat drops")
         _expect(float(game.run_metrics["damage"]) > 0.0 and int(game.run_metrics["flexes"]) > 0, "Weapons and manual Flex activations participate in the real simulation")

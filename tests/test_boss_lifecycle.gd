@@ -19,27 +19,27 @@ func _verify() -> void:
     var game = load("res://scenes/main.tscn").instantiate()
     root.add_child(game)
     var boss := _spawn(game, "boss")
-    game.set("run_time", 1000.0)
+    game.set("run_time", 700.0)
     boss["stagger"] = 80.0
     game.call("_schedule_hazard", Vector2(700,450), 100.0, 1.0, 0.2, 10.0, "circle", Vector2.RIGHT, boss)
     game.call("_schedule_hazard", Vector2(700,450), 100.0, 0.0, 2.0, 10.0, "circle", Vector2.RIGHT, boss)
     game.call("_stagger_enemy", boss, 15.0)
     game.call("_stagger_enemy", boss, 15.0)
-    _expect(boss["stagger_until"] == 1003.0, "Stagger fills at 100 and exposes for three seconds")
-    _expect(boss["stagger_locked"] == 1023.0, "Stagger refill lock starts after exposure")
+    _expect(boss["stagger_until"] == 703.0, "Stagger fills at 100 and exposes for three seconds")
+    _expect(boss["stagger_locked"] == 723.0, "Stagger refill lock starts after exposure")
     _expect(game.get("hazard_zones").size() == 1, "Stagger cancels preparation but preserves active damage")
     game.call("_stagger_enemy", boss, 100.0)
     _expect(boss["stagger"] == 0.0, "Stagger cannot refill during its lock")
-    game.set("run_time", 1081.0)
-    boss["stagger_until"] = 1082.0
-    boss["regen_stamp"] = 1080
+    game.set("run_time", 721.0)
+    boss["stagger_until"] = 722.0
+    boss["regen_stamp"] = 720
     boss["hp"] = 1000.0
     boss["next_attack"] = 1e9
     game.call("_step_enemies", 0.0)
     _expect(boss["hp"] == 1000.0, "Exposed berserk boss cannot regenerate")
     game.call("_hit_enemy", boss, 100.0)
     _expect(is_equal_approx(boss["hp"], 1000.0 - 100.0 * 0.65 * 1.15), "Exposure and berserk resistance multiply")
-    game.set("run_time", 1082.0)
+    game.set("run_time", 722.0)
     var before: float = boss["hp"]
     game.call("_step_enemies", 0.0)
     _expect(is_equal_approx(boss["hp"], before + 30.0), "Boss regeneration resumes after exposure")
