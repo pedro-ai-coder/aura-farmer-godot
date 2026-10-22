@@ -75,7 +75,7 @@ func _verify() -> void:
     _expect(game.safe_spot_uses == 0 and game.safe_spot_ready_at == 0.0 and game.pickup_feedback.is_empty(),"Restart resets station, counters and collection feedback")
     game.player_pos = rules.SAFE_SPOT
     game.hp = 50.0
-    game.run_time = 900.0
+    game.run_time = 600.0
     game._spawn_logic(0.0)
     game._tick_recovery(2.0)
     _expect(game.hp == 75.0 and game.boss_spawned,"Approved station remains usable during the boss encounter")

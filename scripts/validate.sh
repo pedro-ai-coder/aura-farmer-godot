@@ -51,6 +51,7 @@ run_check continuous-run --headless --path . --script res://tests/test_continuou
 run_check run-acceptance --headless --path . --script res://tests/test_run_acceptance.gd
 run_check menu-flow --headless --path . --script res://tests/test_menu_flow.gd
 run_check hero-combat --headless --path . --script res://tests/test_hero_combat.gd
+run_check run-clock --headless --path . --script res://tests/test_run_clock.gd
 run_check run-progression --headless --path . --script res://tests/test_run_progression.gd
 run_check profile-store --headless --path . --script res://tests/test_profile_store.gd
 run_check contracts --headless --path . --script res://tests/test_game_rules.gd

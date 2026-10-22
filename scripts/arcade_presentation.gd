@@ -433,6 +433,10 @@ func _draw() -> void:
         _bar(bars[1],game.xp,30+8*game.level+game.level*game.level,ArcadeStyle.TEAL,"XP / LV %d" % game.level)
         _bar(bars[2],game.aura,100,ArcadeStyle.GOLD,"AURA %d%%" % int(game.aura))
         _text(Vector2(26,72),"SHIELD %d   /   %s   /   %02d:%02d" % [ceili(game.shield),"BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60],18)
+    if not game.boss_spawned and game.run_time >= game.SoloClock.BOSS_WARNING:
+        var warning_rect := Rect2(20,206 if view.x < 700 else 96,minf(330,view.x-40),34)
+        draw_style_box(ArcadeStyle.box(ArcadeStyle.INK,ArcadeStyle.GOLD,8,0),warning_rect)
+        _text(warning_rect.position+Vector2(10,24),game.SoloClock.warning(game.run_time),20,ArcadeStyle.CARD)
     var slot_x := 20.0
     for item: Dictionary in game.weapons + game.passives:
         var data: Dictionary = catalog.get(item["id"],{})
@@ -446,7 +450,9 @@ func _draw() -> void:
             var boss_width := minf(620,view.x-80)
             var rect := Rect2((view.x-boss_width)/2,202 if view.x < 700 else 102,boss_width,26)
             _bar(rect,enemy["hp"],enemy["max"],ArcadeStyle.CORAL,"BIG HATER  /  %s HP" % _number(enemy["hp"]))
-            _text(rect.position+Vector2(0,52),"FULL HATER MODE" if game.run_time >= 1080.0 else "BERSERK IN %ds" % ceili(1080-game.run_time),18,ArcadeStyle.CARD)
+            var warning_rect := Rect2(rect.position+Vector2(0,34),Vector2(minf(370,boss_width),32))
+            draw_style_box(ArcadeStyle.box(ArcadeStyle.INK,ArcadeStyle.GOLD,8,0),warning_rect)
+            _text(warning_rect.position+Vector2(10,23),game.SoloClock.warning(game.run_time),18,ArcadeStyle.CARD)
             break
 
 func show_error(message: String) -> void:

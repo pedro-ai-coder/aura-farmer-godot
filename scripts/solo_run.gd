@@ -1,5 +1,6 @@
 extends Node2D
 
+const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
@@ -49,13 +50,6 @@ const FIELD := Rect2(0.0, 0.0, 1448.0, 1086.0)
 const COVERS := [Vector2(600.0, 550.0), Vector2(940.0, 680.0)]
 const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
 const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
-const EVENTS := [
-    {"at": 195.0, "name": "Reply Guy", "hp": 1400.0},
-    {"at": 375.0, "name": "Mod Supremo", "hp": 3200.0},
-    {"at": 555.0, "name": "Ohio Express", "hp": 2800.0},
-    {"at": 735.0, "name": "Doomscroll Prime", "hp": 5200.0}
-]
-
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -352,7 +346,7 @@ func _show_ui() -> void:
                 offer_buttons[i].text = "%d   %s" % [i + 1, selection[i]["label"]]
             elif mode == "replace" and i < replace_options.size():
                 offer_buttons[i].text = "%d   REPLACE %s" % [i + 1, replace_options[i]["label"]]
-    legendary_button.visible = mode == "playing" and run_time >= 540.0 and run_time < 895.0 and not legendary_spent and not legendary_offers.is_empty()
+    legendary_button.visible = mode == "playing" and run_time >= SoloClock.LEGENDARY_FIRST and run_time < SoloClock.LEGENDARY_DEADLINE and not legendary_spent and not legendary_offers.is_empty()
     defer_button.visible = mode == "legendary"
     flex_button.visible = mode == "playing"
     pause_button.visible = mode == "playing" or mode == "paused"
@@ -545,7 +539,7 @@ func _advance(dt: float) -> void:
     _move_player(dt)
     _step_flex_contacts()
     if mode != "playing": return
-    var new_wave := mini(5, 1 + int(run_time / 180.0))
+    var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
         wave += 1
         _gain_xp(float(40 * wave))
@@ -714,7 +708,7 @@ func _spawn_logic(dt: float) -> void:
         var event: Dictionary = SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]
         _spawn_enemy(str(event["kind"]), {"telegraph": true})
         event_index += 1
-    if not boss_spawned and run_time >= 900.0:
+    if not boss_spawned and run_time >= SoloClock.BOSS_AT:
         boss_spawned = true
         for drop: Dictionary in pickups:
             if drop["kind"] == "aura": _gain_xp(float(drop["xp"]))
@@ -729,7 +723,7 @@ func _spawn_logic(dt: float) -> void:
     if spawn_timer > 0.0 or enemies.size() >= 100:
         return
     var idx := wave - 1
-    spawn_timer = 1.0 / (0.8 * float(WAVE_DENSITY[idx]) * (1.0 + 0.10 * fmod(run_time, 180.0) / 180.0))
+    spawn_timer = 1.0 / (0.8 * float(WAVE_DENSITY[idx]) * (1.0 + 0.10 * fmod(run_time, SoloClock.WAVE_SECONDS) / SoloClock.WAVE_SECONDS))
     if boss_spawned:
         spawn_timer = 5.0
     else:
@@ -943,7 +937,7 @@ func _step_enemies(dt: float) -> void:
         if kind == "terminal":
             continue
         if kind == "boss":
-            if run_time < 1080.0:
+            if run_time < SoloClock.BERSERK_AT:
                 enemy["regen_stamp"] = int(run_time)
             elif int(run_time) > int(enemy["regen_stamp"]):
                 if run_time >= float(enemy["stagger_until"]):
@@ -992,8 +986,8 @@ func _step_enemies(dt: float) -> void:
         if distance <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0:
             enemy["hit_cooldown"] = 1.0 if kind == "boss" else 0.75
             var boss_mult := 1.0
-            if kind == "boss" and run_time >= 1080.0:
-                boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
+            if kind == "boss" and run_time >= SoloClock.BERSERK_AT:
+                boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - SoloClock.BERSERK_AT) / 30.0)))
             var primary_active := false
             for hazard: Dictionary in hazard_zones:
                 if hazard.get("source", {}) == enemy and absf(float(hazard["at"]) - run_time) < 0.05:
@@ -1078,7 +1072,7 @@ func _step_enemies(dt: float) -> void:
         elif kind == "boss":
             var slot: int = int(enemy["attack_slot"]) % 4
             enemy["attack_slot"] = slot + 1
-            var multi := 1.0 if run_time < 1080.0 else minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
+            var multi := 1.0 if run_time < SoloClock.BERSERK_AT else minf(3.0, 2.0 * pow(1.1, floorf((run_time - SoloClock.BERSERK_AT) / 30.0)))
             if slot == 0:
                 _schedule_hazard(pos, 200.0, 1.0, 0.12, 35.0 * multi, "cone", to_player.normalized(), enemy)
                 hazard_zones.back()["tracking"] = true
@@ -1100,7 +1094,7 @@ func _step_enemies(dt: float) -> void:
                         if bool(living.get("add", false)): add_count += 1
                     if add_count < 8:
                         _spawn_enemy(add_kind, {"add": true, "telegraph": true})
-            enemy["next_attack"] = run_time + (4.8 if run_time >= 1080.0 else 6.0)
+            enemy["next_attack"] = run_time + (4.8 if run_time >= SoloClock.BERSERK_AT else 6.0)
         else:
             enemy["next_attack"] = run_time + 1.0
 
@@ -1360,7 +1354,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
     if enemy["kind"] == "boss":
         var exposed := 1.15 if run_time < float(enemy.get("stagger_until", 0.0)) else (1.10 if run_time < float(enemy.get("exposed_until", 0.0)) else 1.0)
         amount *= exposed
-        if run_time >= 1080.0:
+        if run_time >= SoloClock.BERSERK_AT:
             amount *= 0.65
     if float(enemy.get("shield_until", 0.0)) > run_time and float(enemy.get("shield", 0.0)) > 0.0:
         var blocked: float = minf(amount, float(enemy["shield"]))
@@ -1507,13 +1501,13 @@ func _generate_legendary_offers() -> void:
         legendary_offers.append({"type":"promote_weapon" if equipped else "weapon", "id":id, "rarity":"legendary", "level":1, "label":str(WEAPONS[id]["name"]) + " · LEGENDARY WEAPON"})
 
 func _open_legendary() -> void:
-    if mode != "playing" or legendary_spent or run_time < 540.0 or run_time >= 895.0:
+    if mode != "playing" or legendary_spent or run_time < SoloClock.LEGENDARY_FIRST or run_time >= SoloClock.LEGENDARY_DEADLINE:
         return
     _generate_legendary_offers()
     if legendary_offers.size() != 6:
         push_error("Six legal GDD legendary choices are required")
         return
-    if run_time >= 720.0:
+    if run_time >= SoloClock.LEGENDARY_REPRISE:
         legendary_second_shown = true
     else:
         legendary_first_shown = true
@@ -1531,11 +1525,11 @@ func _defer_legendary() -> void:
         _open_choice()
 
 func _check_legendary_window() -> void:
-    if mode != "playing" or legendary_spent or run_time >= 895.0:
+    if mode != "playing" or legendary_spent or run_time >= SoloClock.LEGENDARY_DEADLINE:
         return
-    if run_time >= 720.0 and not legendary_second_shown:
+    if run_time >= SoloClock.LEGENDARY_REPRISE and not legendary_second_shown:
         _open_legendary()
-    elif run_time >= 540.0 and not legendary_first_shown:
+    elif run_time >= SoloClock.LEGENDARY_FIRST and not legendary_first_shown:
         _open_legendary()
 
 func _open_choice() -> void:

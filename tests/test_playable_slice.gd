@@ -71,14 +71,14 @@ func _verify() -> void:
 
     # Boss can be spawned and victory is terminal and persisted to the Godot slice profile.
     game.call("start_run", 0)
-    game.set("run_time", 900.0)
+    game.set("run_time", 600.0)
     game.call("_spawn_logic", 0.05)
     _expect(bool(game.get("boss_spawned")), "Boss must spawn at 15 minutes")
     var boss_enemies: Array = game.get("enemies")
     _expect(boss_enemies.size() == 1, "Boss transition must remove ordinary enemies")
     if boss_enemies.size() == 1:
         _expect(boss_enemies[0].get("kind") == "boss", "Spawned entity must be Big Hater")
-        game.set("run_time", 900.8) # Portal arrival must complete before boss damage.
+        game.set("run_time", 600.8) # Portal arrival must complete before boss damage.
         game.call("_hit_enemy", boss_enemies[0], 30001.0)
         _expect(game.get("mode") == "won", "Defeating Big Hater must end in victory")
 

@@ -1,3 +1,5 @@
+> Historical foundation notes. Current canonical clock: five 120-second waves, Big Hater at 10:00, recoverable berserk at 12:00 (GDD §25.1). Later implementation and validation are tracked in MIGRATION_PROGRESS.md and QA_BACKLOG.md. Earlier completion/parity gaps below describe that foundation, not current feature coverage.
+
 # First playable Godot solo slice — implementation scope
 
 This PR implements a *minimal* runnable Godot-only solo loop, explicitly NOT the full GDD demo or approved artwork port.

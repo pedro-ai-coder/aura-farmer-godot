@@ -16,7 +16,7 @@ func _verify() -> void:
             game.start_run(0)
             if state == "menu": game._return_to_menu()
             elif state == "legendary":
-                game.run_time = 540.0
+                game.run_time = 360.0
                 game._open_legendary()
                 game.pick_upgrade(4)
             else: game.mode = state

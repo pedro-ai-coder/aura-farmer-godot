@@ -15,7 +15,7 @@ func _verify() -> void:
         game.call("start_run", hero)
         var total := 0.0
         for wave in range(2, 6):
-            game.set("run_time", float((wave - 1) * 180) - 0.01)
+            game.set("run_time", float((wave - 1) * 120) - 0.01)
             game.set("spawn_timer", 1e9)
             game.call("_advance", 0.02)
             total += float(40 * wave)
@@ -26,7 +26,7 @@ func _verify() -> void:
                 game.call("_confirm_selection")
                 safety += 1
             _expect(safety < 100, "Queued normal/legendary choices can finish through the real confirmation flow")
-        game.set("run_time", 899.99)
+        game.set("run_time", 599.99)
         game.call("_advance", 0.02)
         _expect(game.get("boss_spawned"), "Every hero reaches Big Hater through the game timeline")
         while game.get("mode") != "playing":
@@ -35,9 +35,9 @@ func _verify() -> void:
         var boss: Dictionary = {}
         for enemy: Dictionary in game.get("enemies"):
             if enemy["kind"] == "boss": boss = enemy
-        game.set("run_time", 1081.0)
+        game.set("run_time", 721.0)
         boss["hp"] = 100.0
-        boss["regen_stamp"] = 1080
+        boss["regen_stamp"] = 720
         game.call("_step_enemies", 0.0)
         _expect(boss["hp"] > 100.0, "Berserk does not force a defeat and regeneration remains active")
         game.call("_hit_enemy", boss, 100000.0)

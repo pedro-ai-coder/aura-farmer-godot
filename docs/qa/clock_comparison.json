@@ -1,0 +1,992 @@
+{
+  "scope": "automated ordinary-health outcomes; not human or rendered acceptance",
+  "runs": [
+    {
+      "boss": false,
+      "choices": 25,
+      "flexes": 12,
+      "healing": 599.85,
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 813,
+      "level": 25,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "aura-viral",
+          "level": 2,
+          "rarity": "epic"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 16,
+        "magnets_spawned": 18,
+        "snacks_collected": 42,
+        "snacks_spawned": 43
+      },
+      "seconds": 743.499999999652,
+      "seed": 451,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 0.0500000000000008
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 1.93333333333334
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.4675
+        }
+      ],
+      "regime": "old",
+      "death_wave": 5
+    },
+    {
+      "boss": false,
+      "choices": 25,
+      "flexes": 13,
+      "healing": 604.752672,
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 878,
+      "level": 25,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "main-character",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "w-wifi",
+          "level": 2,
+          "rarity": "rare"
+        },
+        {
+          "id": "certified-w",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 1,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 20,
+        "magnets_spawned": 20,
+        "snacks_collected": 43,
+        "snacks_spawned": 46
+      },
+      "seconds": 779.116666666287,
+      "seed": 454,
+      "station_uses": 2,
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 0.733333333333335
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.434166666666666
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.616666666666672
+        }
+      ],
+      "regime": "old",
+      "death_wave": 5
+    },
+    {
+      "boss": false,
+      "choices": 25,
+      "flexes": 12,
+      "healing": 743.8795,
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 820,
+      "level": 25,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "w-wifi",
+          "level": 1,
+          "rarity": "rare"
+        },
+        {
+          "id": "thick-skin",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "main-character",
+          "level": 2,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 21,
+        "magnets_spawned": 22,
+        "snacks_collected": 53,
+        "snacks_spawned": 54
+      },
+      "seconds": 748.966666666314,
+      "seed": 457,
+      "station_uses": 3,
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 0.133333333333334
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.050833333333333
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 1.61666666666667
+        }
+      ],
+      "regime": "old",
+      "death_wave": 5
+    },
+    {
+      "boss": false,
+      "choices": 13,
+      "flexes": 4,
+      "healing": 127.1,
+      "hero": "cool-kid",
+      "hp": 0.0,
+      "kills": 325,
+      "level": 14,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 3,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 6,
+        "magnets_spawned": 6,
+        "snacks_collected": 15,
+        "snacks_spawned": 15
+      },
+      "seconds": 338.150000000021,
+      "seed": 451,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "keyboard-warrior",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.460208333333333
+        },
+        {
+          "id": "ban-hammer",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 1.84666666666667
+        },
+        {
+          "id": "touch-grass",
+          "level": 2,
+          "rarity": "rare",
+          "timer": 0.608333333333333
+        }
+      ],
+      "regime": "old",
+      "death_wave": 2
+    },
+    {
+      "boss": false,
+      "choices": 12,
+      "flexes": 3,
+      "healing": 196.3,
+      "hero": "cool-kid",
+      "hp": 0.0,
+      "kills": 274,
+      "level": 13,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [],
+      "recovery": {
+        "magnets_collected": 5,
+        "magnets_spawned": 5,
+        "snacks_collected": 13,
+        "snacks_spawned": 13
+      },
+      "seconds": 310.250000000046,
+      "seed": 454,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "keyboard-warrior",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0166666666666667
+        },
+        {
+          "id": "ban-hammer",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 1.04666666666667
+        },
+        {
+          "id": "touch-grass",
+          "level": 2,
+          "rarity": "common",
+          "timer": 0.191666666666666
+        }
+      ],
+      "regime": "old",
+      "death_wave": 2
+    },
+    {
+      "boss": false,
+      "choices": 15,
+      "flexes": 4,
+      "healing": 204.1,
+      "hero": "cool-kid",
+      "hp": 0.0,
+      "kills": 360,
+      "level": 16,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 2,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 8,
+        "magnets_spawned": 8,
+        "snacks_collected": 14,
+        "snacks_spawned": 16
+      },
+      "seconds": 400.549999999964,
+      "seed": 457,
+      "station_uses": 2,
+      "weapons": [
+        {
+          "id": "keyboard-warrior",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.7125
+        },
+        {
+          "id": "ban-hammer",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.896666666666671
+        },
+        {
+          "id": "touch-grass",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.758333333333334
+        }
+      ],
+      "regime": "old",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 21,
+      "flexes": 7,
+      "healing": 726.49392,
+      "hero": "alpha",
+      "hp": 0.0,
+      "kills": 585,
+      "level": 21,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "big-meme",
+          "level": 2,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 1,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 8,
+        "magnets_spawned": 9,
+        "snacks_collected": 35,
+        "snacks_spawned": 37
+      },
+      "seconds": 584.199999999797,
+      "seed": 451,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "cope-shield",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 1.11666666666667
+        },
+        {
+          "id": "chad-hands",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.273333333333332
+        },
+        {
+          "id": "personal-space",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 1.02666666666667
+        }
+      ],
+      "regime": "old",
+      "death_wave": 4
+    },
+    {
+      "boss": false,
+      "choices": 11,
+      "flexes": 2,
+      "healing": 162.26,
+      "hero": "alpha",
+      "hp": 0.0,
+      "kills": 242,
+      "level": 12,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 6,
+        "magnets_spawned": 6,
+        "snacks_collected": 10,
+        "snacks_spawned": 12
+      },
+      "seconds": 278.000000000076,
+      "seed": 454,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "cope-shield",
+          "level": 3,
+          "rarity": "common",
+          "timer": 0.738333333333335
+        },
+        {
+          "id": "personal-space",
+          "level": 2,
+          "rarity": "rare",
+          "timer": 0.343333333333337
+        },
+        {
+          "id": "chad-hands",
+          "level": 1,
+          "rarity": "rare",
+          "timer": 0.75
+        }
+      ],
+      "regime": "old",
+      "death_wave": 2
+    },
+    {
+      "boss": false,
+      "choices": 15,
+      "flexes": 4,
+      "healing": 195.4238,
+      "hero": "alpha",
+      "hp": 0.0,
+      "kills": 367,
+      "level": 16,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 6,
+        "magnets_spawned": 6,
+        "snacks_collected": 17,
+        "snacks_spawned": 17
+      },
+      "seconds": 413.849999999952,
+      "seed": 457,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "cope-shield",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 2.08166817117217e-17
+        },
+        {
+          "id": "personal-space",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 2.41
+        },
+        {
+          "id": "chad-hands",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0333333333333334
+        }
+      ],
+      "regime": "old",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 20,
+      "flexes": 6,
+      "healing": 337.6184,
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 436,
+      "level": 20,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "w-wifi",
+          "level": 3,
+          "rarity": "rare"
+        },
+        {
+          "id": "certified-w",
+          "level": 2,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 7,
+        "magnets_spawned": 7,
+        "snacks_collected": 26,
+        "snacks_spawned": 26
+      },
+      "seconds": 415.366666666618,
+      "seed": 451,
+      "station_uses": 2,
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 1.02931034482759
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.148994252873563
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 2.02356321839081
+        }
+      ],
+      "regime": "new",
+      "death_wave": 4
+    },
+    {
+      "boss": false,
+      "choices": 21,
+      "flexes": 8,
+      "healing": 169.9832,
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 490,
+      "level": 21,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 3,
+          "rarity": "common"
+        },
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 15,
+        "magnets_spawned": 15,
+        "snacks_collected": 21,
+        "snacks_spawned": 22
+      },
+      "seconds": 459.249999999911,
+      "seed": 454,
+      "station_uses": 0,
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 0.300000000000001
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.1675
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 1.20000000000001
+        }
+      ],
+      "regime": "new",
+      "death_wave": 4
+    },
+    {
+      "boss": false,
+      "choices": 13,
+      "flexes": 4,
+      "healing": 136.06,
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 270,
+      "level": 14,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 3,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 7,
+        "magnets_spawned": 7,
+        "snacks_collected": 9,
+        "snacks_spawned": 13
+      },
+      "seconds": 286.183333333402,
+      "seed": 457,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.144
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0841666666666663
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 1,
+          "rarity": "rare",
+          "timer": 0.033333333333339
+        }
+      ],
+      "regime": "new",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 14,
+      "flexes": 3,
+      "healing": 186.485,
+      "hero": "cool-kid",
+      "hp": 0.0,
+      "kills": 281,
+      "level": 15,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 6,
+        "magnets_spawned": 6,
+        "snacks_collected": 16,
+        "snacks_spawned": 16
+      },
+      "seconds": 303.616666666719,
+      "seed": 451,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "keyboard-warrior",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.1
+        },
+        {
+          "id": "touch-grass",
+          "level": 2,
+          "rarity": "rare",
+          "timer": 0.308333333333333
+        },
+        {
+          "id": "ban-hammer",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.230000000000003
+        }
+      ],
+      "regime": "new",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 12,
+      "flexes": 3,
+      "healing": 139.85,
+      "hero": "cool-kid",
+      "hp": 0.0,
+      "kills": 230,
+      "level": 13,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 2,
+        "magnets_spawned": 2,
+        "snacks_collected": 10,
+        "snacks_spawned": 10
+      },
+      "seconds": 251.033333333425,
+      "seed": 454,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "keyboard-warrior",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0333333333333334
+        },
+        {
+          "id": "touch-grass",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0833333333333333
+        }
+      ],
+      "regime": "new",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 11,
+      "flexes": 2,
+      "healing": 218.98,
+      "hero": "cool-kid",
+      "hp": 0.0,
+      "kills": 227,
+      "level": 12,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [],
+      "recovery": {
+        "magnets_collected": 5,
+        "magnets_spawned": 5,
+        "snacks_collected": 11,
+        "snacks_spawned": 11
+      },
+      "seconds": 229.816666666742,
+      "seed": 457,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "keyboard-warrior",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0166666666666667
+        },
+        {
+          "id": "ban-hammer",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0166666666666667
+        },
+        {
+          "id": "touch-grass",
+          "level": 1,
+          "rarity": "rare",
+          "timer": 1.28333333333333
+        }
+      ],
+      "regime": "new",
+      "death_wave": 2
+    },
+    {
+      "boss": false,
+      "choices": 15,
+      "flexes": 3,
+      "healing": 416.29286,
+      "hero": "alpha",
+      "hp": 0.0,
+      "kills": 332,
+      "level": 16,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "thick-skin",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 2,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 5,
+        "magnets_spawned": 5,
+        "snacks_collected": 19,
+        "snacks_spawned": 19
+      },
+      "seconds": 351.866666666675,
+      "seed": 451,
+      "station_uses": 2,
+      "weapons": [
+        {
+          "id": "cope-shield",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.783333333333336
+        },
+        {
+          "id": "personal-space",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 2.39333333333333
+        },
+        {
+          "id": "chad-hands",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.356666666666666
+        }
+      ],
+      "regime": "new",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 15,
+      "flexes": 4,
+      "healing": 192.5958,
+      "hero": "alpha",
+      "hp": 0.0,
+      "kills": 330,
+      "level": 16,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "big-meme",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 2,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 4,
+        "magnets_spawned": 4,
+        "snacks_collected": 9,
+        "snacks_spawned": 11
+      },
+      "seconds": 350.383333333343,
+      "seed": 454,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "cope-shield",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.0166666666666667
+        },
+        {
+          "id": "chad-hands",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.389999999999999
+        },
+        {
+          "id": "personal-space",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.476666666666671
+        }
+      ],
+      "regime": "new",
+      "death_wave": 3
+    },
+    {
+      "boss": false,
+      "choices": 19,
+      "flexes": 5,
+      "healing": 509.421,
+      "hero": "alpha",
+      "hp": 0.0,
+      "kills": 421,
+      "level": 19,
+      "minimum_hp": 0.0,
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "so-back",
+          "level": 2,
+          "rarity": "epic"
+        },
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        }
+      ],
+      "recovery": {
+        "magnets_collected": 10,
+        "magnets_spawned": 10,
+        "snacks_collected": 20,
+        "snacks_spawned": 20
+      },
+      "seconds": 432.999999999935,
+      "seed": 457,
+      "station_uses": 1,
+      "weapons": [
+        {
+          "id": "cope-shield",
+          "level": 1,
+          "rarity": "legendary",
+          "timer": 0.133333333333335
+        },
+        {
+          "id": "personal-space",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.976666666666672
+        },
+        {
+          "id": "chad-hands",
+          "level": 2,
+          "rarity": "epic",
+          "timer": 0.973333333333334
+        }
+      ],
+      "regime": "new",
+      "death_wave": 4
+    }
+  ]
+}

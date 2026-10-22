@@ -15,9 +15,9 @@ func _verify() -> void:
     var catalog: Dictionary = game.get("WEAPONS")
     for hero in range(3):
         game.call("start_run", hero)
-        game.set("run_time", 540.0)
+        game.set("run_time", 360.0)
         game.call("_check_legendary_window")
-        _expect(game.get("mode") == "legendary", "Legendary modal at 9:00")
+        _expect(game.get("mode") == "legendary", "Legendary modal at 6:00")
         var offers: Array = game.get("legendary_offers")
         _expect(offers.size() == 6, "Six legendary cards")
         if offers.size() < 6:
@@ -41,9 +41,9 @@ func _verify() -> void:
         _expect(unique_ids.size() == 6, "No duplicate legendary card IDs")
         game.call("_defer_legendary")
         _expect(game.get("mode") == "playing", "Deferring resumes run")
-        game.set("run_time", 720.0)
+        game.set("run_time", 480.0)
         game.call("_check_legendary_window")
-        _expect(game.get("mode") == "legendary", "Legendary modal returns at 12:00")
+        _expect(game.get("mode") == "legendary", "Legendary modal returns at 8:00")
         var same: Array = game.get("legendary_offers")
         for i in range(6):
             _expect(same[i]["id"] == options[i], "No reroll on deferral")
@@ -56,13 +56,13 @@ func _verify() -> void:
         _expect(game.get("mode") == "playing", "Entitlement cannot repeat")
 
     game.call("start_run", 0)
-    game.set("run_time", 900.0)
+    game.set("run_time", 595.0)
     game.call("_open_legendary")
     _expect(game.get("mode") == "playing", "Legendary window expired before boss")
 
     game.queue_free()
     if failures.is_empty():
-        print("PASS: 9:00/12:00 same six cards, legal role, defer, one-per-run and expiry")
+        print("PASS: 6:00/8:00 same six cards, legal role, defer, one-per-run and expiry")
         quit(0)
     else:
         for issue in failures:

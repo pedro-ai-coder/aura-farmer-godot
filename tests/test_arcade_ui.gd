@@ -37,7 +37,7 @@ func _verify() -> void:
         _expect(parts["body"].position.y+parts["body"].size.y <= parts["state"].position.y,"Card effect text does not overlap its action label")
     game._confirm_selection()
     game.start_run(0)
-    game.run_time = 540.0
+    game.run_time = 360.0
     game._open_legendary()
     await process_frame
     await process_frame
