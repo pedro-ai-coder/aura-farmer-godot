@@ -4,7 +4,7 @@ Shared solo implementation for **Web, Android and iOS** using Godot 4.7.2, GDScr
 
 ## Current state
 
-The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. Menus include explicit card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved art is fetched from pinned, hash-verified Phaser assets.
+The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. The Cartoon Arcade UI preserves approved menu art and catalog symbols. Menus include explicit hero Play, options/save navigation, card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved art is fetched from pinned, hash-verified Phaser assets.
 
 This is **not final migration acceptance**. Visual and responsive review is deferred to the owner. Normal-play balance, complete audio/animation polish, real-device lifecycle/export tests, rendered FPS/stress measurements and the 85/100 acceptance score remain outstanding. Read `docs/MIGRATION_PROGRESS.md` and `docs/NATIVE_READINESS.md` for evidence and limits.
 
@@ -15,7 +15,7 @@ This is **not final migration acceptance**. Visual and responsive review is defe
 3. Import `project.godot`, then run the main scene.
 4. Run `bash scripts/validate.sh` for import, gameplay, save, input, art and scene regressions. The Bash validation workflow requires GNU `timeout`.
 
-Select a hero with buttons or 1–3. Move with WASD/arrows or the floating left-side touch joystick. Use E/Space for Flex, M for mouse/automatic aim and P/Escape/B for pause/build. Select upgrade cards with buttons or 1–6, then confirm with the button or Enter. Escape cancels replacement/exit confirmation without resuming combat behind the modal.
+Select a hero with buttons or 1–3, then press Play or Enter. Move with WASD/arrows or the floating left-side touch joystick. Use E/Space for Flex, M for mouse/automatic aim and P/Escape/B for pause/build. Select upgrade cards with buttons or 1–6, then confirm with the button or Enter. Escape cancels replacement/exit confirmation without resuming combat behind the modal.
 
 ## Saves and platform builds
 
