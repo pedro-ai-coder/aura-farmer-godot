@@ -32,6 +32,7 @@ func _verify() -> void:
     _expect(enemies.size() == 1, "Hater spawned")
     if enemies.size() == 1:
         var hater: Dictionary = enemies[0]
+        hater["pos"] = game.get("player_pos") + Vector2(200, 0)
         hater["next_attack"] = 0.0
         game.set("run_time", 2.0)
         game.call("_step_enemies", 0.05)

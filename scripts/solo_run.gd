@@ -325,9 +325,10 @@ func _show_ui() -> void:
     flex_button.visible = mode == "playing"
     pause_button.visible = mode == "playing" or mode == "paused"
     pause_button.text = "RESUME [P]" if mode == "paused" else "PAUSE [P]"
-    restart_button.visible = mode == "lost" or mode == "won" or mode == "paused" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
-    restart_button.text = "CANCEL" if mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else "RETURN TO MENU"
-    restart_button.position = Vector2(160, 614) if mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(465, 593)
+    restart_button.visible = mode == "replace" or mode == "lost" or mode == "won" or mode == "paused" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
+    restart_button.text = "BACK" if mode == "replace" else "CANCEL" if mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else "RETURN TO MENU"
+    restart_button.size = Vector2(300, 58) if mode == "replace" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(350, 58)
+    restart_button.position = Vector2(160, 614) if mode == "replace" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(465, 593)
 
 func _update_text() -> void:
     if mode == "menu":
@@ -573,7 +574,7 @@ func _nearest_target(reach: float = INF) -> Dictionary:
     var nearest := reach
     for enemy: Dictionary in enemies:
         var distance := player_pos.distance_to(enemy["pos"])
-        if float(enemy["hp"]) <= 0.0 or distance > nearest or not SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]): continue
+        if run_time < float(enemy.get("born", 0.0)) or float(enemy["hp"]) <= 0.0 or distance > nearest or not SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]): continue
         if closest.is_empty() or distance < nearest or int(enemy["id"]) < int(closest["id"]):
             closest = enemy
             nearest = distance
@@ -607,6 +608,7 @@ func _step_flex_contacts() -> void:
     if flex_time <= 0.0 or hero["id"] != "cool-kid": return
     for enemy: Dictionary in enemies.duplicate():
         if mode != "playing": return
+        if run_time < float(enemy.get("born", 0.0)): continue
         if player_pos.distance_to(enemy["pos"]) > float(enemy["radius"]) + 26.0 or run_time < float(enemy.get("rampage_at", 0.0)): continue
         enemy["rampage_at"] = run_time + 0.5
         var amount := 0.35 * _base_power()
@@ -638,7 +640,7 @@ func _move_player(dt: float) -> void:
 func _spawn_logic(dt: float) -> void:
     if not boss_spawned and event_index < SoloEnemyRulesScript.EVENT_SCHEDULE.size() and run_time >= float(SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]["at"]):
         var event: Dictionary = SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]
-        _spawn_enemy(str(event["kind"]))
+        _spawn_enemy(str(event["kind"]), {"telegraph": true})
         event_index += 1
     if not boss_spawned and run_time >= 900.0:
         boss_spawned = true
@@ -650,7 +652,7 @@ func _spawn_logic(dt: float) -> void:
         weapon_areas.clear()
         hostile_shots.clear()
         hazard_zones.clear()
-        _spawn_enemy("boss", {"pos":Vector2(724.0, 445.0)})
+        _spawn_enemy("boss", {"pos":Vector2(724.0, 445.0), "telegraph": true})
     spawn_timer -= dt
     if spawn_timer > 0.0 or enemies.size() >= 100:
         return
@@ -660,7 +662,11 @@ func _spawn_logic(dt: float) -> void:
         spawn_timer = 5.0
     else:
         var selected: String = SoloEnemyRulesScript.spawn_kind(wave, run_time, rng)
-        _spawn_enemy(selected)
+        var elites := 0
+        for living: Dictionary in enemies:
+            if bool(living.get("elite", false)): elites += 1
+        var elite: bool = wave >= 3 and elites < 2 and rng.randf() < 0.07
+        _spawn_enemy(selected, {"telegraph": true, "elite": elite})
 
 func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     if not SoloEnemyRulesScript.DATA.has(kind):
@@ -674,12 +680,13 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
             return
         pos = candidate
     var boss_kind: bool = bool(stats["boss"])
-    var hp_base: float = float(stats["hp"]) * (1.0 if boss_kind else float(WAVE_HP[wave - 1]))
-    var damage: float = float(stats["damage"]) * (1.0 if boss_kind else float(WAVE_DAMAGE[wave - 1]))
+    var elite: bool = bool(special.get("elite", false)) and not boss_kind and kind != "terminal"
+    var hp_base: float = float(stats["hp"]) * (1.0 if boss_kind or kind == "terminal" else float(WAVE_HP[wave - 1])) * (2.5 if elite else 1.0)
+    var damage: float = float(stats["damage"]) * (1.0 if boss_kind or kind == "terminal" else float(WAVE_DAMAGE[wave - 1])) * (1.3 if elite else 1.0)
     enemies.append({
-        "id": next_enemy_id, "angle": 0.0, "pos": pos, "hp": hp_base, "max": hp_base,
+        "id": next_enemy_id, "angle": 0.0, "elite": elite, "born": run_time + (0.8 if bool(special.get("telegraph", false)) else 0.0), "pos": pos, "hp": hp_base, "max": hp_base,
         "speed": float(stats["speed"]), "radius": float(stats["radius"]),
-        "damage": damage, "xp": 0 if bool(special.get("add", false)) else int(stats["xp"]), "kind": kind,
+        "damage": damage, "xp": 0 if bool(special.get("add", false)) else (60 if elite else int(stats["xp"])), "kind": kind,
         "add": bool(special.get("add", false)), "next_aux": run_time + (12.0 if kind == "reply-guy" else (10.0 if kind == "mod-supremo" else 7.0)),
         "stagger": 0.0, "stagger_added": 0.0, "stagger_window": -1,
         "stagger_until": 0.0, "stagger_locked": 0.0,
@@ -689,7 +696,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
         "next_attack": run_time + 2.0, "attack_at": 0.0,
         "locked_direction": Vector2.RIGHT, "charge_until": 0.0,
         "attack_slot": 0, "regen_stamp": int(run_time),
-        "shield": 0.0, "shield_until": 0.0, "hurt_at": -100.0
+        "shield": hp_base * 0.20 if elite else 0.0, "shield_until": INF if elite else 0.0, "hurt_at": -100.0
     })
     next_enemy_id += 1
 
@@ -815,12 +822,12 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
     var kind: String = enemy["kind"]
     if kind == "mod-supremo" and float(enemy["hp"]) < float(enemy["max"]) * 0.5 and not bool(enemy["half_spawned"]):
         enemy["half_spawned"] = true
-        _spawn_enemy("hater")
-        _spawn_enemy("hater")
+        _spawn_enemy("hater", {"telegraph": true})
+        _spawn_enemy("hater", {"telegraph": true})
     if run_time < float(enemy.get("next_aux", 1e9)):
         return
     if kind == "reply-guy":
-        for i in range(4): _spawn_enemy("npc")
+        for i in range(4): _spawn_enemy("npc", {"telegraph": true})
         enemy["next_aux"] = run_time + 12.0
     elif kind == "mod-supremo":
         for angle in [-0.5, 0.5]:
@@ -835,8 +842,8 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
 
 func _step_enemies(dt: float) -> void:
     for enemy: Dictionary in enemies.duplicate():
-        if mode != "playing" or not enemies.has(enemy):
-            return
+        if mode != "playing": return
+        if not enemies.has(enemy) or run_time < float(enemy.get("born", 0.0)): continue
         var kind: String = enemy["kind"]
         var pos: Vector2 = enemy["pos"]
         var to_player: Vector2 = player_pos - pos
@@ -904,6 +911,9 @@ func _step_enemies(dt: float) -> void:
             enemy["phase"] = ""
             enemy["next_attack"] = run_time + (6.0 if kind == "ping-sniper" else 3.0)
         elif (kind == "hater" or kind == "ping-sniper") and enemy["phase"] == "" and run_time >= float(enemy["next_attack"]):
+            if kind == "hater" and not SoloWorldRulesScript.clear_line(pos, player_pos):
+                enemy["next_attack"] = run_time + 0.1
+                continue
             enemy["phase"] = "warning"
             enemy["attack_at"] = run_time + (1.2 if kind == "ping-sniper" else 0.6)
             enemy["locked_direction"] = direction if speed >= 0.0 else -direction
@@ -957,8 +967,8 @@ func _step_enemies(dt: float) -> void:
             enemy["next_attack"] = run_time + 4.0
             if not bool(enemy["terminals_spawned"]):
                 enemy["terminals_spawned"] = true
-                _spawn_enemy("terminal", {"pos": Vector2(430, 520)})
-                _spawn_enemy("terminal", {"pos": Vector2(1050, 730)})
+                _spawn_enemy("terminal", {"pos": Vector2(430, 520), "telegraph": true})
+                _spawn_enemy("terminal", {"pos": Vector2(1050, 730), "telegraph": true})
         elif kind == "boss":
             var slot: int = int(enemy["attack_slot"]) % 4
             enemy["attack_slot"] = slot + 1
@@ -979,7 +989,7 @@ func _step_enemies(dt: float) -> void:
                     for living: Dictionary in enemies:
                         if bool(living.get("add", false)): add_count += 1
                     if add_count < 8:
-                        _spawn_enemy(add_kind, {"add": true})
+                        _spawn_enemy(add_kind, {"add": true, "telegraph": true})
             enemy["next_attack"] = run_time + (4.8 if run_time >= 1080.0 else 6.0)
         else:
             enemy["next_attack"] = run_time + 1.0
@@ -1031,7 +1041,7 @@ func _fire_weapons(dt: float) -> void:
                 if weapon["id"] == "chad-hands": arc = 90.0
             var delay := 0.45 if shape == "blast" else (0.30 if weapon["id"] == "ban-hammer" else 0.0)
             var paired: bool = weapon["id"] == "keyboard-warrior" or weapon["id"] == "chad-hands"
-            var activation := {"hit": false, "chad_counted": false, "slam": false}
+            var activation := {"hit": false, "chad_counted": false, "slam": false, "id": weapon_id + ":" + str(count)}
             if legendary and weapon_id == "touch-grass" and count % 3 == 0:
                 radius = 150.0 * SoloPassiveRulesScript.area_scale(passives)
                 arc = 360.0
@@ -1110,9 +1120,10 @@ func _step_weapon_areas() -> void:
         for enemy: Dictionary in enemies.duplicate():
             if mode != "playing":
                 break
+            if run_time < float(enemy.get("born", 0.0)): continue
             var relative: Vector2 = Vector2(enemy["pos"]) - center
             var memory: Array = area["hit_memory"]
-            if memory.has(enemy):
+            if memory.has(int(enemy["id"])):
                 continue
             radius = float(area["radius"])
             half_arc = deg_to_rad(float(area["arc"]) * 0.5)
@@ -1141,7 +1152,7 @@ func _step_weapon_areas() -> void:
                             second["damage"] = float(second["damage"]) * (0.60 if bool(second.get("legendary", false)) else 0.40) / 0.22
                             second["radius"] = (140.0 if bool(second.get("legendary", false)) else 110.0) * SoloPassiveRulesScript.area_scale(passives)
                             second["arc"] = 360.0
-            memory.append(enemy)
+            memory.append(int(enemy["id"]))
             _hit_enemy(enemy, float(area["damage"]), primary, true)
             if primary and not bool(activation["hit"]) and mode == "playing":
                 activation["hit"] = true
@@ -1203,11 +1214,12 @@ func _step_player_shots(dt: float) -> void:
         for enemy: Dictionary in enemies.duplicate():
             if mode != "playing":
                 break
-            if shot["hit"].has(enemy):
+            if run_time < float(enemy.get("born", 0.0)): continue
+            if shot["hit"].has(int(enemy["id"])):
                 continue
             if Vector2(shot["pos"]).distance_to(enemy["pos"]) > float(enemy["radius"]) + float(shot["radius"]):
                 continue
-            shot["hit"].append(enemy)
+            shot["hit"].append(int(enemy["id"]))
             var impact: Vector2 = enemy["pos"]
             var primary: bool = shot.get("primary", true)
             _hit_enemy(enemy, float(shot["damage"]), primary, true)
@@ -1219,7 +1231,7 @@ func _step_player_shots(dt: float) -> void:
                 break
 
 func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon: bool = false) -> void:
-    if mode != "playing" or not enemies.has(enemy) or amount <= 0.0:
+    if mode != "playing" or not enemies.has(enemy) or run_time < float(enemy.get("born", 0.0)) or amount <= 0.0:
         return
     amount *= SoloPassiveRulesScript.damage_to_target(passives, enemy, player_pos, primary or weapon)
     if primary or weapon:
@@ -1267,11 +1279,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
                     if boss["kind"] == "boss": boss["exposed_until"] = run_time + 3.0
             return
         pickups.append({"pos": enemy["pos"], "xp": float(enemy["xp"]), "kind": "aura"})
-        var chance := rng.randf()
-        if chance < 0.020:
-            pickups.append({"pos": enemy["pos"] + Vector2(19, 0), "xp": 0.0, "kind": "snack"})
-        elif chance < 0.030:
-            pickups.append({"pos": enemy["pos"] + Vector2(19, 0), "xp": 0.0, "kind": "magnet"})
+        # Appendix C P1/P2 are proposals, not approved drops. Only XP/Aura spawns.
         if SoloEnemyRulesScript.is_event(str(enemy["kind"])) and flex_time <= 0.0:
             aura = minf(100.0, aura + 10.0)
 
@@ -1499,8 +1507,19 @@ func _confirm_selection() -> void:
     elif mode == "choice" and index >= 0 and index < selection.size():
         _apply_card(selection[index])
 
+func _cancel_replacement() -> void:
+    if mode != "replace": return
+    mode = "legendary" if replace_card.get("rarity") == "legendary" else "choice"
+    replace_card.clear()
+    replace_options.clear()
+    selected_card_index = -1
+    _show_ui()
+    _update_text()
+
 func _request_return_to_menu() -> void:
-    if mode == "profile_import" or mode == "profile_export":
+    if mode == "replace":
+        _cancel_replacement()
+    elif mode == "profile_import" or mode == "profile_export":
         _return_to_menu()
     elif mode == "confirm_exit":
         mode = "paused"
@@ -1643,12 +1662,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         _show_ui()
         _update_text()
     elif event.keycode == KEY_ESCAPE and mode == "replace":
-        mode = "legendary" if replace_card.get("rarity") == "legendary" else "choice"
-        replace_card.clear()
-        replace_options.clear()
-        selected_card_index = -1
-        _show_ui()
-        _update_text()
+        _cancel_replacement()
     elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE or event.keycode == KEY_B:
         _toggle_pause()
     if event.keycode == KEY_SPACE or event.keycode == KEY_E:
@@ -1674,7 +1688,14 @@ func _notification(what: int) -> void:
     if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
         _clear_touch()
 
+func _request_mobile_display() -> void:
+    if not OS.has_feature("web"): return
+    # User-gesture-only best effort. Unsupported/fullscreen-denied browsers remain playable.
+    JavaScriptBridge.eval("(function(){try{const c=document.getElementById('canvas');const lock=()=>{try{if(screen.orientation&&screen.orientation.lock)screen.orientation.lock('landscape').catch(()=>{});}catch(e){}};if(c&&c.requestFullscreen&&!document.fullscreenElement)c.requestFullscreen().then(lock).catch(()=>{});else lock();}catch(e){}})()", true)
+
 func _input(event: InputEvent) -> void:
+    if event is InputEventScreenTouch and event.pressed:
+        _request_mobile_display()
     if event is InputEventKey and [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT].has(event.keycode):
         if not event.pressed: blocked_movement.erase(event.keycode)
         elif mode != "playing": blocked_movement[event.keycode] = true
@@ -1771,6 +1792,9 @@ func _draw() -> void:
         draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
         draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
     for e: Dictionary in enemies:
+        if run_time < float(e.get("born", 0.0)):
+            draw_arc(e["pos"], float(e["radius"]) + 8.0, 0.0, TAU, 32, Color(0.97, 0.77, 0.37, 0.75), 3.0)
+            continue
         var radius: float = float(e["radius"])
         var color := Color(0.89, 0.33, 0.40)
         if e["kind"] == "hater" or e["kind"] == "ping-sniper":

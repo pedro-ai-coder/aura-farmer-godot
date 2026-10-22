@@ -103,7 +103,9 @@ static func parse_json(raw: String) -> Variant:
 
 static func _file(path: String) -> Variant:
     if not FileAccess.file_exists(path): return null
-    return parse_json(FileAccess.get_file_as_string(path))
+    var file := FileAccess.open(path, FileAccess.READ)
+    if file == null: return null
+    return parse_json(file.get_as_text())
 
 static func _web_value(key: String) -> String:
     if not OS.has_feature("web"): return ""

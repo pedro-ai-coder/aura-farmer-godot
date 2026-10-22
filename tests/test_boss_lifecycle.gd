@@ -60,11 +60,12 @@ func _verify() -> void:
     for enemy: Dictionary in game.get("enemies"):
         if enemy.get("add", false): adds.append(enemy)
     _expect(adds.size() == 8, "Big Hater has at most eight living solo adds")
+    game.set("run_time", 1.0)
     for enemy: Dictionary in adds:
         _expect(enemy["xp"] == 0, "Final boss adds cannot grant XP")
         game.call("_hit_enemy", enemy, 100000.0)
     _expect(game.get("pickups").is_empty(), "Final boss adds cannot drop farmable resources")
-    _expect(boss["exposed_until"] == 3.0, "Defeating an add Hype Bot opens the three-second damage window")
+    _expect(boss["exposed_until"] == 4.0, "Defeating an add Hype Bot opens the three-second damage window")
     var reply := _spawn(game, "reply-guy")
     reply["next_attack"] = 0.0
     game.call("_step_enemies", 0.0)
