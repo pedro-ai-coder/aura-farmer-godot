@@ -36,14 +36,25 @@ func _verify() -> void:
         foe["max"] = 1000000.0
         game.call("_fire_weapons", 0.1)
         var cues: Array = game.get("attack_visuals")
-        _expect(cues.size() == 1, "Actual starter attack creates one visual cue")
-        if cues.size() == 1:
-            var expected_id: String = ["no-cap", "keyboard-warrior", "cope-shield"][index]
-            _expect(cues[0]["id"] == expected_id, "Visual cue matches starter weapon")
-            _expect(cues[0]["life"] > 0.0, "Cue has a short visible lifetime")
+        var shots: Array = game.get("player_shots")
+        var expected_id: String = ["no-cap", "keyboard-warrior", "cope-shield"][index]
+        if expected_id == "no-cap":
+            # Ranged attacks render their approved motif at the travelling shot position.
+            # They must not invent an immediate hit cue before the projectile arrives.
+            _expect(cues.is_empty(), "No Cap does not create an instant-hit visual cue")
+            _expect(shots.size() == 1, "No Cap creates one visible travelling projectile")
+            if shots.size() == 1:
+                _expect(shots[0]["id"] == expected_id, "Projectile retains its approved visual motif")
+                _expect(shots[0]["remaining"] > 0.0, "Projectile remains visible during travel")
+        else:
+            _expect(shots.is_empty(), "Melee and tank starters do not spawn ranged projectiles")
+            _expect(cues.size() == 1, "Contact starter attack creates one visual cue")
+            if cues.size() == 1:
+                _expect(cues[0]["id"] == expected_id, "Visual cue matches starter weapon")
+                _expect(cues[0]["life"] > 0.0, "Cue has a short visible lifetime")
     game.queue_free()
     if failures.is_empty():
-        print("PASS: Nine Phaser Option A weapon motifs and three hit-driven starter cues")
+        print("PASS: Nine Phaser Option A weapon motifs, travelling No Cap and contact starter cues")
         quit(0)
     else:
         for failure in failures:
