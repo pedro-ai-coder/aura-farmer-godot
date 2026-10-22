@@ -68,6 +68,8 @@ var kills := 0
 var wave := 1
 var event_index := 0
 var boss_spawned := false
+var terminals_destroyed := 0
+var terminals_interrupt_until := 0.0
 var spawn_timer := 0.7
 var hurt_timer := 0.0
 var attack_flash := 0.0
@@ -323,6 +325,8 @@ func start_run(index: int) -> void:
     wave = 1
     event_index = 0
     boss_spawned = false
+    terminals_destroyed = 0
+    terminals_interrupt_until = 0.0
     spawn_timer = 0.7
     hurt_timer = 0.0
     pending_choices = 0
@@ -511,7 +515,12 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     enemies.append({
         "pos": pos, "hp": hp_base, "max": hp_base,
         "speed": float(stats["speed"]), "radius": float(stats["radius"]),
-        "damage": damage, "xp": int(stats["xp"]), "kind": kind,
+        "damage": damage, "xp": 0 if bool(special.get("add", false)) else int(stats["xp"]), "kind": kind,
+        "add": bool(special.get("add", false)), "next_aux": run_time + (12.0 if kind == "reply-guy" else (10.0 if kind == "mod-supremo" else 7.0)),
+        "stagger": 0.0, "stagger_added": 0.0, "stagger_window": -1,
+        "stagger_until": 0.0, "stagger_locked": 0.0,
+        "ring_phase": false, "beam_phase": false, "exposed_until": 0.0,
+        "half_spawned": false, "terminals_spawned": false,
         "hit_cooldown": 0.0, "name": stats["name"], "phase": "",
         "next_attack": run_time + 2.0, "attack_at": 0.0,
         "locked_direction": Vector2.RIGHT, "charge_until": 0.0,
@@ -575,33 +584,82 @@ func _step_hostile_shots(dt: float) -> void:
             _deal_damage_to_player(float(shot["damage"]))
             hostile_shots.erase(shot)
 
-func _schedule_hazard(point: Vector2, radius: float, delay: float, active_duration: float, damage: float, shape: String = "circle", heading: Vector2 = Vector2.RIGHT) -> void:
+func _schedule_hazard(point: Vector2, radius: float, delay: float, active_duration: float, damage: float, shape: String = "circle", heading: Vector2 = Vector2.RIGHT, source: Dictionary = {}) -> void:
     hazard_zones.append({
         "pos":point, "radius":radius, "at":run_time + delay, "end":run_time + delay + active_duration,
-        "next_tick":run_time + delay, "damage":damage, "shape":shape, "dir":heading
+        "next_tick":run_time + delay, "damage":damage, "shape":shape, "dir":heading, "source": source, "hit": false
     })
+
+func _hazard_contains(hazard: Dictionary, point: Vector2, radius: float = 16.0) -> bool:
+    var offset: Vector2 = point - Vector2(hazard["pos"])
+    var facing: Vector2 = hazard["dir"]
+    if hazard["shape"] == "line":
+        var along := facing.dot(offset)
+        return along >= -radius and along <= float(hazard["radius"]) + radius and absf(facing.cross(offset)) <= 30.0 + radius
+    if hazard["shape"] == "ring":
+        var expansion := 80.0 + 200.0 * clampf((run_time - float(hazard["at"])) / 1.5, 0.0, 1.0)
+        return absf(offset.length() - expansion) <= 12.5 + radius and absf(facing.angle_to(offset)) > deg_to_rad(35.0)
+    if hazard["shape"] == "cone":
+        return offset.length() <= float(hazard["radius"]) + radius and absf(facing.angle_to(offset)) <= PI / 3.0
+    return offset.length() <= float(hazard["radius"]) + radius
 
 func _step_hazards() -> void:
     for hazard: Dictionary in hazard_zones.duplicate():
+        if mode != "playing":
+            break
         if run_time > float(hazard["end"]):
             hazard_zones.erase(hazard)
             continue
-        if run_time < float(hazard["at"]) or run_time < float(hazard["next_tick"]):
+        if run_time < float(hazard["at"]) or run_time < float(hazard["next_tick"]) or bool(hazard.get("hit", false)):
             continue
-        hazard["next_tick"] = run_time + 1.0
-        var offset: Vector2 = player_pos - Vector2(hazard["pos"])
-        var danger := false
-        if hazard["shape"] == "line":
-            var aim: Vector2 = hazard["dir"]
-            danger = offset.length() <= float(hazard["radius"]) and absf(aim.cross(offset)) <= 30.0 and aim.dot(offset) >= 0.0
-        elif hazard["shape"] == "ring":
-            danger = absf(offset.length() - float(hazard["radius"])) <= 32.0
-        elif hazard["shape"] == "cone":
-            danger = offset.length() <= float(hazard["radius"]) and hazard["dir"].dot(offset.normalized()) >= 0.5
-        else:
-            danger = offset.length() <= float(hazard["radius"])
-        if danger:
-            _deal_damage_to_player(float(hazard["damage"]))
+        if _hazard_contains(hazard, player_pos) and SoloWorldRulesScript.clear_line(hazard["pos"], player_pos):
+            var source: Dictionary = hazard.get("source", {})
+            var weaken := float(source.get("weaken", 0.0)) if run_time < float(source.get("weaken_until", 0.0)) else 0.0
+            _deal_damage_to_player(float(hazard["damage"]) * (1.0 - weaken))
+            hazard["hit"] = true
+        # Persistent ground zones tick once per second. Expanding rings hit once.
+        if float(hazard["end"]) - float(hazard["at"]) > 1.6 and hazard["shape"] != "ring":
+            hazard["next_tick"] = run_time + 1.0
+            hazard["hit"] = false
+
+func _stagger_enemy(enemy: Dictionary, amount: float) -> void:
+    if enemy["kind"] != "boss" or run_time < float(enemy.get("stagger_locked", 0.0)):
+        return
+    if int(enemy.get("stagger_window", -1)) != int(run_time):
+        enemy["stagger_window"] = int(run_time)
+        enemy["stagger_added"] = 0.0
+    var applied := minf(amount, maxf(0.0, 20.0 - float(enemy["stagger_added"])))
+    enemy["stagger_added"] = float(enemy["stagger_added"]) + applied
+    enemy["stagger"] = float(enemy.get("stagger", 0.0)) + applied
+    if float(enemy["stagger"]) >= 100.0:
+        enemy["stagger"] = 0.0
+        enemy["stagger_until"] = run_time + 3.0
+        enemy["stagger_locked"] = run_time + 23.0
+        for hazard: Dictionary in hazard_zones.duplicate():
+            if hazard.get("source", {}) == enemy and float(hazard["at"]) > run_time:
+                hazard_zones.erase(hazard)
+
+func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
+    var kind: String = enemy["kind"]
+    if kind == "mod-supremo" and float(enemy["hp"]) < float(enemy["max"]) * 0.5 and not bool(enemy["half_spawned"]):
+        enemy["half_spawned"] = true
+        _spawn_enemy("hater")
+        _spawn_enemy("hater")
+    if run_time < float(enemy.get("next_aux", 1e9)):
+        return
+    if kind == "reply-guy":
+        for i in range(4): _spawn_enemy("npc")
+        enemy["next_aux"] = run_time + 12.0
+    elif kind == "mod-supremo":
+        for angle in [-0.5, 0.5]:
+            _schedule_hazard(enemy["pos"], 500.0, 1.0, 0.2, 15.0, "line", facing.rotated(angle), enemy)
+        enemy["next_aux"] = run_time + 10.0
+    elif kind == "doomscroll-prime" and run_time >= terminals_interrupt_until:
+        _schedule_hazard(player_pos, 100.0, 1.0, 3.0, 12.0, "circle", facing, enemy)
+        var second = SoloWorldRulesScript.spawn_point(player_pos, rng)
+        if second != null:
+            _schedule_hazard(second, 100.0, 1.0, 3.0, 12.0, "circle", facing, enemy)
+        enemy["next_aux"] = run_time + 7.0
 
 func _step_enemies(dt: float) -> void:
     for enemy: Dictionary in enemies.duplicate():
@@ -619,9 +677,18 @@ func _step_enemies(dt: float) -> void:
             if run_time < 1080.0:
                 enemy["regen_stamp"] = int(run_time)
             elif int(run_time) > int(enemy["regen_stamp"]):
-                enemy["hp"] = minf(float(enemy["max"]), float(enemy["hp"]) + float(enemy["max"]) * 0.001)
+                if run_time >= float(enemy["stagger_until"]):
+                    enemy["hp"] = minf(float(enemy["max"]), float(enemy["hp"]) + float(enemy["max"]) * 0.001)
                 enemy["regen_stamp"] = int(run_time)
 
+        if run_time < float(enemy.get("stagger_until", 0.0)):
+            continue
+        _enemy_auxiliary(enemy, to_player.normalized())
+        if kind == "boss":
+            for hazard: Dictionary in hazard_zones:
+                if hazard.get("source", {}) == enemy and float(hazard["at"]) > run_time:
+                    speed = 0.0
+                    break
         if kind == "hater" or kind == "ping-sniper":
             var preferred: float = 260.0 if kind == "hater" else 400.0
             if distance < preferred - 20.0:
@@ -645,7 +712,7 @@ func _step_enemies(dt: float) -> void:
             enemy["pos"] = destination
         enemy["hit_cooldown"] = maxf(0.0, float(enemy["hit_cooldown"]) - dt)
         if distance <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0:
-            enemy["hit_cooldown"] = 0.75
+            enemy["hit_cooldown"] = 1.0 if kind == "boss" else 0.75
             if hero["id"] == "cool-kid" and flex_time > 0.0 and not bool(SoloEnemyRulesScript.DATA[kind]["boss"]):
                 _hit_enemy(enemy, 0.35 * float(hero["power"]))
             else:
@@ -653,8 +720,16 @@ func _step_enemies(dt: float) -> void:
                 if kind == "boss" and run_time >= 1080.0:
                     boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
                 var weaken: float = float(enemy.get("weaken", 0.0)) if run_time < float(enemy.get("weaken_until", -1.0)) else 0.0
-                _deal_damage_to_player(float(enemy["damage"]) * boss_mult * (1.0 - weaken))
+                var primary_active := false
+                for hazard: Dictionary in hazard_zones:
+                    if hazard.get("source", {}) == enemy and absf(float(hazard["at"]) - run_time) < 0.05:
+                        primary_active = true
+                        break
+                if not primary_active:
+                    _deal_damage_to_player(float(enemy["damage"]) * boss_mult * (1.0 - weaken))
 
+        if mode != "playing":
+            return
         if enemy["phase"] == "warning" and run_time >= float(enemy["attack_at"]):
             _spawn_hostile_shot(enemy)
             enemy["phase"] = ""
@@ -669,12 +744,14 @@ func _step_enemies(dt: float) -> void:
         if kind == "ratio-ram" or kind == "ohio-express":
             if enemy["phase"] == "":
                 enemy["phase"] = "charge-warning"
-                enemy["attack_at"] = run_time + 0.9
+                enemy["attack_at"] = run_time + 0.8
                 enemy["locked_direction"] = to_player.normalized()
             elif enemy["phase"] == "charge-warning" and run_time >= float(enemy["attack_at"]):
                 enemy["phase"] = "charging"
                 enemy["charge_until"] = run_time + 280.0 / 320.0
-                enemy["next_attack"] = run_time + 5.0
+                var charge_count: int = int(enemy.get("charge_count", 0))
+                enemy["charge_count"] = charge_count + 1
+                enemy["next_attack"] = run_time + (5.0 if kind == "ratio-ram" else (1.7 if charge_count % 3 < 2 else 5.6))
         elif kind == "doomscroller":
             _schedule_hazard(player_pos, 70.0, 1.0, 3.0, float(enemy["damage"]))
             enemy["next_attack"] = run_time + 6.0
@@ -697,31 +774,43 @@ func _step_enemies(dt: float) -> void:
             enemy["next_attack"] = run_time + 8.0
         elif kind == "fanum-leech":
             if distance <= 200.0:
-                _schedule_hazard(pos, 240.0, 0.8, 2.4, 5.0, "line", to_player.normalized())
+                for pulse in range(3):
+                    _schedule_hazard(pos, 240.0, 0.8 + float(pulse), 0.1, 5.0, "line", to_player.normalized(), enemy)
             enemy["next_attack"] = run_time + 5.0
         elif kind == "reply-guy":
-            _schedule_hazard(pos, 260.0, 0.8, 0.2, 18.0, "cone", to_player.normalized())
-            for i in range(4): _spawn_enemy("npc")
-            enemy["next_attack"] = run_time + 12.0
+            _schedule_hazard(pos, 260.0, 0.8, 0.2, 18.0, "cone", to_player.normalized(), enemy)
+            enemy["next_attack"] = run_time + 4.0
         elif kind == "mod-supremo":
-            _schedule_hazard(pos, 500.0, 1.0, 0.2, 15.0, "line", to_player.normalized())
-            enemy["next_attack"] = run_time + 10.0
+            _schedule_hazard(pos, 130.0, 1.0, 0.2, 28.0, "circle", to_player.normalized(), enemy)
+            enemy["next_attack"] = run_time + 6.0
         elif kind == "doomscroll-prime":
-            _schedule_hazard(player_pos, 100.0, 1.0, 3.0, 12.0)
-            enemy["next_attack"] = run_time + 7.0
+            _schedule_hazard(pos, 400.0, 0.6, 0.15, 18.0, "cone", to_player.normalized(), enemy)
+            enemy["next_attack"] = run_time + 4.0
+            if not bool(enemy["terminals_spawned"]):
+                enemy["terminals_spawned"] = true
+                _spawn_enemy("terminal", {"pos": Vector2(430, 520)})
+                _spawn_enemy("terminal", {"pos": Vector2(1050, 730)})
         elif kind == "boss":
             var slot: int = int(enemy["attack_slot"]) % 4
             enemy["attack_slot"] = slot + 1
             var multi := 1.0 if run_time < 1080.0 else minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
             if slot == 0:
-                _schedule_hazard(pos, 200.0, 1.0, 0.15, 35.0 * multi, "cone", to_player.normalized())
+                _schedule_hazard(pos, 200.0, 1.0, 0.12, 35.0 * multi, "cone", to_player.normalized(), enemy)
             elif slot == 1:
-                _schedule_hazard(pos, 600.0, 1.2, 0.2, 30.0 * multi, "line", to_player.normalized())
+                _schedule_hazard(pos, 600.0, 1.2, 0.1, 30.0 * multi, "line", to_player.normalized(), enemy)
+                if bool(enemy["beam_phase"]):
+                    _schedule_hazard(pos, 600.0, 1.3, 2.0, 8.0 * multi, "line", to_player.normalized(), enemy)
             elif slot == 2:
-                _schedule_hazard(pos, 280.0, 1.0, 1.5, 25.0 * multi, "ring")
+                _schedule_hazard(pos, 280.0, 1.0, 1.5, 25.0 * multi, "ring", to_player.normalized(), enemy)
+                if bool(enemy["ring_phase"]):
+                    _schedule_hazard(pos, 280.0, 1.8, 1.5, 25.0 * multi, "ring", to_player.normalized(), enemy)
             else:
-                for i in range(4): _spawn_enemy("npc")
-                _spawn_enemy("hype-bot")
+                for add_kind in ["npc", "npc", "npc", "npc", "hype-bot"]:
+                    var add_count := 0
+                    for living: Dictionary in enemies:
+                        if bool(living.get("add", false)): add_count += 1
+                    if add_count < 8:
+                        _spawn_enemy(add_kind, {"add": true})
             enemy["next_attack"] = run_time + (4.8 if run_time >= 1080.0 else 6.0)
         else:
             enemy["next_attack"] = run_time + 1.0
@@ -898,8 +987,10 @@ func _step_weapon_areas() -> void:
                     if float(enemy.get("weaken_until", 0.0)) <= run_time or float(enemy.get("weaken", 0.0)) <= 0.08:
                         enemy["weaken"] = 0.08
                         enemy["weaken_until"] = run_time + 2.0
-                elif area["id"] == "ban-hammer" and not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
-                    enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
+                elif area["id"] == "ban-hammer":
+                    _stagger_enemy(enemy, 15.0)
+                    if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+                        enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
             if primary and area["id"] == "cope-shield" and not shield_awarded:
                 shield_awarded = true
                 _grant_weapon_shield("cope-shield", max_hp * 0.04 * float(area.get("weapon_power", 1.0)), 2.0)
@@ -964,14 +1055,20 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false) -> void
         amount *= SoloPassiveRulesScript.damage_to_target(passives, enemy, player_pos)
         if hero["id"] == "sigma" and flex_time > 0.0 and enemy == sigma_target:
             amount *= 1.40
-    if enemy["kind"] == "boss" and run_time >= 1080.0:
-        amount *= 0.65
+    if enemy["kind"] == "boss":
+        var exposed := 1.15 if run_time < float(enemy.get("stagger_until", 0.0)) else (1.10 if run_time < float(enemy.get("exposed_until", 0.0)) else 1.0)
+        amount *= exposed
+        if run_time >= 1080.0:
+            amount *= 0.65
     if float(enemy.get("shield_until", 0.0)) > run_time and float(enemy.get("shield", 0.0)) > 0.0:
         var blocked: float = minf(amount, float(enemy["shield"]))
         enemy["shield"] = float(enemy["shield"]) - blocked
         amount -= blocked
     enemy["hurt_at"] = run_time
     enemy["hp"] = float(enemy["hp"]) - amount
+    if enemy["kind"] == "boss":
+        if float(enemy["hp"]) <= float(enemy["max"]) * 0.70: enemy["ring_phase"] = true
+        if float(enemy["hp"]) <= float(enemy["max"]) * 0.35: enemy["beam_phase"] = true
     if float(enemy["hp"]) <= 0.0:
         if enemy["kind"] == "copium-puffer":
             _schedule_hazard(Vector2(enemy["pos"]), 80.0, 1.0, 3.0, 12.0)
@@ -979,6 +1076,16 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false) -> void
         kills += 1
         if enemy["kind"] == "boss":
             _finish(true)
+            return
+        if enemy["kind"] == "terminal":
+            terminals_destroyed += 1
+            if terminals_destroyed % 2 == 0:
+                terminals_interrupt_until = run_time + 4.0
+            return
+        if bool(enemy.get("add", false)):
+            if enemy["kind"] == "hype-bot":
+                for boss: Dictionary in enemies:
+                    if boss["kind"] == "boss": boss["exposed_until"] = run_time + 3.0
             return
         pickups.append({"pos": enemy["pos"], "xp": float(enemy["xp"]), "kind": "aura"})
         var chance := rng.randf()
@@ -1337,10 +1444,20 @@ func _draw() -> void:
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
     for zone: Dictionary in hazard_zones:
-        if run_time < float(zone["at"]):
-            draw_arc(Vector2(zone["pos"]), float(zone["radius"]), 0.0, TAU, 48, Color(1.0, 0.61, 0.22, 0.8), 4.0)
+        var warning: bool = run_time < float(zone["at"])
+        var tint := Color(1.0, 0.61, 0.22, 0.8) if warning else Color(0.98, 0.29, 0.31, 0.8)
+        var center: Vector2 = zone["pos"]
+        var facing: Vector2 = zone["dir"]
+        if zone["shape"] == "ring":
+            var radius := 80.0 if warning else 80.0 + 200.0 * clampf((run_time - float(zone["at"])) / 1.5, 0.0, 1.0)
+            draw_arc(center, radius, facing.angle() + deg_to_rad(35.0), facing.angle() + TAU - deg_to_rad(35.0), 48, tint, 4.0 if warning else 6.0)
+        elif zone["shape"] == "line":
+            draw_line(center, center + facing * float(zone["radius"]), Color(tint, 0.18), 60.0)
+            draw_line(center, center + facing * float(zone["radius"]), tint, 3.0)
+        elif zone["shape"] == "cone":
+            draw_arc(center, float(zone["radius"]), facing.angle() - PI / 3.0, facing.angle() + PI / 3.0, 32, tint, 4.0)
         else:
-            draw_arc(Vector2(zone["pos"]), float(zone["radius"]), 0.0, TAU, 48, Color(0.98, 0.29, 0.31, 0.8), 6.0)
+            draw_arc(center, float(zone["radius"]), 0.0, TAU, 48, tint, 4.0 if warning else 6.0)
     for shot: Dictionary in hostile_shots:
         var shot_pos: Vector2 = shot["pos"]
         var shot_dir: Vector2 = shot["dir"]

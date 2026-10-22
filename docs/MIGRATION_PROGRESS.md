@@ -43,3 +43,9 @@ The previous PR head `863e0343a10b5adc86b4180fe8eee8d355f9057e` passes hosted Go
 No production deployment or merge in this iteration. The previous preview is Ready, and browser authentication is complete, but the remote browser reports missing WebGL2. Interactive gameplay verification remains required. Local validation now works and the updated combat suite passes; hosted checks must also pass on the new commit.
 
 Next: verify the authenticated preview in a WebGL2-capable browser and merge only after all required checks. Continue boss stagger, manual aim and the full combat interaction audit. Then complete animation/UI parity and save compatibility. Full run, comparable screenshots and runtime performance remain required before migration acceptance.
+
+## G1.11 — Boss and event logic
+
+PR #18 merged as `883748cbef0495d93f877bcd604635232366990b` after hosted Godot CI and Vercel build passed. The owner explicitly deferred visual validation and authorized continued logic integration on 22 October. Browser WebGL2 remains unavailable; this is not a blocker for authorized logic work.
+
+Next iteration adds source-attributed hazards, expanding rings with a 70-degree safe gap, one hit per ring, 20/s stagger contribution cap, three-second exposure and refill lock, berserk regeneration suspension, persistent health thresholds, bounded non-farmable adds, Hype Bot exposure, independent event timers, Mod half-health reinforcements and Doomscroll terminals. Tests distinguish expired/preparing/active attacks and independent event deadlines. Full source parity and visual/device/performance acceptance remain pending.
