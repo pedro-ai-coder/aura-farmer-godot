@@ -88,3 +88,11 @@ The complete local suite passes, including explicit retreat/aim lock, cover tunn
 PR #25 was integrated as `1b4471e060cc8620d784731c370619b145136723` after hosted Godot CI and Vercel success. A continuous seeded three-hero fixture subsequently exposed two repeated-use failures: clearing Sigma's target dictionary also cleared the live enemy because the dictionary was shared; normal offer generation treated legendary's absent normal-rarity index as a promotion opportunity. Target release now assigns an empty reference, and normal offers exclude promotions of existing legendaries. Focused regressions guard both failures.
 
 The continuous fixture drives actual movement, spawns, attacks, XP drops, 24 level choices, one legendary, Flex and clean restart with no time jumps or XP injection. It protects the player from damage, feeds 0.25-second frames through the production fixed simulation substeps and explicitly resolves a surviving boss if necessary. Seed 451 reaches level 25 with all three starters. This proves integration rather than normal survival, fairness or balance. No GDD values or catalog scope change.
+
+## G1.19 — Enemy commitment, recovery and breakable links
+
+PR #26 integrated as `06f283ffa0ad38ca1d6492b8327d1577dc121a1d` after hosted Godot CI and Vercel build passed. A final canonical-pattern audit restores Hate Slam tracking until 0.3 seconds before impact followed by its fixed commitment and 1.2-second recovery. Reply Guy pauses for its 1.5-second vulnerable window, and Ohio Express recovers for two seconds after the third charge. No additional vulnerability damage multiplier is invented.
+
+Fanum Leech now creates a target-following link with an 0.8-second warning and three ticks. Leaving 240 units or defeating the caster breaks the entire link; returning cannot reconnect it. The link remains a direct enemy attack for Rampage immunity, while persistent ground zones retain their special-hazard semantics. Leech and Puffer ability damage apply the canonical common-enemy wave scaling once. Existing geometry cues render the link without new artwork.
+
+Focused regressions verify exact lock/recovery boundaries, commitment after player movement, all three ticks, permanent link break and wave-scaled ability damage. Full visual/device/balance acceptance remains pending.

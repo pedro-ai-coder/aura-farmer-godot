@@ -48,6 +48,7 @@ run_check contracts --headless --path . --script res://tests/test_game_rules.gd
 run_check catalog --headless --path . --script res://tests/test_solo_offer_rules.gd
 run_check legendary --headless --path . --script res://tests/test_legendary_offer.gd
 run_check boss-lifecycle --headless --path . --script res://tests/test_boss_lifecycle.gd
+run_check enemy-windows --headless --path . --script res://tests/test_enemy_windows.gd
 run_check ranged-sources --headless --path . --script res://tests/test_ranged_sources.gd
 run_check bestiary --headless --path . --script res://tests/test_enemy_patterns.gd
 run_check ruin-alley --headless --path . --script res://tests/test_solo_world_rules.gd
