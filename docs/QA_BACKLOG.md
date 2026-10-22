@@ -4,7 +4,7 @@ Source: attached `Aura_Farmer_Godot_Review_2026-10-22.md`. Authority remains the
 
 | Finding | Status | Reproduction / next acceptance step |
 | --- | --- | --- |
-| AF-01: gameplay fluidity | Partial correction; hardware acceptance open | Reproduced expensive distant-pickup membership scans. Distance rejection now precedes membership lookup, preserving magnet snapshot protection. Full simulation/render benchmark added; ordinary 15-minute desktop and physical Android profiling still required. |
+| AF-01: gameplay fluidity | Partial correction; hardware acceptance open | Reproduced expensive distant-pickup membership scans. Distance rejection now precedes membership lookup, preserving magnet snapshot protection. Full simulation/render benchmark added; ordinary canonical-clock desktop and physical Android profiling still required. |
 | AF-02: enemy navigation | Reproduced and corrected locally | Actual goblin, NPC and Beta chasers remained blocked at cover for 27.7–29 seconds. Deterministic retained-side cover waypoints and two-sided edge fallback now reach the target. Collision geometry, movement speeds, RNG and locked charge direction are unchanged. |
 | AF-03: upgrade cards | Open | Review baseline captured. At 915×412 the implementation uses two columns with vertical scrolling, rather than horizontal scrolling. Improve density, rarity hierarchy, current-to-next information and focus/touch legibility within approved art. |
 | AF-04: secondary panels | Open | Pause build currently uses text rows. Implement the approved three-weapon/five-passive equipment presentation and check pause/options/results at short and narrow sizes. Exact approved font and illustrated equipment assets must be verified before any replacement; no new artwork is authorized. |
@@ -40,4 +40,8 @@ godot --headless --path . --script res://tests/review_simulation_profile.gd -- /
 # Run the last command without --headless for simulation + native rendering.
 ```
 
-For AF-01 closure, record ordinary unprotected play on desktop and physical Android: device/renderer, viewport, warm/cold state, full 15-minute progression, frame percentiles/long frames and actual entity/projectile/effect counts. Software rendering and touch emulation cannot replace those checks.
+For AF-01 closure, record ordinary unprotected play on desktop and physical Android using the newly approved ten-minute schedule: device/renderer, viewport, warm/cold state, full progression through Big Hater and recoverable berserk, frame percentiles/long frames and actual entity/projectile/effect counts. Software rendering and touch emulation cannot replace those checks.
+
+## Concurrent canonical update
+
+During QA, upstream main advanced to `2ef5ffacfe57e5ed2c7e9cea92facb412fc0b9ef`: five 120-second waves, Big Hater at 600 s, recoverable berserk after 120 s of boss combat. This P0 patch preserves that GDD update but does not yet implement its coherent event/legendary timing migration. Schedule implementation and honest-health comparisons are the next approved gameplay task. The above baseline measurements are explicitly from the historical 15-minute implementation. Flex redesigns and prototype concepts do not authorize new default mechanics.
