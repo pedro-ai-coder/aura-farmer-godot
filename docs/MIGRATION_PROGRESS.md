@@ -11,7 +11,7 @@
 
 Replaces instant No Cap/Ratio Blaster damage with moving projectiles, cover rejection, finite range, piercing limits and per-projectile hit memory. Rendering follows projectile positions. Adds arrival/duplicate-hit/restart/cover regression coverage and updates the original instant-hit smoke assertion.
 
-Validation: `git diff --check` passes. Local Godot 4.7.2 matches the repository archive SHA-256, but segfaults even on `--headless --version`; validation stops at import. No local Godot test, browser test, performance measurement or native test is claimed. The change must remain draft until the complete suite and browser verification are available.
+Validation: GitHub Actions Godot CI (Godot 4.7.2) passes the import, GDD contracts, gameplay regression suite and scene smoke test at commit `eb1d065266d3471d92bd9573b4a043dfabe88b93` ([workflow run](https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/39738992731)). The pre-existing weapon VFX test was updated to distinguish a travelling No Cap projectile from immediate contact-attack cues. The separate local execution environment still segfaults even on `--headless --version`, and browser, performance and native verification have not been completed. Do not merge until the required preview checks and approvals are complete.
 
 ## Parity matrix (initial source inspection; not acceptance)
 
@@ -32,6 +32,6 @@ Validation: `git diff --check` passes. Local Godot 4.7.2 matches the repository 
 
 ## Deployment and next priority
 
-No new production deployment or merge in this iteration. Existing PR #17 bot reports a READY preview; this is build evidence only, not a browser validation performed here.
+No production deployment or merge in this iteration. Vercel reports the G1.10 pull request preview as Ready, and the GitHub CI suite passes; these statuses do not establish interactive browser gameplay verification. Access to the Vercel preview from the connected environment is restricted (403), so manual browser validation remains pending.
 
 Next: execute the projectile suite in a working Godot environment, verify desktop/mobile preview and finish delayed/legendary weapon behavior. Then complete animation/UI parity and save compatibility. Full run, comparable screenshots and runtime performance remain required before migration acceptance.
