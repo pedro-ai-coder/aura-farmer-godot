@@ -685,7 +685,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var damage: float = float(stats["damage"]) * (1.0 if boss_kind or kind == "terminal" else float(WAVE_DAMAGE[wave - 1])) * (1.3 if elite else 1.0)
     enemies.append({
         "id": next_enemy_id, "angle": 0.0, "elite": elite, "born": run_time + (0.8 if bool(special.get("telegraph", false)) else 0.0), "pos": pos, "hp": hp_base, "max": hp_base,
-        "speed": float(stats["speed"]), "radius": float(stats["radius"]),
+        "speed": float(stats["speed"]), "radius": float(stats["radius"]) * (1.2 if elite else 1.0),
         "damage": damage, "xp": 0 if bool(special.get("add", false)) else (60 if elite else int(stats["xp"])), "kind": kind,
         "add": bool(special.get("add", false)), "next_aux": run_time + (12.0 if kind == "reply-guy" else (10.0 if kind == "mod-supremo" else 7.0)),
         "stagger": 0.0, "stagger_added": 0.0, "stagger_window": -1,
@@ -1806,6 +1806,8 @@ func _draw() -> void:
         if e["phase"] == "warning" or e["phase"] == "charge-warning":
             var locked: Vector2 = e["locked_direction"]
             draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
+        if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
+            draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
         _draw_contact_shadow(e["pos"], radius)
         if not art.draw_enemy(self, e, run_time):
             draw_circle(e["pos"], radius, color)
