@@ -18,23 +18,15 @@ static func pose(id: String, state: Dictionary) -> Dictionary:
         label = "defeat"
     elif float(state.get("hurt",0.0)) > 0.0:
         label = "hurt"
-        if cool and remaining > 0:
-            frame = 6
-            sheet = "flex-v2"
-            flip = cos(heading) < 0
-        else: frame = (29 if cool else 37) + (1 if 0.18-float(state["hurt"]) >= 0.09 else 0)
+        frame = (29 if cool else 37) + (1 if 0.18-float(state["hurt"]) >= 0.09 else 0)
     elif remaining > 0:
         label = "flex-loop"
         if cool:
-            sheet = "flex-v2"
+            # Interim approved keyboard poses; historical widened Rampage sheet is not this kit.
             flip = cos(heading if moving else float(state.get("facing",0.0))) < 0
-            if age < 0.25:
-                frame = int(age*8)
-                label = "flex-in"
-            elif remaining <= 0.25:
-                frame = 6 if remaining > 0.125 else 7
-                label = "flex-out"
-            else: frame = 2+int(walk*11.25)%4 if moving else 1
+            frame = 26+mini(2,int(fmod(age,0.70)/0.12))
+            if age < 0.25: label = "flex-in"
+            if remaining <= 0.25: label = "flex-out"
         elif alpha:
             var phase := fmod(age,2.0)
             frame = 44 if phase < 0.125 else 45 if phase < 0.25 else 46 if phase < 0.4 else 43 if age < 4 and phase > 1.875 else 41 if age < 4 and phase > 1.75 else 42

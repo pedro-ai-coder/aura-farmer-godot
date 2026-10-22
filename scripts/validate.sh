@@ -50,6 +50,7 @@ run_check camera-cover --headless --path . --script res://tests/test_camera_cove
 run_check continuous-run --headless --path . --script res://tests/test_continuous_run.gd
 run_check run-acceptance --headless --path . --script res://tests/test_run_acceptance.gd
 run_check menu-flow --headless --path . --script res://tests/test_menu_flow.gd
+run_check signature-flex --headless --path . --script res://tests/test_signature_flex.gd
 run_check hero-combat --headless --path . --script res://tests/test_hero_combat.gd
 run_check run-clock --headless --path . --script res://tests/test_run_clock.gd
 run_check run-progression --headless --path . --script res://tests/test_run_progression.gd

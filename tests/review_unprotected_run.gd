@@ -102,6 +102,6 @@ func _run() -> void:
                 game._process(0.1)
                 minimum_hp = minf(minimum_hp,game.hp)
             else: break
-        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
+        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
     game.queue_free()
     quit()

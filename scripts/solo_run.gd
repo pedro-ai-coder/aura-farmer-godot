@@ -20,9 +20,9 @@ const SoloPassiveRulesScript = preload("res://scripts/solo_passive_rules.gd")
 ## Procedural debug visuals and simplified enemy patterns are NOT final approved art or combat parity.
 
 const HEROES := [
-    {"id": "sigma", "name": "THE SIGMA", "role": "ranged", "hp": 100.0, "speed": 180.0, "power": 100.0, "resist": 0.0, "starter": "no-cap", "flex": "Sigma Stare", "duration": 6.0, "color": Color(0.95, 0.71, 0.28)},
-    {"id": "cool-kid", "name": "COOL KID", "role": "melee", "hp": 110.0, "speed": 190.0, "power": 95.0, "resist": 0.05, "starter": "keyboard-warrior", "flex": "Giga Chad Rampage", "duration": 5.0, "color": Color(0.37, 0.69, 0.96)},
-    {"id": "alpha", "name": "ALPHA CHAD", "role": "tank", "hp": 140.0, "speed": 160.0, "power": 90.0, "resist": 0.15, "starter": "cope-shield", "flex": "Alpha Hold", "duration": 6.0, "color": Color(0.82, 0.45, 0.69)}
+    {"id": "sigma", "name": "THE SIGMA", "role": "ranged", "hp": 100.0, "speed": 180.0, "power": 100.0, "resist": 0.0, "starter": "no-cap", "flex": "Deadpan Verdict", "duration": 6.0, "color": Color(0.95, 0.71, 0.28)},
+    {"id": "cool-kid", "name": "COOL KID", "role": "melee", "hp": 110.0, "speed": 190.0, "power": 95.0, "resist": 0.05, "starter": "keyboard-warrior", "flex": "CTRL + CHAOS", "duration": 5.0, "color": Color(0.37, 0.69, 0.96)},
+    {"id": "alpha", "name": "ALPHA CHAD", "role": "tank", "hp": 140.0, "speed": 160.0, "power": 90.0, "resist": 0.15, "starter": "cope-shield", "flex": "Giga Chad Rampage", "duration": 6.0, "color": Color(0.82, 0.45, 0.69)}
 ]
 const WEAPONS := {
     "ratio-blaster": {"name": "Ratio Blaster", "role": "ranged", "interval": 0.65, "range": 520.0, "power": 0.20, "shape": "shot"},
@@ -118,7 +118,7 @@ var rng = PhaserRngScript.new()
 var hero_index := 0
 var profile: Dictionary = ProfileStoreScript.defaults()
 var run_id := ""
-var run_metrics: Dictionary = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0}
+var run_metrics: Dictionary = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
 var storage_available := true
 var manual_aim := false
 var aim_point := Vector2.ZERO
@@ -406,7 +406,7 @@ func start_run(index: int) -> void:
     hero_index = index
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
-    run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0}
+    run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
     profile["selected"] = HEROES[index]["id"]
     _save_profile()
     hero = HEROES[index].duplicate(true)
@@ -529,15 +529,11 @@ func _advance(dt: float) -> void:
     if flex_time > 0.0:
         flex_time = maxf(0.0, flex_time - dt)
         flex_age += dt
-        if hero["id"] == "alpha":
-            while int(hero_state.get("flex_slams", 1)) < 3 and flex_age >= 2.0 * float(hero_state["flex_slams"]):
-                hero_state["flex_slams"] = int(hero_state["flex_slams"]) + 1
-                _damage_nearby(150.0, 0.40 * _base_power())
+        _step_signature_flex()
     else:
         aura = minf(100.0, aura + 0.5 * dt)
     if mode != "playing": return
     _move_player(dt)
-    _step_flex_contacts()
     if mode != "playing": return
     var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
@@ -662,18 +658,95 @@ func _aim_direction(target: Dictionary) -> Vector2:
     var direction := (point - player_pos).normalized()
     return direction if direction.length_squared() > 0.0 else movement_direction
 
-func _step_flex_contacts() -> void:
-    if flex_time <= 0.0 or hero["id"] != "cool-kid": return
-    for enemy: Dictionary in enemies.duplicate():
+func _flex_facing() -> Vector2:
+    if manual_aim and aim_point.distance_squared_to(player_pos) > 0.0:
+        return (aim_point-player_pos).normalized()
+    return movement_direction.normalized() if movement_direction.length_squared() > 0.0 else Vector2.from_angle(visual_facing)
+
+func _signature_strike(radius: float, arc: float, power: float, limit: int = 2147483647, push: bool = false) -> bool:
+    var facing := _flex_facing()
+    var targets: Array[Dictionary] = []
+    for enemy: Dictionary in enemies:
+        var offset: Vector2 = enemy["pos"]-player_pos
+        if run_time < float(enemy.get("born",0.0)) or float(enemy["hp"]) <= 0.0: continue
+        if offset.length() > radius or absf(facing.angle_to(offset)) > deg_to_rad(arc*0.5): continue
+        if not SoloWorldRulesScript.clear_line(player_pos,enemy["pos"]): continue
+        targets.append(enemy)
+    targets.sort_custom(func(a: Dictionary,b: Dictionary) -> bool:
+        var da := player_pos.distance_squared_to(a["pos"])
+        var db := player_pos.distance_squared_to(b["pos"])
+        return int(a["id"]) < int(b["id"]) if is_equal_approx(da,db) else da < db)
+    var hit := false
+    for enemy: Dictionary in targets.slice(0,mini(limit,targets.size())):
+        if mode != "playing": break
+        var before: float = float(enemy["hp"])+float(enemy.get("shield",0.0))
+        var previous_damage: float = run_metrics["damage"]
+        _hit_enemy(enemy,power)
+        run_metrics["flex_damage"] = float(run_metrics["flex_damage"])+float(run_metrics["damage"])-previous_damage
+        hit = hit or float(enemy["hp"])+float(enemy.get("shield",0.0)) < before
+        if push and enemies.has(enemy):
+            if enemy["kind"] == "boss": _stagger_enemy(enemy,10.0)
+            elif not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+                enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"],(Vector2(enemy["pos"])-player_pos).normalized()*40.0,float(enemy["radius"]))
+    if mode != "playing": return hit
+    hero_state["flex_outline"] = {"until":run_time+0.22,"origin":player_pos,"facing":facing,"radius":radius,"arc":arc}
+    return hit
+
+func _step_signature_flex() -> void:
+    if hero["id"] == "cool-kid":
+        var beats := [0.35,1.05,1.75,2.45,3.15,3.85]
+        while mode == "playing" and int(hero_state.get("flex_beats",0)) < 6 and flex_age+0.000001 >= float(beats[int(hero_state.get("flex_beats",0))]):
+            hero_state["flex_beats"] = int(hero_state.get("flex_beats",0))+1
+            var successful := _signature_strike(115.0,110.0,0.20*_base_power(),5)
+            if mode != "playing": return
+            if successful:
+                hero_state["flex_success"] = int(hero_state.get("flex_success",0))+1
         if mode != "playing": return
-        if run_time < float(enemy.get("born", 0.0)): continue
-        if player_pos.distance_to(enemy["pos"]) > float(enemy["radius"]) + 26.0 or run_time < float(enemy.get("rampage_at", 0.0)): continue
-        enemy["rampage_at"] = run_time + 0.5
-        var amount := 0.35 * _base_power()
-        if bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
-            amount = minf(amount, maxf(0.0, 3.5 * _base_power() - float(hero_state["flex_boss_damage"])))
-            hero_state["flex_boss_damage"] = float(hero_state["flex_boss_damage"]) + amount
-        if amount > 0.0: _hit_enemy(enemy, amount)
+        if flex_age+0.000001 >= 4.50 and not bool(hero_state.get("flex_finisher",false)):
+            hero_state["flex_finisher"] = true
+            run_metrics["flex_finishers"] = int(run_metrics["flex_finishers"])+1
+            _signature_strike(145.0,130.0,(0.45+0.10*mini(6,int(hero_state.get("flex_success",0))))*_base_power())
+            if mode != "playing": return
+            hero_state["flex_caption"] = "ENTER!"
+            hero_state["flex_caption_until"] = run_time+0.5
+    elif hero["id"] == "alpha":
+        while mode == "playing" and int(hero_state.get("flex_slams",1)) < 3 and flex_age+0.000001 >= 2.0*float(hero_state.get("flex_slams",1)):
+            hero_state["flex_slams"] = int(hero_state.get("flex_slams",1))+1
+            _signature_strike(150.0,360.0,0.40*_base_power())
+        if mode != "playing": return
+        if flex_age+0.000001 >= 5.50 and not bool(hero_state.get("flex_finisher",false)):
+            hero_state["flex_finisher"] = true
+            run_metrics["flex_finishers"] = int(run_metrics["flex_finishers"])+1
+            var scale := 0.50+minf(0.50,2.0*float(hero_state.get("flex_absorbed",0.0))/max_hp)
+            _signature_strike(180.0,360.0,scale*_base_power(),2147483647,true)
+            if mode != "playing": return
+            hero_state["flex_caption"] = "GIGA!"
+            hero_state["flex_caption_until"] = run_time+0.5
+
+func _weapon_hit(enemy: Dictionary, damage: float, primary: bool, activation: Dictionary) -> void:
+    # Each shared activation qualifies at most once, across projectiles/paired strikes.
+    if primary and hero["id"] == "sigma" and flex_time > 0.0 and not enemies.has(sigma_target):
+        sigma_target = _nearest_target(600.0)
+    var qualifies: bool = primary and hero["id"] == "sigma" and flex_time > 0.0 and enemy == sigma_target and not bool(activation.get("verdict_counted",false)) and run_time >= float(enemy.get("born",0.0))
+    _hit_enemy(enemy,damage,primary,true)
+    if not qualifies or mode != "playing" or damage <= 0.0: return
+    activation["verdict_counted"] = true
+    hero_state["verdict_count"] = mini(3,int(hero_state.get("verdict_count",0))+1)
+    if int(hero_state["verdict_count"]) == 3 and not bool(hero_state.get("flex_finisher",false)):
+        hero_state["flex_finisher"] = true
+        hero_state["flex_caption"] = "VERDICT!"
+        hero_state["flex_caption_until"] = run_time+0.5
+        run_metrics["flex_finishers"] = int(run_metrics["flex_finishers"])+1
+        if enemies.has(enemy):
+            var previous_damage: float = run_metrics["damage"]
+            _hit_enemy(enemy,0.75*_base_power())
+            run_metrics["flex_damage"] = float(run_metrics["flex_damage"])+float(run_metrics["damage"])-previous_damage
+
+func flex_status() -> String:
+    if flex_time <= 0.0:
+        return "FLEX READY  [E]" if aura >= 100.0 and flex_lock <= 0.0 else "FLEX  %d%%" % int(aura)
+    var progress := "%d/3" % int(hero_state.get("verdict_count",0)) if hero["id"] == "sigma" else ("%d/6" % int(hero_state.get("flex_beats",0)) if hero["id"] == "cool-kid" else "ABSORB %d" % ceili(float(hero_state.get("flex_absorbed",0.0))))
+    return "%s  %.1fs" % [progress,flex_time]
 
 func _move_player(dt: float) -> void:
     for key in blocked_movement.keys():
@@ -770,15 +843,17 @@ func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: boo
     if mode != "playing" or hp <= 0.0 or amount <= 0.0: return
     if contact and run_time - float(hero_state["last_contact"]) < 0.25: return
     var source_boss: bool = not source.is_empty() and bool(SoloEnemyRulesScript.DATA[source["kind"]]["boss"])
-    if hero["id"] == "cool-kid" and flex_time > 0.0 and not source.is_empty() and not source_boss and not hazard: return
     if contact: hero_state["last_contact"] = run_time
     hurt_timer = 0.18
     var old_hp := hp
     var mitigation := minf(0.60, 1.0 - (1.0 - float(hero["resist"])) * (1.0 - 0.03 * float(_passive_level("thick-skin"))))
     var incoming := amount * (1.0 - mitigation)
     if run_time < float(source.get("weaken_until", 0.0)): incoming *= 1.0 - float(source.get("weaken", 0.0))
-    if hero["id"] == "cool-kid" and flex_time > 0.0 and source_boss and not hazard:
-        incoming *= 0.5
+    if flex_time > 0.0 and contact and not source.is_empty() and not source_boss and not hazard:
+        var before_flex := incoming
+        if hero["id"] == "cool-kid": incoming *= 0.85
+        elif hero["id"] == "alpha": incoming *= 0.80
+        run_metrics["flex_prevented"] = float(run_metrics["flex_prevented"])+before_flex-incoming
     var absorbed := minf(shield, incoming)
     shield -= absorbed
     run_metrics["protection"] = float(run_metrics["protection"]) + absorbed
@@ -788,6 +863,9 @@ func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: boo
         var consumed := minf(float(entry["remaining"]), weapon_absorption)
         entry["remaining"] = float(entry["remaining"]) - consumed
         weapon_absorption -= consumed
+        if shield_source == "giga-rampage" and flex_time > 0.0:
+            hero_state["flex_absorbed"] = float(hero_state.get("flex_absorbed",0.0))+consumed
+            run_metrics["flex_absorbed"] = float(run_metrics["flex_absorbed"])+consumed
     hp = maxf(0.0, hp - incoming + absorbed)
     if hero["id"] == "alpha" and not source.is_empty() and not hazard and run_time >= float(hero_state["certified_ready"]):
         hero_state["certified"] = true
@@ -1111,8 +1189,6 @@ func _fire_weapons(dt: float) -> void:
         if closest.is_empty():
             weapon["timer"] = 0.10
             continue
-        if hero["id"] == "sigma" and flex_time > 0.0 and not enemies.has(sigma_target):
-            sigma_target = closest
         var weapon_id: String = weapon["id"]
         var count: int = int(weapon_activations.get(weapon_id, 0)) + 1
         weapon_activations[weapon_id] = count
@@ -1195,7 +1271,7 @@ func _queue_player_shot(id: String, heading: Vector2, damage: float, reach: floa
         "speed": (750.0 if id == "no-cap" else 650.0) * reach / float(WEAPONS[id]["range"]),
         "remaining": reach, "radius": 16.0 if id == "no-cap" else 6.0,
         "damage": damage, "pierce": pierce, "hit": [], "activated": false,
-        "primary": primary, "at": run_time + delay
+        "primary": primary, "activation": {}, "at": run_time + delay
     })
 
 func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: float, arc: float, damage: float, delay: float, activation: Dictionary, options: Dictionary = {}) -> void:
@@ -1259,7 +1335,7 @@ func _step_weapon_areas() -> void:
                             second["radius"] = (140.0 if bool(second.get("legendary", false)) else 110.0) * SoloPassiveRulesScript.area_scale(passives)
                             second["arc"] = 360.0
             memory.append(int(enemy["id"]))
-            _hit_enemy(enemy, float(area["damage"]), primary, true)
+            _weapon_hit(enemy, float(area["damage"]), primary, activation)
             if primary and not bool(activation["hit"]) and mode == "playing":
                 activation["hit"] = true
                 _primary_activation(impact)
@@ -1328,7 +1404,7 @@ func _step_player_shots(dt: float) -> void:
             shot["hit"].append(int(enemy["id"]))
             var impact: Vector2 = enemy["pos"]
             var primary: bool = shot.get("primary", true)
-            _hit_enemy(enemy, float(shot["damage"]), primary, true)
+            _weapon_hit(enemy, float(shot["damage"]), primary, shot["activation"])
             if primary and not bool(shot["activated"]) and mode == "playing":
                 shot["activated"] = true
                 _primary_activation(impact)
@@ -1744,14 +1820,18 @@ func _use_flex() -> void:
     flex_lock = 30.0
     flex_age = 0.0
     hero_state["flex_slams"] = 1
-    hero_state["flex_boss_damage"] = 0.0
+    hero_state["flex_beats"] = 0
+    hero_state["flex_success"] = 0
+    hero_state["flex_finisher"] = false
+    hero_state["verdict_count"] = 0
+    hero_state["flex_absorbed"] = 0.0
     if _passive_level("aura-viral") > 0:
         passive_timers["viral_until"] = run_time + 5.0
     if _passive_level("w-squad") > 0:
         passive_timers["w_squad_until"] = run_time + 6.0
     if hero["id"] == "alpha":
-        _grant_weapon_shield("alpha-hold", max_hp * 0.25, 6.0)
-        _damage_nearby(150.0, 0.40 * _base_power())
+        _grant_weapon_shield("giga-rampage", max_hp * 0.25, 6.0)
+        _signature_strike(150.0,360.0,0.40*_base_power())
         for enemy: Dictionary in enemies:
             if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
                 enemy["taunt_until"] = run_time + 2.0
@@ -1768,6 +1848,11 @@ func _toggle_pause() -> void:
 func _finish(won: bool) -> void:
     if mode != "playing":
         return
+    flex_time = 0.0
+    sigma_target = {}
+    hero_state["flex_outline"] = {}
+    hero_state["flex_caption_until"] = 0.0
+    for key in ["flex_beats","flex_success","flex_slams","verdict_count","flex_absorbed","flex_finisher"]: hero_state.erase(key)
     mode = "won" if won else "lost"
     _clear_touch()
     var result := {
@@ -1980,7 +2065,23 @@ func _draw() -> void:
         WeaponVisualsScript.draw_attack(self, effect)
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
+    var outline: Dictionary = hero_state.get("flex_outline",{})
+    if not outline.is_empty() and run_time < float(outline.get("until",0.0)):
+        var angle: float = Vector2(outline["facing"]).angle()
+        var half: float = deg_to_rad(float(outline["arc"])*0.5)
+        var origin: Vector2 = outline["origin"]
+        var radius: float = outline["radius"]
+        var color := Color("6eaab0") if hero["id"] == "cool-kid" else Color("f8c45f")
+        draw_arc(origin,radius,angle-half,angle+half,32,color,2.0)
+        if float(outline["arc"]) < 360.0:
+            draw_line(origin,origin+Vector2.from_angle(angle-half)*radius,color,2.0)
+            draw_line(origin,origin+Vector2.from_angle(angle+half)*radius,color,2.0)
+    if flex_time > 0.0 and hero["id"] == "sigma" and enemies.has(sigma_target):
+        draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
+        draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
+    if run_time < float(hero_state.get("flex_caption_until",0.0)):
+        draw_string(ThemeDB.fallback_font,player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
 
 func _draw_depth_actors() -> void:
     var actors: Array[Dictionary] = [{"kind":"hero", "pos":player_pos}]

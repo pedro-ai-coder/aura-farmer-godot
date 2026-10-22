@@ -178,7 +178,7 @@ func refresh(force: bool = false) -> void:
     var equipment := ""
     for item: Dictionary in game.weapons + game.passives: equipment += "%s:%s:%s;" % [item["id"],item["rarity"],item["level"]]
     var signature: String = str(game.mode) + str(game.hero_index) + str(game.selected_card_index) + str(game.level) + equipment + JSON.stringify(game.selection) + JSON.stringify(game.legendary_offers) + str(game.profile["settings"]) + error_message + str(game.touch_device)
-    game.flex_button.text = "FLEX READY  [E]" if game.aura >= 100.0 and game.flex_lock <= 0.0 else "FLEX  %d%%" % int(game.aura)
+    game.flex_button.text = game.flex_status()
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not force and signature == last_signature:
         queue_redraw()
@@ -256,7 +256,7 @@ func refresh(force: bool = false) -> void:
             labels["role"].horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
             _place(labels["role"],Rect2(3,card_height-36,card_width-6,32))
         var hero: Dictionary = game.HEROES[game.hero_index]
-        detail.text = "%s  ·  %s\n%s" % [hero["name"],hero["flex"],["Lock onto a rival. Throw No Cap through the crowd.","Keep moving. Unleash Giga Chad Rampage.","Hold the line. Shield up and slam with Alpha Hold."][game.hero_index]]
+        detail.text = "%s  ·  %s\n%s" % [hero["name"],hero["flex"],["Lock onto a rival. Throw No Cap through the crowd.","Keep moving. Chain CTRL + CHAOS strikes.","Hold the line. Shield up with Giga Chad Rampage."][game.hero_index]]
         if compact: detail.text = "%s  ·  %s" % [hero["name"],hero["flex"]]
         detail.add_theme_font_size_override("font_size",22 if compact else 20)
         _place(detail,Rect2(menu_panel.position.x+24,card_y+card_height+14,menu_panel.size.x-48,64 if compact else 90))
@@ -324,7 +324,7 @@ func refresh(force: bool = false) -> void:
     if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,60))
     _place(game.flex_button,Rect2(width-246,height-78,226,60))
     _place(game.legendary_button,Rect2(20 if width < 1000 else width-500,height-78,minf(238,width-286) if width < 1000 else 238,60))
-    game.flex_button.text = "FLEX READY  [E]" if game.aura >= 100.0 and game.flex_lock <= 0.0 else "FLEX  %d%%" % int(game.aura)
+    game.flex_button.text = game.flex_status()
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not cards:
         for button: Button in game.offer_buttons: button.hide()
