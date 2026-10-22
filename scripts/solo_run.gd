@@ -86,6 +86,9 @@ var passives: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
 var player_shots: Array[Dictionary] = []
 var weapon_areas: Array[Dictionary] = []
+var weapon_activations: Dictionary = {}
+var chad_successful_activations := 0
+var weapon_shields: Dictionary = {}
 var hostile_shots: Array[Dictionary] = []
 var hazard_zones: Array[Dictionary] = []
 var pickups: Array[Dictionary] = []
@@ -303,6 +306,7 @@ func start_run(index: int) -> void:
     hp = hero["hp"]
     max_hp = hp
     shield = 0.0
+    weapon_shields.clear()
     aura = 0.0
     flex_time = 0.0
     flex_lock = 0.0
@@ -333,6 +337,8 @@ func start_run(index: int) -> void:
     enemies.clear()
     player_shots.clear()
     weapon_areas.clear()
+    weapon_activations.clear()
+    chad_successful_activations = 0
     hostile_shots.clear()
     hazard_zones.clear()
     pickups.clear()
@@ -368,6 +374,7 @@ func _process(delta: float) -> void:
 
 func _advance(dt: float) -> void:
     run_time += dt
+    _expire_weapon_shields()
     hurt_timer = maxf(0.0, hurt_timer - dt)
     flex_lock = maxf(0.0, flex_lock - dt)
     if flex_time > 0.0:
@@ -471,6 +478,8 @@ func _spawn_logic(dt: float) -> void:
     if not boss_spawned and run_time >= 900.0:
         boss_spawned = true
         enemies.clear()
+        player_shots.clear()
+        weapon_areas.clear()
         hostile_shots.clear()
         hazard_zones.clear()
         _spawn_enemy("boss", {"pos":Vector2(724.0, 445.0)})
@@ -521,6 +530,12 @@ func _deal_damage_to_player(amount: float) -> void:
         incoming *= 0.5
     var absorbed := minf(shield, incoming)
     shield -= absorbed
+    var weapon_absorption := absorbed
+    for source: String in weapon_shields:
+        var entry: Dictionary = weapon_shields[source]
+        var consumed := minf(float(entry["remaining"]), weapon_absorption)
+        entry["remaining"] = float(entry["remaining"]) - consumed
+        weapon_absorption -= consumed
     hp = maxf(0.0, hp - incoming + absorbed)
     if hp <= 0.0:
         _finish(false)
@@ -619,6 +634,8 @@ func _step_enemies(dt: float) -> void:
             if run_time >= float(enemy["charge_until"]):
                 enemy["phase"] = ""
                 speed = float(enemy["speed"])
+        if float(enemy.get("slow_until", 0.0)) > run_time:
+            speed *= 1.0 - minf(0.40, float(enemy.get("slow", 0.0))) * (0.5 if bool(SoloEnemyRulesScript.DATA[kind]["boss"]) else 1.0)
         if distance > float(enemy["radius"]) + 19.0:
             var step: Vector2 = direction * speed * dt
             var destination: Vector2 = SoloWorldRulesScript.move(pos, step, float(enemy["radius"]))
@@ -730,11 +747,16 @@ func _fire_weapons(dt: float) -> void:
             continue
         if hero["id"] == "sigma" and flex_time > 0.0 and not enemies.has(sigma_target):
             sigma_target = closest
+        var weapon_id: String = weapon["id"]
+        var count: int = int(weapon_activations.get(weapon_id, 0)) + 1
+        weapon_activations[weapon_id] = count
+        var legendary: bool = weapon["rarity"] == "legendary"
         var frequency: float = SoloPassiveRulesScript.weapon_frequency(passives, passive_timers, run_time, player_pos)
         weapon["timer"] = maxf(0.20, float(config["interval"]) * pow(0.95, int(weapon["level"]) - 1) / (1.0 + frequency))
         var power: float = float(hero["power"]) * float(config["power"])
         power *= float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * float(int(weapon["level"]) - 1))
         power *= SoloPassiveRulesScript.weapon_damage(passives, level, flex_time > 0.0, run_time, passive_timers, cook_stacks, cook_expires)
+        var secondary_power := power
         var shape: String = config["shape"]
         var streak := false
         if shape == "shot" or shape == "line":
@@ -754,10 +776,31 @@ func _fire_weapons(dt: float) -> void:
                 if weapon["id"] == "chad-hands": arc = 90.0
             var delay := 0.45 if shape == "blast" else (0.30 if weapon["id"] == "ban-hammer" else 0.0)
             var paired: bool = weapon["id"] == "keyboard-warrior" or weapon["id"] == "chad-hands"
-            var activation := {"hit": false}
+            var activation := {"hit": false, "chad_counted": false, "slam": false}
+            if legendary and weapon_id == "touch-grass" and count % 3 == 0:
+                radius = 150.0 * SoloPassiveRulesScript.area_scale(passives)
+                arc = 360.0
+                power *= 1.25
             _queue_weapon_area(str(weapon["id"]), center, facing, radius, arc, power * (0.5 if paired else 1.0), delay, activation)
+            var queued: Dictionary = weapon_areas.back()
+            queued["legendary"] = legendary
+            queued["weapon_power"] = float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * float(int(weapon["level"]) - 1))
+            queued["shield_legend"] = legendary and weapon_id == "cope-shield" and count % 3 == 0
+            queued["enhanced_grass"] = legendary and weapon_id == "touch-grass" and count % 3 == 0
             if paired:
-                _queue_weapon_area(str(weapon["id"]), center, facing, radius, arc, power * 0.5, 0.12 if weapon["id"] == "keyboard-warrior" else 0.18, activation)
+                _queue_weapon_area(weapon_id, center, facing, radius, arc, power * 0.5, 0.12 if weapon_id == "keyboard-warrior" else 0.18, activation, {"second": true, "legendary": legendary})
+            if legendary:
+                if weapon_id == "brainrot-feed":
+                    var shared_hits: Array = []
+                    var sideways := Vector2(-facing.y, facing.x)
+                    for offset in [-80.0, 0.0, 80.0]:
+                        _queue_weapon_area(weapon_id, center + sideways * offset, facing, 65.0 * SoloPassiveRulesScript.area_scale(passives), 360.0, secondary_power * 0.15 / 0.65, 0.75, activation, {"primary": false, "hit_memory": shared_hits})
+                elif weapon_id == "keyboard-warrior" and count % 3 == 0:
+                    _queue_weapon_area(weapon_id, center, facing, 120.0 * SoloPassiveRulesScript.area_scale(passives), 100.0, secondary_power * 0.25 / 0.36, 0.24, activation, {"primary": false})
+                elif weapon_id == "personal-space" and count % 2 == 0:
+                    _grant_weapon_shield("my-aura", max_hp * 0.04 * float(queued["weapon_power"]), 3.0)
+                elif weapon_id == "ban-hammer":
+                    _queue_weapon_area(weapon_id, center, facing, 220.0, 360.0, secondary_power * 0.30 / 0.90, 0.80, activation, {"primary": false, "shape": "line"})
             attack_flash = 0.12
             attack_target = closest["pos"]
         else:
@@ -765,21 +808,33 @@ func _fire_weapons(dt: float) -> void:
             var pierce: int = (4 if shape == "line" else 1) + (_passive_level("no-cap-streak") if streak else 0)
             if hero["id"] == "sigma" and flex_time > 0.0:
                 pierce += 1
-            player_shots.append({
-                "id": str(weapon["id"]), "pos": player_pos, "direction": heading,
-                "speed": (750.0 if shape == "line" else 650.0) * reach / float(config["range"]),
-                "remaining": reach, "radius": 16.0 if shape == "line" else 6.0,
-                "damage": power, "pierce": pierce, "hit": [], "activated": false
-            })
+            _queue_player_shot(weapon_id, heading, power, reach, pierce)
+            if legendary and weapon_id == "ratio-blaster" and count % 4 == 0:
+                _queue_player_shot(weapon_id, heading, secondary_power * 0.10 / 0.20, reach, 1, false, 0.08)
+                _queue_player_shot(weapon_id, heading, secondary_power * 0.10 / 0.20, reach, 1, false, 0.16)
+            elif legendary and weapon_id == "no-cap":
+                _queue_weapon_area(weapon_id, player_pos, heading, reach, 360.0, secondary_power * 0.25 / 0.50, 0.70, {"hit": false}, {"primary": false, "shape": "line"})
             attack_flash = 0.12
             attack_target = closest["pos"]
     _step_weapon_areas()
 
-func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: float, arc: float, damage: float, delay: float, activation: Dictionary) -> void:
-    weapon_areas.append({
-        "id": id, "center": center, "facing": facing, "radius": radius,
-        "arc": arc, "damage": damage, "at": run_time + delay, "activation": activation
+func _queue_player_shot(id: String, heading: Vector2, damage: float, reach: float, pierce: int, primary: bool = true, delay: float = 0.0) -> void:
+    player_shots.append({
+        "id": id, "pos": player_pos, "direction": heading,
+        "speed": (750.0 if id == "no-cap" else 650.0) * reach / float(WEAPONS[id]["range"]),
+        "remaining": reach, "radius": 16.0 if id == "no-cap" else 6.0,
+        "damage": damage, "pierce": pierce, "hit": [], "activated": false,
+        "primary": primary, "at": run_time + delay
     })
+
+func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: float, arc: float, damage: float, delay: float, activation: Dictionary, options: Dictionary = {}) -> void:
+    var area: Dictionary = {
+        "id": id, "center": center, "facing": facing, "radius": radius,
+        "arc": arc, "damage": damage, "at": run_time + delay, "activation": activation,
+        "primary": true, "shape": "sector", "hit_memory": []
+    }
+    area.merge(options, true)
+    weapon_areas.append(area)
 
 func _step_weapon_areas() -> void:
     # Capture origin, direction and target at activation, as in Phaser weapons.ts.
@@ -799,24 +854,75 @@ func _step_weapon_areas() -> void:
             if mode != "playing":
                 break
             var relative: Vector2 = Vector2(enemy["pos"]) - center
-            if relative.length() > radius + float(enemy["radius"]):
+            var memory: Array = area["hit_memory"]
+            if memory.has(enemy):
+                continue
+            radius = float(area["radius"])
+            half_arc = deg_to_rad(float(area["arc"]) * 0.5)
+            if area["shape"] == "line":
+                var along := facing.dot(relative)
+                if along < -float(enemy["radius"]) or along > radius + float(enemy["radius"]) or absf(facing.cross(relative)) > 15.0 + float(enemy["radius"]):
+                    continue
+            elif relative.length() > radius + float(enemy["radius"]):
                 continue
             if absf(facing.angle_to(relative)) > half_arc:
                 continue
             if not SoloWorldRulesScript.clear_line(center, enemy["pos"]):
                 continue
             var impact: Vector2 = enemy["pos"]
-            _hit_enemy(enemy, float(area["damage"]), true)
             var activation: Dictionary = area["activation"]
-            if not bool(activation["hit"]) and mode == "playing":
+            var primary: bool = area["primary"]
+            if primary and area["id"] == "chad-hands" and not bool(activation.get("chad_counted", false)):
+                activation["chad_counted"] = true
+                chad_successful_activations += 1
+                if chad_successful_activations % 3 == 0:
+                    activation["slam"] = true
+                    var slam_areas: Array[Dictionary] = weapon_areas.duplicate()
+                    slam_areas.append(area)
+                    for second: Dictionary in slam_areas:
+                        if second["activation"] == activation and bool(second.get("second", false)):
+                            second["damage"] = float(second["damage"]) * (0.60 if bool(second.get("legendary", false)) else 0.40) / 0.22
+                            second["radius"] = (140.0 if bool(second.get("legendary", false)) else 110.0) * SoloPassiveRulesScript.area_scale(passives)
+                            second["arc"] = 360.0
+            memory.append(enemy)
+            _hit_enemy(enemy, float(area["damage"]), primary)
+            if primary and not bool(activation["hit"]) and mode == "playing":
                 activation["hit"] = true
                 _primary_activation(impact)
-            if area["id"] == "cope-shield" and not shield_awarded:
+            if primary and enemies.has(enemy):
+                if area["id"] == "touch-grass":
+                    var enhanced: bool = area.get("enhanced_grass", false)
+                    enemy["slow"] = maxf(float(enemy.get("slow", 0.0)) if float(enemy.get("slow_until", 0.0)) > run_time else 0.0, 0.25 if enhanced else 0.15)
+                    enemy["slow_until"] = run_time + (2.0 if enhanced else 1.5)
+                elif area["id"] == "personal-space" and not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+                    if float(enemy.get("weaken_until", 0.0)) <= run_time or float(enemy.get("weaken", 0.0)) <= 0.08:
+                        enemy["weaken"] = 0.08
+                        enemy["weaken_until"] = run_time + 2.0
+                elif area["id"] == "ban-hammer" and not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+                    enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
+            if primary and area["id"] == "cope-shield" and not shield_awarded:
                 shield_awarded = true
-                shield = minf(max_hp * 0.40, shield + max_hp * 0.04 * SoloPassiveRulesScript.support_scale(passives, true))
+                _grant_weapon_shield("cope-shield", max_hp * 0.04 * float(area.get("weapon_power", 1.0)), 2.0)
+                if bool(area.get("shield_legend", false)):
+                    _grant_weapon_shield("unbothered", max_hp * 0.05 * float(area.get("weapon_power", 1.0)), 3.0)
         if attack_visuals.size() >= 12:
             attack_visuals.pop_front()
-        attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if float(area["arc"]) < 360.0 else center, "life": 0.18})
+        attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if area["shape"] == "line" or float(area["arc"]) < 360.0 else center, "life": 0.18})
+
+func _grant_weapon_shield(source: String, raw_amount: float, duration: float) -> void:
+    # Weapon sources refresh themselves instead of stacking, and share the 40% cap.
+    var previous: float = float(weapon_shields.get(source, {}).get("remaining", 0.0))
+    var other := maxf(0.0, shield - previous)
+    var amount := minf(maxf(0.0, max_hp * 0.40 - other), raw_amount * SoloPassiveRulesScript.support_scale(passives, true))
+    weapon_shields[source] = {"remaining": amount, "until": run_time + duration}
+    shield = other + amount
+
+func _expire_weapon_shields() -> void:
+    for source: String in weapon_shields.keys():
+        var entry: Dictionary = weapon_shields[source]
+        if run_time >= float(entry["until"]):
+            shield = maxf(0.0, shield - float(entry["remaining"]))
+            weapon_shields.erase(source)
 
 func _step_player_shots(dt: float) -> void:
     # Phaser weapons.ts/Run.resolveShots: real travel, cover, range and hit memory.
@@ -824,6 +930,8 @@ func _step_player_shots(dt: float) -> void:
     for shot: Dictionary in player_shots.duplicate():
         if mode != "playing":
             break
+        if run_time < float(shot.get("at", 0.0)):
+            continue
         var previous: Vector2 = shot["pos"]
         var travel: float = float(shot["speed"]) * dt
         shot["pos"] = previous + Vector2(shot["direction"]) * travel
@@ -840,8 +948,9 @@ func _step_player_shots(dt: float) -> void:
                 continue
             shot["hit"].append(enemy)
             var impact: Vector2 = enemy["pos"]
-            _hit_enemy(enemy, float(shot["damage"]), true)
-            if not bool(shot["activated"]) and mode == "playing":
+            var primary: bool = shot.get("primary", true)
+            _hit_enemy(enemy, float(shot["damage"]), primary)
+            if primary and not bool(shot["activated"]) and mode == "playing":
                 shot["activated"] = true
                 _primary_activation(impact)
             if shot["hit"].size() >= int(shot["pierce"]):
@@ -1257,13 +1366,17 @@ func _draw() -> void:
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
     for area: Dictionary in weapon_areas:
-        if area["id"] == "brainrot-feed":
+        if area.get("shape", "sector") == "line":
+            draw_line(area["center"], Vector2(area["center"]) + Vector2(area["facing"]) * float(area["radius"]), Color(0.97, 0.77, 0.37, 0.65), 3.0)
+        elif area["id"] == "brainrot-feed":
             draw_arc(area["center"], float(area["radius"]), 0.0, TAU, 40, Color(0.97, 0.77, 0.37, 0.75), 3.0)
         elif area["id"] == "ban-hammer":
             var heading: float = Vector2(area["facing"]).angle()
             var half_arc: float = deg_to_rad(float(area["arc"]) * 0.5)
             draw_arc(area["center"], float(area["radius"]), heading - half_arc, heading + half_arc, 24, Color(0.97, 0.77, 0.37, 0.65), 3.0)
     for shot: Dictionary in player_shots:
+        if run_time < float(shot.get("at", 0.0)):
+            continue
         WeaponVisualsScript.draw_attack(self, {
             "id": shot["id"], "origin": Vector2(shot["pos"]) - Vector2(shot["direction"]) * 24.0,
             "target": shot["pos"], "life": 0.18

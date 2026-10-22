@@ -44,6 +44,7 @@ run_check ruin-alley --headless --path . --script res://tests/test_solo_world_ru
 run_check passive-effects --headless --path . --script res://tests/test_passive_effects.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
+run_check legendary-combat --headless --path . --script res://tests/test_legendary_combat.gd
 run_check weapon-timing --headless --path . --script res://tests/test_weapon_timing.gd
 run_check player-projectiles --headless --path . --script res://tests/test_player_projectiles.gd
 run_check mobile-touch --headless --path . --script res://tests/test_mobile_joystick.gd
