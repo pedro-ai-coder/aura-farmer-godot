@@ -71,3 +71,7 @@ Visual validation remains deferred by owner authorization; no performance or nat
 ## G1.14 — Hero traits, Flex damage and aiming
 
 PR #21 merged as `2a95956f742200ba5750af4bf4fe68863b4816f8` after hosted CI and Vercel build passed. Next iteration adds stable enemy IDs and tie-breaking, manual mouse direction via M, Sigma target-lock damage, Cool Kid movement bonus and Rampage contact/immunity/boss cap, Alpha's direct-hit charge/taunt and exactly three fixed-step slams, source-aware direct/contact/hazard mitigation, level-scaled Flex/passive damage, and Beta Bot's frontal armor with bounded turning. Visual acceptance remains deferred.
+
+## G1.15 — Menu and profile-transfer logic
+
+PR #22 passed hosted CI and Vercel build and was integrated. Next iteration adds explicit card/replacement confirmation, cancellation without reroll, exit confirmation that returns to pause on Escape, suppressed modal movement, build inspection, fresh result retry, persistent sound/reduced-motion settings and copy/paste v2/v1 save transfer. Import retains the previous Godot profile snapshot and known unlocks; browser-origin isolation is respected. This implements menu behavior using existing controls; visual polish and responsive/device review remain deferred.

@@ -58,6 +58,7 @@ func _verify() -> void:
     _expect((game.get("selection") as Array).size() == 3, "Level-up must offer three choices")
     var pending := int(game.get("pending_choices"))
     game.call("pick_upgrade", 0)
+    game.call("_confirm_selection")
     _expect(int(game.get("pending_choices")) == pending - 1, "Upgrade selection must consume one offer")
 
     # Flex is manual, consumes 100 Aura, and uses each hero's duration.

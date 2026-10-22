@@ -96,9 +96,14 @@ static func record(profile: Dictionary, value: Dictionary, mode: String) -> Dict
     # Preserve historical unlocks; new unlock thresholds remain proposed in GDD 7.1.
     return next
 
+static func parse_json(raw: String) -> Variant:
+    var parser := JSON.new()
+    if raw.is_empty() or parser.parse(raw) != OK: return null
+    return parser.data
+
 static func _file(path: String) -> Variant:
     if not FileAccess.file_exists(path): return null
-    return JSON.parse_string(FileAccess.get_file_as_string(path))
+    return parse_json(FileAccess.get_file_as_string(path))
 
 static func _web_value(key: String) -> String:
     if not OS.has_feature("web"): return ""
@@ -107,9 +112,9 @@ static func _web_value(key: String) -> String:
 
 static func load_profile() -> Dictionary:
     var web_v2 := _web_value(SAVE_KEY)
-    var current: Variant = JSON.parse_string(web_v2) if not web_v2.is_empty() else _file(PATH)
+    var current: Variant = parse_json(web_v2) if not web_v2.is_empty() else _file(PATH)
     var old := _web_value(LEGACY_KEY)
-    return read_data(current, JSON.parse_string(old) if not old.is_empty() else null, _file(SLICE_PATH))
+    return read_data(current, parse_json(old) if not old.is_empty() else null, _file(SLICE_PATH))
 
 static func save_profile(profile: Dictionary, native_path: String = PATH) -> bool:
     var raw := JSON.stringify(profile)

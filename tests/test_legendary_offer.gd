@@ -48,6 +48,7 @@ func _verify() -> void:
         for i in range(6):
             _expect(same[i]["id"] == options[i], "No reroll on deferral")
         game.call("pick_upgrade", 0)
+        game.call("_confirm_selection")
         _expect(game.get("legendary_spent"), "Legendary selection consumes entitlement")
         _expect(game.get("mode") == "playing", "Legendary selection resumes play")
         _expect((game.get("passives") as Array).size() == 1, "Selected legendary occupies one passive slot")
