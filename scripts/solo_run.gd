@@ -1,5 +1,7 @@
 extends Node2D
 
+const RecoveryRulesScript = preload("res://scripts/recovery_rules.gd")
+const PhaserRngScript = preload("res://scripts/phaser_rng.gd")
 const CameraFramingScript = preload("res://scripts/camera_framing.gd")
 const ProfileStoreScript = preload("res://scripts/profile_store.gd")
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
@@ -106,7 +108,7 @@ var aura_hits_in_bucket := 0
 var primary_aura_times: Array[float] = []
 var max_level_heal_at := 0.0
 var sigma_target: Dictionary = {}
-var rng := RandomNumberGenerator.new()
+var rng = PhaserRngScript.new()
 var hero_index := 0
 var profile: Dictionary = ProfileStoreScript.defaults()
 var run_id := ""
@@ -148,6 +150,11 @@ var export_button: Button
 var build_details: Label
 var profile_text: TextEdit
 var blocked_movement: Dictionary = {}
+var safe_spot_charge := 0.0
+var safe_spot_ready_at := 0.0
+var safe_spot_uses := 0
+var recovery_counts: Dictionary = {}
+var pickup_feedback: Array[Dictionary] = []
 
 func _ready() -> void:
     rng.seed = 451
@@ -430,6 +437,11 @@ func start_run(index: int) -> void:
     hostile_shots.clear()
     hazard_zones.clear()
     pickups.clear()
+    safe_spot_charge = 0.0
+    safe_spot_ready_at = 0.0
+    safe_spot_uses = 0
+    recovery_counts = {"snacks_spawned":0, "magnets_spawned":0, "snacks_collected":0, "magnets_collected":0}
+    pickup_feedback.clear()
     passive_timers.clear()
     primary_hits = 0
     directional_hits = 0
@@ -477,6 +489,7 @@ func _advance(dt: float) -> void:
     if mode != "playing":
         return
     run_time += dt
+    _tick_recovery(dt)
     _expire_weapon_shields()
     hurt_timer = maxf(0.0, hurt_timer - dt)
     flex_lock = maxf(0.0, flex_lock - dt)
@@ -1309,24 +1322,58 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
                     if boss["kind"] == "boss": boss["exposed_until"] = run_time + 3.0
             return
         pickups.append({"pos": enemy["pos"], "xp": float(enemy["xp"]), "kind": "aura"})
-        # Appendix C P1/P2 are proposals, not approved drops. Only XP/Aura spawns.
+        _spawn_special_drop(enemy)
         if SoloEnemyRulesScript.is_event(str(enemy["kind"])) and flex_time <= 0.0:
             aura = minf(100.0, aura + 10.0)
 
+func _spawn_special_drop(enemy: Dictionary) -> void:
+    var kind: String = RecoveryRulesScript.special_for(rng.randf(), bool(enemy.get("elite", false)))
+    if kind.is_empty(): return
+    var existing: Array[Dictionary] = []
+    for drop: Dictionary in pickups:
+        if drop["kind"] == kind: existing.append(drop)
+    if existing.size() >= RecoveryRulesScript.SPECIAL_LIMIT: pickups.erase(existing[0])
+    pickups.append({"pos":Vector2(enemy["pos"]) + Vector2(18,-12), "xp":0.0, "kind":kind})
+    var key := "snacks_spawned" if kind == "snack" else "magnets_spawned"
+    recovery_counts[key] = int(recovery_counts.get(key,0)) + 1
+
+func _pickup_cue(kind: String, point: Vector2, text: String) -> void:
+    if pickup_feedback.size() >= 24: pickup_feedback.pop_front()
+    pickup_feedback.append({"kind":kind, "pos":point, "text":text, "until":run_time + 0.9})
+
+func _tick_recovery(dt: float) -> void:
+    for feedback: Dictionary in pickup_feedback.duplicate():
+        if run_time >= float(feedback["until"]): pickup_feedback.erase(feedback)
+    if player_pos.distance_to(RecoveryRulesScript.SAFE_SPOT) <= RecoveryRulesScript.SAFE_RADIUS and run_time >= safe_spot_ready_at and hp < max_hp:
+        safe_spot_charge = minf(2.0, safe_spot_charge + dt)
+        if safe_spot_charge >= 2.0 - 0.00000001:
+            _heal_player(max_hp * 0.25 * SoloPassiveRulesScript.support_scale(passives))
+            safe_spot_uses += 1
+            safe_spot_ready_at = run_time + 90.0
+            safe_spot_charge = 0.0
+            _pickup_cue("snack", RecoveryRulesScript.SAFE_SPOT, "SAFE SPOT · HP RESTORED")
+    else: safe_spot_charge = 0.0
+
 func _collect_drops() -> void:
     for drop: Dictionary in pickups.duplicate():
-        if player_pos.distance_to(drop["pos"]) > 45.0:
-            continue
+        # A previous magnet can consume crystals still present in this snapshot.
+        if not pickups.has(drop) or player_pos.distance_to(drop["pos"]) >= RecoveryRulesScript.pickup_radius(drop["kind"]): continue
         pickups.erase(drop)
         if drop["kind"] == "snack":
-            _heal_player(0.15 * max_hp)
+            recovery_counts["snacks_collected"] = int(recovery_counts.get("snacks_collected",0)) + 1
+            _heal_player(0.18 * max_hp * SoloPassiveRulesScript.support_scale(passives))
+            _pickup_cue("snack", drop["pos"], "STREET SNACK · HP RESTORED")
         elif drop["kind"] == "magnet":
+            recovery_counts["magnets_collected"] = int(recovery_counts.get("magnets_collected",0)) + 1
+            var collected := 0.0
             for item: Dictionary in pickups.duplicate():
                 if item["kind"] == "aura":
-                    _gain_xp(float(item["xp"]))
+                    collected += float(item["xp"])
                     pickups.erase(item)
-        else:
-            _gain_xp(float(drop["xp"]))
+            _gain_xp(collected)
+            _pickup_cue("magnet", drop["pos"], "AURA MAGNET · ALL XP COLLECTED")
+        else: _gain_xp(float(drop["xp"]))
+        if mode != "playing": break
 
 func _heal_player(amount: float) -> void:
     var effective := minf(maxf(0.0, amount), maxf(0.0, max_hp - hp))
@@ -1367,7 +1414,7 @@ func _generate_legendary_offers() -> void:
         if SoloOfferRulesScript.PASSIVE_DATA[id]["rarity"] == "legendary":
             legendary_ids.append(id)
     for i in range(legendary_ids.size() - 1, 0, -1):
-        var swap_index := rng.randi_range(0, i)
+        var swap_index: int = rng.randi_range(0, i)
         var saved: String = legendary_ids[i]
         legendary_ids[i] = legendary_ids[swap_index]
         legendary_ids[swap_index] = saved
@@ -1794,6 +1841,7 @@ func _draw() -> void:
         for gy in range(0, 1087, 128):
             draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    _draw_recovery()
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
     for zone: Dictionary in hazard_zones:
@@ -1885,3 +1933,23 @@ func _draw_hero_actor() -> void:
     # Hero art uses a foot pivot: keep the health bar above the head.
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
+
+func _draw_recovery() -> void:
+    var point: Vector2 = RecoveryRulesScript.SAFE_SPOT
+    var cooldown := maxf(0.0, safe_spot_ready_at - run_time)
+    var tint := Color("5cf0b4") if cooldown <= 0.0 else Color("8394aa")
+    draw_circle(point, 68.0, Color(tint, 0.19))
+    draw_arc(point, 68.0, 0.0, TAU, 48, tint, 4.0)
+    draw_rect(Rect2(point-Vector2(43,26),Vector2(86,52)),Color("24364a"))
+    draw_rect(Rect2(point-Vector2(43,26),Vector2(86,52)),tint,false,3.0)
+    draw_rect(Rect2(point-Vector2(5,16),Vector2(10,32)),tint)
+    draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
+    var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
+    if progress > 0.0: draw_arc(point,52.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
+    draw_string(ThemeDB.fallback_font,point+Vector2(-41,90),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
+    for feedback: Dictionary in pickup_feedback:
+        var age := 0.9 - (float(feedback["until"]) - run_time)
+        var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))
+        var at: Vector2 = Vector2(feedback["pos"]) + offset
+        draw_string_outline(ThemeDB.fallback_font,at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,5,Color("253449"))
+        draw_string(ThemeDB.fallback_font,at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))

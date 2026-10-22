@@ -42,7 +42,7 @@ static func spawn_pool(wave: int, time: float) -> Array[String]:
         weighted = eligible
     return weighted
 
-static func spawn_kind(wave: int, time: float, rng: RandomNumberGenerator) -> String:
+static func spawn_kind(wave: int, time: float, rng) -> String:
     var pool := spawn_pool(wave, time)
     if pool.is_empty():
         return "npc"

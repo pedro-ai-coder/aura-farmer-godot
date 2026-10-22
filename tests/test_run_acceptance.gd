@@ -55,7 +55,7 @@ func _verify() -> void:
     game.set("run_time", 0.8)
     _expect(not game.call("_nearest_target").is_empty(), "Portal becomes targetable at its exact deadline")
     game.call("_hit_enemy", elite, 1000.0)
-    _expect(game.get("pickups").size() == 1 and game.get("pickups")[0]["xp"] == 60.0, "Elite grants exactly its approved XP without proposal-only utility drops")
+    _expect(game.get("pickups").size() == 1 and game.get("pickups")[0]["xp"] == 60.0, "Elite retains its approved XP and deterministic first kill has no special drop")
     game.call("start_run", 0)
     game.set("player_pos", Vector2(700,550))
     game.set("hp", 1000000.0)

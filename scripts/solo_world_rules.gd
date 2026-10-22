@@ -56,7 +56,7 @@ static func clear_line(start: Vector2, ending: Vector2) -> bool:
             return false
     return true
 
-static func spawn_point(player: Vector2, rng: RandomNumberGenerator):
+static func spawn_point(player: Vector2, rng):
     # Identical sample rectangle, 80 attempts and 24px clearance as Phaser.
     # RandomNumberGenerator is an input: geometry itself never consumes RNG.
     for attempt in range(80):

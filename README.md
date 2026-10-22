@@ -19,7 +19,7 @@ Select a hero with buttons or 1–3. Move with WASD/arrows or the floating left-
 
 ## Saves and platform builds
 
-Web uses `aura-farmer:profile:v2` in same-origin localStorage. Native uses an atomic `user://profile_v2.json`; old v1/slice data remains untouched. Main-menu **SAVE DATA / IMPORT SAVE** transfers JSON across browser origins, preserving historical IDs and a Godot backup. No cloud account or cross-save backend is added. Proposed new unlock thresholds and proposal-only utility drops are not activated.
+Web uses `aura-farmer:profile:v2` in same-origin localStorage. Native uses an atomic `user://profile_v2.json`; old v1/slice data remains untouched. Main-menu **SAVE DATA / IMPORT SAVE** transfers JSON across browser origins, preserving historical IDs and a Godot backup. No cloud account or cross-save backend is added. Proposed new unlock thresholds remain disabled. Approved Street Snack, Aura Magnet and Safe Spot follow canonical Appendix C.2 and the Phaser recovery contract.
 
 Vercel uses `scripts/build_web.sh` with the official verified engine/templates. Android/iOS presets are preparation only; SDKs, signing identities and device verification remain local prerequisites. No native release is authorized or published.
 

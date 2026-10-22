@@ -18,6 +18,8 @@ Touch release/cancellation, focus loss, pause and choice modals clear the owned 
 
 ## Evidence and limits
 
+Recovery now includes approved seeded Snack/Magnet drops and the timed Safe Spot; all clocks use active simulation time.
+
 The regression suite exercises all three starter heroes, nine weapons, approved passive/offer rules, independent events, boss/berserk/stagger, save migration, menu confirmation and controlled victory/restart timelines. The controlled timeline jumps between boundary scenarios and uses an explicit final hit; it is not an unassisted human full run or a balance test.
 
 The continuous seeded integration fixture runs all three starters with the real clock, movement, spawns, drops, legal choices and Flexes. It uses a protected-player subclass and 0.25-second frames through the production fixed substeps, then explicitly defeats a surviving boss if needed. This isolates progression; it does not establish survival balance or rendering behavior.
