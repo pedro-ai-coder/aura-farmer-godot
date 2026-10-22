@@ -137,6 +137,16 @@ var restart_button: Button
 var legendary_button: Button
 var defer_button: Button
 var status_timer := 0.0
+var selected_card_index := -1
+var confirm_button: Button
+var retry_button: Button
+var sound_button: Button
+var motion_button: Button
+var import_button: Button
+var export_button: Button
+var build_details: Label
+var profile_text: TextEdit
+var blocked_movement: Dictionary = {}
 
 func _ready() -> void:
     rng.seed = 451
@@ -206,7 +216,25 @@ func _ready() -> void:
     pause_button = _make_button("PAUSE [P]", Vector2(1083, 20), Vector2(168, 46))
     pause_button.pressed.connect(_toggle_pause)
     restart_button = _make_button("RETURN TO MENU", Vector2(465, 593), Vector2(350, 58))
-    restart_button.pressed.connect(_return_to_menu)
+    restart_button.pressed.connect(_request_return_to_menu)
+    confirm_button = _make_button("CONFIRM", Vector2(500, 614), Vector2(280, 64))
+    confirm_button.pressed.connect(_confirm_selection)
+    retry_button = _make_button("PLAY AGAIN", Vector2(465, 520), Vector2(350, 58))
+    retry_button.pressed.connect(func(): start_run(hero_index))
+    sound_button = _make_button("", Vector2(25, 110), Vector2(220, 46))
+    sound_button.pressed.connect(_toggle_sound)
+    motion_button = _make_button("", Vector2(25, 164), Vector2(220, 64))
+    motion_button.pressed.connect(_toggle_motion)
+    import_button = _make_button("IMPORT SAVE", Vector2(25, 236), Vector2(220, 46))
+    import_button.pressed.connect(_open_profile_import)
+    export_button = _make_button("SAVE DATA", Vector2(25, 290), Vector2(220, 46))
+    export_button.pressed.connect(_open_profile_export)
+    build_details = _make_label(Vector2(285, 285), 18)
+    profile_text = TextEdit.new()
+    profile_text.position = Vector2(260, 265)
+    profile_text.size = Vector2(760, 300)
+    layer.add_child(profile_text)
+    _apply_preferences()
     _show_ui()
     _update_text()
 
@@ -245,14 +273,40 @@ func _style_button(button: Button) -> void:
     button.add_theme_font_size_override("font_size", 19)
 
 func _show_ui() -> void:
+    var card_mode := mode == "choice" or mode == "replace" or mode == "legendary"
+    confirm_button.visible = card_mode or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
+    confirm_button.disabled = card_mode and selected_card_index < 0
+    confirm_button.text = "LEAVE RUN" if mode == "confirm_exit" else ("IMPORT" if mode == "profile_import" else ("CLOSE" if mode == "profile_export" else "CONFIRM"))
+    confirm_button.position = Vector2(790, 614) if mode == "legendary" else Vector2(500, 614)
+    defer_button.position = Vector2(395, 614)
+    retry_button.visible = mode == "won" or mode == "lost"
+    sound_button.visible = mode == "menu" or mode == "paused"
+    motion_button.visible = sound_button.visible
+    sound_button.text = "SOUND: ON" if profile["settings"]["sound"] else "SOUND: OFF"
+    motion_button.text = "REDUCED MOTION: ON" if profile["settings"]["reducedMotion"] else "REDUCED MOTION: OFF"
+    import_button.visible = mode == "menu"
+    export_button.visible = mode == "menu"
+    profile_text.visible = mode == "profile_import" or mode == "profile_export"
+    profile_text.editable = mode == "profile_import"
+    build_details.visible = mode == "paused"
+    var lines := "WEAPONS\n"
+    for item: Dictionary in weapons: lines += "%s  %s LV %d\n" % [WEAPONS[item["id"]]["name"], str(item["rarity"]).to_upper(), int(item["level"])]
+    lines += "\nPASSIVES\n"
+    for item: Dictionary in passives: lines += "%s  LV %d\n" % [SoloOfferRulesScript.PASSIVE_DATA[item["id"]]["name"], int(item["level"])]
+    build_details.text = lines
     hud_top.visible = mode != "menu"
     hud_bottom.visible = mode == "playing" or mode == "paused"
-    modal_dim.visible = mode == "choice" or mode == "replace" or mode == "legendary" or mode == "paused" or mode == "lost" or mode == "won"
+    modal_dim.visible = mode != "menu" and mode != "playing"
     for i in range(3):
         hero_portraits[i].visible = mode == "menu"
         menu_buttons[i].visible = mode == "menu"
         menu_buttons[i].text = "%d   %s   ·   %s" % [i + 1, HEROES[i]["name"], HEROES[i]["flex"]]
     for i in range(offer_buttons.size()):
+        _style_button(offer_buttons[i])
+        if card_mode and i == selected_card_index:
+            var selected_style: StyleBoxFlat = offer_buttons[i].get_theme_stylebox("normal").duplicate()
+            selected_style.bg_color = Color(0.30, 0.39, 0.20, 1.0)
+            offer_buttons[i].add_theme_stylebox_override("normal", selected_style)
         offer_buttons[i].visible = (mode == "choice" and i < selection.size()) or (mode == "replace" and i < replace_options.size()) or (mode == "legendary" and i < legendary_offers.size())
         if mode == "legendary":
             offer_buttons[i].position = Vector2(72.0 + 582.0 * (i % 2), 254.0 + 92.0 * int(i / 2))
@@ -271,7 +325,9 @@ func _show_ui() -> void:
     flex_button.visible = mode == "playing"
     pause_button.visible = mode == "playing" or mode == "paused"
     pause_button.text = "RESUME [P]" if mode == "paused" else "PAUSE [P]"
-    restart_button.visible = mode == "lost" or mode == "won" or mode == "paused"
+    restart_button.visible = mode == "lost" or mode == "won" or mode == "paused" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
+    restart_button.text = "CANCEL" if mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else "RETURN TO MENU"
+    restart_button.position = Vector2(160, 614) if mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(465, 593)
 
 func _update_text() -> void:
     if mode == "menu":
@@ -291,7 +347,13 @@ func _update_text() -> void:
     var flex_label = "READY" if aura >= 100.0 and flex_lock <= 0.0 else "%.0f / 100" % aura
     metrics.text = "HP %.0f/%.0f   Shield %.0f   LV %d   XP %.0f/%.0f   Aura %s   Kills %d   Weapons %d/3   Passives %d/5" % [hp, max_hp, shield, level, xp, float(30 + 8 * level + level * level), flex_label, kills, weapons.size(), passives.size()]
     flex_button.disabled = aura < 100.0 or flex_lock > 0.0
-    if mode == "choice":
+    if mode == "confirm_exit":
+        notice.text = "LEAVE THIS RUN? PROGRESS IS NOT RECORDED"
+    elif mode == "profile_import":
+        notice.text = "PASTE A PHASER V2 OR V1 PROFILE, THEN CONFIRM"
+    elif mode == "profile_export":
+        notice.text = "COPY YOUR SAVE DATA"
+    elif mode == "choice":
         notice.text = "LEVEL %d — CHOOSE AN UPGRADE" % level
     elif mode == "legendary":
         notice.text = "ONE LEGENDARY PER RUN · CHOOSE OR DEFER"
@@ -312,6 +374,7 @@ func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
         return
     hero_index = index
+    selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
     run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0}
     profile["selected"] = HEROES[index]["id"]
@@ -390,7 +453,7 @@ func _process(delta: float) -> void:
         effect["life"] = float(effect["life"]) - delta
         if float(effect["life"]) <= 0.0:
             attack_visuals.erase(effect)
-    camera.position = camera.position.lerp(player_pos, minf(1.0, delta * 8.0))
+    camera.position = player_pos if bool(profile["settings"]["reducedMotion"]) else camera.position.lerp(player_pos, minf(1.0, delta * 8.0))
     status_timer -= delta
     if status_timer <= 0.0:
         status_timer = 0.10
@@ -553,9 +616,16 @@ func _step_flex_contacts() -> void:
         if amount > 0.0: _hit_enemy(enemy, amount)
 
 func _move_player(dt: float) -> void:
-    var axis = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-    var wasd := Vector2(float(Input.is_key_pressed(KEY_D)) - float(Input.is_key_pressed(KEY_A)), float(Input.is_key_pressed(KEY_S)) - float(Input.is_key_pressed(KEY_W)))
-    var direction: Vector2 = (axis + wasd + touch_direction).limit_length(1.0)
+    for key in blocked_movement.keys():
+        if not Input.is_key_pressed(key): blocked_movement.erase(key)
+    var direction := Vector2.ZERO
+    for key in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]:
+        if not Input.is_key_pressed(key) or blocked_movement.has(key): continue
+        if key == KEY_W or key == KEY_UP: direction.y -= 1.0
+        if key == KEY_S or key == KEY_DOWN: direction.y += 1.0
+        if key == KEY_A or key == KEY_LEFT: direction.x -= 1.0
+        if key == KEY_D or key == KEY_RIGHT: direction.x += 1.0
+    direction = (direction + touch_direction).limit_length(1.0)
     if direction.length_squared() > 0.01:
         movement_direction = direction
     var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
@@ -1289,6 +1359,7 @@ func _open_legendary() -> void:
     else:
         legendary_first_shown = true
     mode = "legendary"
+    selected_card_index = -1
     _clear_touch()
     _show_ui()
 
@@ -1314,6 +1385,7 @@ func _open_choice() -> void:
     selection.clear()
     selection.append_array(SoloOfferRulesScript.choices(str(hero["role"]), wave, weapons, passives, WEAPONS, rng))
     mode = "choice"
+    selected_card_index = -1
     _clear_touch()
     _show_ui()
 
@@ -1325,6 +1397,7 @@ func _replace_target(card: Dictionary) -> void:
         var name: String = str(WEAPONS[item["id"]]["name"]) if card["type"] == "weapon" else str(SoloOfferRulesScript.PASSIVE_DATA[item["id"]]["name"])
         replace_options.append({"id":item["id"], "label":name + " / " + str(item["rarity"]).to_upper() + " LV " + str(item["level"])})
     mode = "replace"
+    selected_card_index = -1
     _clear_touch()
     _show_ui()
 
@@ -1402,17 +1475,90 @@ func _apply_card(card: Dictionary, replace_id: String = "") -> void:
     if pending_choices > 0: _open_choice()
 
 func pick_upgrade(index: int) -> void:
-    if mode == "replace":
-        if index >= 0 and index < replace_options.size() and not replace_card.is_empty():
-            _apply_card(replace_card, str(replace_options[index]["id"]))
+    var count := selection.size() if mode == "choice" else (legendary_offers.size() if mode == "legendary" else (replace_options.size() if mode == "replace" else 0))
+    if index < 0 or index >= count: return
+    selected_card_index = index
+    _show_ui()
+
+func _confirm_selection() -> void:
+    if mode == "confirm_exit":
+        _return_to_menu()
         return
-    if mode == "legendary":
-        if index >= 0 and index < legendary_offers.size():
-            _apply_card(legendary_offers[index])
+    if mode == "profile_export":
+        _return_to_menu()
         return
-    if mode != "choice" or index < 0 or index >= selection.size():
+    if mode == "profile_import":
+        _import_profile_text(profile_text.text)
         return
-    _apply_card(selection[index])
+    var index := selected_card_index
+    selected_card_index = -1
+    if mode == "replace" and index >= 0 and index < replace_options.size() and not replace_card.is_empty():
+        _apply_card(replace_card, str(replace_options[index]["id"]))
+    elif mode == "legendary" and index >= 0 and index < legendary_offers.size():
+        _apply_card(legendary_offers[index])
+    elif mode == "choice" and index >= 0 and index < selection.size():
+        _apply_card(selection[index])
+
+func _request_return_to_menu() -> void:
+    if mode == "profile_import" or mode == "profile_export":
+        _return_to_menu()
+    elif mode == "confirm_exit":
+        mode = "paused"
+    elif mode == "playing" or mode == "paused":
+        mode = "confirm_exit"
+        _clear_touch()
+    else:
+        _return_to_menu()
+    _show_ui()
+    _update_text()
+
+func _apply_preferences() -> void:
+    AudioServer.set_bus_mute(0, not bool(profile["settings"]["sound"]))
+
+func _toggle_sound() -> void:
+    profile["settings"]["sound"] = not bool(profile["settings"]["sound"])
+    _apply_preferences()
+    _save_profile()
+    _show_ui()
+
+func _toggle_motion() -> void:
+    profile["settings"]["reducedMotion"] = not bool(profile["settings"]["reducedMotion"])
+    _save_profile()
+    _show_ui()
+
+func _open_profile_import() -> void:
+    if mode != "menu": return
+    mode = "profile_import"
+    profile_text.text = ""
+    _show_ui()
+    _update_text()
+
+func _open_profile_export() -> void:
+    if mode != "menu": return
+    mode = "profile_export"
+    profile_text.text = JSON.stringify(profile, "  ")
+    _show_ui()
+    _update_text()
+
+func _import_profile_text(raw: String) -> bool:
+    if mode != "profile_import" or raw.length() > 1048576: return false
+    var value: Variant = ProfileStoreScript.parse_json(raw)
+    if not value is Dictionary or (value.get("version") != 2 and value.get("schemaVersion") != 1):
+        notice.text = "INVALID SAVE DATA — PROFILE UNCHANGED"
+        return false
+    var previous := profile.duplicate(true)
+    var imported: Dictionary = ProfileStoreScript.read_data(value if value.get("version") == 2 else null, value if value.get("schemaVersion") == 1 else null)
+    for id in previous["unlocked"]:
+        if not imported["unlocked"].has(id): imported["unlocked"].append(id)
+    var legacy: Dictionary = imported.get("legacy", {}) if imported.get("legacy", {}) is Dictionary else {"phaserSnapshot": imported["legacy"]}
+    if not legacy.has("godotBeforeImport"):
+        legacy["godotBeforeImport"] = previous
+    imported["legacy"] = legacy
+    profile = imported
+    _save_profile()
+    _apply_preferences()
+    _return_to_menu()
+    return true
 
 func _damage_nearby(radius: float, amount: float) -> void:
     for e: Dictionary in enemies.duplicate():
@@ -1490,7 +1636,20 @@ func _unhandled_key_input(event: InputEvent) -> void:
     if event.keycode == KEY_M and mode == "playing":
         manual_aim = not manual_aim
         aim_point = get_global_mouse_position()
-    elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE:
+    elif event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
+        _confirm_selection()
+    elif event.keycode == KEY_ESCAPE and mode == "confirm_exit":
+        mode = "paused"
+        _show_ui()
+        _update_text()
+    elif event.keycode == KEY_ESCAPE and mode == "replace":
+        mode = "legendary" if replace_card.get("rarity") == "legendary" else "choice"
+        replace_card.clear()
+        replace_options.clear()
+        selected_card_index = -1
+        _show_ui()
+        _update_text()
+    elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE or event.keycode == KEY_B:
         _toggle_pause()
     if event.keycode == KEY_SPACE or event.keycode == KEY_E:
         _use_flex()
@@ -1502,6 +1661,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
         pick_upgrade(event.keycode - KEY_1)
 
 func _clear_touch() -> void:
+    for key in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]:
+        if Input.is_key_pressed(key): blocked_movement[key] = true
     touch_active = false
     touch_index = -1
     touch_origin = Vector2.ZERO
@@ -1514,6 +1675,9 @@ func _notification(what: int) -> void:
         _clear_touch()
 
 func _input(event: InputEvent) -> void:
+    if event is InputEventKey and [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT].has(event.keycode):
+        if not event.pressed: blocked_movement.erase(event.keycode)
+        elif mode != "playing": blocked_movement[event.keycode] = true
     if event is InputEventMouseMotion and mode == "playing":
         aim_point = get_global_mouse_position()
     if event is InputEventScreenTouch:
