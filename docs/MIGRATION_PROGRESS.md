@@ -76,3 +76,9 @@ PR #22 passed hosted CI and Vercel build and was integrated. Next iteration adds
 PR #23 passed hosted CI and Vercel build and was integrated. Next iteration adds 0.8-second spawn portals, non-targetable/non-damageable arrival states, the two-elite solo cap and approved elite multipliers/XP with one shield modifier, stable-ID hit memory, touch-accessible replacement cancellation, and best-effort Web fullscreen/orientation handling. Proposal-only Snack/Magnet generation is disabled to honor canonical Appendix C; no approved loot values are expanded.
 
 Controlled three-hero timeline tests cover all wave rewards, real modal confirmations, boss arrival, recoverable berserk, terminal victory and persistence. A synthetic 300-enemy/150-initial-projectile headless fixture prints CPU time but makes no rendered FPS/device claim. Android/iOS preset preparation and explicit missing build/device prerequisites are documented in NATIVE_READINESS.md. Visual, normal-play balance, audio and native/device acceptance remain outstanding.
+
+## G1.17 — Committed ranged aim and damage sources
+
+PR #24 was integrated as `727a9ee6f1cd45c808849144e9ed3e7abf9e3f4b` after local and hosted Godot validation plus Vercel build success. Follow-up inspection found that retreating ranged enemies could aim along their movement vector and hostile projectiles used endpoint-only cover collision. The corrections lock aim toward the player, preserve that committed direction, and test the full travel segment against the shared cover geometry. Initial enemy facing points toward the player; Ratio Ram uses the canonical 0.9-second warning. Doomscroller and death-cloud hazards retain their source for damage modifiers after their caster is removed.
+
+The complete local suite passes, including explicit retreat/aim lock, cover tunneling, charge deadline and persistent-source regressions. No new catalog entries, balance values outside the canonical GDD or visual acceptance are introduced.
