@@ -560,6 +560,90 @@ Preserve all existing stable character, weapon and passive identifiers. The lega
 
 Source repository: `pedro-ai-coder/aura-farmer`; new repository: `pedro-ai-coder/aura-farmer-godot`. Preserve original assets/metadata, saves and IDs; make migration changes in isolated PRs; check all source branches/PRs before selecting source files (notably the Ruin Alley expansion work in PR #102). Keep the source project intact. Code, technical documents, PR descriptions and downstream external deliverables should be written in English. The GDD remains the sole authority for approved gameplay and platform requirements; migration inventory documents are **evidence**, not alternative specifications. All merges and release actions remain subject to the project's current authorized workflow and required test gates.
 
+## 24. Approved roguelite design direction — 22 October 2026 (concept approval)
+
+**Owner decision and scope.** The creator approved exploring a distinctive blend of Brotato-style meaningful build choices, Swarm-style optional arena objectives, Vampire Survivors-style memorable synergies, and original Aura Farmer Cartoon Arcade/brainrot identity. This is a **design-direction and scoped-prototype approval**, not blanket authorization to ship mechanics with unspecified numeric rules. §23 platform equality and the established GDD mechanics remain the production source of truth. The Phaser reference must stay unchanged.
+
+### 24.1 Experience pillars
+
+1. **Meaningful build choices:** three weapons and five passives remain the whole equipment capacity; every upgrade must show what it changes and why it synergizes. No second shop or currency is implied.
+2. **An arena with opportunities:** movement serves route choice and risk/reward in addition to avoiding damage. Optional objectives must coexist with existing waves, the Safe Spot, collision covers, fixed event bosses and Big Hater.
+3. **Signature, earned power spikes:** the single Aura/Flex, one legendary choice and approved rarity system remain the main peaks. Conditional combinations must not become compulsory or bypass these caps.
+4. **Fast readable action:** attack danger, pickups, enemy priorities, recovery windows and rewards must remain clear on mobile and under high enemy density.
+5. **Replayability without permanent combat advantage:** discoverable combinations, character identities, difficulty modifiers and cosmetic/account achievements can reward repeated runs, but account strength may not invalidate the first-run challenge or future PvP fairness.
+
+### 24.2 Concept-approved prototype tracks
+
+| Track | Prototype concept and purpose | Explicit production boundary |
+|---|---|---|
+| P4 — Street crates | Place a limited number of destructible, visually readable reward objects at authored, walkable-map-legal positions. Reward risk-taking with *already approved* XP, Street Snack or Aura Magnet; prototype destruction and loot telemetry. | Never turn the two existing static collision covers into destructibles. No new drop rates, wave resources, extra enemy spawns or unapproved artwork in the normal build. |
+| P6 — Trend Challenges | Try **up to two optional short objectives per run** for an initial experiment: defend an area, defeat a marked roaming enemy or survive a timed danger zone. Show a clear start/finish/reward and allow players to ignore them. | No mandatory progression gates, penalty for ignoring, secondary mission currency, random PvP rewards, time freezes or displacement of authored boss events. Placement, 12–20 s duration ideas, reward values and eligibility require tuning. |
+| P7 — Meme Combos | Prototype **three named weapon + passive pairings** for build variety: No Cap + No Cap Streak (directional mastery), Keyboard Warrior + Let Him Cook (momentum), and Cope Shield + Big Chad Energy (defensive timing). First implement card-preview/synergy highlighting of existing approved effects. | Do not add a fourth weapon, sixth passive, a second legendary, a new tier or an undocumented proc. Any additional damage, transformations or triggers are experiments pending explicit numeric approval. |
+| Upgrade choice agency | Make existing comparisons, rarity upgrades and synergies immediately legible on cards and in a build panel. Trial **one optional reroll per run** in an isolated branch if comparison alone is insufficient. | Rerolls are **not** approved for normal offers yet; no shop, reroll economy, monetization or RNG changes in production without a GDD decision. |
+| P5 — Viral Burst | Experiment with a rare, high-impact pickup to create a memorable common-enemy crowd-clearing moment and clear VFX/audio cue. | Never delete a boss or elite, grant extra XP for artificially removed enemies, bypass the Flex/legendary resource rules or exceed performance budgets. Spawn/strength/caps need a separate contract. |
+| Boss game feel | Upgrade the *existing* Big Hater, event boss, telegraph, stagger and phase feedback: clearer windups, reactive hit confirmations, better audiovisual contrast and camera-safe boss information. | Approved numeric attacks, arena geometry and boss phases remain unchanged unless explicitly revised. Visual-only polish may proceed using approved assets. |
+| Aura Archive | Later milestone: store discoverable combos, defeated foes, hero-specific feats, per-run records and cosmetic unlock milestones using versioned local profile data. | No default extra combat stats, cross-device account system, new purchasable power, compulsory grind or save incompatibility. Specific reward/content catalog awaits approval. |
+| Hater Levels | Later milestone after a validated first victory: opt-in difficulty modifiers emphasizing new tactical constraints or more demanding enemy composition, with cosmetic/achievement rewards. | Do not silently scale baseline Normal difficulty or invent new PvP advantages. Modifiers, progression unlocks and rewards require individual balance approval. |
+
+**P8 map-exclusive events:** still *not* concept-approved by this decision. Scope remains Ruin Alley and the three-hero solo slice until later content approvals. All original additional-map/character goals retain their separate roadmap status.
+
+### 24.3 Development and review gates
+
+- Stage A — Stabilize baseline Phaser parity, polished Cartoon Arcade UI, three starter Flexes, recoveries P1–P3, ordinary-health full-run balance and actual Web/mobile/native gates. The new tracks must not delay this acceptance.
+- Stage B — Implement *feature-flagged or separate-branch* P4 and P6 experiments, with small predetermined map content, seeded outcomes, truthful loot and no new art presented as approved. Test usefulness, not just technical correctness.
+- Stage C — Surface existing item synergies in the UI; then separately prototype P7 and a one-reroll variant. Compare diversity, fairness and boss viability.
+- Stage D — Consider P5, Aura Archive and Hater Levels only after the core game is fun and performant. Build a separate GDD implementation specification per approved feature before enabling it by default.
+- Test seeded reproducibility, no XP duplication/farming, player survival, objective participation, build variety, accessibility, mobile performance and boss-phase pressure. Preserve current saves or provide versioned migrations. Do not assert approval of new generated art or balance parameters from this conceptual decision.
+
+## 25. Run length and Flex impact — candidate redesign for owner review
+
+**Status: design proposals, NOT approved gameplay-rule changes.** On 22 October 2026 the creator raised concerns that 15–18+ minutes feels too long and that current Flex abilities lack the intended distinction. The recommended option below is recorded for evaluation; **§4, §6, §7.2, §10, §11 and §12 remain the operative timing/combat rules until a separate owner decision explicitly promotes a candidate**. Do not retime the shipped game or change Flex damage through this section alone.
+
+### 25.1 Recommended faster standard-run candidate
+
+**Preferred first trial:** five waves of **120 seconds** each, then Big Hater at **10:00**. Aim for a usual winning encounter lasting roughly **one to three minutes**, with an indicative **11–13 minutes of active simulation**. Upgrade/pause decisions increase real elapsed time; measure both rather than advertise an unsupported wall-clock duration.
+
+| Milestone | Current canonical behavior | Short-run experiment candidate only |
+|---|---|---|
+| Wave 1 | 0:00–3:00 | 0:00–2:00 |
+| Wave 2 / Reply Guy | 3:00–6:00 / 3:15 | 2:00–4:00 / 2:15 |
+| Wave 3 / Mod Supremo | 6:00–9:00 / 6:15 | 4:00–6:00 / 4:15 |
+| Wave 4 / Ohio Express | 9:00–12:00 / 9:15 | 6:00–8:00 / 6:15 |
+| Wave 5 / Doomscroll Prime | 12:00–15:00 / 12:15 | 8:00–10:00 / 8:15 |
+| Legendary first / reprise / deadline | 9:00 / 12:00 / 14:55 | 6:00 / 8:00 / 9:55 |
+| Boss warning / Big Hater | 14:30 / 15:00 | 9:30 / 10:00 |
+| Berserk begins | 18:00 (180 seconds into boss) | 12:00 (120 seconds into boss); **trial only**, remains recoverable |
+
+**Open validation:** compare this candidate against a further **8-minute survival + approximately 2-minute boss** variant if median real-session length remains excessive. Neither candidate creates a hard kill timer or mandatory scripted loss.
+
+**No blind time compression:** preserving equivalent threats requires reworking enemy-spawn density, event overlap, XP curve pacing, rarity access, level-25 reachability, cooldown opportunities, rarity/legendary windows, recovery access, boss HP/DPS budget and device entity caps together. Do not change approved catalog/stat formulas ad hoc. Run repeated honest-health seeds for all three heroes; record median/P90 real time, active time, level and equipment on entering boss, deaths by wave, recovery usage, number of meaningful choices, boss victory rate and rendered FPS. Compare 15-minute baseline and 10-minute candidate on their own balanced builds.
+
+### 25.2 Flex 2.0 — signature ability fantasy, not a stronger generic buff
+
+**Design goal:** every Flex feels like a distinctive moment of hero identity with (a) a visually clear **activation tell**, (b) a short period of **meaningful player agency or transformation**, and (c) a legible **payoff/finisher**. Retain **one shared Aura meter**, each hero's own Flex button, normal input controls, and approved pause rules. Any numbers, new damage windows, displacement or animation timing must receive a separate PvE specification before production.
+
+| Hero | Distinct tactical promise | Candidate identity and moments (not damage numbers) |
+|---|---|---|
+| **Sigma — Sigma Stare / Deadpan Verdict concept** | **Single-target precision / priority elimination** | Activation freezes attention *visually* on one eligible enemy with a strong stare, comic-frame mark and unmistakable aim line (not a real unapproved time freeze). During the window, committed shots keep the priority target prominent and readable. A final verdict impact highlights the *earned* attack sequence; any extra finishing damage, pierce or stored-hit mechanic needs a boss-safe cap and approval. Do not turn this into a screenwide wipe. |
+| **Cool Kid — Giga Chad Rampage concept** | **High-mobility close-range crowd disruption** | Obvious temporary silhouette/pose shift with a brief entry beat; player steers through packs with pronounced afterimages, momentum and existing contact damage. A final ground-pound is a candidate payoff; knockback, extra damage, protection windows and boss restrictions need numeric review. Never require an extra input action for mobile. |
+| **Alpha Chad — Alpha Hold / Unbreakable concept** | **Defensive control / timing and protection** | A grounded shield stance creates a clearly bounded defensive presence; existing taunt and three rhythmic slams read as one authored sequence rather than generic damage pulses. Successful absorbed hits visibly charge a candidate retaliation payoff; exact protection, ally effects, retaliation and boss rules need approval. Do not imply invulnerability or forced boss target-switching. |
+
+**Flex production constraints and questions to answer:**
+- The existing §7.2 values (Sigma 6 s, Cool Kid 5 s, Alpha 6 s; 100 Aura, 30 s minimum activation gap) remain active until revised. A larger effect must be paid for with a real and documented damage/control/survivability budget.
+- First improve the *currently approved* state entrance, silhouette, timing, directional cues, weapon response, target indicators, unique audio and hit confirmation without changing damage RNG or collision.
+- Differentiate the role outcomes: Sigma excels at dangerous targets; Cool Kid escapes/clears a crowd; Alpha saves a run with positioning and protection. Do not give all three an interchangeable damage circle.
+- Show READY, active, remaining duration and end state clearly on desktop and mobile. Provide reduced-motion equivalents without hiding telegraphs, hazards or accessibility information.
+- Avoid unconditional boss execution, indefinite immunity, stunlock, unbounded Aura generation, proc feedback loops, incidental extra weapon slots and PvP rule leakage. The Big Hater must retain meaningful counterplay.
+- Playtest whether the player can recognize each Flex from footage with UI hidden, whether it noticeably changes a tactical decision, whether rewards scale with intelligent usage, and whether the ordinary run has a satisfying number of activations. Instrument contribution to damage, enemies cleared, damage prevented and survival, with bounded effect budgets.
+- Later characters need equally individual roles and animation language; do not redesign the six out-of-scope heroes before completing the three approved solo starters.
+
+### 25.3 Decision gates
+
+1. **Run-clock decision required:** approve or reject the 10:00 boss / 12:00 experimental berserk schedule (or select a different duration), then explicitly revise all canonical schedule clauses and regression tests *in one coordinated GDD change* before changing game timers.
+2. **Flex mechanics decision required:** accept the three fantasies and subsequently approve concrete PvE phases, effect values and resource/cooldown budgets per hero before changing combat behavior.
+3. Cosmetic/readability work on *already-approved* Flexes and boss presentation can advance immediately under §16 and Annex A, using only inventoried approved assets.
+4. Track experiment results separately from normal runs and keep feature flags off by default until balance, save compatibility and platform acceptance are met.
+
 # Anexo A — Identidade visual e contrato de produção
 
 ## A.1 Direção artística definitiva — opção A, Cartoon Arcade
@@ -923,7 +1007,7 @@ O R0 e a fatia solo podem avançar com as decisões já aprovadas. Esta compila�
 
 ## C. Revisão mobile e mecânicas de drops — pedidos de 16 outubro 2026
 
-**Estado:** requisitos de experiência mobile aprovados para futura implementação; mecânicas novas abaixo são **propostas sujeitas a aprovação**, não funcionalidades existentes. Este aditamento não substitui as regras de armas, cinco slots passivos, Aura única e Flex por personagem.
+**Status and precedence (22 October 2026):** Mobile usability requirements remain approved. P1–P3 are approved for faithful Phaser parity under the decision below. P4–P7 are subsequently **concept-approved for controlled prototypes only** under §24, with their numerical rules, new art and production rollout still requiring separate acceptance. P8 remains an unapproved proposal. This annex does not override the three-weapon/five-passive limits, single Aura or hero-specific Flex.
 
 ### C.1 Correções de UX mobile (requisitos)
 
@@ -943,12 +1027,12 @@ Referência de design: League of Legends *Swarm* tem objetos destrutíveis com d
 - **P1 — Street Snack (approved):** Spawn probability is **5%** for eligible normal enemy kills and **20%** for eligible elite kills. Pickup radius is **56 world units**. Restores **18% of maximum HP**, capped at maximum HP. Preserve Phaser seeded drop generation and special-drop limits.
 - **P2 — Aura Magnet (approved):** Spawn probability is **2%** for eligible normal enemy kills and **8%** for eligible elite kills. Pickup radius is **72 world units**. Collects **all currently available XP crystals**, without generating additional XP or duplicating rewards. Preserve original Phaser behavior and collection feedback. The name does not authorize additional Aura generation or collection effects beyond Phaser parity.
 - **P3 — Safe Spot (approved):** Fixed at **(1100, 565)** in **Ruin Alley**, with **68 world-unit** activation radius. Requires **two continuous seconds** inside the zone while below maximum HP. Restores **25% of maximum HP**. Cooldown is **90 seconds of active gameplay**. Charge resets when the player leaves the zone or activation conditions cease to be met. Restore original world-space visuals and charge/cooldown feedback from Phaser.
-- **P4 — Destructible street crates (not approved):** Remains outside the approved solo scope. The two existing static collision obstacles and their approved visual sprites **are not destructible crates**.
-- **P5 — Viral Burst (not approved):** Remains a future proposal, not authorized for implementation.
-- **P6 — Trend Challenges (not approved):** Remains a future proposal, not authorized for implementation.
-- **P7 — Conditional weapon evolutions (not approved):** Remains a future proposal, not authorized for implementation.
+- **P4 — Destructible street crates (prototype concept approved; not production-approved):** Trial a small number of readable destructible reward objects on legal Ruin Alley positions. Reuse existing approved XP/Snack/Magnet reward types; define spawn budgets, artwork, drop odds and fairness separately. The two existing static collision obstacles **remain unchanged and indestructible**.
+- **P5 — Viral Burst (prototype concept approved; not production-approved):** Experiment with a rare, visually distinct common-enemy crowd-clear or knockback pickup. No instant boss/elite deletion, XP duplication or unbounded effects. Final rarity, AoE, damage, drops and visual assets are undecided.
+- **P6 — Trend Challenges (prototype concept approved; not production-approved):** Experiment with brief, optional combat/map objectives and rewards drawn from already approved progression. They must not pause the main wave clock, become compulsory for victory or interrupt fixed boss/event timing. Scheduling, rewards and tuning are undecided.
+- **P7 — Meme Combos / conditional weapon evolutions (prototype concept approved; not production-approved):** Trial a small number of readable weapon-plus-passive synergies without adding weapon/passive slots, extra legendary choices, new rarity tiers or recursive procs. Existing GDD weapon/passive effects stay authoritative until a specific synergy is approved.
 - **P8 — Map-exclusive events (not approved):** Remains a future proposal, not authorized for implementation.
 
-**Scope and compatibility contract:** Preserve the approved solo scope, equipment slots, rarity rules, Aura, Flex, and save compatibility. Do not alter Phaser. No new mechanics, artwork, or balance changes are authorized. P1–P3 are approved to reproduce existing Phaser solo behavior, not to expand it.
+**Scope and compatibility contract:** Preserve the approved solo scope, equipment slots, rarity rules, Aura, Flex and save compatibility. Do not alter Phaser. P1–P3 retain exact Phaser parity contracts. Later concept approval in §24 authorizes **isolated, explicitly experimental prototypes of P4–P7**, but does **not** authorize shipping new rules, tuning values, art or player-facing default changes. Experimental content must be disabled in the normal production ruleset until separately accepted.
 
-**Implementation order:** The earlier suggested order treating P1–P3 as pending approval is superseded by this owner decision. P4–P8 still require separate explicit approval. This documentation decision does not itself claim that Godot implementation or tests are complete.
+**Implementation order:** P1–P3 are approved parity features. §24 approves P4–P7 as directions for isolated prototypes only; detailed specifications and normal-build activation require follow-up acceptance. P8 still requires separate concept approval. Neither documentation approval nor a green prototype test constitutes gameplay balance or visual acceptance.
