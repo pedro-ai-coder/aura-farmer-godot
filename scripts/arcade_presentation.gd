@@ -15,6 +15,9 @@ var card_scroll: ScrollContainer
 var card_content: Control
 var body_scroll: ScrollContainer
 var body_content: Control
+var equipment_board: Control
+var equipment_slots: Array[Dictionary] = []
+var equipment_headings: Array[Label] = []
 var full_view := Vector2.ZERO
 var rotate_hint: Label
 var card_parts: Array[Dictionary] = []
@@ -66,6 +69,19 @@ func install() -> void:
     body_content = Control.new()
     body_scroll.add_child(body_content)
     for control: Control in [game.build_details,game.sound_button,game.motion_button,game.import_button,game.export_button]: control.reparent(body_content)
+    equipment_board = Control.new()
+    body_content.add_child(equipment_board)
+    for caption in ["WEAPONS  /  3 SLOTS","PASSIVES  /  5 SLOTS"]:
+        var heading := _inside_label(equipment_board,20)
+        heading.text = caption
+        equipment_headings.append(heading)
+    for i in range(8):
+        var panel := Panel.new()
+        panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        equipment_board.add_child(panel)
+        var label := _inside_label(panel,18)
+        label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+        equipment_slots.append({"panel":panel,"label":label})
     rotate_hint = _label(20)
     rotate_hint.text = "Rotate for a wider view"
     rotate_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -199,7 +215,8 @@ func refresh(force: bool = false) -> void:
     game.import_button.visible = options
     game.export_button.visible = options
     game.profile_text.visible = game.mode in ["profile_import","profile_export"]
-    game.build_details.visible = game.mode == "paused"
+    game.build_details.hide()
+    equipment_board.visible = game.mode == "paused"
     game.pause_button.visible = game.mode == "playing" or game.mode == "paused"
     game.retry_button.visible = game.mode in ["won","lost"]
     game.restart_button.visible = game.mode in ["paused","won","lost","replace","confirm_exit","profile_import","profile_export"]
@@ -280,16 +297,15 @@ func refresh(force: bool = false) -> void:
             detail.visible = options and not stacked
             detail.text = "MAKE YOUR OWN AURA\n\nWASD / arrows — move\nSpace / E — Flex\nM — switch aim\nP / Escape — pause\n\nTouch: drag on the left to move."
             _place(detail,Rect2(content_rect.position,Vector2(maxf(0,content_rect.size.x-settings_width-24),content_rect.size.y)))
-            var build_height := maxf(160,(game.weapons.size()+game.passives.size()+4)*(34.0 if stacked else 28.0))
-            _place(game.build_details,Rect2(0,0,body_width if stacked else body_width-settings_width-24,build_height))
-            game.build_details.add_theme_font_size_override("font_size",22 if stacked else 18)
-            game.build_details.add_theme_color_override("font_color",ArcadeStyle.INK)
+            var build_height := 0.0
+            if game.mode == "paused":
+                build_height = _equipment(body_width if stacked else body_width-settings_width-24)
             if game.mode == "paused" and stacked: settings_y = build_height+20
             _place(game.sound_button,Rect2(settings_x,settings_y,settings_width,60))
             _place(game.motion_button,Rect2(settings_x,settings_y+72,settings_width,64))
             _place(game.import_button,Rect2(settings_x,settings_y+148,settings_width,60))
             _place(game.export_button,Rect2(settings_x,settings_y+220,settings_width,60))
-            var content_height := maxf(content_rect.size.y,settings_y+(280 if options else 144))
+            var content_height := maxf(maxf(content_rect.size.y,build_height),settings_y+(280 if options else 144))
             body_content.custom_minimum_size = Vector2(body_width,content_height)
             body_content.size = body_content.custom_minimum_size
         elif game.mode in ["profile_import","profile_export"]:
@@ -319,7 +335,7 @@ func refresh(force: bool = false) -> void:
 func _cards(rect: Rect2) -> void:
     _place(card_scroll,rect)
     var items: Array = game.selection if game.mode == "choice" else (game.legendary_offers if game.mode == "legendary" else game.replace_options)
-    var columns := 3 if rect.size.x >= 850 and view.y >= 650 else (2 if rect.size.x >= 580 else 1)
+    var columns := 3 if rect.size.x >= 850 else (2 if rect.size.x >= 580 else 1)
     var gap := 14.0
     var width := (rect.size.x-12.0-gap*(columns-1))/columns
     var desktop_grid := columns == 3 and rect.size.y >= 440.0
@@ -382,6 +398,37 @@ func _cards(rect: Rect2) -> void:
     if game.selected_card_index != last_selected and game.selected_card_index >= 0:
         card_scroll.call_deferred("ensure_control_visible",game.offer_buttons[game.selected_card_index])
     last_selected = game.selected_card_index
+
+func _equipment(width: float) -> float:
+    # Fixed empty slots communicate capacity without inventing equipment or effects.
+    var columns := 3 if width >= 540 else 2
+    var gap := 12.0
+    var tile_width := (width-gap*(columns-1))/columns
+    var tile_height := 118.0
+    var weapon_rows := ceili(3.0/columns)
+    var passive_y := 36.0+weapon_rows*(tile_height+gap)+12.0
+    _place(equipment_headings[0],Rect2(0,0,width,28))
+    _place(equipment_headings[1],Rect2(0,passive_y,width,28))
+    for i in range(8):
+        var is_weapon := i < 3
+        var index := i if is_weapon else i-3
+        var items: Array = game.weapons if is_weapon else game.passives
+        var item: Dictionary = items[index] if index < items.size() else {}
+        var slot: Dictionary = equipment_slots[i]
+        var y := 36.0 if is_weapon else passive_y+36.0
+        _place(slot["panel"],Rect2((index%columns)*(tile_width+gap),y+int(index/columns)*(tile_height+gap),tile_width,tile_height))
+        var color: Color = ArcadeStyle.RARITY.get(item.get("rarity",""),ArcadeStyle.INK)
+        slot["panel"].add_theme_stylebox_override("panel",ArcadeStyle.box(ArcadeStyle.CARD,color,8,0))
+        var label: Label = slot["label"]
+        if item.is_empty():
+            label.text = "EMPTY %s SLOT\n%d / %d" % ["WEAPON" if is_weapon else "PASSIVE",index+1,3 if is_weapon else 5]
+        else:
+            var data: Dictionary = catalog.get(item["id"],{})
+            label.text = "%s  %s\n%s  /  LV %d" % [data.get("icon","?"),data.get("name",item["id"]),str(item["rarity"]).to_upper(),int(item["level"])]
+        _place(label,Rect2(12,10,tile_width-24,tile_height-20))
+    var height := passive_y+36.0+ceili(5.0/columns)*(tile_height+gap)
+    _place(equipment_board,Rect2(0,0,width,height))
+    return height
 
 func _number(value: float) -> String:
     return "%.1fk" % (value/1000.0) if value >= 1000.0 else "%.0f" % value
