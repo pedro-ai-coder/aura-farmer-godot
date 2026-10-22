@@ -46,6 +46,6 @@ For AF-01 closure, record ordinary unprotected play on desktop and physical Andr
 
 During QA, upstream main advanced to `2ef5ffacfe57e5ed2c7e9cea92facb412fc0b9ef`: five 120-second waves, Big Hater at 600 s, recoverable berserk after 120 s of boss combat. The following clock iteration implements the coherent event/legendary/boss migration; exact boundaries and warnings have independent regression coverage. Eighteen ordinary-health controller runs are recorded in [CLOCK_COMPARISON.md](CLOCK_COMPARISON.md); none reached Big Hater, so balance acceptance remains open. The above baseline measurements are explicitly from the historical 15-minute implementation. Flex redesigns and prototype concepts do not authorize new default mechanics.
 
-## Current GDD implementation gap
+## Signature Flex 2.0 follow-up
 
-Main `f2ec242` approves signature Flex 2.0 in §7.2: Sigma Deadpan Verdict, Cool Kid CTRL + CHAOS, Alpha Giga Chad Rampage. Runtime still implements the legacy Flexes. The equipment/layout QA iteration does not implement or relabel those abilities. A separately scoped implementation must cover the complete timing, proc isolation, mitigation, lifecycle, shield attribution and ordinary-health acceptance contracts before claiming parity.
+GDD `f2ec242` §7.2 is now implemented on the signature Flex branch with deterministic regression coverage and instrumented ordinary-health observations. See [FLEX_V2_VALIDATION.md](FLEX_V2_VALIDATION.md). Production readiness remains unaccepted: none of the three seed-451 avoidance-controller runs reached Big Hater; dedicated signature art/readability and physical-device acceptance remain open. Do not equate functional parity with balance acceptance.
