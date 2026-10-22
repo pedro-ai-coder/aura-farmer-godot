@@ -1,5 +1,6 @@
 extends Node2D
 
+const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const RecoveryRulesScript = preload("res://scripts/recovery_rules.gd")
@@ -56,6 +57,14 @@ const EVENTS := [
 
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
+var defeated_visuals: Array[Dictionary] = []
+var finish_visual_age := 0.0
+var visual_walk := 0.0
+var visual_defeat := 0.0
+var visual_heading := 0.0
+var visual_direction_known := false
+var visual_moving := false
+var visual_facing := 0.0
 var mode := "menu"
 var hero: Dictionary = {}
 var player_pos := Vector2(724.0, 540.0)
@@ -410,6 +419,14 @@ func start_run(index: int) -> void:
     next_enemy_id = 1
     player_pos = Vector2(724, 540)
     movement_direction = Vector2.DOWN
+    defeated_visuals.clear()
+    finish_visual_age = 0.0
+    visual_walk = 0.0
+    visual_defeat = 0.0
+    visual_heading = 0.0
+    visual_direction_known = false
+    visual_moving = false
+    visual_facing = 0.0
     hp = hero["hp"]
     max_hp = hp
     shield = 0.0
@@ -479,11 +496,16 @@ func _process(delta: float) -> void:
             var dt := minf(remaining, 1.0 / 60.0)
             _advance(dt)
             remaining -= dt
-    attack_flash = maxf(attack_flash - delta, 0.0)
-    for effect: Dictionary in attack_visuals.duplicate():
-        effect["life"] = float(effect["life"]) - delta
-        if float(effect["life"]) <= 0.0:
-            attack_visuals.erase(effect)
+    if mode == "won": finish_visual_age += clampf(delta,0.0,0.1)
+    for defeated: Dictionary in defeated_visuals.duplicate():
+        if run_time-float(defeated["defeated_at"])+finish_visual_age >= 0.85: defeated_visuals.erase(defeated)
+    if mode == "lost": visual_defeat += clampf(delta,0.0,0.1)
+    if mode == "playing":
+        attack_flash = maxf(attack_flash - delta, 0.0)
+        for effect: Dictionary in attack_visuals.duplicate():
+            effect["life"] = float(effect["life"]) - delta
+            if float(effect["life"]) <= 0.0:
+                attack_visuals.erase(effect)
     _update_platform(delta)
     _update_camera(delta)
     if presentation != null: presentation.pump()
@@ -675,6 +697,14 @@ func _move_player(dt: float) -> void:
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
     var previous := player_pos
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
+    visual_moving = direction.length_squared() > 0.01
+    visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
+    if visual_moving:
+        var heading := roundf(direction.angle()/(PI/4))*(PI/4)
+        if not visual_direction_known or absf(angle_difference(visual_heading,direction.angle())) > PI/8+0.105:
+            visual_heading = heading
+        visual_direction_known = true
+    else: visual_direction_known = false
     _update_movement_trait(player_pos.distance_squared_to(previous) > 0.000001)
     _update_target_lock()
 
@@ -800,7 +830,14 @@ func _step_hostile_shots(dt: float) -> void:
             _deal_damage_to_player(float(shot["damage"]), shot.get("source", {}))
             hostile_shots.erase(shot)
 
+func _cue_enemy_pose(enemy: Dictionary, impact: float, duration: float, heading: Vector2) -> void:
+    if enemy.is_empty(): return
+    var previous: Dictionary = enemy.get("attack_pose",{})
+    if not previous.is_empty() and run_time < float(previous["impact"]): return
+    enemy["attack_pose"] = {"start":run_time,"impact":impact,"end":impact+duration+0.22,"angle":heading.angle()}
+
 func _schedule_hazard(point: Vector2, radius: float, delay: float, active_duration: float, damage: float, shape: String = "circle", heading: Vector2 = Vector2.RIGHT, source: Dictionary = {}) -> void:
+    _cue_enemy_pose(source,run_time+delay,active_duration,heading)
     hazard_zones.append({
         "pos":point, "radius":radius, "at":run_time + delay, "end":run_time + delay + active_duration,
         "next_tick":run_time + delay, "damage":damage, "shape":shape, "dir":heading, "source": source, "hit": false
@@ -892,7 +929,9 @@ func _step_enemies(dt: float) -> void:
             if pending.get("source", {}) == enemy and pending.get("tracking", false) and not pending.get("locked", false):
                 pending["pos"] = enemy["pos"]
                 pending["dir"] = (player_pos - Vector2(enemy["pos"])).normalized()
+                if enemy.has("attack_pose"): enemy["attack_pose"]["angle"] = Vector2(pending["dir"]).angle()
                 if run_time >= float(pending["lock_at"]): pending["locked"] = true
+        enemy["anim_moving"] = false
         var kind: String = enemy["kind"]
         var pos: Vector2 = enemy["pos"]
         var to_player: Vector2 = player_pos - pos
@@ -942,6 +981,9 @@ func _step_enemies(dt: float) -> void:
                 var sidestep := Vector2(-direction.y, direction.x) * speed * dt
                 destination = SoloWorldRulesScript.move(pos, sidestep, float(enemy["radius"]))
             enemy["pos"] = destination
+            var travelled := destination.distance_to(pos)
+            enemy["anim_moving"] = travelled > 0.001
+            enemy["anim_walk"] = float(enemy.get("anim_walk",0.0))+travelled/maxf(5.0,float(enemy["speed"])/9.0)
         enemy["hit_cooldown"] = maxf(0.0, float(enemy["hit_cooldown"]) - dt)
         if distance <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0:
             enemy["hit_cooldown"] = 1.0 if kind == "boss" else 0.75
@@ -954,6 +996,7 @@ func _step_enemies(dt: float) -> void:
                     primary_active = true
                     break
             if not primary_active:
+                if run_time >= float(enemy.get("attack_pose",{}).get("end",0.0)): _cue_enemy_pose(enemy,run_time,0.12,direction)
                 _deal_damage_to_player(float(enemy["damage"]) * boss_mult, enemy, true)
         if mode != "playing":
             return
@@ -968,6 +1011,7 @@ func _step_enemies(dt: float) -> void:
             enemy["phase"] = "warning"
             enemy["attack_at"] = run_time + (1.2 if kind == "ping-sniper" else 0.6)
             enemy["locked_direction"] = to_player.normalized()
+            _cue_enemy_pose(enemy,float(enemy["attack_at"]),0.16,to_player.normalized())
 
         if run_time < float(enemy["next_attack"]):
             continue
@@ -976,6 +1020,7 @@ func _step_enemies(dt: float) -> void:
                 enemy["phase"] = "charge-warning"
                 enemy["attack_at"] = run_time + (0.9 if kind == "ratio-ram" else 0.8)
                 enemy["locked_direction"] = to_player.normalized()
+                _cue_enemy_pose(enemy,float(enemy["attack_at"]),280.0/320.0,to_player.normalized())
             elif enemy["phase"] == "charge-warning" and run_time >= float(enemy["attack_at"]):
                 enemy["phase"] = "charging"
                 enemy["charge_until"] = run_time + 280.0 / 320.0
@@ -989,6 +1034,7 @@ func _step_enemies(dt: float) -> void:
             _schedule_hazard(player_pos, 70.0, 1.0, 3.0, float(enemy["damage"]), "circle", Vector2.RIGHT, enemy)
             enemy["next_attack"] = run_time + 6.0
         elif kind == "hype-bot":
+            _cue_enemy_pose(enemy,run_time,0.2,direction)
             var count := 0
             for ally: Dictionary in enemies:
                 if ally != enemy and not bool(SoloEnemyRulesScript.DATA[ally["kind"]]["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 160.0:
@@ -998,6 +1044,7 @@ func _step_enemies(dt: float) -> void:
                     if count == 3: break
             enemy["next_attack"] = run_time + 8.0
         elif kind == "comment-mod":
+            _cue_enemy_pose(enemy,run_time,0.2,direction)
             var healed := 0
             for ally: Dictionary in enemies:
                 if ally != enemy and ally["kind"] != "comment-mod" and not bool(SoloEnemyRulesScript.DATA[ally["kind"]]["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 180.0:
@@ -1125,8 +1172,9 @@ func _fire_weapons(dt: float) -> void:
                     _grant_weapon_shield("my-aura", max_hp * 0.04 * float(queued["weapon_power"]), 3.0)
                 elif weapon_id == "ban-hammer":
                     _queue_weapon_area(weapon_id, center, facing, 220.0, 360.0, secondary_power * 0.30 / 0.90, 0.80, activation, {"primary": false, "shape": "line"})
-            attack_flash = 0.12
+            attack_flash = 0.22
             attack_target = closest["pos"]
+            visual_facing = (attack_target-player_pos).angle()
         else:
             var heading: Vector2 = _aim_direction(closest)
             var pierce: int = (4 if shape == "line" else 1) + (_passive_level("no-cap-streak") if streak else 0)
@@ -1138,8 +1186,9 @@ func _fire_weapons(dt: float) -> void:
                 _queue_player_shot(weapon_id, heading, secondary_power * 0.10 / 0.20, reach, 1, false, 0.16)
             elif legendary and weapon_id == "no-cap":
                 _queue_weapon_area(weapon_id, player_pos, heading, reach, 360.0, secondary_power * 0.25 / 0.50, 0.70, {"hit": false}, {"primary": false, "shape": "line"})
-            attack_flash = 0.12
+            attack_flash = 0.22
             attack_target = closest["pos"]
+            visual_facing = (attack_target-player_pos).angle()
     _step_weapon_areas()
 
 func _queue_player_shot(id: String, heading: Vector2, damage: float, reach: float, pierce: int, primary: bool = true, delay: float = 0.0) -> void:
@@ -1322,6 +1371,10 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
     if float(enemy["hp"]) <= 0.0:
         if enemy["kind"] == "copium-puffer":
             _schedule_hazard(Vector2(enemy["pos"]), 80.0, 1.0, 3.0, float(enemy["damage"]), "circle", Vector2.RIGHT, enemy)
+        var visual: Dictionary = enemy.duplicate(true)
+        visual["defeated_at"] = run_time
+        defeated_visuals.append(visual)
+        if defeated_visuals.size() > 64: defeated_visuals.pop_front()
         enemies.erase(enemy)
         kills += 1
         if enemy["kind"] == "boss":
@@ -1934,10 +1987,12 @@ func _draw_depth_actors() -> void:
     var actors: Array[Dictionary] = [{"kind":"hero", "pos":player_pos}]
     for cover: Vector2 in COVERS: actors.append({"kind":"cover", "pos":cover})
     for enemy: Dictionary in enemies: actors.append({"kind":"enemy", "pos":enemy["pos"], "enemy":enemy})
+    for defeated: Dictionary in defeated_visuals: actors.append({"kind":"defeated","pos":defeated["pos"],"enemy":defeated})
     actors.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return Vector2(a["pos"]).y < Vector2(b["pos"]).y)
     for actor: Dictionary in actors:
         if actor["kind"] == "hero": _draw_hero_actor()
         elif actor["kind"] == "cover": art.draw_cover(self, actor["pos"])
+        elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age)
         else: _draw_enemy_actor(actor["enemy"])
 
 func _draw_enemy_actor(e: Dictionary) -> void:
@@ -1965,9 +2020,12 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
+func hero_pose() -> Dictionary:
+    return HeroAnimationScript.pose(str(hero["id"]), {"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing})
+
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
-    if not art.draw_hero(self, player_pos, str(hero["id"]), run_time, movement_direction, flex_time > 0.0, attack_flash > 0.0):
+    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), hero_pose()):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
         draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
