@@ -44,6 +44,8 @@ func _verify() -> void:
         var enemy: Dictionary = enemies[0]
         enemy["pos"] = game.get("player_pos") + Vector2(80, 0)
         game.call("_fire_weapons", 0.1)
+        for step in range(4):
+            game.call("_step_player_shots", 0.025)
         _expect(int(game.get("kills")) == 1, "Starter weapon must be able to defeat a basic enemy")
         _expect((game.get("pickups") as Array).size() >= 1, "Defeated enemy must create an XP orb")
 
