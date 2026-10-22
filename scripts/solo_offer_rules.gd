@@ -27,7 +27,7 @@ static func valid_passive(id: String, role: String, wave: int) -> bool:
         return false
     return definition["role"] == "" or definition["role"] == role
 
-static func choices(hero_role: String, wave: int, weapons: Array, passives: Array, catalog: Dictionary, rng: RandomNumberGenerator) -> Array[Dictionary]:
+static func choices(hero_role: String, wave: int, weapons: Array, passives: Array, catalog: Dictionary, rng) -> Array[Dictionary]:
     var candidates: Array[Dictionary] = []
     for id in catalog.keys():
         var weapon: Dictionary = catalog[id]
@@ -95,7 +95,7 @@ static func choices(hero_role: String, wave: int, weapons: Array, passives: Arra
                     total += float(weights[RARITIES.find(rarity)])
                     break
         var chosen_rarity := "common"
-        var ticket := rng.randf() * total
+        var ticket: float = rng.randf() * total
         for rarity in RARITIES:
             var present := false
             for candidate in group:
