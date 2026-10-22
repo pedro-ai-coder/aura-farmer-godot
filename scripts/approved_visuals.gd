@@ -64,46 +64,32 @@ func _frame(canvas: CanvasItem, atlas: Texture2D, info: Array, destination: Vect
         Rect2(float(info[0]), float(info[1]), width, height))
     canvas.draw_set_transform(Vector2.ZERO)
 
-func draw_hero(canvas: CanvasItem, pos: Vector2, hero_id: String, time: float, movement: Vector2, active_flex: bool, attacking: bool) -> bool:
-    var atlas: Texture2D = texture(hero_id + "-atlas")
-    if atlas == null or not HERO_FRAMES.has(hero_id):
-        return false
-    var frames: Array = HERO_FRAMES[hero_id]
-    var facing_left := movement.x < -0.15
-    var step := int(time * 9.0) % 4
-    var moving := movement.length_squared() > 0.05
-    if active_flex and hero_id == "cool-kid" and has("cool-kid-flex-v2"):
-        var flex_index := 2 + (step if moving else 0)
-        _frame(canvas, texture("cool-kid-flex-v2"), FLEX_FRAMES[flex_index], pos, 86.0, facing_left)
-        return true
-    if active_flex and hero_id != "cool-kid":
-        var flex_index := 43 + int(time * 8.0) % 4
-        _frame(canvas, atlas, frames[flex_index], pos, RENDERED_HERO_HEIGHT, facing_left)
-        return true
-    if attacking:
-        var attack_start := 26 if hero_id == "cool-kid" else 34
-        _frame(canvas, atlas, frames[attack_start + int(time * 12.0) % 3], pos, RENDERED_HERO_HEIGHT, facing_left)
-        return true
-    if moving:
-        var heading := int(round(movement.angle() / (PI / 4.0)))
-        var direction := posmod(heading, 8)
-        if hero_id == "alpha" and direction >= 5 and has("alpha-rear-v2"):
-            var row: int = int([8, 4, 0][direction - 5])
-            _frame(canvas, texture("alpha-rear-v2"), REAR_FRAMES["alpha"][row + step], pos, RENDERED_HERO_HEIGHT, false)
-            return true
-        if hero_id == "cool-kid" and direction == 6 and has("cool-kid-rear-v2"):
-            _frame(canvas, texture("cool-kid-rear-v2"), REAR_FRAMES["cool-kid"][step], pos, RENDERED_HERO_HEIGHT, false)
-            return true
-        var groups: Array = [0, 4, 8, 12, 16, 20, 24, 28]
-        if hero_id == "cool-kid":
-            groups = [0, 4, 8, 12, 0, 16, 0, 20]
-        elif hero_id == "alpha":
-            groups = [0, 8, 16, 24, 0, 0, 0, 0]
-        var mirror := (hero_id != "sigma" and direction == 4) or (hero_id == "sigma" and direction == 5)
-        _frame(canvas, atlas, frames[int(groups[direction]) + step], pos, RENDERED_HERO_HEIGHT, mirror)
-        return true
-    var idle_index := (24 if hero_id == "cool-kid" else 32) + int(time * 2.0) % 2
-    _frame(canvas, atlas, frames[idle_index], pos, RENDERED_HERO_HEIGHT, facing_left)
+const HERO_MATTES := {"cool-kid":{27:[0,12],28:[28,0],29:[0,4],30:[4,0]},"alpha":{34:[0,8],35:[20,5],36:[5,0]}}
+var hero_frame_cache: Dictionary = {}
+
+func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:
+    var sheet: String = pose["sheet"]
+    var atlas := texture(hero_id+"-atlas" if sheet == "atlas" else hero_id+"-"+sheet)
+    if atlas == null: return false
+    var frames: Array = HERO_FRAMES[hero_id] if sheet == "atlas" else FLEX_FRAMES if sheet == "flex-v2" else REAR_FRAMES[hero_id]
+    var index := int(pose["frame"])
+    var info: Array = frames[index]
+    var ratio: float = pose["scale"]
+    var source := Rect2(float(info[0]),float(info[1]),float(info[2]),float(info[3]))
+    if sheet == "atlas" and HERO_MATTES.get(hero_id,{}).has(index):
+        var key := hero_id+str(index)
+        if not hero_frame_cache.has(key):
+            var image := atlas.get_image().get_region(Rect2i(source))
+            image.convert(Image.FORMAT_RGBA8)
+            var edges: Array = HERO_MATTES[hero_id][index]
+            if int(edges[0]) > 0: image.fill_rect(Rect2i(0,0,int(edges[0]),image.get_height()),Color.TRANSPARENT)
+            if int(edges[1]) > 0: image.fill_rect(Rect2i(image.get_width()-int(edges[1]),0,int(edges[1]),image.get_height()),Color.TRANSPARENT)
+            hero_frame_cache[key] = ImageTexture.create_from_image(image)
+        atlas = hero_frame_cache[key]
+        source.position = Vector2.ZERO
+    canvas.draw_set_transform(pos,0.0,Vector2(-1,1) if pose["flip"] else Vector2.ONE)
+    canvas.draw_texture_rect_region(atlas,Rect2(-source.size*Vector2(0.5,0.9)*ratio,source.size*ratio),source)
+    canvas.draw_set_transform(Vector2.ZERO)
     return true
 
 func enemy_frame(kind: String, frame_index: int) -> Texture2D:
@@ -144,33 +130,44 @@ func enemy_frame(kind: String, frame_index: int) -> Texture2D:
     }
     return frame_texture
 
-func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0) -> bool:
+static func enemy_pose_frame(enemy: Dictionary, time: float, death_age: float = -1.0) -> int:
+    if death_age >= 0: return 6 if death_age < 0.16 else 7
+    if time < float(enemy.get("stagger_until",0.0)): return 6
+    var attack: Dictionary = enemy.get("attack_pose",{})
+    if not attack.is_empty() and time >= float(attack["start"]) and time < float(attack["end"]):
+        return 4 if time < float(attack["impact"]) else 5 if time < float(attack["end"])-0.22 else 0
+    if time-float(enemy.get("hurt_at",-100.0)) < 0.16: return 6
+    return int(float(enemy.get("anim_walk",0.0)))%4 if enemy.get("anim_moving",false) else 0
+
+func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0) -> bool:
     var kind: String = enemy.get("kind", "npc")
     if kind == "boss" and animation_time >= 1080.0:
         kind = "boss-berserk"
+    if kind == "terminal":
+        var atlas := texture("enemies")
+        if atlas == null: return false
+        var tile := atlas.get_size()/4.0
+        var size := float(enemy.get("radius",15))*3.1
+        canvas.draw_texture_rect_region(atlas,Rect2(Vector2(enemy["pos"])-Vector2(size/2,size),Vector2.ONE*size),Rect2(Vector2(tile.x,tile.y*3),tile),Color(1,1,1,1.0 if death_age < 0 else maxf(0,1-death_age/0.8)))
+        return true
     if not enemy_rows.has(kind):
         return false
-    var frame_index := int(animation_time * 7.0) % 4
-    var phase := str(enemy.get("phase", ""))
-    if phase == "warning" or phase == "charge-warning":
-        frame_index = 4
-    elif phase == "charging":
-        frame_index = 5
-    elif animation_time - float(enemy.get("hurt_at", -100.0)) < 0.16:
-        frame_index = 6
-    elif float(enemy.get("speed", 0.0)) < 0.01:
-        frame_index = 0
+    var frame_index := enemy_pose_frame(enemy,animation_time,death_age)
+    var phase := str(enemy.get("phase",""))
     var image: Texture2D = enemy_frame(kind, frame_index)
     if image == null:
         return false
     var cache_key := kind + ":" + str(frame_index)
     var data: Dictionary = enemy_frame_cache[cache_key]
-    var scale: float = maxf(52.0, float(enemy.get("radius", 15.0)) * (2.6 if kind == "boss" or kind == "boss-berserk" else 3.1)) / maxf(1.0, float(data["height"]))
+    var scale: float = float(enemy.get("radius",15.0))*(2.6 if kind in ["boss","boss-berserk","reply-guy","mod-supremo","ohio-express","doomscroll-prime"] else 3.1) / maxf(1.0, float(data["height"]))
     var pivot: Vector2 = data["pivot"]
     var position: Vector2 = enemy["pos"]
-    var face_left: bool = Vector2(enemy.get("locked_direction", Vector2.RIGHT)).x < -0.05
+    var face_left: bool = cos(float(enemy.get("angle",0.0))) < -0.05
+    if phase in ["warning","charge-warning","charging"]: face_left = Vector2(enemy.get("locked_direction",Vector2.RIGHT)).x < -0.05
+    var attack: Dictionary = enemy.get("attack_pose",{})
+    if not attack.is_empty() and animation_time < float(attack["end"]): face_left = cos(float(attack["angle"])) < -0.05
     canvas.draw_set_transform(position, 0.0, Vector2(-1.0, 1.0) if face_left else Vector2.ONE)
-    canvas.draw_texture_rect(image, Rect2(-pivot * scale, image.get_size() * scale), false)
+    canvas.draw_texture_rect(image, Rect2(-pivot * scale, image.get_size() * scale), false,Color(1,1,1,1.0 if death_age < 0 else clampf((0.85-death_age)/0.3,0,1)))
     canvas.draw_set_transform(Vector2.ZERO)
     return true
 
