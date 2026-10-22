@@ -684,7 +684,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var hp_base: float = float(stats["hp"]) * (1.0 if boss_kind or kind == "terminal" else float(WAVE_HP[wave - 1])) * (2.5 if elite else 1.0)
     var damage: float = float(stats["damage"]) * (1.0 if boss_kind or kind == "terminal" else float(WAVE_DAMAGE[wave - 1])) * (1.3 if elite else 1.0)
     enemies.append({
-        "id": next_enemy_id, "angle": 0.0, "elite": elite, "born": run_time + (0.8 if bool(special.get("telegraph", false)) else 0.0), "pos": pos, "hp": hp_base, "max": hp_base,
+        "id": next_enemy_id, "angle": (player_pos - pos).angle(), "elite": elite, "born": run_time + (0.8 if bool(special.get("telegraph", false)) else 0.0), "pos": pos, "hp": hp_base, "max": hp_base,
         "speed": float(stats["speed"]), "radius": float(stats["radius"]) * (1.2 if elite else 1.0),
         "damage": damage, "xp": 0 if bool(special.get("add", false)) else (60 if elite else int(stats["xp"])), "kind": kind,
         "add": bool(special.get("add", false)), "next_aux": run_time + (12.0 if kind == "reply-guy" else (10.0 if kind == "mod-supremo" else 7.0)),
@@ -752,12 +752,7 @@ func _step_hostile_shots(dt: float) -> void:
         var ending: Vector2 = start + shot["dir"] * distance
         shot["pos"] = ending
         shot["remaining"] = float(shot["remaining"]) - distance
-        var blocked := false
-        for cover: Vector2 in COVERS:
-            if ending.distance_to(cover) < 36.0:
-                blocked = true
-                break
-        if blocked or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
+        if not SoloWorldRulesScript.clear_line(start, ending) or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
             hostile_shots.erase(shot)
             continue
         if ending.distance_to(player_pos) < 16.0 + float(shot["radius"]):
@@ -916,14 +911,14 @@ func _step_enemies(dt: float) -> void:
                 continue
             enemy["phase"] = "warning"
             enemy["attack_at"] = run_time + (1.2 if kind == "ping-sniper" else 0.6)
-            enemy["locked_direction"] = direction if speed >= 0.0 else -direction
+            enemy["locked_direction"] = to_player.normalized()
 
         if run_time < float(enemy["next_attack"]):
             continue
         if kind == "ratio-ram" or kind == "ohio-express":
             if enemy["phase"] == "":
                 enemy["phase"] = "charge-warning"
-                enemy["attack_at"] = run_time + 0.8
+                enemy["attack_at"] = run_time + (0.9 if kind == "ratio-ram" else 0.8)
                 enemy["locked_direction"] = to_player.normalized()
             elif enemy["phase"] == "charge-warning" and run_time >= float(enemy["attack_at"]):
                 enemy["phase"] = "charging"
@@ -932,7 +927,7 @@ func _step_enemies(dt: float) -> void:
                 enemy["charge_count"] = charge_count + 1
                 enemy["next_attack"] = run_time + (5.0 if kind == "ratio-ram" else (1.7 if charge_count % 3 < 2 else 5.6))
         elif kind == "doomscroller":
-            _schedule_hazard(player_pos, 70.0, 1.0, 3.0, float(enemy["damage"]))
+            _schedule_hazard(player_pos, 70.0, 1.0, 3.0, float(enemy["damage"]), "circle", Vector2.RIGHT, enemy)
             enemy["next_attack"] = run_time + 6.0
         elif kind == "hype-bot":
             var count := 0
@@ -1262,7 +1257,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
         if float(enemy["hp"]) <= float(enemy["max"]) * 0.35: enemy["beam_phase"] = true
     if float(enemy["hp"]) <= 0.0:
         if enemy["kind"] == "copium-puffer":
-            _schedule_hazard(Vector2(enemy["pos"]), 80.0, 1.0, 3.0, 12.0)
+            _schedule_hazard(Vector2(enemy["pos"]), 80.0, 1.0, 3.0, 12.0, "circle", Vector2.RIGHT, enemy)
         enemies.erase(enemy)
         kills += 1
         if enemy["kind"] == "boss":
