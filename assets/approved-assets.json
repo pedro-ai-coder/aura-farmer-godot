@@ -1,7 +1,7 @@
 {
   "source_repo": "pedro-ai-coder/aura-farmer",
   "source_commit": "fdbc67b9d79b1d2bfbbcaad40305da1677bc626f",
-  "art_direction": "Cartoon Arcade / Option A — original approved source and runtime sprite atlases",
+  "art_direction": "Cartoon Arcade / Option A \u2014 original approved source and runtime sprite atlases",
   "assets": [
     {
       "source_path": "public/assets/cartoon/option-a-v1/maps/ruin-alley.png",
@@ -121,6 +121,13 @@
       "destination": "assets/approved/haters-v2.png",
       "bytes": 2319510,
       "git_blob_sha1": "7f35a57dda8aebd3050ee040e2799321b86cdef5"
+    },
+    {
+      "source_path": "public/assets/runtime/enemies.png",
+      "destination": "assets/approved/enemies.png",
+      "bytes": 2305628,
+      "git_blob_sha1": "6a735dbb233c5d90a5b96be4ebd62572910ba0f2",
+      "sha256": "8b3f015c27e236ad1440d0374fb4c34cbf12f01d97aad1c3929fbf9fd2405e34"
     }
   ]
 }

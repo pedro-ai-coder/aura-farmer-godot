@@ -1,5 +1,6 @@
 extends Node2D
 
+const CameraFramingScript = preload("res://scripts/camera_framing.gd")
 const ProfileStoreScript = preload("res://scripts/profile_store.gd")
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const FloatingJoystickScript = preload("res://scripts/floating_joystick.gd")
@@ -153,7 +154,10 @@ func _ready() -> void:
     _load_profile()
     camera = Camera2D.new()
     camera.enabled = true
-    camera.zoom = Vector2(0.94, 0.94)
+    camera.limit_left = 0
+    camera.limit_top = 0
+    camera.limit_right = int(FIELD.size.x)
+    camera.limit_bottom = int(FIELD.size.y)
     add_child(camera)
     layer = CanvasLayer.new()
     add_child(layer)
@@ -440,7 +444,7 @@ func start_run(index: int) -> void:
     mode = "playing"
     _show_ui()
     _update_text()
-    camera.position = player_pos
+    _update_camera(0.0, true)
 
 func _process(delta: float) -> void:
     if mode == "playing":
@@ -454,12 +458,20 @@ func _process(delta: float) -> void:
         effect["life"] = float(effect["life"]) - delta
         if float(effect["life"]) <= 0.0:
             attack_visuals.erase(effect)
-    camera.position = player_pos if bool(profile["settings"]["reducedMotion"]) else camera.position.lerp(player_pos, minf(1.0, delta * 8.0))
+    _update_camera(delta)
     status_timer -= delta
     if status_timer <= 0.0:
         status_timer = 0.10
         _update_text()
     queue_redraw()
+
+func _update_camera(delta: float, snap: bool = false) -> void:
+    var view := get_viewport_rect().size
+    var zoom_value: float = CameraFramingScript.zoom_for(view, OS.has_feature("mobile") or touch_active)
+    camera.zoom = Vector2.ONE * zoom_value
+    var target: Vector2 = CameraFramingScript.clamp_center(player_pos, view, zoom_value)
+    var center: Vector2 = target if snap or bool(profile["settings"]["reducedMotion"]) else CameraFramingScript.follow(camera.position, target, delta)
+    camera.position = CameraFramingScript.clamp_center(center, view, zoom_value)
 
 func _advance(dt: float) -> void:
     if mode != "playing":
@@ -1782,11 +1794,6 @@ func _draw() -> void:
         for gy in range(0, 1087, 128):
             draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
-    # Approved map remains visible: ground contacts indicate solid covers,
-    # instead of drawing unrelated opaque grey debug discs over the painting.
-    for cover: Vector2 in COVERS:
-        _draw_contact_shadow(cover + Vector2(4, 3), 34.0)
-        draw_arc(cover + Vector2(0, 1), 28.0, PI * 0.12, PI * 0.88, 16, Color(0.97, 0.93, 0.80, 0.42), 2.0)
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
     for zone: Dictionary in hazard_zones:
@@ -1811,30 +1818,6 @@ func _draw() -> void:
         var shot_dir: Vector2 = shot["dir"]
         draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
         draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
-    for e: Dictionary in enemies:
-        if run_time < float(e.get("born", 0.0)):
-            draw_arc(e["pos"], float(e["radius"]) + 8.0, 0.0, TAU, 32, Color(0.97, 0.77, 0.37, 0.75), 3.0)
-            continue
-        var radius: float = float(e["radius"])
-        var color := Color(0.89, 0.33, 0.40)
-        if e["kind"] == "hater" or e["kind"] == "ping-sniper":
-            color = Color(0.92, 0.49, 0.64)
-        elif SoloEnemyRulesScript.is_event(str(e["kind"])):
-            color = Color(0.79, 0.38, 0.98)
-        elif e["kind"] == "boss":
-            color = Color(0.99, 0.30, 0.25)
-        if e["phase"] == "warning" or e["phase"] == "charge-warning":
-            var locked: Vector2 = e["locked_direction"]
-            draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
-        if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
-            draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
-        _draw_contact_shadow(e["pos"], radius)
-        if not art.draw_enemy(self, e, run_time):
-            draw_circle(e["pos"], radius, color)
-        var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
-        var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
-        draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
-        draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
     for area: Dictionary in weapon_areas:
         if area.get("shape", "sector") == "line":
             draw_line(area["center"], Vector2(area["center"]) + Vector2(area["facing"]) * float(area["radius"]), Color(0.97, 0.77, 0.37, 0.65), 3.0)
@@ -1855,6 +1838,44 @@ func _draw() -> void:
         WeaponVisualsScript.draw_attack(self, effect)
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
+    _draw_depth_actors()
+
+func _draw_depth_actors() -> void:
+    var actors: Array[Dictionary] = [{"kind":"hero", "pos":player_pos}]
+    for cover: Vector2 in COVERS: actors.append({"kind":"cover", "pos":cover})
+    for enemy: Dictionary in enemies: actors.append({"kind":"enemy", "pos":enemy["pos"], "enemy":enemy})
+    actors.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return Vector2(a["pos"]).y < Vector2(b["pos"]).y)
+    for actor: Dictionary in actors:
+        if actor["kind"] == "hero": _draw_hero_actor()
+        elif actor["kind"] == "cover": art.draw_cover(self, actor["pos"])
+        else: _draw_enemy_actor(actor["enemy"])
+
+func _draw_enemy_actor(e: Dictionary) -> void:
+    if run_time < float(e.get("born", 0.0)):
+        draw_arc(e["pos"], float(e["radius"]) + 8.0, 0.0, TAU, 32, Color(0.97, 0.77, 0.37, 0.75), 3.0)
+        return
+    var radius: float = float(e["radius"])
+    var color := Color(0.89, 0.33, 0.40)
+    if e["kind"] == "hater" or e["kind"] == "ping-sniper":
+        color = Color(0.92, 0.49, 0.64)
+    elif SoloEnemyRulesScript.is_event(str(e["kind"])):
+        color = Color(0.79, 0.38, 0.98)
+    elif e["kind"] == "boss":
+        color = Color(0.99, 0.30, 0.25)
+    if e["phase"] == "warning" or e["phase"] == "charge-warning":
+        var locked: Vector2 = e["locked_direction"]
+        draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
+    if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
+        draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
+    _draw_contact_shadow(e["pos"], radius)
+    if not art.draw_enemy(self, e, run_time):
+        draw_circle(e["pos"], radius, color)
+    var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
+    var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
+    draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
+    draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+
+func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
     if not art.draw_hero(self, player_pos, str(hero["id"]), run_time, movement_direction, flex_time > 0.0, attack_flash > 0.0):
         draw_circle(player_pos, 16.0, hero["color"])
