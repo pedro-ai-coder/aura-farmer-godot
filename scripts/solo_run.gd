@@ -1,5 +1,6 @@
 extends Node2D
 
+const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const RecoveryRulesScript = preload("res://scripts/recovery_rules.gd")
 const PhaserRngScript = preload("res://scripts/phaser_rng.gd")
 const CameraFramingScript = preload("res://scripts/camera_framing.gd")
@@ -150,6 +151,7 @@ var export_button: Button
 var build_details: Label
 var profile_text: TextEdit
 var blocked_movement: Dictionary = {}
+var presentation
 var safe_spot_charge := 0.0
 var safe_spot_ready_at := 0.0
 var safe_spot_uses := 0
@@ -245,6 +247,8 @@ func _ready() -> void:
     profile_text.position = Vector2(260, 265)
     profile_text.size = Vector2(760, 300)
     layer.add_child(profile_text)
+    presentation = ArcadePresentationScript.new(self)
+    presentation.install()
     _apply_preferences()
     _show_ui()
     _update_text()
@@ -340,6 +344,7 @@ func _show_ui() -> void:
     restart_button.text = "BACK" if mode == "replace" else "CANCEL" if mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else "RETURN TO MENU"
     restart_button.size = Vector2(300, 58) if mode == "replace" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(350, 58)
     restart_button.position = Vector2(160, 614) if mode == "replace" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(465, 593)
+    if presentation != null: presentation.refresh(true)
 
 func _update_text() -> void:
     if mode == "menu":
@@ -350,6 +355,7 @@ func _update_text() -> void:
         metrics.position = Vector2(86, 120)
         notice.text = "CHOOSE YOUR ENERGY"
         notice.position = Vector2(448, 204)
+        if presentation != null: presentation.refresh()
         return
     headline.position = Vector2(25, 16)
     headline.add_theme_font_size_override("font_size", 26)
@@ -381,6 +387,7 @@ func _update_text() -> void:
         notice.text = "%s  %.1fs" % [hero["flex"], flex_time]
     else:
         notice.text = "MOUSE AIM [M]" if manual_aim else ""
+    if presentation != null: presentation.refresh()
 
 func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
@@ -471,6 +478,7 @@ func _process(delta: float) -> void:
         if float(effect["life"]) <= 0.0:
             attack_visuals.erase(effect)
     _update_camera(delta)
+    if presentation != null: presentation.pump()
     status_timer -= delta
     if status_timer <= 0.0:
         status_timer = 0.10
@@ -1641,6 +1649,7 @@ func _import_profile_text(raw: String) -> bool:
     var value: Variant = ProfileStoreScript.parse_json(raw)
     if not value is Dictionary or (value.get("version") != 2 and value.get("schemaVersion") != 1):
         notice.text = "INVALID SAVE DATA — PROFILE UNCHANGED"
+        if presentation != null: presentation.show_error(notice.text)
         return false
     var previous := profile.duplicate(true)
     var imported: Dictionary = ProfileStoreScript.read_data(value if value.get("version") == 2 else null, value if value.get("schemaVersion") == 1 else null)
@@ -1733,13 +1742,16 @@ func _unhandled_key_input(event: InputEvent) -> void:
         manual_aim = not manual_aim
         aim_point = get_global_mouse_position()
     elif event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
-        _confirm_selection()
+        if mode == "menu": start_run(hero_index)
+        else: _confirm_selection()
     elif event.keycode == KEY_ESCAPE and mode == "confirm_exit":
         mode = "paused"
         _show_ui()
         _update_text()
     elif event.keycode == KEY_ESCAPE and mode == "replace":
         _cancel_replacement()
+    elif event.keycode == KEY_ESCAPE and mode == "options":
+        _return_to_menu()
     elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE or event.keycode == KEY_B:
         _toggle_pause()
     if event.keycode == KEY_SPACE or event.keycode == KEY_E:
@@ -1747,7 +1759,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
     if event.keycode == KEY_L:
         _open_legendary()
     if mode == "menu" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
-        start_run(event.keycode - KEY_1)
+        presentation.select_hero(event.keycode - KEY_1)
     elif (mode == "choice" or mode == "replace" or mode == "legendary") and event.keycode >= KEY_1 and event.keycode <= KEY_6:
         pick_upgrade(event.keycode - KEY_1)
 
