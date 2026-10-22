@@ -85,6 +85,7 @@ var weapons: Array[Dictionary] = []
 var passives: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
 var player_shots: Array[Dictionary] = []
+var weapon_areas: Array[Dictionary] = []
 var hostile_shots: Array[Dictionary] = []
 var hazard_zones: Array[Dictionary] = []
 var pickups: Array[Dictionary] = []
@@ -331,6 +332,7 @@ func start_run(index: int) -> void:
     passives.clear()
     enemies.clear()
     player_shots.clear()
+    weapon_areas.clear()
     hostile_shots.clear()
     hazard_zones.clear()
     pickups.clear()
@@ -389,6 +391,7 @@ func _advance(dt: float) -> void:
         return
     _fire_weapons(dt)
     _step_player_shots(dt)
+    _step_weapon_areas()
     _collect_drops()
     if mode != "playing":
         return
@@ -739,21 +742,24 @@ func _fire_weapons(dt: float) -> void:
             streak = _passive_level("no-cap-streak") > 0 and directional_hits % 5 == 0
         if streak:
             power *= 1.10
-        var hits := 0
         if shape == "pulse" or shape == "blast" or shape == "cone":
             var center: Vector2 = player_pos if shape != "blast" else closest["pos"]
             var radius: float = (reach if shape != "blast" else 100.0) * SoloPassiveRulesScript.area_scale(passives)
             var facing: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
-            var limit_cos := -1.0
+            var arc := 360.0
             if shape == "cone":
-                limit_cos = cos(deg_to_rad(50.0 if weapon["id"] == "keyboard-warrior" or weapon["id"] == "cope-shield" else 60.0))
-                if weapon["id"] == "touch-grass":
-                    limit_cos = 0.0
-            for e: Dictionary in enemies.duplicate():
-                var relative: Vector2 = Vector2(e["pos"]) - center
-                if relative.length() <= radius and (shape != "cone" or facing.dot(relative.normalized()) >= limit_cos):
-                    _hit_enemy(e, power, true)
-                    hits += 1
+                arc = 100.0
+                if weapon["id"] == "ban-hammer": arc = 120.0
+                if weapon["id"] == "touch-grass": arc = 180.0
+                if weapon["id"] == "chad-hands": arc = 90.0
+            var delay := 0.45 if shape == "blast" else (0.30 if weapon["id"] == "ban-hammer" else 0.0)
+            var paired: bool = weapon["id"] == "keyboard-warrior" or weapon["id"] == "chad-hands"
+            var activation := {"hit": false}
+            _queue_weapon_area(str(weapon["id"]), center, facing, radius, arc, power * (0.5 if paired else 1.0), delay, activation)
+            if paired:
+                _queue_weapon_area(str(weapon["id"]), center, facing, radius, arc, power * 0.5, 0.12 if weapon["id"] == "keyboard-warrior" else 0.18, activation)
+            attack_flash = 0.12
+            attack_target = closest["pos"]
         else:
             var heading: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
             var pierce: int = (4 if shape == "line" else 1) + (_passive_level("no-cap-streak") if streak else 0)
@@ -767,19 +773,50 @@ func _fire_weapons(dt: float) -> void:
             })
             attack_flash = 0.12
             attack_target = closest["pos"]
-        if hits > 0:
-            _primary_activation(Vector2(closest["pos"]))
-            # The actual combat hit is already resolved above; this is visual only.
-            if attack_visuals.size() >= 12:
-                attack_visuals.pop_front()
-            attack_visuals.append({
-                "id": str(weapon["id"]), "origin": player_pos,
-                "target": Vector2(closest["pos"]), "life": 0.18
-            })
-            attack_flash = 0.12
-            attack_target = closest["pos"]
-            if weapon["id"] == "cope-shield":
+    _step_weapon_areas()
+
+func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: float, arc: float, damage: float, delay: float, activation: Dictionary) -> void:
+    weapon_areas.append({
+        "id": id, "center": center, "facing": facing, "radius": radius,
+        "arc": arc, "damage": damage, "at": run_time + delay, "activation": activation
+    })
+
+func _step_weapon_areas() -> void:
+    # Capture origin, direction and target at activation, as in Phaser weapons.ts.
+    # Shared activation state limits primary passive/Aura procs across paired hits.
+    for area: Dictionary in weapon_areas.duplicate():
+        if mode != "playing":
+            break
+        if run_time < float(area["at"]):
+            continue
+        weapon_areas.erase(area)
+        var center: Vector2 = area["center"]
+        var facing: Vector2 = area["facing"]
+        var radius: float = area["radius"]
+        var half_arc: float = deg_to_rad(float(area["arc"]) * 0.5)
+        var shield_awarded := false
+        for enemy: Dictionary in enemies.duplicate():
+            if mode != "playing":
+                break
+            var relative: Vector2 = Vector2(enemy["pos"]) - center
+            if relative.length() > radius + float(enemy["radius"]):
+                continue
+            if absf(facing.angle_to(relative)) > half_arc:
+                continue
+            if not SoloWorldRulesScript.clear_line(center, enemy["pos"]):
+                continue
+            var impact: Vector2 = enemy["pos"]
+            _hit_enemy(enemy, float(area["damage"]), true)
+            var activation: Dictionary = area["activation"]
+            if not bool(activation["hit"]) and mode == "playing":
+                activation["hit"] = true
+                _primary_activation(impact)
+            if area["id"] == "cope-shield" and not shield_awarded:
+                shield_awarded = true
                 shield = minf(max_hp * 0.40, shield + max_hp * 0.04 * SoloPassiveRulesScript.support_scale(passives, true))
+        if attack_visuals.size() >= 12:
+            attack_visuals.pop_front()
+        attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if float(area["arc"]) < 360.0 else center, "life": 0.18})
 
 func _step_player_shots(dt: float) -> void:
     # Phaser weapons.ts/Run.resolveShots: real travel, cover, range and hit memory.
@@ -1219,6 +1256,13 @@ func _draw() -> void:
         var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+    for area: Dictionary in weapon_areas:
+        if area["id"] == "brainrot-feed":
+            draw_arc(area["center"], float(area["radius"]), 0.0, TAU, 40, Color(0.97, 0.77, 0.37, 0.75), 3.0)
+        elif area["id"] == "ban-hammer":
+            var heading: float = Vector2(area["facing"]).angle()
+            var half_arc: float = deg_to_rad(float(area["arc"]) * 0.5)
+            draw_arc(area["center"], float(area["radius"]), heading - half_arc, heading + half_arc, 24, Color(0.97, 0.77, 0.37, 0.65), 3.0)
     for shot: Dictionary in player_shots:
         WeaponVisualsScript.draw_attack(self, {
             "id": shot["id"], "origin": Vector2(shot["pos"]) - Vector2(shot["direction"]) * 24.0,
