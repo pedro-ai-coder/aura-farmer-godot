@@ -938,15 +938,17 @@ O R0 e a fatia solo podem avançar com as decisões já aprovadas. Esta compila�
 
 Referência de design: League of Legends *Swarm* tem objetos destrutíveis com drops de cura, recolha em massa de XP/recursos (vacuum) e explosões; a zona de cura de Warehouse District exige ativação e entra em recarga prolongada. Estes são **padrões de mecânica**, não autorização para copiar nomes, arte, mapas, efeitos ou valores exatos. Fontes de referência: https://leagueoflegends.fandom.com/wiki/Swarm_%28League_of_Legends%29 e https://mobalytics.gg/lol/guides/swarm-how-to-survive .
 
-**Propostas para Aura Farmer — aguardam aprovação individual:**
+**Owner-approved Godot solo parity decision — 22 October 2026:** P1, P2 and P3 are **approved for Phaser parity**. The existing canonical Phaser solo implementation is the behavioral reference for all details not explicitly specified below. This approval applies only to the Godot solo scope and does not authorize new mechanics, artwork or balance changes.
 
-- **P1 — Drop de recuperação, «Snack de Rua»:** pequena cura percentual, recolha por proximidade, queda rara de caixas e inimigos especiais. Não substituir a importância de esquiva e de passivas defensivas; definir frequência e cura em playtest.
-- **P2 — Íman de Aura, «Aura Magnet»:** recolher temporariamente toda a Aura e XP soltos no mapa, com animação de atração e limite de entidades processadas por frame; não gerar recursos adicionais nem alterar o valor total. Esclarecer no HUD o que foi recolhido.
-- **P3 — Zona de cura, «Safe Spot»:** local fixo e legível no mapa, ativado ao permanecer na zona por breve período; cura limitada e cooldown longo visível no mundo e no HUD; posição/colisões devem respeitar Ruin Alley. Avaliar se é utilizável uma ou várias vezes por partida.
-- **P4 — Caixas de rua destrutíveis:** pontos de risco/recompensa que podem conter os drops anteriores, uma onda de inimigos ou Aura extra; telegráficos claros e orçamento limitado de spawns.
-- **P5 — Pulso de limpeza, «Viral Burst»:** drop raro que elimina ou afasta inimigos comuns próximos, sem trivializar elites/bosses; duração e dano dependem do balanceamento.
-- **P6 — Desafios temporários, «Trend Challenges»:** objetivos opcionais de curta duração (defender área, sobreviver sem dano, derrotar alvo), com recompensa proporcional ao risco e sem travar a progressão principal.
-- **P7 — Evoluções condicionais de armas:** caminhos de evolução após combinação de arma e passiva, sem exceder três armas/cinco passivas nem contornar caps por raridade; verificar compatibilidade com as regras V2 antes de aprovar.
-- **P8 — Eventos de mapa exclusivos:** interações próprias de cada mapa (ex.: armadilha urbana carregável), com cooldown e contrajogo, inspiradas na ideia de objetivos únicos de Swarm mas com identidade original.
+- **P1 — Street Snack (approved):** Spawn probability is **5%** for eligible normal enemy kills and **20%** for eligible elite kills. Pickup radius is **56 world units**. Restores **18% of maximum HP**, capped at maximum HP. Preserve Phaser seeded drop generation and special-drop limits.
+- **P2 — Aura Magnet (approved):** Spawn probability is **2%** for eligible normal enemy kills and **8%** for eligible elite kills. Pickup radius is **72 world units**. Collects **all currently available XP crystals**, without generating additional XP or duplicating rewards. Preserve original Phaser behavior and collection feedback. The name does not authorize additional Aura generation or collection effects beyond Phaser parity.
+- **P3 — Safe Spot (approved):** Fixed at **(1100, 565)** in **Ruin Alley**, with **68 world-unit** activation radius. Requires **two continuous seconds** inside the zone while below maximum HP. Restores **25% of maximum HP**. Cooldown is **90 seconds of active gameplay**. Charge resets when the player leaves the zone or activation conditions cease to be met. Restore original world-space visuals and charge/cooldown feedback from Phaser.
+- **P4 — Destructible street crates (not approved):** Remains outside the approved solo scope. The two existing static collision obstacles and their approved visual sprites **are not destructible crates**.
+- **P5 — Viral Burst (not approved):** Remains a future proposal, not authorized for implementation.
+- **P6 — Trend Challenges (not approved):** Remains a future proposal, not authorized for implementation.
+- **P7 — Conditional weapon evolutions (not approved):** Remains a future proposal, not authorized for implementation.
+- **P8 — Map-exclusive events (not approved):** Remains a future proposal, not authorized for implementation.
 
-**Ordem sugerida, caso aprovadas:** C.1 primeiro; depois P1–P3 num PR funcional isolado, P4–P5 noutro, P6–P8 apenas após balanceamento. Todas as propostas precisam de valores, telemetria local/testes, aprovação antes de implementação e revisão de originalidade visual/narrativa.
+**Scope and compatibility contract:** Preserve the approved solo scope, equipment slots, rarity rules, Aura, Flex, and save compatibility. Do not alter Phaser. No new mechanics, artwork, or balance changes are authorized. P1–P3 are approved to reproduce existing Phaser solo behavior, not to expand it.
+
+**Implementation order:** The earlier suggested order treating P1–P3 as pending approval is superseded by this owner decision. P4–P8 still require separate explicit approval. This documentation decision does not itself claim that Godot implementation or tests are complete.
