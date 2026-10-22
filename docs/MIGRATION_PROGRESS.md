@@ -49,3 +49,13 @@ Next: verify the authenticated preview in a WebGL2-capable browser and merge onl
 PR #18 merged as `883748cbef0495d93f877bcd604635232366990b` after hosted Godot CI and Vercel build passed. The owner explicitly deferred visual validation and authorized continued logic integration on 22 October. Browser WebGL2 remains unavailable; this is not a blocker for authorized logic work.
 
 Next iteration adds source-attributed hazards, expanding rings with a 70-degree safe gap, one hit per ring, 20/s stagger contribution cap, three-second exposure and refill lock, berserk regeneration suspension, persistent health thresholds, bounded non-farmable adds, Hype Bot exposure, independent event timers, Mod half-health reinforcements and Doomscroll terminals. Tests distinguish expired/preparing/active attacks and independent event deadlines. Full source parity and visual/device/performance acceptance remain pending.
+
+## G1.12 — Save contract and profile lifecycle
+
+PR #19 merged as `ae5441770a6f2ab7a706a8299280e9370c8a8dd5` after hosted CI and Vercel build passed.
+
+The next iteration uses the Phaser profile v2 schema/key on Web and an atomic native JSON file. It preserves historical unlock IDs, settings, totals, bounded unique result history, untouched Phaser v1 snapshots and the previous Godot slice profile. Only won/lost results count; abandoned/in-progress runs cannot progress the profile. Per-run damage, effective healing, absorbed shielding and Flex counts reset on restart. Storage failure does not prevent play. New unlock thresholds remain disabled because GDD 7.1 labels them proposed.
+
+Same-origin browser storage can be migrated automatically. The Godot host cannot read Phaser storage from a different origin; no cross-origin access or paid cross-save backend is introduced. A transferable save/import interface still requires integration before cross-host migration can be claimed complete.
+
+Regression coverage includes legacy snapshots, corrupted/duplicate records, preserved totals beyond 40 retained results, native atomic round trips, storage failure and duplicate terminal callbacks. Validation phases now have explicit timeouts so a script parse failure cannot leave CI hanging indefinitely. Visual/device acceptance remains deferred.

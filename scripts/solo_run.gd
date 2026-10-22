@@ -1,5 +1,6 @@
 extends Node2D
 
+const ProfileStoreScript = preload("res://scripts/profile_store.gd")
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const FloatingJoystickScript = preload("res://scripts/floating_joystick.gd")
 const WeaponVisualsScript = preload("res://scripts/weapon_visuals.gd")
@@ -104,7 +105,10 @@ var aura_hits_in_bucket := 0
 var sigma_target: Dictionary = {}
 var rng := RandomNumberGenerator.new()
 var hero_index := 0
-var profile: Dictionary = {"runs": 0, "wins": 0, "best_wave": 1, "total_kills": 0}
+var profile: Dictionary = ProfileStoreScript.defaults()
+var run_id := ""
+var run_metrics: Dictionary = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0}
+var storage_available := true
 var touch_active := false
 var touch_index := -1
 var touch_origin := Vector2.ZERO
@@ -302,6 +306,10 @@ func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
         return
     hero_index = index
+    run_id = Crypto.new().generate_random_bytes(16).hex_encode()
+    run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0}
+    profile["selected"] = HEROES[index]["id"]
+    _save_profile()
     hero = HEROES[index].duplicate(true)
     player_pos = Vector2(724, 540)
     movement_direction = Vector2.DOWN
@@ -432,7 +440,7 @@ func _tick_passives(dt: float) -> void:
         passive_timers["so_back_remaining"] = int(passive_timers["so_back_remaining"]) - 1
         passive_timers["so_back_next"] = run_time + 1.0
         var heal_total: float = 0.10 + 0.05 * float(_passive_level("so-back") - 1)
-        hp = minf(max_hp, hp + max_hp * heal_total * 0.20 * SoloPassiveRulesScript.support_scale(passives))
+        _heal_player(max_hp * heal_total * 0.20 * SoloPassiveRulesScript.support_scale(passives))
 
 func _primary_activation(target: Vector2) -> void:
     primary_hits += 1
@@ -451,7 +459,7 @@ func _primary_activation(target: Vector2) -> void:
             homie_count = 0
             passive_timers["homie_ready"] = run_time + 6.0
             var healed: float = max_hp * (0.02 + 0.01 * float(_passive_level("homie-check")))
-            hp = minf(max_hp, hp + healed * SoloPassiveRulesScript.support_scale(passives))
+            _heal_player(healed * SoloPassiveRulesScript.support_scale(passives))
         passive_timers["homie_count"] = homie_count
     if _passive_level("six-to-seven") > 0 and run_time >= float(passive_timers.get("six_ready", 0.0)):
         var sixth_count: int = int(passive_timers.get("six_counter", 0)) + 1
@@ -539,6 +547,7 @@ func _deal_damage_to_player(amount: float) -> void:
         incoming *= 0.5
     var absorbed := minf(shield, incoming)
     shield -= absorbed
+    run_metrics["protection"] = float(run_metrics["protection"]) + absorbed
     var weapon_absorption := absorbed
     for source: String in weapon_shields:
         var entry: Dictionary = weapon_shields[source]
@@ -1064,6 +1073,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false) -> void
         var blocked: float = minf(amount, float(enemy["shield"]))
         enemy["shield"] = float(enemy["shield"]) - blocked
         amount -= blocked
+    run_metrics["damage"] = float(run_metrics["damage"]) + minf(maxf(0.0, float(enemy["hp"])), maxf(0.0, amount))
     enemy["hurt_at"] = run_time
     enemy["hp"] = float(enemy["hp"]) - amount
     if enemy["kind"] == "boss":
@@ -1102,7 +1112,7 @@ func _collect_drops() -> void:
             continue
         pickups.erase(drop)
         if drop["kind"] == "snack":
-            hp = minf(max_hp, hp + 0.15 * max_hp)
+            _heal_player(0.15 * max_hp)
         elif drop["kind"] == "magnet":
             for item: Dictionary in pickups.duplicate():
                 if item["kind"] == "aura":
@@ -1111,6 +1121,11 @@ func _collect_drops() -> void:
         else:
             _gain_xp(float(drop["xp"]))
 
+func _heal_player(amount: float) -> void:
+    var effective := minf(maxf(0.0, amount), maxf(0.0, max_hp - hp))
+    hp += effective
+    run_metrics["healing"] = float(run_metrics["healing"]) + effective
+
 func _gain_xp(amount: float) -> void:
     total_xp += amount
     xp += amount
@@ -1118,7 +1133,7 @@ func _gain_xp(amount: float) -> void:
         xp -= float(30 + 8 * level + level * level)
         level += 1
         max_hp += 2.0
-        hp = minf(max_hp, hp + 2.0)
+        _heal_player(2.0)
         pending_choices += 1
 
 func _passive_level(id: String) -> int:
@@ -1203,7 +1218,7 @@ func _replace_target(card: Dictionary) -> void:
 
 func _apply_card(card: Dictionary, replace_id: String = "") -> void:
     if card["type"] == "heal":
-        hp = minf(max_hp, hp + max_hp * 0.08)
+        _heal_player(max_hp * 0.08)
     else:
         if not SoloOfferRulesScript.legal_item(str(card["id"]), str(card["rarity"]), int(card["level"]), str(hero["role"]), WEAPONS):
             push_error("Refusing an illegal GDD item offer")
@@ -1291,6 +1306,7 @@ func _use_flex() -> void:
         if sigma_target.is_empty():
             return
     aura = 0.0
+    run_metrics["flexes"] = int(run_metrics["flexes"]) + 1
     flex_time = float(hero["duration"])
     flex_lock = 30.0
     flex_age = 0.0
@@ -1316,29 +1332,24 @@ func _finish(won: bool) -> void:
         return
     mode = "won" if won else "lost"
     _clear_touch()
-    profile["runs"] = int(profile.get("runs", 0)) + 1
-    if won:
-        profile["wins"] = int(profile.get("wins", 0)) + 1
-    profile["best_wave"] = maxi(int(profile.get("best_wave", 1)), wave)
-    profile["total_kills"] = int(profile.get("total_kills", 0)) + kills
+    var result := {
+        "id": run_id, "hero": str(hero["id"]), "won": won,
+        "time": run_time, "wave": wave, "level": level, "kills": kills,
+        "xp": total_xp, "damage": run_metrics["damage"], "healing": run_metrics["healing"],
+        "protection": run_metrics["protection"], "flexes": run_metrics["flexes"]
+    }
+    profile = ProfileStoreScript.record(profile, result, mode)
     _save_profile()
     _show_ui()
 
 func _load_profile() -> void:
-    if not FileAccess.file_exists("user://godot_slice_profile_v1.json"):
-        return
-    var file := FileAccess.open("user://godot_slice_profile_v1.json", FileAccess.READ)
-    if file == null:
-        return
-    var parsed = JSON.parse_string(file.get_as_text())
-    if parsed is Dictionary and int(parsed.get("version", 0)) == 1:
-        profile = parsed
+    profile = ProfileStoreScript.load_profile()
+    for index in range(HEROES.size()):
+        if HEROES[index]["id"] == profile["selected"]:
+            hero_index = index
 
 func _save_profile() -> void:
-    var file := FileAccess.open("user://godot_slice_profile_v1.json", FileAccess.WRITE)
-    if file != null:
-        profile["version"] = 1
-        file.store_string(JSON.stringify(profile))
+    storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
     mode = "menu"
