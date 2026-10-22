@@ -17,4 +17,6 @@ func randf() -> float:
     return float((value ^ (value >> 14)) & 0xffffffff) / 4294967296.0
 
 func randi_range(minimum: int, maximum: int) -> int:
-    return minimum + int(floor(randf() * float(maximum - minimum + 1)))
+    # An unqualified randf() resolves to Godot's global built-in here.
+    # Explicit dispatch is required to consume this seeded Mulberry32 stream.
+    return minimum + int(floor(self.randf() * float(maximum - minimum + 1)))
