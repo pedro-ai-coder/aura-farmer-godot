@@ -78,6 +78,7 @@ func _verify() -> void:
     _expect(boss_enemies.size() == 1, "Boss transition must remove ordinary enemies")
     if boss_enemies.size() == 1:
         _expect(boss_enemies[0].get("kind") == "boss", "Spawned entity must be Big Hater")
+        game.set("run_time", 900.8) # Portal arrival must complete before boss damage.
         game.call("_hit_enemy", boss_enemies[0], 30001.0)
         _expect(game.get("mode") == "won", "Defeating Big Hater must end in victory")
 

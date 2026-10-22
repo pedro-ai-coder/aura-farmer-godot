@@ -38,6 +38,7 @@ run_check() {
 }
 
 run_check import --headless --path . --import
+run_check run-acceptance --headless --path . --script res://tests/test_run_acceptance.gd
 run_check menu-flow --headless --path . --script res://tests/test_menu_flow.gd
 run_check hero-combat --headless --path . --script res://tests/test_hero_combat.gd
 run_check run-progression --headless --path . --script res://tests/test_run_progression.gd

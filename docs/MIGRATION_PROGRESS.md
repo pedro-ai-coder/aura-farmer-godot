@@ -21,28 +21,23 @@ Local `scripts/validate.sh` passed again with `test_legendary_combat.gd`, coveri
 
 The previous PR head `863e0343a10b5adc86b4180fe8eee8d355f9057e` passes hosted Godot CI. The updated commit still requires hosted checks and interactive preview verification before merge. Vercel connector access returns 403 at `read_protection_bypass`. Browser authentication is now complete, but the authenticated preview reports missing WebGL2 in the remote browser before the game can start. This is a browser execution limitation, not evidence of a game rendering defect. No native, performance, full-run or visual acceptance is claimed.
 
-## Parity matrix (initial source inspection; not acceptance)
+## Current integration status — 22 October 2026
 
-| Area | Phaser reference | Godot implementation | Status / remaining work | Evidence |
-|---|---|---|---|---|
-| Hero/animation assets | browser hero animation and frame JSON | approved_visuals.gd | Imported; full directional/state/timing review pending | Existing approved-art test; manual pending |
-| Enemy/boss assets | browser enemy animation/frame JSON | approved_visuals.gd | Imported; attack/death lifecycle parity pending | Existing approved-art test; manual pending |
-| Nine weapons | simulation/weapons.ts | solo_run.gd, weapon_visuals.gd | Projectile travel, delayed/paired impacts and legendary transformations ported; manual aim/stagger/full interaction audit pending | Full local suite and nine-weapon regressions pass; browser blocked by missing WebGL2 |
-| Passives | simulation/run.ts, inventory.ts | solo_passive_rules.gd, solo_run.gd | Core subset ported; interactions and proc parity pending | Existing passive tests; runtime unverified here |
-| Enemy AI/waves | simulation/enemies.ts, run.ts | solo_enemy_rules.gd, solo_run.gd | Event timers/attacks/boss thresholds require detailed comparison | Existing bestiary tests; full run pending |
-| Aura/Flex/collectibles | simulation/run.ts | solo_run.gd | Exact activation counting, Flex interactions and drop approval audit pending | Manual pending |
-| Menus/HUD/options | browser/app.ts, scene.ts | solo_run.gd | Basic UI present; complete polished parity pending | Desktop/mobile captures pending |
-| Profile/save | browser/save.ts | solo_run.gd profile file | Independent Godot summary; Phaser migration missing | Migration tests pending |
-| Audio/feedback | browser/audio.ts | Godot presentation | Audit/port pending | Audio checks pending |
-| Mobile controls | browser/touch-playfield.ts | floating_joystick.gd, solo_run.gd | PR #17 merged; choice/focus/safe-area/fullscreen review pending | Existing touch test; real device pending |
-| Performance | browser render frame meter | Godot runtime | 300 enemies/150 projectiles, 60/30 FPS unmeasured | No acceptance score assigned |
-| Cross-platform exports | shared simulation/browser | export_presets.cfg | Web pipeline exists; native setup/device review pending | No native approval |
+PRs [#18](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/18), [#19](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/19), [#20](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/20), [#21](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/21), [#22](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/22) and [#23](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/23) were integrated after local Godot execution, hosted Godot CI and Vercel builds passed. Entries below retain the history of each scoped iteration; statements describing the next iteration are historical.
 
-## Deployment and next priority
+| Area | Implemented logic and automated evidence | Remaining acceptance |
+|---|---|---|
+| Nine weapons | Moving projectiles, cover/range/pierce, delayed and paired areas, legendary transformations, active windows and proc isolation | Visual timing and normal-play balance |
+| Passives, Aura and Flex | Approved catalog, acquisition/removal clocks, additive and strongest-source stacking, timed shields, primary caps and three starter Flexes | Human build/interactions review |
+| Heroes and aiming | Stable target ties, manual aim, Sigma lock, Cool Kid movement/contact and Alpha taunt/slams | Desktop/mobile feel and feedback |
+| Enemies and bosses | Bestiary patterns, independent events, terminals, threshold latches, bounded adds, expanding rings, stagger and recoverable berserk | Full normal run and difficulty tuning |
+| Menus/profile | Explicit confirmations, replacement cancellation, pause/exit/retry, preferences, v2 persistence, legacy migration and copy/paste transfer | Responsive presentation and real browser storage/device lifecycle |
+| Approved assets | All 18 manifest hashes and texture loading verified; 17 enemy animations available | Direction/state/timing, audio and visual acceptance |
+| Mobile controls | Pointer ownership, release/focus/modal cleanup; best-effort Web fullscreen/landscape | Real devices, safe areas and denied-fullscreen fallback |
+| Performance | Controlled 300-enemy/150-initial-projectile headless fixture | Rendered FPS, sustained density and full-run memory |
+| Exports | Hosted Web build; native presets prepared without credentials | SDK/templates, identities/signing and physical Android/iOS tests |
 
-No production deployment or merge in this iteration. The previous preview is Ready, and browser authentication is complete, but the remote browser reports missing WebGL2. Interactive gameplay verification remains required. Local validation now works and the updated combat suite passes; hosted checks must also pass on the new commit.
-
-Next: verify the authenticated preview in a WebGL2-capable browser and merge only after all required checks. Continue boss stagger, manual aim and the full combat interaction audit. Then complete animation/UI parity and save compatibility. Full run, comparable screenshots and runtime performance remain required before migration acceptance.
+The owner explicitly deferred visual validation. The authenticated remote browser lacks WebGL2. Green automated checks do not establish visual, device, balance or full migration acceptance. Native readiness and exact test limits are documented in [NATIVE_READINESS.md](NATIVE_READINESS.md). Canonical proposal-only unlock thresholds and utility drops remain disabled. Phaser and the canonical GDD are unchanged.
 
 ## G1.11 — Boss and event logic
 
@@ -75,3 +70,9 @@ PR #21 merged as `2a95956f742200ba5750af4bf4fe68863b4816f8` after hosted CI and 
 ## G1.15 — Menu and profile-transfer logic
 
 PR #22 passed hosted CI and Vercel build and was integrated. Next iteration adds explicit card/replacement confirmation, cancellation without reroll, exit confirmation that returns to pause on Escape, suppressed modal movement, build inspection, fresh result retry, persistent sound/reduced-motion settings and copy/paste v2/v1 save transfer. Import retains the previous Godot profile snapshot and known unlocks; browser-origin isolation is respected. This implements menu behavior using existing controls; visual polish and responsive/device review remain deferred.
+
+## G1.16 — Spawn and integration acceptance contracts
+
+PR #23 passed hosted CI and Vercel build and was integrated. Next iteration adds 0.8-second spawn portals, non-targetable/non-damageable arrival states, the two-elite solo cap and approved elite multipliers/XP with one shield modifier, stable-ID hit memory, touch-accessible replacement cancellation, and best-effort Web fullscreen/orientation handling. Proposal-only Snack/Magnet generation is disabled to honor canonical Appendix C; no approved loot values are expanded.
+
+Controlled three-hero timeline tests cover all wave rewards, real modal confirmations, boss arrival, recoverable berserk, terminal victory and persistence. A synthetic 300-enemy/150-initial-projectile headless fixture prints CPU time but makes no rendered FPS/device claim. Android/iOS preset preparation and explicit missing build/device prerequisites are documented in NATIVE_READINESS.md. Visual, normal-play balance, audio and native/device acceptance remain outstanding.

@@ -1,35 +1,28 @@
 # Aura Farmer — Godot
 
-**Status: repository foundation / engine smoke test, not a playable game port.**
+Shared solo implementation for **Web, Android and iOS** using Godot 4.7.2, GDScript and the Compatibility renderer. The canonical `docs/GDD.md` is the gameplay authority. The Phaser reference repository remains unchanged.
 
-A new Godot project targeting **Web, Android and iOS** equally, with shared game rules. The original TypeScript/Phaser project remains at https://github.com/pedro-ai-coder/aura-farmer and is unchanged.
+## Current state
 
-## Stack
+The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. Menus include explicit card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved art is fetched from pinned, hash-verified Phaser assets.
 
-- Godot 4.7.2 with GDScript (not C#)
-- Compatibility renderer for Web support
-- No runtime dependencies, new artworks or paid services
+This is **not final migration acceptance**. Visual and responsive review is deferred to the owner. Normal-play balance, complete audio/animation polish, real-device lifecycle/export tests, rendered FPS/stress measurements and the 85/100 acceptance score remain outstanding. Read `docs/MIGRATION_PROGRESS.md` and `docs/NATIVE_READINESS.md` for evidence and limits.
 
-## Run locally
+## Run and validate
 
-1. Install the matching Godot editor.
-2. Import `project.godot`.
-3. Run the main scene. Move the placeholder with **WASD** / **arrow keys**.
-4. Execute `./scripts/validate.sh` for the headless smoke tests.
+1. Install the exact Godot 4.7.2 editor.
+2. Run `python3 scripts/sync_approved_assets.py` to fetch the approved artwork.
+3. Import `project.godot`, then run the main scene.
+4. Run `bash scripts/validate.sh` for import, gameplay, save, input, art and scene regressions. The Bash validation workflow requires GNU `timeout`.
 
-The grid and circle are diagnostic placeholders, **not** approved art. This initial project does not yet include combat, the actual Ruin Alley map, enemies, weapons, upgrade UI, native builds or imported art.
+Select a hero with buttons or 1–3. Move with WASD/arrows or the floating left-side touch joystick. Use E/Space for Flex, M for mouse/automatic aim and P/Escape/B for pause/build. Select upgrade cards with buttons or 1–6, then confirm with the button or Enter. Escape cancels replacement/exit confirmation without resuming combat behind the modal.
 
-## Source of truth
+## Saves and platform builds
 
-The authoritative Godot specification is `docs/GDD.md`. Its **§23 (21 October 2026)** records the approved equal-priority **Web, Android and iOS** targets. The original GDD was imported unchanged and then explicitly amended here; `docs/GDD_SOURCE.md` records the pinned source and amendment. External migration plans cannot override gameplay requirements.
+Web uses `aura-farmer:profile:v2` in same-origin localStorage. Native uses an atomic `user://profile_v2.json`; old v1/slice data remains untouched. Main-menu **SAVE DATA / IMPORT SAVE** transfers JSON across browser origins, preserving historical IDs and a Godot backup. No cloud account or cross-save backend is added. Proposed new unlock thresholds and proposal-only utility drops are not activated.
 
-## Development workflow
+Vercel uses `scripts/build_web.sh` with the official verified engine/templates. Android/iOS presets are preparation only; SDKs, signing identities and device verification remain local prerequisites. No native release is authorized or published.
 
-Read `AGENTS.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_PLAN.md` and `docs/CI_SETUP.md`. Every iteration uses a scoped PR. Public-repository GitHub Actions CI validates non-draft PRs on standard GitHub-hosted runners. The Godot bootstrap has passed its first CI smoke test; full gameplay, Web/Android/iOS exports and real-device acceptance remain unverified. Branch ruleset enforcement must be enabled separately in GitHub settings. Do not claim green tests before a real run; do not automatically deploy or release.
+## Integration workflow
 
-**Validation status:** GitHub repository content committed; Godot editor import, headless checks, browser export and device tests have not yet run in this environment.
-
-
-## Playable slice (experimental)
-
-An initial Godot solo gameplay scene is available after importing `project.godot`. Choose Sigma, Cool Kid or Alpha Chad (buttons or keyboard 1–3), move with WASD/arrows or a touch drag on the left, and trigger Flex with SPACE or the touch button. Automatic attacks, upgrades, XP and a timed run are present. See `docs/PLAYABLE_SLICE.md` for substantial gameplay/visual and save migration gaps; this is NOT the finished GDD demo.
+Use one scoped implementation PR at a time. Required automated checks must pass before merging. The owner authorized integration of already approved logic and deferred visual validation on 22 October 2026. This does not approve new mechanics, artwork, paid services, native releases or a claim of complete parity.
