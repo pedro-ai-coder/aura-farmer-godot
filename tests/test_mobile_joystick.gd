@@ -24,6 +24,7 @@ func _initialize() -> void:
     call_deferred("_verify")
 
 func _verify() -> void:
+    root.size = Vector2i(1280,720)
     var game = load("res://scenes/main.tscn").instantiate()
     get_root().add_child(game)
     game.call("start_run", 0)

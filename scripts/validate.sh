@@ -37,7 +37,10 @@ run_check() {
   fi
 }
 
+bash -n scripts/build_web.sh
+node tests/test_web_platform.cjs
 run_check import --headless --path . --import
+run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
 run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check recovery --headless --path . --script res://tests/test_recovery.gd
 run_check camera-cover --headless --path . --script res://tests/test_camera_cover.gd

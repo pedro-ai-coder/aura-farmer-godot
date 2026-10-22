@@ -12,14 +12,33 @@ func _capture() -> void:
     var game = load("res://scenes/main.tscn").instantiate()
     root.add_child(game)
     game.set_process(false)
-    for state in ["menu","playing","choice","legendary","paused","won","lost"]:
+    game.touch_device = width < 1000
+    for state in ["menu","playing","obstacles","recovery","station","choice","legendary","paused","boss","won","lost","options","profile_import","profile_export","dense"]:
         game.start_run(0)
         if state == "menu": game._return_to_menu()
-        elif state == "playing":
+        elif state in ["playing","obstacles","recovery","station"]:
             game.player_pos = Vector2(850,565)
             game.pickups.append({"kind":"snack","pos":Vector2(780,580),"xp":0.0})
             game.pickups.append({"kind":"magnet","pos":Vector2(930,580),"xp":0.0})
             game._spawn_enemy("npc",{"pos":Vector2(800,670)})
+            if state == "station":
+                game.player_pos = Vector2(1100,565)
+                game.hp = 50.0
+                game.safe_spot_charge = 1.0
+        elif state == "options": game.mode = "options"
+        elif state == "profile_import" or state == "profile_export":
+            game._return_to_menu()
+            if state == "profile_import": game._open_profile_import()
+            else: game._open_profile_export()
+        elif state == "boss":
+            game.run_time = 900.0
+            game._spawn_logic(0.0)
+            game.run_time = 902.0
+            game._step_enemies(0.0)
+            game.run_time = 902.5
+        elif state == "dense":
+            game.player_pos = Vector2(850,565)
+            for i in range(80): game._spawn_enemy("npc" if i%3 else "hater")
         elif state == "choice":
             game._gain_xp(100.0)
             game._open_choice()

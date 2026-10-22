@@ -1,5 +1,6 @@
 extends Node2D
 
+const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const RecoveryRulesScript = preload("res://scripts/recovery_rules.gd")
 const PhaserRngScript = preload("res://scripts/phaser_rng.gd")
@@ -152,6 +153,9 @@ var build_details: Label
 var profile_text: TextEdit
 var blocked_movement: Dictionary = {}
 var presentation
+var touch_device := OS.has_feature("mobile")
+var web_metrics: Dictionary = {}
+var platform_poll := 0.0
 var safe_spot_charge := 0.0
 var safe_spot_ready_at := 0.0
 var safe_spot_uses := 0
@@ -161,6 +165,9 @@ var pickup_feedback: Array[Dictionary] = []
 func _ready() -> void:
     rng.seed = 451
     _load_profile()
+    WebPlatformScript.install()
+    web_metrics = WebPlatformScript.metrics()
+    touch_device = touch_device or bool(web_metrics.get("touch",false))
     camera = Camera2D.new()
     camera.enabled = true
     camera.limit_left = 0
@@ -477,6 +484,7 @@ func _process(delta: float) -> void:
         effect["life"] = float(effect["life"]) - delta
         if float(effect["life"]) <= 0.0:
             attack_visuals.erase(effect)
+    _update_platform(delta)
     _update_camera(delta)
     if presentation != null: presentation.pump()
     status_timer -= delta
@@ -487,7 +495,7 @@ func _process(delta: float) -> void:
 
 func _update_camera(delta: float, snap: bool = false) -> void:
     var view := get_viewport_rect().size
-    var zoom_value: float = CameraFramingScript.zoom_for(view, OS.has_feature("mobile") or touch_active)
+    var zoom_value: float = CameraFramingScript.zoom_for(view, touch_device)
     camera.zoom = Vector2.ONE * zoom_value
     var target: Vector2 = CameraFramingScript.clamp_center(player_pos, view, zoom_value)
     var center: Vector2 = target if snap or bool(profile["settings"]["reducedMotion"]) else CameraFramingScript.follow(camera.position, target, delta)
@@ -1775,16 +1783,37 @@ func _clear_touch() -> void:
 
 func _notification(what: int) -> void:
     if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-        _clear_touch()
+        if mode == "playing": _toggle_pause()
+        else: _clear_touch()
 
-func _request_mobile_display() -> void:
-    if not OS.has_feature("web"): return
-    # User-gesture-only best effort. Unsupported/fullscreen-denied browsers remain playable.
-    JavaScriptBridge.eval("(function(){try{const c=document.getElementById('canvas');const lock=()=>{try{if(screen.orientation&&screen.orientation.lock)screen.orientation.lock('landscape').catch(()=>{});}catch(e){}};if(c&&c.requestFullscreen&&!document.fullscreenElement)c.requestFullscreen().then(lock).catch(()=>{});else lock();}catch(e){}})()", true)
+func _update_platform(delta: float) -> void:
+    platform_poll -= delta
+    if platform_poll > 0.0 or not OS.has_feature("web"): return
+    platform_poll = 0.5
+    var previous: String = JSON.stringify(web_metrics)
+    web_metrics = WebPlatformScript.metrics()
+    touch_device = touch_device or bool(web_metrics.get("touch",false))
+    if JSON.stringify(web_metrics) != previous and presentation != null: presentation._window_changed(true)
+
+func _touch_playfield() -> Rect2:
+    var rect := Rect2(Vector2.ZERO,get_viewport_rect().size)
+    if presentation != null: rect = Rect2(presentation.position,presentation.view)
+    var top := 220.0 if rect.size.x < 700.0 else 100.0
+    return Rect2(rect.position+Vector2(0,top),Vector2(rect.size.x*0.48,maxf(0.0,rect.size.y-top-92)))
 
 func _input(event: InputEvent) -> void:
-    if event is InputEventScreenTouch and event.pressed:
-        _request_mobile_display()
+    if event is InputEventKey and event.pressed and not event.echo:
+        if (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER) and (mode == "menu" or mode in ["choice","replace","legendary"]):
+            if mode == "menu": start_run(hero_index)
+            else: _confirm_selection()
+            get_viewport().set_input_as_handled()
+            return
+        if mode == "playing" and (event.keycode == KEY_E or event.keycode == KEY_SPACE):
+            _use_flex()
+            get_viewport().set_input_as_handled()
+            return
+    if event is InputEventScreenTouch and event.pressed and not event.canceled:
+        touch_device = true
     if event is InputEventKey and [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT].has(event.keycode):
         if not event.pressed: blocked_movement.erase(event.keycode)
         elif mode != "playing": blocked_movement[event.keycode] = true
@@ -1793,10 +1822,11 @@ func _input(event: InputEvent) -> void:
     if event is InputEventScreenTouch:
         if event.index == touch_index and (not event.pressed or event.canceled):
             _clear_touch()
-        elif event.pressed and not touch_active and mode == "playing" and event.position.x < 475.0 and event.position.y > 185.0:
+        elif event.pressed and not event.canceled and not touch_active and mode == "playing" and _touch_playfield().has_point(event.position):
             touch_active = true
             touch_index = event.index
-            touch_origin = event.position
+            var field := _touch_playfield()
+            touch_origin = Vector2(clampf(event.position.x,field.position.x+58,field.end.x-58),clampf(event.position.y,field.position.y+58,field.end.y-58))
             touch_direction = Vector2.ZERO
             touch_joystick.call("show_at", touch_origin, touch_direction)
     elif event is InputEventScreenDrag and touch_active and event.index == touch_index and mode == "playing":
@@ -1815,7 +1845,7 @@ func _draw_pickup(drop: Dictionary) -> void:
     var ink := Color(0.14, 0.20, 0.29)
     var paper := Color(0.97, 0.93, 0.80)
     if kind == "aura":
-        var pulse := 1.0 + 0.08 * sin(run_time * 5.0 + at.x * 0.05)
+        var pulse := 1.0 if profile["settings"]["reducedMotion"] else 1.0 + 0.08 * sin(run_time * 5.0 + at.x * 0.05)
         var diamond := PackedVector2Array([
             at + Vector2(0, -12) * pulse, at + Vector2(9, 0) * pulse,
             at + Vector2(0, 12) * pulse, at + Vector2(-9, 0) * pulse

@@ -13,6 +13,10 @@ var subtitle: Label
 var detail: Label
 var card_scroll: ScrollContainer
 var card_content: Control
+var body_scroll: ScrollContainer
+var body_content: Control
+var full_view := Vector2.ZERO
+var rotate_hint: Label
 var card_parts: Array[Dictionary] = []
 var hero_labels: Array[Dictionary] = []
 var view := Vector2.ZERO
@@ -56,6 +60,18 @@ func install() -> void:
         parts["name"].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
         parts["body"].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
         card_parts.append(parts)
+    body_scroll = ScrollContainer.new()
+    body_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+    add_child(body_scroll)
+    body_content = Control.new()
+    body_scroll.add_child(body_content)
+    for control: Control in [game.build_details,game.sound_button,game.motion_button,game.import_button,game.export_button]: control.reparent(body_content)
+    rotate_hint = _label(20)
+    rotate_hint.text = "Rotate for a wider view"
+    rotate_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    rotate_hint.add_theme_color_override("font_color",ArcadeStyle.CARD)
+    rotate_hint.add_theme_color_override("font_outline_color",ArcadeStyle.INK)
+    rotate_hint.add_theme_constant_override("outline_size",5)
     for i in range(3):
         var button: Button = game.menu_buttons[i]
         button.pressed.disconnect(game.start_run.bind(i))
@@ -96,16 +112,32 @@ func _button(text: String, action: Callable) -> Button:
     ArcadeStyle.button(button)
     return button
 
-func _window_changed() -> void:
+func _window_changed(force: bool = false) -> void:
     var window: Window = game.get_window()
-    if window.size == last_window_size: return
+    if window.size == last_window_size and not force: return
     last_window_size = window.size
     var physical := Vector2(window.size)
     var scale := clampf(minf(physical.x/1280.0,physical.y/720.0),0.75,1.5)
     window.content_scale_size = Vector2i(physical / scale)
-    view = Vector2(window.content_scale_size)
+    full_view = Vector2(window.content_scale_size)
+    var insets := Vector4.ZERO
+    var safe: Array = game.web_metrics.get("safe",[])
+    if safe.size() == 4:
+        var factor := full_view / Vector2(maxf(1,float(game.web_metrics.get("width",physical.x))),maxf(1,float(game.web_metrics.get("height",physical.y))))
+        insets = Vector4(float(safe[0])*factor.x,float(safe[1])*factor.y,float(safe[2])*factor.x,float(safe[3])*factor.y)
+    elif OS.has_feature("mobile"):
+        var native_safe: Rect2i = DisplayServer.get_display_safe_area()
+        var window_rect := Rect2i(window.position,window.size)
+        if native_safe.has_area():
+            var useful := window_rect.intersection(native_safe)
+            var factor := full_view / physical
+            var near := Vector2(useful.position-window_rect.position)*factor
+            var far := Vector2(window_rect.end-useful.end)*factor
+            insets = Vector4(near.x,near.y,far.x,far.y)
+    position = Vector2(insets.x,insets.y)
+    view = full_view-Vector2(insets.x+insets.z,insets.y+insets.w)
     size = view
-    game.touch_joystick.size = view
+    game.touch_joystick.size = full_view
     game._clear_touch()
     last_signature = ""
     refresh()
@@ -129,7 +161,7 @@ func refresh(force: bool = false) -> void:
     if view.x <= 0.0: view = game.get_viewport_rect().size
     var equipment := ""
     for item: Dictionary in game.weapons + game.passives: equipment += "%s:%s:%s;" % [item["id"],item["rarity"],item["level"]]
-    var signature: String = str(game.mode) + str(game.hero_index) + str(game.selected_card_index) + str(game.level) + equipment + JSON.stringify(game.selection) + JSON.stringify(game.legendary_offers) + str(game.profile["settings"]) + error_message
+    var signature: String = str(game.mode) + str(game.hero_index) + str(game.selected_card_index) + str(game.level) + equipment + JSON.stringify(game.selection) + JSON.stringify(game.legendary_offers) + str(game.profile["settings"]) + error_message + str(game.touch_device)
     game.flex_button.text = "FLEX READY  [E]" if game.aura >= 100.0 and game.flex_lock <= 0.0 else "FLEX  %d%%" % int(game.aura)
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not force and signature == last_signature:
@@ -174,13 +206,17 @@ func refresh(force: bool = false) -> void:
     game.confirm_button.visible = cards or game.mode in ["confirm_exit","profile_import","profile_export"]
     game.defer_button.visible = game.mode == "legendary"
     card_scroll.visible = cards
+    body_scroll.visible = settings
+    rotate_hint.visible = game.mode == "playing" and game.touch_device and portrait
+    _place(rotate_hint,Rect2(20,162,width-40,40))
     for control: Button in [game.pause_button,game.flex_button,game.confirm_button,game.restart_button,game.defer_button,game.retry_button,game.sound_button,game.motion_button,game.import_button,game.export_button,game.legendary_button,play_button,options_button,back_button]:
         ArcadeStyle.button(control,control == play_button)
     if menu:
         subtitle.text = "RUIN ALLEY  /  SOLO"
         _place(subtitle,Rect2(menu_panel.position+Vector2(22,16),Vector2(menu_panel.size.x-44,28)))
         var card_y := menu_panel.position.y + (56.0 if compact else 68.0)
-        var card_height := minf(235.0,menu_panel.size.y-(300.0 if compact else 250.0))
+        var card_height := minf(235.0,menu_panel.size.y-(326.0 if compact else 250.0))
+        card_height = maxf(166,card_height)
         if portrait: card_height = minf(260,menu_panel.size.y-270)
         var gap := 10.0
         var card_width := (menu_panel.size.x-44.0-gap*2.0)/3.0
@@ -196,21 +232,25 @@ func refresh(force: bool = false) -> void:
             var labels: Dictionary = hero_labels[i]
             labels["name"].text = ["SIGMA","COOL KID","ALPHA"][i]
             labels["name"].horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-            labels["name"].add_theme_font_size_override("font_size",18 if card_width < 150 else 20)
-            _place(labels["name"],Rect2(3,card_height-64,card_width-6,30))
+            labels["name"].add_theme_font_size_override("font_size",22)
+            _place(labels["name"],Rect2(3,card_height-70,card_width-6,32))
             labels["role"].text = str(game.HEROES[i]["role"]).to_upper()
+            labels["role"].add_theme_font_size_override("font_size",22)
             labels["role"].horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-            _place(labels["role"],Rect2(3,card_height-34,card_width-6,25))
+            _place(labels["role"],Rect2(3,card_height-36,card_width-6,32))
         var hero: Dictionary = game.HEROES[game.hero_index]
         detail.text = "%s  ·  %s\n%s" % [hero["name"],hero["flex"],["Lock onto a rival. Throw No Cap through the crowd.","Keep moving. Unleash Giga Chad Rampage.","Hold the line. Shield up and slam with Alpha Hold."][game.hero_index]]
-        _place(detail,Rect2(menu_panel.position.x+24,card_y+card_height+14,menu_panel.size.x-48,90))
-        var footer_y := menu_panel.end.y-132
-        _place(play_button,Rect2(menu_panel.position.x+22,footer_y,menu_panel.size.x-44,58))
-        _place(options_button,Rect2(menu_panel.position.x+22,footer_y+70,menu_panel.size.x-44,48))
+        if compact: detail.text = "%s  ·  %s" % [hero["name"],hero["flex"]]
+        detail.add_theme_font_size_override("font_size",22 if compact else 20)
+        _place(detail,Rect2(menu_panel.position.x+24,card_y+card_height+14,menu_panel.size.x-48,64 if compact else 90))
+        var footer_y := menu_panel.end.y-144
+        _place(play_button,Rect2(menu_panel.position.x+22,footer_y,menu_panel.size.x-44,60))
+        _place(options_button,Rect2(menu_panel.position.x+22,footer_y+72,menu_panel.size.x-44,60))
     else:
         for i in range(3): game.menu_buttons[i].hide(); game.hero_portraits[i].hide()
         var headings := {"choice":"LEVEL UP!","legendary":"GO LEGENDARY","replace":"MAKE ROOM","paused":"TAKE A BREATHER","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"BIG HATER DOWN!","lost":"ONE MORE RUN?"}
         title.text = "LEVEL UP!  /  %d" % game.level if game.mode == "choice" else headings.get(game.mode,"")
+        if portrait and game.mode == "paused": title.text = "PAUSED"
         _place(title,Rect2(modal_panel.position+Vector2(24,18),Vector2(modal_panel.size.x-48,48)))
         subtitle.text = {"choice":"Choose one. Confirm to keep farming.","legendary":"ONE PER RUN  /  Three weapons. Three buffs.","replace":"The old item is removed. Its effects do not carry over.","paused":"Simulation paused. Your build and settings are below.","options":"Make it yours. Everything is saved on this device.","confirm_exit":"This unfinished run will not count towards your profile.","profile_import":"Paste a Phaser v1 or v2 profile. Your current profile is backed up.","profile_export":"Copy this JSON to transfer your progress to another browser.","won":"Victory recorded. Your next run starts fresh.","lost":"Progress recorded. Take what you learned into the next run."}.get(game.mode,"")
         if game.mode == "replace":
@@ -222,25 +262,36 @@ func refresh(force: bool = false) -> void:
         _place(subtitle,Rect2(modal_panel.position+Vector2(24,72),Vector2(modal_panel.size.x-48,48)))
         var footer_y := modal_panel.end.y-74
         var action_width := minf(300,(modal_panel.size.x-72)/2)
-        _place(game.confirm_button,Rect2(modal_panel.end.x-24-action_width,footer_y,action_width,56))
-        _place(game.restart_button,Rect2(modal_panel.position.x+24,footer_y,action_width,56))
-        _place(game.defer_button,Rect2(modal_panel.position.x+24,footer_y,action_width,56))
-        _place(game.retry_button,Rect2(modal_panel.end.x-24-action_width,footer_y,action_width,56))
-        _place(back_button,Rect2(modal_panel.position.x+24,footer_y,action_width,56))
-        content_rect = Rect2(modal_panel.position+Vector2(24,132),Vector2(modal_panel.size.x-48,maxf(60,footer_y-modal_panel.position.y-148)))
+        _place(game.confirm_button,Rect2(modal_panel.end.x-24-action_width,footer_y,action_width,60))
+        _place(game.restart_button,Rect2(modal_panel.position.x+24,footer_y,action_width,60))
+        _place(game.defer_button,Rect2(modal_panel.position.x+24,footer_y,action_width,60))
+        _place(game.retry_button,Rect2(modal_panel.end.x-24-action_width,footer_y,action_width,60))
+        _place(back_button,Rect2(modal_panel.position.x+24,footer_y,action_width,60))
+        var header_height := 150.0 if portrait else 132.0
+        content_rect = Rect2(modal_panel.position+Vector2(24,header_height),Vector2(modal_panel.size.x-48,maxf(60,footer_y-modal_panel.position.y-header_height-16)))
         if cards: _cards(content_rect)
         elif settings:
-            var settings_width := minf(340,content_rect.size.x)
-            var settings_x := content_rect.end.x-settings_width
-            _place(game.sound_button,Rect2(settings_x,content_rect.position.y,settings_width,54))
-            _place(game.motion_button,Rect2(settings_x,content_rect.position.y+66,settings_width,64))
-            _place(game.import_button,Rect2(settings_x,content_rect.position.y+142,settings_width,54))
-            _place(game.export_button,Rect2(settings_x,content_rect.position.y+208,settings_width,54))
-            detail.visible = options and not compact and not portrait
+            _place(body_scroll,content_rect)
+            var stacked := content_rect.size.x < 800 or compact
+            var body_width := content_rect.size.x-14
+            var settings_width := body_width if stacked else 340.0
+            var settings_x := 0.0 if stacked else body_width-settings_width
+            var settings_y := 0.0
+            detail.visible = options and not stacked
             detail.text = "MAKE YOUR OWN AURA\n\nWASD / arrows — move\nSpace / E — Flex\nM — switch aim\nP / Escape — pause\n\nTouch: drag on the left to move."
             _place(detail,Rect2(content_rect.position,Vector2(maxf(0,content_rect.size.x-settings_width-24),content_rect.size.y)))
-            _place(game.build_details,Rect2(content_rect.position,Vector2(maxf(0,content_rect.size.x-settings_width-24),content_rect.size.y)))
+            var build_height := maxf(160,(game.weapons.size()+game.passives.size()+4)*(34.0 if stacked else 28.0))
+            _place(game.build_details,Rect2(0,0,body_width if stacked else body_width-settings_width-24,build_height))
+            game.build_details.add_theme_font_size_override("font_size",22 if stacked else 18)
             game.build_details.add_theme_color_override("font_color",ArcadeStyle.INK)
+            if game.mode == "paused" and stacked: settings_y = build_height+20
+            _place(game.sound_button,Rect2(settings_x,settings_y,settings_width,60))
+            _place(game.motion_button,Rect2(settings_x,settings_y+72,settings_width,64))
+            _place(game.import_button,Rect2(settings_x,settings_y+148,settings_width,60))
+            _place(game.export_button,Rect2(settings_x,settings_y+220,settings_width,60))
+            var content_height := maxf(content_rect.size.y,settings_y+(280 if options else 144))
+            body_content.custom_minimum_size = Vector2(body_width,content_height)
+            body_content.size = body_content.custom_minimum_size
         elif game.mode in ["profile_import","profile_export"]:
             _place(game.profile_text,content_rect)
             game.profile_text.add_theme_stylebox_override("normal",ArcadeStyle.box(ArcadeStyle.CARD,ArcadeStyle.INK,8,0))
@@ -252,10 +303,11 @@ func refresh(force: bool = false) -> void:
         elif game.mode == "confirm_exit":
             detail.text = "Your settings and earlier completed results remain saved."
             _place(detail,content_rect)
-    _place(game.pause_button,Rect2(width-176,14,158,52))
-    if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,52))
+    if portrait and game.mode in ["paused","won","lost"]: game.restart_button.text = "MAIN MENU"
+    _place(game.pause_button,Rect2(width-176,14,158,60))
+    if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,60))
     _place(game.flex_button,Rect2(width-246,height-78,226,60))
-    _place(game.legendary_button,Rect2(width-500,height-78,238,60))
+    _place(game.legendary_button,Rect2(20 if width < 1000 else width-500,height-78,minf(238,width-286) if width < 1000 else 238,60))
     game.flex_button.text = "FLEX READY  [E]" if game.aura >= 100.0 and game.flex_lock <= 0.0 else "FLEX  %d%%" % int(game.aura)
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not cards:
@@ -357,25 +409,34 @@ func _draw() -> void:
             var extent := source*scale
             if view.x < 700.0:
                 draw_rect(Rect2(Vector2.ZERO,view),ArcadeStyle.INK)
-                draw_texture_rect(texture,Rect2(0,0,view.x,view.x*source.y/source.x),false)
-            else: draw_texture_rect(texture,Rect2((view-extent)/2,extent),false)
+                var header_height := menu_panel.position.y+4
+                var crop_width := source.x*0.55
+                draw_texture_rect_region(texture,Rect2(0,0,view.x,header_height),Rect2(0,0,crop_width,crop_width*header_height/view.x))
+            else: draw_texture_rect(texture,Rect2(Vector2.ZERO,extent),false)
         _panel(menu_panel)
         return
     if game.mode != "playing":
         draw_rect(Rect2(Vector2.ZERO,view),Color(0.09,0.13,0.19,0.72))
         _panel(modal_panel)
         return
-    var hud_width := minf(view.x-210,860)
-    var bar_width := maxf(70,(hud_width-58)/3)
-    _panel(Rect2(14,10,hud_width,74),ArcadeStyle.PAPER)
-    _bar(Rect2(25,20,bar_width,28),game.hp,game.max_hp,ArcadeStyle.CORAL,"HP %d / %d" % [ceili(game.hp),int(game.max_hp)])
-    _bar(Rect2(39+bar_width,20,bar_width,28),game.xp,30+8*game.level+game.level*game.level,ArcadeStyle.TEAL,"XP  /  LV %d" % game.level)
-    _bar(Rect2(53+bar_width*2,20,bar_width,28),game.aura,100,ArcadeStyle.GOLD,"AURA %d%%" % int(game.aura))
-    _text(Vector2(26,72),"SHIELD %d   /   %s   /   %02d:%02d" % [ceili(game.shield),"BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60],18)
+    var bars: Array[Rect2] = hud_rectangles()
+    if view.x < 700.0:
+        _panel(Rect2(14,10,view.x-28,146),ArcadeStyle.PAPER)
+        _bar(bars[0],game.hp,game.max_hp,ArcadeStyle.CORAL,"HP %d / %d" % [ceili(game.hp),int(game.max_hp)])
+        _bar(bars[1],game.xp,30+8*game.level+game.level*game.level,ArcadeStyle.TEAL,"XP / LV %d" % game.level)
+        _bar(bars[2],game.aura,100,ArcadeStyle.GOLD,"AURA %d%%" % int(game.aura))
+        _text(Vector2(26,139),"SHIELD %d  /  WAVE %d  /  %02d:%02d" % [ceili(game.shield),game.wave,int(game.run_time)/60,int(game.run_time)%60],18)
+    else:
+        var hud_width := minf(view.x-210,860)
+        _panel(Rect2(14,10,hud_width,74),ArcadeStyle.PAPER)
+        _bar(bars[0],game.hp,game.max_hp,ArcadeStyle.CORAL,"HP %d / %d" % [ceili(game.hp),int(game.max_hp)])
+        _bar(bars[1],game.xp,30+8*game.level+game.level*game.level,ArcadeStyle.TEAL,"XP / LV %d" % game.level)
+        _bar(bars[2],game.aura,100,ArcadeStyle.GOLD,"AURA %d%%" % int(game.aura))
+        _text(Vector2(26,72),"SHIELD %d   /   %s   /   %02d:%02d" % [ceili(game.shield),"BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60],18)
     var slot_x := 20.0
     for item: Dictionary in game.weapons + game.passives:
         var data: Dictionary = catalog.get(item["id"],{})
-        var rect := Rect2(slot_x,view.y-62,46,44)
+        var rect := Rect2(slot_x,view.y-(138 if view.x < 1000 else 62),46,44)
         draw_style_box(ArcadeStyle.box(ArcadeStyle.PAPER,ArcadeStyle.RARITY.get(item["rarity"],ArcadeStyle.INK),8,2),rect)
         _text(rect.position+Vector2(7,26),data.get("icon","?"),22)
         _text(rect.position+Vector2(30,37),str(item["level"]),13)
@@ -383,7 +444,7 @@ func _draw() -> void:
     for enemy: Dictionary in game.enemies:
         if enemy["kind"] == "boss":
             var boss_width := minf(620,view.x-80)
-            var rect := Rect2((view.x-boss_width)/2,102,boss_width,26)
+            var rect := Rect2((view.x-boss_width)/2,202 if view.x < 700 else 102,boss_width,26)
             _bar(rect,enemy["hp"],enemy["max"],ArcadeStyle.CORAL,"BIG HATER  /  %s HP" % _number(enemy["hp"]))
             _text(rect.position+Vector2(0,52),"FULL HATER MODE" if game.run_time >= 1080.0 else "BERSERK IN %ds" % ceili(1080-game.run_time),18,ArcadeStyle.CARD)
             break
@@ -398,3 +459,10 @@ func _weapon_summary(id: String, rarity: String, level_value: int) -> String:
     var frequency: float = game.SoloPassiveRulesScript.weapon_frequency(game.passives,game.passive_timers,game.run_time,game.player_pos)
     var interval: float = maxf(0.2,float(definition["interval"])*pow(0.95,level_value-1)/(1.0+frequency))
     return "%.0f dmg · %.2fs" % [damage,interval]
+
+func hud_rectangles() -> Array[Rect2]:
+    if view.x < 700:
+        var width := (view.x-64)/2
+        return [Rect2(25,20,view.x-210,28),Rect2(25,84,width,28),Rect2(39+width,84,width,28)]
+    var width := maxf(70,(minf(view.x-210,860)-58)/3)
+    return [Rect2(25,20,width,28),Rect2(39+width,20,width,28),Rect2(53+width*2,20,width,28)]
