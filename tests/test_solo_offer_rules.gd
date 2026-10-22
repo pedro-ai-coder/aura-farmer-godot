@@ -28,6 +28,14 @@ func _verify() -> void:
     _assert(not rules.legal_item("no-cap", "epic", 3, "ranged", catalogue), "Epic level 3 is illegal")
     _assert(not rules.legal_item("no-cap", "common", 1, "melee", catalogue), "Weapon must match hero role")
 
+    var legendary_loadout := [{"id":"no-cap", "rarity":"legendary", "level":1, "timer":0.0}]
+    var legendary_rng := RandomNumberGenerator.new()
+    legendary_rng.seed = 451
+    for sample in range(100):
+        var cards: Array[Dictionary] = rules.choices("ranged", 5, legendary_loadout, [], catalogue, legendary_rng)
+        for card: Dictionary in cards:
+            _assert(card["id"] != "no-cap", "Normal offers never downgrade or upgrade an existing legendary")
+
     var ids := ["sigma", "cool-kid", "alpha"]
     for idx in range(3):
         game.call("start_run", idx)

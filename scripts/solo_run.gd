@@ -435,7 +435,7 @@ func start_run(index: int) -> void:
     aura_hits_in_bucket = 0
     primary_aura_times.clear()
     max_level_heal_at = 0.0
-    sigma_target.clear()
+    sigma_target = {}
     rng.seed = 451 + 17 * index
     mode = "playing"
     _show_ui()
@@ -1582,7 +1582,7 @@ func _damage_nearby(radius: float, amount: float) -> void:
 func _use_flex() -> void:
     if mode != "playing" or aura < 100.0 or flex_lock > 0.0:
         return
-    sigma_target.clear()
+    sigma_target = {}
     if hero["id"] == "sigma":
         sigma_target = _nearest_target(600.0)
         if sigma_target.is_empty():

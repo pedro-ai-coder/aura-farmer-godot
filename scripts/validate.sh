@@ -23,7 +23,7 @@ run_check() {
 
   echo "Validating Godot phase: $phase"
   local limit="30s"
-  if [[ "$phase" == "import" ]]; then limit="120s"; fi
+  if [[ "$phase" == "import" || "$phase" == "continuous-run" ]]; then limit="120s"; fi
   if timeout "$limit" "$GODOT_BIN" "$@" 2>&1 | tee "$log_file"; then
     :
   else
@@ -38,6 +38,7 @@ run_check() {
 }
 
 run_check import --headless --path . --import
+run_check continuous-run --headless --path . --script res://tests/test_continuous_run.gd
 run_check run-acceptance --headless --path . --script res://tests/test_run_acceptance.gd
 run_check menu-flow --headless --path . --script res://tests/test_menu_flow.gd
 run_check hero-combat --headless --path . --script res://tests/test_hero_combat.gd
