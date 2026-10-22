@@ -1,0 +1,183 @@
+{
+  "sigma": {
+    "name": "The Sigma",
+    "description": "Lock onto one rival. Pierce the crowd. Never lose eye contact."
+  },
+  "cool-kid": {
+    "name": "Cool Kid",
+    "description": "Keep moving to hit harder. Rampage through ordinary mobs."
+  },
+  "alpha": {
+    "name": "Alpha Chad",
+    "description": "Take the hit. Hold your ground. Answer with three heavy slams."
+  },
+  "ratio-blaster": {
+    "name": "Ratio Blaster",
+    "icon": "↗",
+    "description": "One aimed projectile. Stops at the first rival or cover.",
+    "legendary_description": "Every fourth activation adds two 0.10P shots, 0.08s apart."
+  },
+  "no-cap": {
+    "name": "No Cap",
+    "icon": "⌒",
+    "description": "Throw a cap through up to four rivals.",
+    "legendary_description": "A line blast follows the cap after 0.7s for 0.25P × rarity."
+  },
+  "brainrot-feed": {
+    "name": "Brainrot Feed",
+    "icon": "▣",
+    "description": "Mark a location; explode after 0.45s in a 100U radius.",
+    "legendary_description": "Three fixed side blasts follow after 0.3s; one secondary hit per rival."
+  },
+  "keyboard-warrior": {
+    "name": "Keyboard Warrior",
+    "icon": "▦",
+    "description": "Two keyboard strikes, 0.12s apart. One proc per attack.",
+    "legendary_description": "Every third activation finishes with a 120U, 0.25P arc."
+  },
+  "ban-hammer": {
+    "name": "Ban Hammer",
+    "icon": "⚒",
+    "description": "Heavy wind-up. Pushes mobs and adds 15 boss stagger.",
+    "legendary_description": "A 220U fissure hits after 0.5s for 0.30P × rarity."
+  },
+  "touch-grass": {
+    "name": "Touch Grass",
+    "icon": "❧",
+    "description": "Wide whip. Slows rivals 15% for 1.5s.",
+    "legendary_description": "Every third activation: 150U circle, +25% damage, 25% slow for 2s."
+  },
+  "cope-shield": {
+    "name": "Cope Shield",
+    "icon": "⬟",
+    "description": "Shield bash. A hit grants a 4% HP shield for 2s.",
+    "legendary_description": "Every third successful bash adds a 5% HP shield for 3s."
+  },
+  "chad-hands": {
+    "name": "Chad Hands",
+    "icon": "✊",
+    "description": "Two punches. Every third successful attack ends in a slam.",
+    "legendary_description": "Third successful combo slams 140U for 0.60P × rarity."
+  },
+  "personal-space": {
+    "name": "Personal Space",
+    "icon": "◎",
+    "description": "Circular pulse. Hit rivals deal 8% less damage for 2s.",
+    "legendary_description": "Every second pulse adds a 4% HP shield for 3s."
+  },
+  "main-character": {
+    "name": "Main Character Energy",
+    "icon": "★",
+    "description": "+6% weapon damage per level."
+  },
+  "terminally-online": {
+    "name": "Terminally Online",
+    "icon": "⌁",
+    "description": "+5% weapon frequency per level."
+  },
+  "built-different": {
+    "name": "Built Different",
+    "icon": "♥",
+    "description": "+8% maximum HP per level; heal only the added HP."
+  },
+  "thick-skin": {
+    "name": "Thick Skin",
+    "icon": "⬡",
+    "description": "3% damage reduction per level, multiplicative with other sources."
+  },
+  "caught-4k": {
+    "name": "Caught in 4K",
+    "icon": "»",
+    "description": "+5% movement speed per level."
+  },
+  "big-meme": {
+    "name": "Big Meme Energy",
+    "icon": "◉",
+    "description": "+6% area radius per level."
+  },
+  "timeline": {
+    "name": "Across the Timeline",
+    "icon": "↔",
+    "description": "+8% weapon range per level; projectile speed follows."
+  },
+  "hands-on-sight": {
+    "name": "Hands On Sight",
+    "icon": "✊",
+    "description": "+7% damage per level to targets within 150U."
+  },
+  "cope-harder": {
+    "name": "Cope Harder",
+    "icon": "⬟",
+    "description": "+8% shields granted per level."
+  },
+  "certified-w": {
+    "name": "Certified W",
+    "icon": "W",
+    "description": "+6% healing and shields granted per level."
+  },
+  "no-cap-streak": {
+    "name": "No Cap Streak",
+    "icon": "Ⅴ",
+    "description": "Every fifth weapon activation: +10% damage and +1 piercing per level (damage does not scale with level)."
+  },
+  "w-wifi": {
+    "name": "W Wi-Fi",
+    "icon": "≋",
+    "description": "Every 12s: fixed 160U zone for 4s, +8/12/16% frequency."
+  },
+  "let-him-cook": {
+    "name": "Let Him Cook",
+    "icon": "♨",
+    "description": "Primary hits grant +3/4/5% damage, up to 5 stacks. Expires after 3s."
+  },
+  "homie-check": {
+    "name": "Homie Check",
+    "icon": "♡",
+    "description": "Every 8 primary hits: heal 3/4/5% HP. Minimum 6s between pulses."
+  },
+  "big-chad": {
+    "name": "Big Chad Energy",
+    "icon": "▣",
+    "description": "Every 10s in combat: shield 5/7/9% HP for 4s."
+  },
+  "its-over": {
+    "name": "It's So Over",
+    "icon": "↓",
+    "description": "+15/25% damage to targets below 30% HP."
+  },
+  "aura-viral": {
+    "name": "Aura Goes Viral",
+    "icon": "✦",
+    "description": "Activating Flex grants +12/18% frequency for 5s."
+  },
+  "so-back": {
+    "name": "We Are So Back",
+    "icon": "↟",
+    "description": "Cross below 30% HP: heal 10/15% over 5s and shield 10% for 3s. 45s cooldown."
+  },
+  "six-to-seven": {
+    "name": "Six → Seven",
+    "icon": "67",
+    "description": "Seventh primary hit explodes for 35/50% power in 90U. 2s cooldown."
+  },
+  "absolute-cinema": {
+    "name": "Absolute Cinema",
+    "icon": "★",
+    "description": "+25% weapon damage, plus 20% during Flex."
+  },
+  "w-squad": {
+    "name": "W Squad",
+    "icon": "W",
+    "description": "+25% healing/shields. Flex grants +10% weapon damage for 6s."
+  },
+  "too-sigma": {
+    "name": "Too Sigma to Fall",
+    "icon": "⬟",
+    "description": "Cross below 25% HP: shield 25% HP for 5s. 60s cooldown. Cannot prevent a fatal hit."
+  },
+  "no-u": {
+    "name": "No U",
+    "icon": "↶",
+    "description": "Every 15s: 30% power pulse in 200U, reducing mob damage 20%/4s (boss 10%/2s)."
+  }
+}
