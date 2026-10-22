@@ -11,6 +11,14 @@ ENGINE_SHA="cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
 TEMPLATE_SHA="f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
+BUILD_SHA="${VERCEL_GIT_COMMIT_SHA:-}"
+if [[ -z "$BUILD_SHA" ]]; then BUILD_SHA="$(git rev-parse HEAD)"; fi
+if [[ ! "$BUILD_SHA" =~ ^[a-fA-F0-9]{7,40}$ ]]; then
+    echo "ERROR: Invalid build revision." >&2
+    exit 2
+fi
+EXPORT_BASENAME="game-${BUILD_SHA:0:12}"
+rm -rf "$ROOT/build/web"
 mkdir -p build/web
 WORKDIR="$(mktemp -d)"
 trap 'rm -rf "$WORKDIR"' EXIT
@@ -72,10 +80,23 @@ python3 scripts/sync_approved_assets.py
 
 echo "Godot executable: $GODOT"
 "$GODOT" --version
-"$GODOT" --headless --path . --import
-"$GODOT" --headless --path . --export-release "Web" build/web/index.html
+run_godot() {
+    local phase="$1"
+    shift
+    local log_file="$WORKDIR/$phase.log"
+    "$GODOT" "$@" 2>&1 | tee "$log_file"
+    # Godot may return zero even when scripts cannot load.
+    if grep -Eiq 'SCRIPT ERROR:|Parse Error:|(^|[[:space:]])ERROR:|Failed to load|Failed to open' "$log_file"; then
+        echo "ERROR: Godot $phase reported errors; refusing to publish a broken export." >&2
+        exit 5
+    fi
+}
+run_godot import --headless --path . --import
+run_godot export --headless --path . --export-release "Web" "build/web/$EXPORT_BASENAME.html"
+mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
+printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
 
-for file in index.html index.js index.wasm index.pck; do
+for file in index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
     if [[ ! -s "build/web/$file" ]]; then
         echo "ERROR: Web export missing or empty: build/web/$file" >&2
         exit 5

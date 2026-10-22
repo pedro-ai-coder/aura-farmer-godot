@@ -14,7 +14,7 @@ Godot 4.7.2, GDScript and the Compatibility renderer remain shared across Web, A
 
 Web uses the Phaser v2 key in same-origin localStorage. Native uses atomic user://profile_v2.json writes. The previous Godot slice file and Phaser v1 key remain untouched. Menu copy/paste export/import is available for transferring a profile across browser origins; it retains a Godot backup and historical unlocks. Invalid/unavailable storage does not prevent playing.
 
-Touch release/cancellation, focus loss, pause and choice modals clear the owned joystick pointer. Movement entered in a modal is suppressed until release. On Web, a touch gesture attempts fullscreen and landscape orientation; rejection is caught and leaves the game usable. Actual landscape, fullscreen-denied/iOS fallback, safe-area layouts, suspend/resume and persistence require device/browser checks.
+Touch release/cancellation, focus loss, pause and choice modals clear the owned joystick pointer. Movement entered in a modal is suppressed until release. On Web, an eligible trusted DOM touch gesture attempts supported fullscreen and then orientation lock; denial/unavailability is caught. Browser CSS safe-area insets and native DisplayServer safe rectangles drive UI margins. Focus loss pauses gameplay; pointer ownership clears on pause, resize and modal entry. Actual landscape, fullscreen-denied/iOS fallback, safe-area layouts, suspend/resume and persistence require device/browser checks.
 
 ## Evidence and limits
 

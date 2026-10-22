@@ -13,7 +13,7 @@ This is **not final migration acceptance**. Visual and responsive review is defe
 1. Install the exact Godot 4.7.2 editor.
 2. Run `python3 scripts/sync_approved_assets.py` to fetch the approved artwork.
 3. Import `project.godot`, then run the main scene.
-4. Run `bash scripts/validate.sh` for import, gameplay, save, input, art and scene regressions. The Bash validation workflow requires GNU `timeout`.
+4. Run `bash scripts/validate.sh` for import, gameplay, save, input, art and scene regressions. The validation workflow requires GNU `timeout` and Node.js 18+ for browser lifecycle adapter regressions.
 
 Select a hero with buttons or 1–3, then press Play or Enter. Move with WASD/arrows or the floating left-side touch joystick. Use E/Space for Flex, M for mouse/automatic aim and P/Escape/B for pause/build. Select upgrade cards with buttons or 1–6, then confirm with the button or Enter. Escape cancels replacement/exit confirmation without resuming combat behind the modal.
 
@@ -21,7 +21,7 @@ Select a hero with buttons or 1–3, then press Play or Enter. Move with WASD/ar
 
 Web uses `aura-farmer:profile:v2` in same-origin localStorage. Native uses an atomic `user://profile_v2.json`; old v1/slice data remains untouched. Main-menu **SAVE DATA / IMPORT SAVE** transfers JSON across browser origins, preserving historical IDs and a Godot backup. No cloud account or cross-save backend is added. Proposed new unlock thresholds remain disabled. Approved Street Snack, Aura Magnet and Safe Spot follow canonical Appendix C.2 and the Phaser recovery contract.
 
-Vercel uses `scripts/build_web.sh` with the official verified engine/templates. Android/iOS presets are preparation only; SDKs, signing identities and device verification remain local prerequisites. No native release is authorized or published.
+Vercel uses `scripts/build_web.sh` with the official verified engine/templates. Payload filenames include the commit revision; `/build.json` identifies the deployed build and avoids stale `index.pck` caches. Android/iOS presets are preparation only; SDKs, signing identities and device verification remain local prerequisites. No native release is authorized or published.
 
 ## Integration workflow
 
