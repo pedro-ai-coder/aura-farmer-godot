@@ -67,3 +67,7 @@ PR #20 merged as `eeafe883f35260413122ff7e293ca4ff5ac40af4` after hosted CI and 
 Next corrections: fixed simulation substeps, immediate pause for transition choices, complete XP collection at the boss transition, level-25 recovery with its 20-second lock, rolling one-second primary Aura cap, linear max-HP passive levels, removal of passive effects/stacks without resetting cooldowns, periodic timers starting at acquisition, timed defensive shield sources, and permanent frequency plus the strongest temporary buff. Weapon damage grouping follows Phaser's level base power and additive weapon bonuses. New-card/upgrades/promotions validate their old inventory state and reject duplicates or wrong equipment types.
 
 Visual validation remains deferred by owner authorization; no performance or native acceptance is inferred from these regression tests.
+
+## G1.14 — Hero traits, Flex damage and aiming
+
+PR #21 merged as `2a95956f742200ba5750af4bf4fe68863b4816f8` after hosted CI and Vercel build passed. Next iteration adds stable enemy IDs and tie-breaking, manual mouse direction via M, Sigma target-lock damage, Cool Kid movement bonus and Rampage contact/immunity/boss cap, Alpha's direct-hit charge/taunt and exactly three fixed-step slams, source-aware direct/contact/hazard mitigation, level-scaled Flex/passive damage, and Beta Bot's frontal armor with bounded turning. Visual acceptance remains deferred.

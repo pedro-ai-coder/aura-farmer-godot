@@ -38,6 +38,7 @@ run_check() {
 }
 
 run_check import --headless --path . --import
+run_check hero-combat --headless --path . --script res://tests/test_hero_combat.gd
 run_check run-progression --headless --path . --script res://tests/test_run_progression.gd
 run_check profile-store --headless --path . --script res://tests/test_profile_store.gd
 run_check contracts --headless --path . --script res://tests/test_game_rules.gd

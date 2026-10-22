@@ -111,6 +111,10 @@ var profile: Dictionary = ProfileStoreScript.defaults()
 var run_id := ""
 var run_metrics: Dictionary = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0}
 var storage_available := true
+var manual_aim := false
+var aim_point := Vector2.ZERO
+var next_enemy_id := 1
+var hero_state: Dictionary = {}
 var touch_active := false
 var touch_index := -1
 var touch_origin := Vector2.ZERO
@@ -302,7 +306,7 @@ func _update_text() -> void:
     elif flex_time > 0.0:
         notice.text = "%s  %.1fs" % [hero["flex"], flex_time]
     else:
-        notice.text = ""
+        notice.text = "MOUSE AIM [M]" if manual_aim else ""
 
 func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
@@ -313,6 +317,8 @@ func start_run(index: int) -> void:
     profile["selected"] = HEROES[index]["id"]
     _save_profile()
     hero = HEROES[index].duplicate(true)
+    hero_state = {"moving_since": -1.0, "stopped_since": -1.0, "lock_id": -1, "lock_since": 0.0, "lock_lost": 0.0, "certified": false, "certified_ready": 0.0, "flex_boss_damage": 0.0, "last_contact": -1000.0}
+    next_enemy_id = 1
     player_pos = Vector2(724, 540)
     movement_direction = Vector2.DOWN
     hp = hero["hp"]
@@ -401,11 +407,16 @@ func _advance(dt: float) -> void:
     if flex_time > 0.0:
         flex_time = maxf(0.0, flex_time - dt)
         flex_age += dt
-        if hero["id"] == "alpha" and (absf(flex_age - 2.0) < dt or absf(flex_age - 4.0) < dt):
-            _damage_nearby(150.0, 0.40 * hero["power"])
+        if hero["id"] == "alpha":
+            while int(hero_state.get("flex_slams", 1)) < 3 and flex_age >= 2.0 * float(hero_state["flex_slams"]):
+                hero_state["flex_slams"] = int(hero_state["flex_slams"]) + 1
+                _damage_nearby(150.0, 0.40 * _base_power())
     else:
         aura = minf(100.0, aura + 0.5 * dt)
+    if mode != "playing": return
     _move_player(dt)
+    _step_flex_contacts()
+    if mode != "playing": return
     var new_wave := mini(5, 1 + int(run_time / 180.0))
     while wave < new_wave and not boss_spawned:
         wave += 1
@@ -417,14 +428,20 @@ func _advance(dt: float) -> void:
     if mode != "playing":
         return
     _tick_passives(dt)
+    if mode != "playing": return
     _step_enemies(dt)
+    if mode != "playing": return
     _step_hostile_shots(dt)
+    if mode != "playing": return
     _step_hazards()
     if mode != "playing":
         return
     _fire_weapons(dt)
+    if mode != "playing": return
     _step_player_shots(dt)
+    if mode != "playing": return
     _step_weapon_areas()
+    if mode != "playing": return
     _collect_drops()
     if mode != "playing":
         return
@@ -444,7 +461,7 @@ func _tick_passives(dt: float) -> void:
         _grant_weapon_shield("big-chad", amount, 4.0)
     if _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
         passive_timers["no_u_next"] = run_time + 15.0
-        _damage_nearby(200.0, 0.30 * float(hero["power"]))
+        _damage_nearby(200.0, 0.30 * _base_power())
         for e: Dictionary in enemies:
             if player_pos.distance_to(e["pos"]) <= 200.0:
                 var is_boss: bool = bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"])
@@ -479,11 +496,61 @@ func _primary_activation(target: Vector2) -> void:
         if sixth_count >= 7:
             sixth_count = 0
             passive_timers["six_ready"] = run_time + 2.0
-            var amount: float = float(hero["power"]) * (0.35 + 0.15 * float(_passive_level("six-to-seven") - 1))
+            var amount: float = _base_power() * (0.35 + 0.15 * float(_passive_level("six-to-seven") - 1))
             for e: Dictionary in enemies.duplicate():
                 if Vector2(e["pos"]).distance_to(target) <= 90.0:
                     _hit_enemy(e, amount)
         passive_timers["six_counter"] = sixth_count
+
+func _base_power() -> float:
+    return float(hero["power"]) * (1.0 + 0.01 * float(level - 1))
+
+func _nearest_target(reach: float = INF) -> Dictionary:
+    var closest: Dictionary = {}
+    var nearest := reach
+    for enemy: Dictionary in enemies:
+        var distance := player_pos.distance_to(enemy["pos"])
+        if float(enemy["hp"]) <= 0.0 or distance > nearest or not SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]): continue
+        if closest.is_empty() or distance < nearest or int(enemy["id"]) < int(closest["id"]):
+            closest = enemy
+            nearest = distance
+    return closest
+
+func _update_target_lock() -> void:
+    var target := _nearest_target()
+    if not target.is_empty():
+        if int(hero_state["lock_id"]) != int(target["id"]):
+            hero_state["lock_id"] = int(target["id"])
+            hero_state["lock_since"] = run_time
+        hero_state["lock_lost"] = run_time
+    elif run_time - float(hero_state["lock_lost"]) > 1.0:
+        hero_state["lock_id"] = -1
+        hero_state["lock_since"] = run_time
+
+func _update_movement_trait(moving: bool) -> void:
+    if moving:
+        hero_state["stopped_since"] = -1.0
+        if float(hero_state["moving_since"]) < 0.0: hero_state["moving_since"] = run_time
+    else:
+        if float(hero_state["stopped_since"]) < 0.0: hero_state["stopped_since"] = run_time
+        if run_time - float(hero_state["stopped_since"]) >= 1.0: hero_state["moving_since"] = -1.0
+
+func _aim_direction(target: Dictionary) -> Vector2:
+    var point: Vector2 = aim_point if manual_aim else target["pos"]
+    var direction := (point - player_pos).normalized()
+    return direction if direction.length_squared() > 0.0 else movement_direction
+
+func _step_flex_contacts() -> void:
+    if flex_time <= 0.0 or hero["id"] != "cool-kid": return
+    for enemy: Dictionary in enemies.duplicate():
+        if mode != "playing": return
+        if player_pos.distance_to(enemy["pos"]) > float(enemy["radius"]) + 26.0 or run_time < float(enemy.get("rampage_at", 0.0)): continue
+        enemy["rampage_at"] = run_time + 0.5
+        var amount := 0.35 * _base_power()
+        if bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+            amount = minf(amount, maxf(0.0, 3.5 * _base_power() - float(hero_state["flex_boss_damage"])))
+            hero_state["flex_boss_damage"] = float(hero_state["flex_boss_damage"]) + amount
+        if amount > 0.0: _hit_enemy(enemy, amount)
 
 func _move_player(dt: float) -> void:
     var axis = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -493,7 +560,10 @@ func _move_player(dt: float) -> void:
         movement_direction = direction
     var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
+    var previous := player_pos
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
+    _update_movement_trait(player_pos.distance_squared_to(previous) > 0.000001)
+    _update_target_lock()
 
 func _spawn_logic(dt: float) -> void:
     if not boss_spawned and event_index < SoloEnemyRulesScript.EVENT_SCHEDULE.size() and run_time >= float(SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]["at"]):
@@ -537,7 +607,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var hp_base: float = float(stats["hp"]) * (1.0 if boss_kind else float(WAVE_HP[wave - 1]))
     var damage: float = float(stats["damage"]) * (1.0 if boss_kind else float(WAVE_DAMAGE[wave - 1]))
     enemies.append({
-        "pos": pos, "hp": hp_base, "max": hp_base,
+        "id": next_enemy_id, "angle": 0.0, "pos": pos, "hp": hp_base, "max": hp_base,
         "speed": float(stats["speed"]), "radius": float(stats["radius"]),
         "damage": damage, "xp": 0 if bool(special.get("add", false)) else int(stats["xp"]), "kind": kind,
         "add": bool(special.get("add", false)), "next_aux": run_time + (12.0 if kind == "reply-guy" else (10.0 if kind == "mod-supremo" else 7.0)),
@@ -551,26 +621,34 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
         "attack_slot": 0, "regen_stamp": int(run_time),
         "shield": 0.0, "shield_until": 0.0, "hurt_at": -100.0
     })
+    next_enemy_id += 1
 
-func _deal_damage_to_player(amount: float) -> void:
-    if mode != "playing" or hurt_timer > 0.0:
-        return
-    hurt_timer = 0.25
+func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: bool = false, hazard: bool = false) -> void:
+    if mode != "playing" or hp <= 0.0 or amount <= 0.0: return
+    if contact and run_time - float(hero_state["last_contact"]) < 0.25: return
+    var source_boss: bool = not source.is_empty() and bool(SoloEnemyRulesScript.DATA[source["kind"]]["boss"])
+    if hero["id"] == "cool-kid" and flex_time > 0.0 and not source.is_empty() and not source_boss and not hazard: return
+    if contact: hero_state["last_contact"] = run_time
+    hurt_timer = 0.18
     var old_hp := hp
-    var incoming: float = amount * (1.0 - float(hero["resist"]))
-    incoming *= 1.0 - minf(0.45, 0.03 * float(_passive_level("thick-skin")))
-    if hero["id"] == "cool-kid" and flex_time > 0.0:
+    var mitigation := minf(0.60, 1.0 - (1.0 - float(hero["resist"])) * (1.0 - 0.03 * float(_passive_level("thick-skin"))))
+    var incoming := amount * (1.0 - mitigation)
+    if run_time < float(source.get("weaken_until", 0.0)): incoming *= 1.0 - float(source.get("weaken", 0.0))
+    if hero["id"] == "cool-kid" and flex_time > 0.0 and source_boss and not hazard:
         incoming *= 0.5
     var absorbed := minf(shield, incoming)
     shield -= absorbed
     run_metrics["protection"] = float(run_metrics["protection"]) + absorbed
     var weapon_absorption := absorbed
-    for source: String in weapon_shields:
-        var entry: Dictionary = weapon_shields[source]
+    for shield_source: String in weapon_shields:
+        var entry: Dictionary = weapon_shields[shield_source]
         var consumed := minf(float(entry["remaining"]), weapon_absorption)
         entry["remaining"] = float(entry["remaining"]) - consumed
         weapon_absorption -= consumed
     hp = maxf(0.0, hp - incoming + absorbed)
+    if hero["id"] == "alpha" and not source.is_empty() and not hazard and run_time >= float(hero_state["certified_ready"]):
+        hero_state["certified"] = true
+        hero_state["certified_ready"] = run_time + 4.0
     if hp <= 0.0:
         _finish(false)
         return
@@ -587,7 +665,7 @@ func _spawn_hostile_shot(enemy: Dictionary) -> void:
     var dir: Vector2 = enemy["locked_direction"]
     hostile_shots.append({
         "pos":enemy["pos"], "dir":dir, "speed":450.0 if enemy["kind"] == "ping-sniper" else 180.0,
-        "remaining":800.0, "damage":float(enemy["damage"]), "radius":7.0
+        "remaining":800.0, "damage":float(enemy["damage"]), "radius":7.0, "source": enemy
     })
 
 func _step_hostile_shots(dt: float) -> void:
@@ -606,7 +684,7 @@ func _step_hostile_shots(dt: float) -> void:
             hostile_shots.erase(shot)
             continue
         if ending.distance_to(player_pos) < 16.0 + float(shot["radius"]):
-            _deal_damage_to_player(float(shot["damage"]))
+            _deal_damage_to_player(float(shot["damage"]), shot.get("source", {}))
             hostile_shots.erase(shot)
 
 func _schedule_hazard(point: Vector2, radius: float, delay: float, active_duration: float, damage: float, shape: String = "circle", heading: Vector2 = Vector2.RIGHT, source: Dictionary = {}) -> void:
@@ -639,8 +717,7 @@ func _step_hazards() -> void:
             continue
         if _hazard_contains(hazard, player_pos) and SoloWorldRulesScript.clear_line(hazard["pos"], player_pos):
             var source: Dictionary = hazard.get("source", {})
-            var weaken := float(source.get("weaken", 0.0)) if run_time < float(source.get("weaken_until", 0.0)) else 0.0
-            _deal_damage_to_player(float(hazard["damage"]) * (1.0 - weaken))
+            _deal_damage_to_player(float(hazard["damage"]), source, false, float(hazard["end"]) - float(hazard["at"]) > 1.6)
             hazard["hit"] = true
         # Persistent ground zones tick once per second. Expanding rings hit once.
         if float(hazard["end"]) - float(hazard["at"]) > 1.6 and hazard["shape"] != "ring":
@@ -695,6 +772,7 @@ func _step_enemies(dt: float) -> void:
         var to_player: Vector2 = player_pos - pos
         var distance: float = to_player.length()
         var direction: Vector2 = to_player.normalized() if distance > 0.01 else Vector2.RIGHT
+        enemy["angle"] = rotate_toward(float(enemy.get("angle", 0.0)), direction.angle(), PI * 0.5 * dt)
         var speed: float = float(enemy["speed"])
         if kind == "terminal":
             continue
@@ -716,6 +794,7 @@ func _step_enemies(dt: float) -> void:
                     break
         if kind == "hater" or kind == "ping-sniper":
             var preferred: float = 260.0 if kind == "hater" else 400.0
+            if run_time < float(enemy.get("taunt_until", 0.0)): preferred = 0.0
             if distance < preferred - 20.0:
                 direction = -direction
             elif absf(distance - preferred) < 20.0:
@@ -738,21 +817,16 @@ func _step_enemies(dt: float) -> void:
         enemy["hit_cooldown"] = maxf(0.0, float(enemy["hit_cooldown"]) - dt)
         if distance <= float(enemy["radius"]) + 18.0 and float(enemy["hit_cooldown"]) == 0.0:
             enemy["hit_cooldown"] = 1.0 if kind == "boss" else 0.75
-            if hero["id"] == "cool-kid" and flex_time > 0.0 and not bool(SoloEnemyRulesScript.DATA[kind]["boss"]):
-                _hit_enemy(enemy, 0.35 * float(hero["power"]))
-            else:
-                var boss_mult := 1.0
-                if kind == "boss" and run_time >= 1080.0:
-                    boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
-                var weaken: float = float(enemy.get("weaken", 0.0)) if run_time < float(enemy.get("weaken_until", -1.0)) else 0.0
-                var primary_active := false
-                for hazard: Dictionary in hazard_zones:
-                    if hazard.get("source", {}) == enemy and absf(float(hazard["at"]) - run_time) < 0.05:
-                        primary_active = true
-                        break
-                if not primary_active:
-                    _deal_damage_to_player(float(enemy["damage"]) * boss_mult * (1.0 - weaken))
-
+            var boss_mult := 1.0
+            if kind == "boss" and run_time >= 1080.0:
+                boss_mult = minf(3.0, 2.0 * pow(1.1, floorf((run_time - 1080.0) / 30.0)))
+            var primary_active := false
+            for hazard: Dictionary in hazard_zones:
+                if hazard.get("source", {}) == enemy and absf(float(hazard["at"]) - run_time) < 0.05:
+                    primary_active = true
+                    break
+            if not primary_active:
+                _deal_damage_to_player(float(enemy["damage"]) * boss_mult, enemy, true)
         if mode != "playing":
             return
         if enemy["phase"] == "warning" and run_time >= float(enemy["attack_at"]):
@@ -849,13 +923,7 @@ func _fire_weapons(dt: float) -> void:
         var reach: float = float(config["range"])
         if hero["role"] == "ranged":
             reach *= SoloPassiveRulesScript.ranged_range_scale(passives)
-        var closest: Dictionary = {}
-        var closest_dist := 100000.0
-        for enemy: Dictionary in enemies:
-            var distance: float = player_pos.distance_to(enemy["pos"])
-            if distance <= reach and distance < closest_dist and SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]):
-                closest = enemy
-                closest_dist = distance
+        var closest := _nearest_target(reach)
         if closest.is_empty():
             weapon["timer"] = 0.10
             continue
@@ -870,6 +938,9 @@ func _fire_weapons(dt: float) -> void:
         var power: float = float(hero["power"]) * float(config["power"])
         power *= float(RARITY_POWER[weapon["rarity"]]) * (1.0 + 0.15 * float(int(weapon["level"]) - 1))
         power *= SoloPassiveRulesScript.weapon_damage(passives, level, flex_time > 0.0, run_time, passive_timers, cook_stacks, cook_expires)
+        if bool(hero_state.get("certified", false)):
+            power *= 1.20
+            hero_state["certified"] = false
         var secondary_power := power
         var shape: String = config["shape"]
         var streak := false
@@ -881,7 +952,7 @@ func _fire_weapons(dt: float) -> void:
         if shape == "pulse" or shape == "blast" or shape == "cone":
             var center: Vector2 = player_pos if shape != "blast" else closest["pos"]
             var radius: float = (reach if shape != "blast" else 100.0) * SoloPassiveRulesScript.area_scale(passives)
-            var facing: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
+            var facing: Vector2 = _aim_direction(closest)
             var arc := 360.0
             if shape == "cone":
                 arc = 100.0
@@ -918,7 +989,7 @@ func _fire_weapons(dt: float) -> void:
             attack_flash = 0.12
             attack_target = closest["pos"]
         else:
-            var heading: Vector2 = (Vector2(closest["pos"]) - player_pos).normalized()
+            var heading: Vector2 = _aim_direction(closest)
             var pierce: int = (4 if shape == "line" else 1) + (_passive_level("no-cap-streak") if streak else 0)
             if hero["id"] == "sigma" and flex_time > 0.0:
                 pierce += 1
@@ -945,7 +1016,7 @@ func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: fl
     var area: Dictionary = {
         "id": id, "center": center, "facing": facing, "radius": radius,
         "arc": arc, "damage": damage, "at": run_time + delay, "activation": activation,
-        "primary": true, "shape": "sector", "hit_memory": []
+        "primary": true, "shape": "sector", "hit_memory": [], "end": run_time + delay + 0.12, "impact_shown": false
     }
     area.merge(options, true)
     weapon_areas.append(area)
@@ -956,9 +1027,11 @@ func _step_weapon_areas() -> void:
     for area: Dictionary in weapon_areas.duplicate():
         if mode != "playing":
             break
+        if run_time > float(area["end"]):
+            weapon_areas.erase(area)
+            continue
         if run_time < float(area["at"]):
             continue
-        weapon_areas.erase(area)
         var center: Vector2 = area["center"]
         var facing: Vector2 = area["facing"]
         var radius: float = area["radius"]
@@ -999,7 +1072,7 @@ func _step_weapon_areas() -> void:
                             second["radius"] = (140.0 if bool(second.get("legendary", false)) else 110.0) * SoloPassiveRulesScript.area_scale(passives)
                             second["arc"] = 360.0
             memory.append(enemy)
-            _hit_enemy(enemy, float(area["damage"]), primary)
+            _hit_enemy(enemy, float(area["damage"]), primary, true)
             if primary and not bool(activation["hit"]) and mode == "playing":
                 activation["hit"] = true
                 _primary_activation(impact)
@@ -1021,9 +1094,11 @@ func _step_weapon_areas() -> void:
                 _grant_weapon_shield("cope-shield", max_hp * 0.04 * float(area.get("weapon_power", 1.0)), 2.0)
                 if bool(area.get("shield_legend", false)):
                     _grant_weapon_shield("unbothered", max_hp * 0.05 * float(area.get("weapon_power", 1.0)), 3.0)
-        if attack_visuals.size() >= 12:
-            attack_visuals.pop_front()
-        attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if area["shape"] == "line" or float(area["arc"]) < 360.0 else center, "life": 0.18})
+        if not bool(area["impact_shown"]):
+            area["impact_shown"] = true
+            if attack_visuals.size() >= 12:
+                attack_visuals.pop_front()
+            attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if area["shape"] == "line" or float(area["arc"]) < 360.0 else center, "life": 0.18})
 
 func _grant_weapon_shield(source: String, raw_amount: float, duration: float) -> void:
     # Weapon sources refresh themselves instead of stacking, and share the 40% cap.
@@ -1065,7 +1140,7 @@ func _step_player_shots(dt: float) -> void:
             shot["hit"].append(enemy)
             var impact: Vector2 = enemy["pos"]
             var primary: bool = shot.get("primary", true)
-            _hit_enemy(enemy, float(shot["damage"]), primary)
+            _hit_enemy(enemy, float(shot["damage"]), primary, true)
             if primary and not bool(shot["activated"]) and mode == "playing":
                 shot["activated"] = true
                 _primary_activation(impact)
@@ -1073,13 +1148,21 @@ func _step_player_shots(dt: float) -> void:
                 player_shots.erase(shot)
                 break
 
-func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false) -> void:
-    if not enemies.has(enemy):
+func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon: bool = false) -> void:
+    if mode != "playing" or not enemies.has(enemy) or amount <= 0.0:
         return
+    amount *= SoloPassiveRulesScript.damage_to_target(passives, enemy, player_pos, primary or weapon)
+    if primary or weapon:
+        if hero["id"] == "sigma" and int(hero_state["lock_id"]) == int(enemy["id"]) and run_time - float(hero_state["lock_since"]) >= 2.0:
+            amount *= 1.10
+        if hero["id"] == "cool-kid" and float(hero_state["moving_since"]) >= 0.0 and run_time - float(hero_state["moving_since"]) >= 3.0:
+            amount *= 1.10
     if primary:
-        amount *= SoloPassiveRulesScript.damage_to_target(passives, enemy, player_pos)
         if hero["id"] == "sigma" and flex_time > 0.0 and enemy == sigma_target:
             amount *= 1.40
+    if enemy["kind"] == "beta":
+        var front := Vector2.from_angle(float(enemy["angle"]))
+        if absf(front.angle_to(player_pos - Vector2(enemy["pos"]))) <= deg_to_rad(50.0): amount *= 0.60
     if enemy["kind"] == "boss":
         var exposed := 1.15 if run_time < float(enemy.get("stagger_until", 0.0)) else (1.10 if run_time < float(enemy.get("exposed_until", 0.0)) else 1.0)
         amount *= exposed
@@ -1341,12 +1424,7 @@ func _use_flex() -> void:
         return
     sigma_target.clear()
     if hero["id"] == "sigma":
-        var nearest := 1000000.0
-        for e: Dictionary in enemies:
-            var dist: float = player_pos.distance_to(e["pos"])
-            if dist < nearest and dist <= 600.0:
-                nearest = dist
-                sigma_target = e
+        sigma_target = _nearest_target(600.0)
         if sigma_target.is_empty():
             return
     aura = 0.0
@@ -1354,13 +1432,18 @@ func _use_flex() -> void:
     flex_time = float(hero["duration"])
     flex_lock = 30.0
     flex_age = 0.0
+    hero_state["flex_slams"] = 1
+    hero_state["flex_boss_damage"] = 0.0
     if _passive_level("aura-viral") > 0:
         passive_timers["viral_until"] = run_time + 5.0
     if _passive_level("w-squad") > 0:
         passive_timers["w_squad_until"] = run_time + 6.0
     if hero["id"] == "alpha":
         _grant_weapon_shield("alpha-hold", max_hp * 0.25, 6.0)
-        _damage_nearby(150.0, 0.40 * float(hero["power"]))
+        _damage_nearby(150.0, 0.40 * _base_power())
+        for enemy: Dictionary in enemies:
+            if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
+                enemy["taunt_until"] = run_time + 2.0
 
 func _toggle_pause() -> void:
     if mode == "playing":
@@ -1404,7 +1487,10 @@ func _return_to_menu() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
     if not event.pressed or event.echo:
         return
-    if event.keycode == KEY_P or event.keycode == KEY_ESCAPE:
+    if event.keycode == KEY_M and mode == "playing":
+        manual_aim = not manual_aim
+        aim_point = get_global_mouse_position()
+    elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE:
         _toggle_pause()
     if event.keycode == KEY_SPACE or event.keycode == KEY_E:
         _use_flex()
@@ -1428,6 +1514,8 @@ func _notification(what: int) -> void:
         _clear_touch()
 
 func _input(event: InputEvent) -> void:
+    if event is InputEventMouseMotion and mode == "playing":
+        aim_point = get_global_mouse_position()
     if event is InputEventScreenTouch:
         if event.index == touch_index and (not event.pressed or event.canceled):
             _clear_touch()

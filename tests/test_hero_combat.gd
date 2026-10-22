@@ -1,0 +1,110 @@
+extends SceneTree
+
+var failures: Array[String] = []
+
+func _initialize() -> void:
+    call_deferred("_verify")
+
+func _expect(ok: bool, message: String) -> void:
+    if not ok: failures.append(message)
+
+func _enemy(game, kind: String = "npc", position: Vector2 = Vector2(760,550)) -> Dictionary:
+    game.call("_spawn_enemy", kind, {"pos":position})
+    var enemy: Dictionary = game.get("enemies").back()
+    enemy["hp"] = 10000.0
+    enemy["max"] = 10000.0
+    enemy["speed"] = 0.0
+    enemy["next_attack"] = 1e9
+    return enemy
+
+func _verify() -> void:
+    var game = load("res://scenes/main.tscn").instantiate()
+    root.add_child(game)
+    game.call("start_run", 0)
+    game.set("player_pos", Vector2(700,550))
+    var enemy := _enemy(game)
+    var other := _enemy(game, "npc", Vector2(640,550))
+    game.get("enemies").reverse()
+    _expect(game.call("_nearest_target")["id"] == enemy["id"], "Auto aim breaks distance ties by stable enemy ID")
+    game.call("_update_target_lock")
+    game.set("run_time", 2.0)
+    game.call("_hit_enemy", enemy, 100.0, true)
+    _expect(is_equal_approx(enemy["hp"], 9890.0), "Sigma lock adds ten percent after two seconds")
+    game.set("manual_aim", true)
+    game.set("aim_point", Vector2(700,700))
+    game.call("_fire_weapons", 0.01)
+    _expect(game.get("player_shots")[0]["direction"] == Vector2.DOWN, "Manual aim follows pointer direction instead of nearest target")
+    game.set("manual_aim", false)
+    game.call("start_run", 1)
+    game.set("player_pos", Vector2(700,550))
+    enemy = _enemy(game)
+    game.call("_update_movement_trait", true)
+    game.set("run_time", 3.0)
+    game.call("_hit_enemy", enemy, 100.0, true)
+    _expect(is_equal_approx(enemy["hp"], 9890.0), "Cool Kid gains its continuous-movement damage bonus")
+    game.call("_update_movement_trait", false)
+    game.set("run_time", 4.0)
+    game.call("_update_movement_trait", false)
+    game.call("_hit_enemy", enemy, 100.0, true)
+    _expect(is_equal_approx(enemy["hp"], 9790.0), "Cool Kid loses its movement bonus after one stopped second")
+    game.set("flex_time", 5.0)
+    game.call("_deal_damage_to_player", 10.0, enemy, true)
+    _expect(game.get("hp") == 110.0, "Rampage is immune to common enemy direct attacks")
+    game.call("_deal_damage_to_player", 10.0, enemy, false, true)
+    _expect(is_equal_approx(game.get("hp"), 100.5), "Special ground hazards still damage Rampage")
+    var boss := _enemy(game, "boss", Vector2(700,550))
+    game.call("_deal_damage_to_player", 10.0, boss)
+    _expect(is_equal_approx(game.get("hp"), 95.75), "Boss direct attacks deal half damage during Rampage")
+    for i in range(20):
+        game.set("run_time", 5.0 + 0.5 * i)
+        game.call("_step_flex_contacts")
+    _expect(is_equal_approx(boss["hp"], 10000.0 - 3.5 * 95.0), "Rampage contact damage has the approved boss cap")
+    game.call("start_run", 2)
+    game.set("player_pos", Vector2(700,550))
+    enemy = _enemy(game)
+    game.call("_deal_damage_to_player", 10.0, enemy)
+    game.call("_fire_weapons", 0.01)
+    _expect(is_equal_approx(enemy["hp"], 10000.0 - 0.45 * 90.0 * 1.20), "Alpha direct-hit charge strengthens exactly the next weapon activation")
+    _expect(not game.get("hero_state")["certified"], "Certified Unit consumes its single charge")
+    game.call("start_run", 2)
+    game.set("player_pos", Vector2(700,550))
+    enemy = _enemy(game, "npc", Vector2(780,550))
+    game.get("weapons").clear()
+    game.set("spawn_timer", 1e9)
+    game.set("aura", 100.0)
+    game.call("_use_flex")
+    _expect(enemy["taunt_until"] == 2.0, "Alpha taunts eligible common enemies on Flex activation")
+    for i in range(361): game.call("_advance", 1.0 / 60.0)
+    _expect(is_equal_approx(enemy["hp"], 10000.0 - 3.0 * 0.40 * 90.0), "Alpha resolves exactly three slams across fixed-step boundary rounding")
+    game.call("start_run", 0)
+    game.set("player_pos", Vector2(700,550))
+    enemy = _enemy(game, "beta")
+    enemy["angle"] = PI
+    game.call("_hit_enemy", enemy, 100.0)
+    _expect(enemy["hp"] == 9940.0, "Beta Bot frontal plate mitigates forty percent")
+    enemy["angle"] = 0.0
+    game.call("_hit_enemy", enemy, 100.0)
+    _expect(enemy["hp"] == 9840.0, "Beta Bot rear takes normal damage")
+    game.call("start_run", 1)
+    game.set("player_pos", Vector2(700,550))
+    enemy = _enemy(game, "npc", Vector2(900,550))
+    game.call("_queue_weapon_area", "personal-space", Vector2(700,550), Vector2.RIGHT, 100.0, 360.0, 10.0, 0.0, {"hit":false})
+    game.call("_step_weapon_areas")
+    enemy["pos"] = Vector2(760,550)
+    game.set("run_time", 0.05)
+    game.call("_step_weapon_areas")
+    var after: float = enemy["hp"]
+    _expect(after == 9990.0, "An enemy can enter an area during its active impact window")
+    game.set("run_time", 0.10)
+    game.call("_step_weapon_areas")
+    _expect(enemy["hp"] == after, "Area hit memory prevents repeat damage throughout its window")
+    game.set("run_time", 0.13)
+    game.call("_step_weapon_areas")
+    _expect(game.get("weapon_areas").is_empty(), "Expired area windows are discarded")
+    game.queue_free()
+    if failures.is_empty():
+        print("PASS: Stable targeting/manual aim, three hero traits, Rampage immunity/cap, Alpha slam timing and Beta facing armor")
+        quit(0)
+    else:
+        for failure in failures: push_error(failure)
+        quit(1)
