@@ -20,6 +20,8 @@ Touch release/cancellation, focus loss, pause and choice modals clear the owned 
 
 The regression suite exercises all three starter heroes, nine weapons, approved passive/offer rules, independent events, boss/berserk/stagger, save migration, menu confirmation and controlled victory/restart timelines. The controlled timeline jumps between boundary scenarios and uses an explicit final hit; it is not an unassisted human full run or a balance test.
 
+The continuous seeded integration fixture runs all three starters with the real clock, movement, spawns, drops, legal choices and Flexes. It uses a protected-player subclass and 0.25-second frames through the production fixed substeps, then explicitly defeats a surviving boss if needed. This isolates progression; it does not establish survival balance or rendering behavior.
+
 A synthetic headless sample starts with 300 enemies and 150 player projectiles and executes 60 iterations. It checks simulation survival without silently deleting entities and prints CPU elapsed time. It does not measure rendered FPS, mobile performance, sustained projectile density, memory stability over a full run or the 85/100 migration acceptance score.
 
 Visual acceptance is explicitly deferred by the owner. The authenticated remote browser lacks WebGL2; production build readiness does not prove correct rendering. Outstanding acceptance includes desktop/mobile comparisons, a normal full run, audio/animation polish, real reference-device FPS/stress measurements and native device exports/lifecycle tests. Do not declare the full migration complete from green CI alone.

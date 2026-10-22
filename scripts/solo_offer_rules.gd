@@ -42,7 +42,7 @@ static func choices(hero_role: String, wave: int, weapons: Array, passives: Arra
             if old.is_empty():
                 candidates.append({"type":"weapon", "id":id, "rarity":rarity, "level":1, "category":"new", "label":"EQUIP "+weapon["name"]+" · "+rarity.to_upper()})
             else:
-                if RARITIES.find(rarity) > RARITIES.find(old["rarity"]):
+                if old["rarity"] != "legendary" and RARITIES.find(rarity) > RARITIES.find(old["rarity"]):
                     candidates.append({"type":"promote_weapon", "id":id, "rarity":rarity, "level":mini(int(old["level"]), int(CAPS[rarity])), "category":"promote", "label":"PROMOTE "+weapon["name"]+" · "+rarity.to_upper()})
     for id in PASSIVE_DATA.keys():
         if not valid_passive(id, hero_role, wave):

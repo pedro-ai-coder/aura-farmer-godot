@@ -1,13 +1,13 @@
 # Godot migration progress
 
-## Verified repository baseline
+## Historical repository baseline (before G1.10)
 
 - Godot main: `ba7c43684d176a06c31a12487badb0cccab966d4`.
 - Phaser main inspected: `fdbc67b` (reference only; unchanged).
 - PR #17 is merged; no open destination PRs were returned before this iteration.
 - The canonical Godot GDD remains authoritative. Phaser includes later recovery/balance work while Godot GDD Appendix C still labels P1–P8 proposals. Those features must not be copied automatically.
 
-## Current iteration: player projectile travel and weapon timing
+## G1.10 history: player projectile travel and weapon timing
 
 Replaces instant No Cap/Ratio Blaster damage with moving projectiles, cover rejection, finite range, piercing limits and per-projectile hit memory. Rendering follows projectile positions. Adds arrival/duplicate-hit/restart/cover regression coverage and updates the original instant-hit smoke assertion.
 
@@ -28,7 +28,7 @@ PRs [#18](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/18), [#19](ht
 | Area | Implemented logic and automated evidence | Remaining acceptance |
 |---|---|---|
 | Nine weapons | Moving projectiles, cover/range/pierce, delayed and paired areas, legendary transformations, active windows and proc isolation | Visual timing and normal-play balance |
-| Passives, Aura and Flex | Approved catalog, acquisition/removal clocks, additive and strongest-source stacking, timed shields, primary caps and three starter Flexes | Human build/interactions review |
+| Passives, Aura and Flex | Approved 23-passive solo subset, acquisition/removal clocks, additive and strongest-source stacking, timed shields, primary caps and three starter Flexes | Human build/interactions review |
 | Heroes and aiming | Stable target ties, manual aim, Sigma lock, Cool Kid movement/contact and Alpha taunt/slams | Desktop/mobile feel and feedback |
 | Enemies and bosses | Bestiary patterns, independent events, terminals, threshold latches, bounded adds, expanding rings, stagger and recoverable berserk | Full normal run and difficulty tuning |
 | Menus/profile | Explicit confirmations, replacement cancellation, pause/exit/retry, preferences, v2 persistence, legacy migration and copy/paste transfer | Responsive presentation and real browser storage/device lifecycle |
@@ -82,3 +82,9 @@ Controlled three-hero timeline tests cover all wave rewards, real modal confirma
 PR #24 was integrated as `727a9ee6f1cd45c808849144e9ed3e7abf9e3f4b` after local and hosted Godot validation plus Vercel build success. Follow-up inspection found that retreating ranged enemies could aim along their movement vector and hostile projectiles used endpoint-only cover collision. The corrections lock aim toward the player, preserve that committed direction, and test the full travel segment against the shared cover geometry. Initial enemy facing points toward the player; Ratio Ram uses the canonical 0.9-second warning. Doomscroller and death-cloud hazards retain their source for damage modifiers after their caster is removed.
 
 The complete local suite passes, including explicit retreat/aim lock, cover tunneling, charge deadline and persistent-source regressions. No new catalog entries, balance values outside the canonical GDD or visual acceptance are introduced.
+
+## G1.18 — Continuous lifecycle and repeated-use regressions
+
+PR #25 was integrated as `1b4471e060cc8620d784731c370619b145136723` after hosted Godot CI and Vercel success. A continuous seeded three-hero fixture subsequently exposed two repeated-use failures: clearing Sigma's target dictionary also cleared the live enemy because the dictionary was shared; normal offer generation treated legendary's absent normal-rarity index as a promotion opportunity. Target release now assigns an empty reference, and normal offers exclude promotions of existing legendaries. Focused regressions guard both failures.
+
+The continuous fixture drives actual movement, spawns, attacks, XP drops, 24 level choices, one legendary, Flex and clean restart with no time jumps or XP injection. It protects the player from damage, feeds 0.25-second frames through the production fixed simulation substeps and explicitly resolves a surviving boss if necessary. Seed 451 reaches level 25 with all three starters. This proves integration rather than normal survival, fairness or balance. No GDD values or catalog scope change.
