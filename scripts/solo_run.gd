@@ -1,5 +1,6 @@
 extends Node2D
 
+const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
@@ -975,11 +976,14 @@ func _step_enemies(dt: float) -> void:
         if run_time >= float(enemy.get("recover_from", INF)) and run_time < float(enemy.get("recover_until", 0.0)):
             speed = 0.0
         if distance > float(enemy["radius"]) + 19.0:
-            var step: Vector2 = direction * speed * dt
-            var destination: Vector2 = SoloWorldRulesScript.move(pos, step, float(enemy["radius"]))
-            if speed > 0.0 and destination.distance_to(pos) < speed * dt * 0.2:
-                var sidestep := Vector2(-direction.y, direction.x) * speed * dt
-                destination = SoloWorldRulesScript.move(pos, sidestep, float(enemy["radius"]))
+            var destination: Vector2
+            if enemy["phase"] == "charging":
+                # Committed charges retain their locked direction; steering
+                # must never turn a telegraphed charge around an obstacle.
+                destination = SoloWorldRulesScript.move(pos,direction*speed*dt,float(enemy["radius"]))
+            else:
+                var goal := player_pos if direction.dot(to_player) >= 0.0 else pos+direction*120.0
+                destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy)
             enemy["pos"] = destination
             var travelled := destination.distance_to(pos)
             enemy["anim_moving"] = travelled > 0.001
@@ -1426,7 +1430,8 @@ func _tick_recovery(dt: float) -> void:
 func _collect_drops() -> void:
     for drop: Dictionary in pickups.duplicate():
         # A previous magnet can consume crystals still present in this snapshot.
-        if not pickups.has(drop) or player_pos.distance_to(drop["pos"]) >= RecoveryRulesScript.pickup_radius(drop["kind"]): continue
+        if player_pos.distance_to(drop["pos"]) >= RecoveryRulesScript.pickup_radius(drop["kind"]): continue
+        if not pickups.has(drop): continue
         pickups.erase(drop)
         if drop["kind"] == "snack":
             recovery_counts["snacks_collected"] = int(recovery_counts.get("snacks_collected",0)) + 1
