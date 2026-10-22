@@ -22,7 +22,9 @@ run_check() {
   local log_file="$log_dir/$phase.log"
 
   echo "Validating Godot phase: $phase"
-  if "$GODOT_BIN" "$@" 2>&1 | tee "$log_file"; then
+  local limit="30s"
+  if [[ "$phase" == "import" ]]; then limit="120s"; fi
+  if timeout "$limit" "$GODOT_BIN" "$@" 2>&1 | tee "$log_file"; then
     :
   else
     echo "ERROR: Godot $phase process failed." >&2
@@ -36,6 +38,7 @@ run_check() {
 }
 
 run_check import --headless --path . --import
+run_check profile-store --headless --path . --script res://tests/test_profile_store.gd
 run_check contracts --headless --path . --script res://tests/test_game_rules.gd
 run_check catalog --headless --path . --script res://tests/test_solo_offer_rules.gd
 run_check legendary --headless --path . --script res://tests/test_legendary_offer.gd
