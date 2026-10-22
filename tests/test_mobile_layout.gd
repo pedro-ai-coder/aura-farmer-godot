@@ -30,6 +30,15 @@ func _verify() -> void:
                 _expect(bounds.encloses(button.get_global_rect()),"Essential actions remain inside useful viewport: %s %s %s" % [physical,state,button.text])
                 var scale: float = float(physical.y)/ui.full_view.y
                 _expect(button.size.y*scale >= 44.0-0.5,"Touch targets remain at least 44 physical pixels")
+            if state == "paused":
+                _expect(not game.build_details.visible and ui.equipment_board.visible,"Pause uses equipment slots rather than text rows")
+                _expect(ui.equipment_slots.size() == 8,"Pause preserves three weapon and five passive slots")
+                _expect(ui.body_content.size.y >= ui.equipment_board.size.y,"Every equipment slot is reachable inside the scroll panel")
+                for slot: Dictionary in ui.equipment_slots:
+                    _expect(Rect2(Vector2.ZERO,ui.equipment_board.size).encloses(slot["panel"].get_rect()),"Equipment slots fit inside their board")
+                _expect(ui.equipment_slots[0]["label"].text.contains("LV 1"),"Equipped weapon shows its actual level")
+                _expect(ui.equipment_slots[2]["label"].text.contains("EMPTY WEAPON"),"Unused weapon slot remains visible")
+                _expect(ui.equipment_slots[7]["label"].text.contains("EMPTY PASSIVE"),"Unused passive slot remains visible")
             if state == "playing":
                 for bar: Rect2 in ui.hud_rectangles():
                     var global_bar := Rect2(bar.position+ui.position,bar.size)

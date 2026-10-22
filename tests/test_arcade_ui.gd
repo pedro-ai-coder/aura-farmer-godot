@@ -49,6 +49,14 @@ func _verify() -> void:
     for i in range(6):
         var parts: Dictionary = ui.card_parts[i]
         _expect(parts["body"].position.y+parts["body"].size.y <= parts["state"].position.y,"Legendary effects do not collide with action labels")
+    root.size = Vector2i(915,412)
+    ui._window_changed(true)
+    game.start_run(0)
+    game._gain_xp(100.0)
+    game._open_choice()
+    await process_frame
+    await process_frame
+    _expect(is_equal_approx(game.offer_buttons[0].position.y,game.offer_buttons[2].position.y),"All three normal choices share one landscape row at 915x412")
     game.queue_free()
     if failures.is_empty(): print("PASS: Arcade home/options, explicit hero play, import feedback, readable cards and six-choice footer"); quit(0)
     else:
