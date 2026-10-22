@@ -11,22 +11,23 @@ static func level(items: Array, id: String) -> int:
 
 static func weapon_frequency(items: Array, timers: Dictionary, time: float, position: Vector2) -> float:
     var base: float = 0.05 * float(level(items, "terminally-online"))
+    var temporary := 0.0
     var viral: int = level(items, "aura-viral")
     if viral > 0 and time < float(timers.get("viral_until", -1.0)):
-        base = maxf(base, 0.12 + 0.06 * float(viral - 1))
+        temporary = maxf(temporary, 0.12 + 0.06 * float(viral - 1))
     var wifi: int = level(items, "w-wifi")
     if wifi > 0 and time < float(timers.get("wifi_until", -1.0)) and position.distance_to(timers.get("wifi_center", position)) <= 160.0:
-        base = maxf(base, 0.08 + 0.04 * float(wifi - 1))
-    return minf(1.0, base)
+        temporary = maxf(temporary, 0.08 + 0.04 * float(wifi - 1))
+    return minf(1.0, base + temporary)
 
 static func weapon_damage(items: Array, run_level: int, flex: bool, time: float, timers: Dictionary, cook_stacks: int, cook_expires: float) -> float:
-    var damage: float = 1.0 + 0.01 * float(run_level - 1) + 0.06 * float(level(items, "main-character"))
+    var base_power := 1.0 + 0.01 * float(run_level - 1)
+    var bonus := 0.06 * float(level(items, "main-character"))
     if level(items, "absolute-cinema") > 0:
-        damage *= 1.25
-        if flex:
-            damage *= 1.20
+        bonus += 0.25 + (0.20 if flex else 0.0)
     if level(items, "w-squad") > 0 and time < float(timers.get("w_squad_until", -1.0)):
-        damage *= 1.10
+        bonus += 0.10
+    var damage := base_power * (1.0 + bonus)
     var cook: int = level(items, "let-him-cook")
     if cook > 0 and time < cook_expires:
         damage *= 1.0 + float(mini(cook_stacks, 5)) * (0.02 + 0.01 * float(cook))
