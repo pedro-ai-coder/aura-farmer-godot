@@ -1,6 +1,10 @@
 extends SceneTree
 
 ## Staged rendered evidence, never a balance or human-playtest claim.
+class ReviewRun extends "res://scripts/solo_run.gd":
+    func _load_profile() -> void: profile = ProfileStoreScript.defaults()
+    func _save_profile() -> void: pass
+
 func _initialize() -> void: call_deferred("_capture")
 func _capture() -> void:
     var args := OS.get_cmdline_user_args()
@@ -9,13 +13,15 @@ func _capture() -> void:
     var output := args[2] if args.size() > 2 else "user://review"
     root.size = Vector2i(width,height)
     DirAccess.make_dir_recursive_absolute(output)
-    var game = load("res://scenes/main.tscn").instantiate()
+    var game = ReviewRun.new()
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","playing","obstacles","recovery","station","choice","legendary","paused","boss","won","lost","options","profile_import","profile_export","dense"]:
+    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","boss","won","lost","options","profile_import","profile_export","dense"]:
         game.start_run(0)
-        if state == "menu": game._return_to_menu()
+        if state == "menu" or state == "character":
+            game._return_to_menu()
+            if state == "character": game.presentation.select_hero(1)
         elif state in ["playing","obstacles","recovery","station"]:
             game.player_pos = Vector2(850,565)
             game.pickups.append({"kind":"snack","pos":Vector2(780,580),"xp":0.0})
