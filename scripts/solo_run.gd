@@ -102,6 +102,8 @@ var cook_stacks := 0
 var cook_expires := 0.0
 var aura_hits_bucket := -1
 var aura_hits_in_bucket := 0
+var primary_aura_times: Array[float] = []
+var max_level_heal_at := 0.0
 var sigma_target: Dictionary = {}
 var rng := RandomNumberGenerator.new()
 var hero_index := 0
@@ -361,6 +363,8 @@ func start_run(index: int) -> void:
     cook_expires = 0.0
     aura_hits_bucket = -1
     aura_hits_in_bucket = 0
+    primary_aura_times.clear()
+    max_level_heal_at = 0.0
     sigma_target.clear()
     rng.seed = 451 + 17 * index
     mode = "playing"
@@ -370,8 +374,11 @@ func start_run(index: int) -> void:
 
 func _process(delta: float) -> void:
     if mode == "playing":
-        var dt := minf(delta, 0.05)
-        _advance(dt)
+        var remaining := clampf(delta, 0.0, 0.25)
+        while remaining > 0.00000001 and mode == "playing":
+            var dt := minf(remaining, 1.0 / 60.0)
+            _advance(dt)
+            remaining -= dt
     attack_flash = maxf(attack_flash - delta, 0.0)
     for effect: Dictionary in attack_visuals.duplicate():
         effect["life"] = float(effect["life"]) - delta
@@ -385,6 +392,8 @@ func _process(delta: float) -> void:
     queue_redraw()
 
 func _advance(dt: float) -> void:
+    if mode != "playing":
+        return
     run_time += dt
     _expire_weapon_shields()
     hurt_timer = maxf(0.0, hurt_timer - dt)
@@ -397,12 +406,17 @@ func _advance(dt: float) -> void:
     else:
         aura = minf(100.0, aura + 0.5 * dt)
     _move_player(dt)
-    _tick_passives(dt)
     var new_wave := mini(5, 1 + int(run_time / 180.0))
-    if new_wave != wave and not boss_spawned:
-        wave = new_wave
+    while wave < new_wave and not boss_spawned:
+        wave += 1
         _gain_xp(float(40 * wave))
     _spawn_logic(dt)
+    _check_legendary_window()
+    if mode == "playing" and pending_choices > 0:
+        _open_choice()
+    if mode != "playing":
+        return
+    _tick_passives(dt)
     _step_enemies(dt)
     _step_hostile_shots(dt)
     _step_hazards()
@@ -427,7 +441,7 @@ func _tick_passives(dt: float) -> void:
     if _passive_level("big-chad") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("big_chad_next", 10.0)):
         passive_timers["big_chad_next"] = run_time + 10.0
         var amount: float = max_hp * (0.05 + 0.02 * float(_passive_level("big-chad") - 1))
-        shield = minf(max_hp * 0.40, shield + amount * SoloPassiveRulesScript.support_scale(passives, hero["role"] == "tank"))
+        _grant_weapon_shield("big-chad", amount, 4.0)
     if _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
         passive_timers["no_u_next"] = run_time + 15.0
         _damage_nearby(200.0, 0.30 * float(hero["power"]))
@@ -444,14 +458,13 @@ func _tick_passives(dt: float) -> void:
 
 func _primary_activation(target: Vector2) -> void:
     primary_hits += 1
-    if aura_hits_bucket != int(run_time):
-        aura_hits_bucket = int(run_time)
-        aura_hits_in_bucket = 0
-    if flex_time <= 0.0 and aura_hits_in_bucket < 2:
+    for timestamp: float in primary_aura_times.duplicate():
+        if run_time - timestamp >= 1.0: primary_aura_times.erase(timestamp)
+    if flex_time <= 0.0 and primary_aura_times.size() < 2:
         aura = minf(100.0, aura + 1.0)
-        aura_hits_in_bucket += 1
+        primary_aura_times.append(run_time)
     if _passive_level("let-him-cook") > 0:
-        cook_stacks = mini(5, cook_stacks + 1)
+        cook_stacks = mini(5, (cook_stacks if run_time < cook_expires else 0) + 1)
         cook_expires = run_time + 3.0
     if _passive_level("homie-check") > 0 and run_time >= float(passive_timers.get("homie_ready", 0.0)):
         var homie_count: int = int(passive_timers.get("homie_count", 0)) + 1
@@ -489,6 +502,9 @@ func _spawn_logic(dt: float) -> void:
         event_index += 1
     if not boss_spawned and run_time >= 900.0:
         boss_spawned = true
+        for drop: Dictionary in pickups:
+            if drop["kind"] == "aura": _gain_xp(float(drop["xp"]))
+        pickups.clear()
         enemies.clear()
         player_shots.clear()
         weapon_areas.clear()
@@ -499,7 +515,7 @@ func _spawn_logic(dt: float) -> void:
     if spawn_timer > 0.0 or enemies.size() >= 100:
         return
     var idx := wave - 1
-    spawn_timer = 1.0 / (0.8 * float(WAVE_DENSITY[idx]))
+    spawn_timer = 1.0 / (0.8 * float(WAVE_DENSITY[idx]) * (1.0 + 0.10 * fmod(run_time, 180.0) / 180.0))
     if boss_spawned:
         spawn_timer = 5.0
     else:
@@ -562,10 +578,10 @@ func _deal_damage_to_player(amount: float) -> void:
         passive_timers["so_back_ready"] = run_time + 45.0
         passive_timers["so_back_remaining"] = 5
         passive_timers["so_back_next"] = run_time + 1.0
-        shield = minf(max_hp * 0.40, shield + max_hp * 0.10 * SoloPassiveRulesScript.support_scale(passives))
+        _grant_weapon_shield("so-back", max_hp * 0.10, 3.0)
     if old_hp >= max_hp * 0.25 and hp < max_hp * 0.25 and _passive_level("too-sigma") > 0 and run_time >= float(passive_timers.get("too_sigma_ready", 0.0)):
         passive_timers["too_sigma_ready"] = run_time + 60.0
-        shield = minf(max_hp * 0.40, shield + max_hp * 0.25 * SoloPassiveRulesScript.support_scale(passives))
+        _grant_weapon_shield("too-sigma", max_hp * 0.25, 5.0)
 
 func _spawn_hostile_shot(enemy: Dictionary) -> void:
     var dir: Vector2 = enemy["locked_direction"]
@@ -857,7 +873,7 @@ func _fire_weapons(dt: float) -> void:
         var secondary_power := power
         var shape: String = config["shape"]
         var streak := false
-        if shape == "shot" or shape == "line":
+        if hero["role"] == "ranged":
             directional_hits += 1
             streak = _passive_level("no-cap-streak") > 0 and directional_hits % 5 == 0
         if streak:
@@ -1126,15 +1142,25 @@ func _heal_player(amount: float) -> void:
     hp += effective
     run_metrics["healing"] = float(run_metrics["healing"]) + effective
 
+func _recompute_max_hp() -> void:
+    max_hp = (float(hero["hp"]) + 2.0 * float(level - 1)) * (1.0 + 0.08 * float(_passive_level("built-different")))
+    hp = minf(hp, max_hp)
+
 func _gain_xp(amount: float) -> void:
+    if mode == "won" or mode == "lost" or not is_finite(amount) or amount <= 0.0:
+        return
     total_xp += amount
     xp += amount
-    while level < 25 and xp >= float(30 + 8 * level + level * level):
+    while xp >= float(30 + 8 * level + level * level):
         xp -= float(30 + 8 * level + level * level)
-        level += 1
-        max_hp += 2.0
-        _heal_player(2.0)
-        pending_choices += 1
+        if level < 25:
+            level += 1
+            _recompute_max_hp()
+            hp = minf(max_hp, hp + 2.0)
+            pending_choices += 1
+        elif run_time >= max_level_heal_at:
+            _heal_player(max_hp * 0.05 * SoloPassiveRulesScript.support_scale(passives))
+            max_level_heal_at = run_time + 20.0
 
 func _passive_level(id: String) -> int:
     for passive: Dictionary in passives:
@@ -1180,6 +1206,7 @@ func _open_legendary() -> void:
     else:
         legendary_first_shown = true
     mode = "legendary"
+    _clear_touch()
     _show_ui()
 
 func _defer_legendary() -> void:
@@ -1204,6 +1231,7 @@ func _open_choice() -> void:
     selection.clear()
     selection.append_array(SoloOfferRulesScript.choices(str(hero["role"]), wave, weapons, passives, WEAPONS, rng))
     mode = "choice"
+    _clear_touch()
     _show_ui()
 
 func _replace_target(card: Dictionary) -> void:
@@ -1214,65 +1242,81 @@ func _replace_target(card: Dictionary) -> void:
         var name: String = str(WEAPONS[item["id"]]["name"]) if card["type"] == "weapon" else str(SoloOfferRulesScript.PASSIVE_DATA[item["id"]]["name"])
         replace_options.append({"id":item["id"], "label":name + " / " + str(item["rarity"]).to_upper() + " LV " + str(item["level"])})
     mode = "replace"
+    _clear_touch()
     _show_ui()
 
+func _clear_removed_passive(id: String) -> void:
+    var effects := {"w-wifi": ["wifi_until", "wifi_center"], "aura-viral": ["viral_until"], "w-squad": ["w_squad_until"]}
+    for key in effects.get(id, []): passive_timers.erase(key)
+    if id == "let-him-cook":
+        cook_stacks = 0
+        cook_expires = 0.0
+    if id == "homie-check": passive_timers.erase("homie_count")
+    if id == "six-to-seven": passive_timers.erase("six_counter")
+    if id == "so-back": passive_timers.erase("so_back_remaining")
+    if id == "no-cap-streak": directional_hits = 0
+    if weapon_shields.has(id):
+        shield = maxf(0.0, shield - float(weapon_shields[id]["remaining"]))
+        weapon_shields.erase(id)
+
 func _apply_card(card: Dictionary, replace_id: String = "") -> void:
-    if card["type"] == "heal":
-        _heal_player(max_hp * 0.08)
+    var kind: String = card.get("type", "")
+    var rarity: String = card.get("rarity", "")
+    var previous_ids: Array[String] = []
+    for item: Dictionary in passives: previous_ids.append(str(item["id"]))
+    var old_max := max_hp
+    if kind == "heal":
+        _heal_player(max_hp * 0.08 * SoloPassiveRulesScript.support_scale(passives))
     else:
-        if not SoloOfferRulesScript.legal_item(str(card["id"]), str(card["rarity"]), int(card["level"]), str(hero["role"]), WEAPONS):
-            push_error("Refusing an illegal GDD item offer")
+        if not SoloOfferRulesScript.legal_item(str(card.get("id", "")), rarity, int(card.get("level", 0)), str(hero["role"]), WEAPONS) or (rarity == "legendary" and legendary_spent):
             return
-        var kind: String = card["type"]
-        if kind == "weapon" and weapons.size() >= 3 and replace_id == "":
-            _replace_target(card)
+        var is_weapon := kind == "weapon" or kind == "upgrade_weapon" or kind == "promote_weapon"
+        if WEAPONS.has(card.get("id", "")) != is_weapon: return
+        var inventory: Array[Dictionary] = weapons if is_weapon else passives
+        var old_index := -1
+        for i in range(inventory.size()):
+            if inventory[i]["id"] == card["id"]: old_index = i
+        if kind == "weapon" or kind == "passive":
+            if old_index >= 0 or int(card["level"]) != 1: return
+            if inventory.size() >= (3 if is_weapon else 5):
+                if replace_id.is_empty():
+                    _replace_target(card)
+                    return
+                var replacement := -1
+                for i in range(inventory.size()):
+                    if inventory[i]["id"] == replace_id: replacement = i
+                if replacement < 0: return
+                inventory.remove_at(replacement)
+            var item := {"id": card["id"], "rarity": rarity, "level": int(card["level"])}
+            if is_weapon: item["timer"] = 0.0
+            inventory.append(item)
+        elif kind == "upgrade_weapon" or kind == "upgrade_passive" or kind == "promote_weapon":
+            if old_index < 0: return
+            var old: Dictionary = inventory[old_index]
+            if kind == "promote_weapon":
+                var ranks := ["common", "rare", "epic", "legendary"]
+                if ranks.find(rarity) <= ranks.find(old["rarity"]) or int(card["level"]) != mini(int(old["level"]), int(CAP_LEVELS[rarity])): return
+            elif rarity != old["rarity"] or int(card["level"]) != int(old["level"]) + 1:
+                return
+            old["rarity"] = rarity
+            old["level"] = int(card["level"])
+        else:
             return
-        if kind == "passive" and passives.size() >= 5 and replace_id == "":
-            _replace_target(card)
-            return
-        if kind == "weapon":
-            if replace_id != "":
-                for i in range(weapons.size()):
-                    if weapons[i]["id"] == replace_id:
-                        weapons.remove_at(i)
-                        break
-            weapons.append({"id": card["id"], "level":int(card["level"]), "rarity":card["rarity"], "timer":0.0})
-        elif kind == "passive":
-            if replace_id != "":
-                for i in range(passives.size()):
-                    if passives[i]["id"] == replace_id:
-                        passives.remove_at(i)
-                        break
-            passives.append({"id":card["id"], "level":int(card["level"]), "rarity":card["rarity"]})
-            if card["id"] == "built-different":
-                var additional_hp := max_hp * 0.08
-                max_hp += additional_hp
-                hp = minf(max_hp, hp + additional_hp)
-        elif kind == "upgrade_weapon" or kind == "promote_weapon":
-            for weapon: Dictionary in weapons:
-                if weapon["id"] == card["id"]:
-                    weapon["rarity"] = card["rarity"]
-                    weapon["level"] = int(card["level"])
-                    break
-        elif kind == "upgrade_passive":
-            for passive: Dictionary in passives:
-                if passive["id"] == card["id"]:
-                    passive["level"] = int(card["level"])
-                    if card["id"] == "built-different":
-                        var additional_hp := max_hp * 0.08
-                        max_hp += additional_hp
-                        hp = minf(max_hp, hp + additional_hp)
-                    break
-    if card.get("rarity", "") == "legendary":
-        legendary_spent = true
-    else:
-        pending_choices -= 1
+    for id: String in previous_ids:
+        if _passive_level(id) == 0: _clear_removed_passive(id)
+    _recompute_max_hp()
+    hp = minf(max_hp, hp + maxf(0.0, max_hp - old_max))
+    var periodic := {"w-wifi": ["wifi_next", 12.0], "big-chad": ["big_chad_next", 10.0], "no-u": ["no_u_next", 15.0]}
+    for id in periodic:
+        var data: Array = periodic[id]
+        if _passive_level(id) > 0 and not passive_timers.has(data[0]): passive_timers[data[0]] = run_time + float(data[1])
+    if rarity == "legendary": legendary_spent = true
+    else: pending_choices = maxi(0, pending_choices - 1)
     replace_card.clear()
     replace_options.clear()
     mode = "playing"
     _show_ui()
-    if pending_choices > 0:
-        _open_choice()
+    if pending_choices > 0: _open_choice()
 
 func pick_upgrade(index: int) -> void:
     if mode == "replace":
@@ -1315,7 +1359,7 @@ func _use_flex() -> void:
     if _passive_level("w-squad") > 0:
         passive_timers["w_squad_until"] = run_time + 6.0
     if hero["id"] == "alpha":
-        shield = minf(max_hp * 0.40, shield + max_hp * 0.25 * SoloPassiveRulesScript.support_scale(passives, true))
+        _grant_weapon_shield("alpha-hold", max_hp * 0.25, 6.0)
         _damage_nearby(150.0, 0.40 * float(hero["power"]))
 
 func _toggle_pause() -> void:

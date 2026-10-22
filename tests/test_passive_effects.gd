@@ -20,7 +20,7 @@ func _verify() -> void:
         {"id":"its-over", "rarity":"epic", "level":2}
     ]
     _expect(is_equal_approx(rules.weapon_frequency(common, {}, 10.0, Vector2.ZERO), 0.10), "Terminally Online frequency")
-    _expect(is_equal_approx(rules.weapon_damage(common, 5, false, 10.0, {}, 0, 0.0), 1.22), "Main Character Energy damage and permanent level bonus")
+    _expect(is_equal_approx(rules.weapon_damage(common, 5, false, 10.0, {}, 0, 0.0), 1.04 * 1.18), "Main Character Energy damage and permanent level bonus")
     _expect(is_equal_approx(rules.area_scale(common), 1.0), "Area is unchanged without Big Meme")
     _expect(is_equal_approx(rules.ranged_range_scale(common), 1.0), "Range is unchanged without Timeline")
     var target := {"pos":Vector2(80, 0), "hp":20.0, "max":100.0}
@@ -38,7 +38,7 @@ func _verify() -> void:
     _expect(is_equal_approx(rules.area_scale(utility), 1.12), "Big Meme radius bonus")
     _expect(is_equal_approx(rules.ranged_range_scale(utility), 1.16), "Across the Timeline bonus")
     _expect(is_equal_approx(rules.weapon_frequency(utility, {"viral_until":15.0}, 10.0, Vector2.ZERO), 0.12), "Aura Goes Viral frequency window")
-    _expect(is_equal_approx(rules.weapon_damage(utility, 1, true, 10.0, {}, 0, 0.0), 1.25 * 1.20), "Legendary damage and Flex bonus")
+    _expect(is_equal_approx(rules.weapon_damage(utility, 1, true, 10.0, {}, 0, 0.0), 1.45), "Legendary damage and Flex bonus")
     _expect(is_equal_approx(rules.support_scale(utility, true), 1.12 * 1.08), "Support and Tank shield multipliers")
 
     var game = load("res://scenes/main.tscn").instantiate()

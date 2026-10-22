@@ -59,3 +59,11 @@ The next iteration uses the Phaser profile v2 schema/key on Web and an atomic na
 Same-origin browser storage can be migrated automatically. The Godot host cannot read Phaser storage from a different origin; no cross-origin access or paid cross-save backend is introduced. A transferable save/import interface still requires integration before cross-host migration can be claimed complete.
 
 Regression coverage includes legacy snapshots, corrupted/duplicate records, preserved totals beyond 40 retained results, native atomic round trips, storage failure and duplicate terminal callbacks. Validation phases now have explicit timeouts so a script parse failure cannot leave CI hanging indefinitely. Visual/device acceptance remains deferred.
+
+## G1.13 — Run progression and passive lifecycle
+
+PR #20 merged as `eeafe883f35260413122ff7e293ca4ff5ac40af4` after hosted CI and Vercel build passed.
+
+Next corrections: fixed simulation substeps, immediate pause for transition choices, complete XP collection at the boss transition, level-25 recovery with its 20-second lock, rolling one-second primary Aura cap, linear max-HP passive levels, removal of passive effects/stacks without resetting cooldowns, periodic timers starting at acquisition, timed defensive shield sources, and permanent frequency plus the strongest temporary buff. Weapon damage grouping follows Phaser's level base power and additive weapon bonuses. New-card/upgrades/promotions validate their old inventory state and reject duplicates or wrong equipment types.
+
+Visual validation remains deferred by owner authorization; no performance or native acceptance is inferred from these regression tests.
