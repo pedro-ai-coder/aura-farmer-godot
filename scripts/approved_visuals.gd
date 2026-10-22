@@ -22,7 +22,7 @@ func _init() -> void:
         "ruin-alley", "main-menu", "sigma", "cool-kid", "alpha",
         "phone-guy", "hater", "big-hater", "sigma-atlas", "cool-kid-atlas",
         "alpha-atlas", "cool-kid-flex-v2", "cool-kid-rear-v2", "alpha-rear-v2",
-        "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2"
+        "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2", "enemies"
     ]:
         var path: String = ROOT + asset_name + ".png"
         if ResourceLoader.exists(path):
@@ -173,3 +173,14 @@ func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0
     canvas.draw_texture_rect(image, Rect2(-pivot * scale, image.get_size() * scale), false)
     canvas.draw_set_transform(Vector2.ZERO)
     return true
+
+func cover_region() -> Rect2:
+    var atlas := texture("enemies")
+    if atlas == null: return Rect2()
+    var size := atlas.get_size()
+    return Rect2(roundf(size.x * 0.5), roundf(size.y * 0.75), floorf(size.x / 4.0), floorf(size.y / 4.0))
+
+func draw_cover(canvas: CanvasItem, position: Vector2) -> void:
+    var atlas := texture("enemies")
+    if atlas != null:
+        canvas.draw_texture_rect_region(atlas, Rect2(position - Vector2(40,68), Vector2(80,80)), cover_region())

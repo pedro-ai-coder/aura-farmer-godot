@@ -14,7 +14,7 @@ func _check() -> void:
         "sigma-atlas", "cool-kid-atlas", "alpha-atlas",
         "cool-kid-flex-v2", "cool-kid-rear-v2", "alpha-rear-v2",
         "phone-guy", "hater", "big-hater",
-        "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2"
+        "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2", "enemies"
     ]
     var missing: Array[String] = []
     for name in required:
@@ -34,7 +34,7 @@ func _check() -> void:
             if sprite == null or sprite.get_width() <= 0 or sprite.get_height() <= 0:
                 missing.append(kind + " (frame " + str(frame) + ")")
     if missing.is_empty():
-        print("PASS: All 18 approved art assets and 17 enemy animations loaded as Godot textures")
+        print("PASS: All 19 approved art assets and 17 enemy animations loaded as Godot textures")
         quit(0)
     else:
         for name in missing:

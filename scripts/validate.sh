@@ -38,6 +38,7 @@ run_check() {
 }
 
 run_check import --headless --path . --import
+run_check camera-cover --headless --path . --script res://tests/test_camera_cover.gd
 run_check continuous-run --headless --path . --script res://tests/test_continuous_run.gd
 run_check run-acceptance --headless --path . --script res://tests/test_run_acceptance.gd
 run_check menu-flow --headless --path . --script res://tests/test_menu_flow.gd

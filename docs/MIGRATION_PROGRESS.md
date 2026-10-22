@@ -96,3 +96,11 @@ PR #26 integrated as `06f283ffa0ad38ca1d6492b8327d1577dc121a1d` after hosted God
 Fanum Leech now creates a target-following link with an 0.8-second warning and three ticks. Leaving 240 units or defeating the caster breaks the entire link; returning cannot reconnect it. The link remains a direct enemy attack for Rampage immunity, while persistent ground zones retain their special-hazard semantics. Leech and Puffer ability damage apply the canonical common-enemy wave scaling once. Existing geometry cues render the link without new artwork.
 
 Focused regressions verify exact lock/recovery boundaries, commitment after player movement, all three ticks, permanent link break and wave-scaled ability damage. Full visual/device/balance acceptance remains pending.
+
+## G2.0 — Static cover artwork and bounded camera (P0)
+
+Baseline: owner-approved recovery amendment on main (`86a9d4f`); no open PRs at inspection. The existing two cover colliders now render exact Phaser enemy-atlas frame 14 at 80×80 with the original (0.5,0.85) pivot. Actors and props sort by foot depth; placeholder contact arcs are removed. The additional original atlas is pinned and hash-verified in the approved-asset manifest. Collision, movement and sightline geometry are unchanged.
+
+Camera framing follows Phaser's landscape targets, uses time-based smoothing, and clamps the complete visible rectangle to the 1448×1086 map at desktop, ultrawide, mobile landscape and portrait aspect ratios. Viewport changes recompute zoom and bounds without moving the player. Regression coverage checks six viewport sizes, corner/edge targets, smoothing invariance, exact atlas frame and preserved cover collision. Local Godot 4.7.2 validation and Web export pass. Interactive screenshots remain under investigation: the remote browser lacks WebGL2, and the local Chromium process currently exits with SIGTRAP before opening a page. No rendered visual acceptance is claimed from headless tests.
+
+P1–P3 recovery is now approved in canonical Appendix C.2 and is the next implementation priority. Prior notes that called these mechanics proposals are historical; P4–P8 remain unapproved.
