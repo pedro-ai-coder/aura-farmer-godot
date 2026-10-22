@@ -33,10 +33,10 @@ static func weapon_damage(items: Array, run_level: int, flex: bool, time: float,
         damage *= 1.0 + float(mini(cook_stacks, 5)) * (0.02 + 0.01 * float(cook))
     return damage
 
-static func damage_to_target(items: Array, target: Dictionary, player_pos: Vector2) -> float:
+static func damage_to_target(items: Array, target: Dictionary, player_pos: Vector2, weapon: bool = true) -> float:
     var value := 1.0
     var hands: int = level(items, "hands-on-sight")
-    if hands > 0 and player_pos.distance_to(target["pos"]) <= 150.0:
+    if weapon and hands > 0 and player_pos.distance_to(target["pos"]) <= 150.0:
         value *= 1.0 + 0.07 * float(hands)
     var over: int = level(items, "its-over")
     if over > 0 and float(target["hp"]) < float(target["max"]) * 0.30:
