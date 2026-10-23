@@ -1,0 +1,298 @@
+{
+  "cpu": "unavailable in sandbox",
+  "display": "X11",
+  "engine": "4.7.2-stable (official)",
+  "rendered": true,
+  "results": [
+    {
+      "cold_draw_max_us": 14923,
+      "cold_frame_max_us": 626987,
+      "count_ranges": {
+        "effects": {
+          "max": 0,
+          "min": 0
+        },
+        "enemies": {
+          "max": 30,
+          "min": 30
+        },
+        "hostile_projectiles": {
+          "max": 8,
+          "min": 0
+        },
+        "pickups": {
+          "max": 200,
+          "min": 200
+        },
+        "player_projectiles": {
+          "max": 15,
+          "min": 15
+        },
+        "projectiles": {
+          "max": 23,
+          "min": 15
+        }
+      },
+      "final_effects": 0,
+      "final_enemies": 30,
+      "final_pickups": 200,
+      "final_projectiles": 15,
+      "metrics": {
+        "draw_submission_us": {
+          "mean_us": 2346.895,
+          "p50_us": 2072,
+          "p95_us": 4285,
+          "p99_us": 6509
+        },
+        "enemy_ai_us": {
+          "mean_us": 611.78,
+          "p50_us": 511,
+          "p95_us": 917,
+          "p99_us": 3561
+        },
+        "fixture_refill_us": {
+          "mean_us": 10.15,
+          "p50_us": 7,
+          "p95_us": 25,
+          "p99_us": 177
+        },
+        "frame_interval_us": {
+          "mean_us": 22545.815,
+          "p50_us": 21405,
+          "p95_us": 31056,
+          "p99_us": 37201
+        },
+        "pickups_us": {
+          "mean_us": 90.535,
+          "p50_us": 76,
+          "p95_us": 160,
+          "p99_us": 317
+        },
+        "process_cpu_us": {
+          "mean_us": 1382.58,
+          "p50_us": 1210,
+          "p95_us": 2444,
+          "p99_us": 4181
+        },
+        "projectiles_us": {
+          "mean_us": 366.525,
+          "p50_us": 304,
+          "p95_us": 571,
+          "p99_us": 2321
+        },
+        "simulation_us": {
+          "mean_us": 1242.14,
+          "p50_us": 1095,
+          "p95_us": 2211,
+          "p99_us": 4098
+        },
+        "weapon_areas_us": {
+          "mean_us": 2.765,
+          "p50_us": 3,
+          "p95_us": 4,
+          "p99_us": 18
+        }
+      },
+      "nominal_enemies": 30,
+      "nominal_projectiles": 15,
+      "rendered_over_33ms": 6,
+      "samples": 200,
+      "simulation_over_33ms": 0
+    },
+    {
+      "cold_draw_max_us": 13299,
+      "cold_frame_max_us": 46991,
+      "count_ranges": {
+        "effects": {
+          "max": 0,
+          "min": 0
+        },
+        "enemies": {
+          "max": 100,
+          "min": 100
+        },
+        "hostile_projectiles": {
+          "max": 21,
+          "min": 0
+        },
+        "pickups": {
+          "max": 200,
+          "min": 200
+        },
+        "player_projectiles": {
+          "max": 51,
+          "min": 50
+        },
+        "projectiles": {
+          "max": 71,
+          "min": 50
+        }
+      },
+      "final_effects": 0,
+      "final_enemies": 100,
+      "final_pickups": 200,
+      "final_projectiles": 50,
+      "metrics": {
+        "draw_submission_us": {
+          "mean_us": 3504.875,
+          "p50_us": 3426,
+          "p95_us": 4415,
+          "p99_us": 5732
+        },
+        "enemy_ai_us": {
+          "mean_us": 1772.66,
+          "p50_us": 1663,
+          "p95_us": 2312,
+          "p99_us": 4802
+        },
+        "fixture_refill_us": {
+          "mean_us": 49.2,
+          "p50_us": 14,
+          "p95_us": 159,
+          "p99_us": 321
+        },
+        "frame_interval_us": {
+          "mean_us": 27692.145,
+          "p50_us": 26948,
+          "p95_us": 34108,
+          "p99_us": 36229
+        },
+        "pickups_us": {
+          "mean_us": 90.54,
+          "p50_us": 81,
+          "p95_us": 140,
+          "p99_us": 216
+        },
+        "process_cpu_us": {
+          "mean_us": 4767.425,
+          "p50_us": 4736,
+          "p95_us": 6245,
+          "p99_us": 8830
+        },
+        "projectiles_us": {
+          "mean_us": 2483.835,
+          "p50_us": 2607,
+          "p95_us": 3485,
+          "p99_us": 5099
+        },
+        "simulation_us": {
+          "mean_us": 4625.625,
+          "p50_us": 4616,
+          "p95_us": 6074,
+          "p99_us": 8732
+        },
+        "weapon_areas_us": {
+          "mean_us": 3.175,
+          "p50_us": 3,
+          "p95_us": 4,
+          "p99_us": 5
+        }
+      },
+      "nominal_enemies": 100,
+      "nominal_projectiles": 50,
+      "rendered_over_33ms": 14,
+      "samples": 200,
+      "simulation_over_33ms": 0
+    },
+    {
+      "cold_draw_max_us": 19501,
+      "cold_frame_max_us": 71155,
+      "count_ranges": {
+        "effects": {
+          "max": 0,
+          "min": 0
+        },
+        "enemies": {
+          "max": 300,
+          "min": 300
+        },
+        "hostile_projectiles": {
+          "max": 69,
+          "min": 0
+        },
+        "pickups": {
+          "max": 200,
+          "min": 200
+        },
+        "player_projectiles": {
+          "max": 150,
+          "min": 150
+        },
+        "projectiles": {
+          "max": 219,
+          "min": 150
+        }
+      },
+      "final_effects": 0,
+      "final_enemies": 300,
+      "final_pickups": 200,
+      "final_projectiles": 150,
+      "metrics": {
+        "draw_submission_us": {
+          "mean_us": 7621.74,
+          "p50_us": 7384,
+          "p95_us": 9454,
+          "p99_us": 12162
+        },
+        "enemy_ai_us": {
+          "mean_us": 5339.645,
+          "p50_us": 5117,
+          "p95_us": 6930,
+          "p99_us": 8745
+        },
+        "fixture_refill_us": {
+          "mean_us": 168.745,
+          "p50_us": 49,
+          "p95_us": 473,
+          "p99_us": 1484
+        },
+        "frame_interval_us": {
+          "mean_us": 62290.395,
+          "p50_us": 63759,
+          "p95_us": 73902,
+          "p99_us": 85032
+        },
+        "pickups_us": {
+          "mean_us": 89.165,
+          "p50_us": 68,
+          "p95_us": 138,
+          "p99_us": 422
+        },
+        "process_cpu_us": {
+          "mean_us": 24797.7,
+          "p50_us": 27560,
+          "p95_us": 33386,
+          "p99_us": 39511
+        },
+        "projectiles_us": {
+          "mean_us": 18682.56,
+          "p50_us": 21907,
+          "p95_us": 26014,
+          "p99_us": 29855
+        },
+        "simulation_us": {
+          "mean_us": 24651.195,
+          "p50_us": 27463,
+          "p95_us": 33272,
+          "p99_us": 39164
+        },
+        "weapon_areas_us": {
+          "mean_us": 4.765,
+          "p50_us": 5,
+          "p95_us": 7,
+          "p99_us": 9
+        }
+      },
+      "nominal_enemies": 300,
+      "nominal_projectiles": 150,
+      "rendered_over_33ms": 200,
+      "samples": 200,
+      "simulation_over_33ms": 8
+    }
+  ],
+  "scope": "controlled full-simulation workload; damage/XP isolated; no physical device or balance acceptance",
+  "viewport": [
+    1280,
+    720
+  ]
+}

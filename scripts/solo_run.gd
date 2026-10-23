@@ -358,7 +358,7 @@ func _show_ui() -> void:
     if presentation != null: presentation.refresh(true)
 
 func _update_text() -> void:
-    if mode == "menu":
+    if mode in ["menu","heroes"] or hero.is_empty():
         headline.text = "AURA FARMER"
         headline.position = Vector2(82, 40)
         headline.add_theme_font_size_override("font_size", 54)
@@ -1708,6 +1708,7 @@ func pick_upgrade(index: int) -> void:
     if index < 0 or index >= count: return
     selected_card_index = index
     _show_ui()
+    if index < offer_buttons.size() and offer_buttons[index].is_visible_in_tree(): offer_buttons[index].grab_focus()
 
 func _confirm_selection() -> void:
     if mode == "confirm_exit":
@@ -1948,6 +1949,11 @@ func _input(event: InputEvent) -> void:
             var focused := get_viewport().gui_get_focus_owner()
             if focused is Button and focused.is_visible_in_tree() and not focused.disabled:
                 return # Let the live focused destination/card handle ui_accept.
+        if event.keycode in [KEY_ENTER,KEY_KP_ENTER] and mode in ["choice","replace","legendary"]:
+            var focused_card := get_viewport().gui_get_focus_owner()
+            var focused_index := offer_buttons.find(focused_card)
+            if focused_index >= 0 and selected_card_index != focused_index:
+                return # First ui_accept selects; a second explicit accept confirms.
         if (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER) and (mode in ["menu","heroes"] or mode in ["choice","replace","legendary"]):
             if mode in ["menu","heroes"]: start_run(hero_index)
             else: _confirm_selection()
@@ -2014,8 +2020,8 @@ func _draw_pickup(drop: Dictionary) -> void:
         draw_line(at + Vector2(9, -4), at + Vector2(9, -11), paper, 5.0)
 
 func _draw() -> void:
-    if mode == "menu":
-        if not art.draw_backdrop(self, "main-menu", FIELD):
+    if mode in ["menu","heroes"] or hero.is_empty():
+        if not art.draw_backdrop(self, "ruin-alley", FIELD):
             draw_rect(FIELD, Color(0.12, 0.15, 0.22))
         draw_rect(FIELD, Color(0.025, 0.035, 0.06, 0.67))
         return

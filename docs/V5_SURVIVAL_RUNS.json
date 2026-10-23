@@ -1,0 +1,1070 @@
+[
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 20,
+    "controller": "avoidance",
+    "damage_sources": {
+      "beta/contact": {
+        "events": 2,
+        "hp": 40.96,
+        "shield": 0.0
+      },
+      "copium-puffer/hazard": {
+        "events": 1,
+        "hp": 21.996,
+        "shield": 0.0
+      },
+      "doomscroller/hazard": {
+        "events": 6,
+        "hp": 63.554,
+        "shield": 0.0
+      },
+      "fanum-leech/direct": {
+        "events": 4,
+        "hp": 26.905,
+        "shield": 0.0
+      },
+      "hater/direct": {
+        "events": 3,
+        "hp": 42.83,
+        "shield": 0.0
+      },
+      "mod-supremo/contact": {
+        "events": 1,
+        "hp": 28.0,
+        "shield": 0.0
+      },
+      "npc/contact": {
+        "events": 1,
+        "hp": 9.2,
+        "shield": 0.0
+      },
+      "ohio-express/contact": {
+        "events": 1,
+        "hp": 20.68,
+        "shield": 0.0
+      },
+      "ping-sniper/direct": {
+        "events": 2,
+        "hp": 67.68,
+        "shield": 0.0
+      },
+      "ratio-ram/contact": {
+        "events": 2,
+        "hp": 51.2,
+        "shield": 0.0
+      },
+      "reply-goblin/contact": {
+        "events": 3,
+        "hp": 28.74,
+        "shield": 0.0
+      }
+    },
+    "flexes": 6,
+    "healing": 263.745,
+    "hero": "sigma",
+    "hp": 0.0,
+    "kills": 453,
+    "last_hit": {
+      "hp": 9.79400000000001,
+      "shield": 0.0,
+      "source": "doomscroller/hazard",
+      "time": 431.666666666603,
+      "wave": 4
+    },
+    "level": 20,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "caught-4k",
+        "level": 4,
+        "rarity": "common"
+      },
+      {
+        "id": "w-wifi",
+        "level": 1,
+        "rarity": "rare"
+      },
+      {
+        "id": "thick-skin",
+        "level": 2,
+        "rarity": "common"
+      },
+      {
+        "id": "main-character",
+        "level": 3,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 7,
+      "magnets_spawned": 7,
+      "snacks_collected": 23,
+      "snacks_spawned": 26
+    },
+    "seconds": 431.666666666603,
+    "seed": 451,
+    "signature_metrics": {
+      "absorbed": 0.0,
+      "damage": 55.6152399999992,
+      "finishers": 5,
+      "prevented": 0.0
+    },
+    "station_uses": 0,
+    "waves": [
+      {
+        "active_enemies": 8,
+        "hp": 112.0,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 493.0
+      },
+      {
+        "active_enemies": 3,
+        "hp": 124.0,
+        "level": 13,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1660.0
+      },
+      {
+        "active_enemies": 8,
+        "hp": 134.0,
+        "level": 18,
+        "time": 360.000000000001,
+        "wave": 4,
+        "xp_collected": 3758.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 1,
+        "rarity": "legendary",
+        "timer": 1.31666666666667
+      },
+      {
+        "id": "ratio-blaster",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.1175
+      },
+      {
+        "id": "brainrot-feed",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.366666666666671
+      }
+    ],
+    "xp_collected": 4836.0,
+    "xp_on_ground": 413.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 14,
+    "controller": "avoidance",
+    "damage_sources": {
+      "doomscroller/hazard": {
+        "events": 8,
+        "hp": 77.01,
+        "shield": 0.0
+      },
+      "fanum-leech/direct": {
+        "events": 2,
+        "hp": 12.35,
+        "shield": 0.0
+      },
+      "hater/direct": {
+        "events": 4,
+        "hp": 47.975,
+        "shield": 0.0
+      },
+      "mod-supremo/contact": {
+        "events": 2,
+        "hp": 53.2,
+        "shield": 0.0
+      },
+      "mod-supremo/direct": {
+        "events": 2,
+        "hp": 40.85,
+        "shield": 0.0
+      },
+      "npc/contact": {
+        "events": 1,
+        "hp": 7.59999999999999,
+        "shield": 0.0
+      },
+      "reply-guy/direct": {
+        "events": 5,
+        "hp": 85.5,
+        "shield": 0.0
+      }
+    },
+    "flexes": 3,
+    "healing": 186.485,
+    "hero": "cool-kid",
+    "hp": 0.0,
+    "kills": 281,
+    "last_hit": {
+      "hp": 7.85000000000005,
+      "shield": 0.0,
+      "source": "doomscroller/hazard",
+      "time": 303.616666666719,
+      "wave": 3
+    },
+    "level": 15,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "caught-4k",
+        "level": 4,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 6,
+      "magnets_spawned": 6,
+      "snacks_collected": 16,
+      "snacks_spawned": 16
+    },
+    "seconds": 303.616666666719,
+    "seed": 451,
+    "signature_metrics": {
+      "absorbed": 0.0,
+      "damage": 0.0,
+      "finishers": 3,
+      "prevented": 0.0
+    },
+    "station_uses": 1,
+    "waves": [
+      {
+        "active_enemies": 7,
+        "hp": 122.0,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 513.0
+      },
+      {
+        "active_enemies": 21,
+        "hp": 134.0,
+        "level": 13,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1676.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "keyboard-warrior",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.1
+      },
+      {
+        "id": "touch-grass",
+        "level": 2,
+        "rarity": "rare",
+        "timer": 0.308333333333333
+      },
+      {
+        "id": "ban-hammer",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.230000000000003
+      }
+    ],
+    "xp_collected": 2458.0,
+    "xp_on_ground": 76.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 20,
+    "controller": "avoidance",
+    "damage_sources": {
+      "beta/contact": {
+        "events": 5,
+        "hp": 3.42239999999998,
+        "shield": 77.9600000000001
+      },
+      "copium-puffer/hazard": {
+        "events": 4,
+        "hp": 30.6,
+        "shield": 30.5999999999999
+      },
+      "doomscroller/contact": {
+        "events": 2,
+        "hp": 10.57264,
+        "shield": 8.13279999999997
+      },
+      "doomscroller/hazard": {
+        "events": 15,
+        "hp": 41.168,
+        "shield": 94.1519999999999
+      },
+      "fanum-leech/direct": {
+        "events": 24,
+        "hp": 88.26496,
+        "shield": 47.76904
+      },
+      "hater/direct": {
+        "events": 53,
+        "hp": 256.38148,
+        "shield": 337.73288
+      },
+      "hype-bot/contact": {
+        "events": 2,
+        "hp": 7.6058,
+        "shield": 8.05119999999999
+      },
+      "mod-supremo/direct": {
+        "events": 1,
+        "hp": 5.44416,
+        "shield": 18.35584
+      },
+      "npc/contact": {
+        "events": 2,
+        "hp": 0.268000000000001,
+        "shield": 13.332
+      },
+      "ohio-express/contact": {
+        "events": 6,
+        "hp": 30.26216,
+        "shield": 81.9378400000002
+      },
+      "ping-sniper/direct": {
+        "events": 8,
+        "hp": 138.61944,
+        "shield": 103.73256
+      },
+      "ratio-ram/contact": {
+        "events": 8,
+        "hp": 67.14492,
+        "shield": 96.4630799999999
+      },
+      "reply-guy/direct": {
+        "events": 8,
+        "hp": 40.893,
+        "shield": 81.507
+      }
+    },
+    "flexes": 5,
+    "healing": 487.28696,
+    "hero": "alpha",
+    "hp": 0.0,
+    "kills": 490,
+    "last_hit": {
+      "hp": 9.56936000000006,
+      "shield": 0.0,
+      "source": "hater/direct",
+      "time": 446.316666666589,
+      "wave": 4
+    },
+    "level": 20,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "caught-4k",
+        "level": 4,
+        "rarity": "common"
+      },
+      {
+        "id": "built-different",
+        "level": 4,
+        "rarity": "common"
+      },
+      {
+        "id": "big-chad",
+        "level": 1,
+        "rarity": "rare"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 9,
+      "magnets_spawned": 11,
+      "snacks_collected": 24,
+      "snacks_spawned": 31
+    },
+    "seconds": 446.316666666589,
+    "seed": 451,
+    "signature_metrics": {
+      "absorbed": 60.37316,
+      "damage": 1714.13557716618,
+      "finishers": 5,
+      "prevented": 4.08
+    },
+    "station_uses": 1,
+    "waves": [
+      {
+        "active_enemies": 9,
+        "hp": 150.0,
+        "level": 6,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 415.0
+      },
+      {
+        "active_enemies": 30,
+        "hp": 157.17,
+        "level": 12,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1437.0
+      },
+      {
+        "active_enemies": 39,
+        "hp": 97.34904,
+        "level": 17,
+        "time": 360.000000000001,
+        "wave": 4,
+        "xp_collected": 3263.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "cope-shield",
+        "level": 1,
+        "rarity": "legendary",
+        "timer": 0.850000000000003
+      },
+      {
+        "id": "personal-space",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 2.21
+      },
+      {
+        "id": "chad-hands",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.923333333333333
+      }
+    ],
+    "xp_collected": 5129.0,
+    "xp_on_ground": 118.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 13,
+    "controller": "avoidance",
+    "damage_sources": {
+      "beta/contact": {
+        "events": 1,
+        "hp": 27.04,
+        "shield": 0.0
+      },
+      "doomscroller/hazard": {
+        "events": 1,
+        "hp": 13.52,
+        "shield": 0.0
+      },
+      "fanum-leech/direct": {
+        "events": 2,
+        "hp": 13.0,
+        "shield": 0.0
+      },
+      "hater/direct": {
+        "events": 7,
+        "hp": 91.0,
+        "shield": 0.0
+      },
+      "mod-supremo/direct": {
+        "events": 1,
+        "hp": 4.12,
+        "shield": 0.0
+      },
+      "reply-guy/direct": {
+        "events": 1,
+        "hp": 18.0,
+        "shield": 0.0
+      }
+    },
+    "flexes": 4,
+    "healing": 40.68,
+    "hero": "sigma",
+    "hp": 0.0,
+    "kills": 267,
+    "last_hit": {
+      "hp": 4.12,
+      "shield": 0.0,
+      "source": "mod-supremo/direct",
+      "time": 282.100000000072,
+      "wave": 3
+    },
+    "level": 14,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "caught-4k",
+        "level": 2,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 4,
+      "magnets_spawned": 4,
+      "snacks_collected": 15,
+      "snacks_spawned": 17
+    },
+    "seconds": 282.100000000072,
+    "seed": 452,
+    "signature_metrics": {
+      "absorbed": 0.0,
+      "damage": 134.25,
+      "finishers": 4,
+      "prevented": 0.0
+    },
+    "station_uses": 0,
+    "waves": [
+      {
+        "active_enemies": 1,
+        "hp": 112.0,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 489.0
+      },
+      {
+        "active_enemies": 6,
+        "hp": 124.0,
+        "level": 13,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1767.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.603333333333334
+      },
+      {
+        "id": "brainrot-feed",
+        "level": 3,
+        "rarity": "rare",
+        "timer": 1.3575
+      },
+      {
+        "id": "ratio-blaster",
+        "level": 3,
+        "rarity": "common",
+        "timer": 0.319958333333333
+      }
+    ],
+    "xp_collected": 2072.0,
+    "xp_on_ground": 475.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 17,
+    "controller": "avoidance",
+    "damage_sources": {
+      "beta/contact": {
+        "events": 1,
+        "hp": 17.48,
+        "shield": 0.0
+      },
+      "doomscroller/hazard": {
+        "events": 9,
+        "hp": 86.275,
+        "shield": 0.0
+      },
+      "fanum-leech/direct": {
+        "events": 7,
+        "hp": 43.225,
+        "shield": 0.0
+      },
+      "hater/direct": {
+        "events": 7,
+        "hp": 85.025,
+        "shield": 0.0
+      },
+      "mod-supremo/contact": {
+        "events": 1,
+        "hp": 26.6,
+        "shield": 0.0
+      },
+      "mod-supremo/direct": {
+        "events": 1,
+        "hp": 26.6,
+        "shield": 0.0
+      },
+      "ratio-ram/contact": {
+        "events": 2,
+        "hp": 46.55,
+        "shield": 0.0
+      },
+      "reply-guy/contact": {
+        "events": 1,
+        "hp": 13.3,
+        "shield": 0.0
+      },
+      "reply-guy/direct": {
+        "events": 6,
+        "hp": 102.6,
+        "shield": 0.0
+      }
+    },
+    "flexes": 4,
+    "healing": 305.655,
+    "hero": "cool-kid",
+    "hp": 0.0,
+    "kills": 341,
+    "last_hit": {
+      "hp": 7.23500000000006,
+      "shield": 0.0,
+      "source": "doomscroller/hazard",
+      "time": 362.383333333332,
+      "wave": 4
+    },
+    "level": 17,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "certified-w",
+        "level": 1,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 13,
+      "magnets_spawned": 13,
+      "snacks_collected": 18,
+      "snacks_spawned": 18
+    },
+    "seconds": 362.383333333332,
+    "seed": 452,
+    "signature_metrics": {
+      "absorbed": 0.0,
+      "damage": 0.0,
+      "finishers": 4,
+      "prevented": 0.0
+    },
+    "station_uses": 2,
+    "waves": [
+      {
+        "active_enemies": 15,
+        "hp": 122.0,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 505.0
+      },
+      {
+        "active_enemies": 29,
+        "hp": 114.52,
+        "level": 12,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1593.0
+      },
+      {
+        "active_enemies": 32,
+        "hp": 17.1150000000001,
+        "level": 17,
+        "time": 360.000000000001,
+        "wave": 4,
+        "xp_collected": 3361.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "keyboard-warrior",
+        "level": 1,
+        "rarity": "legendary",
+        "timer": 0.1
+      },
+      {
+        "id": "ban-hammer",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.163333333333336
+      },
+      {
+        "id": "touch-grass",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.141666666666666
+      }
+    ],
+    "xp_collected": 3373.0,
+    "xp_on_ground": 251.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 20,
+    "controller": "avoidance",
+    "damage_sources": {
+      "beta/contact": {
+        "events": 8,
+        "hp": 39.41248,
+        "shield": 100.76
+      },
+      "copium-puffer/hazard": {
+        "events": 4,
+        "hp": 19.548,
+        "shield": 41.652
+      },
+      "doomscroller/hazard": {
+        "events": 9,
+        "hp": 62.3578,
+        "shield": 35.059
+      },
+      "fanum-leech/direct": {
+        "events": 17,
+        "hp": 31.11,
+        "shield": 67.371
+      },
+      "hater/direct": {
+        "events": 42,
+        "hp": 207.535,
+        "shield": 243.39
+      },
+      "mod-supremo/contact": {
+        "events": 1,
+        "hp": 8.52800000000002,
+        "shield": 15.272
+      },
+      "mod-supremo/direct": {
+        "events": 2,
+        "hp": 8.52800000000002,
+        "shield": 28.022
+      },
+      "npc/contact": {
+        "events": 1,
+        "hp": 1.20000000000002,
+        "shield": 5.6
+      },
+      "ohio-express/contact": {
+        "events": 4,
+        "hp": 19.7,
+        "shield": 55.1
+      },
+      "ping-sniper/direct": {
+        "events": 8,
+        "hp": 102.26232,
+        "shield": 134.216
+      },
+      "ratio-ram/contact": {
+        "events": 3,
+        "hp": 6.45999999999999,
+        "shield": 48.96
+      },
+      "reply-guy/direct": {
+        "events": 7,
+        "hp": 5.76500000000004,
+        "shield": 101.335
+      }
+    },
+    "flexes": 5,
+    "healing": 334.4066,
+    "hero": "alpha",
+    "hp": 0.0,
+    "kills": 537,
+    "last_hit": {
+      "hp": 24.7263199999999,
+      "shield": 0.0,
+      "source": "ping-sniper/direct",
+      "time": 450.016666666586,
+      "wave": 4
+    },
+    "level": 20,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "main-character",
+        "level": 3,
+        "rarity": "common"
+      },
+      {
+        "id": "caught-4k",
+        "level": 4,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 9,
+      "magnets_spawned": 9,
+      "snacks_collected": 23,
+      "snacks_spawned": 24
+    },
+    "seconds": 450.016666666586,
+    "seed": 452,
+    "signature_metrics": {
+      "absorbed": 95.37,
+      "damage": 1656.91500334234,
+      "finishers": 5,
+      "prevented": 8.33
+    },
+    "station_uses": 2,
+    "waves": [
+      {
+        "active_enemies": 11,
+        "hp": 152.0,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 473.0
+      },
+      {
+        "active_enemies": 15,
+        "hp": 164.0,
+        "level": 13,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1676.0
+      },
+      {
+        "active_enemies": 31,
+        "hp": 84.4233199999999,
+        "level": 17,
+        "time": 360.000000000001,
+        "wave": 4,
+        "xp_collected": 3219.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "cope-shield",
+        "level": 1,
+        "rarity": "legendary",
+        "timer": 0.550000000000002
+      },
+      {
+        "id": "personal-space",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 1.22666666666667
+      },
+      {
+        "id": "chad-hands",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 1.12333333333333
+      }
+    ],
+    "xp_collected": 4930.0,
+    "xp_on_ground": 585.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 12,
+    "controller": "aim-flex",
+    "damage_sources": {
+      "beta/contact": {
+        "events": 2,
+        "hp": 34.96,
+        "shield": 0.0
+      },
+      "doomscroller/hazard": {
+        "events": 2,
+        "hp": 19.76,
+        "shield": 0.0
+      },
+      "fanum-leech/direct": {
+        "events": 1,
+        "hp": 8.0275,
+        "shield": 0.0
+      },
+      "hater/direct": {
+        "events": 5,
+        "hp": 54.625,
+        "shield": 0.0
+      },
+      "npc/contact": {
+        "events": 1,
+        "hp": 7.59999999999999,
+        "shield": 0.0
+      },
+      "ratio-ram/contact": {
+        "events": 2,
+        "hp": 25.4925000000001,
+        "shield": 0.0
+      },
+      "reply-guy/direct": {
+        "events": 13,
+        "hp": 222.3,
+        "shield": 0.0
+      }
+    },
+    "flexes": 3,
+    "healing": 238.765,
+    "hero": "cool-kid",
+    "hp": 0.0,
+    "kills": 267,
+    "last_hit": {
+      "hp": 3.64250000000009,
+      "shield": 0.0,
+      "source": "ratio-ram/contact",
+      "time": 259.850000000092,
+      "wave": 3
+    },
+    "level": 13,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "caught-4k",
+        "level": 4,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 3,
+      "magnets_spawned": 3,
+      "snacks_collected": 12,
+      "snacks_spawned": 14
+    },
+    "seconds": 259.850000000092,
+    "seed": 451,
+    "signature_metrics": {
+      "absorbed": 0.0,
+      "damage": 159.071939500001,
+      "finishers": 3,
+      "prevented": 0.0
+    },
+    "station_uses": 1,
+    "waves": [
+      {
+        "active_enemies": 6,
+        "hp": 122.0,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 501.0
+      },
+      {
+        "active_enemies": 17,
+        "hp": 97.8300000000001,
+        "level": 12,
+        "time": 240.000000000083,
+        "wave": 3,
+        "xp_collected": 1374.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "keyboard-warrior",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.245833333333333
+      },
+      {
+        "id": "touch-grass",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.141666666666666
+      }
+    ],
+    "xp_collected": 1849.0,
+    "xp_on_ground": 212.0
+  },
+  {
+    "boss": false,
+    "boss_snapshot": {},
+    "choices": 11,
+    "controller": "aim-flex",
+    "damage_sources": {
+      "hater/direct": {
+        "events": 13,
+        "hp": 136.325,
+        "shield": 0.0
+      },
+      "ratio-ram/contact": {
+        "events": 2,
+        "hp": 43.46,
+        "shield": 0.0
+      },
+      "reply-guy/direct": {
+        "events": 7,
+        "hp": 119.7,
+        "shield": 0.0
+      }
+    },
+    "flexes": 2,
+    "healing": 167.485,
+    "hero": "cool-kid",
+    "hp": 0.0,
+    "kills": 200,
+    "last_hit": {
+      "hp": 21.61,
+      "shield": 0.0,
+      "source": "ratio-ram/contact",
+      "time": 216.383333333398,
+      "wave": 2
+    },
+    "level": 12,
+    "minimum_hp": 0.0,
+    "mode": "lost",
+    "passives": [
+      {
+        "id": "caught-4k",
+        "level": 1,
+        "rarity": "common"
+      }
+    ],
+    "recovery": {
+      "magnets_collected": 5,
+      "magnets_spawned": 5,
+      "snacks_collected": 11,
+      "snacks_spawned": 11
+    },
+    "seconds": 216.383333333398,
+    "seed": 452,
+    "signature_metrics": {
+      "absorbed": 0.0,
+      "damage": 162.976500000001,
+      "finishers": 2,
+      "prevented": 0.0
+    },
+    "station_uses": 1,
+    "waves": [
+      {
+        "active_enemies": 18,
+        "hp": 112.5,
+        "level": 7,
+        "time": 120.016666666661,
+        "wave": 2,
+        "xp_collected": 485.0
+      }
+    ],
+    "weapons": [
+      {
+        "id": "keyboard-warrior",
+        "level": 2,
+        "rarity": "common",
+        "timer": 0.495833333333333
+      },
+      {
+        "id": "ban-hammer",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 1.89666666666667
+      },
+      {
+        "id": "touch-grass",
+        "level": 2,
+        "rarity": "epic",
+        "timer": 0.308333333333333
+      }
+    ],
+    "xp_collected": 1395.0,
+    "xp_on_ground": 71.0
+  }
+]

@@ -182,3 +182,7 @@ Follows integrated PR #48. Independent navy HUD plates, readiness-state styling,
 ## G3.4 — secondary screens and persisted master gain
 
 Follows integrated PR #50. Compact pause, separate build inspection, return-to-pause settings, safe profile-transfer visibility, explicit STAY/QUIT and hero-led real results are implemented. Master gain is a compatible optional v2 preference, clamped/tested and debounced; gameplay and save IDs/format remain unchanged. Native desktop/compact/portrait evidence and remaining art/audio/device gates are in the V5 tracker. Full 37-phase local suite passes. Next independent work: survival source telemetry, rendered profile reporting and remaining acceptance diagnostics, while isolated art is blocked by issue #49.
+
+## V5 acceptance checkpoint — 23 October 2026
+
+PRs #46/#47/#48/#50/#51 integrated; 38 local validation phases pass. Fresh-boot and focused-card keyboard regressions fixed. See [V5_ACCEPTANCE_STATUS.md](V5_ACCEPTANCE_STATUS.md) for eight failed normal-health boss-reachability observations, software-render performance, staged review evidence and restart priorities. Asset issue #49 and balance issue #52 remain open. No full visual/device acceptance or gameplay-value change is implied.

@@ -8,28 +8,28 @@ Actual 56-page PDF inspected, including all 22 composition pages. Source SHA-256
 
 | ID | V5 page | Target | Current implementation / capture | Gap | Asset / QA status | Next scope |
 | --- | ---: | --- | --- | --- | --- | --- |
-| 01 | 6 | Main Menu | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/menu.jpg) | G3.2: live hero-left / navy-actions-right shell; isolated illustrated wordmark and clean plate still blocked | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 02 | 8 | Hero Selection | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/character.jpg) | G3.2: separate responsive three-card selection; current role/starter/Flex data and explicit START; detailed effect help remains partial | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 03 | 10 | Gameplay HUD | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/playing.jpg) | G3.3: independent compact navy status plates; adaptive boss plate and canonical countdown; illustrated slot masters still blocked | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 04 | 12 | Level-up | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/choice.jpg) | Glyphs instead of signed isolated icons; weak hierarchy | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 05 | 14 | Legendary | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/legendary.jpg) | Six legal choices present; illustration assets missing | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 06 | 16 | Pause | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/paused.jpg) | G3.4: compact pause; separate Build and in-run Settings; real resume/quit semantics | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 07 | 18 | Settings | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/options.jpg) | G3.4: licensed live controls, persisted master volume and motion/sound toggles; fine-grained audio tabs remain future polish | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 08 | 20 | Victory | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/won.jpg) | G3.4: authentic hero portrait and real result metrics in navy panels | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 09 | 22 | Defeat | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/lost.jpg) | G3.4: authentic hero portrait and real result metrics in navy panels | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 10 | 24 | Boss Encounter | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/boss.jpg) | Real boss/clock, presentation needs compact encounter plates | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 11 | 26 | Mobile Landscape | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | Emulation only; physical devices absent | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 12 | 28 | Build Inspection | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/paused.jpg) | G3.4: dedicated build destination; 3+5 slots/empties/rarity/levels; illustrated masters and expanded effect details remain partial | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 13 | 30 | Sigma Flex | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | Mechanics implemented; dedicated approved animation exports missing | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 14 | 32 | Cool Kid / Alpha Flex | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | Mechanics implemented; signature exports missing | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 15 | 34 | Weapons Gallery | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | No illustrated isolated exports available | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 16 | 36 | Passives Gallery | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | 28 icons absent; only 23 passives offered | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 17 | 38 | Enemy Bestiary | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | Existing approved runtime atlas; gallery absent | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 18 | 40 | Pickups | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/station.jpg) | Recovery works; approved isolated exports missing | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 19 | 42 | Wave Transition | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | G3.3: active-clock named wave banner; suppressed by enemy warnings | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 20 | 44 | Full Hater Mode | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/berserk.jpg) | G3.3: brief active-clock Full Hater banner with danger-priority guard; dedicated exports remain blocked | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 21 | 46 | Quit Confirmation | `arcade_presentation.gd` / `solo_run.gd`; No equivalent capture yet | G3.4: one compact navy STAY / QUIT RUN layer; active clock stays paused | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
-| 22 | 48 | Safe Spot | `arcade_presentation.gd` / `solo_run.gd`; [native baseline](evidence/v5-baseline/station.jpg) | Charge/cooldown works; status visual differs | Partial; owner/device acceptance open | G3.1 theme, then phased screen work |
+| 01 | 6 | Main Menu | `spotlight_home.gd`; [native evidence](evidence/v5-home/menu-1600.jpg) | Isolated illustrated logo and clean plate blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 02 | 8 | Hero Selection | `spotlight_home.gd`; [native evidence](evidence/v5-home/character-1600.jpg) | Expanded effect help and owner composition review | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 03 | 10 | Gameplay HUD | `spotlight_hud.gd`; [native evidence](evidence/v5-hud/playing-1280.jpg) | Illustrated equipment masters blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 04 | 12 | Level-up | `arcade_presentation.gd`; [native evidence](evidence/v5-theme/choice-915.jpg) | Live legal cards; isolated icons blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 05 | 14 | Legendary | `arcade_presentation.gd`; [native evidence](evidence/v5-baseline/legendary.jpg) | Six legal offers; illustration pass remains | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 06 | 16 | Pause | `spotlight_secondary.gd`; [native evidence](evidence/v5-secondary/paused-1280.jpg) | Owner comparison and physical input acceptance | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 07 | 18 | Settings | `spotlight_secondary.gd`; [native evidence](evidence/v5-secondary/options-1280.jpg) | Master bus live; separate music/SFX controls remain | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 08 | 20 | Victory | `spotlight_secondary.gd`; [native evidence](evidence/v5-secondary/won-1280.jpg) | Staged outcome; normal-health victory unproven | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 09 | 22 | Defeat | `spotlight_secondary.gd`; [native evidence](evidence/v5-secondary/lost-1280.jpg) | Owner composition review | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 10 | 24 | Boss Encounter | `spotlight_hud.gd`; [native evidence](evidence/v5-hud/boss-1280.jpg) | Staged boss; normal-health reachability blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 11 | 26 | Mobile Landscape | `floating_joystick.gd`; [native evidence](evidence/v5-review/mobile-915.jpg) | Native pointer emulation only; device acceptance open | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 12 | 28 | Build Inspection | `spotlight_secondary.gd`; [native evidence](evidence/v5-secondary/build-1280.jpg) | Actual 3+5 slots; icon masters/effect detail remain | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 13 | 30 | Sigma Flex | `solo_run.gd`; [native evidence](evidence/v5-hud/flex_sigma-1280.jpg) | Current mechanics captured; signature exports blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 14 | 32 | Cool Kid / Alpha Flex | `solo_run.gd`; [native evidence](evidence/v5-hud/flex_alpha-1280.jpg) | Also flex_cool-1280.jpg; signature exports blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 15 | 34 | Weapons Gallery | `weapon_visuals.gd`; No equivalent capture | Nine isolated PNG/SVG masters absent; no equivalent gallery capture | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 16 | 36 | Passives Gallery | `solo_passive_rules.gd`; No equivalent capture | 28 icon pairs absent; preserve 23 offered subset | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 17 | 38 | Enemy Bestiary | `approved_visuals.gd`; No equivalent capture | Original atlas in runtime; no equivalent bestiary composition capture | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 18 | 40 | Pickups | `recovery_rules.gd`; [native evidence](evidence/v5-hud/station-1280.jpg) | Recovery contracts live; isolated exports blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 19 | 42 | Wave Transition | `spotlight_hud.gd`; [native evidence](evidence/v5-hud/wave-1280.jpg) | Simulation-bound banner; owner review open | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 20 | 44 | Full Hater Mode | `spotlight_hud.gd`; [native evidence](evidence/v5-hud/berserk-1280.jpg) | Recoverable Berserk unchanged; dedicated art blocked | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 21 | 46 | Quit Confirmation | `spotlight_secondary.gd`; [native evidence](evidence/v5-secondary/confirm_exit-1280.jpg) | Paused STAY/QUIT; owner review open | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
+| 22 | 48 | Safe Spot | `recovery_rules.gd`; [native evidence](evidence/v5-hud/station-1280.jpg) | Charge/cooldown live; final isolated art remains | Partial; owner/device acceptance open | See [acceptance status](../V5_ACCEPTANCE_STATUS.md) |
 
 ## Evidence limits
 
@@ -44,8 +44,8 @@ Only the attached PDF and 19 pinned original PNG masters/atlases were available.
 ## Milestones
 
 - G3.0 audit: baseline source, actual compositions, asset inventory and initial captures recorded here.
-- G3.1 next: licensed Inter resources, semantic V5 theme, reusable live primitives, accessible states.
-- G3.2 next: independent PLAY / HEROES / SETTINGS home and dedicated three-hero screen.
+- G3.1 integrated (#47): licensed Inter resources, semantic V5 theme, reusable live primitives, accessible states.
+- G3.2 integrated (#48): independent PLAY / HEROES / SETTINGS home and dedicated three-hero screen.
 - Remaining phases: follow `../WORK_HERO_SPOTLIGHT_V5_PLAN.md`; no balance changes implicit.
 
 ## Balance workstream
@@ -85,3 +85,7 @@ The actual [pause](evidence/v5-secondary/paused-1280.jpg), [settings](evidence/v
 A real master-volume slider controls the audio bus and persists an optional clamped `masterVolume` preference in compatible v2 profiles; old/corrupt profiles default safely to full gain. Debounced saving avoids per-pixel disk writes. Keyboard focus includes sliders/text fields as well as buttons. Audible playback, separate music/SFX buses and exact V5 settings tabs are not claimed. Current available audio routing is a single master bus.
 
 New tests reproduce the old combined pause/build/settings gap and cover settings return/clock freeze, actual volume preference, 3+5 inspection, STAY, resume, truthful loss statistics, four responsive sizes, replay and profile normalization. The full 37-phase suite plus Node platform tests pass. Layouts are native staged comparisons only; actual browser/physical-device and owner visual acceptance remain open.
+
+## Current evidence index
+
+The matrix above supersedes the initial baseline pointers. PRs #46, #47, #48, #50 and #51 are integrated. See [acceptance status](../V5_ACCEPTANCE_STATUS.md) for measured survival/performance, component mapping and remaining gates. No row implies owner visual acceptance. The historical baseline limitations below remain applicable to baseline captures only.
