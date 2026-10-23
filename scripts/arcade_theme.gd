@@ -18,7 +18,9 @@ const BLACK = preload("res://assets/fonts/Inter-Black.ttf")
 const DISPLAY = preload("res://assets/fonts/Inter-Display.ttf")
 
 static func font(role: String = "body") -> Font:
-    return {"body":BODY,"numbers":NUMBERS,"black":BLACK,"display":DISPLAY}.get(role,BODY)
+    var chosen: Font = {"body":BODY,"numbers":NUMBERS,"black":BLACK,"display":DISPLAY}.get(role,BODY)
+    if chosen.fallbacks.is_empty(): chosen.fallbacks = [ThemeDB.fallback_font]
+    return chosen
 
 static func box(fill: Color, border: Color = INK, radius: int = 12, shadow: int = 4) -> StyleBoxFlat:
     var style := StyleBoxFlat.new()

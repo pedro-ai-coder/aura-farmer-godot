@@ -17,7 +17,7 @@ func _capture() -> void:
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
+    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
@@ -38,6 +38,28 @@ func _capture() -> void:
             game._return_to_menu()
             if state == "profile_import": game._open_profile_import()
             else: game._open_profile_export()
+        elif state.begins_with("flex_"):
+            game.start_run({"flex_sigma":0,"flex_cool":1,"flex_alpha":2}[state])
+            game.player_pos = Vector2(800,565)
+            game._spawn_enemy("npc",{"pos":Vector2(870,565)})
+            var target: Dictionary = game.enemies.back()
+            target["hp"] = 10000.0
+            target["max"] = 10000.0
+            target["speed"] = 0.0
+            target["next_attack"] = 1e9
+            game.spawn_timer = 1e9
+            game.aura = 100
+            game.manual_aim = true
+            game.aim_point = target["pos"]
+            game._use_flex()
+            var frames := 210 if state == "flex_sigma" else 273 if state == "flex_cool" else 333
+            for frame in range(frames): game._advance(1.0/60.0)
+        elif state == "confirm_exit":
+            game._toggle_pause()
+            game._request_return_to_menu()
+        elif state == "wave":
+            game.wave = 2
+            game.run_time = 120.0
         elif state == "boss_warning":
             game.run_time = 570.0
         elif state in ["boss","berserk","last_effort"]:

@@ -7,6 +7,7 @@ const ArcadeStyle = preload("res://scripts/arcade_theme.gd")
 var game
 var catalog: Dictionary = {}
 var home
+var spotlight_hud
 var play_button: Button
 var options_button: Button
 var back_button: Button
@@ -30,6 +31,7 @@ var modal_panel := Rect2()
 var content_rect := Rect2()
 var last_window_size := Vector2i.ZERO
 var last_card_signature := ""
+var last_flex_ready := -1
 var last_selected := -1
 var last_mode := ""
 var error_message := ""
@@ -99,6 +101,9 @@ func install() -> void:
     home = load("res://scripts/spotlight_home.gd").new()
     add_child(home)
     home.install(game,self)
+    spotlight_hud = load("res://scripts/spotlight_hud.gd").new()
+    add_child(spotlight_hud)
+    spotlight_hud.install(game)
     game.import_button.pressed.disconnect(game._open_profile_import)
     game.import_button.pressed.connect(func(): game.mode = "menu"; game._open_profile_import())
     game.export_button.pressed.disconnect(game._open_profile_export)
@@ -169,6 +174,7 @@ func open_heroes() -> void:
     game._show_ui()
 
 func pump() -> void:
+    spotlight_hud.sync(view)
     if game.get_window().size != last_window_size: _window_changed()
     queue_redraw()
 
@@ -184,6 +190,10 @@ func refresh(force: bool = false) -> void:
     var equipment := ""
     for item: Dictionary in game.weapons + game.passives: equipment += "%s:%s:%s;" % [item["id"],item["rarity"],item["level"]]
     var signature: String = str(game.mode) + str(game.hero_index) + str(game.selected_card_index) + str(game.level) + equipment + JSON.stringify(game.selection) + JSON.stringify(game.legendary_offers) + str(game.profile["settings"]) + error_message + str(game.touch_device)
+    var ready := int(game.aura >= 100.0 and game.flex_lock <= 0.0)
+    if ready != last_flex_ready:
+        ArcadeStyle.button(game.flex_button,ready == 1)
+        last_flex_ready = ready
     game.flex_button.text = game.flex_status()
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not force and signature == last_signature:
@@ -232,8 +242,9 @@ func refresh(force: bool = false) -> void:
     body_scroll.visible = settings
     rotate_hint.visible = game.mode == "playing" and game.touch_device and portrait
     _place(rotate_hint,Rect2(20,162,width-40,40))
-    for control: Button in [game.pause_button,game.flex_button,game.confirm_button,game.restart_button,game.defer_button,game.retry_button,game.sound_button,game.motion_button,game.import_button,game.export_button,game.legendary_button,play_button,options_button,back_button]:
-        ArcadeStyle.button(control,control == play_button)
+    for control: Button in [game.pause_button,game.confirm_button,game.restart_button,game.defer_button,game.retry_button,game.sound_button,game.motion_button,game.import_button,game.export_button,game.legendary_button,play_button,options_button,back_button]:
+        ArcadeStyle.button(control,control == play_button or control == game.confirm_button or control == game.retry_button or (control == game.flex_button and game.aura >= 100.0 and game.flex_lock <= 0.0))
+    spotlight_hud.sync(view)
     home.refresh(view)
     if game.mode in ["menu","heroes"]:
         title.hide()
@@ -438,24 +449,6 @@ func _draw() -> void:
         draw_rect(Rect2(Vector2.ZERO,view),Color(0.09,0.13,0.19,0.72))
         _panel(modal_panel)
         return
-    var bars: Array[Rect2] = hud_rectangles()
-    if view.x < 700.0:
-        _panel(Rect2(14,10,view.x-28,146),ArcadeStyle.PAPER)
-        _bar(bars[0],game.hp,game.max_hp,ArcadeStyle.CORAL,"HP %d / %d" % [ceili(game.hp),int(game.max_hp)])
-        _bar(bars[1],game.xp,30+8*game.level+game.level*game.level,ArcadeStyle.TEAL,"XP / LV %d" % game.level)
-        _bar(bars[2],game.aura,100,ArcadeStyle.GOLD,"AURA %d%%" % int(game.aura))
-        _text(Vector2(26,139),"SHIELD %d  /  WAVE %d  /  %02d:%02d" % [ceili(game.shield),game.wave,int(game.run_time)/60,int(game.run_time)%60],18)
-    else:
-        var hud_width := minf(view.x-210,860)
-        _panel(Rect2(14,10,hud_width,74),ArcadeStyle.PAPER)
-        _bar(bars[0],game.hp,game.max_hp,ArcadeStyle.CORAL,"HP %d / %d" % [ceili(game.hp),int(game.max_hp)])
-        _bar(bars[1],game.xp,30+8*game.level+game.level*game.level,ArcadeStyle.TEAL,"XP / LV %d" % game.level)
-        _bar(bars[2],game.aura,100,ArcadeStyle.GOLD,"AURA %d%%" % int(game.aura))
-        _text(Vector2(26,72),"SHIELD %d   /   %s   /   %02d:%02d" % [ceili(game.shield),"BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60],18)
-    if not game.boss_spawned and game.run_time >= game.SoloClock.BOSS_WARNING:
-        var warning_rect := Rect2(20,206 if view.x < 700 else 96,minf(330,view.x-40),34)
-        draw_style_box(ArcadeStyle.box(ArcadeStyle.INK,ArcadeStyle.GOLD,8,0),warning_rect)
-        _text(warning_rect.position+Vector2(10,24),game.SoloClock.warning(game.run_time),20,ArcadeStyle.CARD)
     var slot_x := 20.0
     for item: Dictionary in game.weapons + game.passives:
         var data: Dictionary = catalog.get(item["id"],{})
@@ -464,15 +457,6 @@ func _draw() -> void:
         _text(rect.position+Vector2(7,26),data.get("icon","?"),22)
         _text(rect.position+Vector2(30,37),str(item["level"]),13)
         slot_x += 54
-    for enemy: Dictionary in game.enemies:
-        if enemy["kind"] == "boss":
-            var boss_width := minf(620,view.x-80)
-            var rect := Rect2((view.x-boss_width)/2,202 if view.x < 700 else 102,boss_width,26)
-            _bar(rect,enemy["hp"],enemy["max"],ArcadeStyle.CORAL,"BIG HATER  /  %s HP" % _number(enemy["hp"]))
-            var warning_rect := Rect2(rect.position+Vector2(0,34),Vector2(minf(370,boss_width),32))
-            draw_style_box(ArcadeStyle.box(ArcadeStyle.INK,ArcadeStyle.GOLD,8,0),warning_rect)
-            _text(warning_rect.position+Vector2(10,23),game.SoloClock.warning(game.run_time),18,ArcadeStyle.CARD)
-            break
 
 func show_error(message: String) -> void:
     error_message = message
@@ -486,11 +470,7 @@ func _weapon_summary(id: String, rarity: String, level_value: int) -> String:
     return "%.0f dmg · %.2fs" % [damage,interval]
 
 func hud_rectangles() -> Array[Rect2]:
-    if view.x < 700:
-        var width := (view.x-64)/2
-        return [Rect2(25,20,view.x-210,28),Rect2(25,84,width,28),Rect2(39+width,84,width,28)]
-    var width := maxf(70,(minf(view.x-210,860)-58)/3)
-    return [Rect2(25,20,width,28),Rect2(39+width,20,width,28),Rect2(53+width*2,20,width,28)]
+    return load("res://scripts/spotlight_hud.gd").rectangles(view)
 
 func _focus_ring() -> void:
     var buttons: Array[Button] = []

@@ -174,3 +174,7 @@ Follows integrated G3.0 PR #46. Reproduced fallback-font and cream-secondary-act
 ## G3.2 — separate Hero Spotlight home and selection
 
 Follows integrated PR #47. Replaces the combined raster home/hero picker with separate live, container-based PLAY/HEROES/SETTINGS navigation and three-hero selection. Reuses approved Sigma/hero/map assets; isolated V5 logo/plate remains explicitly blocked. Fixes compact resize retained width and keyboard Enter bypass, with six-viewport tests and native reference comparisons. Full 35-phase local suite passes. No combat, balance, save or Phaser changes. Next approved scope: compact gameplay HUD/wave/boss plates; isolated illustrated cards/icons remain gated by missing approved handoff exports.
+
+## G3.3 — compact HUD, boss plates and wave/Berserk feedback
+
+Follows integrated PR #48. Independent navy HUD plates, readiness-state styling, silhouette-aware boss placement and canonical countdown now use real state. Transition banners consume no gameplay RNG and use active time, hostile-warning priority and restart cleanup. The V5 tracker includes real HUD/boss/transition/three-Flex snapshots, with staged-fixture and missing-art limits. No gameplay numbers, navigation, camera physics, save schema or Phaser changes. Secondary overlays and balance diagnostics remain the next independent work.
