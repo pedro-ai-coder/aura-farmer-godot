@@ -675,6 +675,38 @@ Source repository: `pedro-ai-coder/aura-farmer`; new repository: `pedro-ai-coder
 3. Cosmetic/readability work on these owner-approved new Flexes and existing bosses may advance under §16 and Annex A, **using only inventoried approved art**. Additional specialized Flex artwork requires explicit Art Bible review.
 4. Track experiment results separately from normal runs and keep feature flags off by default until balance, save compatibility and platform acceptance are met.
 
+## 26. Approved production visual identity — 23 October 2026 (Art Bible V5)
+
+**Creator approval (23 October 2026):** The owner explicitly approved the **Aura Farmer — Production Visual Art Bible V5.0**, including its **Arcade Street Clean — Hero Spotlight** production-art direction, and authorized its integration into the Godot project. This is now the **required visual reference for the production version of the game**, building on the previously approved **Option A — Cartoon Arcade** visual identity in Annex A. The approval supersedes older v2/v3/v4 UI mockups, schematic UI diagrams, placeholder glyphs and inconsistent menu/card stylings **as visual targets**. It does not revert or supersede the GDD's authoritative gameplay, platform, character, balance, event, save or content rules.
+
+**Authoritative implementation contract:** [Hero Spotlight V5 — Production Art Direction and Developer Handoff](art/HERO_SPOTLIGHT_V5.md). The delivered 56-page illustrated Art Bible V5 PDF/DOCX and *Visual Production Handoff V5* archive are the visual source reference. This section records the approval and the main production constraints. The handoff archive's binary files are not assumed to be in the GitHub repository merely because the specification is merged; they must be imported, verified and integrated explicitly.
+
+### 26.1 Visual design locked for production
+
+- **Presentation:** expressive oversized illustrated hero portraits, recognizable Option A actor silhouettes, deep navy ink and bright urban environment accents; custom outlined *Aura Farmer* comic logo; warm-cream card/dialog surfaces; Aura-gold primary buttons; blue/navy secondary controls; crisp cel-shaded cartoon weapons and effect shapes. The finished-looking **22 V5 scene compositions** are the target for live Godot screens, not textures to be flattened over interactive elements.
+- **Typography:** production UI targets **Inter Display Black 900** for major titles, **Inter Black 900** for buttons, **Inter ExtraBold 800–900** for item names, **Inter SemiBold 600** for numerical HUD text and **Inter Medium 500** for descriptive copy. Use a separate illustrated logo master. These selections supersede the earlier exploratory Barlow/Bangers fonts; properly license/bundle font files during implementation.
+- **Palette tokens:** navy \`#253449\`, deep ink \`#13233A\`, panel blue \`#1F3E63\`, warm paper \`#F7EDCD\`, aura gold \`#F8C45F\`, sky blue \`#4EA3FF\`, Hater coral \`#E57461\`, support teal \`#6EAAB0\`, Cool Kid magenta \`#F04BA5\`, epic violet \`#A66BFF\`, healing green \`#78C85C\`. Colors communicate meaning alongside shapes and text, never instead of them.
+- **Reference layout:** scene compositions use 1600×900 at 16:9, scaling to the GDD's 1280×720 reference. Responsive layouts must use Godot anchors/containers and mobile safe areas, not fixed screenshots. Use an 8 px spacing rhythm (4 px micro-adjustments).
+- **Core components:** primary and secondary round-corner buttons target height 72 px, radius 15 px and a 4 px border at the 1600×900 reference; hero cards about 445×576 px; normal upgrade cards about 386×480 px; legendary cards about 430×300 px. These are visual reference dimensions and must scale accessibly on smaller screens.
+- **Required scenes:** menu, hero select, gameplay HUD, three-card upgrades, six-card legendary choice, pause, settings, victory, defeat, boss encounter, mobile landscape, build panel, Flex effects, weapon icons, passive icons, bestiary, pickups, wave transitions, FULL HATER MODE, quit confirmation and Safe Spot presentation — all specified in the V5 handoff.
+- **Icons:** the approved V5 iteration supplies visual targets for **nine weapon icons** and **28 passive icons**, with isolated transparent SVG/PNG source candidates. Preserve the catalogue's stable IDs. Rarity is a UI frame/style, not a different item identity. Validate icon legibility at 32×32 and consistency before accepting the exported binaries as runtime-ready.
+
+### 26.2 Gameplay and asset precedence
+
+1. **Existing game design still controls all behavior.** Where V5 visual examples include obsolete or illustrative values, titles, clocks, damage, equipment labels or abilities, correct the live UI labels and images to the **current GDD** instead of changing gameplay. In particular, **§7.2** defines Sigma's **Deadpan Verdict**, Cool Kid's **CTRL + CHAOS** and Alpha Chad's **Giga Chad Rampage**; the latter belongs to Alpha, not Cool Kid. Do not revive old Sigma Stare, Cool Kid Giga Chad Rampage or Alpha Hold behavior.
+2. **§25 is authoritative for the approved shorter run:** five 120-second waves, Big Hater at **10:00** and berserk 120 seconds into the boss encounter. Do not restore the historical 15:00 / 180-second schedule from V5 sample pictures.
+3. **Annex C.2** is authoritative for production-approved solo recovery: Street Snack, Aura Magnet and Safe Spot. P4–P7 are concept/prototype-scoped only; P8 is unapproved. Visualizing a possible future pickup does not enable its gameplay.
+4. **§23 platform equality remains binding:** identical content/play rules across Web, Android and iOS, with platform-appropriate responsive UI, touch and lifecycle handling. The Phaser repository must remain unchanged.
+5. Preserve creator-approved Option A static masters and existing imported runtime atlas provenance. This approval concerns the **target presentation and art direction**; generated composition previews are not proof of sprite animations, UI interactivity, collisions, navigation, FPS or native-device acceptance.
+
+### 26.3 Integration and acceptance
+
+- Implement the UI as **live Godot Controls and world sprites**, using V5 compositions for art direction and layout. Do not paint HUD text or buttons into a gameplay-map background.
+- Import the V5 handoff deliverables from the approved source package. Verify the 22 scene visuals, 9 weapon icons and 28 passive icons, and record exact source paths/hashes. The historical original artwork import contract remains active.
+- Audit each screen on desktop/Web, Android and iOS landscape (and any supported fallback orientation) for legibility, hit targets, focused/selected states, safe areas and reduced effects.
+- Inspect the launch three heroes in real gameplay; compare boss/wave/telegraph readability and icon shape at actual rendering scale. No bright overlay may obscure a hostile telegraph.
+- The **approval is for art direction and visual iteration**, not an assertion that all V5 exports are already in Godot, that the game has been tested visually, or that a store/release/production deployment is approved. Record actual implementation, visual QA and platform evidence separately.
+
 # Anexo A — Identidade visual e contrato de produção
 
 ## A.1 Direção artística definitiva — opção A, Cartoon Arcade
