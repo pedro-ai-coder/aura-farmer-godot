@@ -12,7 +12,7 @@ on:
       seed:
         description: Deterministic Phaser RNG seed for all three solo starters
         required: false
-        default: "451"
+        default: "452"
 
 permissions:
   contents: read
@@ -51,7 +51,7 @@ jobs:
       - name: Run one bounded normal-health observation per starter
         shell: bash
         env:
-          SEED: ${{ github.event.inputs.seed || '451' }}
+          SEED: ${{ github.event.inputs.seed || '452' }}
         run: |
           set -euo pipefail
           mkdir -p strategic-observations
@@ -73,7 +73,7 @@ jobs:
       - name: Summarize results without treating a test runner as a human player
         shell: bash
         env:
-          SEED: ${{ github.event.inputs.seed || '451' }}
+          SEED: ${{ github.event.inputs.seed || '452' }}
         run: |
           python3 - <<'PY'
           import json
@@ -95,7 +95,7 @@ jobs:
               "## Strategic unprotected survival observation",
               "",
               "Observations only: headless AI controller, no grants or gameplay-value changes.",
-              f"Seed: {os.environ.get('SEED','451')}. Baseline: docs/V5_SURVIVAL_RUNS.json.",
+              f"Seed: {os.environ.get('SEED','452')}. Baseline: docs/V5_SURVIVAL_RUNS.json.",
               "",
               "| Hero | Outcome | Active seconds | Boss reached | Level |",
               "|---|---|---:|---|---:|",
