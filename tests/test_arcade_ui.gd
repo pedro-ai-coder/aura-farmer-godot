@@ -49,7 +49,7 @@ func _verify() -> void:
     _expect(_inside(game.confirm_button,Rect2(Vector2.ZERO,ui.view)),"Confirm remains within the useful viewport")
     for i in range(6):
         var parts: Dictionary = ui.card_parts[i]
-        _expect(parts["body"].position.y+parts["body"].size.y <= parts["state"].position.y,"Legendary effects do not collide with action labels")
+        _expect(parts["body"].position.y+parts["body"].size.y <= parts["state"].position.y,"Legendary effects do not collide with action labels: %s body=%s state=%s" % [parts["name"].text,parts["body"].get_rect(),parts["state"].get_rect()])
     root.size = Vector2i(915,412)
     ui._window_changed(true)
     game.start_run(0)
@@ -58,6 +58,31 @@ func _verify() -> void:
     await process_frame
     await process_frame
     _expect(is_equal_approx(game.offer_buttons[0].position.y,game.offer_buttons[2].position.y),"All three normal choices share one landscape row at 915x412")
+    # Exercise the reusable card against the longest real catalog descriptions.
+    for id: String in ui.catalog:
+        if not game.WEAPONS.has(id) and not game.PASSIVES.has(id): continue
+        var parts: Dictionary = ui.card_parts[0]
+        parts["name"].text = ui.catalog[id]["name"]
+        parts["body"].text = ui.catalog[id].get("description","")
+        ui.OfferCard.layout(parts,Vector2(300,416),false,"rare","WEAPON" if game.WEAPONS.has(id) else "PASSIVE","LV 1/3")
+        await process_frame
+        _expect(parts["body"].get_minimum_size().y <= 124,"Normal catalog effect fits the card: " + id)
+        _expect(parts["body"].get_rect().end.y <= parts["comparison"].position.y,"Effect and current-to-new comparison stay separate: " + id)
+        _expect(parts["meta"].text == "RARE" and not parts["category"].text.is_empty(),"Rarity and category remain explicit text")
+        ui.OfferCard.layout(parts,Vector2(340,288),false,"rare","PASSIVE","LV 1/3")
+        await process_frame
+        await process_frame
+        _expect(parts["body"].get_rect().end.y <= parts["comparison"].position.y,"Compact catalog effect and comparison stay separate: " + id)
+        _expect(parts["comparison"].get_rect().end.y <= parts["state"].position.y,"Compact comparison stays above selected state: " + id)
+    game.start_run(0)
+    game.run_time = 360
+    game._open_legendary()
+    ui.refresh()
+    for i in range(6):
+        var parts: Dictionary = ui.card_parts[i]
+        var id: String = game.legendary_offers[i]["id"]
+        _expect(parts["meta"].text == "LEGENDARY","All six cards have a text rarity band")
+        _expect(game.offer_buttons[i].tooltip_text.contains(parts["body"].text),"Tooltip preserves the actual legendary effect: " + id)
     game.queue_free()
     if failures.is_empty(): print("PASS: Arcade home/options, explicit hero play, import feedback, readable cards and six-choice footer"); quit(0)
     else:

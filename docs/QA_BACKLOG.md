@@ -61,3 +61,7 @@ G3.4 splits compact Pause from Build/Settings, fixes in-run Settings return and 
 ## V5 acceptance checkpoint — 23 October 2026
 
 PRs #46/#47/#48/#50/#51 integrated; 38 local validation phases pass. Fresh-boot and focused-card keyboard regressions fixed. See [V5_ACCEPTANCE_STATUS.md](V5_ACCEPTANCE_STATUS.md) for eight failed normal-health boss-reachability observations, software-render performance, staged review evidence and restart priorities. Asset issue #49 and balance issue #52 remain open. No full visual/device acceptance or gameplay-value change is implied.
+
+## G3.6 — offer-card hierarchy
+
+Reattached canonical PDF verified against the audit hash. Implemented reusable live rarity/icon/name/category/effect/comparison card hierarchy and compact landscape layout; preserved all existing legal offer data/order and simulation. Fixed initial wrapped-text sizing and longest-description overlaps; local 38-phase Godot validation passes. Actual desktop/compact/portrait evidence and remaining differences are in [V5_PARITY.md](art/V5_PARITY.md#g36--live-offer-card-composition). Signed illustrations remain blocked by #49; balance #52 and physical-device acceptance remain open.

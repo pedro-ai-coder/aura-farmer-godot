@@ -2,6 +2,7 @@ class_name ArcadePresentation
 extends Control
 
 ## Reusable responsive presentation. Never advances simulation or consumes gameplay RNG.
+const OfferCard = preload("res://scripts/spotlight_offer_card.gd")
 const Components = preload("res://scripts/spotlight_components.gd")
 const ArcadeStyle = preload("res://scripts/arcade_theme.gd")
 var game
@@ -68,9 +69,7 @@ func install() -> void:
         var button: Button = game.offer_buttons[i]
         button.reparent(card_content)
         button.text = ""
-        var parts := {"icon":_inside_label(button,34),"name":_inside_label(button,22),"meta":_inside_label(button,16),"body":_inside_label(button,18),"state":_inside_label(button,15),"comparison":_inside_label(button,16)}
-        parts["name"].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-        parts["body"].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+        var parts := OfferCard.install(button)
         card_parts.append(parts)
     body_scroll = ScrollContainer.new()
     body_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -341,7 +340,12 @@ func refresh(force: bool = false) -> void:
         _place(back_button,Rect2(modal_panel.position.x+24,footer_y,action_width,60))
         var header_height := 150.0 if portrait else 132.0
         content_rect = Rect2(modal_panel.position+Vector2(24,header_height),Vector2(modal_panel.size.x-48,maxf(60,footer_y-modal_panel.position.y-header_height-16)))
-        if cards: _cards(content_rect)
+        if cards:
+            _cards(content_rect)
+            var offers: Array = game.selection if game.mode == "choice" else (game.legendary_offers if game.mode == "legendary" else game.replace_options)
+            if game.selected_card_index >= 0 and game.selected_card_index < offers.size():
+                var selected: Dictionary = catalog.get(offers[game.selected_card_index].get("id",""),{"name":"Recovery"})
+                subtitle.text = "SELECTED: %s / Confirm below" % selected["name"]
         elif settings:
             _place(body_scroll,content_rect)
             var stacked: bool = content_rect.size.x < 800 or compact or game.mode == "build"
@@ -412,8 +416,8 @@ func _cards(rect: Rect2) -> void:
     var gap := 14.0
     var width := (rect.size.x-12.0-gap*(columns-1))/columns
     var desktop_grid := columns == 3 and rect.size.y >= 440.0
-    var height := minf(224,(rect.size.y-gap)/2.0) if game.mode == "legendary" and desktop_grid else (280.0 if game.mode == "legendary" else (330.0 if columns >= 2 else 360.0))
-    if game.mode != "legendary" and columns >= 2 and rect.size.y >= 260.0: height = minf(height,rect.size.y)
+    var height := minf(224,(rect.size.y-gap)/2.0) if game.mode == "legendary" and desktop_grid else (280.0 if game.mode == "legendary" else 416.0)
+    if game.mode != "legendary" and columns >= 2 and rect.size.y >= 280: height = minf(height,rect.size.y)
     var rows := ceili(float(items.size())/columns)
     card_content.custom_minimum_size = Vector2(rect.size.x-12,rows*height+maxi(0,rows-1)*gap)
     card_content.size = card_content.custom_minimum_size
@@ -446,18 +450,11 @@ func _cards(rect: Rect2) -> void:
         ArcadeStyle.card(button,i==game.selected_card_index,color)
         var parts: Dictionary = card_parts[i]
         parts["icon"].text = data.get("icon","+")
-        _place(parts["icon"],Rect2(18,10,50,42))
-        parts["meta"].text = "%s  ·  LV %d/%d" % [rarity.to_upper(),level_value,int(game.CAP_LEVELS.get(rarity,1))]
-        _place(parts["meta"],Rect2(72,19,width-90,26))
-        parts["name"].add_theme_font_override("font",ArcadeStyle.BLACK)
         parts["name"].text = data.get("name",id)
-        _place(parts["name"],Rect2(18,53,width-36,40))
         parts["body"].text = data.get("legendary_description",data.get("description","")) if rarity == "legendary" else data.get("description","")
-        parts["body"].add_theme_font_size_override("font_size",(16 if game.mode == "legendary" else 18) if desktop_grid else 22)
-        _place(parts["body"],Rect2(18,96,width-36,height-(130 if game.mode == "legendary" else 190)))
-        parts["body"].clip_text = false
-        parts["comparison"].visible = game.mode != "legendary"
-        parts["comparison"].autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+        var category := "WEAPON" if game.WEAPONS.has(id) else ("PASSIVE" if catalog.has(id) else "RECOVERY")
+        var level_caption := "LV %d/%d" % [level_value,int(game.CAP_LEVELS.get(rarity,1))]
+        OfferCard.layout(parts,Vector2(width,height),game.mode == "legendary",rarity,category,level_caption)
         var comparison := "No equipment slot used"
         if game.mode == "replace": comparison = "Remove this item and its effects"
         elif not old.is_empty(): comparison = "LV %d %s → LV %d %s" % [int(old["level"]),old["rarity"],level_value,rarity]
@@ -466,10 +463,8 @@ func _cards(rect: Rect2) -> void:
             var new_stats := _weapon_summary(id,rarity,level_value)
             comparison += "\n" + (_weapon_summary(id,old["rarity"],int(old["level"])) + " → " if not old.is_empty() else "") + new_stats
         parts["comparison"].text = comparison
-        _place(parts["comparison"],Rect2(18,height-86,width-36,48))
-        parts["state"].text = "✓ SELECTED — CONFIRM BELOW" if i==game.selected_card_index else "%d  /  %s" % [i+1,"REPLACE THIS ITEM" if game.mode == "replace" else str(item.get("type","equip")).replace("_"," ").to_upper()]
-        _place(parts["state"],Rect2(18,height-33,width-36,25))
-        button.tooltip_text = str(data.get("description",""))
+        parts["state"].text = "SELECTED / CONFIRM BELOW" if i==game.selected_card_index else "%d  /  %s" % [i+1,"REPLACE THIS ITEM" if game.mode == "replace" else str(item.get("type","equip")).replace("_"," ").to_upper()]
+        button.tooltip_text = "%s / %s\n%s\n%s\n%s" % [data.get("name",id),rarity.to_upper(),category,parts["body"].text,comparison]
     if game.selected_card_index != last_selected and game.selected_card_index >= 0:
         # Top-align oversized cards so focus never scrolls their name/rarity out of view.
         card_scroll.set_deferred("scroll_vertical",int(game.offer_buttons[game.selected_card_index].position.y))
@@ -527,7 +522,9 @@ func _draw() -> void:
     if game.mode in ["menu","heroes"]: return
     if game.mode != "playing":
         draw_rect(Rect2(Vector2.ZERO,view),Color(0.09,0.13,0.19,0.72))
-        if game.mode not in ["paused","won","lost"]: _panel(modal_panel,ArcadeStyle.DEEP if game.mode == "confirm_exit" else ArcadeStyle.PAPER)
+        if game.mode in ["choice","legendary","replace"]:
+            draw_style_box(ArcadeStyle.box(ArcadeStyle.PAPER,ArcadeStyle.GOLD,16,6),modal_panel)
+        elif game.mode not in ["paused","won","lost"]: _panel(modal_panel,ArcadeStyle.DEEP if game.mode == "confirm_exit" else ArcadeStyle.PAPER)
         return
     var slot_x := 20.0
     for item: Dictionary in game.weapons + game.passives:
