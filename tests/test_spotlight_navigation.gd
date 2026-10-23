@@ -31,6 +31,9 @@ func verify() -> void:
             game.menu_buttons[i].emit_signal("pressed")
             check(game.hero_index == i and game.mode == "heroes","Each real starter selects without premature play")
             check(ui.home.summaries[i].text.contains(game.HEROES[i]["flex"]),"Signature label comes from current hero definition")
+            var help: String = ui.catalog[game.HEROES[i]["id"]]["flex_help"]
+            check(not help.is_empty() and ui.home.summaries[i].text.contains(help),"Every starter exposes its canonical Flex help without hover")
+            check(game.menu_buttons[i].tooltip_text.contains("100 Aura"),"Keyboard/mouse tooltip retains shared activation requirements")
         await process_frame
         await process_frame
         check(bounds.encloses(ui.home.start_button.get_global_rect()),"Selection START remains in viewport %s; rect=%s bounds=%s" % [viewport,ui.home.start_button.get_global_rect(),bounds])

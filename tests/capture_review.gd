@@ -89,6 +89,10 @@ func _capture() -> void:
         game.queue_redraw()
         await process_frame
         await process_frame
+        if state == "character" and args.has("--hero-help"):
+            game.presentation.home.hero_scroll.ensure_control_visible(game.presentation.home.summaries[game.hero_index])
+            await process_frame
+            await process_frame
         await RenderingServer.frame_post_draw
         var image := root.get_texture().get_image()
         var path := output.path_join("%s-%dx%d.png" % [state,width,height])
