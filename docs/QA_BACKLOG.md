@@ -49,3 +49,7 @@ During QA, upstream main advanced to `2ef5ffacfe57e5ed2c7e9cea92facb412fc0b9ef`:
 ## Signature Flex 2.0 follow-up
 
 GDD `f2ec242` §7.2 is now implemented on the signature Flex branch with deterministic regression coverage and instrumented ordinary-health observations. See [FLEX_V2_VALIDATION.md](FLEX_V2_VALIDATION.md). Production readiness remains unaccepted: none of the three seed-451 avoidance-controller runs reached Big Hater; dedicated signature art/readability and physical-device acceptance remain open. Do not equate functional parity with balance acceptance.
+
+## Hero Spotlight V5 production follow-up
+
+Current visual execution and isolated export blockers are tracked in [art/V5_PARITY.md](art/V5_PARITY.md). Production target is §26; existing palette-only UI is not V5 acceptance. No handoff ZIP was supplied; 37 icon approvals and standalone logo/clean plate remain blocked. Continue theme, live navigation and responsive components independently.
