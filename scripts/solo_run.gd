@@ -1243,7 +1243,7 @@ func _fire_weapons(dt: float) -> void:
                 elif weapon_id == "keyboard-warrior" and count % 3 == 0:
                     _queue_weapon_area(weapon_id, center, facing, 120.0 * SoloPassiveRulesScript.area_scale(passives), 100.0, secondary_power * 0.25 / 0.36, 0.24, activation, {"primary": false})
                 elif weapon_id == "personal-space" and count % 2 == 0:
-                    _grant_weapon_shield("my-aura", max_hp * 0.04 * float(queued["weapon_power"]), 3.0)
+                    _grant_weapon_shield("my-aura", max_hp * 0.04, 3.0)
                 elif weapon_id == "ban-hammer":
                     _queue_weapon_area(weapon_id, center, facing, 220.0, 360.0, secondary_power * 0.30 / 0.90, 0.80, activation, {"primary": false, "shape": "line"})
             attack_flash = 0.22
@@ -1356,7 +1356,7 @@ func _step_weapon_areas() -> void:
                 shield_awarded = true
                 _grant_weapon_shield("cope-shield", max_hp * 0.04 * float(area.get("weapon_power", 1.0)), 2.0)
                 if bool(area.get("shield_legend", false)):
-                    _grant_weapon_shield("unbothered", max_hp * 0.05 * float(area.get("weapon_power", 1.0)), 3.0)
+                    _grant_weapon_shield("unbothered", max_hp * 0.05, 3.0)
         if not bool(area["impact_shown"]):
             area["impact_shown"] = true
             if attack_visuals.size() >= 12:

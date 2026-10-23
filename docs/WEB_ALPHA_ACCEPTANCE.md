@@ -1,0 +1,58 @@
+# Private Web Alpha acceptance
+
+Audit baseline: `7fcd007d6d81e1ea29da4e2bd6c5685d169e67da`, 23 October 2026. No open PRs at restart. Phaser remains read-only. Scope is the existing three-hero, nine-weapon, 23-passive solo game with local profiles and static hosting; no gameplay backend, authentication or paid service is introduced.
+
+This is an acceptance ledger, not a release declaration. Existing test coverage is evidence of specific contracts, not a blanket mechanical audit or a human playtest. Use the canonical GDD before historical notes. Owner artistic, human balance and physical-device gates remain separate.
+
+## Release gates
+
+| # | Requirement | Implementation / automated evidence | Separate outstanding gate |
+| --- | --- | --- | --- |
+| 1 | Three approved heroes | Live selection; hero/combat/navigation tests | Human play and full identity polish |
+| 2 | Nine weapons | Timing/projectile/legendary regressions; scoped GDD correction below | Complete interaction audit and real-browser execution |
+| 3 | 23 demo passives | Catalog/subset, arithmetic and lifecycle tests | Full runtime interaction audit, not IDs alone |
+| 4 | Three current Flexes | Signature timing, target and mitigation tests; actual input fixtures | Human usefulness and dedicated approved exports |
+| 5 | 3 weapons / 5 passives | Offer/equipment/replacement tests | Browser replacement journey |
+| 6 | XP and leveling | Overflow, queue, level-25 and recovery regressions | Ordinary human progression |
+| 7 | Three normal offers | Legal generation, confirmation and keyboard tests | Browser/device card interaction |
+| 8 | One legendary, six offers | Cached defer/expiry/slot tests; nine legendary behavior tests | Interaction audit remains incremental |
+| 9 | Enemies/events | Pattern/commitment/navigation/arrival tests | Dense ordinary-play counterplay |
+| 10 | Big Hater/Berserk | Shared 600/720-second clock, phases, stagger and terminal outcomes | Reliable three-hero/human boss viability |
+| 11 | Recovery | Seeded Snack/Magnet and station regressions | Real-browser and device feedback |
+| 12 | Victory/defeat/restart | Controlled and normal-health observations; terminal/save tests | Human browser full run |
+| 13 | Local save/reload | Versioned v2/v1, corruption, duplicate results and unavailable storage tests | Current production-browser persistence |
+| 14 | Desktop controls | Native input fixtures, aim, modal isolation | Current WebGL2 input journey |
+| 15 | Mobile-Web controls | Joystick ownership/cancel, safe layout, fullscreen denial tests | Physical browser acceptance |
+| 16 | No critical runtime errors | Full local/hosted validation; error-scanned Web export | Complete browser session |
+| 17 | Godot CI | Required per scoped PR | Never bypass pending/failing checks |
+| 18 | Web export | Vercel checks and commit-versioned artifacts | Export does not prove interactivity |
+| 19 | Actual browser play | Earlier G2 software-browser smoke is historical | Current cloud browser reports missing WebGL2; no new interactive pass |
+| 20 | Performance | Native software mean/P95 and headless workload evidence | Reference hardware/FPS and long-run memory |
+| 21 | Available approved art | 19 original masters/atlases and licensed Inter; source hashes verified | Signed V5 standalone integration when delivered |
+| 22 | Missing art/platforms explicit | #49, V5 matrix and native readiness | Missing logo/plate, 37 PNG/SVG icon pairs, signature exports; no physical Android/iOS acceptance |
+| 23 | Balance limits disclosed | Historical and strategic raw observations; #52 | More seeds/builds plus humans; no general win-rate claim |
+| 24 | No unapproved design | GDD values/scope unchanged; corrections restore existing formulas | New values/art/mechanics still need approval |
+
+## A1/A3 correction: legendary Tank support shields
+
+GDD §8.1 scales weapon damage and the weapon's **own shield** by rarity × level. GDD §8.2 defines **Unbothered** as 5% caster maximum HP × S/100 and **My Aura, My Rules** as 4% caster maximum HP × S/100. These separate support pulses have no additional rarity coefficient. All current solo heroes have reference S=100; existing Certified W/Cope Harder support modifiers and the global 40% shield cap still apply.
+
+Before correction, both support pulses also multiplied by legendary rarity 2.60, and the existing test repeated that implementation error. The new GDD expectations fail five assertions against the old runtime. The fix removes that extra factor only from these two sources. It retains the own Cope Shield 4% × 2.60 source, cadence, actual-hit trigger, support multipliers, independent expiry, pause behavior, caps and all damage values.
+
+| Legal Alpha, 140 max HP, no support passives | Before | GDD-correct result |
+| --- | ---: | ---: |
+| Third legendary Cope strike: own + Unbothered | 32.76 | 14.56 + 7.00 = 21.56 |
+| Unbothered alone after own shield expires | 18.20 | 7.00 |
+| Second legendary Personal Space support pulse | 14.56 | 5.60 |
+
+`tests/test_legendary_combat.gd` now verifies independent expiry, unchanged own-weapon rarity scaling, legal Tank loadouts with Certified W/Cope Harder, exclusion of offensive Main Character scaling and paused shield clocks. All 39 local Godot phases pass after the correction. This changes actual shielding to the already approved formula; it is not a new numerical tuning decision and does not edit the GDD.
+
+Historical survival telemetry predates this correction. In particular, Alpha's legendary-Cope results must not be presented as post-correction acceptance. Reproduce seeds 451/452 and run 453–456 with the exact new source revision, retaining every failure as well as success.
+
+Actual native Compatibility captures: [third Cope strike](art/evidence/web-alpha/legendary_shield.jpg), [second Personal Space pulse](art/evidence/web-alpha/legendary_space.jpg). They use controlled legal Tank equipment/count fixtures through the real attack and HUD code, no new artwork, and are not normal-health run or hardware-FPS evidence. Source: `tests/capture_review.gd`, states `legendary_shield` / `legendary_space`.
+
+## Scope and next audit
+
+The weapon/passive audit is **in progress**, not complete. Next inspect attack-event attribution, paired/multi-target proc limits, conditional effects and expiry, then ordinary-health survival. Existing green tests do not eliminate the need to reproduce each suspected mismatch. No P4–P8 experimental feature is enabled. Continue integrating individually approved supplied art in separate batches; the current session supplies only the unchanged PDF, conceptual panel and development instructions, with no standalone art archive.
+
+Restart from current main and this ledger, [V5 acceptance](V5_ACCEPTANCE_STATUS.md), [visual matrix](art/V5_PARITY.md), [strategic evidence](SURVIVAL_STRATEGIC_EVIDENCE.md) and issues #49/#52. Native device/signing, current interactive WebGL2, hardware performance and owner artistic review remain unverified.
