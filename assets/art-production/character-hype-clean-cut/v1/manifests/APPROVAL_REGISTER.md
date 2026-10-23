@@ -8,3 +8,5 @@
 | Icon contact sheets | 6 | `TECHNICALLY_VALIDATED_EXPORT` | Reference-only previews. |
 
 No asset in this batch is marked creator-approved or integrated.
+
+G4.1 developer review: see `docs/art/CLEAN_CUT_ICON_REVIEW.md` and the exact per-ID audit. Creator decisions remain zero; `docs/art/icon_approvals.json` is intentionally empty. The runtime promotion tool requires explicit version/hash approval and resolved conditions. Technical source review or prepared UI bindings do not change this register to approved.

@@ -77,6 +77,7 @@ if [[ "${GODOT_SKIP_TEMPLATE_DOWNLOAD:-0}" != "1" ]]; then
 fi
 
 python3 scripts/sync_approved_assets.py
+python3 scripts/promote_approved_icons.py
 
 echo "Godot executable: $GODOT"
 "$GODOT" --version
@@ -102,5 +103,6 @@ for file in index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BA
         exit 5
     fi
 done
+python3 scripts/check_icon_pack.py "build/web/$EXPORT_BASENAME.pck"
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

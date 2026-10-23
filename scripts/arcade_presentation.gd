@@ -2,6 +2,8 @@ class_name ArcadePresentation
 extends Control
 
 ## Reusable responsive presentation. Never advances simulation or consumes gameplay RNG.
+const IconRegistry = preload("res://scripts/approved_icon_registry.gd")
+var item_icons = IconRegistry.new()
 const OfferCard = preload("res://scripts/spotlight_offer_card.gd")
 const Components = preload("res://scripts/spotlight_components.gd")
 const ArcadeStyle = preload("res://scripts/arcade_theme.gd")
@@ -106,7 +108,12 @@ func install() -> void:
         equipment_board.add_child(panel)
         var label := _inside_label(panel,18)
         label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-        equipment_slots.append({"panel":panel,"label":label})
+        var image := TextureRect.new()
+        image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+        image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        panel.add_child(image)
+        equipment_slots.append({"panel":panel,"label":label,"image":image})
     rotate_hint = _label(20)
     rotate_hint.text = "Rotate for a wider view"
     rotate_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -449,7 +456,12 @@ func _cards(rect: Rect2) -> void:
         var color: Color = ArcadeStyle.RARITY.get(rarity,ArcadeStyle.INK)
         ArcadeStyle.card(button,i==game.selected_card_index,color)
         var parts: Dictionary = card_parts[i]
+        var icon_category := "weapon" if game.WEAPONS.has(id) else "passive"
+        var icon_texture: Texture2D = item_icons.texture(icon_category,id)
         parts["icon"].text = data.get("icon","+")
+        parts["icon"].visible = icon_texture == null
+        parts["image"].texture = icon_texture
+        parts["image"].visible = icon_texture != null
         parts["name"].text = data.get("name",id)
         parts["body"].text = data.get("legendary_description",data.get("description","")) if rarity == "legendary" else data.get("description","")
         var category := "WEAPON" if game.WEAPONS.has(id) else ("PASSIVE" if catalog.has(id) else "RECOVERY")
@@ -491,12 +503,16 @@ func _equipment(width: float) -> float:
         var color: Color = ArcadeStyle.RARITY.get(item.get("rarity",""),ArcadeStyle.INK)
         slot["panel"].add_theme_stylebox_override("panel",ArcadeStyle.box(ArcadeStyle.CARD,color,8,0))
         var label: Label = slot["label"]
+        var image: TextureRect = slot["image"]
+        image.texture = item_icons.texture("weapon" if is_weapon else "passive",str(item.get("id",""))) if not item.is_empty() else null
+        image.visible = image.texture != null
+        _place(image,Rect2(10,12,40,40))
         if item.is_empty():
             label.text = "EMPTY %s SLOT\n%d / %d" % ["WEAPON" if is_weapon else "PASSIVE",index+1,3 if is_weapon else 5]
         else:
             var data: Dictionary = catalog.get(item["id"],{})
-            label.text = "%s  %s\n%s  /  LV %d" % [data.get("icon","?"),data.get("name",item["id"]),str(item["rarity"]).to_upper(),int(item["level"])]
-        _place(label,Rect2(12,10,tile_width-24,tile_height-20))
+            label.text = "%s  %s\n%s  /  LV %d" % ["" if image.visible else data.get("icon","?"),data.get("name",item["id"]),str(item["rarity"]).to_upper(),int(item["level"])]
+        _place(label,Rect2(58 if image.visible else 12,10,tile_width-(70 if image.visible else 24),tile_height-20))
     var height := passive_y+36.0+ceili(5.0/columns)*(tile_height+gap)
     _place(equipment_board,Rect2(0,0,width,height))
     return height
@@ -531,7 +547,9 @@ func _draw() -> void:
         var data: Dictionary = catalog.get(item["id"],{})
         var rect := Rect2(slot_x,view.y-(138 if view.x < 1000 else 62),46,44)
         draw_style_box(ArcadeStyle.box(ArcadeStyle.PAPER,ArcadeStyle.RARITY.get(item["rarity"],ArcadeStyle.INK),8,2),rect)
-        _text(rect.position+Vector2(7,26),data.get("icon","?"),22)
+        var image: Texture2D = item_icons.texture("weapon" if game.WEAPONS.has(item["id"]) else "passive",item["id"])
+        if image != null: draw_texture_rect(image,Rect2(rect.position+Vector2(5,4),Vector2(32,32)),false)
+        else: _text(rect.position+Vector2(7,26),data.get("icon","?"),22)
         _text(rect.position+Vector2(30,37),str(item["level"]),13)
         slot_x += 54
 
