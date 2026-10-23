@@ -1,3 +1,5 @@
+> **Current update — 24 October 2026:** The creator explicitly approves 37 exact PNGs: eight V5 weapons, 28 V5 passives and Touch Grass Clean Cut v2. Clean Cut is the selected visual refinement recorded in GDD §26. All selected copies are hash-verified and promoted; 32 current items use live bindings, five future-only passive artworks remain unoffered. See `docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md` and `docs/art/CLEAN_CUT_INTEGRATION_ACCEPTANCE.md`. Earlier zero-approval/blocked statements below are historical checkpoints. Original source isolation and all gameplay rules remain intact.
+
 # Candidate art isolation evidence
 
 The Clean Cut batch merged through #60 supplies 37 canonical weapon/passive PNG/SVG pairs, the Touch Grass raster variant and six preview sheets. All 83 manifest file hashes, PNG alpha/dimensions and SVG parsing were checked. The 37 canonical IDs exactly match `v5_icon_readiness.json`. No creator approval is inferred. The register now distinguishes candidate bytes from approved runtime availability. Godot 32/64px and owner acceptance remain pending.
