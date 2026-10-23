@@ -56,6 +56,9 @@ func _capture() -> void:
         elif state == "paused": game._toggle_pause()
         elif state == "won" or state == "lost": game._finish(state == "won")
         game._show_ui()
+        if args.has("--focus") and state == "choice":
+            game.pick_upgrade(0)
+            game.offer_buttons[0].grab_focus()
         game._update_text()
         game._update_camera(0.0,true)
         game.queue_redraw()

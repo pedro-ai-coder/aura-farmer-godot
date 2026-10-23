@@ -55,3 +55,9 @@ The existing seed-451 normal-health runs did not reach Big Hater. Preserve those
 ## Additional baseline viewports
 
 Real staged captures also recorded at 1600×900, 915×412 and 390×844. Useful examples: [1600 menu](evidence/v5-baseline/menu-1600.jpg), [915 choices](evidence/v5-baseline/choice-915.jpg), [portrait legendary](evidence/v5-baseline/legendary-390.jpg). Review copies retain their aspect ratio and are scaled to fit 960×540; full-resolution originals remain scratch QA intermediates. Native rendering with desktop touch layout enabled is not touch-device acceptance.
+
+## G3.1 — shared typography and components
+
+Licensed Inter 500/600/900 resources and Display optical sizing are bundled with OFL/source hashes. Shared palette/action/card/focus styles now follow V5; live component factories provide actions, ink panels, status plates, icon slots and modal shells. Action hit areas are at least 64 logical pixels (48 physical at the minimum 0.75 scale). Existing legal card selection and data remain authoritative. This milestone does not supply blocked illustrations, independent logo or the final scene layouts. Native theme comparison evidence is recorded under `evidence/v5-theme`; physical-device and owner artistic acceptance remain open.
+
+Native focus review reproduced a compact-card bug: ensuring a tall selected card was visible scrolled its name/rarity away. Compact landscape cards now fit available height when possible and oversized selections align to their top. [Selected/focused compact capture](evidence/v5-theme/choice-915.jpg) records the corrected state. Typography/action states are compared at 1280, 1600, 1920 and 915 widths; illustration and full composition remain partial.
