@@ -36,7 +36,8 @@ func _verify() -> void:
     game.pickups.append({"kind":"aura","pos":Vector2(750,610),"xp":600.0})
     choice = Policy.goal(game,patrol)
     _expect(choice["kind"] == "magnet","When XP waits on the ground, the controller can pursue Magnet beyond 65U")
-    game.pickups = [{"kind":"magnet","pos":Vector2(890,550),"xp":0.0}]
+    game.pickups.clear()
+    game.pickups.append({"kind":"magnet","pos":Vector2(890,550),"xp":0.0})
     choice = Policy.goal(game,patrol)
     _expect(choice["kind"] == "patrol","No incentive to pursue Magnet with zero waiting XP")
 
