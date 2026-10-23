@@ -10,7 +10,11 @@ const HEROES := ["sigma", "cool-kid", "alpha"]
 const CHARACTER_IDS := ["sigma", "nerd", "six-seven", "cool-kid", "ohio", "rizzler", "alpha", "fanum", "beta"]
 
 static func defaults() -> Dictionary:
-    return {"version": 2, "selected": "sigma", "unlocked": HEROES.duplicate(), "results": [], "xp": 0.0, "wins": 0, "runs": 0, "best_wave": 1, "total_kills": 0, "settings": {"reducedMotion": false, "sound": true}}
+    return {"version": 2, "selected": "sigma", "unlocked": HEROES.duplicate(), "results": [], "xp": 0.0, "wins": 0, "runs": 0, "best_wave": 1, "total_kills": 0, "settings": {"reducedMotion": false, "sound": true, "masterVolume": 1.0}}
+
+static func _volume(value: Variant) -> float:
+    if (value is int or value is float) and is_finite(float(value)): return clampf(float(value),0.0,1.0)
+    return 1.0
 
 static func _number(value: Variant) -> float:
     if (value is int or value is float) and is_finite(float(value)) and float(value) >= 0.0:
@@ -59,7 +63,7 @@ static func read_data(v2: Variant, legacy: Variant = null, slice: Variant = null
         for key in ["xp", "wins", "runs", "total_kills"]: profile[key] = _number(v2.get(key))
         profile["best_wave"] = clampi(int(_number(v2.get("best_wave"))), 1, 5)
         var settings := _dictionary(v2.get("settings"))
-        profile["settings"] = {"reducedMotion": settings.get("reducedMotion") == true, "sound": settings.get("sound") != false}
+        profile["settings"] = {"reducedMotion": settings.get("reducedMotion") == true, "sound": settings.get("sound") != false, "masterVolume": _volume(settings.get("masterVolume",1.0))}
         if v2.has("legacy"): profile["legacy"] = v2["legacy"]
         return profile
     if legacy is Dictionary and legacy.get("schemaVersion") == 1:

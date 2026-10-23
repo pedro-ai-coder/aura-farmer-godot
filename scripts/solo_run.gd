@@ -1753,7 +1753,9 @@ func _request_return_to_menu() -> void:
     _update_text()
 
 func _apply_preferences() -> void:
-    AudioServer.set_bus_mute(0, not bool(profile["settings"]["sound"]))
+    var volume := clampf(float(profile["settings"].get("masterVolume",1.0)),0.0,1.0)
+    AudioServer.set_bus_mute(0, not bool(profile["settings"]["sound"]) or volume <= 0.0)
+    AudioServer.set_bus_volume_db(0,linear_to_db(maxf(0.0001,volume)))
 
 func _toggle_sound() -> void:
     profile["settings"]["sound"] = not bool(profile["settings"]["sound"])
@@ -1895,7 +1897,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
         _update_text()
     elif event.keycode == KEY_ESCAPE and mode == "replace":
         _cancel_replacement()
-    elif event.keycode == KEY_ESCAPE and mode in ["options","heroes"]:
+    elif event.keycode == KEY_ESCAPE and mode in ["options","build"]:
+        presentation.close_auxiliary()
+    elif event.keycode == KEY_ESCAPE and mode == "heroes":
         _return_to_menu()
     elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE or event.keycode == KEY_B:
         _toggle_pause()

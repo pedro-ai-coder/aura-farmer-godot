@@ -6,6 +6,11 @@ const Components = preload("res://scripts/spotlight_components.gd")
 const ArcadeStyle = preload("res://scripts/arcade_theme.gd")
 var game
 var catalog: Dictionary = {}
+var secondary
+var settings_return := "menu"
+var volume_slider: HSlider
+var volume_label: Label
+var preference_timer: Timer
 var home
 var spotlight_hud
 var play_button: Button
@@ -52,8 +57,8 @@ func install() -> void:
     detail = _label(20)
     detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     play_button = _button("PLAY RUIN ALLEY",func(): game.start_run(game.hero_index))
-    options_button = _button("OPTIONS & SAVE",func(): game.mode = "options"; game._clear_touch(); game._show_ui())
-    back_button = _button("BACK",func(): game._return_to_menu())
+    options_button = _button("OPTIONS & SAVE",func(): open_settings("menu"))
+    back_button = _button("BACK",close_auxiliary)
     card_scroll = ScrollContainer.new()
     card_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
     add_child(card_scroll)
@@ -73,6 +78,23 @@ func install() -> void:
     body_content = Control.new()
     body_scroll.add_child(body_content)
     for control: Control in [game.build_details,game.sound_button,game.motion_button,game.import_button,game.export_button]: control.reparent(body_content)
+    volume_label = _label(20)
+    volume_label.reparent(body_content)
+    volume_slider = HSlider.new()
+    volume_slider.min_value = 0
+    volume_slider.max_value = 100
+    volume_slider.step = 1
+    volume_slider.focus_mode = Control.FOCUS_ALL
+    volume_slider.add_theme_stylebox_override("slider",ArcadeStyle.box(ArcadeStyle.BLUE,ArcadeStyle.INK,6,0))
+    volume_slider.add_theme_stylebox_override("grabber_area",ArcadeStyle.box(ArcadeStyle.GOLD,ArcadeStyle.INK,6,0))
+    volume_slider.add_theme_stylebox_override("grabber_area_highlight",ArcadeStyle.box(ArcadeStyle.GOLD,ArcadeStyle.SKY,6,0))
+    body_content.add_child(volume_slider)
+    preference_timer = Timer.new()
+    preference_timer.one_shot = true
+    preference_timer.wait_time = 0.25
+    preference_timer.timeout.connect(game._save_profile)
+    add_child(preference_timer)
+    volume_slider.value_changed.connect(_volume_changed)
     equipment_board = Control.new()
     body_content.add_child(equipment_board)
     for caption in ["WEAPONS  /  3 SLOTS","PASSIVES  /  5 SLOTS"]:
@@ -104,6 +126,9 @@ func install() -> void:
     spotlight_hud = load("res://scripts/spotlight_hud.gd").new()
     add_child(spotlight_hud)
     spotlight_hud.install(game)
+    secondary = load("res://scripts/spotlight_secondary.gd").new()
+    add_child(secondary)
+    secondary.install(game,self)
     game.import_button.pressed.disconnect(game._open_profile_import)
     game.import_button.pressed.connect(func(): game.mode = "menu"; game._open_profile_import())
     game.export_button.pressed.disconnect(game._open_profile_export)
@@ -173,6 +198,28 @@ func open_heroes() -> void:
     game._clear_touch()
     game._show_ui()
 
+func _volume_changed(percent: float) -> void:
+    game.profile["settings"]["masterVolume"] = clampf(percent/100.0,0.0,1.0)
+    game._apply_preferences()
+    volume_label.text = "MASTER VOLUME  %d%%" % int(percent)
+    preference_timer.start()
+
+func open_settings(origin: String = "menu") -> void:
+    settings_return = origin
+    game.mode = "options"
+    game._clear_touch()
+    game._show_ui()
+
+func open_build() -> void:
+    game.mode = "build"
+    game._clear_touch()
+    game._show_ui()
+
+func close_auxiliary() -> void:
+    game.mode = "paused" if game.mode == "build" else settings_return
+    game._clear_touch()
+    game._show_ui()
+
 func pump() -> void:
     spotlight_hud.sync(view)
     if game.get_window().size != last_window_size: _window_changed()
@@ -210,7 +257,7 @@ func refresh(force: bool = false) -> void:
     var menu: bool = game.mode == "menu"
     var options: bool = game.mode == "options"
     var cards: bool = game.mode in ["choice","replace","legendary"]
-    var settings: bool = options or game.mode == "paused"
+    var settings: bool = options or game.mode == "build"
     game.headline.hide()
     game.metrics.hide()
     game.notice.hide()
@@ -220,19 +267,25 @@ func refresh(force: bool = false) -> void:
     menu_panel = Rect2(width*0.52,36,width*0.45,height-72) if not portrait else Rect2(18,height*0.25,width-36,height*0.75-18)
     if compact: menu_panel = Rect2(width*0.47,18,width*0.51,height-36)
     modal_panel = Rect2(Vector2(maxf(18,(width-1160)/2),18),Vector2(minf(width-36,1160),height-36))
+    if game.mode == "confirm_exit":
+        modal_panel = Rect2((view-Vector2(minf(width-36,680),300))*0.5,Vector2(minf(width-36,680),300))
     title.visible = not menu
     subtitle.visible = true
     detail.visible = menu or settings or game.mode in ["won","lost","confirm_exit","profile_import","profile_export"]
     play_button.visible = menu
     options_button.visible = menu
-    back_button.visible = options
-    game.sound_button.visible = settings
-    game.motion_button.visible = settings
-    game.import_button.visible = options
-    game.export_button.visible = options
+    back_button.visible = options or game.mode == "build"
+    volume_slider.visible = options
+    volume_label.visible = options
+    volume_slider.set_value_no_signal(float(game.profile["settings"].get("masterVolume",1.0))*100)
+    volume_label.text = "MASTER VOLUME  %d%%" % int(volume_slider.value)
+    game.sound_button.visible = options
+    game.motion_button.visible = options
+    game.import_button.visible = options and settings_return == "menu"
+    game.export_button.visible = options and settings_return == "menu"
     game.profile_text.visible = game.mode in ["profile_import","profile_export"]
     game.build_details.hide()
-    equipment_board.visible = game.mode == "paused"
+    equipment_board.visible = game.mode == "build"
     game.pause_button.visible = game.mode == "playing" or game.mode == "paused"
     game.retry_button.visible = game.mode in ["won","lost"]
     game.restart_button.visible = game.mode in ["paused","won","lost","replace","confirm_exit","profile_import","profile_export"]
@@ -244,8 +297,18 @@ func refresh(force: bool = false) -> void:
     _place(rotate_hint,Rect2(20,162,width-40,40))
     for control: Button in [game.pause_button,game.confirm_button,game.restart_button,game.defer_button,game.retry_button,game.sound_button,game.motion_button,game.import_button,game.export_button,game.legendary_button,play_button,options_button,back_button]:
         ArcadeStyle.button(control,control == play_button or control == game.confirm_button or control == game.retry_button or (control == game.flex_button and game.aura >= 100.0 and game.flex_lock <= 0.0))
+    secondary.refresh(view)
     spotlight_hud.sync(view)
     home.refresh(view)
+    if game.mode == "paused":
+        title.hide()
+        subtitle.hide()
+        detail.hide()
+        game.pause_button.hide()
+        game.restart_button.hide()
+        _focus_ring()
+        queue_redraw()
+        return
     if game.mode in ["menu","heroes"]:
         title.hide()
         subtitle.hide()
@@ -257,11 +320,11 @@ func refresh(force: bool = false) -> void:
         return
     else:
         for i in range(3): game.menu_buttons[i].hide(); game.hero_portraits[i].hide()
-        var headings := {"choice":"LEVEL UP!","legendary":"GO LEGENDARY","replace":"MAKE ROOM","paused":"TAKE A BREATHER","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"BIG HATER DOWN!","lost":"ONE MORE RUN?"}
+        var headings := {"choice":"LEVEL UP!","legendary":"GO LEGENDARY","replace":"MAKE ROOM","build":"YOUR BUILD","paused":"TAKE A BREATHER","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"BIG HATER DOWN!","lost":"ONE MORE RUN?"}
         title.text = "LEVEL UP!  /  %d" % game.level if game.mode == "choice" else headings.get(game.mode,"")
         if portrait and game.mode == "paused": title.text = "PAUSED"
         _place(title,Rect2(modal_panel.position+Vector2(24,18),Vector2(modal_panel.size.x-48,48)))
-        subtitle.text = {"choice":"Choose one. Confirm to keep farming.","legendary":"ONE PER RUN  /  Three weapons. Three buffs.","replace":"The old item is removed. Its effects do not carry over.","paused":"Simulation paused. Your build and settings are below.","options":"Make it yours. Everything is saved on this device.","confirm_exit":"This unfinished run will not count towards your profile.","profile_import":"Paste a Phaser v1 or v2 profile. Your current profile is backed up.","profile_export":"Copy this JSON to transfer your progress to another browser.","won":"Victory recorded. Your next run starts fresh.","lost":"Progress recorded. Take what you learned into the next run."}.get(game.mode,"")
+        subtitle.text = {"choice":"Choose one. Confirm to keep farming.","legendary":"ONE PER RUN  /  Three weapons. Three buffs.","replace":"The old item is removed. Its effects do not carry over.","build":"THREE WEAPONS / FIVE PASSIVES. Your actual equipped items.","paused":"Simulation paused.","options":"Make it yours. Everything is saved on this device.","confirm_exit":"This unfinished run will not count towards your profile.","profile_import":"Paste a Phaser v1 or v2 profile. Your current profile is backed up.","profile_export":"Copy this JSON to transfer your progress to another browser.","won":"Victory recorded. Your next run starts fresh.","lost":"Progress recorded. Take what you learned into the next run."}.get(game.mode,"")
         if game.mode == "replace":
             var incoming: Dictionary = catalog.get(game.replace_card.get("id",""),{})
             subtitle.text = "%s · %s replaces one equipped item. Removed effects do not carry over." % [incoming.get("name","New item"),str(game.replace_card.get("rarity","")).to_upper()]
@@ -281,7 +344,7 @@ func refresh(force: bool = false) -> void:
         if cards: _cards(content_rect)
         elif settings:
             _place(body_scroll,content_rect)
-            var stacked := content_rect.size.x < 800 or compact
+            var stacked: bool = content_rect.size.x < 800 or compact or game.mode == "build"
             var body_width := content_rect.size.x-14
             var settings_width := body_width if stacked else 340.0
             var settings_x := 0.0 if stacked else body_width-settings_width
@@ -290,9 +353,12 @@ func refresh(force: bool = false) -> void:
             detail.text = "MAKE YOUR OWN AURA\n\nWASD / arrows — move\nSpace / E — Flex\nM — switch aim\nP / Escape — pause\n\nTouch: drag on the left to move."
             _place(detail,Rect2(content_rect.position,Vector2(maxf(0,content_rect.size.x-settings_width-24),content_rect.size.y)))
             var build_height := 0.0
-            if game.mode == "paused":
+            if game.mode == "build":
                 build_height = _equipment(body_width if stacked else body_width-settings_width-24)
-            if game.mode == "paused" and stacked: settings_y = build_height+20
+            if game.mode == "build" and stacked: settings_y = build_height+20
+            _place(volume_label,Rect2(settings_x,settings_y,settings_width,28))
+            _place(volume_slider,Rect2(settings_x,settings_y+32,settings_width,64))
+            settings_y += 108 if options else 0
             _place(game.sound_button,Rect2(settings_x,settings_y,settings_width,60))
             _place(game.motion_button,Rect2(settings_x,settings_y+72,settings_width,64))
             _place(game.import_button,Rect2(settings_x,settings_y+148,settings_width,60))
@@ -311,6 +377,20 @@ func refresh(force: bool = false) -> void:
         elif game.mode == "confirm_exit":
             detail.text = "Your settings and earlier completed results remain saved."
             _place(detail,content_rect)
+    if game.mode in ["won","lost"]:
+        title.hide()
+        subtitle.hide()
+        detail.hide()
+        secondary.refresh(view)
+    if game.mode == "confirm_exit":
+        title.add_theme_color_override("font_color",ArcadeStyle.CARD)
+        subtitle.add_theme_color_override("font_color",ArcadeStyle.CARD)
+        detail.add_theme_color_override("font_color",ArcadeStyle.CARD)
+        game.restart_button.text = "STAY"
+        game.confirm_button.text = "QUIT RUN"
+    else:
+        title.add_theme_color_override("font_color",ArcadeStyle.INK)
+        detail.add_theme_color_override("font_color",ArcadeStyle.INK)
     if portrait and game.mode in ["paused","won","lost"]: game.restart_button.text = "MAIN MENU"
     _place(game.pause_button,Rect2(width-176,14,158,60))
     if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,60))
@@ -447,7 +527,7 @@ func _draw() -> void:
     if game.mode in ["menu","heroes"]: return
     if game.mode != "playing":
         draw_rect(Rect2(Vector2.ZERO,view),Color(0.09,0.13,0.19,0.72))
-        _panel(modal_panel)
+        if game.mode not in ["paused","won","lost"]: _panel(modal_panel,ArcadeStyle.DEEP if game.mode == "confirm_exit" else ArcadeStyle.PAPER)
         return
     var slot_x := 20.0
     for item: Dictionary in game.weapons + game.passives:
@@ -473,7 +553,7 @@ func hud_rectangles() -> Array[Rect2]:
     return load("res://scripts/spotlight_hud.gd").rectangles(view)
 
 func _focus_ring() -> void:
-    var buttons: Array[Button] = []
+    var buttons: Array[Control] = []
     _visible_buttons(self,buttons)
     for i in range(buttons.size()):
         buttons[i].focus_next = buttons[(i+1)%buttons.size()].get_path()
@@ -482,7 +562,7 @@ func _focus_ring() -> void:
     if not buttons.is_empty() and (focused == null or not buttons.has(focused)):
         buttons[0].grab_focus.call_deferred()
 
-func _visible_buttons(node: Node, buttons: Array[Button]) -> void:
+func _visible_buttons(node: Node, buttons: Array[Control]) -> void:
     for child in node.get_children():
-        if child is Button and child.is_visible_in_tree() and not child.disabled: buttons.append(child)
+        if child is Control and child.focus_mode == Control.FOCUS_ALL and child.is_visible_in_tree() and not (child is BaseButton and child.disabled): buttons.append(child)
         _visible_buttons(child,buttons)

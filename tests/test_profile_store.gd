@@ -19,6 +19,9 @@ func _verify() -> void:
     var slice := Store.read_data(null, null, {"version": 1, "runs": 7, "wins": 3, "best_wave": 5, "total_kills": 200})
     _expect(slice["runs"] == 7 and slice["total_kills"] == 200, "Godot slice totals survive schema upgrade")
     var result := {"id": "run-1", "hero": "sigma", "won": true, "time": 1000.0, "wave": 5, "level": 25, "kills": 30, "xp": 200, "healing": 5, "protection": 10, "damage": 900, "flexes": 2}
+    _expect(is_equal_approx(Store.read_data({"version":2,"settings":{"masterVolume":0.37}})["settings"]["masterVolume"],0.37),"Optional master volume survives v2 normalization")
+    _expect(Store.read_data({"version":2,"settings":{"masterVolume":2}})["settings"]["masterVolume"] == 1.0,"Master volume clamps safely without changing the profile version")
+    _expect(Store.read_data({"version":2,"settings":{"masterVolume":"bad"}})["settings"]["masterVolume"] == 1.0,"Malformed master volume uses the legacy full-volume default")
     var corrupt := {"version": 2, "selected": "beta", "unlocked": ["ohio"], "results": [result, result, {"id": "broken"}], "runs": -10, "xp": "bad", "settings": "bad"}
     var clean := Store.read_data(corrupt)
     _expect(clean["results"].size() == 1 and clean["selected"] == "sigma", "Corrupt and duplicate results are rejected; only solo heroes can be selected")
