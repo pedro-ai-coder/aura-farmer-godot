@@ -106,3 +106,8 @@ Concurrent art-only main updates `dca1a758` / `4e0a4f7` add candidate icon sourc
 ## Candidate art resource isolation
 
 The #60 candidate library is available for review but remains individually unapproved. An actual production-pack inspection reproduced accidental inclusion through all-resource export. A `.gdignore` exclusion and engine resource regression isolate candidates without activating them. See [candidate isolation evidence](art/CANDIDATE_ART_ISOLATION.md); rendered 32/64px and creator acceptance remain pending.
+
+
+## G4.1 Clean Cut source review
+
+All 37 canonical candidates and 83 manifest files were audited, including actual Godot SVG decoding and source composites at 32/64/256px on navy/cream. See `docs/art/CLEAN_CUT_ICON_REVIEW.md` and per-ID audit JSON. SVG font differences, narrow margins and compact identity families are recorded. Zero individual approvals or runtime promotions; the 23-passive subset and candidate export isolation remain unchanged. Next: reusable approved icon pipeline and live fallback bindings; activate only exact creator-approved hashes.
