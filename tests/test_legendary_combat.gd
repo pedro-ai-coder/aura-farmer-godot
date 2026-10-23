@@ -121,6 +121,36 @@ func _verify() -> void:
         game.run_time = 3.0
         game._expire_weapon_shields()
         _expect(is_zero_approx(game.shield),"Legendary support and own shields expire on their original clocks")
+    # A third successful activation can begin with a missed first punch.
+    # Its circular slam must resolve once, including targets visited before the trigger.
+    for rarity in ["common","legendary"]:
+        for reverse in [false,true]:
+            game.start_run(2)
+            game.player_pos = Vector2(800,700)
+            game.weapons.clear()
+            game.weapons.append({"id":"chad-hands","level":1,"rarity":rarity,"timer":0.0})
+            game.chad_successful_activations = 2
+            game.manual_aim = true
+            game.aim_point = Vector2(800,500)
+            game._spawn_enemy("npc",{"pos":Vector2(800,580)})
+            var wide: Dictionary = game.enemies.back()
+            game._spawn_enemy("npc",{"pos":Vector2(880,700)})
+            var near: Dictionary = game.enemies.back()
+            for rival: Dictionary in game.enemies:
+                rival["hp"] = 1000.0
+                rival["max"] = 1000.0
+            if reverse: game.enemies.reverse()
+            game._fire_weapons(0.01)
+            _expect(wide["hp"] == 1000.0 and near["hp"] == 1000.0 and game.chad_successful_activations == 2 and game.primary_hits == 0,"Missed opening punch cannot deal damage or qualify the combo")
+            near["pos"] = Vector2(800,640)
+            game.run_time = 0.18
+            game._step_weapon_areas()
+            var expected := 90.0 * (0.60*2.60 if rarity == "legendary" else 0.40)
+            _expect(is_equal_approx(1000.0-float(near["hp"]),expected),"Late-triggered Hands slam applies its GDD coefficient once: " + rarity)
+            _expect(is_equal_approx(1000.0-float(wide["hp"]),expected),"Late slam reaches the outer target independently of enemy order: " + rarity)
+            _expect(game.chad_successful_activations == 3 and game.primary_hits == 1 and game.aura == 1.0,"Late multi-target slam remains one successful activation and one proc/Aura event")
+            game._step_weapon_areas()
+            _expect(is_equal_approx(1000.0-float(near["hp"]),expected) and game.primary_hits == 1,"Repeated area steps cannot hit or proc the same target again")
     game.call("start_run", 2)
     game.set("shield", 5.0)
     game.call("_grant_weapon_shield", "cope-shield", 10.0, 2.0)

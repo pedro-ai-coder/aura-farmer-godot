@@ -1283,6 +1283,44 @@ func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: fl
     area.merge(options, true)
     weapon_areas.append(area)
 
+func _weapon_area_reaches(area: Dictionary, enemy: Dictionary) -> bool:
+    if run_time < float(enemy.get("born",0.0)) or area["hit_memory"].has(int(enemy["id"])):
+        return false
+    var relative: Vector2 = Vector2(enemy["pos"]) - Vector2(area["center"])
+    var facing: Vector2 = area["facing"]
+    var radius: float = area["radius"]
+    if area["shape"] == "line":
+        var along := facing.dot(relative)
+        if along < -float(enemy["radius"]) or along > radius + float(enemy["radius"]) or absf(facing.cross(relative)) > 15.0 + float(enemy["radius"]):
+            return false
+    elif relative.length() > radius + float(enemy["radius"]):
+        return false
+    return absf(facing.angle_to(relative)) <= deg_to_rad(float(area["arc"])*0.5) and SoloWorldRulesScript.clear_line(area["center"],enemy["pos"])
+
+func _qualify_chad_activation(area: Dictionary) -> void:
+    var activation: Dictionary = area["activation"]
+    if not bool(area["primary"]) or area["id"] != "chad-hands" or bool(activation.get("chad_counted",false)):
+        return
+    # Resolve the successful activation before visiting damage recipients. The second
+    # punch may be the first hit; its full slam cannot depend on enemy array order.
+    var connects := false
+    for candidate: Dictionary in enemies:
+        if _weapon_area_reaches(area,candidate):
+            connects = true
+            break
+    if not connects: return
+    activation["chad_counted"] = true
+    chad_successful_activations += 1
+    if chad_successful_activations % 3 != 0: return
+    activation["slam"] = true
+    # Every pending area already exists in this array, including the current one.
+    # Appending the current dictionary again would multiply its damage twice.
+    for second: Dictionary in weapon_areas:
+        if second["activation"] == activation and bool(second.get("second",false)):
+            second["damage"] = float(second["damage"]) * (0.60 if bool(second.get("legendary",false)) else 0.40) / 0.22
+            second["radius"] = (140.0 if bool(second.get("legendary",false)) else 110.0) * SoloPassiveRulesScript.area_scale(passives)
+            second["arc"] = 360.0
+
 func _step_weapon_areas() -> void:
     # Capture origin, direction and target at activation, as in Phaser weapons.ts.
     # Shared activation state limits primary passive/Aura procs across paired hits.
@@ -1294,46 +1332,20 @@ func _step_weapon_areas() -> void:
             continue
         if run_time < float(area["at"]):
             continue
+        _qualify_chad_activation(area)
         var center: Vector2 = area["center"]
         var facing: Vector2 = area["facing"]
         var radius: float = area["radius"]
-        var half_arc: float = deg_to_rad(float(area["arc"]) * 0.5)
         var shield_awarded := false
         for enemy: Dictionary in enemies.duplicate():
             if mode != "playing":
                 break
-            if run_time < float(enemy.get("born", 0.0)): continue
-            var relative: Vector2 = Vector2(enemy["pos"]) - center
+            if not _weapon_area_reaches(area,enemy):
+                continue
             var memory: Array = area["hit_memory"]
-            if memory.has(int(enemy["id"])):
-                continue
-            radius = float(area["radius"])
-            half_arc = deg_to_rad(float(area["arc"]) * 0.5)
-            if area["shape"] == "line":
-                var along := facing.dot(relative)
-                if along < -float(enemy["radius"]) or along > radius + float(enemy["radius"]) or absf(facing.cross(relative)) > 15.0 + float(enemy["radius"]):
-                    continue
-            elif relative.length() > radius + float(enemy["radius"]):
-                continue
-            if absf(facing.angle_to(relative)) > half_arc:
-                continue
-            if not SoloWorldRulesScript.clear_line(center, enemy["pos"]):
-                continue
             var impact: Vector2 = enemy["pos"]
             var activation: Dictionary = area["activation"]
             var primary: bool = area["primary"]
-            if primary and area["id"] == "chad-hands" and not bool(activation.get("chad_counted", false)):
-                activation["chad_counted"] = true
-                chad_successful_activations += 1
-                if chad_successful_activations % 3 == 0:
-                    activation["slam"] = true
-                    var slam_areas: Array[Dictionary] = weapon_areas.duplicate()
-                    slam_areas.append(area)
-                    for second: Dictionary in slam_areas:
-                        if second["activation"] == activation and bool(second.get("second", false)):
-                            second["damage"] = float(second["damage"]) * (0.60 if bool(second.get("legendary", false)) else 0.40) / 0.22
-                            second["radius"] = (140.0 if bool(second.get("legendary", false)) else 110.0) * SoloPassiveRulesScript.area_scale(passives)
-                            second["arc"] = 360.0
             memory.append(int(enemy["id"]))
             _weapon_hit(enemy, float(area["damage"]), primary, activation)
             if primary and not bool(activation["hit"]) and mode == "playing":
