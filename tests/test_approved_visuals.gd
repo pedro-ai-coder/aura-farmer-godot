@@ -33,6 +33,13 @@ func _check() -> void:
             var sprite: Texture2D = visuals.enemy_frame(kind, frame)
             if sprite == null or sprite.get_width() <= 0 or sprite.get_height() <= 0:
                 missing.append(kind + " (frame " + str(frame) + ")")
+    # Art candidates must remain outside the imported resource namespace.
+    for candidate in [
+        "res://assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
+        "res://assets/art-production/character-hype-clean-cut/v1/passives/touch-grass/icon-v5-candidate.svg"
+    ]:
+        if ResourceLoader.exists(candidate):
+            missing.append(candidate + " (unapproved candidate imported)")
     if missing.is_empty():
         print("PASS: All 19 approved art assets and 17 enemy animations loaded as Godot textures")
         quit(0)

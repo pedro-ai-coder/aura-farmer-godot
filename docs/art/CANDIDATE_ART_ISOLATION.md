@@ -1,0 +1,9 @@
+# Candidate art isolation evidence
+
+The Clean Cut batch merged through #60 supplies 37 canonical weapon/passive PNG/SVG pairs, the Touch Grass raster variant and six preview sheets. All 83 manifest file hashes, PNG alpha/dimensions and SVG parsing were checked. The 37 canonical IDs exactly match `v5_icon_readiness.json`. No creator approval is inferred. The register now distinguishes candidate bytes from approved runtime availability. Godot 32/64px and owner acceptance remain pending.
+
+## Reproduced export gap
+
+The actual production pack for `4e0a4f7eff8be3228061bda7e5fe3c1890f963fe`, downloaded using the filename from its live GODOT_CONFIG, (30,017,620 bytes, SHA-256 `f4e571d5ade62ff5d11b0d68297b750bab56125266090f5448391858dc379f54`) contains 167 occurrences of `art-production/`, including imported candidate resources. All platform presets export all resources and the candidate tree had no import exclusion. Thus an art-only library was unintentionally included in the shipping resource pack even though no live card referenced it.
+
+`assets/art-production/.gdignore` plus explicit candidate-path exclusions in all three export presets now exclude this review library from Godot resource import and export on every platform. Approved runtime assets stay separate. The engine regression checks PNG and SVG candidates are absent from ResourceLoader while all 19 approved textures and 17 enemy animation sets remain loadable. Local stale generated candidate import sidecars were removed before checking the resource namespace; a clean CI import independently exercises the exclusion. Export filters also prevent these candidates shipping from a previously imported checkout. The full validation suite must pass before integration; a final published-pack check remains to be recorded after deployment. This is resource isolation, not art acceptance or a numerical gameplay change.
