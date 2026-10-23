@@ -17,7 +17,11 @@ func _capture() -> void:
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","character","playing","mobile","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense","legendary_shield","legendary_space"]:
+    var requested := ""
+    for arg: String in args:
+        if arg.begins_with("--state="): requested = arg.trim_prefix("--state=")
+    for state in ["menu","character","playing","mobile","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense","legendary_shield","legendary_space","chad_slam"]:
+        if not requested.is_empty() and state != requested: continue
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
@@ -68,6 +72,24 @@ func _capture() -> void:
             game.run_time = 602.0
             game._step_enemies(0.0)
             game.run_time = 602.5 if state == "boss" else (720.0 if state == "berserk" else 840.0)
+        elif state == "chad_slam":
+            # Late second-punch combo fixture, not normal-health acceptance.
+            game.start_run(2)
+            game.player_pos = Vector2(800,700)
+            game.weapons.clear()
+            game.weapons.append({"id":"chad-hands","level":1,"rarity":"common","timer":0.0})
+            game.chad_successful_activations = 2
+            game.manual_aim = true
+            game.aim_point = Vector2(800,500)
+            game._spawn_enemy("npc",{"pos":Vector2(800,580)})
+            game._spawn_enemy("npc",{"pos":Vector2(880,700)})
+            for rival: Dictionary in game.enemies:
+                rival["hp"] = 1000.0
+                rival["max"] = 1000.0
+            game._fire_weapons(0.01)
+            game.enemies[1]["pos"] = Vector2(800,640)
+            game.run_time = 0.18
+            game._step_weapon_areas()
         elif state in ["legendary_shield","legendary_space"]:
             # Controlled legal Tank loadout; not ordinary-health survival evidence.
             game.start_run(2)

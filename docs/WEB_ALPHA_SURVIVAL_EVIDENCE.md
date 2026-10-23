@@ -48,3 +48,20 @@ Across the 18 episodes, Sigma has two actual victories (451, 455); Alpha enters 
 Boss reachability, build variety from seeded offers and survival remain strongly policy/seed-dependent. Alternative build-selection policies and human input have not been measured here. Next isolate Cool Kid's Reply Guy / Doomscroll pressure, Alpha's boss pattern response and recovery access, and Sigma's early seed failures before proposing any numerical tuning. Re-run specific affected seeds after future gameplay fixes, retaining exact source revisions. Issue #52 remains open.
 
 The full 39-phase local Godot validation suite passes with the observer regression. Actual browser WebGL2, reference hardware performance, human balance and physical Android/iOS remain independent gates. Art availability is unchanged (#49); no gameplay backend or new production mechanic is introduced.
+
+## Current repeat after the Chad Hands correction
+
+The first 18 episodes above used post-shield gameplay `a60f574` and predate the subsequent late-slam fix. They remain historical evidence. The [new complete 18-episode repeat](WEB_ALPHA_CHAD_SURVIVAL_RUNS.json) uses initial PR #61 gameplay candidate `21619451d6a6f9f00cdb2e6be94e2a6d17880822`; the exact production core SHA-256 is checked against that Git object. The final telemetry follow-up does not change gameplay. All six seeds and all three starters terminated naturally again, for 36 completed episodes across the two measured revisions.
+
+All 12 Sigma/Cool Kid episodes exactly preserve time, kills, level, healing, Flex count, equipment and recovery. Alpha's seed 452 changes from a 772.30-second boss loss to a 568.40-second defeat before entry. The other five Alpha terminal times/outcomes are unchanged. At this source, Sigma has two wins (451/455); Alpha enters and loses to Big Hater in 455/456; Cool Kid enters none. Four boss entries and two wins across these 18 scripted episodes are not general win rates or all-hero balance acceptance. Correcting illegal damage can alter movement, kills, recovery and later RNG consumption; do not undo the GDD fix to reproduce an obsolete survival record.
+
+| Alpha seed | Post-shield seconds | Post-Chad seconds | Current boss entry | Current level |
+| --- | ---: | ---: | --- | ---: |
+| 451 | 312.23 | 312.23 | No | 15 |
+| 452 | 772.30 | 568.40 | No | 24 |
+| 453 | 504.55 | 504.55 | No | 21 |
+| 454 | 337.55 | 337.55 | No | 15 |
+| 455 | 786.20 | 786.20 | Yes | 24 |
+| 456 | 849.35 | 849.35 | Yes | 21 |
+
+Raw event, recovery, damage, equipment and Flex traces remain available for both versions. No timeout, forced damage, invulnerability or grants are used in these ordinary-health observations. Current WebGL2 and human/device acceptance remain blocked/separate.
