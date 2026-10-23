@@ -1,0 +1,1192 @@
+{
+  "source_commit": "ab35ff9c21353842748a503f45729c27ce9e5619",
+  "manifest_files_verified": 83,
+  "canonical_count": 37,
+  "method": "Unmodified candidate PNGs; Godot 4.7.2 SVG Image decoder; RGBA mean absolute differences on 0..255 channels, not a semantic approval metric",
+  "icons": [
+    {
+      "id": "ban-hammer",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.svg",
+      "svg_sha256": "311370b1f9f0447cbb98d0955361bf16d80c473e7b834958073598c7dbae0b2f",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        32,
+        26,
+        225,
+        244
+      ],
+      "minimum_alpha_margin_px": 12,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0514,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Heavy wind-up. Pushes mobs and adds 15 boss stagger.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "brainrot-feed",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.svg",
+      "svg_sha256": "12d361d8ad5c2fd4acc9dfb558c005e0bb2bb29207fc1422c7de402f9945d2e2",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        30,
+        26,
+        227,
+        233
+      ],
+      "minimum_alpha_margin_px": 23,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1706,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Mark a location; explode after 0.45s in a 100U radius.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "chad-hands",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
+      "sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.svg",
+      "svg_sha256": "7b1d2698066a714d61adc0f866b4b878503b052e9f901993f09cf5b8d8b92827",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        45,
+        22,
+        232,
+        221
+      ],
+      "minimum_alpha_margin_px": 22,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.148,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Two punches. Every third successful attack ends in a slam.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "cope-shield",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
+      "sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.svg",
+      "svg_sha256": "c3e5c5d6545f2c0d4497e9d410ff4743b15e166e832114f436548cdaf188d385",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        214,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0832,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Shield bash. A hit grants a 4% HP shield for 2s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "keyboard-warrior",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.svg",
+      "svg_sha256": "28bde1d717b4ff8084d0e5ca9501f0baa3abd021140dde6a1ab786354fe18652",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        29,
+        59,
+        235,
+        213
+      ],
+      "minimum_alpha_margin_px": 21,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.11,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Two keyboard strikes, 0.12s apart. One proc per attack.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "no-cap",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.png",
+      "sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.svg",
+      "svg_sha256": "b4c05d27ccfd0388e1b458f2cc6cc8a5c03c511c1bae41bb430e7f84e35078d1",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        29,
+        55,
+        231,
+        201
+      ],
+      "minimum_alpha_margin_px": 25,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0863,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Throw a cap through up to four rivals.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "personal-space",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.png",
+      "sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.svg",
+      "svg_sha256": "9fe4193dba02fac50fe3ed0fd201a10f8f91747d45834a14df7839947a54b16c",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        15,
+        14,
+        242,
+        242
+      ],
+      "minimum_alpha_margin_px": 14,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1442,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Circular pulse. Hit rivals deal 8% less damage for 2s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Target/ring family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "ratio-blaster",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.svg",
+      "svg_sha256": "81125418213a945be8ba9070c1449b1ef371248424003bbaf4c1c114bfcc8e06",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        24,
+        71,
+        233,
+        230
+      ],
+      "minimum_alpha_margin_px": 23,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1054,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "One aimed projectile. Stops at the first rival or cover.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "touch-grass",
+      "kind": "weapon",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-v5-candidate.png",
+      "sha256": "78688d95831b2106a0b62f6cbf8121d1fd42a3437329ee62b14dac3f3086f861",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-v5-candidate.svg",
+      "svg_sha256": "21948f4ff947ab1f4663f8b519722f2efc7c6ac1f17d0f572693b5da995c4d84",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        31,
+        18,
+        215,
+        233
+      ],
+      "minimum_alpha_margin_px": 18,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0862,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Wide whip. Slows rivals 15% for 1.5s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "absolute-cinema",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.svg",
+      "svg_sha256": "24814cd66dddeef78bd04dd81e64759b5185237a862d75ea65d90327ab8fdbad",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        13,
+        13,
+        243,
+        243
+      ],
+      "minimum_alpha_margin_px": 13,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.2476,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+25% weapon damage, plus 20% during Flex.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "aura-viral",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.png",
+      "sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.svg",
+      "svg_sha256": "2ee984534a1af1681d801f60303d4e6a67b57b056cf9db3fc05f0ed8a9380c0a",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        13,
+        13,
+        243,
+        243
+      ],
+      "minimum_alpha_margin_px": 13,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.3147,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Activating Flex grants +12/18% frequency for 5s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "big-chad",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.png",
+      "sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.svg",
+      "svg_sha256": "4defcfb4c78cba7e729447aa7d95810e80ba79fe1350c733412b223fdf282f22",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        39,
+        52,
+        214,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0604,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Every 10s in combat: shield 5/7/9% HP for 4s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "big-meme",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.png",
+      "sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.svg",
+      "svg_sha256": "b7d93ef88eff7718b59ad7360ebfc1ac59eba7971d1905598c4cf12c2d178afd",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        13,
+        13,
+        243,
+        243
+      ],
+      "minimum_alpha_margin_px": 13,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.4773,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+6% area radius per level.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "brainrot-rain",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.png",
+      "sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.svg",
+      "svg_sha256": "7fcb6604689b21058b4f7cc1bc6e1d052a48689bd01ec3c2e3ed4da4fb2f21d3",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        34,
+        23,
+        221,
+        233
+      ],
+      "minimum_alpha_margin_px": 23,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1656,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": false,
+      "effect": "Future item; no normal Alpha offer",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Future-only art; excluded from normal 23-passive offers"
+      ]
+    },
+    {
+      "id": "built-different",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
+      "sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.svg",
+      "svg_sha256": "8a30ecb16ccf3e7bcf08e8c75bb68cf4067375adae6185fc037669283e32bfec",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        214,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0951,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+8% maximum HP per level; heal only the added HP.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "caught-4k",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.png",
+      "sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.svg",
+      "svg_sha256": "c7afe3c0c2b7e4b64a9c4ab530022e153041136c42269847a76448ff5143e6fe",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        10,
+        80,
+        220,
+        197
+      ],
+      "minimum_alpha_margin_px": 10,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0358,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+5% movement speed per level.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Margin below 12px review threshold; no canvas clipping detected"
+      ]
+    },
+    {
+      "id": "certified-w",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.png",
+      "sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.svg",
+      "svg_sha256": "7bbe73023d1dfcd22e8fb3c8abde79e4ae1243cd444c36631884f5486ee5b109",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        214,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 2.5972,
+      "png_svg_identity": "same dominant object; text/font discrepancy",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+6% healing and shields granted per level.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "SVG text/font raster differs in Godot; select exact PNG or obtain outlined SVG",
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "cope-harder",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.png",
+      "sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.svg",
+      "svg_sha256": "4040ecd54942914da112340772200b52a5f6c83dddf38fde8a6dce25f3888a6a",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        214,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0756,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+8% shields granted per level.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "ego-check",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.png",
+      "sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.svg",
+      "svg_sha256": "7ea91d7ea04cebaab41318d083f7f82689108543fd50e075b72564dc940bf5d9",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        18,
+        10,
+        239,
+        238
+      ],
+      "minimum_alpha_margin_px": 10,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1707,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": false,
+      "effect": "Future item; no normal Alpha offer",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Margin below 12px review threshold; no canvas clipping detected",
+        "Target/ring family: check distinction at 32px",
+        "Future-only art; excluded from normal 23-passive offers"
+      ]
+    },
+    {
+      "id": "get-ratiod",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.png",
+      "sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.svg",
+      "svg_sha256": "34245b573dfb6e39c8000c27935bbd96febc5d0138abbd7d022dbe4767e84f11",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        18,
+        19,
+        239,
+        238
+      ],
+      "minimum_alpha_margin_px": 17,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1612,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": false,
+      "effect": "Future item; no normal Alpha offer",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Target/ring family: check distinction at 32px",
+        "Future-only art; excluded from normal 23-passive offers"
+      ]
+    },
+    {
+      "id": "hands-on-sight",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.png",
+      "sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.svg",
+      "svg_sha256": "7a4dcaae6ce2f86d4157723f78c7a75f19dfffdf7d7e1cb468172d80fdd2a613",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        56,
+        48,
+        217,
+        221
+      ],
+      "minimum_alpha_margin_px": 35,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1285,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+7% damage per level to targets within 150U.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "homie-check",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.png",
+      "sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.svg",
+      "svg_sha256": "59efa89996c38584f68d9331222d4b9bf11286af7c51a4eda29b21f134a41010",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        48,
+        53,
+        216,
+        204
+      ],
+      "minimum_alpha_margin_px": 40,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0836,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Every 8 primary hits: heal 3/4/5% HP. Minimum 6s between pulses.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "its-over",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.png",
+      "sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.svg",
+      "svg_sha256": "2f31d4c2788fed6b43bd8ba2b56b4d7d7a19869d7c0d58d004172d6cbfad8050",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        65,
+        209,
+        225
+      ],
+      "minimum_alpha_margin_px": 31,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.043,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+15/25% damage to targets below 30% HP.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "let-him-cook",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.png",
+      "sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.svg",
+      "svg_sha256": "25bcda255dd298ad3d80dd4e02c214fdc0cd6a33d9d02e29fb70821f98314ff3",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        48,
+        73,
+        247,
+        228
+      ],
+      "minimum_alpha_margin_px": 9,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0805,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Primary hits grant +3/4/5% damage, up to 5 stacks. Expires after 3s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Margin below 12px review threshold; no canvas clipping detected"
+      ]
+    },
+    {
+      "id": "main-character",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.png",
+      "sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.svg",
+      "svg_sha256": "33fd45f8916253b5f0b6ace6fc306f284ad88674ced53ea00d7d07fe1008106f",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        13,
+        13,
+        243,
+        243
+      ],
+      "minimum_alpha_margin_px": 13,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.2838,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+6% weapon damage per level.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "no-cap-streak",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.svg",
+      "svg_sha256": "47f06107963ef8b88f0579ef18aa074eec795f21f630c3fe4670f697ef35b867",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        39,
+        53,
+        218,
+        205
+      ],
+      "minimum_alpha_margin_px": 38,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0949,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Every fifth weapon activation: +10% damage and +1 piercing per level (damage does not scale with level).",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "no-u",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.png",
+      "sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.svg",
+      "svg_sha256": "82405d9f75dbf392ddd1393f6ab257c5508ce27c6e93e7685bacd99d19bcb07e",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        38,
+        34,
+        218,
+        214
+      ],
+      "minimum_alpha_margin_px": 34,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1398,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Every 15s: 30% power pulse in 200U, reducing mob damage 20%/4s (boss 10%/2s).",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "six-to-seven",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.png",
+      "sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.svg",
+      "svg_sha256": "47d2eaea300453782acf4e9e4b97ab8b600deb86c89f8ec1409bd082e6ad508e",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        48,
+        44,
+        206,
+        166
+      ],
+      "minimum_alpha_margin_px": 44,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 16.1963,
+      "png_svg_identity": "same dominant object; text/font discrepancy",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Seventh primary hit explodes for 35/50% power in 90U. 2s cooldown.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "SVG text/font raster differs in Godot; select exact PNG or obtain outlined SVG"
+      ]
+    },
+    {
+      "id": "so-back",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.png",
+      "sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.svg",
+      "svg_sha256": "74a920bcdeed5a458bb61fdcaa9d1d8adb3737402e4f7129f63b1f80a234044f",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        36,
+        30,
+        224,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0853,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Cross below 30% HP: heal 10/15% over 5s and shield 10% for 3s. 45s cooldown.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "take-l",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.png",
+      "sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.svg",
+      "svg_sha256": "07f55b2655514a4bbece6ca0b33ec18ca69d9d72d011245a05b710f7b15e1e52",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        29,
+        79,
+        225,
+        189
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0674,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": false,
+      "effect": "Future item; no normal Alpha offer",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Future-only art; excluded from normal 23-passive offers"
+      ]
+    },
+    {
+      "id": "terminally-online",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.png",
+      "sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.svg",
+      "svg_sha256": "224b9eaf5158062ed01876e270ca6c99cc84be56dfc8f103b656e6d95bd387ef",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        47,
+        26,
+        209,
+        233
+      ],
+      "minimum_alpha_margin_px": 23,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1668,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+5% weapon frequency per level.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "thick-skin",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.png",
+      "sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.svg",
+      "svg_sha256": "a3cb036e0b2661da3657edcb867ca9202499b936b545627e0688649d5f06b03d",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        37,
+        62,
+        221,
+        209
+      ],
+      "minimum_alpha_margin_px": 35,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0509,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "3% damage reduction per level, multiplicative with other sources.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "timeline",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.png",
+      "sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.svg",
+      "svg_sha256": "3ba7b33780265365432772c05f16bf6c3f0c48f0c6ba9bc18ba2d3c7606be843",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        32,
+        69,
+        224,
+        211
+      ],
+      "minimum_alpha_margin_px": 32,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0554,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+8% weapon range per level; projectile speed follows.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "too-sigma",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
+      "sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.svg",
+      "svg_sha256": "17cae0e9add783b3cc3d15189cfec8c1675b2c175978d86e1789b0e30e4019d9",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        214,
+        227
+      ],
+      "minimum_alpha_margin_px": 29,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0973,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Cross below 25% HP: shield 25% HP for 5s. 60s cooldown. Cannot prevent a fatal hit.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px"
+      ]
+    },
+    {
+      "id": "uno-reverse",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.png",
+      "sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.svg",
+      "svg_sha256": "38296800233b48a03728bd56a8d604414a8915110694aa52b0187a38adf7ee03",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        237,
+        227
+      ],
+      "minimum_alpha_margin_px": 19,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.0914,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": false,
+      "effect": "Future item; no normal Alpha offer",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": [
+        "Shield/heart family: check distinction at 32px",
+        "Future-only art; excluded from normal 23-passive offers"
+      ]
+    },
+    {
+      "id": "w-squad",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
+      "sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.svg",
+      "svg_sha256": "f809b920d8a84cb26806daec9feae596ea6eacfa9dc1e61ac24a69700f1f1ab9",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        25,
+        20,
+        230,
+        203
+      ],
+      "minimum_alpha_margin_px": 20,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.1041,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "+25% healing/shields. Flex grants +10% weapon damage for 6s.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    },
+    {
+      "id": "w-wifi",
+      "kind": "passive",
+      "version": "v5-candidate",
+      "source": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.png",
+      "sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+      "svg_source": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.svg",
+      "svg_sha256": "3b48d39ba8cf1f1641c4d36c7885075680629e547d31d8ff06ea7974bdfe3a09",
+      "size": [
+        256,
+        256
+      ],
+      "alpha_bbox": [
+        45,
+        35,
+        209,
+        232
+      ],
+      "minimum_alpha_margin_px": 24,
+      "clipped": false,
+      "godot_svg_rgba_mean_absolute_difference": 0.112,
+      "png_svg_identity": "same dominant object; subpixel raster differences",
+      "duplicate_png": false,
+      "playable": true,
+      "effect": "Every 12s: fixed 160U zone for 4s, +8/12/16% frequency.",
+      "creator_approval": "PENDING",
+      "approval_reference": null,
+      "selected_version": null,
+      "runtime_resource": null,
+      "flags": []
+    }
+  ]
+}

@@ -111,3 +111,8 @@ The local navigation regression exercises all three real starter selections acro
 ## Private Web Alpha gameplay audit
 
 No new artwork supplied or integrated in this correction. Original 19 masters remain hash-verified; PDF/concept references are unchanged and standalone #49 exports are still absent. [Controlled actual Tank shield captures](../WEB_ALPHA_ACCEPTANCE.md#a1a3-correction-legendary-tank-support-shields) verify the real HUD after §8.2 formula correction, without implying artistic acceptance or a normal-health win.
+
+
+## G4.1 Clean Cut source review
+
+All 37 canonical candidates and 83 manifest files were audited, including actual Godot SVG decoding and source composites at 32/64/256px on navy/cream. See `docs/art/CLEAN_CUT_ICON_REVIEW.md` and per-ID audit JSON. SVG font differences, narrow margins and compact identity families are recorded. Zero individual approvals or runtime promotions; the 23-passive subset and candidate export isolation remain unchanged. Next: reusable approved icon pipeline and live fallback bindings; activate only exact creator-approved hashes.

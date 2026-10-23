@@ -18,7 +18,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "brainrot-feed",
@@ -39,7 +50,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "chad-hands",
@@ -60,7 +82,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "cope-shield",
@@ -81,7 +114,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "keyboard-warrior",
@@ -102,7 +148,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "no-cap",
@@ -123,7 +180,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "personal-space",
@@ -144,7 +212,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Target/ring family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "ratio-blaster",
@@ -165,7 +246,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "touch-grass",
@@ -186,7 +278,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "absolute-cinema",
@@ -207,7 +310,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "aura-viral",
@@ -228,7 +342,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "big-chad",
@@ -249,7 +374,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "big-meme",
@@ -270,7 +408,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "brainrot-rain",
@@ -291,7 +440,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Future-only art; excluded from normal 23-passive offers"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "built-different",
@@ -312,7 +474,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "caught-4k",
@@ -333,7 +508,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Margin below 12px review threshold; no canvas clipping detected"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "certified-w",
@@ -354,7 +542,21 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "SVG text/font raster differs in Godot; select exact PNG or obtain outlined SVG",
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "cope-harder",
@@ -375,7 +577,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "ego-check",
@@ -396,7 +611,22 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Margin below 12px review threshold; no canvas clipping detected",
+      "Target/ring family: check distinction at 32px",
+      "Future-only art; excluded from normal 23-passive offers"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "get-ratiod",
@@ -417,7 +647,21 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Target/ring family: check distinction at 32px",
+      "Future-only art; excluded from normal 23-passive offers"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "hands-on-sight",
@@ -438,7 +682,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "homie-check",
@@ -459,7 +714,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "its-over",
@@ -480,7 +746,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "let-him-cook",
@@ -501,7 +778,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Margin below 12px review threshold; no canvas clipping detected"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "main-character",
@@ -522,7 +812,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "no-cap-streak",
@@ -543,7 +844,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "no-u",
@@ -564,7 +876,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "six-to-seven",
@@ -585,7 +908,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "SVG text/font raster differs in Godot; select exact PNG or obtain outlined SVG"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "so-back",
@@ -606,7 +942,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "take-l",
@@ -627,7 +976,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Future-only art; excluded from normal 23-passive offers"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "terminally-online",
@@ -648,7 +1010,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "thick-skin",
@@ -669,7 +1042,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "timeline",
@@ -690,7 +1074,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "too-sigma",
@@ -711,7 +1106,20 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "uno-reverse",
@@ -732,7 +1140,21 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [
+      "Shield/heart family: check distinction at 32px",
+      "Future-only art; excluded from normal 23-passive offers"
+    ],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "w-squad",
@@ -753,7 +1175,18 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   },
   {
     "id": "w-wifi",
@@ -774,6 +1207,17 @@
       "png": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.png",
       "svg": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.svg"
     },
-    "runtime_integration": false
+    "runtime_integration": false,
+    "source_audit": "docs/art/CLEAN_CUT_ICON_AUDIT.json",
+    "source_review_32px": true,
+    "source_review_64px": true,
+    "source_review_256px": true,
+    "technical_findings": [],
+    "selected_version": null,
+    "creator_approval": "PENDING",
+    "approval_reference": null,
+    "godot_import_verified": false,
+    "ui_integration": false,
+    "browser_export_verified": false
   }
 ]
