@@ -1,0 +1,110 @@
+name: Survival Strategy Telemetry
+
+# Bounded, diagnostic-only acceptance observations; not a release balance gate.
+# Runs automatically only when this workflow is introduced/edited, or manually.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/survival-telemetry.yml
+  workflow_dispatch:
+    inputs:
+      seed:
+        description: Deterministic Phaser RNG seed for all three solo starters
+        required: false
+        default: "451"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: survival-telemetry-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ordinary-health-review:
+    name: ordinary-health-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - name: Checkout game
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Install approved Godot version
+        uses: chickensoft-games/setup-godot@f166999204a4f2722c6fe042fbaa3b3ea0d9c789 # v2.4.1
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: false
+          cache: true
+
+      - name: Restore approved original art and import resources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/sync_approved_assets.py
+          godot --headless --path . --import
+
+      - name: Run one bounded normal-health observation per starter
+        shell: bash
+        env:
+          SEED: ${{ github.event.inputs.seed || '451' }}
+        run: |
+          set -euo pipefail
+          mkdir -p strategic-observations
+          for hero in 0 1 2; do
+            label=("sigma" "cool-kid" "alpha")
+            name="${label[hero]}"
+            echo "::group::${name} seed ${SEED}"
+            code=0
+            timeout 210s godot --headless --path . --script res://tests/review_unprotected_run.gd -- "${hero}" "${SEED}" --strategic >"strategic-observations/${name}.log" 2>&1 || code=$?
+            if grep -q '^UNPROTECTED RESULT ' "strategic-observations/${name}.log"; then
+              grep '^UNPROTECTED RESULT ' "strategic-observations/${name}.log" | tail -1
+            else
+              echo "INCOMPLETE ${name}: no finished result before exit ${code} / 210-second limit"
+              tail -n 28 "strategic-observations/${name}.log"
+            fi
+            echo "::endgroup::"
+          done
+
+      - name: Summarize results without treating a test runner as a human player
+        shell: bash
+        env:
+          SEED: ${{ github.event.inputs.seed || '451' }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          results = []
+          print("Ordinary-health strategic policy, seed",os.environ.get("SEED","451"))
+          for hero in ("sigma","cool-kid","alpha"):
+              log = Path("strategic-observations") / f"{hero}.log"
+              raw = [line.split("UNPROTECTED RESULT ",1)[1] for line in log.read_text().splitlines() if "UNPROTECTED RESULT " in line]
+              if not raw:
+                  print(f"INCOMPLETE: {hero}; no finished run line")
+                  results.append((hero,None))
+                  continue
+              result = json.loads(raw[-1])
+              print(json.dumps({field:result.get(field) for field in ("hero","seed","controller","mode","seconds","level","hp","kills","boss","healing","recovery","station_uses","signature_metrics","goal_frames")},sort_keys=True))
+              results.append((hero,result))
+          summary = [
+              "## Strategic unprotected survival observation",
+              "",
+              "Observations only: headless AI controller, no grants or gameplay-value changes.",
+              f"Seed: {os.environ.get('SEED','451')}. Baseline: docs/V5_SURVIVAL_RUNS.json.",
+              "",
+              "| Hero | Outcome | Active seconds | Boss reached | Level |",
+              "|---|---|---:|---|---:|",
+          ]
+          for hero,result in results:
+              if result is None:
+                  summary.append(f"| {hero} | INCOMPLETE | — | — | — |")
+              else:
+                  summary.append(f"| {hero} | {result['mode']} | {result['seconds']:.2f} | {result['boss']} | {result['level']} |")
+          summary += ["","These scripted observations are not visual FPS tests, human victory rates, or authorization for balance changes."]
+          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("\n".join(summary)+"\n")
+          PY
