@@ -480,6 +480,8 @@ Visão comercial: freemium, seasons, battle pass com moeda de jogo para compras 
 
 ## 16. Arte, interface e acessibilidade
 
+**Production visual authority:** Apply §26 and [the approved Hero Spotlight V5 handoff](art/HERO_SPOTLIGHT_V5.md) to all current Godot screens and UI elements. Annex A Option A Cartoon Arcade defines the original art/actor identities; §26 refines their production composition, typographic system, UI treatment, screen targets and export/acceptance rules. Dynamic labels, timers, skills, drops, balance and content remain controlled by the latest GDD sections, never by illustrative screenshots. Detailed precedence exceptions and rollout gates are in §§26.4–26.7.
+
 Silhuetas reconhecíveis, personagens cartoon originais, objetos que materializam a piada. Não copiar sprites ou personagens das referências. As skins de starter partilham hitbox/timing da arma, sem texto mentir sobre função.
 
 Um ecrã principal e no máximo uma modal. HUD sempre mostra HP, XP/nível da run, wave/relógio, aura/Flex e aviso do boss. Build completa fica em painel secundário. Cartas mostram: tipo, raridade, nível/cap, efeito atual→novo, cadência e slot que substituem. Não chamar a um buff contínuo “ativa de X em X segundos”.
@@ -707,9 +709,67 @@ Source repository: `pedro-ai-coder/aura-farmer`; new repository: `pedro-ai-coder
 - Inspect the launch three heroes in real gameplay; compare boss/wave/telegraph readability and icon shape at actual rendering scale. No bright overlay may obscure a hostile telegraph.
 - The **approval is for art direction and visual iteration**, not an assertion that all V5 exports are already in Godot, that the game has been tested visually, or that a store/release/production deployment is approved. Record actual implementation, visual QA and platform evidence separately.
 
+### 26.4 Explicit Visual Art Bible V5 reconciliation register
+
+The 56-page *Aura Farmer — Production Visual Art Bible V5.0* was authored using an **older gameplay snapshot**. Its illustrations, approved composition, interaction hierarchy and production visual tokens remain binding visual targets. Its old labels, timestamps, ability descriptions and screenshot counters **must not be transcribed as runtime rules**. The following reconciliation list is mandatory for the Godot UI and future visual asset briefs.
+
+| V5 page / scene | Outdated or illustrative V5 content | Required live Godot content and behavior from canonical GDD |
+|---|---|---|
+| **p.2**, read-me / current timing; **p.24–25**, Scene 10 boss; **p.44–45**, Scene 20 berserk | Five 180-second waves, Big Hater at 15:00 and Berserk 180 seconds into the encounter | **§5.3 / §12 / §25:** five **120-second** waves; Big Hater at **10:00**; recoverable Berserk **120 seconds into boss combat (12:00)**; final-effort hint at **14:00**. All counters are data-bound. No hard run expiration. |
+| **p.42–43**, Scene 19 wave transition; **p.10–11**, Scene 03 gameplay HUD | Example wave/time combinations and a 6:00 Wave 3 cue taken from an older simulation | **§5.3 / §12:** wave boundaries **2:00, 4:00, 6:00, 8:00**, event bosses **2:15, 4:15, 6:15, 8:15**, and initial Hater at **1:00**. Only real simulation state supplies banners, labels and clock. |
+| **p.8–9**, Scene 02 hero selection; **p.30–31**, Scene 13 Sigma Flex; **p.32–33**, Scene 14 Cool Kid & Alpha Flex; **p.50**, hero/Flex catalog | Sigma Stare, Cool Kid Giga Chad Rampage, Alpha Hold; prohibition of the then-unapproved §25 finisher | **§7.2 (approved Flex 2.0):** **Deadpan Verdict** for Sigma (6 s target focus and one earned Verdict), **CTRL + CHAOS** for Cool Kid (5 s, six directional keyboard beats and ENTER!), **Giga Chad Rampage** for Alpha (6 s, shield, three slams and capped countershock). Use the current detailed timing/damage/counterplay contract; historical wider Cool Kid Rampage atlas is *not* Alpha's new artwork. |
+| **p.14–15**, Scene 05 legendary; **p.12–13**, Scene 04 normal upgrades | Illustrative item names, levels and offers from the composition, plus potentially outdated legendary window captions | **§§8–10 / §25:** normal choices are **three legal cards**; the legendary displays **three compatible weapons + three legal passive buffs**, one selection per run. Initial/repeat/end times are **6:00 / 8:00 / 9:55**. No added reroll, fourth weapon, sixth passive or second legendary. |
+| **p.40–41**, Scene 18 pickups; **p.48–49**, Scene 22 Safe Spot | Styled XP/Snack/Magnet/zone symbols and example progress counter | **Annex C.2:** Snack **5% normal / 20% elite**, heals **18% max HP**, pickup **56 U**; Magnet **2% / 8%**, pickup **72 U**, collects *existing XP only*; Safe Spot at **(1100,565)**, **68 U** radius, **2 s** charge, **25% max HP** heal, **90 s** active-time cooldown. All visuals reflect actual state; no extra Aura or XP. |
+| **p.50 / p.54 / p.56**, artwork catalog and handoff index | Describes Flex 2.0 or the shorter run as experiment-only; depicts future crate/burst/challenge concepts | **§7.2 / §25:** starter Flex 2.0 kits and 10-minute clock are now approved PvE implementation contracts. **§24 / Annex C.2:** P4–P7 remain isolated prototype-only concepts; P8 remains unapproved. None becomes normal-build gameplay because of visual examples. |
+| **All 22 composites, including victory/defeat pp.20–23** | Illustrative HP, XP, time, kill count, weapons, cards, premium-looking effects or simulated UI states | Actual run/profile values, legal catalog IDs, real pause/result state, and live, accessible Godot UI controls. No hardcoded screenshot counters, simulated rewards, baked click targets or decorative fake rarity. |
+
+**Art direction wins on appearance; the GDD wins on behavior.** Do not edit combat numbers to match V5 example screenshots, move boss events for a visual animation, or reintroduce the outdated Flex names in character selection, HUD, help, saves or result screens. Do not silently modify the approved illustrated style just because an example's label is stale.
+
+### 26.5 Screen implementation order and minimum owner-visible evidence
+
+Treat the V5 page pairs as **specific production compositions**, not as a general style moodboard. All 22 scenes require a traceable **V5 source page → runtime scene → actual capture → discrepancy status** record. Prioritize by real player-flow impact, while preserving correct game state throughout.
+
+| Delivery lane | V5 scenes / PDF composition pages | Minimum visual/functional evidence |
+|---|---|---|
+| **P0 — core shell and choices** | **01** Main Menu (p.6), **02** Hero Selection (p.8), **03** Gameplay/HUD (p.10), **04** Level-up (p.12), **05** Legendary (p.14) | Five side-by-side V5/Godot comparison captures, with real live navigation/offer interactions, selected/disabled/focus states and actual dynamic data. |
+| **P0 — art and combat identity** | **10** Big Hater (p.24), **13–14** the three signature Flexes (pp.30,32), **15** nine weapons (p.34), **16** 28 passives (p.36), **17** enemy roster (p.38), **18** pickups (p.40), **19** wave transition (p.42), **20** berserk transition (p.44), **22** Safe Spot (p.48) | Isolated approved artwork/provenance, sprite/pose/VFX comparisons in real gameplay, all nine weapon silhouettes and the current 23 offered passives readable in the MVP, exact combat-event-linked VFX and the 10/12-minute boss clocks. Full 28 passive icon catalogue is future-art-ready; it does not enable unoffered passives. |
+| **P1 — flows and responsive shell** | **06** Pause (p.16), **07** Settings (p.18), **08–09** Victory/Defeat (pp.20,22), **11** Mobile Landscape (p.26), **12** Build Inspection (p.28), **21** Leave Run Confirmation (p.46) | Working keyboard/mouse/touch paths, paused-state correctness, real result/build values, one-modal rule, mobile safe insets, joystick release, accessible focus and choice navigation. |
+| **P2 — non-MVP catalogue** | Other six hero art briefs, future environments and optional catalog extras (pp.50–54) | Audit/brief only until product and individual asset approvals; no false claim they are playable or present in the solo slice. |
+
+**Priority means implementation order, not permission to ship partial scenes as finished.** Main menu, hero select, HUD, upgrade, legendary, pause, victory/defeat and gameplay must look like the *same authored game*. Build scenes from the §26 tokens and the illustrated V5 references. The target is the **Arcade Street Clean — Hero Spotlight** composition, not a generic AI/dashboard control library with the palette pasted over it.
+
+### 26.6 Asset classification and safe handoff gates
+
+The following classes must be distinguished in manifests, PRs and review notes:
+
+1. **Approved original masters:** the existing Option A portraits, Ruin Alley/map masters, current approved enemy/boss runtime sheets, animation frames and independently approved source assets from the pinned Phaser provenance. Keep source hashes, identity, silhouettes and pivots intact.
+2. **Approved V5 compositions:** 22 full-screen **visual references** with documented elements and layouts, not usable Godot screen sprites and not proof that isolated interactive components exist.
+3. **Candidate V5 standalone art:** nine weapon and 28 passive SVG/PNG illustrations described in the complementary *Visual Production Handoff V5* archive. **Do not assert these binaries are included in the PDF or Godot repository.** Import the actual archive, verify 37 PNG/SVG pairs, their stable content IDs, transparency, manifest/hash provenance and legibility at 32×32/64×64; each new standalone icon remains subject to individual creator sign-off before being labeled an approved shipping master.
+4. **Missing independent exports:** isolated illustrated logo, clean menu plate without baked buttons/text, Flex-specific unique sprite/VFX states, animation exports, component artwork and environment prop overlays may need dedicated production. Record each missing asset and ownership rather than cropping a composite into interactive art or silently generating a different style. Obtain owner approval for newly authored identity-bearing art.
+
+**Fonts:** V5 selects Inter for live UI; the visual PDF does not supply font binaries or grant redistribution rights. Obtain a properly licensed font source and record the integration license. Never transfer font files merely to fill a missing-source gap.
+
+**Godot delivery:** implement with live Controls and Godot resources, reusable theme/tokens, authentic world sprites and simulation-driven signals. Attach source filenames, hashes/manifest entries, source approval status and a 32/64-pixel review sheet for icons. Do not mutate gameplay RNG, camera physics, hitboxes, XP, Aura, save schema, or scene logic solely to achieve visual parity.
+
+### 26.7 Cross-platform visual completion gate
+
+The V5 review is not complete until:
+
+- A **22-row visual-parity matrix** links the illustration, current Godot screenshot, implementation commit, discrepancies, asset status and visual reviewer decision for every scene.
+- All **P0 player-facing flows** are interactive (not decorative): main menu → three-hero selection → run → upgrades/legendary/pause/quit/build → real boss/win/loss outcome; no overlapping UI or dead buttons.
+- Actual **1600×900, 1280×720, 1920×1080** captures and representative small-landscape and portrait/fallback screenshots are compared to V5 framing. Responsive layouts use anchors/containers and at least approximately **48 px functional touch targets**, while respecting safe areas and keeping readable labels.
+- Real game-state screenshots and video demonstrate **Deadpan Verdict / CTRL + CHAOS / Giga Chad Rampage** using current §7.2 timing, correct approved recovery objects, event warnings, cinematic feedback that does not obscure hitboxes, and the **10:00/12:00** boss/Berserk clock.
+- All relevant automated checks, rendered-input/browser smoke tests, normal-health full runs, signed-off approved-asset provenance, paused/modal lifecycle and reproducible performance observations are recorded separately. **A CI pass or Vercel READY state is not a visual acceptance or balance sign-off.**
+- Web, Android and iOS have **separate evidence gates** under §23. A tested browser layout, desktop simulator or emulator does not prove physical-device FPS, touch safe areas, native exports or app-store readiness.
+- New art, icon candidates and final artistic acceptance require **owner review**; performance, visual comparison, asset readiness, simulated full runs and genuine human playtests are distinct checkboxes. If a V5 source export or device is missing, explicitly mark that gate blocked and continue independent approved work.
+
+**Execution handoff:** [Hero Spotlight V5 Godot Work Plan](WORK_HERO_SPOTLIGHT_V5_PLAN.md) sequences the implementation without changing these authoritative GDD contracts.
+
 # Anexo A — Identidade visual e contrato de produção
 
 ## A.1 Direção artística definitiva — opção A, Cartoon Arcade
+
+**Production refinement (23 October 2026):** The approved **Arcade Street Clean — Hero Spotlight** system from §26 / Visual Art Bible V5 is the live screen-composition, UI-font, component, icon-family and layout target. The original **Option A Cartoon Arcade** illustration remains the unchanged actor/environment identity baseline; both approvals are complementary, not competing alternatives. This clarification overrides older exploratory font/UI style references below only where they conflict with §26. Gameplay and timings remain governed by §§2–12, 23 and 25, and the current approved recovery/Flex contracts.
 
 **Escolha do criador em 14 outubro 2026: opção A — CARTOON ARCADE, para personagens, inimigos, mapas, menus e lettering.** Esta escolha é a referência principal e substitui a imagem de combate anterior enquanto alvo de acabamento. As opções B e C são alternativas não selecionadas; a sugestão de misturar personagens A com mapas C não foi adotada.
 
