@@ -17,14 +17,14 @@ func _capture() -> void:
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
+    for state in ["menu","character","playing","mobile","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
             if state == "character":
                 game.presentation.open_heroes()
                 game.presentation.select_hero(1)
-        elif state in ["playing","obstacles","recovery","station"]:
+        elif state in ["playing","mobile","obstacles","recovery","station"]:
             game.player_pos = Vector2(850,565)
             game.pickups.append({"kind":"snack","pos":Vector2(780,580),"xp":0.0})
             game.pickups.append({"kind":"magnet","pos":Vector2(930,580),"xp":0.0})

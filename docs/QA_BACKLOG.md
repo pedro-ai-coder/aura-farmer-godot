@@ -57,3 +57,7 @@ Current visual execution and isolated export blockers are tracked in [art/V5_PAR
 G3.2 separates home and hero selection and preserves explicit START/focus/safe viewport behavior. Existing approved portraits are retained; text heading does not claim completion of the missing illustrated logo. Compact selection can scroll cards while its actions remain pinned. See the V5 tracker for actual captures and remaining card/HUD/secondary-screen gaps.
 
 G3.4 splits compact Pause from Build/Settings, fixes in-run Settings return and protects active runs from profile-transfer navigation. Real result values, hero portraits, master gain and STAY/QUIT are tested; see V5 captures. The 3+5 inspector remains text/glyph-based pending signed icon exports. Fine-grained settings tabs/audio buses, device/browser tests and final artistic acceptance are not complete.
+
+## V5 acceptance checkpoint — 23 October 2026
+
+PRs #46/#47/#48/#50/#51 integrated; 38 local validation phases pass. Fresh-boot and focused-card keyboard regressions fixed. See [V5_ACCEPTANCE_STATUS.md](V5_ACCEPTANCE_STATUS.md) for eight failed normal-health boss-reachability observations, software-render performance, staged review evidence and restart priorities. Asset issue #49 and balance issue #52 remain open. No full visual/device acceptance or gameplay-value change is implied.

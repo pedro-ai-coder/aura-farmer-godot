@@ -3,11 +3,40 @@ extends SceneTree
 # Autonomous acceptance controller: no invulnerability, clock jumps, XP or damage grants.
 class AuditedRun extends "res://scripts/solo_run.gd":
     var audit_damage := false
+    var damage_sources: Dictionary = {}
+    var last_hit: Dictionary = {}
+    var wave_observations: Array = []
+    var boss_snapshot: Dictionary = {}
+    func start_run(index: int) -> void:
+        damage_sources.clear()
+        last_hit.clear()
+        wave_observations.clear()
+        boss_snapshot.clear()
+        super.start_run(index)
+    func _advance(dt: float) -> void:
+        var previous_wave := wave
+        super._advance(dt)
+        if wave != previous_wave:
+            wave_observations.append({"wave":wave,"time":run_time,"hp":hp,"level":level,"xp_collected":total_xp,"active_enemies":enemies.size()})
+        if boss_spawned and boss_snapshot.is_empty():
+            boss_snapshot = {"time":run_time,"hp":hp,"level":level,"weapons":weapons.duplicate(true),"passives":passives.duplicate(true)}
     func _load_profile() -> void: profile = ProfileStoreScript.defaults()
     func _save_profile() -> void: pass
     func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: bool = false, hazard: bool = false) -> void:
         var before := hp
+        var shield_before: float = run_metrics["protection"]
         super._deal_damage_to_player(amount,source,contact,hazard)
+        var hp_lost := maxf(0.0,before-hp)
+        var shield_lost := maxf(0.0,float(run_metrics["protection"])-shield_before)
+        if hp_lost+shield_lost > 0.0:
+            var category := "hazard" if hazard else "contact" if contact else "direct"
+            var key := "%s/%s" % [source.get("kind","unknown"),category]
+            var entry: Dictionary = damage_sources.get(key,{"hp":0.0,"shield":0.0,"events":0})
+            entry["hp"] = float(entry["hp"])+hp_lost
+            entry["shield"] = float(entry["shield"])+shield_lost
+            entry["events"] = int(entry["events"])+1
+            damage_sources[key] = entry
+            last_hit = {"source":key,"time":run_time,"hp":hp_lost,"shield":shield_lost,"wave":wave}
         if audit_damage and hp < before: print("DAMAGE ",run_time," ",source.get("kind","unknown")," ",before-hp," contact=",contact," pos=",player_pos)
 
 func _initialize() -> void: call_deferred("_run")
@@ -97,11 +126,16 @@ func _run() -> void:
                     if game.SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"] and game.player_pos.distance_to(enemy["pos"]) < 590 and game.SoloWorldRulesScript.clear_line(game.player_pos,enemy["pos"]): priority = enemy
                 game.manual_aim = game.hero["role"] == "ranged" and not priority.is_empty()
                 if game.manual_aim: game.aim_point = priority["pos"]
+                if args.has("--aim-flex") and (game.flex_time > 0 or game.aura >= 100):
+                    var flex_target: Dictionary = game._nearest_target(600)
+                    if not flex_target.is_empty():
+                        game.manual_aim = true
+                        game.aim_point = flex_target["pos"]
                 game.touch_direction = movement
                 if game.aura >= 100: game._use_flex()
                 game._process(0.1)
                 minimum_hp = minf(minimum_hp,game.hp)
             else: break
-        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
+        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"controller":"aim-flex" if args.has("--aim-flex") else "avoidance","damage_sources":game.damage_sources,"last_hit":game.last_hit,"waves":game.wave_observations,"boss_snapshot":game.boss_snapshot,"xp_collected":game.total_xp,"xp_on_ground":game.pickups.reduce(func(total,drop):return total+float(drop.get("xp",0)),0.0),"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
     game.queue_free()
     quit()
