@@ -17,7 +17,7 @@ func _capture() -> void:
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
+    for state in ["menu","character","playing","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
@@ -77,6 +77,7 @@ func _capture() -> void:
         elif state == "legendary":
             game.run_time = 360.0
             game._open_legendary()
+        elif state == "build": game.presentation.open_build()
         elif state == "paused": game._toggle_pause()
         elif state == "won" or state == "lost": game._finish(state == "won")
         game._show_ui()

@@ -178,3 +178,7 @@ Follows integrated PR #47. Replaces the combined raster home/hero picker with se
 ## G3.3 — compact HUD, boss plates and wave/Berserk feedback
 
 Follows integrated PR #48. Independent navy HUD plates, readiness-state styling, silhouette-aware boss placement and canonical countdown now use real state. Transition banners consume no gameplay RNG and use active time, hostile-warning priority and restart cleanup. The V5 tracker includes real HUD/boss/transition/three-Flex snapshots, with staged-fixture and missing-art limits. No gameplay numbers, navigation, camera physics, save schema or Phaser changes. Secondary overlays and balance diagnostics remain the next independent work.
+
+## G3.4 — secondary screens and persisted master gain
+
+Follows integrated PR #50. Compact pause, separate build inspection, return-to-pause settings, safe profile-transfer visibility, explicit STAY/QUIT and hero-led real results are implemented. Master gain is a compatible optional v2 preference, clamped/tested and debounced; gameplay and save IDs/format remain unchanged. Native desktop/compact/portrait evidence and remaining art/audio/device gates are in the V5 tracker. Full 37-phase local suite passes. Next independent work: survival source telemetry, rendered profile reporting and remaining acceptance diagnostics, while isolated art is blocked by issue #49.

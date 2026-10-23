@@ -12,7 +12,7 @@ func _verify() -> void:
         root.size = physical
         ui._window_changed(true)
         game.touch_device = physical.x < 1000
-        for state in ["menu","options","playing","legendary","paused","won","lost","profile_import"]:
+        for state in ["menu","options","playing","legendary","paused","build","won","lost","profile_import"]:
             game.start_run(0)
             if state == "menu": game._return_to_menu()
             elif state == "legendary":
@@ -30,7 +30,7 @@ func _verify() -> void:
                 _expect(bounds.encloses(button.get_global_rect()),"Essential actions remain inside useful viewport: %s %s %s" % [physical,state,button.text])
                 var scale: float = float(physical.y)/ui.full_view.y
                 _expect(button.size.y*scale >= 44.0-0.5,"Touch targets remain at least 44 physical pixels")
-            if state == "paused":
+            if state == "build":
                 _expect(not game.build_details.visible and ui.equipment_board.visible,"Pause uses equipment slots rather than text rows")
                 _expect(ui.equipment_slots.size() == 8,"Pause preserves three weapon and five passive slots")
                 _expect(ui.body_content.size.y >= ui.equipment_board.size.y,"Every equipment slot is reachable inside the scroll panel")
