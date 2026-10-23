@@ -39,6 +39,8 @@ run_check() {
 
 bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
+python3 scripts/promote_approved_icons.py
+python3 -m unittest discover -s tests -p test_icon_pipeline.py
 run_check import --headless --path . --import
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
 run_check card-keyboard --headless --path . --script res://tests/test_card_keyboard.gd
@@ -70,6 +72,7 @@ run_check ranged-sources --headless --path . --script res://tests/test_ranged_so
 run_check bestiary --headless --path . --script res://tests/test_enemy_patterns.gd
 run_check ruin-alley --headless --path . --script res://tests/test_solo_world_rules.gd
 run_check passive-effects --headless --path . --script res://tests/test_passive_effects.gd
+run_check icon-registry --headless --path . --script res://tests/test_icon_registry.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
 run_check legendary-combat --headless --path . --script res://tests/test_legendary_combat.gd

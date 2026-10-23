@@ -29,7 +29,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "brainrot-feed",
@@ -61,7 +64,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "chad-hands",
@@ -93,7 +99,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "cope-shield",
@@ -127,7 +136,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "keyboard-warrior",
@@ -159,7 +171,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "no-cap",
@@ -191,7 +206,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "personal-space",
@@ -225,7 +243,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "ratio-blaster",
@@ -257,7 +278,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "touch-grass",
@@ -289,7 +313,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "absolute-cinema",
@@ -321,7 +348,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "aura-viral",
@@ -353,7 +383,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "big-chad",
@@ -387,7 +420,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "big-meme",
@@ -419,7 +455,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "brainrot-rain",
@@ -453,7 +492,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "built-different",
@@ -487,7 +529,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "caught-4k",
@@ -521,7 +566,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "certified-w",
@@ -556,7 +604,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "cope-harder",
@@ -590,7 +641,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "ego-check",
@@ -626,7 +680,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "get-ratiod",
@@ -661,7 +718,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "hands-on-sight",
@@ -693,7 +753,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "homie-check",
@@ -725,7 +788,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "its-over",
@@ -757,7 +823,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "let-him-cook",
@@ -791,7 +860,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "main-character",
@@ -823,7 +895,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "no-cap-streak",
@@ -855,7 +930,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "no-u",
@@ -887,7 +965,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "six-to-seven",
@@ -921,7 +1002,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "so-back",
@@ -955,7 +1039,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "take-l",
@@ -989,7 +1076,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "terminally-online",
@@ -1021,7 +1111,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "thick-skin",
@@ -1053,7 +1146,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "timeline",
@@ -1085,7 +1181,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "too-sigma",
@@ -1119,7 +1218,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "uno-reverse",
@@ -1154,7 +1256,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "w-squad",
@@ -1186,7 +1291,10 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   },
   {
     "id": "w-wifi",
@@ -1218,6 +1326,9 @@
     "approval_reference": null,
     "godot_import_verified": false,
     "ui_integration": false,
-    "browser_export_verified": false
+    "browser_export_verified": false,
+    "registry_binding_prepared": true,
+    "runtime_manifest": "assets/runtime-icons/manifest.json",
+    "runtime_resource": null
   }
 ]

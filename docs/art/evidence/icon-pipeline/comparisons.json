@@ -1,0 +1,888 @@
+{
+  "baseline_commit": "f98f0a951a0945f2978c01c163e2ebf6998c30db",
+  "source": "Actual Godot 4.7.2 Compatibility llvmpipe/Xvfb; staged legal UI; zero candidate activations",
+  "captures": [
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "choice"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice_selected-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "choice_selected"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "legendary"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary_selected-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "legendary_selected"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_empty-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "build_empty"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_full-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "build_full"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "replacement-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "replacement"
+    },
+    {
+      "actual_pixels": [
+        1600,
+        900
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "hud-1600x900.jpg",
+      "requested_pixels": [
+        1600,
+        900
+      ],
+      "state": "hud"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "choice"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice_selected-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "choice_selected"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "legendary"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary_selected-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "legendary_selected"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_empty-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "build_empty"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_full-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "build_full"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "replacement-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "replacement"
+    },
+    {
+      "actual_pixels": [
+        1280,
+        720
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "hud-1280x720.jpg",
+      "requested_pixels": [
+        1280,
+        720
+      ],
+      "state": "hud"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "choice"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice_selected-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "choice_selected"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "legendary"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary_selected-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "legendary_selected"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_empty-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "build_empty"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_full-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "build_full"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "replacement-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "replacement"
+    },
+    {
+      "actual_pixels": [
+        1920,
+        1080
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "hud-1920x1080.jpg",
+      "requested_pixels": [
+        1920,
+        1080
+      ],
+      "state": "hud"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "choice"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice_selected-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "choice_selected"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "legendary"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary_selected-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "legendary_selected"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_empty-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "build_empty"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_full-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "build_full"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "replacement-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "replacement"
+    },
+    {
+      "actual_pixels": [
+        915,
+        411
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "hud-915x412.jpg",
+      "requested_pixels": [
+        915,
+        412
+      ],
+      "state": "hud"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "choice"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "choice_selected-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "choice_selected"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "legendary"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "legendary_selected-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "legendary_selected"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_empty-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "build_empty"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "build_full-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "build_full"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "replacement-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "replacement"
+    },
+    {
+      "actual_pixels": [
+        390,
+        843
+      ],
+      "approved_icons": 0,
+      "candidate_art_activated": false,
+      "file": "hud-390x844.jpg",
+      "requested_pixels": [
+        390,
+        844
+      ],
+      "state": "hud"
+    }
+  ],
+  "comparisons": [
+    {
+      "file": "build_empty-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_empty-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_empty-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_empty-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_empty-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_full-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_full-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_full-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_full-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "build_full-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice_selected-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice_selected-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice_selected-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice_selected-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "choice_selected-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "hud-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "hud-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "hud-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "hud-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "hud-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary_selected-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary_selected-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary_selected-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary_selected-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "legendary_selected-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "replacement-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "replacement-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "replacement-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "replacement-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "fallback_pixel_equal": true
+    },
+    {
+      "file": "replacement-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "fallback_pixel_equal": true
+    }
+  ]
+}

@@ -11,3 +11,8 @@ The first production art pass includes Ruin Alley, the approved menu image, thre
 All visual layers must be passive: never advance RNG or gameplay in draw or presentation methods. Preserve world collision radii and timers; textures must not affect hitboxes. If a hash is wrong or a source URL is unavailable the production build must fail rather than silently fall back to generated art.
 
 **Known limits:** approved enemy sprite atlas animation reconstruction and exact hero art masking require a follow-up comparison against Phaser. Source graphics have not been visually reapproved on real mobile hardware by this PR; this is an integration of the existing approved files. The GDD's art acceptance criteria remain binding.
+
+
+## G4.1 approved icon pipeline and safe live bindings
+
+The source audit is integrated through #64. A separate approval ledger, immutable hashed PNG promotion, category-aware cached registry and automatic actual-PCK export guard now prepare live offer/legendary/replacement, build and HUD bindings. Eleven Python regressions and a Godot registry phase supplement the existing suite. All 40 actual before/after fallback captures are pixel-identical; compact viewport one-pixel rounding is recorded. See `docs/art/APPROVED_ICON_PIPELINE.md`. Counts remain 37 audited, 0 creator-approved, 0 promoted, 0 illustrated items accepted in live UI. Creator decisions, approved-icon visual/performance evidence and device/browser gates remain pending; gameplay/23-passive scope are unchanged.
