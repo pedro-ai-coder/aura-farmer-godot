@@ -1,15 +1,18 @@
 {
   "sigma": {
     "name": "The Sigma",
-    "description": "Lock onto one rival. Pierce the crowd. Never lose eye contact."
+    "description": "Precision and a single marked priority target.",
+    "flex_help": "Hit the mark with three weapon attacks to trigger one Verdict. Requires an eligible target."
   },
   "cool-kid": {
     "name": "Cool Kid",
-    "description": "Keep moving to hit harder. Rampage through ordinary mobs."
+    "description": "Mobile melee with aimed keyboard combos.",
+    "flex_help": "Aim six keyboard beats, then land the directional ENTER! finisher. Move faster; projectiles and hazards still hurt."
   },
   "alpha": {
     "name": "Alpha Chad",
-    "description": "Take the hit. Hold your ground. Answer with three heavy slams."
+    "description": "Shielded frontline with slams and a countershock.",
+    "flex_help": "Gain a shield, draw nearby mobs and land three slams. Finish with a countershock powered by absorbed shield damage."
   },
   "ratio-blaster": {
     "name": "Ratio Blaster",

@@ -27,7 +27,7 @@ Latest QA fixes reproduce and repair two real failures: fresh HEROES/Settings co
 
 ## Normal-health survival
 
-Eight deterministic observations without HP/Aura/level grants or early boss spawning. Raw source damage, recovery, XP and wave observations: [V5_SURVIVAL_RUNS.json](V5_SURVIVAL_RUNS.json). All ended in defeat before Big Hater.
+Eight deterministic observations without HP/Aura/level grants or early boss spawning. Raw source damage, recovery, XP and wave observations: [V5_SURVIVAL_RUNS.json](V5_SURVIVAL_RUNS.json). All eight historical avoidance/aim-controller observations ended in defeat before Big Hater. Later #55/#56 strategic-controller trials supersede any categorical boss-unreachability claim; see the update below.
 
 | Hero | Seed | Controller | Survival seconds | Level | Kills |
 | --- | ---: | --- | ---: | ---: | ---: |
@@ -73,3 +73,9 @@ Phases 0–2 and 4 have integrated engineering increments; illustrated completen
 ## G3.6 follow-up
 
 The reattached PDF is available again and matches the prior hash. The live offer-card hierarchy now has direct [V5 comparison evidence](art/V5_PARITY.md#g36--live-offer-card-composition), desktop/compact/portrait captures and longest-text coverage; all 38 local phases pass. Illustrations still require the separate signed handoff archive. This improves phase 2 without changing offer ordering, RNG, combat or balance acceptance. Production #53 was independently verified at commit `059e78dd2e468e79043dd6b34e4ca727fa6b6ce1` before this increment.
+
+## Current upstream survival evidence and G3.7
+
+While the signature-help increment was in progress, #55/#56 integrated a review-only strategic controller and six raw normal-health trials. The [strategic evidence report](SURVIVAL_STRATEGIC_EVIDENCE.md) records Sigma seed 451 winning at 674.72 s, Alpha seed 452 entering the boss and losing at 810.82 s after Berserk, and four defeats before boss. Cool Kid reached neither boss in these two seeds. These are legal scripted strategy observations, not human win-rate or overall balance acceptance. No approved gameplay statistics changed. Issue #52 remains open.
+
+Hero selection now exposes concise current §7.2 Flex help on all three cards, with authoritative names/durations and original identities; obsolete Cool Kid Rampage copy is removed. [Native viewport evidence](art/V5_PARITY.md#g37--current-signature-explanations) includes compact scrolling and fixed START/BACK. The complete 39-phase local Godot validation suite passes against upstream `3c963bf034cb332bc3fb90cb64a5131a2c7c4937`; required CI and owner/device/art gates remain distinct. Signed standalone artwork remains the next art dependency (#49).

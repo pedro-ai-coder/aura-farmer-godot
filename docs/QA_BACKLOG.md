@@ -65,3 +65,9 @@ PRs #46/#47/#48/#50/#51 integrated; 38 local validation phases pass. Fresh-boot 
 ## G3.6 — offer-card hierarchy
 
 Reattached canonical PDF verified against the audit hash. Implemented reusable live rarity/icon/name/category/effect/comparison card hierarchy and compact landscape layout; preserved all existing legal offer data/order and simulation. Fixed initial wrapped-text sizing and longest-description overlaps; local 38-phase Godot validation passes. Actual desktop/compact/portrait evidence and remaining differences are in [V5_PARITY.md](art/V5_PARITY.md#g36--live-offer-card-composition). Signed illustrations remain blocked by #49; balance #52 and physical-device acceptance remain open.
+
+## G3.7 — current signature help and upstream reconciliation
+
+Added live GDD §7.2 Flex explanations to all three real hero cards, kept authoritative names/durations and original portraits, and removed obsolete Cool Kid Rampage copy. Compact/portrait scrolling retains fixed START/BACK; native evidence is in [V5_PARITY.md](art/V5_PARITY.md#g37--current-signature-explanations). Local targeted navigation and all 39 local validation phases passed after incorporating upstream #55/#56 (`3c963bf`).
+
+The later [six-run strategic evidence](SURVIVAL_STRATEGIC_EVIDENCE.md) includes a Sigma victory and an Alpha boss entry. Historical avoidance failures remain valid but are not the complete current acceptance record. #52 still requires broader and human validation; #49 still blocks signed standalone illustration exports. No gameplay-value changes or owner/device acceptance are implied.

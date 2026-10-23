@@ -86,7 +86,7 @@ func install(owner_game, owner_presenter) -> void:
     for i in range(3):
         var button: Button = game.menu_buttons[i]
         button.reparent(grid)
-        button.custom_minimum_size = Vector2(0,420)
+        button.custom_minimum_size = Vector2(0,480)
         button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
         var margin_card := MarginContainer.new()
         margin_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -111,7 +111,7 @@ func install(owner_game, owner_presenter) -> void:
             label.text = str(game.HEROES[i]["name"] if part == "name" else game.HEROES[i]["role"]).to_upper()
         var summary := UI.label("","body",17)
         summary.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-        summary.custom_minimum_size.y = 68
+        summary.custom_minimum_size.y = 152
         card.add_child(summary)
         summaries.append(summary)
     var actions := HBoxContainer.new()
@@ -161,7 +161,9 @@ func refresh(view: Vector2) -> void:
         for part in ["name","role"]: presenter.hero_labels[i][part].add_theme_color_override("font_color",Style.CARD)
         summaries[i].add_theme_color_override("font_color",Style.CARD)
         var definition: Dictionary = game.HEROES[i]
-        summaries[i].text = "%s\n%s" % [game.WEAPONS[definition["starter"]]["name"],definition["flex"]]
+        var help: String = presenter.catalog.get(definition["id"],{}).get("flex_help","")
+        summaries[i].text = "%s\n%s / %.0fs\n\n%s" % [game.WEAPONS[definition["starter"]]["name"],definition["flex"],float(definition["duration"]),help]
+        button.tooltip_text = "%s / %s\n%s\n100 Aura / 30s minimum between activations" % [definition["name"],definition["flex"],help]
     selection_caption.text = "%s SELECTED  /  %s" % [str(game.HEROES[game.hero_index]["name"]),str(game.HEROES[game.hero_index]["role"]).to_upper()]
     queue_redraw()
 
