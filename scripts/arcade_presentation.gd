@@ -2,6 +2,7 @@ class_name ArcadePresentation
 extends Control
 
 ## Reusable responsive presentation. Never advances simulation or consumes gameplay RNG.
+const Components = preload("res://scripts/spotlight_components.gd")
 const ArcadeStyle = preload("res://scripts/arcade_theme.gd")
 var game
 var catalog: Dictionary = {}
@@ -106,11 +107,7 @@ func _label(font_size: int) -> Label:
     var label := Label.new()
     label.add_theme_font_size_override("font_size",font_size)
     label.add_theme_color_override("font_color",ArcadeStyle.INK)
-    if font_size >= 30:
-        var bold := FontVariation.new()
-        bold.base_font = ThemeDB.fallback_font
-        bold.variation_embolden = 1.0
-        label.add_theme_font_override("font",bold)
+    label.add_theme_font_override("font",ArcadeStyle.font("display" if font_size >= 30 else "body"))
     label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(label)
     return label
@@ -121,8 +118,7 @@ func _inside_label(parent: Control, font_size: int) -> Label:
     return label
 
 func _button(text: String, action: Callable) -> Button:
-    var button := Button.new()
-    button.text = text
+    var button := Components.action(text)
     button.pressed.connect(action)
     add_child(button)
     ArcadeStyle.button(button)
@@ -170,6 +166,7 @@ func pump() -> void:
 func _place(control: Control, rect: Rect2) -> void:
     control.position = rect.position
     control.size = rect.size
+    if control is Button and not game.offer_buttons.has(control) and not game.menu_buttons.has(control): control.size.y = maxf(64,rect.size.y)
     if control is Label: control.set_deferred("size",rect.size)
 
 func refresh(force: bool = false) -> void:
@@ -242,7 +239,7 @@ func refresh(force: bool = false) -> void:
             button.visible = true
             button.text = ""
             _place(button,Rect2(menu_panel.position.x+22+i*(card_width+gap),card_y,card_width,card_height))
-            ArcadeStyle.button(button,i==game.hero_index)
+            ArcadeStyle.card(button,i==game.hero_index)
             var portrait_image: TextureRect = game.hero_portraits[i]
             portrait_image.visible = true
             _place(portrait_image,Rect2(7,10,card_width-14,maxf(70,card_height-75)))
@@ -340,6 +337,7 @@ func _cards(rect: Rect2) -> void:
     var width := (rect.size.x-12.0-gap*(columns-1))/columns
     var desktop_grid := columns == 3 and rect.size.y >= 440.0
     var height := minf(224,(rect.size.y-gap)/2.0) if game.mode == "legendary" and desktop_grid else (280.0 if game.mode == "legendary" else (330.0 if columns >= 2 else 360.0))
+    if game.mode != "legendary" and columns >= 2 and rect.size.y >= 260.0: height = minf(height,rect.size.y)
     var rows := ceili(float(items.size())/columns)
     card_content.custom_minimum_size = Vector2(rect.size.x-12,rows*height+maxi(0,rows-1)*gap)
     card_content.size = card_content.custom_minimum_size
@@ -369,12 +367,13 @@ func _cards(rect: Rect2) -> void:
                     rarity = equipped["rarity"]
                     level_value = int(equipped["level"])
         var color: Color = ArcadeStyle.RARITY.get(rarity,ArcadeStyle.INK)
-        ArcadeStyle.button(button,i==game.selected_card_index,color)
+        ArcadeStyle.card(button,i==game.selected_card_index,color)
         var parts: Dictionary = card_parts[i]
         parts["icon"].text = data.get("icon","+")
         _place(parts["icon"],Rect2(18,10,50,42))
         parts["meta"].text = "%s  ·  LV %d/%d" % [rarity.to_upper(),level_value,int(game.CAP_LEVELS.get(rarity,1))]
         _place(parts["meta"],Rect2(72,19,width-90,26))
+        parts["name"].add_theme_font_override("font",ArcadeStyle.BLACK)
         parts["name"].text = data.get("name",id)
         _place(parts["name"],Rect2(18,53,width-36,40))
         parts["body"].text = data.get("legendary_description",data.get("description","")) if rarity == "legendary" else data.get("description","")
@@ -396,7 +395,8 @@ func _cards(rect: Rect2) -> void:
         _place(parts["state"],Rect2(18,height-33,width-36,25))
         button.tooltip_text = str(data.get("description",""))
     if game.selected_card_index != last_selected and game.selected_card_index >= 0:
-        card_scroll.call_deferred("ensure_control_visible",game.offer_buttons[game.selected_card_index])
+        # Top-align oversized cards so focus never scrolls their name/rarity out of view.
+        card_scroll.set_deferred("scroll_vertical",int(game.offer_buttons[game.selected_card_index].position.y))
     last_selected = game.selected_card_index
 
 func _equipment(width: float) -> float:
@@ -437,13 +437,13 @@ func _panel(rect: Rect2, fill: Color = ArcadeStyle.PAPER) -> void:
     draw_style_box(ArcadeStyle.box(fill),rect)
 
 func _text(at: Vector2, text: String, font_size: int = 18, color: Color = ArcadeStyle.INK) -> void:
-    draw_string(ThemeDB.fallback_font,at,text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,color)
+    draw_string(ArcadeStyle.NUMBERS,at,text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,color)
 
 func _bar(rect: Rect2, value: float, maximum: float, color: Color, caption: String) -> void:
     draw_style_box(ArcadeStyle.box(ArcadeStyle.INK,ArcadeStyle.INK,7,0),rect)
     var fill := Rect2(rect.position+Vector2(3,3),Vector2((rect.size.x-6)*clampf(value/maxf(maximum,1),0,1),rect.size.y-6))
     if fill.size.x > 0: draw_style_box(ArcadeStyle.box(color,color,4,0),fill)
-    draw_string_outline(ThemeDB.fallback_font,rect.position+Vector2(9,rect.size.y-7),caption,HORIZONTAL_ALIGNMENT_LEFT,-1,17,3,ArcadeStyle.INK)
+    draw_string_outline(ArcadeStyle.NUMBERS,rect.position+Vector2(9,rect.size.y-7),caption,HORIZONTAL_ALIGNMENT_LEFT,-1,17,3,ArcadeStyle.INK)
     _text(rect.position+Vector2(9,rect.size.y-7),caption,17,ArcadeStyle.CARD)
 
 func _draw() -> void:

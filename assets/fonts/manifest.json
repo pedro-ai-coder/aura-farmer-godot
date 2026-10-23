@@ -1,0 +1,32 @@
+{
+  "source": "https://raw.githubusercontent.com/google/fonts/0b58fb370093f9a9f4ff785d94405710b79de67c/ofl/inter/",
+  "source_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+  "license": "SIL Open Font License 1.1",
+  "derivation": "Static weight/optical-size instances with Latin, punctuation and UI arrow/check subset; no outlines redrawn. Uncovered symbols use engine fallback.",
+  "files": [
+    {
+      "path": "Inter-Body.ttf",
+      "weight": 500,
+      "optical_size": 14,
+      "sha256": "467cbafe6c3600c1fa65977ac94a10c000861feb606a71dbf55f4319077b6293"
+    },
+    {
+      "path": "Inter-Numbers.ttf",
+      "weight": 600,
+      "optical_size": 14,
+      "sha256": "9d87b8a46bf81e8b400ccb45ab1a08a03e6c37d770cc3559f1f6a40bc1cb60ac"
+    },
+    {
+      "path": "Inter-Black.ttf",
+      "weight": 900,
+      "optical_size": 14,
+      "sha256": "ff80f3cdac721a52e3e6564e0a577f739310e2e4d7bc0d226c6f0938465d2ce5"
+    },
+    {
+      "path": "Inter-Display.ttf",
+      "weight": 900,
+      "optical_size": 32,
+      "sha256": "f6a634580c84fa1c12b5d71a965da1fd8af05614a8ebbd22ae2f1d73ec7294d5"
+    }
+  ]
+}

@@ -166,3 +166,7 @@ All 32 local Godot phases and Node tests pass, and an official Web export loads 
 ## G3.0 — V5 audit, 23 October 2026
 
 Audited current main `c73624d`, no open PRs, complete GDD and mandatory production plan; examined all 22 actual PDF compositions. Nineteen original assets are hash-verified; V5 standalone handoff is absent. [V5_PARITY.md](art/V5_PARITY.md) tracks 22 scenes, staged native baselines and outstanding art/device/balance gates. The separate 37-ID icon checklist records missing bytes and unperformed alpha/32px/64px QA. No gameplay or Phaser changes.
+
+## G3.1 — V5 theme and licensed live typography
+
+Follows integrated G3.0 PR #46. Reproduced fallback-font and cream-secondary-action mismatches, then added pinned licensed Inter instances, V5 semantic palette, physical button states, explicit focus/selected rims and reusable live UI factories. No illustrated export is fabricated; remaining component/scene work is tracked in the V5 matrix. Relevant theme/selection tests and the full 34-phase local suite pass; native rendered QA is separate from owner acceptance and physical-device performance.
