@@ -9,19 +9,33 @@ class AuditedRun extends "res://scripts/solo_run.gd":
     var last_hit: Dictionary = {}
     var wave_observations: Array = []
     var boss_snapshot: Dictionary = {}
+    var event_observations: Array = []
     func start_run(index: int) -> void:
         damage_sources.clear()
         last_hit.clear()
         wave_observations.clear()
         boss_snapshot.clear()
+        event_observations.clear()
         super.start_run(index)
     func _advance(dt: float) -> void:
         var previous_wave := wave
         super._advance(dt)
         if wave != previous_wave:
-            wave_observations.append({"wave":wave,"time":run_time,"hp":hp,"level":level,"xp_collected":total_xp,"active_enemies":enemies.size()})
+            wave_observations.append({"wave":wave,"time":run_time,"hp":hp,"level":level,"xp_collected":total_xp,"active_enemies":enemies.size(),"weapons":weapons.duplicate(true),"passives":passives.duplicate(true)})
         if boss_spawned and boss_snapshot.is_empty():
             boss_snapshot = {"time":run_time,"hp":hp,"level":level,"weapons":weapons.duplicate(true),"passives":passives.duplicate(true)}
+    func _event_snapshot(enemy: Dictionary, state: String) -> Dictionary:
+        return {"kind":enemy["kind"],"enemy_id":enemy["id"],"state":state,"time":run_time,"hp":hp,"level":level,"weapons":weapons.duplicate(true),"passives":passives.duplicate(true)}
+    func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
+        var before := enemies.size()
+        super._spawn_enemy(kind,special)
+        if enemies.size() > before and (SoloEnemyRulesScript.is_event(kind) or kind == "boss"):
+            event_observations.append(_event_snapshot(enemies.back(),"spawned"))
+    func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon: bool = false) -> void:
+        var watched: bool = enemies.has(enemy) and (SoloEnemyRulesScript.is_event(str(enemy["kind"])) or enemy["kind"] == "boss")
+        super._hit_enemy(enemy,amount,primary,weapon)
+        if watched and not enemies.has(enemy) and float(enemy["hp"]) <= 0.0:
+            event_observations.append(_event_snapshot(enemy,"defeated"))
     func _load_profile() -> void: profile = ProfileStoreScript.defaults()
     func _save_profile() -> void: pass
     func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: bool = false, hazard: bool = false) -> void:
@@ -162,6 +176,6 @@ func _run() -> void:
                 game._process(0.1)
                 minimum_hp = minf(minimum_hp,game.hp)
             else: break
-        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"controller":"strategic" if strategic else ("aim-flex" if args.has("--aim-flex") else "avoidance"),"goal_frames":goal_frames if strategic else {},"damage_sources":game.damage_sources,"last_hit":game.last_hit,"waves":game.wave_observations,"boss_snapshot":game.boss_snapshot,"xp_collected":game.total_xp,"xp_on_ground":game.pickups.reduce(func(total,drop):return total+float(drop.get("xp",0)),0.0),"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
+        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"controller":"strategic" if strategic else ("aim-flex" if args.has("--aim-flex") else "avoidance"),"goal_frames":goal_frames if strategic else {},"damage_sources":game.damage_sources,"last_hit":game.last_hit,"waves":game.wave_observations,"events":game.event_observations,"boss_snapshot":game.boss_snapshot,"xp_collected":game.total_xp,"xp_on_ground":game.pickups.reduce(func(total,drop):return total+float(drop.get("xp",0)),0.0),"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
     game.queue_free()
     quit()

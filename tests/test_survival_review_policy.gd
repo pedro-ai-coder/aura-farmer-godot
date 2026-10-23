@@ -95,6 +95,35 @@ func _verify() -> void:
     _expect(before_hp == game.hp and before_aura == game.aura and game.enemies.size() == 1,"Review policy must not grant HP, Aura or alter active enemies")
     _expect(enemy_count == 1 and initial_aura == 100.0 and rng_state != 0,"The pre-combat Cool Kid fixture was a legitimate normal game state")
 
+    # Review-only observers record real event transitions, without granting rewards.
+    var audited = load("res://tests/review_unprotected_run.gd").AuditedRun.new()
+    root.add_child(audited)
+    audited.set_process(false)
+    audited.start_run(0)
+    audited.rng.seed = 451
+    var event_rng: int = audited.rng.state
+    audited._spawn_enemy("reply-guy",{"pos":Vector2(800,550)})
+    _expect(audited.event_observations.size() == 1 and audited.event_observations[0]["state"] == "spawned","Event telemetry records an actual spawned event")
+    var event_enemy: Dictionary = audited.enemies[0]
+    audited._hit_enemy(event_enemy,1.0)
+    _expect(audited.event_observations.size() == 1,"Nonfatal event hits cannot fabricate a completion")
+    audited._hit_enemy(event_enemy,100000.0)
+    _expect(audited.event_observations.size() == 2 and audited.event_observations[1]["state"] == "defeated","Event telemetry records real defeat once")
+    var drop_count: int = audited.pickups.size()
+    audited._hit_enemy(event_enemy,100000.0)
+    _expect(audited.event_observations.size() == 2 and audited.pickups.size() == drop_count,"Repeated callbacks cannot duplicate event completion or rewards")
+    _expect(audited.event_observations[0]["weapons"][0]["id"] == "no-cap" and event_rng != 0,"Event snapshots retain the actual entry equipment")
+    game.start_run(0)
+    game.rng.seed = 451
+    game._spawn_enemy("reply-guy",{"pos":Vector2(800,550)})
+    var control_enemy: Dictionary = game.enemies[0]
+    game._hit_enemy(control_enemy,1.0)
+    game._hit_enemy(control_enemy,100000.0)
+    _expect(audited.rng.state == game.rng.state and audited.hp == game.hp and audited.aura == game.aura,"Review observers preserve real combat HP/Aura and the exact RNG stream")
+    _expect(audited.kills == game.kills and audited.pickups.size() == game.pickups.size(),"Review event observers cannot grant additional kills or drops")
+    audited.start_run(0)
+    _expect(audited.event_observations.is_empty(),"New runs clear only review event observations")
+    audited.queue_free()
     game.queue_free()
     if failures.is_empty():
         print("PASS: Strategic review controller routes actual recovery, respects station/Flex gates and leaves simulation unchanged")
