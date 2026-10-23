@@ -30,3 +30,6 @@ build/
 
 # Source-approved artwork fetched and SHA-verified during Web builds
 assets/approved/*.png
+
+# QA screenshots are deliberately not imported into runtime resources.
+docs/art/evidence/**/*.import
