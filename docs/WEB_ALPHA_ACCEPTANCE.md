@@ -56,3 +56,9 @@ Actual native Compatibility captures: [third Cope strike](art/evidence/web-alpha
 The weapon/passive audit is **in progress**, not complete. Next inspect attack-event attribution, paired/multi-target proc limits, conditional effects and expiry, then ordinary-health survival. Existing green tests do not eliminate the need to reproduce each suspected mismatch. No P4–P8 experimental feature is enabled. Continue integrating individually approved supplied art in separate batches; the current session supplies only the unchanged PDF, conceptual panel and development instructions, with no standalone art archive.
 
 Restart from current main and this ledger, [V5 acceptance](V5_ACCEPTANCE_STATUS.md), [visual matrix](art/V5_PARITY.md), [strategic evidence](SURVIVAL_STRATEGIC_EVIDENCE.md) and issues #49/#52. Native device/signing, current interactive WebGL2, hardware performance and owner artistic review remain unverified.
+
+## Post-correction strategic replication
+
+[WEB_ALPHA_SURVIVAL_EVIDENCE.md](WEB_ALPHA_SURVIVAL_EVIDENCE.md) and its raw 18-episode dataset repeat seeds 451/452 and add 453–456 against the exact merged PR #58 gameplay source. All episodes terminated normally. Sigma wins 451/455; Alpha enters the boss in 452/455/456 and loses; Cool Kid enters none. Review-only wave/event instrumentation is checked against ordinary combat HP/Aura/RNG/kills/drops and duplicate callbacks. The complete 39-phase local suite passes. These results supersede any use of Alpha's old 810.82-second outcome as current post-correction evidence, while leaving historical files intact. No human, browser, general balance or device acceptance is implied.
+
+Next exact gameplay investigation: isolated Cool Kid event/ranged response and secondary-hit/proc attribution audit, followed by Alpha boss defense/recovery. Review the actual event traces and legal builds before numerical proposals. Art source status is unchanged and no backend is required.
