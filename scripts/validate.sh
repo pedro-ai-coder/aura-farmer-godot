@@ -51,6 +51,7 @@ run_check enemy-navigation --headless --path . --script res://tests/test_enemy_n
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
 run_check recovery --headless --path . --script res://tests/test_recovery.gd
+run_check survival-review-policy --headless --path . --script res://tests/test_survival_review_policy.gd
 run_check camera-cover --headless --path . --script res://tests/test_camera_cover.gd
 run_check continuous-run --headless --path . --script res://tests/test_continuous_run.gd
 run_check run-acceptance --headless --path . --script res://tests/test_run_acceptance.gd
