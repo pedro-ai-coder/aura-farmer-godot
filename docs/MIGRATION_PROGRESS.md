@@ -170,3 +170,7 @@ Audited current main `c73624d`, no open PRs, complete GDD and mandatory producti
 ## G3.1 — V5 theme and licensed live typography
 
 Follows integrated G3.0 PR #46. Reproduced fallback-font and cream-secondary-action mismatches, then added pinned licensed Inter instances, V5 semantic palette, physical button states, explicit focus/selected rims and reusable live UI factories. No illustrated export is fabricated; remaining component/scene work is tracked in the V5 matrix. Relevant theme/selection tests and the full 34-phase local suite pass; native rendered QA is separate from owner acceptance and physical-device performance.
+
+## G3.2 — separate Hero Spotlight home and selection
+
+Follows integrated PR #47. Replaces the combined raster home/hero picker with separate live, container-based PLAY/HEROES/SETTINGS navigation and three-hero selection. Reuses approved Sigma/hero/map assets; isolated V5 logo/plate remains explicitly blocked. Fixes compact resize retained width and keyboard Enter bypass, with six-viewport tests and native reference comparisons. Full 35-phase local suite passes. No combat, balance, save or Phaser changes. Next approved scope: compact gameplay HUD/wave/boss plates; isolated illustrated cards/icons remain gated by missing approved handoff exports.

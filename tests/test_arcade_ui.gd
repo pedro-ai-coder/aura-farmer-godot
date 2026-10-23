@@ -12,9 +12,10 @@ func _verify() -> void:
     game.set_process(false)
     var ui = game.presentation
     _expect(game.mode == "menu" and not game.sound_button.visible and ui.options_button.visible,"Home groups settings behind their own navigation")
+    ui.home.hero_destination.emit_signal("pressed")
     game.menu_buttons[1].emit_signal("pressed")
-    _expect(game.mode == "menu" and game.hero_index == 1,"Hero card selects without prematurely starting")
-    ui.play_button.emit_signal("pressed")
+    _expect(game.mode == "heroes" and game.hero_index == 1,"Hero card selects without prematurely starting")
+    ui.home.start_button.emit_signal("pressed")
     _expect(game.mode == "playing" and game.hero["id"] == "cool-kid","Explicit Play starts the selected hero")
     game._return_to_menu()
     ui.options_button.emit_signal("pressed")

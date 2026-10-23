@@ -41,6 +41,7 @@ bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
 run_check import --headless --path . --import
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
+run_check spotlight-navigation --headless --path . --script res://tests/test_spotlight_navigation.gd
 run_check spotlight-theme --headless --path . --script res://tests/test_spotlight_theme.gd
 run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
