@@ -10,3 +10,7 @@
 - Known limitation: Touch Grass v2 is raster-only; no matching editable SVG. Other icons are supplied V5 source candidates, not newly authored replacements.
 - Remaining: complete per-icon quality review/refinement; weapon projectile/impact art; playable hero animation packages and Flex; remaining characters; UI, enemies, bosses, pickups, environments, and master Art Bible.
 - Next task: review weapon/passive contact sheets and refine the next highest-priority icon with a documented 32/64/256 scale check.
+
+## Creator decision update — 24 October 2026
+
+The creator has now approved 36 exact V5 PNGs plus Touch Grass Clean Cut v2 (256px PNG only). See `manifests/APPROVAL_REGISTER.md`, `docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md` and the exact ledger. Earlier candidate-only statements describe the original delivery checkpoint. The whole source library remains export-isolated; only selected unchanged PNG copies are promoted by Development. SVGs and other derivatives are not implicitly approved. New art production remains art-only.

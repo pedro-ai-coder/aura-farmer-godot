@@ -72,6 +72,7 @@ run_check ranged-sources --headless --path . --script res://tests/test_ranged_so
 run_check bestiary --headless --path . --script res://tests/test_enemy_patterns.gd
 run_check ruin-alley --headless --path . --script res://tests/test_solo_world_rules.gd
 run_check passive-effects --headless --path . --script res://tests/test_passive_effects.gd
+run_check approved-icon-batch --headless --path . --script res://tests/test_approved_icon_batch.gd
 run_check icon-registry --headless --path . --script res://tests/test_icon_registry.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd

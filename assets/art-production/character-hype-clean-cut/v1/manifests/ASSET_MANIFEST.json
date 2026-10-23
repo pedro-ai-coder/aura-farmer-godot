@@ -8,7 +8,7 @@
       "asset_id": "weapon.ratio-blaster.icon",
       "display_name": "Ratio Blaster",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/ratio-blaster/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -41,13 +41,22 @@
       "source_sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/ratio-blaster/icon-v5-candidate.png",
+          "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.no-cap.icon",
       "display_name": "No Cap",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/no-cap/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -80,13 +89,22 @@
       "source_sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/no-cap/icon-v5-candidate.png",
+          "sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.brainrot-feed.icon",
       "display_name": "Brainrot Feed",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/brainrot-feed/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -119,13 +137,22 @@
       "source_sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/brainrot-feed/icon-v5-candidate.png",
+          "sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.keyboard-warrior.icon",
       "display_name": "Keyboard Warrior",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/keyboard-warrior/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -158,13 +185,22 @@
       "source_sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/keyboard-warrior/icon-v5-candidate.png",
+          "sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.ban-hammer.icon",
       "display_name": "Ban Hammer",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/ban-hammer/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -197,13 +233,22 @@
       "source_sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/ban-hammer/icon-v5-candidate.png",
+          "sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.touch-grass.icon",
       "display_name": "Touch Grass",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/touch-grass/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -236,13 +281,14 @@
       "source_sha256": "78688d95831b2106a0b62f6cbf8121d1fd42a3437329ee62b14dac3f3086f861",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": []
     },
     {
       "asset_id": "weapon.cope-shield.icon",
       "display_name": "Cope Shield",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/cope-shield/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -275,13 +321,22 @@
       "source_sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/cope-shield/icon-v5-candidate.png",
+          "sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.chad-hands.icon",
       "display_name": "Chad Hands",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/chad-hands/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -314,13 +369,22 @@
       "source_sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/chad-hands/icon-v5-candidate.png",
+          "sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.personal-space.icon",
       "display_name": "Personal Space",
       "category": "weapon",
-      "gdd_reference": "GDD §8; visual standards §16",
+      "gdd_reference": "GDD \u00a78; visual standards \u00a716",
       "source_artwork_path": "weapons/personal-space/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -353,13 +417,22 @@
       "source_sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/personal-space/icon-v5-candidate.png",
+          "sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.main-character.icon",
       "display_name": "Main Character Energy",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/main-character/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -392,13 +465,22 @@
       "source_sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/main-character/icon-v5-candidate.png",
+          "sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.terminally-online.icon",
       "display_name": "Terminally Online",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/terminally-online/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -431,13 +513,22 @@
       "source_sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/terminally-online/icon-v5-candidate.png",
+          "sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.built-different.icon",
       "display_name": "Built Different",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/built-different/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -470,13 +561,22 @@
       "source_sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/built-different/icon-v5-candidate.png",
+          "sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.thick-skin.icon",
       "display_name": "Thick Skin",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/thick-skin/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -509,13 +609,22 @@
       "source_sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/thick-skin/icon-v5-candidate.png",
+          "sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.caught-4k.icon",
       "display_name": "Caught in 4K",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/caught-4k/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -548,13 +657,22 @@
       "source_sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/caught-4k/icon-v5-candidate.png",
+          "sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.big-meme.icon",
       "display_name": "Big Meme Energy",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/big-meme/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -587,13 +705,22 @@
       "source_sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/big-meme/icon-v5-candidate.png",
+          "sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.timeline.icon",
       "display_name": "Across the Timeline",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/timeline/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -626,13 +753,22 @@
       "source_sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/timeline/icon-v5-candidate.png",
+          "sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.hands-on-sight.icon",
       "display_name": "Hands On Sight",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/hands-on-sight/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -665,13 +801,22 @@
       "source_sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/hands-on-sight/icon-v5-candidate.png",
+          "sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.cope-harder.icon",
       "display_name": "Cope Harder",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/cope-harder/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -704,13 +849,22 @@
       "source_sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/cope-harder/icon-v5-candidate.png",
+          "sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.certified-w.icon",
       "display_name": "Certified W",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/certified-w/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -743,13 +897,22 @@
       "source_sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/certified-w/icon-v5-candidate.png",
+          "sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.get-ratiod.icon",
       "display_name": "Get Ratio'd",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/get-ratiod/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -782,13 +945,22 @@
       "source_sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/get-ratiod/icon-v5-candidate.png",
+          "sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.no-cap-streak.icon",
       "display_name": "No Cap Streak",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/no-cap-streak/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -821,13 +993,22 @@
       "source_sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/no-cap-streak/icon-v5-candidate.png",
+          "sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.w-wifi.icon",
       "display_name": "W Wi-Fi",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/w-wifi/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -860,13 +1041,22 @@
       "source_sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/w-wifi/icon-v5-candidate.png",
+          "sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.let-him-cook.icon",
       "display_name": "Let Him Cook",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/let-him-cook/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -899,13 +1089,22 @@
       "source_sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/let-him-cook/icon-v5-candidate.png",
+          "sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.ego-check.icon",
       "display_name": "Ego Check",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/ego-check/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -938,13 +1137,22 @@
       "source_sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/ego-check/icon-v5-candidate.png",
+          "sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.homie-check.icon",
       "display_name": "Homie Check",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/homie-check/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -977,13 +1185,22 @@
       "source_sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/homie-check/icon-v5-candidate.png",
+          "sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.uno-reverse.icon",
       "display_name": "Uno Reverse",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/uno-reverse/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1016,13 +1233,22 @@
       "source_sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/uno-reverse/icon-v5-candidate.png",
+          "sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.big-chad.icon",
       "display_name": "Big Chad Energy",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/big-chad/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1055,13 +1281,22 @@
       "source_sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/big-chad/icon-v5-candidate.png",
+          "sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.its-over.icon",
       "display_name": "It's So Over",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/its-over/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1094,13 +1329,22 @@
       "source_sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/its-over/icon-v5-candidate.png",
+          "sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.brainrot-rain.icon",
       "display_name": "Brainrot Rain",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/brainrot-rain/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1133,13 +1377,22 @@
       "source_sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/brainrot-rain/icon-v5-candidate.png",
+          "sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.aura-viral.icon",
       "display_name": "Aura Goes Viral",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/aura-viral/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1172,13 +1425,22 @@
       "source_sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/aura-viral/icon-v5-candidate.png",
+          "sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.take-l.icon",
       "display_name": "Take the L",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/take-l/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1211,13 +1473,22 @@
       "source_sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/take-l/icon-v5-candidate.png",
+          "sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.so-back.icon",
       "display_name": "We Are So Back",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/so-back/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1250,13 +1521,22 @@
       "source_sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/so-back/icon-v5-candidate.png",
+          "sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.six-to-seven.icon",
-      "display_name": "Six → Seven",
+      "display_name": "Six \u2192 Seven",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/six-to-seven/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1289,13 +1569,22 @@
       "source_sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/six-to-seven/icon-v5-candidate.png",
+          "sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.absolute-cinema.icon",
       "display_name": "Absolute Cinema",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/absolute-cinema/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1328,13 +1617,22 @@
       "source_sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/absolute-cinema/icon-v5-candidate.png",
+          "sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.w-squad.icon",
       "display_name": "W Squad",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/w-squad/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1367,13 +1665,22 @@
       "source_sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/w-squad/icon-v5-candidate.png",
+          "sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.too-sigma.icon",
       "display_name": "Too Sigma to Fall",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/too-sigma/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1406,13 +1713,22 @@
       "source_sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/too-sigma/icon-v5-candidate.png",
+          "sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "passive.no-u.icon",
       "display_name": "No U",
       "category": "passive",
-      "gdd_reference": "GDD §9; visual standards §16",
+      "gdd_reference": "GDD \u00a79; visual standards \u00a716",
       "source_artwork_path": "passives/no-u/icon-v5-candidate.png and icon-v5-candidate.svg",
       "files": [
         {
@@ -1445,13 +1761,22 @@
       "source_sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred."
+      "notes": "V5 illustration candidate copied unchanged; no creator approval inferred.",
+      "creator_approved_files": [
+        {
+          "path": "passives/no-u/icon-v5-candidate.png",
+          "sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "weapon.touch-grass.clean-cut-v2.icon",
-      "display_name": "Touch Grass — Clean Cut v2",
+      "display_name": "Touch Grass \u2014 Clean Cut v2",
       "category": "weapon",
-      "gdd_reference": "GDD §8 and §16",
+      "gdd_reference": "GDD \u00a78 and \u00a716",
       "source_artwork_path": "weapons/touch-grass/icon-v5-candidate.png",
       "files": [
         {
@@ -1498,13 +1823,22 @@
       "source_sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Three broad asymmetrical blades, thicker curved vine, stronger 32 px silhouette; no sparkle. Raster-only; no matching editable SVG exists."
+      "notes": "Three broad asymmetrical blades, thicker curved vine, stronger 32 px silhouette; no sparkle. Raster-only; no matching editable SVG exists.",
+      "creator_approved_files": [
+        {
+          "path": "weapons/touch-grass/icon-clean-cut-v2-256.png",
+          "sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+          "approval_status": "CREATOR_APPROVED",
+          "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+          "scope": "Exact PNG only; other files in this row are not implicitly approved"
+        }
+      ]
     },
     {
       "asset_id": "preview.weapons-contact-sheet-32px",
       "display_name": "Weapons Contact Sheet 32Px",
       "category": "preview",
-      "gdd_reference": "Visual QA for GDD §§8-9",
+      "gdd_reference": "Visual QA for GDD \u00a7\u00a78-9",
       "source_artwork_path": "Derived from supplied V5 candidate icon files and Touch Grass v2 export",
       "files": [
         {
@@ -1526,13 +1860,14 @@
       "source_sha256": "64c95143ea870b9916f26d465817a554fc26d8d3a9e8095fc7505eb988f274b7",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Review contact sheet only; not a runtime asset."
+      "notes": "Review contact sheet only; not a runtime asset.",
+      "creator_approved_files": []
     },
     {
       "asset_id": "preview.weapons-contact-sheet-64px",
       "display_name": "Weapons Contact Sheet 64Px",
       "category": "preview",
-      "gdd_reference": "Visual QA for GDD §§8-9",
+      "gdd_reference": "Visual QA for GDD \u00a7\u00a78-9",
       "source_artwork_path": "Derived from supplied V5 candidate icon files and Touch Grass v2 export",
       "files": [
         {
@@ -1554,13 +1889,14 @@
       "source_sha256": "4d5adb5b238b04933a6beb1be51bd842287b327afb510f44b95df4eaf5a9213f",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Review contact sheet only; not a runtime asset."
+      "notes": "Review contact sheet only; not a runtime asset.",
+      "creator_approved_files": []
     },
     {
       "asset_id": "preview.weapons-contact-sheet-256px",
       "display_name": "Weapons Contact Sheet 256Px",
       "category": "preview",
-      "gdd_reference": "Visual QA for GDD §§8-9",
+      "gdd_reference": "Visual QA for GDD \u00a7\u00a78-9",
       "source_artwork_path": "Derived from supplied V5 candidate icon files and Touch Grass v2 export",
       "files": [
         {
@@ -1582,13 +1918,14 @@
       "source_sha256": "b6f2e12410af15a278e178ed45c92fd61093ab3516f2aa824cea174c4e280708",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Review contact sheet only; not a runtime asset."
+      "notes": "Review contact sheet only; not a runtime asset.",
+      "creator_approved_files": []
     },
     {
       "asset_id": "preview.passives-contact-sheet-32px",
       "display_name": "Passives Contact Sheet 32Px",
       "category": "preview",
-      "gdd_reference": "Visual QA for GDD §§8-9",
+      "gdd_reference": "Visual QA for GDD \u00a7\u00a78-9",
       "source_artwork_path": "Derived from supplied V5 candidate icon files and Touch Grass v2 export",
       "files": [
         {
@@ -1610,13 +1947,14 @@
       "source_sha256": "61f76c50729450105b7e9fd641cdf0a82fc041bb61ea7a577ef943488d996e45",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Review contact sheet only; not a runtime asset."
+      "notes": "Review contact sheet only; not a runtime asset.",
+      "creator_approved_files": []
     },
     {
       "asset_id": "preview.passives-contact-sheet-64px",
       "display_name": "Passives Contact Sheet 64Px",
       "category": "preview",
-      "gdd_reference": "Visual QA for GDD §§8-9",
+      "gdd_reference": "Visual QA for GDD \u00a7\u00a78-9",
       "source_artwork_path": "Derived from supplied V5 candidate icon files and Touch Grass v2 export",
       "files": [
         {
@@ -1638,13 +1976,14 @@
       "source_sha256": "fbd0767c568e160ca18aa2ad9f9f932f9530276792887b90495eb2e2627b39bd",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Review contact sheet only; not a runtime asset."
+      "notes": "Review contact sheet only; not a runtime asset.",
+      "creator_approved_files": []
     },
     {
       "asset_id": "preview.passives-contact-sheet-256px",
       "display_name": "Passives Contact Sheet 256Px",
       "category": "preview",
-      "gdd_reference": "Visual QA for GDD §§8-9",
+      "gdd_reference": "Visual QA for GDD \u00a7\u00a78-9",
       "source_artwork_path": "Derived from supplied V5 candidate icon files and Touch Grass v2 export",
       "files": [
         {
@@ -1666,7 +2005,9 @@
       "source_sha256": "aff6fa9dd4bce089d3411e2857a4bfe3a62a7bc1f5b84f15ee70fa9e43b83a01",
       "artistic_approval_status": "PRODUCTION_CANDIDATE",
       "technical_export_status": "TECHNICALLY_VALIDATED_EXPORT",
-      "notes": "Review contact sheet only; not a runtime asset."
+      "notes": "Review contact sheet only; not a runtime asset.",
+      "creator_approved_files": []
     }
-  ]
+  ],
+  "creator_decision_record": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md"
 }

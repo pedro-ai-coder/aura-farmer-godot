@@ -113,7 +113,9 @@ func install() -> void:
         image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
         image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
         panel.add_child(image)
-        equipment_slots.append({"panel":panel,"label":label,"image":image})
+        var meta := _inside_label(panel,14)
+        meta.add_theme_font_override("font",ArcadeStyle.NUMBERS)
+        equipment_slots.append({"panel":panel,"label":label,"image":image,"meta":meta})
     rotate_hint = _label(20)
     rotate_hint.text = "Rotate for a wider view"
     rotate_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -217,6 +219,8 @@ func open_settings(origin: String = "menu") -> void:
     game._show_ui()
 
 func open_build() -> void:
+    body_scroll.scroll_vertical = 0
+    body_scroll.set_deferred("scroll_vertical",0)
     game.mode = "build"
     game._clear_touch()
     game._show_ui()
@@ -428,7 +432,7 @@ func _cards(rect: Rect2) -> void:
     var rows := ceili(float(items.size())/columns)
     card_content.custom_minimum_size = Vector2(rect.size.x-12,rows*height+maxi(0,rows-1)*gap)
     card_content.size = card_content.custom_minimum_size
-    var signature: String = str(game.mode) + JSON.stringify(items)
+    var signature: String = str(game.run_id) + str(game.mode) + JSON.stringify(items)
     if signature != last_card_signature:
         card_scroll.scroll_vertical = 0
         last_card_signature = signature
@@ -487,7 +491,7 @@ func _equipment(width: float) -> float:
     var columns := 3 if width >= 540 else 2
     var gap := 12.0
     var tile_width := (width-gap*(columns-1))/columns
-    var tile_height := 118.0
+    var tile_height := 148.0 if width < 540 else 118.0
     var weapon_rows := ceili(3.0/columns)
     var passive_y := 36.0+weapon_rows*(tile_height+gap)+12.0
     _place(equipment_headings[0],Rect2(0,0,width,28))
@@ -503,16 +507,20 @@ func _equipment(width: float) -> float:
         var color: Color = ArcadeStyle.RARITY.get(item.get("rarity",""),ArcadeStyle.INK)
         slot["panel"].add_theme_stylebox_override("panel",ArcadeStyle.box(ArcadeStyle.CARD,color,8,0))
         var label: Label = slot["label"]
+        var meta: Label = slot["meta"]
         var image: TextureRect = slot["image"]
         image.texture = item_icons.texture("weapon" if is_weapon else "passive",str(item.get("id",""))) if not item.is_empty() else null
         image.visible = image.texture != null
+        meta.visible = image.visible
         _place(image,Rect2(10,12,40,40))
         if item.is_empty():
             label.text = "EMPTY %s SLOT\n%d / %d" % ["WEAPON" if is_weapon else "PASSIVE",index+1,3 if is_weapon else 5]
         else:
             var data: Dictionary = catalog.get(item["id"],{})
-            label.text = "%s  %s\n%s  /  LV %d" % ["" if image.visible else data.get("icon","?"),data.get("name",item["id"]),str(item["rarity"]).to_upper(),int(item["level"])]
-        _place(label,Rect2(58 if image.visible else 12,10,tile_width-(70 if image.visible else 24),tile_height-20))
+            label.text = data.get("name",item["id"]) if image.visible else "%s  %s\n%s  /  LV %d" % [data.get("icon","?"),data.get("name",item["id"]),str(item["rarity"]).to_upper(),int(item["level"])]
+            meta.text = "%s  /  LV %d" % [str(item["rarity"]).to_upper(),int(item["level"])]
+        _place(label,Rect2(58 if image.visible else 12,10,tile_width-(70 if image.visible else 24),tile_height-(62 if image.visible else 20)))
+        _place(meta,Rect2(12,tile_height-44,tile_width-24,36))
     var height := passive_y+36.0+ceili(5.0/columns)*(tile_height+gap)
     _place(equipment_board,Rect2(0,0,width,height))
     return height
@@ -533,6 +541,17 @@ func _bar(rect: Rect2, value: float, maximum: float, color: Color, caption: Stri
     draw_string_outline(ArcadeStyle.NUMBERS,rect.position+Vector2(9,rect.size.y-7),caption,HORIZONTAL_ALIGNMENT_LEFT,-1,17,3,ArcadeStyle.INK)
     _text(rect.position+Vector2(9,rect.size.y-7),caption,17,ArcadeStyle.CARD)
 
+func hud_item_caption(at: Vector2) -> String:
+    if game == null or game.mode != "playing": return ""
+    var slot_x := 20.0
+    for item: Dictionary in game.weapons + game.passives:
+        var rect := Rect2(slot_x,view.y-(138 if view.x < 1000 else 62),46,44)
+        if rect.has_point(at):
+            var data: Dictionary = catalog.get(item["id"],{})
+            return "%s / %s / %s / LV %d" % [data.get("name",item["id"]),"WEAPON" if game.WEAPONS.has(item["id"]) else "PASSIVE",str(item["rarity"]).to_upper(),int(item["level"])]
+        slot_x += 54
+    return ""
+
 func _draw() -> void:
     if game == null or view.x <= 0: return
     if game.mode in ["menu","heroes"]: return
@@ -552,6 +571,12 @@ func _draw() -> void:
         else: _text(rect.position+Vector2(7,26),data.get("icon","?"),22)
         _text(rect.position+Vector2(30,37),str(item["level"]),13)
         slot_x += 54
+    # Passive caption adds identity without intercepting gameplay touches or changing RNG.
+    var caption := hud_item_caption(get_local_mouse_position())
+    if not caption.is_empty():
+        var rect := Rect2(20,view.y-(178 if view.x < 1000 else 102),minf(view.x-40,620),32)
+        draw_style_box(ArcadeStyle.box(ArcadeStyle.DEEP,ArcadeStyle.SKY,6,2),rect)
+        _text(rect.position+Vector2(8,22),caption,16,ArcadeStyle.PAPER)
 
 func show_error(message: String) -> void:
     error_message = message

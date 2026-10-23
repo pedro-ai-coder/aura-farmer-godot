@@ -1,4 +1,634 @@
 {
   "schema_version": 1,
-  "icons": []
+  "icons": [
+    {
+      "id": "absolute-cinema",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/absolute-cinema/f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png",
+      "source_sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "promoted_sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "aura-viral",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/aura-viral/825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png",
+      "source_sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+      "promoted_sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "big-chad",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/big-chad/ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png",
+      "source_sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+      "promoted_sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "big-meme",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/big-meme/4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png",
+      "source_sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+      "promoted_sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "brainrot-rain",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/brainrot-rain/774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png",
+      "source_sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+      "promoted_sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "built-different",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/built-different/7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png",
+      "source_sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "promoted_sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "caught-4k",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/caught-4k/d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png",
+      "source_sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+      "promoted_sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "certified-w",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/certified-w/13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png",
+      "source_sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+      "promoted_sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "cope-harder",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/cope-harder/60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png",
+      "source_sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+      "promoted_sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "ego-check",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/ego-check/5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png",
+      "source_sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+      "promoted_sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "get-ratiod",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/get-ratiod/dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png",
+      "source_sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+      "promoted_sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "hands-on-sight",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/hands-on-sight/0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png",
+      "source_sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+      "promoted_sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "homie-check",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/homie-check/3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png",
+      "source_sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+      "promoted_sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "its-over",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/its-over/afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png",
+      "source_sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+      "promoted_sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "let-him-cook",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/let-him-cook/74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png",
+      "source_sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+      "promoted_sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "main-character",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/main-character/fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png",
+      "source_sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+      "promoted_sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "no-cap-streak",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/no-cap-streak/bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png",
+      "source_sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+      "promoted_sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "no-u",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/no-u/08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png",
+      "source_sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+      "promoted_sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "six-to-seven",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/six-to-seven/233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png",
+      "source_sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+      "promoted_sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "so-back",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/so-back/a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png",
+      "source_sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+      "promoted_sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "take-l",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/take-l/c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png",
+      "source_sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+      "promoted_sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "terminally-online",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/terminally-online/a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png",
+      "source_sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+      "promoted_sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "thick-skin",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/thick-skin/b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png",
+      "source_sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+      "promoted_sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "timeline",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/timeline/4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png",
+      "source_sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+      "promoted_sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "too-sigma",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/too-sigma/5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png",
+      "source_sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "promoted_sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "uno-reverse",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/uno-reverse/d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png",
+      "source_sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+      "promoted_sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "w-squad",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/w-squad/e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png",
+      "source_sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "promoted_sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "w-wifi",
+      "category": "passive",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/passives/w-wifi/4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png",
+      "source_sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+      "promoted_sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "ban-hammer",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/ban-hammer/086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png",
+      "source_sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "promoted_sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "brainrot-feed",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/brainrot-feed/4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png",
+      "source_sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "promoted_sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "chad-hands",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/chad-hands/08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png",
+      "source_sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "promoted_sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "cope-shield",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/cope-shield/37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png",
+      "source_sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "promoted_sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "keyboard-warrior",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/keyboard-warrior/66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png",
+      "source_sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "promoted_sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "no-cap",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/no-cap/b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png",
+      "source_sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "promoted_sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "personal-space",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/personal-space/1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png",
+      "source_sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "promoted_sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "ratio-blaster",
+      "category": "weapon",
+      "artwork_version": "v5-candidate",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "resource_path": "res://assets/runtime-icons/weapons/ratio-blaster/687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png",
+      "source_sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "promoted_sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    },
+    {
+      "id": "touch-grass",
+      "category": "weapon",
+      "artwork_version": "clean-cut-v2",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-clean-cut-v2-256.png",
+      "resource_path": "res://assets/runtime-icons/weapons/touch-grass/3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png",
+      "source_sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+      "promoted_sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": [
+        "offer-card",
+        "legendary-card",
+        "equipment",
+        "hud"
+      ]
+    }
+  ]
 }

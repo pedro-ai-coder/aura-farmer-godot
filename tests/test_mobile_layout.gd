@@ -36,7 +36,9 @@ func _verify() -> void:
                 _expect(ui.body_content.size.y >= ui.equipment_board.size.y,"Every equipment slot is reachable inside the scroll panel")
                 for slot: Dictionary in ui.equipment_slots:
                     _expect(Rect2(Vector2.ZERO,ui.equipment_board.size).encloses(slot["panel"].get_rect()),"Equipment slots fit inside their board")
-                _expect(ui.equipment_slots[0]["label"].text.contains("LV 1"),"Equipped weapon shows its actual level")
+                var equipped: Dictionary = ui.equipment_slots[0]
+                var visible_text: String = equipped["label"].text + ("\n" + equipped["meta"].text if equipped["meta"].is_visible_in_tree() else "")
+                _expect(visible_text.contains("LV 1"),"Equipped weapon shows its actual level in visible name/details labels")
                 _expect(ui.equipment_slots[2]["label"].text.contains("EMPTY WEAPON"),"Unused weapon slot remains visible")
                 _expect(ui.equipment_slots[7]["label"].text.contains("EMPTY PASSIVE"),"Unused passive slot remains visible")
             if state == "playing":

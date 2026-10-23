@@ -1,3 +1,5 @@
+> **Current update — 24 October 2026:** The creator explicitly approves 37 exact PNGs: eight V5 weapons, 28 V5 passives and Touch Grass Clean Cut v2. Clean Cut is the selected visual refinement recorded in GDD §26. All selected copies are hash-verified and promoted; 32 current items use live bindings, five future-only passive artworks remain unoffered. See `docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md` and `docs/art/CLEAN_CUT_INTEGRATION_ACCEPTANCE.md`. Earlier zero-approval/blocked statements below are historical checkpoints. Original source isolation and all gameplay rules remain intact.
+
 # Private Web Alpha acceptance
 
 Audit baseline: `7fcd007d6d81e1ea29da4e2bd6c5685d169e67da`, 23 October 2026. No open PRs at restart. Phaser remains read-only. Scope is the existing three-hero, nine-weapon, 23-passive solo game with local profiles and static hosting; no gameplay backend, authentication or paid service is introduced.

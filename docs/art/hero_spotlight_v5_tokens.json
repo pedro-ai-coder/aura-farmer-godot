@@ -2,7 +2,7 @@
   "version": "5.0",
   "approved_on": "2026-10-23",
   "status": "creator-approved-visual-direction",
-  "identity": "Option A — Cartoon Arcade / Arcade Street Clean — Hero Spotlight",
+  "identity": "Character Hype Broadcast \u2014 Clean Cut / Hero Spotlight V5 foundation",
   "source_of_truth": "docs/GDD.md",
   "source_handoff": "Aura_Farmer_Visual_Production_Handoff_v5.zip (external source delivery; binary pack not committed)",
   "render_reference": {
@@ -85,5 +85,7 @@
     "Current approved run clock: 10:00 boss start, 120 seconds to berserk.",
     "Web, Android and iOS are equal-priority production targets.",
     "Visual approval is not a claim that the rendered/exported binaries are committed or in-engine accepted."
-  ]
+  ],
+  "refined_on": "2026-10-24",
+  "creator_icon_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md"
 }

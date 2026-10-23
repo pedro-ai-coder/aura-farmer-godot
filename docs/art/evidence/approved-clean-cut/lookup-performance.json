@@ -1,0 +1,9 @@
+{
+  "approved_textures": 37,
+  "boundary": "Native Compatibility llvmpipe; warm OS file cache; CPU lookup timing, not browser startup, FPS or physical-device VRAM acceptance",
+  "cached_lookup_batch_us": 32903,
+  "cached_lookup_count": 37000,
+  "decoded_image_bytes": 9699328,
+  "engine": "4.7.2-stable (official)",
+  "first_lookup_batch_us": 17134
+}

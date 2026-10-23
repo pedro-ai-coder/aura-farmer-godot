@@ -1,12 +1,14 @@
 # Approval Register — Character Hype Clean Cut / v1
 
-| Group | Count | Status | Review gate |
-|---|---:|---|---|
-| V5 weapon-icon source candidates | 9 | `PRODUCTION_CANDIDATE` | Individual visual review and 32/64 px runtime legibility checks. |
-| V5 passive-icon source candidates | 28 | `PRODUCTION_CANDIDATE` | Confirm metaphor against canonical passive effect and 32/64 px readability. |
-| Touch Grass Clean Cut v2 | 1 variant | `PRODUCTION_CANDIDATE` | Creator review; current file is raster-only and not tested in Godot. |
-| Icon contact sheets | 6 | `TECHNICALLY_VALIDATED_EXPORT` | Reference-only previews. |
+Updated 24 October 2026 from the explicit creator decision in `docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md`. The source manifest retains its historical production-candidate provenance; it does not approve any unselected derivative.
 
-No asset in this batch is marked creator-approved or integrated.
+| Exact source group | Count | Current creator decision | Runtime scope |
+| --- | ---: | --- | --- |
+| V5 weapon PNGs except Touch Grass | 8 | `CREATOR_APPROVED`, exact ledger hashes | Promoted unchanged |
+| V5 passive PNGs | 28 | `CREATOR_APPROVED`, exact ledger hashes | 23 playable; five future-only artworks |
+| Touch Grass Clean Cut v2 256px PNG | 1 | `CREATOR_APPROVED`, SHA `3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca` | Promoted unchanged; missing matching SVG is nonblocking |
+| Touch Grass V5 candidate | 1 | Not selected or approved by this decision | Source-review only |
+| SVGs and 32/64px v2 review derivatives | — | No approval inferred from PNG approval | Source-review only |
+| Contact sheets | 6 | Reference-only technical exports | Excluded from runtime |
 
-G4.1 developer review: see `docs/art/CLEAN_CUT_ICON_REVIEW.md` and the exact per-ID audit. Creator decisions remain zero; `docs/art/icon_approvals.json` is intentionally empty. The runtime promotion tool requires explicit version/hash approval and resolved conditions. Technical source review or prepared UI bindings do not change this register to approved.
+All 37 selected PNG decisions, versions, hashes, references and resolved blocking conditions are in `docs/art/icon_approvals.json`. Small-size readability, margins, similar silhouettes and SVG font differences are acknowledged nonblocking follow-ups. New art versions need new hashes and separate approval. Keep the old Touch Grass SVG separate from v2; Art Production owns a later separately versioned matching source. Hero/animation/environment/background approvals are not expanded.
