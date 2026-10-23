@@ -51,3 +51,7 @@ Only the attached PDF and 19 pinned original PNG masters/atlases were available.
 ## Balance workstream
 
 The existing seed-451 normal-health runs did not reach Big Hater. Preserve those observations in `../FLEX_V2_VALIDATION.md`. Investigate controller strategy/aim, damage sources, recovery routing, XP collection and event overlap separately; numeric changes require a measured GDD proposal. Visual PRs do not change HP/damage/XP/drops.
+
+## Additional baseline viewports
+
+Real staged captures also recorded at 1600×900, 915×412 and 390×844. Useful examples: [1600 menu](evidence/v5-baseline/menu-1600.jpg), [915 choices](evidence/v5-baseline/choice-915.jpg), [portrait legendary](evidence/v5-baseline/legendary-390.jpg). Review copies retain their aspect ratio and are scaled to fit 960×540; full-resolution originals remain scratch QA intermediates. Native rendering with desktop touch layout enabled is not touch-device acceptance.
