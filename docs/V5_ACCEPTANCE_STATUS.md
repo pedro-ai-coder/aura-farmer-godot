@@ -20,7 +20,7 @@ Latest QA fixes reproduce and repair two real failures: fresh HEROES/Settings co
 | --- | --- |
 | Primary / Secondary action | spotlight_components.gd and arcade_theme.gd |
 | HeroCard | spotlight_home.gd, authoritative hero definitions |
-| UpgradeCard / LegendaryCard | arcade_presentation.gd, legal offer data; illustration incomplete |
+| UpgradeCard / LegendaryCard | spotlight_offer_card.gd + arcade_presentation.gd, legal data and V5 hierarchy; illustration incomplete |
 | InkPanel / ModalShell / IconSlot | spotlight_components.gd; unsigned art remains absent |
 | StatusPlate / WaveBanner / FlexIndicator | spotlight_hud.gd, authoritative simulation state |
 | FocusOutline | arcade_theme.gd and solo_run.gd navigation |
@@ -69,3 +69,7 @@ The actual production URL was opened in the available cloud browser. Its runtime
 5. Investigate #52 with better controller/recovery routing and human normal-health runs before proposing GDD balance revisions. Do not enable prototype P4–P7 mechanics.
 
 Phases 0–2 and 4 have integrated engineering increments; illustrated completeness remains gated. Phase 3 is partial. Phase 5 has responsive architecture/emulation coverage but no physical acceptance. Phase 6 has regression, render and survival evidence, with explicit remaining failures. This document and the parity matrix are the durable restart point.
+
+## G3.6 follow-up
+
+The reattached PDF is available again and matches the prior hash. The live offer-card hierarchy now has direct [V5 comparison evidence](art/V5_PARITY.md#g36--live-offer-card-composition), desktop/compact/portrait captures and longest-text coverage; all 38 local phases pass. Illustrations still require the separate signed handoff archive. This improves phase 2 without changing offer ordering, RNG, combat or balance acceptance. Production #53 was independently verified at commit `059e78dd2e468e79043dd6b34e4ca727fa6b6ce1` before this increment.
