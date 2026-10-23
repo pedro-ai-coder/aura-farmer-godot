@@ -6,6 +6,7 @@ const Components = preload("res://scripts/spotlight_components.gd")
 const ArcadeStyle = preload("res://scripts/arcade_theme.gd")
 var game
 var catalog: Dictionary = {}
+var home
 var play_button: Button
 var options_button: Button
 var back_button: Button
@@ -95,6 +96,9 @@ func install() -> void:
         button.pressed.connect(select_hero.bind(i))
         game.hero_portraits[i].reparent(button)
         hero_labels.append({"name":_inside_label(button,20),"role":_inside_label(button,16)})
+    home = load("res://scripts/spotlight_home.gd").new()
+    add_child(home)
+    home.install(game,self)
     game.import_button.pressed.disconnect(game._open_profile_import)
     game.import_button.pressed.connect(func(): game.mode = "menu"; game._open_profile_import())
     game.export_button.pressed.disconnect(game._open_profile_export)
@@ -155,9 +159,14 @@ func _window_changed(force: bool = false) -> void:
     refresh()
 
 func select_hero(index: int) -> void:
-    if game.mode != "menu": return
+    if game.mode not in ["menu","heroes"]: return
     game.hero_index = index
     refresh()
+
+func open_heroes() -> void:
+    game.mode = "heroes"
+    game._clear_touch()
+    game._show_ui()
 
 func pump() -> void:
     if game.get_window().size != last_window_size: _window_changed()
@@ -225,41 +234,16 @@ func refresh(force: bool = false) -> void:
     _place(rotate_hint,Rect2(20,162,width-40,40))
     for control: Button in [game.pause_button,game.flex_button,game.confirm_button,game.restart_button,game.defer_button,game.retry_button,game.sound_button,game.motion_button,game.import_button,game.export_button,game.legendary_button,play_button,options_button,back_button]:
         ArcadeStyle.button(control,control == play_button)
-    if menu:
-        subtitle.text = "RUIN ALLEY  /  SOLO"
-        _place(subtitle,Rect2(menu_panel.position+Vector2(22,16),Vector2(menu_panel.size.x-44,28)))
-        var card_y := menu_panel.position.y + (56.0 if compact else 68.0)
-        var card_height := minf(235.0,menu_panel.size.y-(326.0 if compact else 250.0))
-        card_height = maxf(166,card_height)
-        if portrait: card_height = minf(260,menu_panel.size.y-270)
-        var gap := 10.0
-        var card_width := (menu_panel.size.x-44.0-gap*2.0)/3.0
-        for i in range(3):
-            var button: Button = game.menu_buttons[i]
-            button.visible = true
-            button.text = ""
-            _place(button,Rect2(menu_panel.position.x+22+i*(card_width+gap),card_y,card_width,card_height))
-            ArcadeStyle.card(button,i==game.hero_index)
-            var portrait_image: TextureRect = game.hero_portraits[i]
-            portrait_image.visible = true
-            _place(portrait_image,Rect2(7,10,card_width-14,maxf(70,card_height-75)))
-            var labels: Dictionary = hero_labels[i]
-            labels["name"].text = ["SIGMA","COOL KID","ALPHA"][i]
-            labels["name"].horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-            labels["name"].add_theme_font_size_override("font_size",22)
-            _place(labels["name"],Rect2(3,card_height-70,card_width-6,32))
-            labels["role"].text = str(game.HEROES[i]["role"]).to_upper()
-            labels["role"].add_theme_font_size_override("font_size",22)
-            labels["role"].horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-            _place(labels["role"],Rect2(3,card_height-36,card_width-6,32))
-        var hero: Dictionary = game.HEROES[game.hero_index]
-        detail.text = "%s  ·  %s\n%s" % [hero["name"],hero["flex"],["Lock onto a rival. Throw No Cap through the crowd.","Keep moving. Chain CTRL + CHAOS strikes.","Hold the line. Shield up with Giga Chad Rampage."][game.hero_index]]
-        if compact: detail.text = "%s  ·  %s" % [hero["name"],hero["flex"]]
-        detail.add_theme_font_size_override("font_size",22 if compact else 20)
-        _place(detail,Rect2(menu_panel.position.x+24,card_y+card_height+14,menu_panel.size.x-48,64 if compact else 90))
-        var footer_y := menu_panel.end.y-144
-        _place(play_button,Rect2(menu_panel.position.x+22,footer_y,menu_panel.size.x-44,60))
-        _place(options_button,Rect2(menu_panel.position.x+22,footer_y+72,menu_panel.size.x-44,60))
+    home.refresh(view)
+    if game.mode in ["menu","heroes"]:
+        title.hide()
+        subtitle.hide()
+        detail.hide()
+        play_button.visible = menu
+        options_button.visible = menu
+        _focus_ring()
+        queue_redraw()
+        return
     else:
         for i in range(3): game.menu_buttons[i].hide(); game.hero_portraits[i].hide()
         var headings := {"choice":"LEVEL UP!","legendary":"GO LEGENDARY","replace":"MAKE ROOM","paused":"TAKE A BREATHER","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"BIG HATER DOWN!","lost":"ONE MORE RUN?"}
@@ -327,6 +311,7 @@ func refresh(force: bool = false) -> void:
         for button: Button in game.offer_buttons: button.hide()
     if not menu and not options and game.mode == "playing":
         title.hide(); subtitle.hide(); detail.hide()
+    _focus_ring()
     queue_redraw()
 
 func _cards(rect: Rect2) -> void:
@@ -448,20 +433,7 @@ func _bar(rect: Rect2, value: float, maximum: float, color: Color, caption: Stri
 
 func _draw() -> void:
     if game == null or view.x <= 0: return
-    if game.mode == "menu":
-        var texture: Texture2D = game.art.texture("main-menu")
-        if texture != null:
-            var source := texture.get_size()
-            var scale := maxf(view.x/source.x,view.y/source.y)
-            var extent := source*scale
-            if view.x < 700.0:
-                draw_rect(Rect2(Vector2.ZERO,view),ArcadeStyle.INK)
-                var header_height := menu_panel.position.y+4
-                var crop_width := source.x*0.55
-                draw_texture_rect_region(texture,Rect2(0,0,view.x,header_height),Rect2(0,0,crop_width,crop_width*header_height/view.x))
-            else: draw_texture_rect(texture,Rect2(Vector2.ZERO,extent),false)
-        _panel(menu_panel)
-        return
+    if game.mode in ["menu","heroes"]: return
     if game.mode != "playing":
         draw_rect(Rect2(Vector2.ZERO,view),Color(0.09,0.13,0.19,0.72))
         _panel(modal_panel)
@@ -519,3 +491,18 @@ func hud_rectangles() -> Array[Rect2]:
         return [Rect2(25,20,view.x-210,28),Rect2(25,84,width,28),Rect2(39+width,84,width,28)]
     var width := maxf(70,(minf(view.x-210,860)-58)/3)
     return [Rect2(25,20,width,28),Rect2(39+width,20,width,28),Rect2(53+width*2,20,width,28)]
+
+func _focus_ring() -> void:
+    var buttons: Array[Button] = []
+    _visible_buttons(self,buttons)
+    for i in range(buttons.size()):
+        buttons[i].focus_next = buttons[(i+1)%buttons.size()].get_path()
+        buttons[i].focus_previous = buttons[(i+buttons.size()-1)%buttons.size()].get_path()
+    var focused := get_viewport().gui_get_focus_owner()
+    if not buttons.is_empty() and (focused == null or not buttons.has(focused)):
+        buttons[0].grab_focus.call_deferred()
+
+func _visible_buttons(node: Node, buttons: Array[Button]) -> void:
+    for child in node.get_children():
+        if child is Button and child.is_visible_in_tree() and not child.disabled: buttons.append(child)
+        _visible_buttons(child,buttons)

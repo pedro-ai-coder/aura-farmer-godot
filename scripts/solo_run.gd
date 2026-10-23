@@ -1887,7 +1887,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         manual_aim = not manual_aim
         aim_point = get_global_mouse_position()
     elif event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
-        if mode == "menu": start_run(hero_index)
+        if mode in ["menu","heroes"]: start_run(hero_index)
         else: _confirm_selection()
     elif event.keycode == KEY_ESCAPE and mode == "confirm_exit":
         mode = "paused"
@@ -1895,7 +1895,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         _update_text()
     elif event.keycode == KEY_ESCAPE and mode == "replace":
         _cancel_replacement()
-    elif event.keycode == KEY_ESCAPE and mode == "options":
+    elif event.keycode == KEY_ESCAPE and mode in ["options","heroes"]:
         _return_to_menu()
     elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE or event.keycode == KEY_B:
         _toggle_pause()
@@ -1903,7 +1903,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         _use_flex()
     if event.keycode == KEY_L:
         _open_legendary()
-    if mode == "menu" and event.keycode >= KEY_1 and event.keycode <= KEY_3:
+    if mode in ["menu","heroes"] and event.keycode >= KEY_1 and event.keycode <= KEY_3:
         presentation.select_hero(event.keycode - KEY_1)
     elif (mode == "choice" or mode == "replace" or mode == "legendary") and event.keycode >= KEY_1 and event.keycode <= KEY_6:
         pick_upgrade(event.keycode - KEY_1)
@@ -1940,8 +1940,12 @@ func _touch_playfield() -> Rect2:
 
 func _input(event: InputEvent) -> void:
     if event is InputEventKey and event.pressed and not event.echo:
-        if (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER) and (mode == "menu" or mode in ["choice","replace","legendary"]):
-            if mode == "menu": start_run(hero_index)
+        if event.keycode in [KEY_ENTER,KEY_KP_ENTER] and mode in ["menu","heroes"]:
+            var focused := get_viewport().gui_get_focus_owner()
+            if focused is Button and focused.is_visible_in_tree() and not focused.disabled:
+                return # Let the live focused destination/card handle ui_accept.
+        if (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER) and (mode in ["menu","heroes"] or mode in ["choice","replace","legendary"]):
+            if mode in ["menu","heroes"]: start_run(hero_index)
             else: _confirm_selection()
             get_viewport().set_input_as_handled()
             return

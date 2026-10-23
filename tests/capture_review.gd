@@ -21,7 +21,9 @@ func _capture() -> void:
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
-            if state == "character": game.presentation.select_hero(1)
+            if state == "character":
+                game.presentation.open_heroes()
+                game.presentation.select_hero(1)
         elif state in ["playing","obstacles","recovery","station"]:
             game.player_pos = Vector2(850,565)
             game.pickups.append({"kind":"snack","pos":Vector2(780,580),"xp":0.0})

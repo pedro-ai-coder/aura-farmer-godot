@@ -53,3 +53,5 @@ GDD `f2ec242` §7.2 is now implemented on the signature Flex branch with determi
 ## Hero Spotlight V5 production follow-up
 
 Current visual execution and isolated export blockers are tracked in [art/V5_PARITY.md](art/V5_PARITY.md). Production target is §26; existing palette-only UI is not V5 acceptance. No handoff ZIP was supplied; 37 icon approvals and standalone logo/clean plate remain blocked. Continue theme, live navigation and responsive components independently.
+
+G3.2 separates home and hero selection and preserves explicit START/focus/safe viewport behavior. Existing approved portraits are retained; text heading does not claim completion of the missing illustrated logo. Compact selection can scroll cards while its actions remain pinned. See the V5 tracker for actual captures and remaining card/HUD/secondary-screen gaps.
