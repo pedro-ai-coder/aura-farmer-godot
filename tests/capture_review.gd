@@ -17,7 +17,7 @@ func _capture() -> void:
     root.add_child(game)
     game.set_process(false)
     game.touch_device = width < 1000
-    for state in ["menu","character","playing","mobile","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense"]:
+    for state in ["menu","character","playing","mobile","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense","legendary_shield","legendary_space"]:
         game.start_run(0)
         if state == "menu" or state == "character":
             game._return_to_menu()
@@ -68,6 +68,18 @@ func _capture() -> void:
             game.run_time = 602.0
             game._step_enemies(0.0)
             game.run_time = 602.5 if state == "boss" else (720.0 if state == "berserk" else 840.0)
+        elif state in ["legendary_shield","legendary_space"]:
+            # Controlled legal Tank loadout; not ordinary-health survival evidence.
+            game.start_run(2)
+            game.player_pos = Vector2(700,550)
+            var weapon_id := "cope-shield" if state == "legendary_shield" else "personal-space"
+            game.weapons.clear()
+            game.weapons.append({"id":weapon_id,"level":1,"rarity":"legendary","timer":0.0})
+            game.weapon_activations[weapon_id] = 2 if state == "legendary_shield" else 1
+            game._spawn_enemy("npc",{"pos":Vector2(760,550)})
+            game.enemies[0]["hp"] = 1000.0
+            game.enemies[0]["max"] = 1000.0
+            game._fire_weapons(0.01)
         elif state == "dense":
             game.player_pos = Vector2(850,565)
             for i in range(80): game._spawn_enemy("npc" if i%3 else "hater")

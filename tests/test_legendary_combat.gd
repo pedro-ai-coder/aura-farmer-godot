@@ -84,17 +84,43 @@ func _verify() -> void:
     _expect(is_equal_approx(enemy.get("slow", 0.0), 0.25) and enemy.get("slow_until") == 2.0, "Enhanced Grass applies the approved slow and duration")
     enemy = _setup(game, "cope-shield", 2)
     game.call("_fire_weapons", 0.01)
-    _expect(is_equal_approx(game.get("shield"), 110.0 * 0.09 * 2.6), "Third Shield activation grants both rarity-scaled weapon shield sources")
+    _expect(is_equal_approx(game.get("shield"), 110.0 * (0.04 * 2.6 + 0.05)), "Third Shield strike scales its own shield by rarity but Unbothered by support only")
     game.set("run_time", 2.0)
     game.call("_expire_weapon_shields")
-    _expect(is_equal_approx(game.get("shield"), 110.0 * 0.05 * 2.6), "Cope Shield expires at two seconds without removing Unbothered")
+    _expect(is_equal_approx(game.get("shield"), 110.0 * 0.05), "Cope Shield expires at two seconds without removing Unbothered")
     game.set("run_time", 3.0)
     game.call("_expire_weapon_shields")
     _expect(is_zero_approx(game.get("shield")), "Unbothered expires at three seconds")
     enemy = _setup(game, "personal-space", 1)
     game.call("_fire_weapons", 0.01)
-    _expect(is_equal_approx(game.get("shield"), 110.0 * 0.04 * 2.6), "Every second legendary pulse grants My Aura shield")
+    _expect(is_equal_approx(game.get("shield"), 110.0 * 0.04), "Every second legendary pulse grants the GDD 4% support shield without rarity scaling")
     _expect(is_equal_approx(enemy.get("weaken", 0.0), 0.08), "Personal Space weakens common enemies")
+    # Legal Tank loadouts: support modifiers apply once; offensive passives do not.
+    for id in ["cope-shield","personal-space"]:
+        game.start_run(2)
+        game.player_pos = Vector2(700,550)
+        game.weapons.clear()
+        game.weapons.append({"id":id,"level":1,"rarity":"legendary","timer":0.0})
+        game.passives.append_array([{"id":"certified-w","level":2,"rarity":"common"},{"id":"cope-harder","level":3,"rarity":"common"},{"id":"main-character","level":4,"rarity":"common"}])
+        game.weapon_activations[id] = 2 if id == "cope-shield" else 1
+        game._spawn_enemy("npc",{"pos":Vector2(760,550)})
+        game.enemies[0]["hp"] = 1000.0
+        game.enemies[0]["max"] = 1000.0
+        game._fire_weapons(0.01)
+        var support := 1.12 * 1.24
+        var source := "unbothered" if id == "cope-shield" else "my-aura"
+        var coefficient := 0.05 if id == "cope-shield" else 0.04
+        _expect(is_equal_approx(game.weapon_shields[source]["remaining"],140.0*coefficient*support),"Legal Tank legendary support shield matches GDD HP x S and support modifiers: " + id)
+        if id == "cope-shield":
+            _expect(is_equal_approx(game.weapon_shields["cope-shield"]["remaining"],140.0*0.04*2.6*support),"Own Cope Shield retains its approved rarity scaling")
+        var deadline: float = game.weapon_shields[source]["until"]
+        game._toggle_pause()
+        game._advance(5.0)
+        _expect(game.run_time == 0.0 and game.weapon_shields[source]["until"] == deadline,"Pause freezes the actual legendary support shield")
+        game._toggle_pause()
+        game.run_time = 3.0
+        game._expire_weapon_shields()
+        _expect(is_zero_approx(game.shield),"Legendary support and own shields expire on their original clocks")
     game.call("start_run", 2)
     game.set("shield", 5.0)
     game.call("_grant_weapon_shield", "cope-shield", 10.0, 2.0)
