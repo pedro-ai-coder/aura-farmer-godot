@@ -1,0 +1,89 @@
+{
+  "version": "5.0",
+  "approved_on": "2026-10-23",
+  "status": "creator-approved-visual-direction",
+  "identity": "Option A — Cartoon Arcade / Arcade Street Clean — Hero Spotlight",
+  "source_of_truth": "docs/GDD.md",
+  "source_handoff": "Aura_Farmer_Visual_Production_Handoff_v5.zip (external source delivery; binary pack not committed)",
+  "render_reference": {
+    "width": 1600,
+    "height": 900,
+    "aspect_ratio": "16:9",
+    "gdd_reference": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "palette": {
+    "ink.navy": "#253449",
+    "ink.deep": "#13233A",
+    "panel.blue": "#1F3E63",
+    "surface.paper": "#F7EDCD",
+    "aura.gold": "#F8C45F",
+    "selected.sky": "#4EA3FF",
+    "hater.coral": "#E57461",
+    "support.teal": "#6EAAB0",
+    "cool.magenta": "#F04BA5",
+    "epic.violet": "#A66BFF",
+    "healing.green": "#78C85C"
+  },
+  "typography": {
+    "logo": "custom illustrated outlined wordmark (not a font)",
+    "menu_title": "Inter Display Black 900",
+    "primary_button": "Inter Black 900",
+    "card_name": "Inter ExtraBold 800-900",
+    "body": "Inter Medium 500",
+    "numerals": "Inter SemiBold 600"
+  },
+  "ui_reference_px": {
+    "primary_button": {
+      "height": 72,
+      "corner_radius": 15,
+      "border": 4
+    },
+    "secondary_button": {
+      "height": 72,
+      "corner_radius": 15,
+      "border": 4
+    },
+    "normal_upgrade_card": {
+      "width": 386,
+      "height": 480,
+      "corner_radius": 24,
+      "border": 7
+    },
+    "legendary_card": {
+      "width": 430,
+      "height": 300,
+      "border": 5
+    },
+    "hero_card": {
+      "width": 445,
+      "height": 576,
+      "corner_radius": 24,
+      "border": 6
+    }
+  },
+  "layout_spacing_px": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    64
+  ],
+  "content": {
+    "scene_targets": 22,
+    "weapon_icons": 9,
+    "passive_icons": 28
+  },
+  "notes": [
+    "The GDD supersedes any stale visual example text or game values.",
+    "Current approved starting Flexes: Sigma Deadpan Verdict, Cool Kid CTRL + CHAOS, Alpha Chad Giga Chad Rampage.",
+    "Current approved run clock: 10:00 boss start, 120 seconds to berserk.",
+    "Web, Android and iOS are equal-priority production targets.",
+    "Visual approval is not a claim that the rendered/exported binaries are committed or in-engine accepted."
+  ]
+}
