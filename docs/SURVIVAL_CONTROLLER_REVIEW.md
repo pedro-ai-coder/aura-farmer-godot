@@ -4,7 +4,7 @@
 
 ## Why another controller is needed
 
-The historical `tests/review_unprotected_run.gd` controller uses a fixed oval patrol, only considers a Snack/Magnet once the *weighted* distance is below 65 U, enters Safe Spot recovery at <40% HP, and generally auto-fires Flex without checking Cool Kid's real close-range cone. Its ranged mouse aim prefers visible bosses. Eight recorded seed-451/452 observations in `docs/V5_SURVIVAL_RUNS.json` lost before the 600-second Big Hater start; one earlier 15-minute baseline with different conditions did reach a boss. These are **controller-dependent observations**, not definitive evidence that the GDD-approved damage, healing or XP must change.
+The historical `tests/review_unprotected_run.gd` controller uses a fixed oval patrol, only considers a Snack/Magnet once the *weighted* distance is below 65 U (effectively **325 U for injured-player Snacks** and about **217 U for Magnets** under its original multipliers), enters Safe Spot recovery at <40% HP, and generally auto-fires Flex without checking Cool Kid's real close-range cone. Its ranged mouse aim prefers visible bosses. Eight recorded seed-451/452 observations in `docs/V5_SURVIVAL_RUNS.json` lost before the 600-second Big Hater start; one earlier 15-minute baseline with different conditions did reach a boss. These are **controller-dependent observations**, not definitive evidence that the GDD-approved damage, healing or XP must change.
 
 This PR adds a **second, opt-in controller** while retaining the old baseline path byte-for-byte in its movement, aim and upgrade decisions:
 

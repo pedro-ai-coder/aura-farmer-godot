@@ -22,22 +22,22 @@ func _verify() -> void:
     var patrol := Vector2(760,690)
 
     game.hp = 30.0
-    game.pickups.append({"kind":"snack","pos":Vector2(910,550),"xp":0.0})
+    game.pickups.append({"kind":"snack","pos":Vector2(1060,550),"xp":0.0})
     var choice: Dictionary = Policy.goal(game,patrol)
-    _expect(choice["kind"] == "snack","Critical health should pursue a valid snack 210U away instead of using legacy 65U gating")
-    _expect(choice["pos"] == Vector2(910,550),"Snack target is the actual item position")
+    _expect(choice["kind"] == "snack","Critical health should pursue a valid snack 360U away, beyond the baseline's effective 325U Snack pursuit range")
+    _expect(choice["pos"] == Vector2(1060,550),"Snack target is the actual item position")
 
     game.hp = game.max_hp
     choice = Policy.goal(game,patrol)
     _expect(choice["kind"] == "patrol","Full-health play should not chase snacks or visit the station")
 
     game.pickups.clear()
-    game.pickups.append({"kind":"magnet","pos":Vector2(890,550),"xp":0.0})
+    game.pickups.append({"kind":"magnet","pos":Vector2(930,550),"xp":0.0})
     game.pickups.append({"kind":"aura","pos":Vector2(750,610),"xp":600.0})
     choice = Policy.goal(game,patrol)
-    _expect(choice["kind"] == "magnet","When XP waits on the ground, the controller can pursue Magnet beyond 65U")
+    _expect(choice["kind"] == "magnet","When XP waits on the ground, the controller can pursue Magnet beyond the baseline's effective 217U Magnet range")
     game.pickups.clear()
-    game.pickups.append({"kind":"magnet","pos":Vector2(890,550),"xp":0.0})
+    game.pickups.append({"kind":"magnet","pos":Vector2(930,550),"xp":0.0})
     choice = Policy.goal(game,patrol)
     _expect(choice["kind"] == "patrol","No incentive to pursue Magnet with zero waiting XP")
 
