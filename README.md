@@ -2,6 +2,14 @@
 
 Shared solo implementation for **Web, Android and iOS** using Godot 4.7.2, GDScript and the Compatibility renderer. The canonical `docs/GDD.md` is the gameplay authority. The Phaser reference repository remains unchanged.
 
+## Approved visual identity (23 October 2026)
+
+The creator-approved production target is **Option A — Cartoon Arcade / Arcade Street Clean — Hero Spotlight**, defined in [canonical GDD §26](docs/GDD.md) and its [Hero Spotlight V5 visual handoff](docs/art/HERO_SPOTLIGHT_V5.md). The [production visual tokens](docs/art/hero_spotlight_v5_tokens.json) give stable palette, typography and component reference dimensions.
+
+The illustrated **Production Visual Art Bible V5** contains 22 finished-look scene targets plus 9 weapon and 28 passive icon designs. These visual handoff binaries were delivered separately and **are not checked into this repository by the documentation approval PR**. The development team must import and verify the actual master files before implementation and visual acceptance; do not treat text-only specifications as replacement artwork.
+
+The GDD remains authoritative for all gameplay labels, rules and timing. In particular, the current starter Flexes are **Deadpan Verdict (Sigma)**, **CTRL + CHAOS (Cool Kid)** and **Giga Chad Rampage (Alpha Chad)**, with the approved 10-minute survival schedule. Do not reuse historical Flex labels or earlier run durations visible in concept-art mockups. This approval does not authorize gameplay changes, Phaser edits or release.
+
 ## Current state
 
 The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. The Cartoon Arcade UI preserves approved menu art and catalog symbols. Menus include explicit hero Play, options/save navigation, card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved art is fetched from pinned, hash-verified Phaser assets.
