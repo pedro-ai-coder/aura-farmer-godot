@@ -1,0 +1,372 @@
+[
+  {
+    "id": "ban-hammer",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "brainrot-feed",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "chad-hands",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "cope-shield",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "keyboard-warrior",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "no-cap",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "personal-space",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "ratio-blaster",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "touch-grass",
+    "kind": "weapon",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "absolute-cinema",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "aura-viral",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "big-chad",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "big-meme",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "brainrot-rain",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "built-different",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "caught-4k",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "certified-w",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "cope-harder",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "ego-check",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "get-ratiod",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "hands-on-sight",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "homie-check",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "its-over",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "let-him-cook",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "main-character",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "no-cap-streak",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "no-u",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "six-to-seven",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "so-back",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "take-l",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "terminally-online",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "thick-skin",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "timeline",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "too-sigma",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "uno-reverse",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "w-squad",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  },
+  {
+    "id": "w-wifi",
+    "kind": "passive",
+    "available": false,
+    "individual_approval": "not supplied",
+    "png_svg_hashes": null,
+    "alpha_qa": false,
+    "qa_32px": false,
+    "qa_64px": false
+  }
+]
