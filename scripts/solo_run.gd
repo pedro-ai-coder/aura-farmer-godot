@@ -5,6 +5,7 @@ const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
+const CleanCutSkinScript = preload("res://scripts/clean_cut_skin.gd")
 const RecoveryRulesScript = preload("res://scripts/recovery_rules.gd")
 const PhaserRngScript = preload("res://scripts/phaser_rng.gd")
 const CameraFramingScript = preload("res://scripts/camera_framing.gd")
@@ -162,6 +163,7 @@ var build_details: Label
 var profile_text: TextEdit
 var blocked_movement: Dictionary = {}
 var presentation
+var clean_cut_skin: Control
 var touch_device := OS.has_feature("mobile")
 var web_metrics: Dictionary = {}
 var platform_poll := 0.0
@@ -268,6 +270,13 @@ func _ready() -> void:
     _apply_preferences()
     _show_ui()
     _update_text()
+    if _use_clean_cut_skin():
+        clean_cut_skin = CleanCutSkinScript.new()
+        clean_cut_skin.install(self, "")
+
+func _use_clean_cut_skin() -> bool:
+    # Native art review fixtures may explicitly opt out to compare their own skin.
+    return true
 
 func _make_label(pos: Vector2, font_size: int) -> Label:
     var label = Label.new()
