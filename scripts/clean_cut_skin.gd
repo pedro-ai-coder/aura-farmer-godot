@@ -172,7 +172,9 @@ func refresh() -> void:
     var mode: String=game.mode
     if mode!=last_mode:
         hero_scroll.scroll_vertical=0;offers_scroll.scroll_vertical=0;last_mode=mode
-    for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button]:button.hide()
+        # A hide/show cycle every frame cancels Godot BaseButton pointer presses
+        # before mouse release. Only reset visibility when changing screens.
+        for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button]:button.hide()
     background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
