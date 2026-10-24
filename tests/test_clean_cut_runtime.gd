@@ -44,7 +44,8 @@ func verify() -> void:
         check(game.hero_index == 1, "Hero selection preserves actual hero state")
 
         game.start_run(0)
-        game._gain_xp(120)
+        # One legal level-up: avoid opening a second queued upgrade after Confirm.
+        game._gain_xp(39)
         game._open_choice()
         game._show_ui()
         game._update_text()
