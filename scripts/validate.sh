@@ -40,6 +40,7 @@ run_check() {
 bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
 python3 scripts/promote_approved_icons.py
+python3 scripts/verify_clean_cut_art.py
 python3 -m unittest discover -s tests -p test_icon_pipeline.py
 run_check import --headless --path . --import
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
@@ -83,6 +84,7 @@ run_check mobile-touch --headless --path . --script res://tests/test_mobile_joys
 run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10
 
+run_check approved-clean-cut-runtime --headless --path . --script res://tests/test_clean_cut_runtime.gd
 run_check candidate-bindings --headless --path . --script res://tests/review_clean_cut_candidates.gd -- user://clean-cut-review --check
 run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
 
