@@ -5,10 +5,13 @@
   "screens": [
     "boss-warning",
     "pause-default",
+    "pause-pressed",
     "full-hater-mode",
     "mobile-landscape-hud",
     "boss-encounter",
     "combat-density",
+    "pause-focus",
+    "pause-disabled",
     "desktop-hud"
   ],
   "component_counts": {
@@ -145,6 +148,16 @@
     {
       "source": "screens/pause-default.svg",
       "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-pressed.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-pressed.svg",
+      "href": "../shared/pause/pause-pressed.svg",
       "exists": true
     },
     {
@@ -480,6 +493,26 @@
     {
       "source": "screens/combat-density.svg",
       "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-focus.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-focus.svg",
+      "href": "../shared/pause/pause-focus.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-disabled.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-disabled.svg",
+      "href": "../shared/pause/pause-disabled.svg",
       "exists": true
     },
     {
