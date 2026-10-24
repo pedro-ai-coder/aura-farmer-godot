@@ -40,9 +40,11 @@ func verify() -> void:
             var item: Dictionary = game.selection[index]
             var category := "weapon" if game.WEAPONS.has(item["id"]) else "passive"
             var parts: Dictionary = game.presentation.card_parts[index]
-            if parts["image"].texture != registry.texture(category,item["id"]) or not parts["image"].visible or parts["icon"].visible:
-                failures.append("Legal live offers use approved texture identity")
-            if parts["name"].text.is_empty(): failures.append("Names remain available for compact recognition")
+            var visible_parts: Dictionary = game.clean_cut_skin.offer_parts[index]
+            game.clean_cut_skin.refresh()
+            if parts["image"].texture != registry.texture(category,item["id"]) or visible_parts["icon"].texture != registry.texture(category,item["id"]) or not visible_parts["icon"].is_visible_in_tree():
+                failures.append("Legal visible Clean Cut offers use exact approved texture identity")
+            if parts["name"].text.is_empty() or visible_parts["name"].text.is_empty(): failures.append("Names remain available for compact recognition")
         if before != JSON.stringify([game.rng.state,game.hp,game.run_time,game.weapons,game.passives,game.profile]): failures.append("Icon refresh preserves simulation/RNG/save")
     # Presentation-only per-item fixtures supplement the real offer-generation checks above.
     # They do not authorize future items or fabricate a normal run.
