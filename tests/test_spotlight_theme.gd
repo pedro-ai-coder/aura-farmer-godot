@@ -23,7 +23,7 @@ func verify() -> void:
         expect(normal is StyleBoxTexture, "Menu uses creator-approved image-backed Clean Cut chassis")
         expect(pressed is StyleBoxTexture and focus is StyleBoxTexture, "Pressed and keyboard focus use distinct approved artwork")
         if normal is StyleBoxTexture:
-            expect(normal.texture == skin.art.texture("menu/secondary-idle"), "Secondary menu button uses approved idle image")
+            expect(normal.texture == skin.art.texture("menu/secondary-default"), "Secondary menu button uses approved idle image")
         if pressed is StyleBoxTexture:
             expect(pressed.texture == skin.art.texture("menu/secondary-pressed"), "Pressed action uses approved tactile artwork")
         if focus is StyleBoxTexture:
