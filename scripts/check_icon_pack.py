@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 import struct
 from promote_approved_icons import validate
+from verify_clean_cut_art import validate as validate_clean_cut
 
 def directory(data):
     if data[:4] != b'GDPC' or struct.unpack_from('<I',data,4)[0] != 4:
@@ -19,7 +20,8 @@ def directory(data):
     if offset != len(data): raise ValueError('Malformed PCK directory')
     return paths
 
-def inspect(data,approved,originals=(),require_enemy_frames=False,require_runtime_manifest=False):
+def inspect(data,approved,originals=(),require_enemy_frames=False,require_runtime_manifest=False,approved_clean_cut=()):
+    """Verify approved icons and every signed Clean Cut source against real PCK entries."""
     paths=directory(data)
     if require_runtime_manifest and "assets/runtime-icons/manifest.json" not in paths:
         raise ValueError("Runtime icon manifest absent from export")
@@ -43,12 +45,27 @@ def inspect(data,approved,originals=(),require_enemy_frames=False,require_runtim
             raise ValueError('Original approved master absent: '+source)
     if require_enemy_frames and 'assets/approved-enemy-frames.json' not in paths:
         raise ValueError('Approved enemy animation metadata absent')
-    return dict(bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),directory_entries=len(paths),approved_icon_count=len(approved),candidate_entries=0,original_masters=len(originals),enemy_metadata=require_enemy_frames)
+    if approved_clean_cut:
+        if 'assets/runtime-clean-cut/v2/manifest.json' not in paths:
+            raise ValueError('Approved Clean Cut runtime manifest absent from export')
+        expected={'assets/runtime-clean-cut/v2/manifest.json'}
+        for row in approved_clean_cut:
+            source=row['path']
+            expected.add(source+'.import')
+            if source+'.import' not in paths:
+                raise ValueError('Missing approved Clean Cut import metadata: '+source)
+            file_name=Path(source).name
+            if not any(p.startswith('.godot/imported/'+file_name+'-') and p.endswith('.ctex') for p in paths):
+                raise ValueError('Missing approved Clean Cut texture: '+source)
+        unexpected=[p for p in paths if p.startswith('assets/runtime-clean-cut/') and p not in expected]
+        if unexpected:
+            raise ValueError('Unsigned Clean Cut runtime resource exported: '+str(unexpected[:5]))
+    return dict(bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),directory_entries=len(paths),approved_icon_count=len(approved),approved_clean_cut_count=len(approved_clean_cut),candidate_entries=0,original_masters=len(originals),enemy_metadata=require_enemy_frames)
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('pack',type=Path);args=parser.parse_args()
     try:
         root=Path(__file__).resolve().parents[1]
         originals=[r['destination'] for r in json.loads((root/'assets/approved-assets.json').read_text())['assets']]
-        print('PASS: '+json.dumps(inspect(args.pack.read_bytes(),validate(),originals,True,True)))
+        print('PASS: '+json.dumps(inspect(args.pack.read_bytes(),validate(),originals,True,True,validate_clean_cut())))
     except (ValueError,OSError,struct.error,UnicodeError) as error: parser.exit(1,'ERROR: '+str(error)+'\n')
