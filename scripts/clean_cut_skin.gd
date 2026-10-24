@@ -203,7 +203,7 @@ func home_layout() -> void:
         if compact_landscape:
             var gap:=12.0
             var compact_width: float=(view.x-48-2*gap)/3
-            place(button,Rect2(24+i*(compact_width+gap),view.y-70,compact_width,58))
+            place(button,Rect2(24+i*(compact_width+gap),view.y-76,compact_width,64))
         else:
             place(button,Rect2(40,top+i*76,width,64))
         button_skin(button,"menu/primary" if i==0 else "menu/secondary")
