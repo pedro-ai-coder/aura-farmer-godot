@@ -1,6 +1,6 @@
 extends Control
-## Isolated live-Control integration. No source candidate is approved or shipped by this adapter.
-const Cache=preload("res://tests/clean_cut_review/asset_cache.gd")
+## Production live-Control visual skin. Only immutable creator-approved runtime sources.
+const Cache=preload("res://scripts/clean_cut_assets.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
 var game
 var ui
@@ -151,7 +151,7 @@ func install(owner_game, source_root: String) -> void:
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
         equipment.append(parts)
         for node in parts.values():hud_nodes.append(node)
-    watermark=label(self,13,Style.CORAL);watermark.text="NATIVE QA / CANDIDATE ART / NOT CREATOR-APPROVED"
+    watermark=label(self,13,Style.CORAL);watermark.text=""
     refresh()
 func _process(_delta: float) -> void:refresh()
 func refresh() -> void:
