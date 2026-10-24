@@ -128,6 +128,11 @@ var touch_active := false
 var touch_index := -1
 var touch_origin := Vector2.ZERO
 var touch_direction := Vector2.ZERO
+var touch_visual_origin := Vector2.ZERO
+var touch_ui_pointers: Dictionary = {}
+var touch_ui_armed: Dictionary = {}
+var touch_control_styles: Dictionary = {}
+var touch_swallow_emulated_mouse := false
 var touch_joystick: Control
 var camera: Camera2D
 var layer: CanvasLayer
@@ -1928,9 +1933,18 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _clear_touch() -> void:
     for key in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]:
         if Input.is_key_pressed(key): blocked_movement[key] = true
+    for control in touch_control_styles:
+        if is_instance_valid(control): control.add_theme_stylebox_override("normal",touch_control_styles[control])
+    touch_control_styles.clear()
+    touch_ui_armed.clear()
+    touch_ui_pointers.clear()
+    _release_touch_movement()
+
+func _release_touch_movement() -> void:
     touch_active = false
     touch_index = -1
     touch_origin = Vector2.ZERO
+    touch_visual_origin = Vector2.ZERO
     touch_direction = Vector2.ZERO
     if touch_joystick != null:
         touch_joystick.call("reset")
@@ -1950,12 +1964,70 @@ func _update_platform(delta: float) -> void:
     if JSON.stringify(web_metrics) != previous and presentation != null: presentation._window_changed(true)
 
 func _touch_playfield() -> Rect2:
-    var rect := Rect2(Vector2.ZERO,get_viewport_rect().size)
-    if presentation != null: rect = Rect2(presentation.position,presentation.view)
-    var top := 220.0 if rect.size.x < 700.0 else 100.0
-    return Rect2(rect.position+Vector2(0,top),Vector2(rect.size.x*0.48,maxf(0.0,rect.size.y-top-92)))
+    return Rect2(presentation.position,presentation.view) if presentation != null else Rect2(Vector2.ZERO,get_viewport_rect().size)
+
+func _touch_control_contains(control: Control, at: Vector2) -> bool:
+    return Rect2(Vector2.ZERO,control.size).has_point(control.get_global_transform_with_canvas().affine_inverse()*at)
+
+func _touch_ui_at(node: Node, at: Vector2) -> Control:
+    if node is Control:
+        if not node.is_visible_in_tree(): return null
+        if node.clip_contents and not _touch_control_contains(node,at): return null
+    var children := node.get_children()
+    children.reverse()
+    for child: Node in children:
+        var found := _touch_ui_at(child,at)
+        if found != null: return found
+    if node is Control and node.mouse_filter != Control.MOUSE_FILTER_IGNORE and (node is BaseButton or node is Range or node is ScrollContainer or node is LineEdit or node is TextEdit):
+        if _touch_control_contains(node,at): return node
+    return null
+
+func _handle_gameplay_touch(event: InputEventScreenTouch) -> void:
+    if event.pressed and not event.canceled:
+        touch_swallow_emulated_mouse = mode == "playing"
+    if touch_ui_pointers.has(event.index):
+        var control: Control = touch_ui_pointers[event.index]
+        if not event.pressed or event.canceled:
+            var armed: bool = touch_ui_armed.get(event.index,false)
+            touch_ui_armed.erase(event.index)
+            touch_ui_pointers.erase(event.index)
+            if is_instance_valid(control) and not touch_ui_pointers.values().has(control) and touch_control_styles.has(control):
+                control.add_theme_stylebox_override("normal",touch_control_styles[control])
+                touch_control_styles.erase(control)
+            if armed and not event.canceled and is_instance_valid(control) and control is BaseButton and not control.disabled and control.is_visible_in_tree() and _touch_control_contains(control,event.position):
+                if control.focus_mode != Control.FOCUS_NONE: control.grab_focus()
+                control.pressed.emit()
+        get_viewport().set_input_as_handled()
+        return
+    if event.index == touch_index and (not event.pressed or event.canceled):
+        _release_touch_movement()
+        get_viewport().set_input_as_handled()
+        return
+    if not event.pressed or event.canceled or mode != "playing": return
+    var control := _touch_ui_at(layer,event.position)
+    if control != null:
+        # Each UI pointer owns its original target; dragging away never becomes movement.
+        touch_ui_pointers[event.index] = control
+        touch_ui_armed[event.index] = control is BaseButton and not control.disabled
+        if touch_ui_armed[event.index]:
+            if not touch_control_styles.has(control): touch_control_styles[control] = control.get_theme_stylebox("normal")
+            control.add_theme_stylebox_override("normal",control.get_theme_stylebox("pressed"))
+        get_viewport().set_input_as_handled()
+        return
+    if not touch_active and _touch_playfield().has_point(event.position):
+        touch_active = true
+        touch_index = event.index
+        touch_origin = event.position
+        touch_direction = Vector2.ZERO
+        touch_joystick.configure(_touch_playfield())
+        touch_visual_origin = touch_joystick.clamp_center(event.position,_touch_playfield())
+        touch_joystick.show_at(touch_visual_origin,touch_direction)
+    get_viewport().set_input_as_handled()
 
 func _input(event: InputEvent) -> void:
+    if (event is InputEventMouseButton or event is InputEventMouseMotion) and event.device == InputEvent.DEVICE_ID_EMULATION and touch_swallow_emulated_mouse:
+        get_viewport().set_input_as_handled()
+        return
     if event is InputEventKey and event.pressed and not event.echo:
         if event.keycode in [KEY_ENTER,KEY_KP_ENTER] and mode in ["menu","heroes"]:
             var focused := get_viewport().gui_get_focus_owner()
@@ -1983,18 +2055,14 @@ func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion and mode == "playing":
         aim_point = get_global_mouse_position()
     if event is InputEventScreenTouch:
-        if event.index == touch_index and (not event.pressed or event.canceled):
-            _clear_touch()
-        elif event.pressed and not event.canceled and not touch_active and mode == "playing" and _touch_playfield().has_point(event.position):
-            touch_active = true
-            touch_index = event.index
-            var field := _touch_playfield()
-            touch_origin = Vector2(clampf(event.position.x,field.position.x+58,field.end.x-58),clampf(event.position.y,field.position.y+58,field.end.y-58))
-            touch_direction = Vector2.ZERO
-            touch_joystick.call("show_at", touch_origin, touch_direction)
-    elif event is InputEventScreenDrag and touch_active and event.index == touch_index and mode == "playing":
-        touch_direction = (event.position - touch_origin).limit_length(85.0) / 85.0
-        touch_joystick.call("show_at", touch_origin, touch_direction)
+        _handle_gameplay_touch(event)
+    elif event is InputEventScreenDrag:
+        if touch_ui_pointers.has(event.index):
+            get_viewport().set_input_as_handled()
+        elif touch_active and event.index == touch_index and mode == "playing":
+            touch_direction = (event.position-touch_origin).limit_length(touch_joystick.saturation())/touch_joystick.saturation()
+            touch_joystick.show_at(touch_visual_origin,touch_direction)
+            get_viewport().set_input_as_handled()
 
 ## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
 func _draw_contact_shadow(at: Vector2, radius: float) -> void:

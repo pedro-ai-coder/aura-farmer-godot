@@ -1,0 +1,618 @@
+[
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "left-1280x720.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "center-1280x720.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "right-1280x720.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "two_finger-1280x720.jpg",
+    "flex_uses": 1,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "paused-1280x720.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "paused",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "choice-1280x720.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "choice",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "safe_edge-1280x720.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "left-915x412.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "center-915x412.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "right-915x412.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "two_finger-915x412.jpg",
+    "flex_uses": 1,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "paused-915x412.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "paused",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "choice-915x412.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "choice",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "axis": [
+      0.420168101787567,
+      -0.16806723177433
+    ],
+    "file": "safe_edge-915x412.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "left-844x390.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "center-844x390.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "right-844x390.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "two_finger-844x390.jpg",
+    "flex_uses": 1,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "paused-844x390.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "paused",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "choice-844x390.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "choice",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "safe_edge-844x390.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.420168042182922,
+      -0.16806723177433
+    ],
+    "file": "left-390x844.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "center-390x844.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "right-390x844.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.420168071985245,
+      -0.16806723177433
+    ],
+    "file": "two_finger-390x844.jpg",
+    "flex_uses": 1,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "paused-390x844.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "paused",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.0,
+      0.0
+    ],
+    "file": "choice-390x844.jpg",
+    "flex_uses": 0,
+    "joystick_visible": false,
+    "mode": "choice",
+    "outer_radius": 80.0,
+    "pointer_owner": -1,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "axis": [
+      0.420168101787567,
+      -0.16806723177433
+    ],
+    "file": "safe_edge-390x844.jpg",
+    "flex_uses": 0,
+    "joystick_visible": true,
+    "mode": "playing",
+    "outer_radius": 80.0,
+    "pointer_owner": 0,
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "saturation": 119.0,
+    "thumb_radius": 35.0
+  }
+]
