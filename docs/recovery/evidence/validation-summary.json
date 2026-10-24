@@ -1,0 +1,30 @@
+{
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+  "baseline_godot_phases": 45,
+  "recovery_godot_phases": 46,
+  "python_tests": 11,
+  "node_platform_tests": "PASS",
+  "approved_original_assets": 19,
+  "approved_clean_cut_resources": 84,
+  "deferred_legendary_before": "FAIL: visibility and held pointer navigation in all three viewports",
+  "deferred_legendary_after": "PASS",
+  "viewports": [
+    [
+      1280,
+      720
+    ],
+    [
+      915,
+      412
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "rendered_baseline": "BLOCKED: no working display server",
+  "full_run_video": "NOT TESTED",
+  "device_testing": "NOT TESTED",
+  "fps": "NOT MEASURED"
+}

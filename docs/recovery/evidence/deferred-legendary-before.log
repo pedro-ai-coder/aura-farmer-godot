@@ -1,0 +1,28 @@
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Deferred legendary is reachable at (1280, 720)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_clean_cut_deferred_legendary.gd:70)
+ERROR: Held pointer click reopens deferred legendary at (1280, 720)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_clean_cut_deferred_legendary.gd:70)
+ERROR: Deferred legendary is reachable at (915, 412)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_clean_cut_deferred_legendary.gd:70)
+ERROR: Held pointer click reopens deferred legendary at (915, 412)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_clean_cut_deferred_legendary.gd:70)
+ERROR: Deferred legendary is reachable at (390, 844)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_clean_cut_deferred_legendary.gd:70)
+ERROR: Held pointer click reopens deferred legendary at (390, 844)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_clean_cut_deferred_legendary.gd:70)

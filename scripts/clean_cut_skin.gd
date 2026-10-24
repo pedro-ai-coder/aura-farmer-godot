@@ -117,7 +117,7 @@ func install(owner_game, source_root: String) -> void:
     heading_shadow=label(self,34,Style.GOLD);heading=label(self,34,Style.PAPER)
     for node in [heading,heading_shadow]:node.add_theme_font_override("font",italic)
     home_caption=label(self,24,Style.PAPER)
-    for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button]:adopt(button,self)
+    for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.legendary_button]:adopt(button,self)
     hero_scroll=ScrollContainer.new();hero_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(hero_scroll)
     hero_content=Control.new();hero_scroll.add_child(hero_content)
     for i in range(3):
@@ -174,7 +174,7 @@ func refresh() -> void:
         hero_scroll.scroll_vertical=0;offers_scroll.scroll_vertical=0;last_mode=mode
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
-        for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button]:button.hide()
+        for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button,game.legendary_button]:button.hide()
     background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
@@ -322,6 +322,13 @@ func hud_layout() -> void:
     wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-178)/2,138 if narrow else 38,170,55))
     warning.text=game.SoloClock.warning(game.run_time);place(warning,Rect2((view.x-360)/2,210 if narrow else 108,360,40))
     game.pause_button.show();game.pause_button.text="II";place(game.pause_button,Rect2(view.x-90,28,64,64));button_skin(game.pause_button,"menu/secondary")
+    # The legacy presentation is hidden while this skin owns gameplay. Keep
+    # its original action reachable after Defer without changing offers or RNG.
+    game.legendary_button.visible = game.run_time >= game.SoloClock.LEGENDARY_FIRST and game.run_time < game.SoloClock.LEGENDARY_DEADLINE and not game.legendary_spent and not game.legendary_offers.is_empty()
+    if game.legendary_button.visible:
+        game.legendary_button.text = "LEGENDARY [L]"
+        place(game.legendary_button,Rect2(18,view.y-302,minf(238,view.x-36),64))
+        button_skin(game.legendary_button,"menu/primary")
     boss_plate.hide();boss_text.hide()
     for enemy: Dictionary in game.enemies:
         if enemy["kind"]!="boss":continue

@@ -1,0 +1,556 @@
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (86 steps)
+[   0% ] update_scripts_classes | ApprovedIconRegistry
+[   1% ] update_scripts_classes | ApprovedVisuals
+[   2% ] update_scripts_classes | ArcadePresentation
+[   3% ] update_scripts_classes | ArcadeTheme
+[   4% ] update_scripts_classes | CameraFraming
+[   5% ] update_scripts_classes |
+[   6% ] update_scripts_classes |
+[   8% ] update_scripts_classes |
+[   9% ] update_scripts_classes | FloatingJoystick
+[  10% ] update_scripts_classes | GameRules
+[  11% ] update_scripts_classes |
+[  12% ] update_scripts_classes |
+[  13% ] update_scripts_classes | PhaserRng
+[  14% ] update_scripts_classes |
+[  16% ] update_scripts_classes | ProfileStore
+[  17% ] update_scripts_classes | RecoveryRules
+[  18% ] update_scripts_classes |
+[  19% ] update_scripts_classes | SoloEnemyRules
+[  20% ] update_scripts_classes | SoloOfferRules
+[  21% ] update_scripts_classes | SoloPassiveRules
+[  22% ] update_scripts_classes |
+[  24% ] update_scripts_classes | SoloWorldRules
+[  25% ] update_scripts_classes | SpotlightComponents
+[  26% ] update_scripts_classes | SpotlightHome
+[  27% ] update_scripts_classes | SpotlightHud
+[  28% ] update_scripts_classes | SpotlightOfferCard
+[  29% ] update_scripts_classes | SpotlightSecondary
+[  31% ] update_scripts_classes | WeaponVisuals
+[  32% ] update_scripts_classes | WebPlatform
+[  33% ] update_scripts_classes |
+[  34% ] update_scripts_classes |
+[  35% ] update_scripts_classes |
+[  36% ] update_scripts_classes |
+[  37% ] update_scripts_classes |
+[  39% ] update_scripts_classes |
+[  40% ] update_scripts_classes |
+[  41% ] update_scripts_classes |
+[  42% ] update_scripts_classes |
+[  43% ] update_scripts_classes |
+[  44% ] update_scripts_classes |
+[  45% ] update_scripts_classes |
+[  47% ] update_scripts_classes |
+[  48% ] update_scripts_classes |
+[  49% ] update_scripts_classes |
+[  50% ] update_scripts_classes |
+[  51% ] update_scripts_classes |
+[  52% ] update_scripts_classes |
+[  54% ] update_scripts_classes |
+[  55% ] update_scripts_classes |
+[  56% ] update_scripts_classes |
+[  57% ] update_scripts_classes |
+[  58% ] update_scripts_classes |
+[  59% ] update_scripts_classes |
+[  60% ] update_scripts_classes |
+[  62% ] update_scripts_classes |
+[  63% ] update_scripts_classes |
+[  64% ] update_scripts_classes |
+[  65% ] update_scripts_classes |
+[  66% ] update_scripts_classes |
+[  67% ] update_scripts_classes |
+[  68% ] update_scripts_classes |
+[  70% ] update_scripts_classes |
+[  71% ] update_scripts_classes |
+[  72% ] update_scripts_classes |
+[  73% ] update_scripts_classes |
+[  74% ] update_scripts_classes |
+[  75% ] update_scripts_classes |
+[  77% ] update_scripts_classes |
+[  78% ] update_scripts_classes |
+[  79% ] update_scripts_classes |
+[  80% ] update_scripts_classes |
+[  81% ] update_scripts_classes |
+[  82% ] update_scripts_classes |
+[  83% ] update_scripts_classes |
+[  85% ] update_scripts_classes |
+[  86% ] update_scripts_classes |
+[  87% ] update_scripts_classes |
+[  88% ] update_scripts_classes |
+[  89% ] update_scripts_classes |
+[  90% ] update_scripts_classes |
+[  91% ] update_scripts_classes |
+[  93% ] update_scripts_classes |
+[  94% ] update_scripts_classes |
+[  95% ] update_scripts_classes |
+[  96% ] update_scripts_classes |
+[  97% ] update_scripts_classes |
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started Scanning actions... (144 steps)
+[   0% ] _update_scan_actions | alpha-atlas.png
+[   0% ] _update_scan_actions | alpha-rear-v2.png
+[   1% ] _update_scan_actions | alpha.png
+[   2% ] _update_scan_actions | big-hater.png
+[   2% ] _update_scan_actions | cool-kid-atlas.png
+[   3% ] _update_scan_actions | cool-kid-flex-v2.png
+[   4% ] _update_scan_actions | cool-kid-rear-v2.png
+[   4% ] _update_scan_actions | cool-kid.png
+[   5% ] _update_scan_actions | enemies-a-v2.png
+[   6% ] _update_scan_actions | enemies-b-v2.png
+[   6% ] _update_scan_actions | enemies.png
+[   7% ] _update_scan_actions | events-v2.png
+[   8% ] _update_scan_actions | hater.png
+[   8% ] _update_scan_actions | haters-v2.png
+[   9% ] _update_scan_actions | main-menu.png
+[  10% ] _update_scan_actions | phone-guy.png
+[  11% ] _update_scan_actions | ruin-alley.png
+[  11% ] _update_scan_actions | sigma-atlas.png
+[  12% ] _update_scan_actions | sigma.png
+[  13% ] _update_scan_actions | Inter-Black.ttf
+[  13% ] _update_scan_actions | Inter-Body.ttf
+[  14% ] _update_scan_actions | Inter-Display.ttf
+[  15% ] _update_scan_actions | Inter-Numbers.ttf
+[  15% ] _update_scan_actions | legendary-mobile-passive-focus.png
+[  16% ] _update_scan_actions | legendary-mobile-passive-hover.png
+[  17% ] _update_scan_actions | legendary-mobile-passive-idle.png
+[  17% ] _update_scan_actions | legendary-mobile-passive-selected.png
+[  18% ] _update_scan_actions | legendary-mobile-weapon-focus.png
+[  19% ] _update_scan_actions | legendary-mobile-weapon-hover.png
+[  20% ] _update_scan_actions | legendary-mobile-weapon-idle.png
+[  20% ] _update_scan_actions | legendary-mobile-weapon-selected.png
+[  21% ] _update_scan_actions | legendary-passive-focus.png
+[  22% ] _update_scan_actions | legendary-passive-hover.png
+[  22% ] _update_scan_actions | legendary-passive-idle.png
+[  23% ] _update_scan_actions | legendary-passive-selected.png
+[  24% ] _update_scan_actions | legendary-weapon-focus.png
+[  24% ] _update_scan_actions | legendary-weapon-hover.png
+[  25% ] _update_scan_actions | legendary-weapon-idle.png
+[  26% ] _update_scan_actions | legendary-weapon-selected.png
+[  26% ] _update_scan_actions | passive-focus.png
+[  27% ] _update_scan_actions | passive-hover.png
+[  28% ] _update_scan_actions | passive-idle.png
+[  28% ] _update_scan_actions | passive-pressed.png
+[  29% ] _update_scan_actions | passive-selected.png
+[  30% ] _update_scan_actions | weapon-focus.png
+[  31% ] _update_scan_actions | weapon-hover.png
+[  31% ] _update_scan_actions | weapon-idle.png
+[  32% ] _update_scan_actions | weapon-pressed.png
+[  33% ] _update_scan_actions | weapon-selected.png
+[  33% ] _update_scan_actions | passive-empty.png
+[  34% ] _update_scan_actions | passive-filled.png
+[  35% ] _update_scan_actions | passive-focus.png
+[  35% ] _update_scan_actions | passive-selected.png
+[  36% ] _update_scan_actions | weapon-empty.png
+[  37% ] _update_scan_actions | weapon-filled.png
+[  37% ] _update_scan_actions | weapon-focus.png
+[  38% ] _update_scan_actions | weapon-selected.png
+[  39% ] _update_scan_actions | alpha-active.png
+[  40% ] _update_scan_actions | alpha-charging.png
+[  40% ] _update_scan_actions | alpha-disabled.png
+[  41% ] _update_scan_actions | alpha-focused.png
+[  42% ] _update_scan_actions | alpha-pressed.png
+[  42% ] _update_scan_actions | alpha-ready.png
+[  43% ] _update_scan_actions | alpha-recovery.png
+[  44% ] _update_scan_actions | cool-kid-active.png
+[  44% ] _update_scan_actions | cool-kid-charging.png
+[  45% ] _update_scan_actions | cool-kid-disabled.png
+[  46% ] _update_scan_actions | cool-kid-focused.png
+[  46% ] _update_scan_actions | cool-kid-pressed.png
+[  47% ] _update_scan_actions | cool-kid-ready.png
+[  48% ] _update_scan_actions | cool-kid-recovery.png
+[  48% ] _update_scan_actions | sigma-active.png
+[  49% ] _update_scan_actions | sigma-charging.png
+[  50% ] _update_scan_actions | sigma-disabled.png
+[  51% ] _update_scan_actions | sigma-focused.png
+[  51% ] _update_scan_actions | sigma-pressed.png
+[  52% ] _update_scan_actions | sigma-ready.png
+[  53% ] _update_scan_actions | sigma-recovery.png
+[  53% ] _update_scan_actions | card-confirm.png
+[  54% ] _update_scan_actions | card-focus.png
+[  55% ] _update_scan_actions | card-hover.png
+[  55% ] _update_scan_actions | card-idle.png
+[  56% ] _update_scan_actions | card-selected.png
+[  57% ] _update_scan_actions | card-unavailable.png
+[  57% ] _update_scan_actions | activation-ripple.png
+[  58% ] _update_scan_actions | ring-idle.png
+[  59% ] _update_scan_actions | ring-pressed.png
+[  60% ] _update_scan_actions | thumb-idle.png
+[  60% ] _update_scan_actions | thumb-pressed.png
+[  61% ] _update_scan_actions | primary-default.png
+[  62% ] _update_scan_actions | primary-disabled.png
+[  62% ] _update_scan_actions | primary-focus.png
+[  63% ] _update_scan_actions | primary-hover.png
+[  64% ] _update_scan_actions | primary-pressed.png
+[  64% ] _update_scan_actions | secondary-default.png
+[  65% ] _update_scan_actions | secondary-disabled.png
+[  66% ] _update_scan_actions | secondary-focus.png
+[  66% ] _update_scan_actions | secondary-hover.png
+[  67% ] _update_scan_actions | secondary-pressed.png
+[  68% ] _update_scan_actions | hp.svg
+[  68% ] _update_scan_actions | legendary-bg.svg
+[  69% ] _update_scan_actions | pause.svg
+[  70% ] _update_scan_actions | poster.png
+[  71% ] _update_scan_actions | upgrade-bg.svg
+[  71% ] _update_scan_actions | wave.svg
+[  72% ] _update_scan_actions | wordmark.png
+[  73% ] _update_scan_actions | xp.svg
+[  73% ] _update_scan_actions | f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png
+[  74% ] _update_scan_actions | 825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png
+[  75% ] _update_scan_actions | ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png
+[  75% ] _update_scan_actions | 4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png
+[  76% ] _update_scan_actions | 774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png
+[  77% ] _update_scan_actions | 7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png
+[  77% ] _update_scan_actions | d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png
+[  78% ] _update_scan_actions | 13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png
+[  79% ] _update_scan_actions | 60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png
+[  80% ] _update_scan_actions | 5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png
+[  80% ] _update_scan_actions | dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png
+[  81% ] _update_scan_actions | 0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png
+[  82% ] _update_scan_actions | 3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png
+[  82% ] _update_scan_actions | afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png
+[  83% ] _update_scan_actions | 74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png
+[  84% ] _update_scan_actions | fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png
+[  84% ] _update_scan_actions | bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png
+[  85% ] _update_scan_actions | 08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png
+[  86% ] _update_scan_actions | 233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png
+[  86% ] _update_scan_actions | a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png
+[  87% ] _update_scan_actions | c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png
+[  88% ] _update_scan_actions | a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png
+[  88% ] _update_scan_actions | b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png
+[  89% ] _update_scan_actions | 4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png
+[  90% ] _update_scan_actions | 5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png
+[  91% ] _update_scan_actions | d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png
+[  91% ] _update_scan_actions | e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png
+[  92% ] _update_scan_actions | 4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png
+[  93% ] _update_scan_actions | 086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png
+[  93% ] _update_scan_actions | 4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png
+[  94% ] _update_scan_actions | 08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png
+[  95% ] _update_scan_actions | 37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png
+[  95% ] _update_scan_actions | 66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png
+[  96% ] _update_scan_actions | b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png
+[  97% ] _update_scan_actions | 1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png
+[  97% ] _update_scan_actions | 687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png
+[  98% ] _update_scan_actions | 3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started (Re)Importing Assets (144 steps)
+[   0% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Preparing files to reimport...
+[   1% ] reimport | Preparing files to reimport...
+[   2% ] reimport | Preparing files to reimport...
+[   2% ] reimport | Preparing files to reimport...
+[   3% ] reimport | Preparing files to reimport...
+[   4% ] reimport | Preparing files to reimport...
+[   4% ] reimport | Preparing files to reimport...
+[   5% ] reimport | Preparing files to reimport...
+[   6% ] reimport | Preparing files to reimport...
+[   6% ] reimport | Preparing files to reimport...
+[   7% ] reimport | Preparing files to reimport...
+[   8% ] reimport | Preparing files to reimport...
+[   8% ] reimport | Preparing files to reimport...
+[   9% ] reimport | Preparing files to reimport...
+[  10% ] reimport | Preparing files to reimport...
+[  11% ] reimport | Preparing files to reimport...
+[  11% ] reimport | Preparing files to reimport...
+[  12% ] reimport | Preparing files to reimport...
+[  13% ] reimport | Preparing files to reimport...
+[  13% ] reimport | Preparing files to reimport...
+[  14% ] reimport | Preparing files to reimport...
+[  15% ] reimport | Preparing files to reimport...
+[  15% ] reimport | Preparing files to reimport...
+[  16% ] reimport | Preparing files to reimport...
+[  17% ] reimport | Preparing files to reimport...
+[  17% ] reimport | Preparing files to reimport...
+[  18% ] reimport | Preparing files to reimport...
+[  19% ] reimport | Preparing files to reimport...
+[  20% ] reimport | Preparing files to reimport...
+[  20% ] reimport | Preparing files to reimport...
+[  21% ] reimport | Preparing files to reimport...
+[  22% ] reimport | Preparing files to reimport...
+[  22% ] reimport | Preparing files to reimport...
+[  23% ] reimport | Preparing files to reimport...
+[  24% ] reimport | Preparing files to reimport...
+[  24% ] reimport | Preparing files to reimport...
+[  25% ] reimport | Preparing files to reimport...
+[  26% ] reimport | Preparing files to reimport...
+[  26% ] reimport | Preparing files to reimport...
+[  27% ] reimport | Preparing files to reimport...
+[  28% ] reimport | Preparing files to reimport...
+[  28% ] reimport | Preparing files to reimport...
+[  29% ] reimport | Preparing files to reimport...
+[  30% ] reimport | Preparing files to reimport...
+[  31% ] reimport | Preparing files to reimport...
+[  31% ] reimport | Preparing files to reimport...
+[  32% ] reimport | Preparing files to reimport...
+[  33% ] reimport | Preparing files to reimport...
+[  33% ] reimport | Preparing files to reimport...
+[  34% ] reimport | Preparing files to reimport...
+[  35% ] reimport | Preparing files to reimport...
+[  35% ] reimport | Preparing files to reimport...
+[  36% ] reimport | Preparing files to reimport...
+[  37% ] reimport | Preparing files to reimport...
+[  37% ] reimport | Preparing files to reimport...
+[  38% ] reimport | Preparing files to reimport...
+[  39% ] reimport | Preparing files to reimport...
+[  40% ] reimport | Preparing files to reimport...
+[  40% ] reimport | Preparing files to reimport...
+[  41% ] reimport | Preparing files to reimport...
+[  42% ] reimport | Preparing files to reimport...
+[  42% ] reimport | Preparing files to reimport...
+[  43% ] reimport | Preparing files to reimport...
+[  44% ] reimport | Preparing files to reimport...
+[  44% ] reimport | Preparing files to reimport...
+[  45% ] reimport | Preparing files to reimport...
+[  46% ] reimport | Preparing files to reimport...
+[  46% ] reimport | Preparing files to reimport...
+[  47% ] reimport | Preparing files to reimport...
+[  48% ] reimport | Preparing files to reimport...
+[  48% ] reimport | Preparing files to reimport...
+[  49% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[  51% ] reimport | Preparing files to reimport...
+[  51% ] reimport | Preparing files to reimport...
+[  52% ] reimport | Preparing files to reimport...
+[  53% ] reimport | Preparing files to reimport...
+[  53% ] reimport | Preparing files to reimport...
+[  54% ] reimport | Preparing files to reimport...
+[  55% ] reimport | Preparing files to reimport...
+[  55% ] reimport | Preparing files to reimport...
+[  56% ] reimport | Preparing files to reimport...
+[  57% ] reimport | Preparing files to reimport...
+[  57% ] reimport | Preparing files to reimport...
+[  58% ] reimport | Preparing files to reimport...
+[  59% ] reimport | Preparing files to reimport...
+[  60% ] reimport | Preparing files to reimport...
+[  60% ] reimport | Preparing files to reimport...
+[  61% ] reimport | Preparing files to reimport...
+[  62% ] reimport | Preparing files to reimport...
+[  62% ] reimport | Preparing files to reimport...
+[  63% ] reimport | Preparing files to reimport...
+[  64% ] reimport | Preparing files to reimport...
+[  64% ] reimport | Preparing files to reimport...
+[  65% ] reimport | Preparing files to reimport...
+[  66% ] reimport | Preparing files to reimport...
+[  66% ] reimport | Preparing files to reimport...
+[  67% ] reimport | Preparing files to reimport...
+[  68% ] reimport | Preparing files to reimport...
+[  68% ] reimport | Preparing files to reimport...
+[  69% ] reimport | Preparing files to reimport...
+[  70% ] reimport | Preparing files to reimport...
+[  71% ] reimport | Preparing files to reimport...
+[  71% ] reimport | Preparing files to reimport...
+[  72% ] reimport | Preparing files to reimport...
+[  73% ] reimport | Preparing files to reimport...
+[  73% ] reimport | Preparing files to reimport...
+[  74% ] reimport | Preparing files to reimport...
+[  75% ] reimport | Preparing files to reimport...
+[  75% ] reimport | Preparing files to reimport...
+[  76% ] reimport | Preparing files to reimport...
+[  77% ] reimport | Preparing files to reimport...
+[  77% ] reimport | Preparing files to reimport...
+[  78% ] reimport | Preparing files to reimport...
+[  79% ] reimport | Preparing files to reimport...
+[  80% ] reimport | Preparing files to reimport...
+[  80% ] reimport | Preparing files to reimport...
+[  81% ] reimport | Preparing files to reimport...
+[  82% ] reimport | Preparing files to reimport...
+[  82% ] reimport | Preparing files to reimport...
+[  83% ] reimport | Preparing files to reimport...
+[  84% ] reimport | Preparing files to reimport...
+[  84% ] reimport | Preparing files to reimport...
+[  85% ] reimport | Preparing files to reimport...
+[  86% ] reimport | Preparing files to reimport...
+[  86% ] reimport | Preparing files to reimport...
+[  87% ] reimport | Preparing files to reimport...
+[  88% ] reimport | Preparing files to reimport...
+[  88% ] reimport | Preparing files to reimport...
+[  89% ] reimport | Preparing files to reimport...
+[  90% ] reimport | Preparing files to reimport...
+[  91% ] reimport | Preparing files to reimport...
+[  91% ] reimport | Preparing files to reimport...
+[  92% ] reimport | Preparing files to reimport...
+[  93% ] reimport | Preparing files to reimport...
+[  93% ] reimport | Preparing files to reimport...
+[  94% ] reimport | Preparing files to reimport...
+[  95% ] reimport | Preparing files to reimport...
+[  95% ] reimport | Preparing files to reimport...
+[  96% ] reimport | Preparing files to reimport...
+[  97% ] reimport | Preparing files to reimport...
+[  97% ] reimport | Preparing files to reimport...
+[  98% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | Inter-Black.ttf
+[   0% ] reimport | Inter-Body.ttf
+[   1% ] reimport | Inter-Display.ttf
+[   2% ] reimport | Inter-Numbers.ttf
+[   2% ] reimport | Inter-Black.ttf
+[   3% ] reimport | Inter-Body.ttf
+[   4% ] reimport | Inter-Display.ttf
+[   4% ] reimport | Inter-Numbers.ttf
+[   5% ] reimport | primary-pressed.png
+[   6% ] reimport | secondary-default.png
+[   6% ] reimport | secondary-disabled.png
+[   7% ] reimport | secondary-focus.png
+[   8% ] reimport | secondary-hover.png
+[   8% ] reimport | secondary-pressed.png
+[   9% ] reimport | hp.svg
+[  10% ] reimport | legendary-bg.svg
+[  11% ] reimport | pause.svg
+[  11% ] reimport | poster.png
+[  12% ] reimport | upgrade-bg.svg
+[  13% ] reimport | wave.svg
+[  13% ] reimport | wordmark.png
+[  14% ] reimport | xp.svg
+[  15% ] reimport | f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png
+[  15% ] reimport | 825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png
+[  16% ] reimport | sigma-focused.png
+[  17% ] reimport | sigma-pressed.png
+[  17% ] reimport | sigma-ready.png
+[  18% ] reimport | sigma-recovery.png
+[  19% ] reimport | card-confirm.png
+[  20% ] reimport | card-focus.png
+[  20% ] reimport | card-hover.png
+[  21% ] reimport | card-idle.png
+[  22% ] reimport | card-selected.png
+[  22% ] reimport | card-unavailable.png
+[  23% ] reimport | activation-ripple.png
+[  24% ] reimport | ring-idle.png
+[  24% ] reimport | ring-pressed.png
+[  25% ] reimport | thumb-idle.png
+[  26% ] reimport | thumb-pressed.png
+[  26% ] reimport | primary-default.png
+[  27% ] reimport | primary-disabled.png
+[  28% ] reimport | primary-focus.png
+[  28% ] reimport | primary-hover.png
+[  29% ] reimport | c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png
+[  30% ] reimport | a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png
+[  31% ] reimport | b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png
+[  31% ] reimport | 4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png
+[  32% ] reimport | 5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png
+[  33% ] reimport | d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png
+[  33% ] reimport | e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png
+[  34% ] reimport | 4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png
+[  35% ] reimport | 086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png
+[  35% ] reimport | 4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png
+[  36% ] reimport | 08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png
+[  37% ] reimport | 37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png
+[  37% ] reimport | 66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png
+[  38% ] reimport | b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png
+[  39% ] reimport | 1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png
+[  40% ] reimport | 687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png
+[  40% ] reimport | 3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png
+[  41% ] reimport | ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png
+[  42% ] reimport | 4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png
+[  42% ] reimport | 774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png
+[  43% ] reimport | 7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png
+[  44% ] reimport | d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png
+[  44% ] reimport | 13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png
+[  45% ] reimport | 60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png
+[  46% ] reimport | 5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png
+[  46% ] reimport | dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png
+[  47% ] reimport | 0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png
+[  48% ] reimport | 3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png
+[  48% ] reimport | afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png
+[  49% ] reimport | 74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png
+[  50% ] reimport | fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png
+[  51% ] reimport | bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png
+[  51% ] reimport | 08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png
+[  52% ] reimport | 233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png
+[  53% ] reimport | a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png
+[  53% ] reimport | sigma.png
+[  54% ] reimport | legendary-mobile-passive-focus.png
+[  55% ] reimport | legendary-mobile-passive-hover.png
+[  55% ] reimport | legendary-mobile-passive-idle.png
+[  56% ] reimport | legendary-mobile-passive-selected.png
+[  57% ] reimport | legendary-mobile-weapon-focus.png
+[  57% ] reimport | legendary-mobile-weapon-hover.png
+[  58% ] reimport | legendary-mobile-weapon-idle.png
+[  59% ] reimport | legendary-mobile-weapon-selected.png
+[  60% ] reimport | legendary-passive-focus.png
+[  60% ] reimport | legendary-passive-hover.png
+[  61% ] reimport | legendary-passive-idle.png
+[  62% ] reimport | legendary-passive-selected.png
+[  62% ] reimport | legendary-weapon-focus.png
+[  63% ] reimport | legendary-weapon-hover.png
+[  64% ] reimport | legendary-weapon-idle.png
+[  64% ] reimport | legendary-weapon-selected.png
+[  65% ] reimport | alpha-atlas.png
+[  66% ] reimport | alpha-rear-v2.png
+[  66% ] reimport | alpha.png
+[  67% ] reimport | big-hater.png
+[  68% ] reimport | cool-kid-atlas.png
+[  68% ] reimport | cool-kid-flex-v2.png
+[  69% ] reimport | cool-kid-rear-v2.png
+[  70% ] reimport | cool-kid.png
+[  71% ] reimport | enemies-a-v2.png
+[  71% ] reimport | enemies-b-v2.png
+[  72% ] reimport | enemies.png
+[  73% ] reimport | events-v2.png
+[  73% ] reimport | hater.png
+[  74% ] reimport | haters-v2.png
+[  75% ] reimport | main-menu.png
+[  75% ] reimport | phone-guy.png
+[  76% ] reimport | ruin-alley.png
+[  77% ] reimport | sigma-atlas.png
+[  77% ] reimport | alpha-active.png
+[  78% ] reimport | alpha-charging.png
+[  79% ] reimport | alpha-disabled.png
+[  80% ] reimport | alpha-focused.png
+[  80% ] reimport | alpha-pressed.png
+[  81% ] reimport | alpha-ready.png
+[  82% ] reimport | alpha-recovery.png
+[  82% ] reimport | cool-kid-active.png
+[  83% ] reimport | cool-kid-charging.png
+[  84% ] reimport | cool-kid-disabled.png
+[  84% ] reimport | cool-kid-focused.png
+[  85% ] reimport | cool-kid-pressed.png
+[  86% ] reimport | cool-kid-ready.png
+[  86% ] reimport | cool-kid-recovery.png
+[  87% ] reimport | sigma-active.png
+[  88% ] reimport | sigma-charging.png
+[  88% ] reimport | sigma-disabled.png
+[  89% ] reimport | passive-focus.png
+[  90% ] reimport | passive-hover.png
+[  91% ] reimport | passive-idle.png
+[  91% ] reimport | passive-pressed.png
+[  92% ] reimport | passive-selected.png
+[  93% ] reimport | weapon-focus.png
+[  93% ] reimport | weapon-hover.png
+[  94% ] reimport | weapon-idle.png
+[  95% ] reimport | weapon-pressed.png
+[  95% ] reimport | weapon-selected.png
+[  96% ] reimport | passive-empty.png
+[  97% ] reimport | passive-filled.png
+[  97% ] reimport | passive-focus.png
+[  98% ] reimport | passive-selected.png
+[  99% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (144 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout

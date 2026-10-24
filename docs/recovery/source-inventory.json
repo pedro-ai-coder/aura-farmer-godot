@@ -1,0 +1,89 @@
+{
+  "status": "PARTIAL_INVENTORY_NOT_GATE_0_ACCEPTANCE",
+  "sources": [
+    {
+      "path": "docs/GDD.md",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "cc2f51af0a4ab57778659f717e85f9efed66b438870b46e758ce2f2cd0240328"
+    },
+    {
+      "path": "docs/GDD_SOURCE.md",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "cd8d23c55cebc77d193061bd86be7c6c69a59622e139843efbafe9757c3ebce6"
+    },
+    {
+      "path": "docs/art/HERO_SPOTLIGHT_V5.md",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "53034308833bdafe40124619e8888dad938ae913cf1ba0350797f3c7fd8a0acf"
+    },
+    {
+      "path": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "fbc14e40a535183ff7e071a24423ad318b7700bc8ef150cef74ed1617caea187"
+    },
+    {
+      "path": "docs/art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "0b4ffc590f25ad84a69c3b7dab88f2905496ecfc70a799236f4595f67b28bc6e"
+    },
+    {
+      "path": "docs/art/icon_approvals.json",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "1c858db3d44f9b1adaf79ec3281f8e4acc7c613c10d15990ede70a5bcd603936"
+    },
+    {
+      "path": "assets/approved-assets.json",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "bd8b50a0f03cc01efe74240c129c08e28f7a47864e699385824fa5a887eeab22"
+    },
+    {
+      "path": "assets/runtime-icons/manifest.json",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "323079c3b386f8c2f9691ca7dc10c6134da6cf7ca16500432ad6c6374e179f68"
+    },
+    {
+      "path": "assets/runtime-clean-cut/v2/manifest.json",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "7210f3ad49ebf24f31ce9829f4589775523b843039d5a2dcb4ddccfae3eea125"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/manifests/FILE_HASHES.json",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "b924f67c8a80d84a551ad3c2bab9a9eaeec7e82010dad16d344720ee60d8350c"
+    },
+    {
+      "path": "scripts/clean_cut_skin.gd",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "76147d09da33de63ae5d607f0e5c15026b55f721887e8301872af4c7b7fb1446"
+    },
+    {
+      "path": "scripts/floating_joystick.gd",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "31043fd44e1d696e528a6577900700a8fbfa61938cdd5223c79371349235f89e"
+    },
+    {
+      "path": "scripts/solo_run.gd",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "965300d59bd3d86c65e3b47296f8ec8d90f7c516e10e4c0360cc2f034c699f6f"
+    },
+    {
+      "path": "docs/art/CLEAN_CUT_V2_INTEGRATION.md",
+      "baseline_commit": "d1c0de06d09910e9cba330b6e964a266b102684d",
+      "exists": true,
+      "sha256": "18344ce8f14df45399ac000bb22632c4237a1c6f9ad076d0a91d8deebf9988f2"
+    }
+  ]
+}
