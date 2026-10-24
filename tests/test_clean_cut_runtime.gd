@@ -64,7 +64,7 @@ func verify() -> void:
         skin.refresh()
         check(game.legendary_offers.size() == 6, "Six canonical legendary offers")
         check(game.defer_button.visible, "Actual deferred legendary choice remains available")
-        check(game.touch_joystick.RING_RADIUS == 80.0, "Approved larger circular joystick retained")
+        check(game.touch_joystick.OUTER_RADIUS == 80.0, "Approved larger circular joystick retained")
         game.defer_button.pressed.emit()
         skin.refresh()
         check(game.mode == "playing", "Defer correctly resumes actual simulation")
