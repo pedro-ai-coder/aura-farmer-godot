@@ -370,6 +370,7 @@ func _show_ui() -> void:
     restart_button.size = Vector2(300, 58) if mode == "replace" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(350, 58)
     restart_button.position = Vector2(160, 614) if mode == "replace" or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export" else Vector2(465, 593)
     if presentation != null: presentation.refresh(true)
+    if clean_cut_skin != null: clean_cut_skin.refresh()
 
 func _update_text() -> void:
     if mode in ["menu","heroes"] or hero.is_empty():
