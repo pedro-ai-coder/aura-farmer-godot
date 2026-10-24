@@ -2,6 +2,7 @@ extends SceneTree
 ## Isolated candidate UI contracts; never an artwork approval.
 const CandidateSkin=preload("res://tests/clean_cut_review/skin.gd")
 class ReviewRun extends "res://scripts/solo_run.gd":
+    func _use_clean_cut_skin() -> bool: return false
     func _load_profile() -> void:profile=ProfileStoreScript.defaults()
     func _save_profile() -> void:pass
 var failures: Array[String]=[]
