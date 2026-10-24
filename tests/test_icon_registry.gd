@@ -51,18 +51,21 @@ func verify() -> void:
         game.mode = "choice"
         game.selection.assign([{ "id":"no-cap","rarity":"common","level":1,"type":"weapon"}])
         game.presentation.refresh()
+        game.clean_cut_skin.refresh()
         await process_frame
         var parts: Dictionary = game.presentation.card_parts[0]
-        if parts["image"].texture != diagnostic or not parts["image"].visible or parts["icon"].visible:
-            failures.append("Live card uses approved diagnostic texture without fallback overlay")
-        if parts["image"].mouse_filter != Control.MOUSE_FILTER_IGNORE: failures.append("Icon cannot intercept touch or focus")
-        if not Rect2(Vector2.ZERO,game.offer_buttons[0].size).encloses(Rect2(parts["image"].position,parts["image"].size)):
-            failures.append("Texture stays inside card after resize")
+        var visible_parts: Dictionary = game.clean_cut_skin.offer_parts[0]
+        if parts["image"].texture != diagnostic or visible_parts["icon"].texture != diagnostic or not visible_parts["icon"].is_visible_in_tree():
+            failures.append("Live Clean Cut card uses approved diagnostic texture without fallback overlay")
+        if visible_parts["icon"].mouse_filter != Control.MOUSE_FILTER_IGNORE: failures.append("Visible icon cannot intercept touch or focus")
+        if not Rect2(Vector2.ZERO,game.offer_buttons[0].size).encloses(visible_parts["icon"].get_rect()):
+            failures.append("Visible Clean Cut texture stays inside card after resize")
         game.mode = "build"
         game.presentation.refresh()
         if game.presentation.equipment_slots[0]["image"].texture != diagnostic: failures.append("Build slots share the exact card identity")
         game.mode = "legendary"
         game.presentation.refresh()
+        game.clean_cut_skin.refresh()
         if game.legendary_offers.size() != 6 or not game.offer_buttons[5].visible: failures.append("Registry preserves all six legendary cards")
         for index in range(6):
             var expected: Texture2D = diagnostic if game.legendary_offers[index]["id"] == "no-cap" else null
