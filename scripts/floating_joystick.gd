@@ -1,15 +1,29 @@
 class_name FloatingJoystick
 extends Control
 
-## GDD C.1: visual-only, thumb-origin joystick. Input is owned by SoloRun.
-## Screen-space overlay, never a world-space collision or gameplay RNG source.
+## GDD Annex C.1. Circular procedural fallback; candidate decorative art stays isolated.
 const INK := Color("#253449")
 const PAPER := Color("#f7edcd")
 const AURA := Color("#f8c45f")
-
+const OUTER_RADIUS := 80.0
+const THUMB_RADIUS := 35.0
+const SATURATION_TRAVEL := 119.0
+const THUMB_OFFSET := 61.6
+const FOOTPRINT := THUMB_RADIUS + THUMB_OFFSET
 var center := Vector2.ZERO
 var axis := Vector2.ZERO
 var active := false
+var geometry_scale := 1.0
+
+func configure(bounds: Rect2) -> void:
+    geometry_scale = clampf(minf(bounds.size.x,bounds.size.y)/(2.0*FOOTPRINT),0.0,1.0)
+
+func clamp_center(at: Vector2, bounds: Rect2) -> Vector2:
+    var edge := FOOTPRINT*geometry_scale
+    return Vector2(clampf(at.x,bounds.position.x+edge,bounds.end.x-edge),clampf(at.y,bounds.position.y+edge,bounds.end.y-edge))
+
+func saturation() -> float:
+    return maxf(1.0,SATURATION_TRAVEL*geometry_scale)
 
 func show_at(position: Vector2, movement: Vector2) -> void:
     center = position
@@ -25,13 +39,12 @@ func reset() -> void:
     queue_redraw()
 
 func _draw() -> void:
-    if not active:
-        return
-    # The transparent visual always follows the first finger contact.
-    draw_circle(center, 57.0, Color(INK, 0.52))
-    draw_circle(center, 50.0, Color(PAPER, 0.12))
-    draw_arc(center, 54.0, 0.0, TAU, 44, Color(PAPER, 0.62), 3.0)
-    var thumb := center + axis * 44.0
-    draw_circle(thumb, 25.0, Color(INK, 0.92))
-    draw_circle(thumb, 20.0, Color(AURA, 0.95))
-    draw_arc(thumb, 20.0, 0.0, TAU, 24, Color(PAPER, 0.8), 2.0)
+    if not active: return
+    var r := OUTER_RADIUS*geometry_scale
+    draw_circle(center,r,Color(INK,0.52))
+    draw_circle(center,r*0.88,Color(PAPER,0.12))
+    draw_arc(center,r*0.95,0.0,TAU,64,Color(PAPER,0.62),3.0*geometry_scale)
+    var thumb := center+axis*THUMB_OFFSET*geometry_scale
+    draw_circle(thumb,THUMB_RADIUS*geometry_scale,Color(INK,0.92))
+    draw_circle(thumb,THUMB_RADIUS*0.8*geometry_scale,Color(AURA,0.95))
+    draw_arc(thumb,THUMB_RADIUS*0.8*geometry_scale,0.0,TAU,48,Color(PAPER,0.8),2.0*geometry_scale)

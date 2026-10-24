@@ -407,10 +407,10 @@ func refresh(force: bool = false) -> void:
         title.add_theme_color_override("font_color",ArcadeStyle.INK)
         detail.add_theme_color_override("font_color",ArcadeStyle.INK)
     if portrait and game.mode in ["paused","won","lost"]: game.restart_button.text = "MAIN MENU"
-    _place(game.pause_button,Rect2(width-176,14,158,60))
-    if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,60))
-    _place(game.flex_button,Rect2(width-246,height-78,226,60))
-    _place(game.legendary_button,Rect2(20 if width < 1000 else width-500,height-78,minf(238,width-286) if width < 1000 else 238,60))
+    _place(game.pause_button,Rect2(width-176,14,158,64))
+    if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,64))
+    _place(game.flex_button,Rect2(width-246,height-78,226,64))
+    _place(game.legendary_button,Rect2(20 if width < 1000 else width-500,height-78,minf(238,width-286) if width < 1000 else 238,64))
     game.flex_button.text = game.flex_status()
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not cards:

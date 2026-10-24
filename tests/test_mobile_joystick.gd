@@ -1,65 +1,123 @@
 extends SceneTree
 
-## GDD C.1 mobile touch lifecycle regression for one floating left-side pointer.
+## GDD Annex C.1: free terrain, UI priority, independent pointer ownership and lifecycle.
 var failures: Array[String] = []
-
-func _expect(ok: bool, description: String) -> void:
-    if not ok:
-        failures.append(description)
-
-func _touch(index: int, position: Vector2, pressed: bool) -> InputEventScreenTouch:
+func expect(ok: bool, description: String) -> void:
+    if not ok: failures.append(description)
+func touch(index: int, at: Vector2, pressed: bool, canceled: bool = false) -> InputEventScreenTouch:
     var event := InputEventScreenTouch.new()
-    event.index = index
-    event.position = position
-    event.pressed = pressed
+    event.index = index; event.position = at; event.pressed = pressed; event.canceled = canceled
     return event
-
-func _drag(index: int, position: Vector2) -> InputEventScreenDrag:
+func drag(index: int, at: Vector2) -> InputEventScreenDrag:
     var event := InputEventScreenDrag.new()
-    event.index = index
-    event.position = position
+    event.index = index; event.position = at
     return event
-
-func _initialize() -> void:
-    call_deferred("_verify")
-
-func _verify() -> void:
+func _initialize() -> void: call_deferred("verify")
+func verify() -> void:
     root.size = Vector2i(1280,720)
     var game = load("res://scenes/main.tscn").instantiate()
-    get_root().add_child(game)
-    game.call("start_run", 0)
-    game.call("_input", _touch(2, Vector2(180, 350), true))
-    _expect(bool(game.get("touch_active")), "Touch inside left playfield activates joystick")
-    _expect(int(game.get("touch_index")) == 2, "Touch owner index is tracked")
-    var overlay: Control = game.get("touch_joystick")
-    _expect(overlay.visible, "Floating control is visible after thumb-down")
-
-    game.call("_input", _drag(4, Vector2(260, 350)))
-    _expect((game.get("touch_direction") as Vector2).length() < 0.01, "Other finger cannot steer")
-    game.call("_input", _drag(2, Vector2(265, 350)))
-    _expect(is_equal_approx((game.get("touch_direction") as Vector2).x, 1.0), "Owning finger steers with clamped axis")
-    game.call("_input", _touch(4, Vector2(260, 350), false))
-    _expect(bool(game.get("touch_active")), "Other finger release cannot cancel steering")
-    game.call("_input", _touch(2, Vector2(265, 350), false))
-    _expect(not bool(game.get("touch_active")), "Owner release stops steering")
-    _expect((game.get("touch_direction") as Vector2) == Vector2.ZERO, "Release clears movement direction")
-    _expect(not overlay.visible, "Release hides thumb overlay")
-
-    game.call("_input", _touch(3, Vector2(250, 400), true))
-    game.call("_toggle_pause")
-    _expect(game.get("mode") == "paused", "Pause remains functional")
-    _expect(not bool(game.get("touch_active")), "Pause clears movement to avoid stuck joystick")
-    _expect(not overlay.visible, "Pause hides the floating overlay")
-    game.call("_toggle_pause")
-    game.call("_input", _touch(5, Vector2(700, 350), true))
-    _expect(not bool(game.get("touch_active")), "Right-side button area does not capture joystick")
-    game.call("_return_to_menu")
-    _expect(not bool(game.get("touch_active")), "Return to menu clears movement")
+    root.add_child(game)
+    game.set_process(false)
+    for extent in [Vector2i(1280,720),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
+        root.size = extent
+        game.presentation._window_changed(true)
+        game.start_run(0)
+        var field: Rect2 = game._touch_playfield()
+        for fraction: Vector2 in [Vector2(0.08,0.45),Vector2(0.5,0.45),Vector2(0.92,0.45),Vector2(0.5,0.04)]:
+            var point := field.position+field.size*fraction
+            game._input(touch(2,point,true))
+            expect(game.touch_active,"Free terrain left/center/right/top activates at %s" % extent)
+            expect(game.touch_direction == Vector2.ZERO,"Clamped visual cannot create initial movement")
+            game._input(drag(2,point+Vector2(119,0)))
+            expect(is_equal_approx(game.touch_direction.length(),1),"Saturation stays normalized without speed changes")
+            expect(game.touch_joystick.OUTER_RADIUS == 80 and game.touch_joystick.THUMB_RADIUS == 35,"Approved enlarged circular geometry")
+            var center: Vector2 = game.touch_joystick.center
+            var footprint: float = game.touch_joystick.FOOTPRINT*game.touch_joystick.geometry_scale
+            expect(field.grow(0.1).encloses(Rect2(center-Vector2.ONE*footprint,Vector2.ONE*footprint*2)),"Full visual footprint fits safe bounds")
+            game._input(touch(2,point,false))
+            expect(not game.touch_active and not game.touch_joystick.visible and game.touch_direction == Vector2.ZERO,"Owner release clears axis and visual")
+        var free := field.position+field.size*Vector2(0.5,0.45)
+        var flex: Vector2 = game.flex_button.get_global_rect().get_center()
+        var pause: Vector2 = game.pause_button.get_global_rect().get_center()
+        game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(80,0)})
+        game.aura = 100
+        game._show_ui()
+        game._input(touch(4,flex,true))
+        expect(not game.touch_active,"Flex-down never starts movement")
+        game._input(drag(4,free))
+        expect(not game.touch_active,"UI-origin drag never becomes movement")
+        game._input(touch(4,free,false))
+        expect(game.aura == 100,"Dragging away cancels UI action")
+        game.aura = 0;game._show_ui()
+        game._input(touch(9,flex,true))
+        game.aura = 100;game._show_ui()
+        game._input(touch(9,flex,false))
+        expect(game.aura == 100,"Disabled-on-down button cannot arm itself while held")
+        game._input(touch(2,free,true))
+        game._input(drag(2,free+Vector2(40,0)))
+        var original: Vector2 = game.touch_direction
+        game._input(touch(4,free+Vector2(100,0),true))
+        game._input(drag(4,free+Vector2(200,0)))
+        game._input(touch(4,free,false))
+        expect(game.touch_index == 2 and game.touch_direction == original,"Another terrain finger cannot steal or stop movement")
+        game._input(touch(5,flex,true))
+        game._input(touch(5,flex,false))
+        expect(game.flex_time > 0 and game.touch_index == 2 and game.touch_direction == original,"Second finger activates Flex independently")
+        game._input(touch(2,free,false,true))
+        expect(not game.touch_active,"Pointer cancellation releases movement")
+        game._input(touch(6,pause,true))
+        expect(not game.touch_active,"Pause-down cannot become movement")
+        game._input(touch(6,pause,false))
+        expect(game.mode == "paused" and not game.touch_active,"Touch release activates actual Pause once")
+        game._input(touch(7,free,true)); game._input(drag(7,free+Vector2(100,0)))
+        expect(not game.touch_active,"Menus and modals cannot move")
+        game._toggle_pause()
+        game._input(touch(8,free,true))
+        game._notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
+        expect(game.mode == "paused" and not game.touch_active,"Focus loss clears movement")
+        game._toggle_pause()
+        game._input(touch(8,free,true))
+        game.presentation._window_changed(true)
+        expect(not game.touch_active,"Viewport/orientation invalidation clears pointer")
+        game._input(touch(8,free,true));game.start_run(0)
+        expect(not game.touch_active,"Restart clears pointer")
+        game._gain_xp(100);game._open_choice()
+        game._input(touch(8,free,true))
+        expect(not game.touch_active,"Upgrade cards block movement everywhere")
+    # Actual SceneTree event routing, not only direct handler calls.
+    root.size = Vector2i(1280,720)
+    game.presentation._window_changed(true)
+    game.start_run(0)
+    game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(80,0)})
+    game.aura = 100;game._show_ui()
+    await process_frame
+    var center: Vector2 = game._touch_playfield().get_center()
+    var action: Vector2 = game.flex_button.get_global_rect().get_center()
+    root.push_input(touch(0,center,true),true)
+    root.push_input(drag(0,center+Vector2(60,0)),true)
+    root.push_input(touch(1,action,true),true)
+    root.push_input(touch(0,center,false),true)
+    expect(not game.touch_active and game.touch_ui_pointers.has(1),"Movement release preserves independent held UI pointer")
+    root.push_input(touch(1,action,false),true)
+    expect(game.run_metrics["flexes"] == 1,"Real routed second-finger button release activates exactly one Flex")
+    var emulated := InputEventMouseButton.new()
+    emulated.device = InputEvent.DEVICE_ID_EMULATION;emulated.button_index=MOUSE_BUTTON_LEFT;emulated.position=action;emulated.pressed=true
+    root.push_input(emulated,true)
+    expect(root.is_input_handled(),"Touch mouse emulation is consumed to prevent duplicate GUI actions")
+    game.start_run(0)
+    game.web_metrics={"safe":[44,20,16,12],"width":390,"height":844,"touch":true,"fullscreen":false}
+    root.size=Vector2i(390,844);game.presentation._window_changed(true)
+    var safe_field: Rect2=game._touch_playfield()
+    game._input(touch(1,safe_field.get_center(),true))
+    expect(game.touch_active,"Denied fullscreen and safe-area metrics still permit movement")
+    game._input(touch(1,Vector2.ZERO,false))
+    var key := InputEventKey.new(); key.keycode=KEY_D;key.pressed=true
+    game._input(key)
+    expect(not game.blocked_movement.has(KEY_D),"Desktop keyboard remains independent")
+    game._return_to_menu()
+    expect(not game.touch_active and game.touch_ui_pointers.is_empty(),"Exit clears all pointer ownership")
     game.queue_free()
-    if failures.is_empty():
-        print("PASS: Floating mobile joystick single-finger ownership, release and pause lifecycle")
-        quit(0)
+    if failures.is_empty(): print("PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle");quit(0)
     else:
-        for failure in failures:
-            push_error(failure)
+        for failure in failures: push_error(failure)
         quit(1)
