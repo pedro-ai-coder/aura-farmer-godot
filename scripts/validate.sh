@@ -85,6 +85,7 @@ run_check playable --headless --path . --script res://tests/test_playable_slice.
 run_check scene --headless --path . --quit-after 10
 
 run_check approved-clean-cut-runtime --headless --path . --script res://tests/test_clean_cut_runtime.gd
+run_check clean-cut-pointer-input --headless --path . --script res://tests/test_clean_cut_pointer_input.gd
 run_check candidate-bindings --headless --path . --script res://tests/review_clean_cut_candidates.gd -- user://clean-cut-review --check
 run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
 
