@@ -1,0 +1,38 @@
+{
+  "approved_source_copies": [
+    {
+      "path": "shared/characters/sigma-approved-master.png",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY",
+      "source_repository": "pedro-ai-coder/aura-farmer",
+      "source_commit": "fdbc67b9d79b1d2bfbbcaad40305da1677bc626f",
+      "source_path": "public/assets/cartoon/option-a-v1/characters/sigma.png",
+      "sha256": "fe2ebf07353fbc9a016ef60b8ceaeb20b27e4c8cb1add0a613e6720723e92e2f"
+    },
+    {
+      "path": "shared/characters/cool-kid-approved-master.png",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY",
+      "source_repository": "pedro-ai-coder/aura-farmer",
+      "source_commit": "fdbc67b9d79b1d2bfbbcaad40305da1677bc626f",
+      "source_path": "public/assets/cartoon/option-a-v1/characters/cool-kid.png",
+      "sha256": "a7ee0005158ade0a3974c3b5d1f93bf79b5adbd553d46d6a5de58f4b04e7d29a"
+    },
+    {
+      "path": "shared/characters/alpha-approved-master.png",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY",
+      "source_repository": "pedro-ai-coder/aura-farmer",
+      "source_commit": "fdbc67b9d79b1d2bfbbcaad40305da1677bc626f",
+      "source_path": "public/assets/cartoon/option-a-v1/characters/alpha.png",
+      "sha256": "9311103aebc272e5e165d71132d2509859bc7fa720c7e217bf716e904c2177a9"
+    },
+    {
+      "path": "shared/backgrounds/ruin-alley-approved-master.png",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY",
+      "source_repository": "pedro-ai-coder/aura-farmer",
+      "source_commit": "fdbc67b9d79b1d2bfbbcaad40305da1677bc626f",
+      "source_path": "public/assets/cartoon/option-a-v1/maps/ruin-alley.png",
+      "sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50"
+    }
+  ],
+  "new_identity_art_status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW",
+  "existing_approved_icons": "Referenced from v1; unchanged."
+}\n

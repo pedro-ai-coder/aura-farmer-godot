@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="175" height="170" viewBox="0 0 175 170">
+ <defs><pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#142735" opacity=".22"/></pattern>
+ <pattern id="stripes" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="14" fill="#F5BF32"/></pattern>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feOffset dx="9" dy="11" in="SourceAlpha" result="o"/><feFlood flood-color="#142735"/><feComposite in2="o" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <clipPath id="screen"><rect width="1600" height="900"/></clipPath></defs><path d="M80 0 L99 52 L154 32 L121 77 L167 104 L111 106 L103 164 L76 116 L24 145 L50 96 L0 67 L59 68 Z" fill="#EF5C43" stroke="#142735" stroke-width="7"/></svg>
