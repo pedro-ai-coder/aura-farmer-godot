@@ -194,12 +194,18 @@ func home_layout() -> void:
     heading.hide();heading_shadow.hide()
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
     place(home_caption,Rect2(40,180,view.x-80 if narrow else view.x*0.5,90))
+    var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
     var top:=maxf(280,view.y*0.53)
     for i in range(3):
         var button: Button=[ui.play_button,ui.home.hero_destination,ui.options_button][i]
         button.show();button.text=["PLAY","HERO SELECTION","SETTINGS"][i]
-        place(button,Rect2(40,top+i*76,width,64))
+        if compact_landscape:
+            var gap:=12.0
+            var compact_width: float=(view.x-48-2*gap)/3
+            place(button,Rect2(24+i*(compact_width+gap),view.y-70,compact_width,58))
+        else:
+            place(button,Rect2(40,top+i*76,width,64))
         button_skin(button,"menu/primary" if i==0 else "menu/secondary")
 func heroes_layout() -> void:
     background.texture=game.art.texture("ruin-alley");place(background,Rect2(Vector2.ZERO,view))
