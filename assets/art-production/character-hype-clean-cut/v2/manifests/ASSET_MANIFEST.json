@@ -1,0 +1,536 @@
+{
+  "package": "Aura Farmer \u2014 Character Hype Broadcast / Clean Cut v2",
+  "scope": "art-only; no Godot runtime, scene, gameplay or GDD changes",
+  "new_identity_art_status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW",
+  "screen_compositions": [
+    "main-menu",
+    "hero-selection",
+    "gameplay-hud",
+    "upgrade-three-card",
+    "legendary-six-card"
+  ],
+  "source_icon_references": [
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
+      "sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
+      "sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
+      "sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    },
+    {
+      "repository_path": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
+      "sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "status": "EXISTING_APPROVED_ICON_REFERENCE"
+    }
+  ],
+  "assets": [
+    {
+      "path": "CLEAN_CUT_VISUAL_SUPERSESSION.md",
+      "bytes": 4573,
+      "sha256": "32e45498a7d71d07895f6a67e5c3d0d1dfe6b96c4a1a9798206f058c9a7c3742",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "README.md",
+      "bytes": 800,
+      "sha256": "76583d97b00bd089e3f057971eed7f4281b6bcd93d5d174dc79dd1dc4e2dc0ef",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "manifests/ASSET_INDEX.md",
+      "bytes": 2411,
+      "sha256": "7072255de12c2bfcb88e3ffdaf0eae0d7ff902a48dd66bd9c5b7e23d74683d1e",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "manifests/SOURCE_PROVENANCE.json",
+      "bytes": 1856,
+      "sha256": "262eaad90cf55a3f3249f4da3c6daf45c1d3e55d8eacdcc5c76ba923cf90e513",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "previews/five-screen-contact.png",
+      "bytes": 1009307,
+      "sha256": "c84c0fb5ac159df52dfc3e34c1e2c29f753d5b1a50e02806c9c8e632b6af8289",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "previews/gameplay-hud.png",
+      "bytes": 3126433,
+      "sha256": "84bde3d2b482492dd5bc78f55cfa31300fcbec5cfa9349e84fecf2271f3439b9",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "previews/hero-selection.png",
+      "bytes": 523578,
+      "sha256": "4c9b807ac0cac61e6b292b32cca47ee432c487a316acd573dc93777e95c61936",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "previews/legendary-six-card.png",
+      "bytes": 147969,
+      "sha256": "6454699b1fd305504db80860c122c08645591a56edbcb7017b06297111258e67",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "previews/main-menu.png",
+      "bytes": 2093199,
+      "sha256": "66713b83f7436fcd43f94952c5e1848cf4f14ed7e8e1c5a9e933fc4e7e6c9497",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "previews/upgrade-three-card.png",
+      "bytes": 128050,
+      "sha256": "932bc5ae8da6b2b0c8299232abc2211b3c61c4d0af07261c68d87b0c0c3d5243",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "screens/gameplay-hud/README.md",
+      "bytes": 378,
+      "sha256": "dc64d918997459a6a3c9e23ed2ebdc30e8ceb4ac400a3245b2fafcd6bec4e2a9",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "screens/gameplay-hud/gameplay-hud.svg",
+      "bytes": 3979,
+      "sha256": "e8950f15c02cec6d3ef2677e871335c04fc918cb4d0952784818b71109924f53",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "screens/hero-selection/README.md",
+      "bytes": 367,
+      "sha256": "c01a4c1da6aaa8aab062fc014bc1652f4b83dcd5ecc63bffcc918240367ad1fc",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "screens/hero-selection/hero-selection.svg",
+      "bytes": 5467,
+      "sha256": "09513dc905e68f76a8494d75730bb00a99f55e4533df014a6dffa1c4ba2203da",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "screens/legendary-six-card/README.md",
+      "bytes": 391,
+      "sha256": "7c0b6b25b8adbd9db40e3ece4598341fd85222025b3df6f695a96a59bd20cfaf",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "screens/legendary-six-card/legendary-six-card.svg",
+      "bytes": 9887,
+      "sha256": "ca13f143f4ee06fb7a4f3d27b552055c98497dd0db2b73623ac6dbf71efed22b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "screens/main-menu/README.md",
+      "bytes": 352,
+      "sha256": "70ec290b5a7915bba14338f3cd9c19b1807fbb25f2acc321be33c7dbc118b3eb",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "screens/main-menu/main-menu.svg",
+      "bytes": 3077,
+      "sha256": "3832e5de1328a34f1e1cf5118f6dd523d612c61cc37413a3460ee1c891954764",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "screens/upgrade-three-card/README.md",
+      "bytes": 401,
+      "sha256": "c5dd89bb883d133afc04d370416ebe7e086f4bc064d73b89de54a2a83b29b023",
+      "status": "PRODUCTION_HANDOFF_DOCUMENT"
+    },
+    {
+      "path": "screens/upgrade-three-card/upgrade-three-card.svg",
+      "bytes": 5970,
+      "sha256": "dfdbe6d9efbb710732244ccb513f83524e5a12b0fd6e95c0b5f63338cb5f169b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/backgrounds/hero-selection-bg.svg",
+      "bytes": 239,
+      "sha256": "269efc1265f94c0bd088df4f4161fb116e05260a72fd44028a05c72cf569587b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/backgrounds/legendary-six-card-bg.svg",
+      "bytes": 244,
+      "sha256": "ecadf268759f14ee50ebbb71e2e27e773861da38340a9a4d8115f81db51ddbe0",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/backgrounds/menu-poster-bg-candidate.png",
+      "bytes": 3277115,
+      "sha256": "f3feee62b291dd7cb8ea6e948b4a4a6355fb7ba68361c10481f18aec9c59559c",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/backgrounds/ruin-alley-approved-master.png",
+      "bytes": 3259712,
+      "sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY"
+    },
+    {
+      "path": "shared/backgrounds/upgrade-three-card-bg.svg",
+      "bytes": 251,
+      "sha256": "d1a98cf0b6a87933db423e68bab1f4cb6802ee57255e3faeadd2bba52b445c3e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/brand/aura-farmer-wordmark-candidate.svg",
+      "bytes": 1679,
+      "sha256": "92288381863fa4a29cd52975a9b8d86db8cd426eda9269e20cc5f3bb4c9308e0",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/characters/alpha-approved-master.png",
+      "bytes": 1454663,
+      "sha256": "9311103aebc272e5e165d71132d2509859bc7fa720c7e217bf716e904c2177a9",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY"
+    },
+    {
+      "path": "shared/characters/cool-kid-approved-master.png",
+      "bytes": 1087875,
+      "sha256": "a7ee0005158ade0a3974c3b5d1f93bf79b5adbd553d46d6a5de58f4b04e7d29a",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY"
+    },
+    {
+      "path": "shared/characters/sigma-approved-master.png",
+      "bytes": 923902,
+      "sha256": "fe2ebf07353fbc9a016ef60b8ceaeb20b27e4c8cb1add0a613e6720723e92e2f",
+      "status": "APPROVED_SOURCE_MASTER_UNCHANGED_COPY"
+    },
+    {
+      "path": "shared/components/accent-crown-mark.svg",
+      "bytes": 899,
+      "sha256": "e065bd0409c7fff955ee48e44102968f0b4553145cd4ca8dee99eeba601f6f8a",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/accent-hatch-tape.svg",
+      "bytes": 880,
+      "sha256": "0e3b9ec3081acba49480b6712f6d02f2174741aca7725ce93cc716823bb7ad68",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/accent-impact-star.svg",
+      "bytes": 940,
+      "sha256": "ca87c5b96ccc214d3b20eef9304aa647a8f70db401b0ecdf5538020259d2ac37",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/accent-slash-burst.svg",
+      "bytes": 901,
+      "sha256": "52778e05ba8e65e34e187c93f2796e76cba17bdc5af5d6fdfa2422d1fbb9a860",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-primary-default.svg",
+      "bytes": 872,
+      "sha256": "cdec34e310b7d23fc17399e4ed0398dd0f265f403d7c6fb538e31bf144ef189b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-primary-disabled.svg",
+      "bytes": 932,
+      "sha256": "a0cd44bb69c7314e9a0838dff84f9756c1d0656df1dd4cb2b31502e4c07eb9e0",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-primary-focus.svg",
+      "bytes": 976,
+      "sha256": "0cc4a1a8d3885f6ae4319b28b4c385568581ff7f78da4b867188d879d73bc323",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-primary-hover.svg",
+      "bytes": 326,
+      "sha256": "5e626d61961f3f8fdef723a39ddcd4decbaa9aa2084cd3e7f15a8c34e3d12c0a",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-primary-pressed.svg",
+      "bytes": 929,
+      "sha256": "891fcb6e2db5e8aa2d2f01a0a20ff4aa73f29ba23c15f981dccd691bf9abafb7",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-secondary-default.svg",
+      "bytes": 872,
+      "sha256": "61bc4ac970e7f809b8df9f7338c1b8edc3ac65d5dfaf44b2e4c1e896a4ced7ef",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-secondary-disabled.svg",
+      "bytes": 932,
+      "sha256": "d4be7be65476c0eb565eac553ef71c4c3b57be0330ae34bee18a31bc06c6ef25",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-secondary-focus.svg",
+      "bytes": 976,
+      "sha256": "8e4dfb37c50490a6f18ca6b4d53c1fb6cd104f2886eded4a7dae1d596b761ea1",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-secondary-hover.svg",
+      "bytes": 326,
+      "sha256": "b6750235ec1fb9da25ae8f0b441af080753d1ae425e0e48ecf8cb98a2ba80b71",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/button-secondary-pressed.svg",
+      "bytes": 929,
+      "sha256": "45c5c96d504bc06356ec421b55af7bcca983da0a072460bb7fc188e308288f68",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/event-time-plate.svg",
+      "bytes": 218,
+      "sha256": "38a27969d715ca277daffe6ec3044e0312d61d9757e5fe4ef2aeb999aa61d47e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/flex-control-default.svg",
+      "bytes": 304,
+      "sha256": "2f8b58aaedbcbaf62c41f6168035e06ef17b43afa5b83b4e91499ca86b73a89b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/flex-control-focus.svg",
+      "bytes": 407,
+      "sha256": "d560819446a334db1e94c7b76fa74afc0fe7dd771d9f5c79f06c3202befa757e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hero-card-alpha-idle.svg",
+      "bytes": 321,
+      "sha256": "2f954bc6af6d98dae10fe5ff817b7c5d15ef54f45af3175b375598679a0e3d9a",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hero-card-cool-kid-idle.svg",
+      "bytes": 321,
+      "sha256": "167498a0302cf6f214c38ada3560640c2a4a021ce325cb91b7a71b181e77ddd1",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hero-card-idle.svg",
+      "bytes": 927,
+      "sha256": "7e6634e74d25c52435c4c0d8ba54f2af2e1ed218070a34bc5f81eef64d2afc0b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hero-card-selected.svg",
+      "bytes": 977,
+      "sha256": "32195cbb3bbef3d32589197fd5731d5f79d31dbc49af5dea624a94c881fafd9e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hero-card-sigma-selected.svg",
+      "bytes": 322,
+      "sha256": "3a4df7c80a6ed6c57fce664ae05746bb843fb5969499c01ab2a106e00ff7f2ce",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hp-meter-frame.svg",
+      "bytes": 300,
+      "sha256": "d5866e94b0bfba5ac62b06daec1dcb34e822dec1f59de78b99cfa21a16abb0ff",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hud-footer-strip.svg",
+      "bytes": 158,
+      "sha256": "4936f3fd676f681c65a57f109f1d4e16f13a2c151a17b8aef9c34bdbc3d6dc9e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/hud-plate.svg",
+      "bytes": 927,
+      "sha256": "e15f2c42e055c64ee16dd9dcdb2cf2a958b5eef993692df4ee9d913da4bbcdef",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/joystick-control-default.svg",
+      "bytes": 311,
+      "sha256": "a346a504b889cc68c8c7bb3b2109f369ca128390cdc3ca1c7f72101a07c0c375",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/joystick-frame.svg",
+      "bytes": 331,
+      "sha256": "05b3dcfe904ee28fb61460cb3eaf055b84c1e11f108efe2f51b3725e8b6d4f46",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-card-frame-focused.svg",
+      "bytes": 323,
+      "sha256": "7a31d73308a2eabc0206310c0fa6d64af01ec4e53c4b9d053bac282dd4e3dd63",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-card-frame-idle.svg",
+      "bytes": 225,
+      "sha256": "18251e59470ac3ab47752c480a15757f0b85a92e2e96584d820a01e8e3c83c80",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-cinema-frame-focused.svg",
+      "bytes": 280,
+      "sha256": "8c55556d240102b6456cf7dda922e70f0bda762f5a439cebc3ea2839aebf5963",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-cope-frame.svg",
+      "bytes": 187,
+      "sha256": "1b37afbc40db542975284dc05cefba6f7570935e12bcd2421261638757200e24",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-frame-hover.svg",
+      "bytes": 336,
+      "sha256": "28307668ad2d1596f5e81a3788051e832670c7529a9ce48ff4ed6cd24501a263",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-frame-idle.svg",
+      "bytes": 926,
+      "sha256": "bbe5c7f5d3a9b5eeeeae0e38b10271a74f3a6112fb4da460bfd67c1b57bc8878",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-frame-selected.svg",
+      "bytes": 1020,
+      "sha256": "d794228ef16d2ad375e9a83f6aeb1f2b8a7f92d290de625a3fe6d9f2f570d93e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-keyboard-frame.svg",
+      "bytes": 184,
+      "sha256": "fa8ba4f1f9b981c674a04b4ea792d730c62d20310b1d5bb49b441406cfece579",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-ratio-frame.svg",
+      "bytes": 182,
+      "sha256": "3549a9f2e55fb294bb5be6c42759c484d78d4cdf3371628f26644d3d88d02270",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-too-sigma-frame.svg",
+      "bytes": 182,
+      "sha256": "21eb5f4fcaaa503bd5cee4a42ef1f9792e8fde4950a09bec0334324fec34b2f5",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/legendary-w-squad-frame.svg",
+      "bytes": 189,
+      "sha256": "d06386941b3114d31c1db5bb48e10a29ce92e26fb2cfe4f8d1cf9be5443eb47a",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/pause-control-default.svg",
+      "bytes": 290,
+      "sha256": "01048a753b134710d6f5b0a2d28f23ce4cff2a428b9a3e71f808bfd75025f5fa",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/pause-control-focus.svg",
+      "bytes": 393,
+      "sha256": "f368f3c08a73507972ef2eef9d2adccb722f51520cdb231df93d91065c5520ab",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/pause-default.svg",
+      "bytes": 246,
+      "sha256": "1d2ad19516155ea27b72d46e870158a319dd178db3a345d2e93698ef02485500",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/pause-focus.svg",
+      "bytes": 349,
+      "sha256": "634a9254d36cedd013740ca9a3e16813fb734aa629abc187f4bb2784f84330d4",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/upgrade-frame-feed.svg",
+      "bytes": 341,
+      "sha256": "15564cb686e3725bd708a24063fd7fe6b49696ec3a5639f5b4bd5c463aff6eac",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/upgrade-frame-hover.svg",
+      "bytes": 338,
+      "sha256": "b683b3ab15509a8de493df625584771607a492e53b0249a301946b6ef4d5a2e6",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/upgrade-frame-idle.svg",
+      "bytes": 928,
+      "sha256": "98acfa24b6dcb1fa05b7c0f47e5a0c37b79678f00fc29fb44c3ac13be2daf12e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/upgrade-frame-passive-focused.svg",
+      "bytes": 342,
+      "sha256": "cce181bdfb4331e12eb95ef83eb5e32875e62e9cc16a90a558c02914c699f65f",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/upgrade-frame-projectile.svg",
+      "bytes": 321,
+      "sha256": "d55d1153d50324b8e810b6035435d9230e29652ed3830f2317ee1710bbd39e1e",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/upgrade-frame-selected.svg",
+      "bytes": 1022,
+      "sha256": "2e4747215157c3e38b032a1a16fa085afaa0abffee3ea9f1887b13726cf7751b",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/wave-time-plate.svg",
+      "bytes": 218,
+      "sha256": "472a97cf21c24f224366a7b636a72482d041cf4f35553a04fff027a682a32cc9",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/xp-bar-frame.svg",
+      "bytes": 213,
+      "sha256": "81b7743785c09aa58fbea557315f4055830b65a3084916a9bbb625f0f6bb3409",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "path": "shared/components/xp-meter-frame.svg",
+      "bytes": 306,
+      "sha256": "e12972543a075e1c55fdce60d0a8ee80325d7794870464b8a3da5d311bfce1cc",
+      "status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW"
+    }
+  ]
+}

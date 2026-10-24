@@ -1,0 +1,605 @@
+{
+  "review_status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW",
+  "approved_source_masters": [
+    {
+      "id": "sigma",
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/characters/sigma-approved-master.png",
+      "sha256": "fe2ebf07353fbc9a016ef60b8ceaeb20b27e4c8cb1add0a613e6720723e92e2f",
+      "classification": "APPROVED_SOURCE_MASTER"
+    },
+    {
+      "id": "cool-kid",
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/characters/cool-kid-approved-master.png",
+      "sha256": "a7ee0005158ade0a3974c3b5d1f93bf79b5adbd553d46d6a5de58f4b04e7d29a",
+      "classification": "APPROVED_SOURCE_MASTER"
+    },
+    {
+      "id": "alpha",
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/characters/alpha-approved-master.png",
+      "sha256": "9311103aebc272e5e165d71132d2509859bc7fa720c7e217bf716e904c2177a9",
+      "classification": "APPROVED_SOURCE_MASTER"
+    },
+    {
+      "id": "ruin-alley",
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/ruin-alley-approved-master.png",
+      "sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+      "classification": "APPROVED_SOURCE_MASTER"
+    },
+    {
+      "id": "hater",
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-rework/shared/combat/hater-approved-master.png",
+      "sha256": "3efbabe21c1abff9024bbd3ce7e86fabb665b62e7b23e6bc879fa79a80b0f80b",
+      "classification": "APPROVED_SOURCE_MASTER"
+    },
+    {
+      "id": "big-hater",
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-rework/shared/combat/big-hater-approved-master.png",
+      "sha256": "76e1e512ff2f5a975a74e555797d1d49f11d7137d61ae3742df0424da93fe454",
+      "classification": "APPROVED_SOURCE_MASTER"
+    },
+    {
+      "id": "phone-guy",
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/shared/characters/phone-guy-approved-master.png",
+      "sha256": "b16e0c85366d8dcf6729f1cea38356805e158fb2b3ba8d5ca086e4db51615e0d",
+      "classification": "APPROVED_SOURCE_MASTER"
+    }
+  ],
+  "approved_icon_assets": [
+    {
+      "id": "ban-hammer",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "source_sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "brainrot-feed",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "source_sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "chad-hands",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
+      "source_sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "cope-shield",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
+      "source_sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "keyboard-warrior",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "source_sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "no-cap",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.png",
+      "source_sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "personal-space",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.png",
+      "source_sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "ratio-blaster",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "source_sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "touch-grass",
+      "category": "weapon",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-clean-cut-v2-256.png",
+      "source_sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "absolute-cinema",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "source_sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "aura-viral",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.png",
+      "source_sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "big-chad",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.png",
+      "source_sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "big-meme",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.png",
+      "source_sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "brainrot-rain",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.png",
+      "source_sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "built-different",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
+      "source_sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "caught-4k",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.png",
+      "source_sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "certified-w",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.png",
+      "source_sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "cope-harder",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.png",
+      "source_sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "ego-check",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.png",
+      "source_sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "get-ratiod",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.png",
+      "source_sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "hands-on-sight",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.png",
+      "source_sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "homie-check",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.png",
+      "source_sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "its-over",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.png",
+      "source_sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "let-him-cook",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.png",
+      "source_sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "main-character",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.png",
+      "source_sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "no-cap-streak",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "source_sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "no-u",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.png",
+      "source_sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "six-to-seven",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.png",
+      "source_sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "so-back",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.png",
+      "source_sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "take-l",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.png",
+      "source_sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "terminally-online",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.png",
+      "source_sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "thick-skin",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.png",
+      "source_sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "timeline",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.png",
+      "source_sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "too-sigma",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
+      "source_sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "uno-reverse",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.png",
+      "source_sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "w-squad",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
+      "source_sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    },
+    {
+      "id": "w-wifi",
+      "category": "passive",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.png",
+      "source_sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+      "status": "CREATOR_APPROVED",
+      "ref": "v1 unchanged"
+    }
+  ],
+  "atlas_sources": [
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/source/runtime-atlases/enemies-a-v2.png",
+      "source": "../phaser-source/public/assets/runtime/enemies-a-v2.png",
+      "sha256": "6ec1e03922385372c2c41416dcbf4ca8ad4f76f0199dd374190ae5d3e37e3ef0",
+      "bytes": 2228162
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/source/runtime-atlases/enemies-b-v2.png",
+      "source": "../phaser-source/public/assets/runtime/enemies-b-v2.png",
+      "sha256": "a0fdbebfb1044adaf40f60f0d87e364f5973e1b3834235acea051d87a411fc2f",
+      "bytes": 2097523
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/source/runtime-atlases/events-v2.png",
+      "source": "../phaser-source/public/assets/runtime/events-v2.png",
+      "sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "bytes": 2567969
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/source/runtime-atlases/haters-v2.png",
+      "source": "../phaser-source/public/assets/runtime/haters-v2.png",
+      "sha256": "e5fbf68144d6968d869e388487f987c0399f9cb29c5e796ddd088ad5d6794aba",
+      "bytes": 2319510
+    }
+  ],
+  "frame_crops": [
+    {
+      "id": "reply-goblin",
+      "path": "shared/enemies/reply-goblin-frame-01.png",
+      "source_atlas": "enemies-a-v2.png",
+      "source_atlas_sha256": "6ec1e03922385372c2c41416dcbf4ca8ad4f76f0199dd374190ae5d3e37e3ef0",
+      "frame_rect": [
+        4,
+        4,
+        155,
+        167
+      ],
+      "derived_sha256": "7cf0c5e0e42e7490499a20b0d996712a60c7f771f75bda8c8a3bf317c72c755c"
+    },
+    {
+      "id": "beta",
+      "path": "shared/enemies/beta-frame-01.png",
+      "source_atlas": "enemies-a-v2.png",
+      "source_atlas_sha256": "6ec1e03922385372c2c41416dcbf4ca8ad4f76f0199dd374190ae5d3e37e3ef0",
+      "frame_rect": [
+        4,
+        237,
+        190,
+        183
+      ],
+      "derived_sha256": "3baccf7a41853353b946e006e462577d684cb5f1e70df5a08fdc75de00bb32f9"
+    },
+    {
+      "id": "ratio-ram",
+      "path": "shared/enemies/ratio-ram-frame-01.png",
+      "source_atlas": "enemies-a-v2.png",
+      "source_atlas_sha256": "6ec1e03922385372c2c41416dcbf4ca8ad4f76f0199dd374190ae5d3e37e3ef0",
+      "frame_rect": [
+        4,
+        470,
+        202,
+        164
+      ],
+      "derived_sha256": "efd820b2416e10ffed1026a4c02d9e22a85ed7d10f9571de114f4aaac3e84e48"
+    },
+    {
+      "id": "doomscroller",
+      "path": "shared/enemies/doomscroller-frame-01.png",
+      "source_atlas": "enemies-a-v2.png",
+      "source_atlas_sha256": "6ec1e03922385372c2c41416dcbf4ca8ad4f76f0199dd374190ae5d3e37e3ef0",
+      "frame_rect": [
+        4,
+        703,
+        181,
+        206
+      ],
+      "derived_sha256": "d190764c432cf2cb32ff72778c2636bb83a421ccbe58722996389c0973cfe565"
+    },
+    {
+      "id": "hype-bot",
+      "path": "shared/enemies/hype-bot-frame-01.png",
+      "source_atlas": "enemies-b-v2.png",
+      "source_atlas_sha256": "a0fdbebfb1044adaf40f60f0d87e364f5973e1b3834235acea051d87a411fc2f",
+      "frame_rect": [
+        4,
+        4,
+        182,
+        189
+      ],
+      "derived_sha256": "b068aaf22c61aa9bb6a3e631c098e5b58f03dfe2c16599663dd6fa32e5406a65"
+    },
+    {
+      "id": "fanum-leech",
+      "path": "shared/enemies/fanum-leech-frame-01.png",
+      "source_atlas": "enemies-b-v2.png",
+      "source_atlas_sha256": "a0fdbebfb1044adaf40f60f0d87e364f5973e1b3834235acea051d87a411fc2f",
+      "frame_rect": [
+        4,
+        213,
+        197,
+        186
+      ],
+      "derived_sha256": "9c00d7e6a717cbcdce63b752e2f97706da543e78b744f70207fdfd8d856fe1e0"
+    },
+    {
+      "id": "ping-sniper",
+      "path": "shared/enemies/ping-sniper-frame-01.png",
+      "source_atlas": "enemies-b-v2.png",
+      "source_atlas_sha256": "a0fdbebfb1044adaf40f60f0d87e364f5973e1b3834235acea051d87a411fc2f",
+      "frame_rect": [
+        4,
+        422,
+        221,
+        195
+      ],
+      "derived_sha256": "5dbe06d739b8482982be037a96c1c4d2b71c840cec042c80f082b801656e16db"
+    },
+    {
+      "id": "copium-puffer",
+      "path": "shared/enemies/copium-puffer-frame-01.png",
+      "source_atlas": "enemies-b-v2.png",
+      "source_atlas_sha256": "a0fdbebfb1044adaf40f60f0d87e364f5973e1b3834235acea051d87a411fc2f",
+      "frame_rect": [
+        4,
+        631,
+        193,
+        193
+      ],
+      "derived_sha256": "59c468f0ce474d13a4791001cddafcfdb5d4b317be80b3b61b86885cd8fdd7e9"
+    },
+    {
+      "id": "comment-mod",
+      "path": "shared/enemies/comment-mod-frame-01.png",
+      "source_atlas": "events-v2.png",
+      "source_atlas_sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "frame_rect": [
+        4,
+        4,
+        166,
+        156
+      ],
+      "derived_sha256": "1baefe9a4a0b94e3c70a9064f61d8a39b33323b77528bd6a4631680b8682f4e6"
+    },
+    {
+      "id": "reply-guy",
+      "path": "shared/enemies/reply-guy-frame-01.png",
+      "source_atlas": "events-v2.png",
+      "source_atlas_sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "frame_rect": [
+        4,
+        211,
+        182,
+        161
+      ],
+      "derived_sha256": "3dd9df83d8c2b673cc8a3233043c22708e181b689dcbabeee1d91bbe1d880eea"
+    },
+    {
+      "id": "mod-supremo",
+      "path": "shared/enemies/mod-supremo-frame-01.png",
+      "source_atlas": "events-v2.png",
+      "source_atlas_sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "frame_rect": [
+        4,
+        418,
+        178,
+        178
+      ],
+      "derived_sha256": "313aeaf565f26c7cb3eeb6fa08bccc4cc4f30f9f5c75da5453200331de84ba7a"
+    },
+    {
+      "id": "ohio-express",
+      "path": "shared/enemies/ohio-express-frame-01.png",
+      "source_atlas": "events-v2.png",
+      "source_atlas_sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "frame_rect": [
+        4,
+        625,
+        161,
+        171
+      ],
+      "derived_sha256": "2fa908520c12f73fc4e37452e227360ad2518d0a7531feb1e04915818c8cadf3"
+    },
+    {
+      "id": "doomscroll-prime",
+      "path": "shared/enemies/doomscroll-prime-frame-01.png",
+      "source_atlas": "events-v2.png",
+      "source_atlas_sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "frame_rect": [
+        4,
+        832,
+        189,
+        187
+      ],
+      "derived_sha256": "5f69141bd760e953b3ebe9512bb7d3581e1d1cd215561a8534221815d1bc09df"
+    },
+    {
+      "id": "npc",
+      "path": "shared/enemies/npc-frame-01.png",
+      "source_atlas": "haters-v2.png",
+      "source_atlas_sha256": "e5fbf68144d6968d869e388487f987c0399f9cb29c5e796ddd088ad5d6794aba",
+      "frame_rect": [
+        4,
+        4,
+        162,
+        211
+      ],
+      "derived_sha256": "42a41b400824cdda7d8699a56a40ab628fcedfa9d58f8efe5390f58d3bfc4232"
+    },
+    {
+      "id": "hater",
+      "path": "shared/enemies/hater-frame-01.png",
+      "source_atlas": "haters-v2.png",
+      "source_atlas_sha256": "e5fbf68144d6968d869e388487f987c0399f9cb29c5e796ddd088ad5d6794aba",
+      "frame_rect": [
+        4,
+        233,
+        186,
+        185
+      ],
+      "derived_sha256": "40ba80b07426689d230df07155c445ef48764706348ec30863d3dbc176045b35"
+    },
+    {
+      "id": "boss",
+      "path": "shared/enemies/boss-frame-01.png",
+      "source_atlas": "haters-v2.png",
+      "source_atlas_sha256": "e5fbf68144d6968d869e388487f987c0399f9cb29c5e796ddd088ad5d6794aba",
+      "frame_rect": [
+        4,
+        462,
+        196,
+        216
+      ],
+      "derived_sha256": "b2b2cbbddf6d9803ba5e8c8e48a3eaeab51aa3b780f14f95b898fa57f8d3c2f6"
+    },
+    {
+      "id": "boss-berserk",
+      "path": "shared/enemies/boss-berserk-frame-01.png",
+      "source_atlas": "haters-v2.png",
+      "source_atlas_sha256": "e5fbf68144d6968d869e388487f987c0399f9cb29c5e796ddd088ad5d6794aba",
+      "frame_rect": [
+        4,
+        691,
+        200,
+        181
+      ],
+      "derived_sha256": "d8a2c1b956447b9b19207ab7697fd030f24123824a749817e21aaeaf19408168"
+    }
+  ],
+  "generator_notes": [
+    "SVG screen/component art authored for this package.",
+    "Atlas crops are direct rectangle extracts from recorded source frames; source masters are copied unchanged.",
+    "Screen/detail preview sheets rescale referenced source images for review only; approved files are not altered.",
+    "Touch Grass references the approved Clean Cut v2 PNG hash, not the V5 candidate."
+  ],
+  "excluded_changes": [
+    "Godot runtime / scenes / gameplay",
+    "GDD",
+    "Phaser source working tree"
+  ]
+}

@@ -1,0 +1,1 @@
+# Hero Selection\n\nThree character masters are isolated PNGs. Card silhouettes, role/Flex labels, and keyboard-focus state are independent layers. Keep GDD hero roster and §7.2 names.\n\nNew screen art is a production candidate pending creator review. The SVG is a static art composition; reusable components are in shared/components and source art is in shared/.\n

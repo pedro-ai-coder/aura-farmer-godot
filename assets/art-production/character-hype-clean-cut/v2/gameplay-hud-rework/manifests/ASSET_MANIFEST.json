@@ -1,0 +1,600 @@
+{
+  "name": "Aura Farmer Clean Cut Gameplay HUD Rework",
+  "review_status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW",
+  "scope": "art-only corrective package for rejected Gameplay HUD artwork on PR #69",
+  "screens": [
+    "boss-warning",
+    "pause-default",
+    "pause-pressed",
+    "full-hater-mode",
+    "mobile-landscape-hud",
+    "boss-encounter",
+    "combat-density",
+    "pause-focus",
+    "pause-disabled",
+    "desktop-hud"
+  ],
+  "component_counts": {
+    "hero_status_masters": 3,
+    "health_states": 5,
+    "wave_event_states": 6,
+    "flex_hero_state_art": 18,
+    "joystick_parts": 3,
+    "boss_states": 5,
+    "pause_control_states": 4,
+    "fx_sprite_pngs": 8
+  },
+  "source_masters": [
+    {
+      "name": "sigma",
+      "path": "shared/characters/sigma-approved-master.png",
+      "sha256": "fe2ebf07353fbc9a016ef60b8ceaeb20b27e4c8cb1add0a613e6720723e92e2f",
+      "matches_approved_source": true
+    },
+    {
+      "name": "cool-kid",
+      "path": "shared/characters/cool-kid-approved-master.png",
+      "sha256": "a7ee0005158ade0a3974c3b5d1f93bf79b5adbd553d46d6a5de58f4b04e7d29a",
+      "matches_approved_source": true
+    },
+    {
+      "name": "alpha",
+      "path": "shared/characters/alpha-approved-master.png",
+      "sha256": "9311103aebc272e5e165d71132d2509859bc7fa720c7e217bf716e904c2177a9",
+      "matches_approved_source": true
+    },
+    {
+      "name": "ruin-alley",
+      "path": "shared/backgrounds/ruin-alley-approved-master.png",
+      "sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+      "matches_approved_source": true
+    },
+    {
+      "name": "hater",
+      "path": "gameplay-hud-rework/shared/combat/hater-approved-master.png",
+      "sha256": "3efbabe21c1abff9024bbd3ce7e86fabb665b62e7b23e6bc879fa79a80b0f80b",
+      "matches_approved_source": true
+    },
+    {
+      "name": "big-hater",
+      "path": "gameplay-hud-rework/shared/combat/big-hater-approved-master.png",
+      "sha256": "76e1e512ff2f5a975a74e555797d1d49f11d7137d61ae3742df0424da93fe454",
+      "matches_approved_source": true
+    }
+  ],
+  "approved_icons": "Referenced from v1 without modification: 3 legal weapon PNGs and 5 common-passive PNGs in equipment examples.",
+  "composition_only": "Previews are generated from editable SVG comps; no runtime capture or behavior validation is claimed.",
+  "relative_references": [
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../shared/hero-status/cool-kid-status.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../shared/wave-event/warning.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../shared/boss/warning.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../shared/fx/boss-shockwave.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../shared/flex/cool-kid-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/weapons/touch-grass/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/passives/main-character/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/passives/thick-skin/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-warning.svg",
+      "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-default.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-default.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-pressed.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-pressed.svg",
+      "href": "../shared/pause/pause-pressed.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/hero-status/sigma-status.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/wave-event/full-hater.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/combat/big-hater-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/flex/sigma-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/fx/boss-shockwave.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../shared/fx/danger-reticle.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/weapons/touch-grass/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/passives/main-character/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/passives/thick-skin/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/full-hater-mode.svg",
+      "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../shared/hero-status/cool-kid-status.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../shared/wave-event/live.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../shared/joystick/outer-ring.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../shared/joystick/thumb-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../shared/flex/cool-kid-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/weapons/touch-grass/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/passives/main-character/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/passives/thick-skin/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-landscape-hud.svg",
+      "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/combat/big-hater-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/hero-status/alpha-status.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/boss/boss-healthbar.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/boss/phase.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/boss/berserk.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/wave-event/boss.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/fx/danger-reticle.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../shared/flex/alpha-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/weapons/touch-grass/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/passives/main-character/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/passives/thick-skin/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/combat/hater-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/combat/hater-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/combat/hater-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/hero-status/sigma-status.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/wave-event/live.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/flex/sigma-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../shared/fx/telegraph-wedge.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/weapons/touch-grass/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/passives/main-character/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/passives/thick-skin/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-density.svg",
+      "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-focus.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-focus.svg",
+      "href": "../shared/pause/pause-focus.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-disabled.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/pause-disabled.svg",
+      "href": "../shared/pause/pause-disabled.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../shared/hero-status/sigma-status.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../shared/wave-event/live.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../shared/pause/pause-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../shared/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/weapons/touch-grass/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/passives/main-character/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/passives/thick-skin/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/desktop-hud.svg",
+      "href": "../../../v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "shared/hero-status/cool-kid-status.svg",
+      "href": "../../../shared/characters/cool-kid-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "shared/hero-status/sigma-status.svg",
+      "href": "../../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "shared/hero-status/alpha-status.svg",
+      "href": "../../../shared/characters/alpha-approved-master.png",
+      "exists": true
+    }
+  ],
+  "all_relative_references_resolve": true
+}

@@ -1,0 +1,513 @@
+{
+  "source_commit": "c1e13cdca5e0645e5f809dc6453ee75f979c8d4e",
+  "scope": "Native QA only; not creator approval or production promotion",
+  "resources": {
+    "cards/weapon-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-focus.png",
+      "sha256": "2f24e748f8cb96ec012491a5a78c93fe6dafabea7439d94f1a8ced0fd1ae38ca",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-passive-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-focus.png",
+      "sha256": "086e4884d35217fcfb36cdbbc723ff8c20152c92947cf86c54b81dd4ea0b9fc1",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/passive-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-focus.png",
+      "sha256": "69b03b4e73955164feccf0add94456d5d8e78b5bb37b30452ca0fa71a8494738",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/passive-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-hover.png",
+      "sha256": "c762dfd7f32fc878a4f5daf59dbb1fb9362ead5f97e5bc082fdcb5902086fb42",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-passive-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-idle.png",
+      "sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/passive-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-idle.png",
+      "sha256": "cfef92f822d8f622802ce85385fa9c46f741de76a43b5c875e5e62faffd90679",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-weapon-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-idle.png",
+      "sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-weapon-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-selected.png",
+      "sha256": "6ffdfcef4e0c20726d9bcde144a1418a9b8f5a65d32007154f10c5623f443aa4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/weapon-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-idle.png",
+      "sha256": "6223f8180d3bfa0c2373d27fe230ab0e4fd52a6d3c4771d3cf0ae6b8a2b00fe3",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-weapon-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-hover.png",
+      "sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-passive-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-focus.png",
+      "sha256": "37397266e0bb208ab0267707fb756457fc8b30d4113e6bacdaab523d6be84680",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-passive-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-selected.png",
+      "sha256": "ebc947e9d626bc35200f2645e0a7ad510c1125c1b41f1a95beb7d1285b8eb750",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-weapon-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-idle.png",
+      "sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-passive-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-hover.png",
+      "sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-weapon-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-selected.png",
+      "sha256": "edc9ca02af3f99023410267b5be3b9a97a2d275620fd0425392f657a68c0eb2c",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/weapon-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-pressed.png",
+      "sha256": "16b2f65d86a848c2d4bfed13dfe78ef96be1eabc21947a9efb824338fb617638",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-weapon-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-focus.png",
+      "sha256": "d348772ff73b485cefdb8656c3ddf09b25147f2d6346350dcc504c14602adb9e",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/passive-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-selected.png",
+      "sha256": "d1b04c4ecc86bf2b10807551b0c024ccc890e2eb1f375de24cafa899734d3037",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/passive-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-pressed.png",
+      "sha256": "b2343f460c649272b65a1da6dbf9d43af57cee2127c1ea319247d840d1ef2e45",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/weapon-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-hover.png",
+      "sha256": "479d09ace0a8e35ac83c9d3e9bb9227baab747b95d9587cf1c75336d27f652e4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-passive-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-idle.png",
+      "sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-passive-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-hover.png",
+      "sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-weapon-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-focus.png",
+      "sha256": "0e27b22e9c7c4d7766c743ef91dff374351c8739a75b76d50fe5169073a10aa2",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-weapon-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-hover.png",
+      "sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/weapon-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-selected.png",
+      "sha256": "f38a7a22f0f2e5917734ff9a7f48155447829986f7518e7d8bdd6faa31780213",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "cards/legendary-mobile-passive-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-selected.png",
+      "sha256": "3861181e4b0324894843c50f74ebf04cc9fc316663d1b39d67aed5d97ee58400",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "hero-select/card-unavailable": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-unavailable.png",
+      "sha256": "6d3691dbbd171d78dfb7863edb599f760895357d7b3dd34ec3274384a4759d6f",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "hero-select/card-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-focus.png",
+      "sha256": "a50ca2fdef5dbab4f7756f59ef33c8c23f45a2e4feec96db9a330976de151cfd",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "hero-select/card-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-hover.png",
+      "sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "hero-select/card-confirm": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-confirm.png",
+      "sha256": "dcf4bd89c3edbec9f46afd388fa39e0f90b6f92fae3707ecea94090ec1940b11",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "hero-select/card-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-selected.png",
+      "sha256": "e7a6674e8ae6c1b6cf7b0cddff8d729e254ae1d75ddcb1f2ccfef29e4f07123c",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "hero-select/card-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-idle.png",
+      "sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/weapon-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-focus.png",
+      "sha256": "a5023ebda78b306cdb294a28fe5d24445ea3c5477c17116cbe48e8a4e7fe527d",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/passive-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-focus.png",
+      "sha256": "d2a622633243566cae818568563a02fd9e7e85b9bc0cb38ce194b33b9f17b118",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/passive-filled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-filled.png",
+      "sha256": "e8ee2ba5e4ab6a81afb0058b0e61413224e9f7accca86f6ad51172b0914d963d",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/passive-empty": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-empty.png",
+      "sha256": "65f25c5ae67bbffe1212bc0e6ab88318329fff7b7a2bb9ef7eeb70bea446558e",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/passive-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-selected.png",
+      "sha256": "f3ae31f5ec23c54539c5f2ffdf0aed51ae49588b79e0dd32a0b74b982261c75f",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/weapon-empty": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-empty.png",
+      "sha256": "d294b8778fd5e6f5a63c37d63333c2356cb622ca017b34a82cd84382bd103e2f",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/weapon-filled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-filled.png",
+      "sha256": "377bba0792b35c5af0e115d28d15db7d40d6f88d567cd1c9f41da7a6465657d2",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "equipment/weapon-selected": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-selected.png",
+      "sha256": "1ecb10ec83afb94c8365c47652208929ffd870db0340e15376e14c8343983258",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-charging": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-charging.png",
+      "sha256": "abf7ef671867d8a94dbaff31bd3857f18aa5686af31832aa1bf568e42569f3f4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-active": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-active.png",
+      "sha256": "0fc3845bd689385dead838e355702175ae0dc0fc52d27f8a96457f92839bdc9b",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-ready": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-ready.png",
+      "sha256": "f5b9ad12b1a0d372551ec93e0dc4001690261194fccc79b9f3b5ef68f84930a4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-charging": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-charging.png",
+      "sha256": "36d972a6cbd09974da35a7867cd4f43c13c2b46efd03b63c6166651036f339f3",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-disabled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-disabled.png",
+      "sha256": "9efa3cfc512f56226e23614dd9cbbdb8f78d8052c763b5872ad270bf2986d85d",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-disabled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-disabled.png",
+      "sha256": "a131cdb97908fd50b0b63cbe7ec6ac6e6a633b70349d9567edb38d98cffd84dd",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-pressed.png",
+      "sha256": "e77a2a4df207159772166092e81eb210d2d42608017a1daa5ce75077aa4a24b9",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-active": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-active.png",
+      "sha256": "58add6ff0a731b82dfc098d117714272ec5d66ef39c10fba57829b765cda00bd",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-active": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-active.png",
+      "sha256": "6861b66d27c6e15f3d10a9f6f063cd3f1b5c633c3c125d5031e791ee923cae60",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-focused": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-focused.png",
+      "sha256": "243fcdd2e25a5cad6a5cc3fc8ff1d1286ae9bf827dff9e0aab6427b91f4f2449",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-ready": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-ready.png",
+      "sha256": "0107dfdcab5632606d40bf1daa9654ba4f299b6e664c38640473589ae59a104f",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-focused": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-focused.png",
+      "sha256": "9e304dc5007f7da4fb4e0bf994c5c0d6cb257b67ef8184a5a985be3bceb9a203",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-charging": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-charging.png",
+      "sha256": "49dea784175411df2dcc3e30f28830272d9714261ecb0a6c47d6b4f56ae493a9",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-pressed.png",
+      "sha256": "a6a6f7a2c68b604295a7cbb9489983f8e4a8ee2745bcaec996d2a535cd3e0e0a",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-recovery": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-recovery.png",
+      "sha256": "1317dfb64ca685ce4cfb407059362409f98ec9cd3ab28bef5d8a8066c0543a5f",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-ready": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-ready.png",
+      "sha256": "c2d04a6c01bbbd39232c44cc1703219c47b29ffd0406b3d931c80cc4a3591ddf",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-pressed.png",
+      "sha256": "6ddfa5b40423a63578fb4edcb5bb2d1256d790a404b04ab91744de4fda1f702e",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/cool-kid-recovery": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-recovery.png",
+      "sha256": "974e38c6a10c798465b41f17b709802a7434d0353d1ec83603a57a0cb448e077",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-recovery": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-recovery.png",
+      "sha256": "b5ad81fa84bc2d28db0bbb59ce77aa829e4375a614e5119338f5856c9bbe2cd1",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/sigma-focused": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-focused.png",
+      "sha256": "73fc28f95febcb9a3ef8194e9f74eb5c81bab78da906006335d9bfdf4c5b422c",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "flex/alpha-disabled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-disabled.png",
+      "sha256": "21f4b0c229fae062b83510570a53359cc51411f940b4fafaa142ae2a39051387",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "joystick/activation-ripple": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/activation-ripple.png",
+      "sha256": "c2353a4d19b30bb14c6a4837fef448b85215169be1fa25ef24c5e1debbee86a5",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "joystick/thumb-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/thumb-pressed.png",
+      "sha256": "7a75287122a0afa1f9cce9538ef3fb8b5fb6c66c06eec7dba3678402f0fdf6a4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "joystick/thumb-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/thumb-idle.png",
+      "sha256": "3233661c7f062288e8e99a929518f83174d624d7ecdfd44fff68d1284f1bbb2c",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "joystick/ring-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/ring-pressed.png",
+      "sha256": "728b03809962084a21f1f36b66d637e046af7f0544997d2bf910759723e5b7db",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "joystick/ring-idle": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/ring-idle.png",
+      "sha256": "1ed4075cb059a5e994534049bd224ea593f3794dd3d8346a3c887c48ae48eab7",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/primary-default": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-default.png",
+      "sha256": "8720bd25b0143619ca2781b63f2c3338de86b327d46699613a63e9231f69e103",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/secondary-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-pressed.png",
+      "sha256": "1e1a56667dc46b3b1634d1bfddea1c3ba8ce328a27c86fbf51b2ecd848ffde46",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/primary-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-hover.png",
+      "sha256": "a3d045dd5389ea2730789b00dd173b307ad4e37d268bce9ed21d1c9ea39606a1",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/secondary-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-focus.png",
+      "sha256": "a6eaaf949b9a57986a6d42e6e474afaf45ec9513a7f4f90efd35fd99112c5a42",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/secondary-disabled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-disabled.png",
+      "sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/primary-disabled": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-disabled.png",
+      "sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/primary-focus": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-focus.png",
+      "sha256": "b2aef7d6f60537d46007e0c85fd8d603c4fc86fdc6eb8e323c09cfa2d3e25616",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/primary-pressed": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-pressed.png",
+      "sha256": "919b1cf73ff5862f41104f3f457d23feaaa5f26757e37a77fffffe752d28f3c2",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/secondary-hover": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-hover.png",
+      "sha256": "c29a46f86eab2a3ca449d0cacc1f88d67a4cd625a1879931549a309f793ec2a4",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "menu/secondary-default": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-default.png",
+      "sha256": "894729e55e37a191d3cc7658279df02a61042ee7a0328a61f89c48886229a736",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/poster": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/menu-poster-bg-candidate.png",
+      "sha256": "f3feee62b291dd7cb8ea6e948b4a4a6355fb7ba68361c10481f18aec9c59559c",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/wordmark": {
+      "path": "tests/clean_cut_review/generated/wordmark.png",
+      "sha256": "49eb4d1054d6675a5dad42ec3fa0352d202564e3aa655487d69365b2b9e83255",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false,
+      "derived_from": "assets/art-production/character-hype-clean-cut/v2/shared/brand/aura-farmer-wordmark-candidate.svg",
+      "derived_from_sha256": "92288381863fa4a29cd52975a9b8d86db8cd426eda9269e20cc5f3bb4c9308e0",
+      "conversion": "Technical native-QA rasterization using supplied licensed Inter fonts; unapproved, not promoted"
+    },
+    "support/upgrade-bg": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/upgrade-three-card-bg.svg",
+      "sha256": "d1a98cf0b6a87933db423e68bab1f4cb6802ee57255e3faeadd2bba52b445c3e",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/legendary-bg": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/legendary-six-card-bg.svg",
+      "sha256": "ecadf268759f14ee50ebbb71e2e27e773861da38340a9a4d8115f81db51ddbe0",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/hp": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/components/hp-meter-frame.svg",
+      "sha256": "d5866e94b0bfba5ac62b06daec1dcb34e822dec1f59de78b99cfa21a16abb0ff",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/xp": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/components/xp-meter-frame.svg",
+      "sha256": "e12972543a075e1c55fdce60d0a8ee80325d7794870464b8a3da5d311bfce1cc",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/wave": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/components/wave-time-plate.svg",
+      "sha256": "472a97cf21c24f224366a7b636a72482d041cf4f35553a04fff027a682a32cc9",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    },
+    "support/pause": {
+      "path": "assets/art-production/character-hype-clean-cut/v2/shared/components/pause-default.svg",
+      "sha256": "1d2ad19516155ea27b72d46e870158a319dd178db3a345d2e93698ef02485500",
+      "creator_approval": "PENDING",
+      "runtime_promotion": false
+    }
+  }
+}

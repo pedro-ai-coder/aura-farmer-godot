@@ -1,0 +1,1 @@
+# Gameplay Hud\n\nRuin Alley is an unchanged approved source master. HUD slabs, HP/XP meters, joystick, Flex control, and pause states are separate SVGs. Preview values are simulation-bound slots.\n\nNew screen art is a production candidate pending creator review. The SVG is a static art composition; reusable components are in shared/components and source art is in shared/.\n

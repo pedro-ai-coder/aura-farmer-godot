@@ -16,8 +16,9 @@ concurrency:
 jobs:
   godot-validation:
     name: godot-validation
-    # Draft PRs do not consume a runner.
-    if: ${{ !github.event.pull_request.draft }}
+    # Keep this isolated art review unmergeable as a draft while running the full checks.
+    # Other drafts retain the existing runner-saving behavior.
+    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:

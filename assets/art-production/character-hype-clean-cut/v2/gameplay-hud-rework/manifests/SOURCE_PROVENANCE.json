@@ -1,0 +1,54 @@
+{
+  "review_status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW",
+  "unchanged_approved_source_assets": [
+    {
+      "name": "sigma",
+      "path": "shared/characters/sigma-approved-master.png",
+      "sha256": "fe2ebf07353fbc9a016ef60b8ceaeb20b27e4c8cb1add0a613e6720723e92e2f",
+      "matches_approved_source": true
+    },
+    {
+      "name": "cool-kid",
+      "path": "shared/characters/cool-kid-approved-master.png",
+      "sha256": "a7ee0005158ade0a3974c3b5d1f93bf79b5adbd553d46d6a5de58f4b04e7d29a",
+      "matches_approved_source": true
+    },
+    {
+      "name": "alpha",
+      "path": "shared/characters/alpha-approved-master.png",
+      "sha256": "9311103aebc272e5e165d71132d2509859bc7fa720c7e217bf716e904c2177a9",
+      "matches_approved_source": true
+    },
+    {
+      "name": "ruin-alley",
+      "path": "shared/backgrounds/ruin-alley-approved-master.png",
+      "sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+      "matches_approved_source": true
+    },
+    {
+      "name": "hater",
+      "path": "gameplay-hud-rework/shared/combat/hater-approved-master.png",
+      "sha256": "3efbabe21c1abff9024bbd3ce7e86fabb665b62e7b23e6bc879fa79a80b0f80b",
+      "matches_approved_source": true
+    },
+    {
+      "name": "big-hater",
+      "path": "gameplay-hud-rework/shared/combat/big-hater-approved-master.png",
+      "sha256": "76e1e512ff2f5a975a74e555797d1d49f11d7137d61ae3742df0424da93fe454",
+      "matches_approved_source": true
+    }
+  ],
+  "generated_art": {
+    "type": "8-piece comic FX overlay sheet, separated into isolated RGBA PNGs",
+    "creator_review": "pending"
+  },
+  "catalog_icons": "Uses exact v1 approved icon PNGs via relative references; source PNGs were not copied, modified, or re-exported.",
+  "font_assets": "References licensed Inter typography per GDD \u00a726.1; no font binaries copied.",
+  "scope_exclusions": [
+    "runtime scripts",
+    "scenes",
+    "gameplay data",
+    "GDD",
+    "Phaser source"
+  ]
+}

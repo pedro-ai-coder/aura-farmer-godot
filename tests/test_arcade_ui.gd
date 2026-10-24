@@ -34,8 +34,8 @@ func _verify() -> void:
     game.pick_upgrade(1)
     _expect(ui.card_parts[1]["state"].text.contains("SELECTED") and not game.confirm_button.disabled,"Selected state and explicit confirmation remain visible")
     for i in range(3):
-        var parts: Dictionary = ui.card_parts[i]
-        _expect(parts["body"].position.y+parts["body"].size.y <= parts["state"].position.y,"Card effect text does not overlap its action label")
+        var parts: Dictionary = game.clean_cut_skin.offer_parts[i]
+        _expect(parts["body"].get_rect().end.y <= parts["state"].position.y+1.0,"Visible Clean Cut normal effects do not overlap selection labels")
     game._confirm_selection()
     game.start_run(0)
     game.run_time = 360.0
@@ -48,8 +48,9 @@ func _verify() -> void:
     _expect(not game.confirm_button.get_global_rect().intersects(game.defer_button.get_global_rect()),"Legendary footer actions never overlap")
     _expect(_inside(game.confirm_button,Rect2(Vector2.ZERO,ui.view)),"Confirm remains within the useful viewport")
     for i in range(6):
-        var parts: Dictionary = ui.card_parts[i]
-        _expect(parts["body"].position.y+parts["body"].size.y <= parts["state"].position.y,"Legendary effects do not collide with action labels: %s body=%s state=%s" % [parts["name"].text,parts["body"].get_rect(),parts["state"].get_rect()])
+        var parts: Dictionary = game.clean_cut_skin.offer_parts[i]
+        _expect(parts["body"].get_rect().end.y <= parts["state"].position.y+1.0,"Visible Clean Cut legendary effects do not collide with selection labels: %s body=%s state=%s" % [parts["name"].text,parts["body"].get_rect(),parts["state"].get_rect()])
+        _expect(parts["body"].tooltip_text == ui.card_parts[i]["body"].text,"Full actual legendary effect remains accessible without trimming source data")
     root.size = Vector2i(915,412)
     ui._window_changed(true)
     game.start_run(0)

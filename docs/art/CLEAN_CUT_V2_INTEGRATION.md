@@ -1,6 +1,6 @@
 # Clean Cut creator corrections — integration tracker
 
-Source PR #69 remains open and unmerged. Audited source: `c1e13cdca5e0645e5f809dc6453ee75f979c8d4e`, `assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/`. The direction is authorized; **none of the new decorative components is creator-approved for production**. Existing 37 approved icon PNGs and original actor/world masters remain unchanged.
+Source PR #69 remains open and unmerged. Audited source: `c1e13cdca5e0645e5f809dc6453ee75f979c8d4e`, `assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/`. The creator has now **approved the exact corrected five-screen artwork** of PR #69 on 24 October 2026. See the immutable approval ledger `CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md` and hash-pinned runtime promotion `assets/runtime-clean-cut/v2/manifest.json`. This paragraph supersedes the earlier pending-review checkpoint. Existing 37 approved icon PNGs and original actor/world masters remain unchanged.
 
 ## Intake evidence
 
@@ -21,3 +21,11 @@ Movement and UI pointers are independent. Touch release activates its original e
 ## Next independent milestone
 
 Prepare an isolated, clearly labelled Godot review branch for all five compositions, preserving live navigation, starter identity, equipment/offer data, states and the new joystick. Use exact candidate hashes for review only, with no candidate promotion or production export. Build the per-component review/approval manifest and actual reference-to-Godot discrepancy matrix. New art approval must identify the exact independent component files and supporting brand/background layers; the already-approved 37 icons must not be requested again. Until approval, production keeps approved resources and the input correction only.
+
+## Isolated native review milestone
+
+The next independent milestone is implemented on the draft review branch. See `CLEAN_CUT_NATIVE_REVIEW.md` and `CLEAN_CUT_REVIEW_RESOURCES.json`: five native live screens, original navigation/offer signals, 108 staged renders, before/after evidence, exact unapproved source hashes and production export exclusion. This is a review implementation, not creator acceptance or a production promotion. Compact HUD polish, full state coverage and gameplay/device acceptance remain explicit follow-ups.
+
+## Creator-approved production integration — 24 October 2026
+
+The 84 specifically reviewed standalone resources (76 corrected component PNGs and eight supporting brand/background/status inputs) have been promoted as unchanged, hash-pinned files into `assets/runtime-clean-cut/v2/`. Three reference-only baked equipment compositions are intentionally not promoted. The live Godot default scene installs `scripts/clean_cut_skin.gd`, backed exclusively by `scripts/clean_cut_assets.gd`; the earlier nonpersistent reference harness remains excluded from exports. CI verifies source-byte identity and live menu/hero/upgrade/legendary binding; the PCK inspector now checks that approved visuals, previously approved icons and originals are present, and that source candidate/review assets do not leak. **Production release remains gated by successful current CI and published-pack checks.** No combat, catalog, GDD balance, save or input rules are changed. Browser/device and broader parity acceptance remain pending.

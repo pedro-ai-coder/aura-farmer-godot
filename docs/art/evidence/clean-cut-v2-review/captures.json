@@ -1,0 +1,2378 @@
+[
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "menu-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "menu",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "8ac29e0d2b38d533ec6038f336e97ba8d72c0f4086169b14e0f22330a8f1564e",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "heroes-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "heroes",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "bf41bfe089cfeeb5e2e4fdd39e02102179107bd08faa074b6e868bf96753a954",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "playing-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "25ab962c4c55696d0d593c885d1c5b401515bee90d41f6874a969edcaea2a0ea",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "cb9d5c6a92a89074a8d31f085a7b600a8c4fc9260e85ffb6dd312c496c5192e6",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "5b907efb3835076c3f70bb5d2c21cbe621e128226be9dce2bba657802389b8c5",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice_selected-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "f588cc290e33961b0e0ba4cf547170f795f4ca45cc547547165537cc980c1bae",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary_last-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "09003e95c07ab221bf969827966de9ec8bb9c820b3ada40679647e4e6e4845ed",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_sigma-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "6572df13b31f328e9384019771785a29050915d2bc3d4f8ff56954da82d75124",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_cool-kid-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "9161bd81d5569351c002ae44b4441f7616c060a3159d91c2ae711817b27f6cf9",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_alpha-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "e6f640b880053f4ff356b5da076d76d709245b1067af837d21660ec0ee45f08e",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "boss-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "0e279460523db1c423086f56650ec20926e26fedc093d4228e790189e4616a41",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "joystick-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "00d027bc4ae5c7a11017935bb248e80317f97709dd009b6ddb278333dbbd5df4",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_sigma-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "3d779f66ee63b3dd26b5ad9d7a0c2553637565599c9d41c911398bd65a2d34d8",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_cool-kid-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "2b57676d48c5f658d7454a45a02bc76c0a5bbe4a355b7d912db00b908b179bc7",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_alpha-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "06a60f3999dc45864113824a1a81b35925188504dbc05fa9a7fb9a5bf9c67af9",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_sigma-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "3c69242e83a65f80a06e3630c0db5dedaebc2f6d85e128becf2ccf9a388f4e5d",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_cool-kid-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "7845b77f9e41f179ebcbe0297870f6a8ed8dc744ae40475e7ba775a3940d29a9",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1600,
+      900
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_alpha-1600x900.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1600,
+      900
+    ],
+    "sha256": "3f0a16a308359a751b33dd1b7edeb00d816c9585f2973eef3ac0fad2d2d88c81",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "menu-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "menu",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "958603a3d4ad5162de64d3f68ffbe972bf2a09baa2f47be3c1de982042bafb88",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "heroes-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "heroes",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "5cf3b23a644849fd6dd977a5f238d7ac23c957a8e893803485414879b5bfe73c",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "playing-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "8bfe673a20ea5fc9ffa6e0ddc2f41e13a5ccd26e7d47013fe03647df7b90deba",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "7d004000e92da54eba850aa00b86d57c57276de5b7b5064e0d81a6d8c38456fd",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "951150dd677fc419fd63e1013770fee7ee3e3e5257844b706bf3920b489cf689",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice_selected-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "f2c102692c809c8a8944ca5b78c803bbdd486a6a007e67dea732ca49ff63f944",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary_last-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "2eb02a2afb3b301e0342beb15b8e851b93dc4fd6ff63db333b2e01a46ed11b1e",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_sigma-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "50da174ecfc9095b9efc5d923b3308dd827079ba7d722c6044e1f2e5de1f3a90",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_cool-kid-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "4de5d3dff02f4e075c98f02b46b3bac2c8bec0549fe0680ce9e234aef8ce660d",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_alpha-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "59b6980578cff4102e49ec8cb9fc45347c0067ae13f1ba35b09c89cf21e20b6b",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "boss-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "58f50bfa51038866a013f5cb351aeb3020dd53284311ac9b68b58b8c6961274a",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "joystick-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "284d74924580a53c0d1cda404a106537aa0f7b8acfe39aea5b53e1bbed49c0f9",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_sigma-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "1d7b88531bd84dbfea6b77c905b284bfce8453bffe19b86ac9e0b93de626e106",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_cool-kid-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "f1475502969ce69d801584fbb5582026dae9c438a5fbd6c27e9ee6daad0d6c1a",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_alpha-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "f365fe173d41eb6eaea0367f4930a6c32f19cd64118da1bd328c1b43cf852b97",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_sigma-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "19669f8df44f6e9248aa94dcf7b034e73c02c68947c9953111c04845965e6782",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_cool-kid-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "1448dd4ecf0afedd9baaed161a564b8d2816cfe0a4c86f21c3a550277c122b1e",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1280,
+      720
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_alpha-1280x720.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1280,
+      720
+    ],
+    "sha256": "9a191f4521d08ce599879a0f0f44727268277d786b976246ae5c8291dfbf7ff5",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "menu-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "menu",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "7687d7814da6abc2ffab5fec9ac5b6806bbd082a61a7aff3093eca6a21b6bf37",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "heroes-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "heroes",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "f435e5b12d99096011259e361549dbceea36fae3fd1141e5e4153bf173ae06b4",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "playing-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "6d7d7279c55259e4935ede3713f8e9b50632ee2e67b00d03ab11c686b60b0cd3",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "1aa702e2f29980f212619a9b2801c3c999f407914894e8b75f1c35f7a7bd6968",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "e0890b031efe1d5c0b9f3e437d529fadf7db3d5c0f3c5bea63c12c8cc8ecc340",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice_selected-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "514ceb01e71a6f40870f3cc9307abe6e3ca0b8abf9262c4ed8b09e5896d93014",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary_last-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "06f2f01a723b101adf23415a6a54fff28e91e8b0a4918f558abcc36cb2a85409",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_sigma-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "9b87008cebd536c4673e2956057c67b856613f8c2163bf89a7a9c79cccaed1f1",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_cool-kid-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "8f0bd1b25abbaba0d80ee67a0e6bbe86615c0ca3732e66996fcc5be0db15ba3b",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_alpha-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "69eea9646bc9a7b26fbbbb3b1f8e8545f33a95414e0ba59dd7e2e38c6e3836b7",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "boss-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "77e153efb3d247df03ce9961cdd20bbc5c72935e5978b3d6603748f780a90e8f",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "joystick-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "72eff9e581c9f4786176d6f6fb55eb3488b1d99b349107ac1ff6165c3d3672ea",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_sigma-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "76114d81a4b3046ecc9d9b8a99410649a0f024c796249e117fb8012abb74bede",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_cool-kid-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "8e146e6c14ffd8a739147793b0e96ab4d5e4fb8db9fc6f59e77b81695dbb9e83",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_alpha-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "5dc82f18dd9cafd24a71ff4716d165b61d3b2cd3b9988cdd04cc555aa9619989",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_sigma-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "0886be6425120b634d60bd7694e407a80930fc49fff6dafe6789114049adecc1",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_cool-kid-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "40a1749c1a53301c889b95aaaa9527e74af27c8c281cb35fa2a13704d2111105",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      1920,
+      1080
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_alpha-1920x1080.jpg",
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      1920,
+      1080
+    ],
+    "sha256": "305a4810c7100ed7746524866f21b12462d6e54f22d0a8561e662ceba7bbb39b",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "menu-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "menu",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "c81411303f0eac9cda0e65e79253d6743386660f3c7818ce4b95890f8125fe57",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "heroes-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "heroes",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "8861d90e1ef61f4b083bff52031e3165b8ca0f0d751efee50b3ccbd1a28dd026",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "playing-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "f050a1f2cc369c67b920b4450a60f9a715daf51e6266d765390e0c623e9bb362",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "95680eb3f755275659feebf005b77c34bfa91ec0155aa869c18a3493061ed6fc",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "493bf8b8f387b4aab754e8545c75dcc18ea200f431aef65d7ad9db9d056c1be1",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice_selected-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "1c0a3f4b1bb2f55507480c0dc06eb967b7fe368305094867aefd17b68e1a0729",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary_last-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "3f905964a8a939fdb45a02d48d62d3f71a41839cc33914681b53c9692cb5163b",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_sigma-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "af9e3043753a2985ab3117ae897e77b434137cd5525dc38c64c2b25c50ff1e90",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_cool-kid-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "e9fd84fe4b4aaf065d04ae743630f6a14ebfa3a53ccebaa69bdd7977975f667e",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_alpha-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "99be5f062765805bf13de8fbdb5d213dce8a4810caa7fe628c03c94dc8916a7b",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "boss-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "91b7233e2143f5c7fd34712f20a30e1b8de65b4471a60bac97c6ae030e9a4adc",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "joystick-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "696c5b586ca2c5aed22266bba659aca5469079b267b6dfa86b43301b781a980c",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_sigma-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "3a5d21ead7a6c47f6b75701dfa6e8b2a79586e82903ac89b7b8bc1b1b52aa555",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_cool-kid-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "173f5eb521d84388829d84afa9e68d58baa6a9d6d7d2344811c0d4474c493cfd",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_alpha-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "9179c1ffb1042c2e0c198e7e9f00f76fcf93db6d6ba0cefc51ba79af262195b4",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_sigma-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "bf63f4c52b47fa26b648c3f43c44136381bacdc1c42790964ee237113168354f",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_cool-kid-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "f1f8b97cba414ff90f51ace46a1edf929ac98a326cf6957d653490f1d557298b",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      915,
+      411
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_alpha-915x412.jpg",
+    "logical_view": [
+      1220.0,
+      549.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      915,
+      412
+    ],
+    "sha256": "f15286cb8996b154aa18df8efa3030dc2c30c8768c816acecfdfebb9392345b7",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "menu-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "menu",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "eb9c086bcf3223e899d5dd7a906a47626c32853de8de878ff9d19fe48b52da14",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "heroes-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "heroes",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "d06788e2e96400a36173b46f7da7385189b57882af8d79d199af02467775ae50",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "playing-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "73c5e7cc6716272e2afea6cfb6b304f1b18b3567340917c51a8f8b9a35efbcd1",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "50f4e515f7feae3ee3d266707f3c308be464255a031b2aef7fc4cfe870b78d14",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "0cff3bb7b298eab9ca77cef25ea678c5cb82fbc1ab34fd3dc057519cdb9f33ad",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice_selected-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "a65246a837fd3262249bdde1e94a11cd92c503e754d2e29b33f780b7ddd28e80",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary_last-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "8e4d2aa188f11a40bed9f36ac15eb78eb8375343667012947272250de1019bfc",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_sigma-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "c1fd1d0f000977169f13db724fdcbbd9912d10a6a34cc00e0e9b24c1e6c57d92",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_cool-kid-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "502193904b12131a34771f8b947281c9bfd45097e02576ed11e5894644b03dc4",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_alpha-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "480a667d7a8ca4fccf8eab69720d102ee3847653fe7369d03e5149994479c876",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "boss-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "95f95cc42db7cb9771b38ef1b0c547b561ea8f0406797c1d177b1a896d45af5e",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "joystick-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "c98d14ff779b0e381d02283dad8b1f7833baad834003559ee3fd66c26f937aef",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_sigma-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "e77fd3359394f0917b1aa0bfb534b80dc091fa34ad4821847ed90a3649367b4f",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_cool-kid-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "e99191ba750102874e84925ecdf42ea3c0dbd4ac4ce7b2029f46f0df2c52ddcc",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_alpha-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "e547603dd776224eb5b892baeef7765b96168b8d881368f282efe7b05b01e303",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_sigma-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "6310b744810b8b9f727e5a5e86553fba6c4d454bc1cc1587287e968d32aee734",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_cool-kid-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "83e7c77db78c10ce30e4009185aecd4038a7bf5c0956236b7127a6e17d4cc3b8",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      843,
+      390
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_alpha-844x390.jpg",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      844,
+      390
+    ],
+    "sha256": "6c7ed780e3aaaee3b4dd3f411cc010284a95f611c70f77ceb66d824e1074a6ea",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "menu-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "menu",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "d6dcd832a008873c5889290b7eae0f28868ed620af13ab6c8567879f6dc362f6",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "heroes-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "heroes",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "01235709b7d895e7485dd6b450bcf2fc200eb13ceff9f3d03fc436f1de76fb7c",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "playing-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "e3678ca5c1cfeec59e2cea098494fc515fa11273cda6b8d06945c4ef6d41d8f2",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "b0e07e7bcd1bc1444e91966d06547b67f43b0e1eaa9f7b7e0ca9d48d6a51b4d6",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "30e8d716f65652475987d81b003ed9bb8a766f59c41e5eead563eb1fe84dd900",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "choice_selected-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "choice",
+    "offer_count": 3,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "91d5c1cd87fa58f9d3fc38cad83540adc14b671b808c183930288975867476fc",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "legendary_last-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "legendary",
+    "offer_count": 6,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "f2574e5b41d0946992f6864c54dc5b96be6b38d8d8315518bdf8a19d1fe3ee6d",
+    "retained_full_size": true
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_sigma-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "941428a6cda2a2ccee9ae54aa0274471696f5df6df8602ac83819e6b0b66fe3a",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_cool-kid-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "7eee0466d2c3528f8abaf9191e01d32a356035b8e4186220be83f8e034762a86",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "flex_alpha-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "7d9c8c59fbea46253c4f82ee7a7d54cb05d7c9c236045e3e1697da9b77581a02",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "boss-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "8864f1f5c2b378b9191f101eaa391675717bb56b3efee06e2705d08c066e9a89",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "joystick-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "cc7a53e5c6ce5e049624ae4965eda36e75b1883e396a9a4ef27d6c42fd8ec420",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_sigma-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "5f7b5c76cae3969ccf22ea1d5418c79869aa173294b1883c3db164e40709bb70",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_cool-kid-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "e0117f0b1d4bc8e82239948a942e384a88f4cf9c4b7b8504d2e0308f2e93ffce",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "ready_alpha-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "3aaa2bbd7a3407a9acd9366298afbfaafc8162896cb1047d6564811387cfc4c0",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_sigma-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "sigma",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "d70022a9659c72926124febfeeb2a1eb7eeb9c18e5deaddb66f4e57e15a6a51c",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_cool-kid-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "cool-kid",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "b8ce4c2cdb09a68b0f1f8c49d86ed50469341d274339e70c294ea2c3799b5fcd",
+    "retained_full_size": false
+  },
+  {
+    "actual_pixels": [
+      390,
+      843
+    ],
+    "candidate_art": true,
+    "creator_approved": false,
+    "file": "recovery_alpha-390x844.jpg",
+    "logical_view": [
+      520.0,
+      1125.0
+    ],
+    "mode": "playing",
+    "offer_count": 0,
+    "real_hero": "alpha",
+    "requested_pixels": [
+      390,
+      844
+    ],
+    "sha256": "d652663849e291ed0840f049df0cb42f52e64cd0e12177d67533f9f287c2f626",
+    "retained_full_size": false
+  }
+]
