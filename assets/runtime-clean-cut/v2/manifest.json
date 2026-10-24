@@ -1,0 +1,852 @@
+{
+  "version": 1,
+  "status": "CREATOR_APPROVED",
+  "source_art_pr": 69,
+  "source_branch": "art/clean-cut-five-screen-v2",
+  "source_commit": "c1e13cdca5e0645e5f809dc6453ee75f979c8d4e",
+  "approval_date": "2026-10-24",
+  "approval_scope": "Corrected five-screen production art and exact independently reusable exports selected for the native Godot review; earlier rejected versions are not approved for shipping",
+  "approved_runtime_resource_count": 84,
+  "resources": {
+    "cards/weapon-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-focus.png",
+      "source_sha256": "2f24e748f8cb96ec012491a5a78c93fe6dafabea7439d94f1a8ced0fd1ae38ca",
+      "source_git_blob_sha": "df134fbb8ccd7360271c80b7b20dea95c554156a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-passive-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-focus.png",
+      "source_sha256": "086e4884d35217fcfb36cdbbc723ff8c20152c92947cf86c54b81dd4ea0b9fc1",
+      "source_git_blob_sha": "0c97b894cc58f35894b5be361eeaefd1ba67c3bf",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/passive-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-focus.png",
+      "source_sha256": "69b03b4e73955164feccf0add94456d5d8e78b5bb37b30452ca0fa71a8494738",
+      "source_git_blob_sha": "f40d5007b3b23822859521b929b5766f4ec342a9",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/passive-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/passive-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-hover.png",
+      "source_sha256": "c762dfd7f32fc878a4f5daf59dbb1fb9362ead5f97e5bc082fdcb5902086fb42",
+      "source_git_blob_sha": "bec74155d73894e64206619c063ac07df0e8209a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-passive-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-passive-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-idle.png",
+      "source_sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96",
+      "source_git_blob_sha": "af16fc37040218ddf3625486576f4066c87ea489",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/passive-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/passive-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-idle.png",
+      "source_sha256": "cfef92f822d8f622802ce85385fa9c46f741de76a43b5c875e5e62faffd90679",
+      "source_git_blob_sha": "faef235a1cdba09b0b73de49b7b58917ae4d0091",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-weapon-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-weapon-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-idle.png",
+      "source_sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef",
+      "source_git_blob_sha": "2d8a2862977b33b4a92e7db44049f36c69c240f7",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-weapon-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-selected.png",
+      "source_sha256": "6ffdfcef4e0c20726d9bcde144a1418a9b8f5a65d32007154f10c5623f443aa4",
+      "source_git_blob_sha": "9dca07e60d3f6130fa7bf99b4b505332e5d28bf8",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/weapon-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/weapon-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-idle.png",
+      "source_sha256": "6223f8180d3bfa0c2373d27fe230ab0e4fd52a6d3c4771d3cf0ae6b8a2b00fe3",
+      "source_git_blob_sha": "97f884b893e00865d211f3331f193e0714cbd736",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-weapon-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-weapon-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-hover.png",
+      "source_sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef",
+      "source_git_blob_sha": "2d8a2862977b33b4a92e7db44049f36c69c240f7",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-passive-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-focus.png",
+      "source_sha256": "37397266e0bb208ab0267707fb756457fc8b30d4113e6bacdaab523d6be84680",
+      "source_git_blob_sha": "39ce3fb351c8876e0ea8664ed44c1d5070b8358f",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-passive-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-selected.png",
+      "source_sha256": "ebc947e9d626bc35200f2645e0a7ad510c1125c1b41f1a95beb7d1285b8eb750",
+      "source_git_blob_sha": "3b0cd34dbe788a72725f0a9c400d933b213922a3",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-weapon-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-idle.png",
+      "source_sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e",
+      "source_git_blob_sha": "1d0db0708a3a71cf527298d7c035a3cdcfd597e6",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-passive-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-hover.png",
+      "source_sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4",
+      "source_git_blob_sha": "d659660d3e44433be319db579133fd0884881c30",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-weapon-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-selected.png",
+      "source_sha256": "edc9ca02af3f99023410267b5be3b9a97a2d275620fd0425392f657a68c0eb2c",
+      "source_git_blob_sha": "a4b665cd55a063c42d54122dca7c767a0252e466",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/weapon-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/weapon-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-pressed.png",
+      "source_sha256": "16b2f65d86a848c2d4bfed13dfe78ef96be1eabc21947a9efb824338fb617638",
+      "source_git_blob_sha": "6250273a7bc97103732774daf6228370e2cb1860",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-weapon-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-focus.png",
+      "source_sha256": "d348772ff73b485cefdb8656c3ddf09b25147f2d6346350dcc504c14602adb9e",
+      "source_git_blob_sha": "25e07a25d729bda05ae58e8e6ab7dd35ea1e05a9",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/passive-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-selected.png",
+      "source_sha256": "d1b04c4ecc86bf2b10807551b0c024ccc890e2eb1f375de24cafa899734d3037",
+      "source_git_blob_sha": "1ee871ef367f2a50be1c087a6a3ed2964e7e7c15",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/passive-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/passive-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-pressed.png",
+      "source_sha256": "b2343f460c649272b65a1da6dbf9d43af57cee2127c1ea319247d840d1ef2e45",
+      "source_git_blob_sha": "40e0d961839da5436dc47d0543b1c516a11f7ca2",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/weapon-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/weapon-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-hover.png",
+      "source_sha256": "479d09ace0a8e35ac83c9d3e9bb9227baab747b95d9587cf1c75336d27f652e4",
+      "source_git_blob_sha": "1386366663aaab0fe1d26242417191ae463224a2",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-passive-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-idle.png",
+      "source_sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4",
+      "source_git_blob_sha": "d659660d3e44433be319db579133fd0884881c30",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-passive-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-passive-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-hover.png",
+      "source_sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96",
+      "source_git_blob_sha": "af16fc37040218ddf3625486576f4066c87ea489",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-weapon-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-focus.png",
+      "source_sha256": "0e27b22e9c7c4d7766c743ef91dff374351c8739a75b76d50fe5169073a10aa2",
+      "source_git_blob_sha": "940b7636f8b36be1ab13115a6a1b3f0d086eeb27",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-weapon-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-hover.png",
+      "source_sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e",
+      "source_git_blob_sha": "1d0db0708a3a71cf527298d7c035a3cdcfd597e6",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/weapon-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-selected.png",
+      "source_sha256": "f38a7a22f0f2e5917734ff9a7f48155447829986f7518e7d8bdd6faa31780213",
+      "source_git_blob_sha": "66562a9f6eedd71f1d5bfc21ae20baa7474168e3",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "cards/legendary-mobile-passive-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-selected.png",
+      "source_sha256": "3861181e4b0324894843c50f74ebf04cc9fc316663d1b39d67aed5d97ee58400",
+      "source_git_blob_sha": "1bdc6205885796bc20df553072d83d65112c6337",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "hero-select/card-unavailable": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/hero-select/card-unavailable.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-unavailable.png",
+      "source_sha256": "6d3691dbbd171d78dfb7863edb599f760895357d7b3dd34ec3274384a4759d6f",
+      "source_git_blob_sha": "b24b649cbd0d83c4ceefadd0d1b9ac9bf9f45307",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "hero-select/card-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/hero-select/card-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-focus.png",
+      "source_sha256": "a50ca2fdef5dbab4f7756f59ef33c8c23f45a2e4feec96db9a330976de151cfd",
+      "source_git_blob_sha": "4f275a9d018e453662f9c0766664c9ed0de573ae",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "hero-select/card-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/hero-select/card-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-hover.png",
+      "source_sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8",
+      "source_git_blob_sha": "6b7333e53f720fc6fe7ea13c4b408a2508c6dee8",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "hero-select/card-confirm": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/hero-select/card-confirm.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-confirm.png",
+      "source_sha256": "dcf4bd89c3edbec9f46afd388fa39e0f90b6f92fae3707ecea94090ec1940b11",
+      "source_git_blob_sha": "dc860930ad71ef4a93e15733d6edee15cafb15bf",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "hero-select/card-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/hero-select/card-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-selected.png",
+      "source_sha256": "e7a6674e8ae6c1b6cf7b0cddff8d729e254ae1d75ddcb1f2ccfef29e4f07123c",
+      "source_git_blob_sha": "cb2004805e6aa4249c864ca3a5748e86de38a356",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "hero-select/card-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/hero-select/card-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-idle.png",
+      "source_sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8",
+      "source_git_blob_sha": "6b7333e53f720fc6fe7ea13c4b408a2508c6dee8",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/weapon-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-focus.png",
+      "source_sha256": "a5023ebda78b306cdb294a28fe5d24445ea3c5477c17116cbe48e8a4e7fe527d",
+      "source_git_blob_sha": "3e780a2480445ab639d6723c01e8124ed9b34ca0",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/passive-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-focus.png",
+      "source_sha256": "d2a622633243566cae818568563a02fd9e7e85b9bc0cb38ce194b33b9f17b118",
+      "source_git_blob_sha": "0e89607e818bc0a5b4990776e3c10035040e9f5d",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/passive-filled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/passive-filled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-filled.png",
+      "source_sha256": "e8ee2ba5e4ab6a81afb0058b0e61413224e9f7accca86f6ad51172b0914d963d",
+      "source_git_blob_sha": "3e1416c648799572c2f9921a364af15ded18c96a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/passive-empty": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/passive-empty.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-empty.png",
+      "source_sha256": "65f25c5ae67bbffe1212bc0e6ab88318329fff7b7a2bb9ef7eeb70bea446558e",
+      "source_git_blob_sha": "bdbbbda1ec940da0e43751972ca9adf386f522ba",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/passive-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-selected.png",
+      "source_sha256": "f3ae31f5ec23c54539c5f2ffdf0aed51ae49588b79e0dd32a0b74b982261c75f",
+      "source_git_blob_sha": "91a680fbffef172210067701ae0b140b858c8799",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/weapon-empty": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/weapon-empty.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-empty.png",
+      "source_sha256": "d294b8778fd5e6f5a63c37d63333c2356cb622ca017b34a82cd84382bd103e2f",
+      "source_git_blob_sha": "a311f4d526bb03834e97489d75d360367d3b919b",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/weapon-filled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/weapon-filled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-filled.png",
+      "source_sha256": "377bba0792b35c5af0e115d28d15db7d40d6f88d567cd1c9f41da7a6465657d2",
+      "source_git_blob_sha": "862ef09cab5d16ac7b51451bcff9d5883e828917",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "equipment/weapon-selected": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/equipment/weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-selected.png",
+      "source_sha256": "1ecb10ec83afb94c8365c47652208929ffd870db0340e15376e14c8343983258",
+      "source_git_blob_sha": "5fcf5dd32aa7e4f71e6c321912e52dd35caaaa8a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-charging": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-charging.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-charging.png",
+      "source_sha256": "abf7ef671867d8a94dbaff31bd3857f18aa5686af31832aa1bf568e42569f3f4",
+      "source_git_blob_sha": "9e38258f4a6a80350ca1906769488ce143a0e917",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-active": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-active.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-active.png",
+      "source_sha256": "0fc3845bd689385dead838e355702175ae0dc0fc52d27f8a96457f92839bdc9b",
+      "source_git_blob_sha": "ba593046ba2458dea5b9c869b94072afed886764",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-ready": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-ready.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-ready.png",
+      "source_sha256": "f5b9ad12b1a0d372551ec93e0dc4001690261194fccc79b9f3b5ef68f84930a4",
+      "source_git_blob_sha": "a858a13c391700d9c882c19fbe9a57e39ecfebdf",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-charging": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-charging.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-charging.png",
+      "source_sha256": "36d972a6cbd09974da35a7867cd4f43c13c2b46efd03b63c6166651036f339f3",
+      "source_git_blob_sha": "5abca32079dc5a6a76f40c7f201937d8eea161dc",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-disabled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-disabled.png",
+      "source_sha256": "9efa3cfc512f56226e23614dd9cbbdb8f78d8052c763b5872ad270bf2986d85d",
+      "source_git_blob_sha": "ab6e3d70a016dd8c026f7557c449cf3ce6a6c7e4",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-disabled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-disabled.png",
+      "source_sha256": "a131cdb97908fd50b0b63cbe7ec6ac6e6a633b70349d9567edb38d98cffd84dd",
+      "source_git_blob_sha": "fa93dc17492e39b12bb50e7148eec541adbf0248",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-pressed.png",
+      "source_sha256": "e77a2a4df207159772166092e81eb210d2d42608017a1daa5ce75077aa4a24b9",
+      "source_git_blob_sha": "7426ded7109b7a2c9c1d93d898215c5fd65003d1",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-active": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-active.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-active.png",
+      "source_sha256": "58add6ff0a731b82dfc098d117714272ec5d66ef39c10fba57829b765cda00bd",
+      "source_git_blob_sha": "24628a419fee5ae69d7bd4eb1e2678a19a73582a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-active": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-active.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-active.png",
+      "source_sha256": "6861b66d27c6e15f3d10a9f6f063cd3f1b5c633c3c125d5031e791ee923cae60",
+      "source_git_blob_sha": "453e211becda090cd4ab8d94b16b5cb69cb4447a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-focused": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-focused.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-focused.png",
+      "source_sha256": "243fcdd2e25a5cad6a5cc3fc8ff1d1286ae9bf827dff9e0aab6427b91f4f2449",
+      "source_git_blob_sha": "23b6bb7bb14f8cca29b6bb3e1cf23b01ca6650a9",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-ready": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-ready.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-ready.png",
+      "source_sha256": "0107dfdcab5632606d40bf1daa9654ba4f299b6e664c38640473589ae59a104f",
+      "source_git_blob_sha": "4ac78be75f5e153c4fd009bf77b725ab9338baf7",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-focused": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-focused.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-focused.png",
+      "source_sha256": "9e304dc5007f7da4fb4e0bf994c5c0d6cb257b67ef8184a5a985be3bceb9a203",
+      "source_git_blob_sha": "f99ee44711636f0d8e17b4769c717895d687795b",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-charging": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-charging.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-charging.png",
+      "source_sha256": "49dea784175411df2dcc3e30f28830272d9714261ecb0a6c47d6b4f56ae493a9",
+      "source_git_blob_sha": "925fdf318289eb0d11fe0422bf74b4af9eabe5c8",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-pressed.png",
+      "source_sha256": "a6a6f7a2c68b604295a7cbb9489983f8e4a8ee2745bcaec996d2a535cd3e0e0a",
+      "source_git_blob_sha": "a1789f458d168d3901a39d76ac0cd996de96b246",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-recovery": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-recovery.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-recovery.png",
+      "source_sha256": "1317dfb64ca685ce4cfb407059362409f98ec9cd3ab28bef5d8a8066c0543a5f",
+      "source_git_blob_sha": "26d4475c0a511c78b22c235c3c2cabd4eb7311b1",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-ready": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-ready.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-ready.png",
+      "source_sha256": "c2d04a6c01bbbd39232c44cc1703219c47b29ffd0406b3d931c80cc4a3591ddf",
+      "source_git_blob_sha": "ea6716ccc3e13a3391b2f999f7cc31c54bdf1059",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-pressed.png",
+      "source_sha256": "6ddfa5b40423a63578fb4edcb5bb2d1256d790a404b04ab91744de4fda1f702e",
+      "source_git_blob_sha": "c7c98c585f1f867dc2ad7bc7c1b520a6f37c96da",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/cool-kid-recovery": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/cool-kid-recovery.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-recovery.png",
+      "source_sha256": "974e38c6a10c798465b41f17b709802a7434d0353d1ec83603a57a0cb448e077",
+      "source_git_blob_sha": "927b604abe194ac87e4f32cd4ff2de466a2c11ce",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-recovery": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-recovery.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-recovery.png",
+      "source_sha256": "b5ad81fa84bc2d28db0bbb59ce77aa829e4375a614e5119338f5856c9bbe2cd1",
+      "source_git_blob_sha": "200c13c9c6ac0975a6b4e9d0f4adbc280316a592",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/sigma-focused": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/sigma-focused.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-focused.png",
+      "source_sha256": "73fc28f95febcb9a3ef8194e9f74eb5c81bab78da906006335d9bfdf4c5b422c",
+      "source_git_blob_sha": "e197fc37e136b6cf833f045726aa3a2f7382f677",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "flex/alpha-disabled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/flex/alpha-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-disabled.png",
+      "source_sha256": "21f4b0c229fae062b83510570a53359cc51411f940b4fafaa142ae2a39051387",
+      "source_git_blob_sha": "58dc042aa141d8fc1bf345589cb5e80c9c72f888",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "joystick/activation-ripple": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/joystick/activation-ripple.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/activation-ripple.png",
+      "source_sha256": "c2353a4d19b30bb14c6a4837fef448b85215169be1fa25ef24c5e1debbee86a5",
+      "source_git_blob_sha": "d87f46d63ddebf22ba617cff8e9c74e57ee0de59",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "joystick/thumb-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/joystick/thumb-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/thumb-pressed.png",
+      "source_sha256": "7a75287122a0afa1f9cce9538ef3fb8b5fb6c66c06eec7dba3678402f0fdf6a4",
+      "source_git_blob_sha": "cecf731ada5ae32a6c293fd3d39b2c5e23fb1733",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "joystick/thumb-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/joystick/thumb-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/thumb-idle.png",
+      "source_sha256": "3233661c7f062288e8e99a929518f83174d624d7ecdfd44fff68d1284f1bbb2c",
+      "source_git_blob_sha": "a4d6a55dc9c49860172475262d197bfc6b51a3b9",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "joystick/ring-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/joystick/ring-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/ring-pressed.png",
+      "source_sha256": "728b03809962084a21f1f36b66d637e046af7f0544997d2bf910759723e5b7db",
+      "source_git_blob_sha": "77743b89a1e8ff41a2a60cea00bac987dbad7083",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "joystick/ring-idle": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/joystick/ring-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/ring-idle.png",
+      "source_sha256": "1ed4075cb059a5e994534049bd224ea593f3794dd3d8346a3c887c48ae48eab7",
+      "source_git_blob_sha": "083d45789e1bd3a2f55eeb11da2ce978c1cb583e",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/primary-default": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/primary-default.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-default.png",
+      "source_sha256": "8720bd25b0143619ca2781b63f2c3338de86b327d46699613a63e9231f69e103",
+      "source_git_blob_sha": "cf92ad43aa2714a714ec5d6f988c83d1847cae59",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/secondary-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/secondary-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-pressed.png",
+      "source_sha256": "1e1a56667dc46b3b1634d1bfddea1c3ba8ce328a27c86fbf51b2ecd848ffde46",
+      "source_git_blob_sha": "629e10cf62101fc2f47c50e4da6402e96c2116fe",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/primary-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/primary-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-hover.png",
+      "source_sha256": "a3d045dd5389ea2730789b00dd173b307ad4e37d268bce9ed21d1c9ea39606a1",
+      "source_git_blob_sha": "6d27a8f45e66b0e70883b4b3a39505a781c373b5",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/secondary-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/secondary-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-focus.png",
+      "source_sha256": "a6eaaf949b9a57986a6d42e6e474afaf45ec9513a7f4f90efd35fd99112c5a42",
+      "source_git_blob_sha": "046d68addcb4a28db2fe3d1b9fb2e542284bc0e6",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/secondary-disabled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/secondary-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-disabled.png",
+      "source_sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30",
+      "source_git_blob_sha": "f07c7c6c9ef2911c87eb7802909c93cbbfb34c2b",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/primary-disabled": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/primary-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-disabled.png",
+      "source_sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30",
+      "source_git_blob_sha": "f07c7c6c9ef2911c87eb7802909c93cbbfb34c2b",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/primary-focus": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/primary-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-focus.png",
+      "source_sha256": "b2aef7d6f60537d46007e0c85fd8d603c4fc86fdc6eb8e323c09cfa2d3e25616",
+      "source_git_blob_sha": "663da540828db1c08eb92d4d54626b934af578df",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/primary-pressed": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/primary-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-pressed.png",
+      "source_sha256": "919b1cf73ff5862f41104f3f457d23feaaa5f26757e37a77fffffe752d28f3c2",
+      "source_git_blob_sha": "456675b5b6e4236612cee688c6ef01d2edcba9a0",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/secondary-hover": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/secondary-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-hover.png",
+      "source_sha256": "c29a46f86eab2a3ca449d0cacc1f88d67a4cd625a1879931549a309f793ec2a4",
+      "source_git_blob_sha": "f05aa60f5035f051856e7702d5945dfb2921c6f3",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "menu/secondary-default": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/menu/secondary-default.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-default.png",
+      "source_sha256": "894729e55e37a191d3cc7658279df02a61042ee7a0328a61f89c48886229a736",
+      "source_git_blob_sha": "89019b6d0a7590049d1bc7bd1d72662d33a25955",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/poster": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/poster.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/menu-poster-bg-candidate.png",
+      "source_sha256": "f3feee62b291dd7cb8ea6e948b4a4a6355fb7ba68361c10481f18aec9c59559c",
+      "source_git_blob_sha": "bdc67abe145c18f461bcc6170700022ee7190bc0",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/wordmark": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/wordmark.png",
+      "source_path": "tests/clean_cut_review/generated/wordmark.png",
+      "source_sha256": "49eb4d1054d6675a5dad42ec3fa0352d202564e3aa655487d69365b2b9e83255",
+      "source_git_blob_sha": "10a5e3dc4d84099d05b5a18c988f823db2acb029",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": "assets/art-production/character-hype-clean-cut/v2/shared/brand/aura-farmer-wordmark-candidate.svg"
+    },
+    "support/upgrade-bg": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/upgrade-bg.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/upgrade-three-card-bg.svg",
+      "source_sha256": "d1a98cf0b6a87933db423e68bab1f4cb6802ee57255e3faeadd2bba52b445c3e",
+      "source_git_blob_sha": "3e1c9b0625104d87bed559f161fad81ad7935de1",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/legendary-bg": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/legendary-bg.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/legendary-six-card-bg.svg",
+      "source_sha256": "ecadf268759f14ee50ebbb71e2e27e773861da38340a9a4d8115f81db51ddbe0",
+      "source_git_blob_sha": "685091c6168c47f349e83b696ac8e56c17565f41",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/hp": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/hp.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/hp-meter-frame.svg",
+      "source_sha256": "d5866e94b0bfba5ac62b06daec1dcb34e822dec1f59de78b99cfa21a16abb0ff",
+      "source_git_blob_sha": "9b0d821091ba4a945db2bdf57b0fa709c9b63b96",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/xp": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/xp.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/xp-meter-frame.svg",
+      "source_sha256": "e12972543a075e1c55fdce60d0a8ee80325d7794870464b8a3da5d311bfce1cc",
+      "source_git_blob_sha": "8b00d9ebe494c12d3cfee97cb0b6a754b47dfd6a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/wave": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/wave.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/wave-time-plate.svg",
+      "source_sha256": "472a97cf21c24f224366a7b636a72482d041cf4f35553a04fff027a682a32cc9",
+      "source_git_blob_sha": "a53dd6be0315bec87fe04164ee8c7b4bd9872102",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    },
+    "support/pause": {
+      "resource_path": "res://assets/runtime-clean-cut/v2/support/pause.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/pause-default.svg",
+      "source_sha256": "1d2ad19516155ea27b72d46e870158a319dd178db3a345d2e93698ef02485500",
+      "source_git_blob_sha": "250b6b21971c8d5e63a40897c27fc3d6204aba2a",
+      "version": "creator-corrections-v1",
+      "approval_status": "CREATOR_APPROVED",
+      "approval_reference": "User approval in Aura Farmer development conversation, 2026-10-24",
+      "derived_from": null
+    }
+  }
+}
