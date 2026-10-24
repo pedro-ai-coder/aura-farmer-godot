@@ -35,6 +35,11 @@ func verify() -> void:
         game._open_legendary();game._update_text();skin.refresh()
         check(JSON.stringify(game.legendary_offers)==offers,"Reopen preserves cached six offers")
         game.offer_buttons[5].pressed.emit();skin.refresh()
+        await process_frame
+        await process_frame
+        await process_frame
+        await process_frame
+        check(skin.offers_scroll.get_global_rect().grow(1).encloses(game.offer_buttons[5].get_global_rect()),"Selected sixth legendary is fully revealed after container sorting")
         game.confirm_button.pressed.emit();skin.refresh()
         check(game.legendary_spent and game.mode=="playing","Sixth card confirms through original signal")
         game.pause_button.pressed.emit();skin.refresh()

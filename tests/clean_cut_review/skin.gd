@@ -288,7 +288,7 @@ func cards_layout() -> void:
         if view.x<700:place(game.confirm_button,Rect2(40+half,view.y-78,half,64))
         button_skin(game.restart_button,"menu/secondary")
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
-        offers_scroll.set_deferred("scroll_vertical",int(game.offer_buttons[game.selected_card_index].position.y))
+        call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index
 func hud_layout() -> void:
     background.modulate=Color.WHITE
@@ -352,3 +352,10 @@ func hud_layout() -> void:
         var readable:=StyleBoxFlat.new();readable.bg_color=Style.PAPER;parts["name"].add_theme_stylebox_override("normal",readable)
         parts["name"].text=("WEAPON" if weapon else "PASSIVE") if item.is_empty() else ui.catalog[item["id"]]["name"]
         place(parts["name"],Rect2(at+Vector2(0,50),Vector2(slot_width+8,30)))
+
+func reveal_selected(index: int, expected_signature: String) -> void:
+    # Scroll ranges settle after container sorting, not when card positions are assigned.
+    await get_tree().process_frame
+    await get_tree().process_frame
+    if signature==expected_signature and game.selected_card_index==index and offers_scroll.visible:
+        offers_scroll.ensure_control_visible(game.offer_buttons[index])
