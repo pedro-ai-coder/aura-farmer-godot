@@ -42,9 +42,13 @@ func _verify() -> void:
                 _expect(ui.equipment_slots[2]["label"].text.contains("EMPTY WEAPON"),"Unused weapon slot remains visible")
                 _expect(ui.equipment_slots[7]["label"].text.contains("EMPTY PASSIVE"),"Unused passive slot remains visible")
             if state == "playing":
-                for bar: Rect2 in ui.hud_rectangles():
-                    var global_bar := Rect2(bar.position+ui.position,bar.size)
-                    _expect(not global_bar.intersects(game.pause_button.get_global_rect()),"Pause cannot obscure HP, XP or Aura")
+                # Production uses the approved Clean Cut status and progression modules;
+                # the hidden legacy bar rectangles are no longer player-visible.
+                var clean_cut: Control = game.clean_cut_skin
+                _expect(clean_cut != null and clean_cut.visible, "Clean Cut combat HUD is active")
+                if clean_cut != null:
+                    for bar: Control in [clean_cut.player_plate,clean_cut.xp_frame,clean_cut.wave_frame]:
+                        _expect(not bar.get_global_rect().intersects(game.pause_button.get_global_rect()),"Pause cannot obscure visible Clean Cut HP, XP or wave status")
             if state == "legendary": _expect(game.selected_card_index == 4 and ui.card_parts[4]["state"].text.contains("SELECTED"),"Resize/layout preserves selected legendary")
     game.web_metrics = {"safe":[44,20,16,12],"width":390,"height":844}
     root.size = Vector2i(390,844)
