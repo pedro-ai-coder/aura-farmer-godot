@@ -132,6 +132,9 @@ func install(owner_game, source_root: String) -> void:
         adopt(button,offers_content);button.text=""
         var parts: Dictionary={"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
         parts["name"].add_theme_font_override("font",Style.BLACK)
+        parts["body"].clip_text = true
+        parts["body"].max_lines_visible = 5
+        parts["body"].text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
         offer_parts.append(parts)
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
     hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
@@ -258,6 +261,7 @@ func cards_layout() -> void:
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
         parts["icon"].texture=ui.item_icons.texture(category,id)
         parts["name"].text=native["name"].text;parts["body"].text=native["body"].text;parts["comparison"].text=native["comparison"].text
+        parts["body"].tooltip_text = parts["body"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         parts["state"].text="SELECTED / CONFIRM BELOW" if selected else "SELECT THIS ITEM"
         if legendary:
