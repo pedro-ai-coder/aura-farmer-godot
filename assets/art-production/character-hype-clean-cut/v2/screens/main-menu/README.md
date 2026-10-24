@@ -1,0 +1,1 @@
+# Main Menu\n\nPoster background, candidate wordmark, and unchanged Sigma master are layered separately. CTA and navigation actions are art references; render as live UI.\n\nNew screen art is a production candidate pending creator review. The SVG is a static art composition; reusable components are in shared/components and source art is in shared/.\n
