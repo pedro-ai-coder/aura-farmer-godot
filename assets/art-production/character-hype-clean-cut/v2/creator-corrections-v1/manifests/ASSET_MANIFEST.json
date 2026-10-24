@@ -1,0 +1,3110 @@
+{
+  "package": "Character Hype Broadcast \u2014 Clean Cut Final Creator Corrections v1",
+  "review_status": "PRODUCTION_CANDIDATE_PENDING_CREATOR_REVIEW",
+  "decision": "visual direction approved to continue; individual correction artwork not approved as final",
+  "screen_compositions": [
+    "main-menu",
+    "main-menu-mobile",
+    "hero-selection",
+    "hero-selection-mobile",
+    "gameplay-hud",
+    "combat-normal",
+    "combat-high-density",
+    "boss-encounter",
+    "build-inspection",
+    "flex-sigma-showcase",
+    "flex-cool-kid-showcase",
+    "flex-alpha-showcase",
+    "mobile-joystick-left",
+    "mobile-joystick-center",
+    "mobile-joystick-right",
+    "mobile-two-finger",
+    "mobile-high-density",
+    "upgrade-idle",
+    "upgrade-hover",
+    "upgrade-focus",
+    "upgrade-selected",
+    "upgrade-pressed",
+    "upgrade-replacement-choice",
+    "upgrade-mobile",
+    "legendary-idle",
+    "legendary-hover",
+    "legendary-focus",
+    "legendary-selected",
+    "legendary-mobile"
+  ],
+  "component_svg_count": 79,
+  "transparent_component_png_exports": 79,
+  "flex_states": 21,
+  "flex_heroes": [
+    "sigma",
+    "cool-kid",
+    "alpha"
+  ],
+  "joystick_geometry": {
+    "outer_radius_ref_px": 80,
+    "thumb_radius_ref_px": 35,
+    "saturation_travel_ref_units": 119,
+    "art": "separate perfect circular ring/thumb layers"
+  },
+  "approved_icons": [
+    {
+      "id": "ban-hammer",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "brainrot-feed",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "chad-hands",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
+      "sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "cope-shield",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
+      "sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "keyboard-warrior",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "no-cap",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.png",
+      "sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "personal-space",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.png",
+      "sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "ratio-blaster",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "touch-grass",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-clean-cut-v2-256.png",
+      "sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "absolute-cinema",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "aura-viral",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.png",
+      "sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "big-chad",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.png",
+      "sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "big-meme",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.png",
+      "sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "brainrot-rain",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.png",
+      "sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "built-different",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
+      "sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "caught-4k",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.png",
+      "sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "certified-w",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.png",
+      "sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "cope-harder",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.png",
+      "sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "ego-check",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.png",
+      "sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "get-ratiod",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.png",
+      "sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "hands-on-sight",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.png",
+      "sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "homie-check",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.png",
+      "sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "its-over",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.png",
+      "sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "let-him-cook",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.png",
+      "sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "main-character",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.png",
+      "sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "no-cap-streak",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "no-u",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.png",
+      "sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "six-to-seven",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.png",
+      "sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "so-back",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.png",
+      "sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "take-l",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.png",
+      "sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "terminally-online",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.png",
+      "sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "thick-skin",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.png",
+      "sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "timeline",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.png",
+      "sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "too-sigma",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
+      "sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "uno-reverse",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.png",
+      "sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "w-squad",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
+      "sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "status": "CREATOR_APPROVED"
+    },
+    {
+      "id": "w-wifi",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.png",
+      "sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+      "status": "CREATOR_APPROVED"
+    }
+  ],
+  "svg_references": [
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/passives/caught-4k/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-inspection.svg",
+      "href": "../../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/passives/caught-4k/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-full.svg",
+      "href": "../../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/passives/caught-4k/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "components/equipment/build-strip-mobile.svg",
+      "href": "../../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../gameplay-hud-rework/shared/combat/big-hater-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/boss-encounter.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/build-inspection.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/build-inspection.svg",
+      "href": "../components/equipment/build-inspection.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-high-density.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/combat-normal.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../shared/characters/alpha-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../components/flex/sigma-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-alpha-showcase.svg",
+      "href": "../components/flex/alpha-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../shared/characters/cool-kid-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../components/flex/sigma-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-cool-kid-showcase.svg",
+      "href": "../components/flex/cool-kid-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../components/flex/sigma-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/flex-sigma-showcase.svg",
+      "href": "../components/flex/sigma-active.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../components/equipment/build-strip-full.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/gameplay-hud.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../components/hero-select/card-selected.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../components/hero-select/card-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../shared/characters/cool-kid-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../../v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../components/hero-select/card-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../shared/characters/alpha-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection-mobile.svg",
+      "href": "../../../v1/weapons/cope-shield/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../components/hero-select/card-selected.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../components/hero-select/card-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../shared/characters/cool-kid-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../../v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../components/hero-select/card-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../shared/characters/alpha-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/hero-selection.svg",
+      "href": "../../../v1/weapons/cope-shield/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../shared/backgrounds/legendary-six-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../components/cards/legendary-weapon-focus.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../../v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-focus.svg",
+      "href": "../../../v1/passives/too-sigma/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../shared/backgrounds/legendary-six-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../components/cards/legendary-weapon-hover.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../../v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-hover.svg",
+      "href": "../../../v1/passives/too-sigma/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../shared/backgrounds/legendary-six-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../../v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-idle.svg",
+      "href": "../../../v1/passives/too-sigma/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../shared/backgrounds/legendary-six-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../components/cards/legendary-mobile-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../components/cards/legendary-mobile-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../components/cards/legendary-mobile-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../../v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../components/cards/legendary-mobile-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../components/cards/legendary-mobile-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../components/cards/legendary-mobile-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-mobile.svg",
+      "href": "../../../v1/passives/too-sigma/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../shared/backgrounds/legendary-six-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../components/cards/legendary-weapon-selected.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../components/cards/legendary-weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../../v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../../v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../../v1/passives/w-squad/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../components/cards/legendary-passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/legendary-selected.svg",
+      "href": "../../../v1/passives/too-sigma/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu-mobile.svg",
+      "href": "../../shared/backgrounds/menu-poster-bg-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu-mobile.svg",
+      "href": "../../shared/brand/aura-farmer-wordmark-candidate.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu-mobile.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu-mobile.svg",
+      "href": "../components/menu/primary-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu-mobile.svg",
+      "href": "../components/menu/secondary-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu.svg",
+      "href": "../../shared/backgrounds/menu-poster-bg-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu.svg",
+      "href": "../../shared/brand/aura-farmer-wordmark-candidate.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu.svg",
+      "href": "../components/menu/primary-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/main-menu.svg",
+      "href": "../components/menu/secondary-default.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../components/equipment/build-strip-mobile.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../components/joystick/ring-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-high-density.svg",
+      "href": "../components/joystick/thumb-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../components/equipment/build-strip-mobile.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../components/joystick/ring-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-center.svg",
+      "href": "../components/joystick/thumb-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../components/equipment/build-strip-mobile.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../components/joystick/ring-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-left.svg",
+      "href": "../components/joystick/thumb-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../components/equipment/build-strip-mobile.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../components/flex/sigma-ready.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../components/joystick/ring-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-joystick-right.svg",
+      "href": "../components/joystick/thumb-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../shared/backgrounds/ruin-alley-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../shared/characters/cool-kid-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-goblin-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/beta-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ratio-ram-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/doomscroller-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/hype-bot-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/fanum-leech-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/ping-sniper-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/copium-puffer-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/comment-mod-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/reply-guy-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../gameplay-hud-polish-v1/shared/enemies/mod-supremo-frame-01.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../../shared/characters/sigma-approved-master.png",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../components/equipment/build-strip-mobile.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../components/joystick/ring-pressed.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../components/joystick/thumb-pressed.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/mobile-two-finger.svg",
+      "href": "../components/flex/cool-kid-pressed.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../components/cards/weapon-focus.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../components/cards/passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-focus.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../components/cards/weapon-hover.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../components/cards/passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-hover.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../components/cards/passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-idle.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-mobile.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-mobile.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-mobile.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-mobile.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../components/cards/weapon-pressed.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../components/cards/passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-pressed.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../components/cards/passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../../../v1/passives/caught-4k/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-replacement-choice.svg",
+      "href": "../../../v1/passives/certified-w/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../../shared/backgrounds/upgrade-three-card-bg.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../components/cards/weapon-selected.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../../../v1/weapons/no-cap/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../components/cards/passive-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../../../v1/passives/built-different/icon-v5-candidate.png",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../components/cards/weapon-idle.svg",
+      "exists": true
+    },
+    {
+      "source": "screens/upgrade-selected.svg",
+      "href": "../../../v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "exists": true
+    }
+  ],
+  "all_relative_references_resolve": true,
+  "files": [
+    {
+      "path": "BEFORE_AFTER.md",
+      "bytes": 723,
+      "sha256": "bb88507d0d698a192a80e5a2a8bfc82c218d7e123ddd3b70843b3bd1ce50bcd2"
+    },
+    {
+      "path": "CLEAN_CUT_FINAL_SPEC.md",
+      "bytes": 3618,
+      "sha256": "7f468e8af6a908f17b2a3bf7d2ac114482cd755734936f14d389ac18be881a5d"
+    },
+    {
+      "path": "GODOT_HANDOFF.md",
+      "bytes": 1818,
+      "sha256": "12373287ac75c9309c2c1fbd9f250d306ad73be9fef8be0b2df6f9220d005c8e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2414,
+      "sha256": "e719543cfe3790569463616dc0a98425f62e5ba3fc21c7811542c327e0b9c7fc"
+    },
+    {
+      "path": "REVIEW_MATRIX.md",
+      "bytes": 1548,
+      "sha256": "c16b5ab5c7baf20b608f0664ca4e10b8626543ae68251cef1d0329d6750d276a"
+    },
+    {
+      "path": "STATE_AND_MOTION.md",
+      "bytes": 1783,
+      "sha256": "087f9001071633b3f5380612744ee02c3beee4b039db15a6ebccff9c4a4c0b86"
+    },
+    {
+      "path": "components/cards/legendary-mobile-passive-focus.svg",
+      "bytes": 1025,
+      "sha256": "8653f648e2672bdfc129b0ced36fc6d8db9557d08b75780cb4becec87c2563c4"
+    },
+    {
+      "path": "components/cards/legendary-mobile-passive-hover.svg",
+      "bytes": 947,
+      "sha256": "ebfd57fa3fa71f5f940648ccc571377df8125505e5f00584cc3f83ba853e7962"
+    },
+    {
+      "path": "components/cards/legendary-mobile-passive-idle.svg",
+      "bytes": 946,
+      "sha256": "a65088e1ac14df451cc0f76d224ba7703e9b32b0df453f8a27db666f513d9e6a"
+    },
+    {
+      "path": "components/cards/legendary-mobile-passive-selected.svg",
+      "bytes": 1182,
+      "sha256": "3a5a132d33685609534bfc0ab7f5f092e5158a57eeb0b341310720b5d4458b80"
+    },
+    {
+      "path": "components/cards/legendary-mobile-weapon-focus.svg",
+      "bytes": 1024,
+      "sha256": "c850147ab49250904314d8776fe294077d5fc92782f16cca1ed86cc3187e670f"
+    },
+    {
+      "path": "components/cards/legendary-mobile-weapon-hover.svg",
+      "bytes": 946,
+      "sha256": "b24d256d90d90365b3a39e7b25ff88a7985b273fda69bb6ba33844c7ac610151"
+    },
+    {
+      "path": "components/cards/legendary-mobile-weapon-idle.svg",
+      "bytes": 945,
+      "sha256": "f7925878d1b3d04de4805fd173316f9a2431d30b0bbb594375e8aae3f2d942ca"
+    },
+    {
+      "path": "components/cards/legendary-mobile-weapon-selected.svg",
+      "bytes": 1181,
+      "sha256": "11f5e9f24042526d40877bb5fdad37d81b8c21115fed2a19008572d74e9a1317"
+    },
+    {
+      "path": "components/cards/legendary-passive-focus.svg",
+      "bytes": 1185,
+      "sha256": "ae27b1b2b04101c12cee78c4a2785af63b9db235462aa23d4afeb39bd7809487"
+    },
+    {
+      "path": "components/cards/legendary-passive-hover.svg",
+      "bytes": 1107,
+      "sha256": "d1fbba3391014133cc1b548e21dc403692ba9fd1663bc8e8af89e997cb2fd4de"
+    },
+    {
+      "path": "components/cards/legendary-passive-idle.svg",
+      "bytes": 1106,
+      "sha256": "44c08050219daf1628fa45669e77e0e876ab39ccdc63f9a341b0eab90ed66361"
+    },
+    {
+      "path": "components/cards/legendary-passive-selected.svg",
+      "bytes": 1342,
+      "sha256": "5ffe0eb27359475617855d9b4240f23df95e0229d81237ad0553d231a8e33801"
+    },
+    {
+      "path": "components/cards/legendary-weapon-focus.svg",
+      "bytes": 1183,
+      "sha256": "24204807240a687219dfc2665e639238c7b7a8f793e1455b314bd2b29d84623e"
+    },
+    {
+      "path": "components/cards/legendary-weapon-hover.svg",
+      "bytes": 1105,
+      "sha256": "b6a0d92a8cbf3a3892f53ed21c1d7d65ca2dd4ddeed88b8cecb7e26bfecdf923"
+    },
+    {
+      "path": "components/cards/legendary-weapon-idle.svg",
+      "bytes": 1104,
+      "sha256": "af0ee1c4cbb9f416deeda3fb9ace66f11fcc5f8b27caeb4d5088316c710f7cc2"
+    },
+    {
+      "path": "components/cards/legendary-weapon-selected.svg",
+      "bytes": 1340,
+      "sha256": "8161e5b5f03bf1f2eb193395a12bc9d0204a11b3b7e525ab34b6ec93164b16f1"
+    },
+    {
+      "path": "components/cards/passive-focus.svg",
+      "bytes": 1192,
+      "sha256": "52ddfaf882c89801fce38a9fa248821539c149aac35e40e80b46c6d77a13cc6d"
+    },
+    {
+      "path": "components/cards/passive-hover.svg",
+      "bytes": 1349,
+      "sha256": "8c01104cc4ca873c8e634106bb3f0fa19714fb88a51e93c1840e179d75ae1138"
+    },
+    {
+      "path": "components/cards/passive-idle.svg",
+      "bytes": 1112,
+      "sha256": "67bff7fa7b0cb8ed37cf2686cf2912170838dd6e8699f38160749ecf33443923"
+    },
+    {
+      "path": "components/cards/passive-pressed.svg",
+      "bytes": 1177,
+      "sha256": "f1b9cb3a9cfdf14dfa9feca14f67d72fe69b36c6597a2a72ebd5c86c268c082d"
+    },
+    {
+      "path": "components/cards/passive-selected.svg",
+      "bytes": 1366,
+      "sha256": "59d9c6d7cfd98d9a6e8ec5caddc0dfc01ce9f278ea09831f0f6c28b74ed80b87"
+    },
+    {
+      "path": "components/cards/weapon-focus.svg",
+      "bytes": 1190,
+      "sha256": "b56a730d7704c4914214611a028d1f0f99efe9a4b42e260a173d13b6abfa206f"
+    },
+    {
+      "path": "components/cards/weapon-hover.svg",
+      "bytes": 1347,
+      "sha256": "302e63312c29e7781e04271e550942a0f378918bb0935a13b04cb31235d30ae6"
+    },
+    {
+      "path": "components/cards/weapon-idle.svg",
+      "bytes": 1110,
+      "sha256": "d5d0855121807beebcd43f2240de421a941486fed7efa15459648dde0785f4b2"
+    },
+    {
+      "path": "components/cards/weapon-pressed.svg",
+      "bytes": 1175,
+      "sha256": "bb8ae3cb883ba96b5e3358fa1b073e124c829a6d909c95d9e165eea70b4c5442"
+    },
+    {
+      "path": "components/cards/weapon-selected.svg",
+      "bytes": 1364,
+      "sha256": "0cd97a711f587c20df40d3bd21bf09fa0040347e31877ce4963c384306d95670"
+    },
+    {
+      "path": "components/equipment/build-inspection.svg",
+      "bytes": 6095,
+      "sha256": "2c9f5b86c4ef422fc4db927e6011a5dd8198bf485574d29d85421afd6160a434"
+    },
+    {
+      "path": "components/equipment/build-strip-full.svg",
+      "bytes": 4862,
+      "sha256": "cbe530c45048b0d331b792dabfe518189ce55b4e38bd1d4761d81378d501e97d"
+    },
+    {
+      "path": "components/equipment/build-strip-mobile.svg",
+      "bytes": 4568,
+      "sha256": "1bec8a148b4826f53572b9c619344ae2992160c61d8d491b711bdf90059bf362"
+    },
+    {
+      "path": "components/equipment/passive-empty.svg",
+      "bytes": 913,
+      "sha256": "eb2fd8d121d7b956040bd2ea42d063469cf83bbe23593f3217cf0a60be47a596"
+    },
+    {
+      "path": "components/equipment/passive-filled.svg",
+      "bytes": 766,
+      "sha256": "dc2e4ec41526bf0b625accebe6150e57c3cc7a15b8f8b939e566afaa9caabd93"
+    },
+    {
+      "path": "components/equipment/passive-focus.svg",
+      "bytes": 876,
+      "sha256": "c3d939e6e0eea4b9a75859ef27382ca54c02c85518a4c94844835b9ae7cbac9c"
+    },
+    {
+      "path": "components/equipment/passive-selected.svg",
+      "bytes": 839,
+      "sha256": "602b6af099bef95d3dbb57e4a29a847831a59b4157609d9f1060f64866adfaac"
+    },
+    {
+      "path": "components/equipment/weapon-empty.svg",
+      "bytes": 909,
+      "sha256": "1d51a91a69541122df56c5d417f8b97ed04b1078bd735fac4a190719fa44fc55"
+    },
+    {
+      "path": "components/equipment/weapon-filled.svg",
+      "bytes": 765,
+      "sha256": "539b3f63d32abf4b105b7cdb93b9ba6476ced2ef038f220ee295ed4a1f9e3d9c"
+    },
+    {
+      "path": "components/equipment/weapon-focus.svg",
+      "bytes": 875,
+      "sha256": "173aae7cecd36fdb582009df663c17a1953499cb2a54f25a02e3729d1d98c886"
+    },
+    {
+      "path": "components/equipment/weapon-selected.svg",
+      "bytes": 838,
+      "sha256": "316b5907f0112d63ed1ade9f59dcd145cb8c12c79e0c39ef219ab98f53a19ff5"
+    },
+    {
+      "path": "components/flex/alpha-active.svg",
+      "bytes": 1326,
+      "sha256": "00625a027b9eddc121afa85f742d016831c24f447fb865524a1701f13a340167"
+    },
+    {
+      "path": "components/flex/alpha-charging.svg",
+      "bytes": 1222,
+      "sha256": "c1040e9020ade67f2846b9a61fd7d44dd7d779a16b93939b541b41827b0b9277"
+    },
+    {
+      "path": "components/flex/alpha-disabled.svg",
+      "bytes": 1230,
+      "sha256": "0708025e7f844fa80f1b81fb7477ba1d447a41b6bdc1fa79fcfe937131ed142f"
+    },
+    {
+      "path": "components/flex/alpha-focused.svg",
+      "bytes": 1323,
+      "sha256": "a50b8ccf54c07bee2cd9c8745104b1643c053638dbc346060a67baaff7fb168b"
+    },
+    {
+      "path": "components/flex/alpha-pressed.svg",
+      "bytes": 1296,
+      "sha256": "c3c8241b0898a664d7283a2da83ab64992f8f780019531c91a50b6ea81df7685"
+    },
+    {
+      "path": "components/flex/alpha-ready.svg",
+      "bytes": 1219,
+      "sha256": "ca26e09dc4a6af9003ffb73bce57d3b5384e5bfaa0541e67a9e5deb65416dbfa"
+    },
+    {
+      "path": "components/flex/alpha-recovery.svg",
+      "bytes": 1224,
+      "sha256": "51fe6bbdc09f170de7392d24a5585268c4e18169f2c3a06196cea48bd249bbd5"
+    },
+    {
+      "path": "components/flex/cool-kid-active.svg",
+      "bytes": 1656,
+      "sha256": "182191acd59d712956a1afe94234e1b3a11aa027af544788c2a60500cb28991b"
+    },
+    {
+      "path": "components/flex/cool-kid-charging.svg",
+      "bytes": 1552,
+      "sha256": "2b1a0341e91575809b1f23542588bdc53242a128adfbd8af106d3f7553b19176"
+    },
+    {
+      "path": "components/flex/cool-kid-disabled.svg",
+      "bytes": 1560,
+      "sha256": "d3dc6ca684c96ebb87fd1d71b3e983a23873d09c2249cf44f7994d131240edff"
+    },
+    {
+      "path": "components/flex/cool-kid-focused.svg",
+      "bytes": 1653,
+      "sha256": "1e4174db6b0f7848989986d24d31992bd91fe0d96e31282c676685fecbfff474"
+    },
+    {
+      "path": "components/flex/cool-kid-pressed.svg",
+      "bytes": 1626,
+      "sha256": "690becb7235c57ba65ef542504e967f0a2da09b53b35b83309abcc552a35610a"
+    },
+    {
+      "path": "components/flex/cool-kid-ready.svg",
+      "bytes": 1549,
+      "sha256": "0acd13ee65c169f696b56486d919ff055e9b930da6518646b0a868b3df34c745"
+    },
+    {
+      "path": "components/flex/cool-kid-recovery.svg",
+      "bytes": 1554,
+      "sha256": "d6aac5fd86d6205b5385f164a0f54be1825c8cd51513185302fc474c7951a113"
+    },
+    {
+      "path": "components/flex/sigma-active.svg",
+      "bytes": 1382,
+      "sha256": "13409ae1f1a1fae84699d6886b2f8f2f2b88eccb416ea39032220427572ed370"
+    },
+    {
+      "path": "components/flex/sigma-charging.svg",
+      "bytes": 1278,
+      "sha256": "4b802cb1b65f20998f1c786e353b976ff9fd3de965aeaf069b754f550c868e1d"
+    },
+    {
+      "path": "components/flex/sigma-disabled.svg",
+      "bytes": 1286,
+      "sha256": "9378ab2bac36dfea779587a1c17bfa8807511e1133f759a64abd9e1806d2571f"
+    },
+    {
+      "path": "components/flex/sigma-focused.svg",
+      "bytes": 1379,
+      "sha256": "1320755f20dedb1b22253316482f931a7bcb27d7d3d9b1c4d3b3e43b7fee0b43"
+    },
+    {
+      "path": "components/flex/sigma-pressed.svg",
+      "bytes": 1352,
+      "sha256": "eebc890e7ab2e6fe71d5af3c7902fd60ea08f3409637a3d28c85227041abb10d"
+    },
+    {
+      "path": "components/flex/sigma-ready.svg",
+      "bytes": 1275,
+      "sha256": "d57ffd419c5f46eb723b4aadcb78d0d56fbc25906920f20ab4cd2343eb2b4749"
+    },
+    {
+      "path": "components/flex/sigma-recovery.svg",
+      "bytes": 1280,
+      "sha256": "7a316e73d63244e14b0f7695a1dca3f456c8ee8ab75c880c81f1d09060aeff05"
+    },
+    {
+      "path": "components/hero-select/card-confirm.svg",
+      "bytes": 1075,
+      "sha256": "e68f47aeab48f12547110444b2195ea42bb7e759682400ea6bd8b9d57c639560"
+    },
+    {
+      "path": "components/hero-select/card-focus.svg",
+      "bytes": 908,
+      "sha256": "f4b88a111dd774cd2160ffb3d825eaa2a89a187b26511fb17ce50be4c5162e6d"
+    },
+    {
+      "path": "components/hero-select/card-hover.svg",
+      "bytes": 829,
+      "sha256": "b746ef5d0ca248abb4ac41421f822b876bd3085d92ad82a21dd225de6fdc1033"
+    },
+    {
+      "path": "components/hero-select/card-idle.svg",
+      "bytes": 828,
+      "sha256": "2348bb1fde7a228efff8ebdc90489b2b014ccebcb2d4529d0ebf5dfabcabcb98"
+    },
+    {
+      "path": "components/hero-select/card-selected.svg",
+      "bytes": 1064,
+      "sha256": "8bb6d7ffcaf102dd0caf895884c82460ac91afe15081129ab0f80b213521a1a5"
+    },
+    {
+      "path": "components/hero-select/card-unavailable.svg",
+      "bytes": 1052,
+      "sha256": "3a4a0a06f49c451860345b974ea687dd0227fb5895a25030d119c37524a4d280"
+    },
+    {
+      "path": "components/joystick/activation-ripple.svg",
+      "bytes": 862,
+      "sha256": "1cbba554b0cb2ed5267729428432af8edf7da07003963847c7876d4d2b94a190"
+    },
+    {
+      "path": "components/joystick/ring-idle.svg",
+      "bytes": 877,
+      "sha256": "0d8637d4e5484be88c6bbde1c0f6238057d4e54f720697e7e5d5d729eba0d8bd"
+    },
+    {
+      "path": "components/joystick/ring-pressed.svg",
+      "bytes": 859,
+      "sha256": "5135043e98b982745453a49a80a9952483217409a59048b781cde7d25e1b5778"
+    },
+    {
+      "path": "components/joystick/thumb-idle.svg",
+      "bytes": 870,
+      "sha256": "56093d8f6c4b97cbca0b58849d1daf24196c2eb26d01591388c7ea7fd67651c3"
+    },
+    {
+      "path": "components/joystick/thumb-pressed.svg",
+      "bytes": 854,
+      "sha256": "0bac977749ad5bdb42ef78206d7fe087550c8220663181fe8bbbb3d13cb60fc0"
+    },
+    {
+      "path": "components/menu/primary-default.svg",
+      "bytes": 802,
+      "sha256": "fd986ded09bd9b68603894679277aa3f37dbe2cdb09df4048824106919e7bc5d"
+    },
+    {
+      "path": "components/menu/primary-disabled.svg",
+      "bytes": 876,
+      "sha256": "fdd4b3a9b63f4b4d14862635bf2ca1eb42c319dc0215a635c7bba1b28e203b52"
+    },
+    {
+      "path": "components/menu/primary-focus.svg",
+      "bytes": 903,
+      "sha256": "b9d357e121ed9c2a8b08bdf269adf55a3f5422abe2ef1bb68ee5c4f988e3fcb4"
+    },
+    {
+      "path": "components/menu/primary-hover.svg",
+      "bytes": 856,
+      "sha256": "fca0e488bf2a6c191b630a1b1ebf326c0918947f9b08278b3f7f2dd878c190e6"
+    },
+    {
+      "path": "components/menu/primary-pressed.svg",
+      "bytes": 739,
+      "sha256": "e7d5ad8c898328453753315efeab39990753d30334a073a4111d112a40156d2e"
+    },
+    {
+      "path": "components/menu/secondary-default.svg",
+      "bytes": 804,
+      "sha256": "dda4a5eec8429037936bb5d3e4b898566b8544c58b200c55b0dcd2423911e723"
+    },
+    {
+      "path": "components/menu/secondary-disabled.svg",
+      "bytes": 878,
+      "sha256": "db66d8a84488ccdf2682aa8b1c8e24452e72a755a02c46eb821eb033db85904d"
+    },
+    {
+      "path": "components/menu/secondary-focus.svg",
+      "bytes": 905,
+      "sha256": "6991b0d045199a624bc3b400ce9a155db83055af80cba83e145b51f7a2195783"
+    },
+    {
+      "path": "components/menu/secondary-hover.svg",
+      "bytes": 858,
+      "sha256": "68338d7a7ae5c668b4a70c1238ff8a4ea1bcc36221bf7e742fd645234d3ff5c7"
+    },
+    {
+      "path": "components/menu/secondary-pressed.svg",
+      "bytes": 741,
+      "sha256": "d1a8d1af5ef2510ef9f90b3a25b38de4b0685af970ed0e2d21be25d5ff7f8459"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-passive-focus.png",
+      "bytes": 2687,
+      "sha256": "086e4884d35217fcfb36cdbbc723ff8c20152c92947cf86c54b81dd4ea0b9fc1"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-passive-hover.png",
+      "bytes": 2337,
+      "sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-passive-idle.png",
+      "bytes": 2337,
+      "sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-passive-selected.png",
+      "bytes": 3556,
+      "sha256": "3861181e4b0324894843c50f74ebf04cc9fc316663d1b39d67aed5d97ee58400"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-weapon-focus.png",
+      "bytes": 2674,
+      "sha256": "0e27b22e9c7c4d7766c743ef91dff374351c8739a75b76d50fe5169073a10aa2"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-weapon-hover.png",
+      "bytes": 2365,
+      "sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-weapon-idle.png",
+      "bytes": 2365,
+      "sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e"
+    },
+    {
+      "path": "exports/cards/legendary-mobile-weapon-selected.png",
+      "bytes": 3598,
+      "sha256": "6ffdfcef4e0c20726d9bcde144a1418a9b8f5a65d32007154f10c5623f443aa4"
+    },
+    {
+      "path": "exports/cards/legendary-passive-focus.png",
+      "bytes": 9423,
+      "sha256": "37397266e0bb208ab0267707fb756457fc8b30d4113e6bacdaab523d6be84680"
+    },
+    {
+      "path": "exports/cards/legendary-passive-hover.png",
+      "bytes": 9092,
+      "sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96"
+    },
+    {
+      "path": "exports/cards/legendary-passive-idle.png",
+      "bytes": 9092,
+      "sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96"
+    },
+    {
+      "path": "exports/cards/legendary-passive-selected.png",
+      "bytes": 10994,
+      "sha256": "ebc947e9d626bc35200f2645e0a7ad510c1125c1b41f1a95beb7d1285b8eb750"
+    },
+    {
+      "path": "exports/cards/legendary-weapon-focus.png",
+      "bytes": 8772,
+      "sha256": "d348772ff73b485cefdb8656c3ddf09b25147f2d6346350dcc504c14602adb9e"
+    },
+    {
+      "path": "exports/cards/legendary-weapon-hover.png",
+      "bytes": 8486,
+      "sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef"
+    },
+    {
+      "path": "exports/cards/legendary-weapon-idle.png",
+      "bytes": 8486,
+      "sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef"
+    },
+    {
+      "path": "exports/cards/legendary-weapon-selected.png",
+      "bytes": 10432,
+      "sha256": "edc9ca02af3f99023410267b5be3b9a97a2d275620fd0425392f657a68c0eb2c"
+    },
+    {
+      "path": "exports/cards/passive-focus.png",
+      "bytes": 6124,
+      "sha256": "69b03b4e73955164feccf0add94456d5d8e78b5bb37b30452ca0fa71a8494738"
+    },
+    {
+      "path": "exports/cards/passive-hover.png",
+      "bytes": 5789,
+      "sha256": "c762dfd7f32fc878a4f5daf59dbb1fb9362ead5f97e5bc082fdcb5902086fb42"
+    },
+    {
+      "path": "exports/cards/passive-idle.png",
+      "bytes": 5686,
+      "sha256": "cfef92f822d8f622802ce85385fa9c46f741de76a43b5c875e5e62faffd90679"
+    },
+    {
+      "path": "exports/cards/passive-pressed.png",
+      "bytes": 6038,
+      "sha256": "b2343f460c649272b65a1da6dbf9d43af57cee2127c1ea319247d840d1ef2e45"
+    },
+    {
+      "path": "exports/cards/passive-selected.png",
+      "bytes": 7732,
+      "sha256": "d1b04c4ecc86bf2b10807551b0c024ccc890e2eb1f375de24cafa899734d3037"
+    },
+    {
+      "path": "exports/cards/weapon-focus.png",
+      "bytes": 6174,
+      "sha256": "2f24e748f8cb96ec012491a5a78c93fe6dafabea7439d94f1a8ced0fd1ae38ca"
+    },
+    {
+      "path": "exports/cards/weapon-hover.png",
+      "bytes": 5923,
+      "sha256": "479d09ace0a8e35ac83c9d3e9bb9227baab747b95d9587cf1c75336d27f652e4"
+    },
+    {
+      "path": "exports/cards/weapon-idle.png",
+      "bytes": 5852,
+      "sha256": "6223f8180d3bfa0c2373d27fe230ab0e4fd52a6d3c4771d3cf0ae6b8a2b00fe3"
+    },
+    {
+      "path": "exports/cards/weapon-pressed.png",
+      "bytes": 6197,
+      "sha256": "16b2f65d86a848c2d4bfed13dfe78ef96be1eabc21947a9efb824338fb617638"
+    },
+    {
+      "path": "exports/cards/weapon-selected.png",
+      "bytes": 7828,
+      "sha256": "f38a7a22f0f2e5917734ff9a7f48155447829986f7518e7d8bdd6faa31780213"
+    },
+    {
+      "path": "exports/equipment/build-inspection.png",
+      "bytes": 46332,
+      "sha256": "4b64fc91418b4919398d48c2e52c02a6148a4ea0855e0da0ec6b5cca5ff324e4"
+    },
+    {
+      "path": "exports/equipment/build-strip-full.png",
+      "bytes": 17998,
+      "sha256": "5e162b9f7f481f2ea357efe9050dc77c614836974d3cbba07591b62f2b2d5ff3"
+    },
+    {
+      "path": "exports/equipment/build-strip-mobile.png",
+      "bytes": 13187,
+      "sha256": "66aed0ca8d23bdfe18a066c0ce369bc148c7c4477d6d333de9458d08bc2856bd"
+    },
+    {
+      "path": "exports/equipment/passive-empty.png",
+      "bytes": 1097,
+      "sha256": "65f25c5ae67bbffe1212bc0e6ab88318329fff7b7a2bb9ef7eeb70bea446558e"
+    },
+    {
+      "path": "exports/equipment/passive-filled.png",
+      "bytes": 272,
+      "sha256": "e8ee2ba5e4ab6a81afb0058b0e61413224e9f7accca86f6ad51172b0914d963d"
+    },
+    {
+      "path": "exports/equipment/passive-focus.png",
+      "bytes": 361,
+      "sha256": "d2a622633243566cae818568563a02fd9e7e85b9bc0cb38ce194b33b9f17b118"
+    },
+    {
+      "path": "exports/equipment/passive-selected.png",
+      "bytes": 343,
+      "sha256": "f3ae31f5ec23c54539c5f2ffdf0aed51ae49588b79e0dd32a0b74b982261c75f"
+    },
+    {
+      "path": "exports/equipment/weapon-empty.png",
+      "bytes": 1253,
+      "sha256": "d294b8778fd5e6f5a63c37d63333c2356cb622ca017b34a82cd84382bd103e2f"
+    },
+    {
+      "path": "exports/equipment/weapon-filled.png",
+      "bytes": 283,
+      "sha256": "377bba0792b35c5af0e115d28d15db7d40d6f88d567cd1c9f41da7a6465657d2"
+    },
+    {
+      "path": "exports/equipment/weapon-focus.png",
+      "bytes": 357,
+      "sha256": "a5023ebda78b306cdb294a28fe5d24445ea3c5477c17116cbe48e8a4e7fe527d"
+    },
+    {
+      "path": "exports/equipment/weapon-selected.png",
+      "bytes": 358,
+      "sha256": "1ecb10ec83afb94c8365c47652208929ffd870db0340e15376e14c8343983258"
+    },
+    {
+      "path": "exports/flex/alpha-active.png",
+      "bytes": 13011,
+      "sha256": "0fc3845bd689385dead838e355702175ae0dc0fc52d27f8a96457f92839bdc9b"
+    },
+    {
+      "path": "exports/flex/alpha-charging.png",
+      "bytes": 12329,
+      "sha256": "49dea784175411df2dcc3e30f28830272d9714261ecb0a6c47d6b4f56ae493a9"
+    },
+    {
+      "path": "exports/flex/alpha-disabled.png",
+      "bytes": 14314,
+      "sha256": "21f4b0c229fae062b83510570a53359cc51411f940b4fafaa142ae2a39051387"
+    },
+    {
+      "path": "exports/flex/alpha-focused.png",
+      "bytes": 15514,
+      "sha256": "243fcdd2e25a5cad6a5cc3fc8ff1d1286ae9bf827dff9e0aab6427b91f4f2449"
+    },
+    {
+      "path": "exports/flex/alpha-pressed.png",
+      "bytes": 12876,
+      "sha256": "e77a2a4df207159772166092e81eb210d2d42608017a1daa5ce75077aa4a24b9"
+    },
+    {
+      "path": "exports/flex/alpha-ready.png",
+      "bytes": 13090,
+      "sha256": "f5b9ad12b1a0d372551ec93e0dc4001690261194fccc79b9f3b5ef68f84930a4"
+    },
+    {
+      "path": "exports/flex/alpha-recovery.png",
+      "bytes": 11144,
+      "sha256": "1317dfb64ca685ce4cfb407059362409f98ec9cd3ab28bef5d8a8066c0543a5f"
+    },
+    {
+      "path": "exports/flex/cool-kid-active.png",
+      "bytes": 13187,
+      "sha256": "6861b66d27c6e15f3d10a9f6f063cd3f1b5c633c3c125d5031e791ee923cae60"
+    },
+    {
+      "path": "exports/flex/cool-kid-charging.png",
+      "bytes": 12254,
+      "sha256": "36d972a6cbd09974da35a7867cd4f43c13c2b46efd03b63c6166651036f339f3"
+    },
+    {
+      "path": "exports/flex/cool-kid-disabled.png",
+      "bytes": 14253,
+      "sha256": "a131cdb97908fd50b0b63cbe7ec6ac6e6a633b70349d9567edb38d98cffd84dd"
+    },
+    {
+      "path": "exports/flex/cool-kid-focused.png",
+      "bytes": 15635,
+      "sha256": "9e304dc5007f7da4fb4e0bf994c5c0d6cb257b67ef8184a5a985be3bceb9a203"
+    },
+    {
+      "path": "exports/flex/cool-kid-pressed.png",
+      "bytes": 13014,
+      "sha256": "6ddfa5b40423a63578fb4edcb5bb2d1256d790a404b04ab91744de4fda1f702e"
+    },
+    {
+      "path": "exports/flex/cool-kid-ready.png",
+      "bytes": 13250,
+      "sha256": "0107dfdcab5632606d40bf1daa9654ba4f299b6e664c38640473589ae59a104f"
+    },
+    {
+      "path": "exports/flex/cool-kid-recovery.png",
+      "bytes": 11234,
+      "sha256": "974e38c6a10c798465b41f17b709802a7434d0353d1ec83603a57a0cb448e077"
+    },
+    {
+      "path": "exports/flex/sigma-active.png",
+      "bytes": 12247,
+      "sha256": "58add6ff0a731b82dfc098d117714272ec5d66ef39c10fba57829b765cda00bd"
+    },
+    {
+      "path": "exports/flex/sigma-charging.png",
+      "bytes": 11593,
+      "sha256": "abf7ef671867d8a94dbaff31bd3857f18aa5686af31832aa1bf568e42569f3f4"
+    },
+    {
+      "path": "exports/flex/sigma-disabled.png",
+      "bytes": 13995,
+      "sha256": "9efa3cfc512f56226e23614dd9cbbdb8f78d8052c763b5872ad270bf2986d85d"
+    },
+    {
+      "path": "exports/flex/sigma-focused.png",
+      "bytes": 15015,
+      "sha256": "73fc28f95febcb9a3ef8194e9f74eb5c81bab78da906006335d9bfdf4c5b422c"
+    },
+    {
+      "path": "exports/flex/sigma-pressed.png",
+      "bytes": 12200,
+      "sha256": "a6a6f7a2c68b604295a7cbb9489983f8e4a8ee2745bcaec996d2a535cd3e0e0a"
+    },
+    {
+      "path": "exports/flex/sigma-ready.png",
+      "bytes": 12573,
+      "sha256": "c2d04a6c01bbbd39232c44cc1703219c47b29ffd0406b3d931c80cc4a3591ddf"
+    },
+    {
+      "path": "exports/flex/sigma-recovery.png",
+      "bytes": 10799,
+      "sha256": "b5ad81fa84bc2d28db0bbb59ce77aa829e4375a614e5119338f5856c9bbe2cd1"
+    },
+    {
+      "path": "exports/hero-select/card-confirm.png",
+      "bytes": 6893,
+      "sha256": "dcf4bd89c3edbec9f46afd388fa39e0f90b6f92fae3707ecea94090ec1940b11"
+    },
+    {
+      "path": "exports/hero-select/card-focus.png",
+      "bytes": 3764,
+      "sha256": "a50ca2fdef5dbab4f7756f59ef33c8c23f45a2e4feec96db9a330976de151cfd"
+    },
+    {
+      "path": "exports/hero-select/card-hover.png",
+      "bytes": 3245,
+      "sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8"
+    },
+    {
+      "path": "exports/hero-select/card-idle.png",
+      "bytes": 3245,
+      "sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8"
+    },
+    {
+      "path": "exports/hero-select/card-selected.png",
+      "bytes": 6301,
+      "sha256": "e7a6674e8ae6c1b6cf7b0cddff8d729e254ae1d75ddcb1f2ccfef29e4f07123c"
+    },
+    {
+      "path": "exports/hero-select/card-unavailable.png",
+      "bytes": 6269,
+      "sha256": "6d3691dbbd171d78dfb7863edb599f760895357d7b3dd34ec3274384a4759d6f"
+    },
+    {
+      "path": "exports/joystick/activation-ripple.png",
+      "bytes": 12004,
+      "sha256": "c2353a4d19b30bb14c6a4837fef448b85215169be1fa25ef24c5e1debbee86a5"
+    },
+    {
+      "path": "exports/joystick/ring-idle.png",
+      "bytes": 12481,
+      "sha256": "1ed4075cb059a5e994534049bd224ea593f3794dd3d8346a3c887c48ae48eab7"
+    },
+    {
+      "path": "exports/joystick/ring-pressed.png",
+      "bytes": 13012,
+      "sha256": "728b03809962084a21f1f36b66d637e046af7f0544997d2bf910759723e5b7db"
+    },
+    {
+      "path": "exports/joystick/thumb-idle.png",
+      "bytes": 4452,
+      "sha256": "3233661c7f062288e8e99a929518f83174d624d7ecdfd44fff68d1284f1bbb2c"
+    },
+    {
+      "path": "exports/joystick/thumb-pressed.png",
+      "bytes": 4311,
+      "sha256": "7a75287122a0afa1f9cce9538ef3fb8b5fb6c66c06eec7dba3678402f0fdf6a4"
+    },
+    {
+      "path": "exports/menu/primary-default.png",
+      "bytes": 1129,
+      "sha256": "8720bd25b0143619ca2781b63f2c3338de86b327d46699613a63e9231f69e103"
+    },
+    {
+      "path": "exports/menu/primary-disabled.png",
+      "bytes": 2012,
+      "sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30"
+    },
+    {
+      "path": "exports/menu/primary-focus.png",
+      "bytes": 2212,
+      "sha256": "b2aef7d6f60537d46007e0c85fd8d603c4fc86fdc6eb8e323c09cfa2d3e25616"
+    },
+    {
+      "path": "exports/menu/primary-hover.png",
+      "bytes": 1202,
+      "sha256": "a3d045dd5389ea2730789b00dd173b307ad4e37d268bce9ed21d1c9ea39606a1"
+    },
+    {
+      "path": "exports/menu/primary-pressed.png",
+      "bytes": 1102,
+      "sha256": "919b1cf73ff5862f41104f3f457d23feaaa5f26757e37a77fffffe752d28f3c2"
+    },
+    {
+      "path": "exports/menu/secondary-default.png",
+      "bytes": 1154,
+      "sha256": "894729e55e37a191d3cc7658279df02a61042ee7a0328a61f89c48886229a736"
+    },
+    {
+      "path": "exports/menu/secondary-disabled.png",
+      "bytes": 2012,
+      "sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30"
+    },
+    {
+      "path": "exports/menu/secondary-focus.png",
+      "bytes": 2228,
+      "sha256": "a6eaaf949b9a57986a6d42e6e474afaf45ec9513a7f4f90efd35fd99112c5a42"
+    },
+    {
+      "path": "exports/menu/secondary-hover.png",
+      "bytes": 1217,
+      "sha256": "c29a46f86eab2a3ca449d0cacc1f88d67a4cd625a1879931549a309f793ec2a4"
+    },
+    {
+      "path": "exports/menu/secondary-pressed.png",
+      "bytes": 1123,
+      "sha256": "1e1a56667dc46b3b1634d1bfddea1c3ba8ce328a27c86fbf51b2ecd848ffde46"
+    },
+    {
+      "path": "previews/all-corrections-contact-sheet.jpg",
+      "bytes": 951427,
+      "sha256": "83c884048cd9955f13ba1ba47835dc4b6e4e63486c189b118b490abccb2fb9de"
+    },
+    {
+      "path": "previews/boss-encounter.jpg",
+      "bytes": 438598,
+      "sha256": "0f5bfff0884a537f6bf2950b24a3b998963ced94e43e806593dc96664e934659"
+    },
+    {
+      "path": "previews/build-inspection.jpg",
+      "bytes": 253883,
+      "sha256": "f283b6fc67f1c0c4dd9cf2bae64a13d60c4a5a083a54e7000a4a6f449d39a79f"
+    },
+    {
+      "path": "previews/combat-high-density.jpg",
+      "bytes": 434389,
+      "sha256": "9c4557f75b45e7dba9c26828356d52351b48c8011ac194819fc4e347577a1988"
+    },
+    {
+      "path": "previews/combat-normal.jpg",
+      "bytes": 424163,
+      "sha256": "7ee6c1a182f2e3503abd4124929de57fca3df0764cb83ea5c6643d3b683531bf"
+    },
+    {
+      "path": "previews/five-screen-corrections.jpg",
+      "bytes": 209207,
+      "sha256": "eb3743906423a5422be08e61bf0daef247271c6344d9563d3b261a30566a6d2e"
+    },
+    {
+      "path": "previews/flex-alpha-showcase.jpg",
+      "bytes": 433958,
+      "sha256": "5a15bdc524d9674295a5c2bdf45434f42ca532882e1ffda05a98004fe7550dc7"
+    },
+    {
+      "path": "previews/flex-cool-kid-showcase.jpg",
+      "bytes": 432688,
+      "sha256": "575571810301c9993ace0e633e8524f43b7c3737d8ab990aa180944b5ec4cdb3"
+    },
+    {
+      "path": "previews/flex-sigma-showcase.jpg",
+      "bytes": 431467,
+      "sha256": "188196c4f40441ebd2d0242123bf3a554c63e44caf517ca71a88561b7b79c4f5"
+    },
+    {
+      "path": "previews/gameplay-hud-1280x720.jpg",
+      "bytes": 309451,
+      "sha256": "2a8db83efe2abda56ade41d509a772791f70ad8cab43a60d45b499c7e41b630a"
+    },
+    {
+      "path": "previews/gameplay-hud.jpg",
+      "bytes": 424163,
+      "sha256": "7ee6c1a182f2e3503abd4124929de57fca3df0764cb83ea5c6643d3b683531bf"
+    },
+    {
+      "path": "previews/hero-selection-mobile.jpg",
+      "bytes": 82661,
+      "sha256": "6817f1cfa169805f59e16fdeaa11533a0cfac881f7b4f3261afe0e2d927ddc50"
+    },
+    {
+      "path": "previews/hero-selection.jpg",
+      "bytes": 258334,
+      "sha256": "155258159ca88d84bdb9b70d725fa16c14f588a10503bf06aa3ee68b40d87c4f"
+    },
+    {
+      "path": "previews/legendary-focus.jpg",
+      "bytes": 179615,
+      "sha256": "d967bde807fc2f0a6f0549f44974cf0cc0e546beb213475b6a2ae1c0c2072bb3"
+    },
+    {
+      "path": "previews/legendary-hover.jpg",
+      "bytes": 176270,
+      "sha256": "c2999b05a48026fd1a46032ed6e11b4418de26ccdf1edb1521d01b02defd4e7b"
+    },
+    {
+      "path": "previews/legendary-idle.jpg",
+      "bytes": 176270,
+      "sha256": "c2999b05a48026fd1a46032ed6e11b4418de26ccdf1edb1521d01b02defd4e7b"
+    },
+    {
+      "path": "previews/legendary-mobile.jpg",
+      "bytes": 70717,
+      "sha256": "4e7bb7d3d7aaa80e5c37caed71c4c0844704b8c1e5cb4d363f1f39c6b07f6b1d"
+    },
+    {
+      "path": "previews/legendary-selected.jpg",
+      "bytes": 178459,
+      "sha256": "68a662dc7ce003c05442426affca53a48c56549454d2a924683181266ea75026"
+    },
+    {
+      "path": "previews/main-menu-mobile.jpg",
+      "bytes": 82190,
+      "sha256": "a3b68f16390330c72d670a9113526440faa50a20c85d368cfdcbc0ecfa6ae41c"
+    },
+    {
+      "path": "previews/main-menu.jpg",
+      "bytes": 306900,
+      "sha256": "a6465356a2c374dc73951736cd40b3cd723adaa6aabdaffffd8f0e8eccb4a348"
+    },
+    {
+      "path": "previews/mobile-high-density-844x390.jpg",
+      "bytes": 133624,
+      "sha256": "3090136cdfe384171b541511eb367d1bda59df839484977446195fc6adbbf05a"
+    },
+    {
+      "path": "previews/mobile-high-density.jpg",
+      "bytes": 152514,
+      "sha256": "acca0701fde4ed601382fccb662932948e741ec1e8de5e164940b1f19164e393"
+    },
+    {
+      "path": "previews/mobile-joystick-center.jpg",
+      "bytes": 148010,
+      "sha256": "a0df4508c6310cdbd3556e88dd327fc9572201e22ceb7573168e0e719c1202aa"
+    },
+    {
+      "path": "previews/mobile-joystick-left.jpg",
+      "bytes": 146888,
+      "sha256": "1f043c9f3211db3cd30ce5fd867fcac0074c473afe6b3258ca92897f44b81467"
+    },
+    {
+      "path": "previews/mobile-joystick-right.jpg",
+      "bytes": 147585,
+      "sha256": "49065442a050002cc7e2abdb06f6a4580931b93609167ebfe9b27070e0be95e2"
+    },
+    {
+      "path": "previews/mobile-two-finger.jpg",
+      "bytes": 152919,
+      "sha256": "6f54888927e006d9bc28ca418f241c5a2e87fa3f59ea6173f95a491d8e9bc46f"
+    },
+    {
+      "path": "previews/upgrade-focus.jpg",
+      "bytes": 107617,
+      "sha256": "4ca854c768d56587e63304a8693710dc7bfaa0b849aefbebb55eebfeef41580e"
+    },
+    {
+      "path": "previews/upgrade-hover.jpg",
+      "bytes": 106366,
+      "sha256": "c56412922a41d56341e9c3f0586b8b8ceb89001b829e9a427782c267dc980197"
+    },
+    {
+      "path": "previews/upgrade-idle.jpg",
+      "bytes": 105315,
+      "sha256": "0b71f57a32f58d0e4d708ebc527d5d5002f500dee0b3145a903a81d15a406248"
+    },
+    {
+      "path": "previews/upgrade-mobile.jpg",
+      "bytes": 51804,
+      "sha256": "38e52337678f829dea5b1cfed22e53ea8dc0f120c6509a13d1fd9739fa4f190c"
+    },
+    {
+      "path": "previews/upgrade-pressed.jpg",
+      "bytes": 105785,
+      "sha256": "3c90989124bbada0df2b0f7d21c73fdbfabc5fc5c87586b3ecc54afee3a576d3"
+    },
+    {
+      "path": "previews/upgrade-replacement-choice.jpg",
+      "bytes": 116016,
+      "sha256": "f9c6239fd06c68b6b0f08bfedd6a8b99dabdd887226b278cd3e8e92658040cfa"
+    },
+    {
+      "path": "previews/upgrade-selected.jpg",
+      "bytes": 120054,
+      "sha256": "33f13c585ceb5b2e5afa8471f7ad619706547d286b2732c386905b98a6b9b334"
+    },
+    {
+      "path": "screens/boss-encounter.svg",
+      "bytes": 7516,
+      "sha256": "e6ae5d2d39add9844f723135dc62d21e8b2ca6debd302a7cccbf647a94bac3f3"
+    },
+    {
+      "path": "screens/build-inspection.svg",
+      "bytes": 1021,
+      "sha256": "68926c52e4ddcd66b25205042ea35c65ca14e1c7270efac0fde120a6d3210f94"
+    },
+    {
+      "path": "screens/combat-high-density.svg",
+      "bytes": 6764,
+      "sha256": "282865427b1633c74bf27ca6618d5391cef75d4094fb57b631339b45ab4944ab"
+    },
+    {
+      "path": "screens/combat-normal.svg",
+      "bytes": 5151,
+      "sha256": "e49f822436af5201d45fd1b3a5c32fb9dc97aa95bd1349974a43a66d83d0695d"
+    },
+    {
+      "path": "screens/flex-alpha-showcase.svg",
+      "bytes": 7340,
+      "sha256": "09a07cb8fe492e8dfc5cbf143234842f79391d2cdde1a05f3f355c55ad7021cd"
+    },
+    {
+      "path": "screens/flex-cool-kid-showcase.svg",
+      "bytes": 7344,
+      "sha256": "9a8735e8af0499d261181e2e0dd2eba41e940a752b44303b9c0cb156c36c73eb"
+    },
+    {
+      "path": "screens/flex-sigma-showcase.svg",
+      "bytes": 7340,
+      "sha256": "85bbebf85c8d6db79b13b49df2a12eaadad05fbde196d7f505d52c38addc866b"
+    },
+    {
+      "path": "screens/gameplay-hud.svg",
+      "bytes": 5150,
+      "sha256": "a0ae583f72acd42e0eddfab178748009004badc0adc6845dd1c5ad5836dfd060"
+    },
+    {
+      "path": "screens/hero-selection-mobile.svg",
+      "bytes": 5048,
+      "sha256": "ac8f1d1a7e93a6a098e149717a1d5497e224e64a59b8198726540e890c09c2c2"
+    },
+    {
+      "path": "screens/hero-selection.svg",
+      "bytes": 8121,
+      "sha256": "92dce633f033fc9b098c0b727bec4c1afd141e1ab9dbbd210ff42b812ddf7c10"
+    },
+    {
+      "path": "screens/legendary-focus.svg",
+      "bytes": 10626,
+      "sha256": "5cdfe2b291b7f7cdea449cf854a705e35aa1f5cadbf361f178e660b8df5c1f8d"
+    },
+    {
+      "path": "screens/legendary-hover.svg",
+      "bytes": 10626,
+      "sha256": "c26d7805a7eec194a83ffbf2573a1f9eeb23f93b887b7b98c32663fec8c42fea"
+    },
+    {
+      "path": "screens/legendary-idle.svg",
+      "bytes": 10624,
+      "sha256": "313f5cb4b68e74018d31e1393e7341b6639755acfe05138aef902e28bec3e1e8"
+    },
+    {
+      "path": "screens/legendary-mobile.svg",
+      "bytes": 7735,
+      "sha256": "7d37c6843fccbf1a5ccdca09fd2998563cfd22ee9f0d895e4cf53a9214694851"
+    },
+    {
+      "path": "screens/legendary-selected.svg",
+      "bytes": 10632,
+      "sha256": "face7da09e9296ebda4bdc53e5d5741c632ace921d55e69847e5b0a94b607cac"
+    },
+    {
+      "path": "screens/main-menu-mobile.svg",
+      "bytes": 1961,
+      "sha256": "65b643fb468e3dc9b04ec33c9a52f3bfe903de1068211617ed92db6204ca5068"
+    },
+    {
+      "path": "screens/main-menu.svg",
+      "bytes": 2372,
+      "sha256": "74c88a4c58cfa8f7a13c80e9eb69acd50360ae2e01c1d4189176026a5e7c84a8"
+    },
+    {
+      "path": "screens/mobile-high-density.svg",
+      "bytes": 6434,
+      "sha256": "e9622f0cfcf64c3d1c57193b54dbe9d1a99f108ab9dce924002bc351b71a7f23"
+    },
+    {
+      "path": "screens/mobile-joystick-center.svg",
+      "bytes": 4713,
+      "sha256": "836d19eaa64e218ed6f4d229ba0b9effc5f1881f24d51eb908afd7f29509e627"
+    },
+    {
+      "path": "screens/mobile-joystick-left.svg",
+      "bytes": 4710,
+      "sha256": "95fe6ffe7b987d2d6fd6da1455d930693aff7fc62bd1ee7dfcb64111fe39fa62"
+    },
+    {
+      "path": "screens/mobile-joystick-right.svg",
+      "bytes": 4712,
+      "sha256": "2717960bca5233c9887ed6f3418945407cc967e3c221a70ffedbd97b65349632"
+    },
+    {
+      "path": "screens/mobile-two-finger.svg",
+      "bytes": 6450,
+      "sha256": "9677b1c7cb1eb63f04c590230cba773178de6d1d4df048d1f5dffe5e9c6d7761"
+    },
+    {
+      "path": "screens/upgrade-focus.svg",
+      "bytes": 5334,
+      "sha256": "2fde097c70282246af623ee1a7e86873b32321dff1427e4f1d5b44eafe738c3b"
+    },
+    {
+      "path": "screens/upgrade-hover.svg",
+      "bytes": 5334,
+      "sha256": "49c83cd519cf95919fbe6a35c743094d7a3137ac201bbb6124981d9a94e316cc"
+    },
+    {
+      "path": "screens/upgrade-idle.svg",
+      "bytes": 5332,
+      "sha256": "e4aee211085d2ec382a0b06c14d040ce3504d52e237e9b86e001f66462f00ac1"
+    },
+    {
+      "path": "screens/upgrade-mobile.svg",
+      "bytes": 6053,
+      "sha256": "61a15b4a6829b47cd7886224ce1bb5f06b3233df4fd0662a2d45c3bd57fed11d"
+    },
+    {
+      "path": "screens/upgrade-pressed.svg",
+      "bytes": 5338,
+      "sha256": "14b329c000de27e719ea53dd0ba14da91bc3b6ee3b223cfa8406e934d7f81c10"
+    },
+    {
+      "path": "screens/upgrade-replacement-choice.svg",
+      "bytes": 6392,
+      "sha256": "a7da55803d6682e4139de79892d39c9e9f9d3c8528c72d7121398204b9b40a14"
+    },
+    {
+      "path": "screens/upgrade-selected.svg",
+      "bytes": 6051,
+      "sha256": "305f449892328b73113cb940dfb83b89064ad0e28ac71a3b7dcb1b8f1a8b81bd"
+    }
+  ],
+  "validation_boundary": "Art export/render/source validation only; no Godot runtime, input, gameplay, balance or device validation."
+}

@@ -83,4 +83,7 @@ run_check mobile-touch --headless --path . --script res://tests/test_mobile_joys
 run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10
 
+run_check candidate-bindings --headless --path . --script res://tests/review_clean_cut_candidates.gd -- user://clean-cut-review --check
+run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
+
 echo "PASS: Godot import, GDD rule contracts, and main scene smoke test."

@@ -21,3 +21,7 @@ Movement and UI pointers are independent. Touch release activates its original e
 ## Next independent milestone
 
 Prepare an isolated, clearly labelled Godot review branch for all five compositions, preserving live navigation, starter identity, equipment/offer data, states and the new joystick. Use exact candidate hashes for review only, with no candidate promotion or production export. Build the per-component review/approval manifest and actual reference-to-Godot discrepancy matrix. New art approval must identify the exact independent component files and supporting brand/background layers; the already-approved 37 icons must not be requested again. Until approval, production keeps approved resources and the input correction only.
+
+## Isolated native review milestone
+
+The next independent milestone is implemented on the draft review branch. See `CLEAN_CUT_NATIVE_REVIEW.md` and `CLEAN_CUT_REVIEW_RESOURCES.json`: five native live screens, original navigation/offer signals, 108 staged renders, before/after evidence, exact unapproved source hashes and production export exclusion. This is a review implementation, not creator acceptance or a production promotion. Compact HUD polish, full state coverage and gameplay/device acceptance remain explicit follow-ups.
