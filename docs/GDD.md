@@ -83,3 +83,59 @@ Keep input, renderer, audiovisual presentation, source catalog and persistence a
 
 The following sections are **binding numeric gameplay specifications**, consolidated from approved V2 §§3–12 and the later approved Flex 2.0/shorter-run/recovery amendments. Every numeric balance change requires explicit review; automated parity tests do not amount to balance approval.
 
+### 5.1 Four separate progression systems
+
+| System | Source of progression | Result | Persisted between runs? |
+| --- | --- | --- | --- |
+| **Run XP and level** | Collect existing enemy/event XP crystals | Offers and small baseline stat increases | No |
+| **Wave / encounter progression** | **Five 120-second** active-simulation intervals | Threat composition, difficulty, events and available rarities | No |
+| **Aura / Flex** | Combat participation, survival and event rewards | One hero-specific manually activated Flex | No |
+| **External account/rank progression** | Run results and future objectives | Future unlocks/rewards | Only when separately implemented |
+
+Aura never purchases levels; activating Flex does not spend XP. Wave changes do not reset run level. XP/level and Aura must have separate readable HUD displays. No independent Alpha/Sigma currency or obsolete Focus ability.
+
+### 5.2 Shared movement and combat formulas
+
+- **Movement/aim:** free movement; weapons attack automatically on their own cadence. Directional attacks support manual/automatic aim. Auto-aim selects the nearest legal enemy with stable-ID ties, respecting legal range and obstacle line of sight; AoE attacks need no per-shot click. The only initial manually activated special action is Flex.
+- **Units:** `U` denotes world units. A character's collision radius is **16 U**. Reference baseline is **100 max HP, 180 U/s movement speed, P = 100 offensive power, S = 100 support power** unless the hero's own table overrides it. Weapon raw damage = weapon coefficient × current P × applicable modifiers.
+- **Weapon cadence:** `max(0.20 s, base_interval / (1 + total_attack_frequency_bonus))`. The total frequency bonus is capped at **+100%**. Level-dependent reductions to the base interval apply before the global frequency multiplier. Frequency does **not** accelerate passive/Flex clocks. Cooldown begins at attack emission; without a target, stay ready and recheck every **0.10 s**, without accumulating burst debt. A valid support recipient can activate a support pulse without an enemy target.
+- **Damage mitigation:** hero base physical resistance is listed with each hero. Independent reduction sources combine **multiplicatively**, subject to the normal **60% total player mitigation ceiling**. Shields absorb **after** mitigation. No unnamed immunity to boss mechanics is implied.
+- **Primary hit/proc attribution:** each **primary weapon activation** produces at most **one proc event**, regardless of simultaneous targets/projectiles. Secondary hits never create new procs, Aura, XP or recursive chains unless their canonical contract explicitly says otherwise. DoT damage does not multiply hit counters.
+- **Support:** healing and shields scale with **S**, not P. Weapon damage bonuses do not increase healing. Identical buffs from multiple sources use the strongest current value and refresh duration rather than summing. Different shield sources combine up to **40% of recipient max HP**; ordinary shields have maximum **6 s** duration unless a specific approved source contract is narrower. Healing caps at max HP; regeneration never revives.
+- **Slow/stagger:** strongest slow wins; standard maximum **40%**. Bosses suffer half the slow and cannot be moved or stunned. Explicit interrupts contribute to stagger instead. Hostile attacks must signal danger using geometry/silhouette and audio, not color alone.
+
+### 5.3 XP, levels and normal upgrades
+
+- Every hero starts **run level 1**, with **one level-1 starter weapon occupying one of the three slots**.
+- Default XP drops: **normal enemy 5, fast enemy 6, ranged enemy 8, heavy/support enemy 12, elite 60, mini-boss 120, major event boss 240**. Exact bestiary/event values override defaults. No last-hit XP advantage.
+- Required XP to advance `L → L+1`: **`30 + 8L + L²`**. In future team modes multiply the requirement by **`1 + 0.20 × (n − 1)`** for `n` players. Overflow carries forward, and multiple earned levels queue distinct upgrade decisions.
+- Initial maximum run level is **25**. After level 25, each equivalent of the level-25 XP threshold restores **5% HP to living team members**, with at least **20 s** between grants; it gives no additional card or Flex charge.
+- Each earned level grants **one offer of three distinct legal cards**: acquire eligible weapon/passive; upgrade equipped item; or perform a legal rarity promotion/replacement where the wave allows it. In addition, every level grants **+2 maximum HP and +1% base damage** (maximum **+48 max HP and +24% damage** at level 25). The +2 HP gain heals **only the 2 HP newly added**.
+- If three different legal item cards do not exist, fill the shortfall with **8% max-HP healing** or an **8% max-HP shield lasting 6 s**. Never offer incompatible/maxed items, counterfeit fourth weapon slots or starter passives outside the five passive slots.
+- Upgrade offers are individual. In a future co-op implementation the team shares one XP bar; any crystal is credited only once, levels are gained together, and each hero receives their own legal choice.
+
+### 5.4 Current short-run wave and encounter schedule
+
+**One active simulation clock governs this schedule.** A standard pre-boss run lasts **10:00 active minutes**, not the superseded 15:00 version. Paused/menu time does not advance it. After Big Hater arrives, combat may continue beyond the boss's berserk phase; there is no arbitrary hard defeat cutoff.
+
+| Phase | Active game clock | Target run level at phase end | Enemies, events and offers |
+| --- | --- | --- | --- |
+| **1 — First Post** | **0:00–2:00** | **5–7** | NPC onboarding/movement; initial Hater at **1:00** |
+| **2 — Comment Section** | **2:00–4:00** | **9–11** | Charges and projectiles; **Reply Guy at 2:15** |
+| **3 — Going Viral** | **4:00–6:00** | **13–16** | Persistent zones/support enemies; **Mod Supremo at 4:15** |
+| **4 — Cancel Storm** | **6:00–8:00** | **18–21** | Elites and mixed threats; **Ohio Express at 6:15**; first legendary at **6:00** |
+| **5 — Final Ratio** | **8:00–10:00** | **23–25** | Peak pressure; **Doomscroll Prime at 8:15**; deferred legendary reprise at **8:00**, expiration **9:55** |
+| **Big Hater** | **10:00 onward** | **25 target, not requirement** | Warning **9:30**; final boss at **10:00**, recoverable berserk **120 s into its combat** (nominally **12:00**); final-effort prompt after **240 s combat** (nominally **14:00**) |
+
+The target levels are **tuning targets, not automatic level grants**. Cumulative solo XP targets for levels **5/10/15/20/25** are **230 / 915 / 2,275 / 4,560 / 8,020**. Revalidate ordinary runs with the shorter schedule before proposing XP, boss or spawn balance changes. On the four phase transitions (2/4/6/8 minutes), grant exactly one shared XP crystal of **80/120/160/200 XP** respectively, multiplied by the applicable team XP factor; its collection is credited once, not an extra off-system upgrade.
+
+**Difficulty scaling by wave** (HP / damage / spawn-density relative to wave 1): `1.00/1.00/1.00`, `1.30/1.15/1.20`, `1.65/1.30/1.40`, `2.05/1.50/1.65`, `2.50/1.75/1.90`. Enemy movement speed does **not** scale by wave. Within a wave, spawn rate increases linearly by up to **10%**. Solo baseline spawn is **0.8 enemies/s**; current cap is **100 simultaneously active normal-wave enemies solo** and **160 at five-player scale**, interpolated by party size. At cap, postpone spawning—never invisibly kill enemies or discard created XP. A **300-enemy / 150-projectile** fixture is historical **stress-test work**, not the ordinary approved 100-enemy solo spawn cap.
+
+**Choice and pause semantics:** a solo normal or legendary choice pauses simulation and active time immediately. The future co-op policy (not an M0/M1 feature) batches team pauses when a choice is pending: every **20 s**, a pause of up to **12 s**, ending when everyone confirms; disconnected players cannot block pauses, and a **60 s** timeout may choose only a legal upgrade to an already equipped nonlegendary item, never automatically take a legendary. All selection UI must prevent combat input leakage.
+
+### 5.5 One Aura resource and hero Flex lifecycle
+
+Aura is a single **0–100** meter, capped at 100 with no stored overflow. Gain **+0.5 Aura/s** while alive and simulation is unpaused; successful primary hits gain **+1 Aura**, capped at **2 Aura/s per hero**. Actual healing/shield assistance consumed by another ally can contribute +1 Aura/s within the **same** 2/s cap, never above it. Surviving a mini/major boss defeat grants **+10 Aura**. Attacking invulnerable targets or overfilling shields generates no qualifying Aura.
+
+At **100 Aura**, the hero's manual Flex is **READY**. A successful activation consumes 100, blocks passive Aura generation during the active Flex, and enforces at least **30 s between activations**. Aura never consumes or grants XP. Current expectation of ~45–90 s between Flex uses is a **tuning hypothesis**, not a promised interval. No random-critical Flex damage. All scheduled Flex hit/counter events use the paused active-simulation clock and clear on terminal outcomes or restart.
+
