@@ -153,7 +153,7 @@ func install(owner_game, source_root: String) -> void:
     joystick_ring=image(game.touch_joystick);joystick_thumb=image(game.touch_joystick)
     wave_frame=image(self);wave=label(self,19)
     warning=label(self,16,Style.GOLD)
-    flex_image=image(game.flex_button);aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.flex_button.add_child(aura_arc);flex_caption=label(self,16,Style.PAPER)
+    flex_image=image(game.flex_button);aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.flex_button.add_child(aura_arc);flex_caption=label(self,14,Style.PAPER)
     flex_caption.add_theme_stylebox_override("normal",Style.box(Style.DEEP,Style.DEEP,0,0))
     hud_nodes.assign([player_plate,hp_fill,portrait,hp,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_caption,boss_plate,boss_text])
     for i in range(8):
@@ -337,8 +337,11 @@ func hud_layout() -> void:
     var xp_y: float=view.y-226 if narrow else view.y-132
     var xp_width: float=minf(350,view.x-200)
     xp_frame.texture=art.texture("support/xp");place(xp_frame,Rect2(18,xp_y,xp_width,38))
-    place(xp_track,Rect2(28,xp_y+13,xp_width-30,8))
-    place(xp_fill,Rect2(28,xp_y+13,(xp_width-30)*clampf(game.xp/(30+8*game.level+game.level*game.level),0,1),8))
+    # Approved SVG contains an illustrative blue segment (x28..330,y24..41).
+    # Mask it completely before drawing the actual XP; never show sample progress.
+    var track:=Rect2(18+27*xp_width/540,xp_y+23*38.0/120,467*xp_width/540,19*38.0/120)
+    place(xp_track,track)
+    place(xp_fill,Rect2(track.position,Vector2(track.size.x*clampf(game.xp/(30+8*game.level+game.level*game.level),0,1),track.size.y)))
     xp.add_theme_color_override("font_color",Style.PAPER)
     xp.add_theme_color_override("font_outline_color",Style.DEEP)
     xp.add_theme_constant_override("outline_size",5)
@@ -372,7 +375,7 @@ func hud_layout() -> void:
         var thumb_at: Vector2=game.touch_joystick.center+game.touch_direction*game.touch_joystick.THUMB_OFFSET*scale
         place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
     var extent:=128.0
-    game.flex_button.show();game.flex_button.text="";place(game.flex_button,Rect2(view.x-extent-26,view.y-extent-50,extent,extent))
+    game.flex_button.show();game.flex_button.text="";place(game.flex_button,Rect2(view.x-extent-26,view.y-extent-68,extent,extent))
     var current: String="active" if game.flex_time>0 else "recovery" if game.flex_lock>0 else "ready" if game.aura>=100 else "charging"
     if game.mode!="playing":current="disabled"
     elif state(game.flex_button)=="pressed":current="pressed"
@@ -382,7 +385,7 @@ func hud_layout() -> void:
     flex_image.texture=art.texture("flex/"+game.hero["id"]+"-"+current);place(flex_image,Rect2(Vector2.ZERO,Vector2.ONE*extent))
     aura_arc.progress=game.aura/100.0;place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*extent));aura_arc.queue_redraw()
     flex_caption.text=game.hero["flex"]+"\n"+(game.flex_status() if game.flex_time>0 else "RECOVERY %.1fs" % game.flex_lock if game.flex_lock>0 else "READY" if game.aura>=100 else "AURA %d%%" % int(game.aura))
-    flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-48,230,45))
+    flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-62,230,58))
     var slot_width:=48.0;var start_y:=view.y-174 if narrow else view.y-90
     for i in range(8):
         var weapon:=i<3;var index:=i if weapon else i-3

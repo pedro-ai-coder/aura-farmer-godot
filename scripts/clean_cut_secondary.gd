@@ -14,7 +14,8 @@ var build_frames: Array[TextureRect] = []
 func install(owner_skin) -> void:
     skin=owner_skin;game=skin.game;ui=skin.ui
     mouse_filter=Control.MOUSE_FILTER_IGNORE
-    caption=skin.label(self,18,skin.Style.PAPER)
+    caption=skin.label(self,18,skin.Style.INK)
+    caption.add_theme_stylebox_override("normal",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
     result_portrait=skin.image(self)
     result_scroll=ScrollContainer.new()
     result_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED

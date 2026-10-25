@@ -48,6 +48,10 @@ func verify() -> void:
         expect(game.flex_button.get_theme_stylebox("normal")==style, "Flex keeps cached empty style after native refresh")
         expect(game.flex_button.text.is_empty(), "Legacy Flex text cannot overlay artwork")
         expect(not skin.xp.get_rect().intersects(skin.xp_track.get_rect()), "XP caption does not intersect progress bar")
+        expect(is_zero_approx(skin.xp_fill.size.x), "Fresh run has no visible XP fill")
+        game.xp=19.5
+        skin.refresh()
+        expect(is_equal_approx(skin.xp_fill.size.x/skin.xp_track.size.x,0.5), "XP fill uses actual level threshold")
         game._finish(false)
         await process_frame
         await click(game.retry_button)
