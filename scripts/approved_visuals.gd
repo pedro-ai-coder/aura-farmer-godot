@@ -139,10 +139,14 @@ static func enemy_pose_frame(enemy: Dictionary, time: float, death_age: float = 
     if time-float(enemy.get("hurt_at",-100.0)) < 0.16: return 6
     return int(float(enemy.get("anim_walk",0.0)))%4 if enemy.get("anim_moving",false) else 0
 
+static func enemy_visual_kind(enemy: Dictionary, animation_time: float) -> String:
+    var kind: String=enemy.get("kind","npc")
+    if kind=="boss" and animation_time>=preload("res://scripts/solo_clock.gd").BERSERK_AT:
+        return "boss-berserk"
+    return kind
+
 func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0) -> bool:
-    var kind: String = enemy.get("kind", "npc")
-    if kind == "boss" and animation_time >= 1080.0:
-        kind = "boss-berserk"
+    var kind := enemy_visual_kind(enemy,animation_time)
     if kind == "terminal":
         var atlas := texture("enemies")
         if atlas == null: return false

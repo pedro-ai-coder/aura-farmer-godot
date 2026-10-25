@@ -2242,15 +2242,15 @@ func _draw_recovery() -> void:
     var point: Vector2 = RecoveryRulesScript.SAFE_SPOT
     var cooldown := maxf(0.0, safe_spot_ready_at - run_time)
     var tint := Color("5cf0b4") if cooldown <= 0.0 else Color("8394aa")
-    draw_circle(point, 68.0, Color(tint, 0.19))
-    draw_arc(point, 68.0, 0.0, TAU, 48, tint, 4.0)
-    draw_rect(Rect2(point-Vector2(43,26),Vector2(86,52)),Color("24364a"))
-    draw_rect(Rect2(point-Vector2(43,26),Vector2(86,52)),tint,false,3.0)
+    draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.07))
+    draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,0.65), 2.0)
+    draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),Color("24364a"))
+    draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),tint,false,3.0)
     draw_rect(Rect2(point-Vector2(5,16),Vector2(10,32)),tint)
     draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
     var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
-    if progress > 0.0: draw_arc(point,52.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
-    draw_string(ThemeDB.fallback_font,point+Vector2(-41,90),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
+    if progress > 0.0: draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
+    draw_string(ThemeDB.fallback_font,point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
     for feedback: Dictionary in pickup_feedback:
         var age := 0.9 - (float(feedback["until"]) - run_time)
         var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))

@@ -13,7 +13,7 @@ func verify() -> void:
     game.kills = 17
     game._toggle_pause()
     var ui = game.presentation
-    check(ui.secondary.pause_panel.is_visible_in_tree() and not ui.body_scroll.visible,"Pause is one compact navigation shell")
+    check(ui.secondary.resume.is_visible_in_tree() and game.clean_cut_skin.visible and not ui.body_scroll.visible,"Pause is one compact navigation shell")
     ui.secondary.settings.emit_signal("pressed")
     check(game.mode == "options" and not game.import_button.visible,"In-run settings cannot silently import/abandon the active run")
     ui.volume_slider.value = 37
@@ -45,7 +45,8 @@ func verify() -> void:
         game._toggle_pause()
         await process_frame
         await process_frame
-        check(bounds.encloses(ui.secondary.pause_panel.get_global_rect()),"Compact pause remains in bounds at %s" % viewport)
+        for button in [ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run]:
+            check(bounds.encloses(button.get_global_rect()),"Live pause action remains in bounds at %s" % viewport)
         game.mode = "playing"
         game._finish(false)
     game.retry_button.emit_signal("pressed")

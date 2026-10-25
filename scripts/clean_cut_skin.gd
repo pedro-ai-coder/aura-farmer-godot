@@ -56,6 +56,11 @@ var view := Vector2.ZERO
 var shift := Vector2.ZERO
 var styles: Dictionary={}
 var italic: FontVariation
+var auxiliary
+var layout_key := ""
+var layout_count := 0
+var empty_style := StyleBoxEmpty.new()
+var caption_style := StyleBoxFlat.new()
 func label(parent: Node, pixels: int=18, color: Color=Style.INK) -> Label:
     var node:=Label.new();parent.add_child(node)
     node.add_theme_font_override("font",Style.BODY)
@@ -149,23 +154,36 @@ func install(owner_game, source_root: String) -> void:
     wave_frame=image(self);wave=label(self,19)
     warning=label(self,16,Style.GOLD)
     flex_image=image(game.flex_button);aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.flex_button.add_child(aura_arc);flex_caption=label(self,16,Style.PAPER)
+    flex_caption.add_theme_stylebox_override("normal",Style.box(Style.DEEP,Style.DEEP,0,0))
     hud_nodes.assign([player_plate,hp_fill,portrait,hp,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_caption,boss_plate,boss_text])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
         equipment.append(parts)
         for node in parts.values():hud_nodes.append(node)
     watermark=label(self,13,Style.CORAL);watermark.text=""
+    caption_style.bg_color=Style.PAPER
+    auxiliary=load("res://scripts/clean_cut_secondary.gd").new()
+    add_child(auxiliary)
+    auxiliary.install(self)
     refresh()
 func _process(_delta: float) -> void:refresh()
 func refresh() -> void:
     if game==null:return
-    var active: bool=game.mode in ["menu","heroes","playing","choice","legendary","replace"]
-    visible=active;ui.visible=not active
-    if not active:
-        if game.confirm_button.get_parent()!=ui:game.confirm_button.reparent(ui)
-        if game.pause_button.get_parent()!=ui:game.pause_button.reparent(ui)
-        if game.restart_button.get_parent()!=ui:game.restart_button.reparent(ui)
-        return
+    visible=true;ui.visible=false
+    view=ui.view;shift=ui.position;position=shift;size=view
+    # Live pointer/focus states invalidate independently of simulation and presenter.
+    var interactions := ""
+    for button in native_children:
+        interactions += str(button.get_instance_id())+state(button)+str(button.visible)
+    var boss_hp := 0.0
+    for enemy: Dictionary in game.enemies:
+        if enemy["kind"]=="boss":boss_hp=float(enemy["hp"]);break
+    var next_key := str([ui.revision,view,shift,game.mode,game.hero_index,game.selected_card_index,interactions,
+        ceili(game.hp),game.max_hp,ceili(game.shield),game.xp,game.level,int(game.run_time),game.wave,
+        int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.touch_direction,game.touch_joystick.active,
+        game.touch_joystick.center,game.legendary_spent,boss_hp])
+    if next_key==layout_key:return
+    layout_key=next_key;layout_count+=1
     if game.confirm_button.get_parent()!=self:game.confirm_button.reparent(self)
     if game.pause_button.get_parent()!=self:game.pause_button.reparent(self)
     view=ui.view;shift=ui.position;position=shift;size=view
@@ -174,7 +192,7 @@ func refresh() -> void:
         hero_scroll.scroll_vertical=0;offers_scroll.scroll_vertical=0;last_mode=mode
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
-        for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button,game.legendary_button]:button.hide()
+        for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button,game.legendary_button,game.retry_button]:button.hide()
     background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
@@ -184,7 +202,10 @@ func refresh() -> void:
     if mode=="menu":home_layout()
     elif mode=="heroes":heroes_layout()
     elif mode=="playing":hud_layout()
-    else:cards_layout()
+    elif mode in ["choice","legendary","replace"]:cards_layout()
+    else:auxiliary.layout()
+    auxiliary.visible=mode in auxiliary.MODES
+    ui._focus_ring()
 func headline(text: String) -> void:
     heading.text=text;heading_shadow.text=text
     for node in [heading,heading_shadow]:node.add_theme_font_size_override("font_size",24 if view.x<700 else 36)
@@ -224,6 +245,7 @@ func heroes_layout() -> void:
     for i in range(3):
         var button: Button=game.menu_buttons[i];button.show()
         var selected: bool=game.hero_index==i
+        button.text=""
         button_skin(button,"hero-select/card",selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var data: Dictionary=game.HEROES[i];var parts: Dictionary=hero_parts[i]
@@ -258,6 +280,7 @@ func cards_layout() -> void:
         var category: String="weapon" if game.WEAPONS.has(id) else "passive"
         var selected: bool=game.selected_card_index==i
         var family: String="cards/"+("legendary-" if legendary else "")+category
+        button.text=""
         button_skin(button,family,selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
@@ -311,12 +334,16 @@ func hud_layout() -> void:
     portrait.texture=game.art.texture(game.hero["id"]);place(portrait,Rect2(25,30,50,55))
     hp.text="%s\nHP %d / %d  / SHIELD %d" % [game.hero["name"],ceili(game.hp),int(game.max_hp),ceili(game.shield)]
     place(hp,Rect2(82,38,minf(280,view.x-244),60))
-    xp_frame.texture=art.texture("support/xp");place(xp_frame,Rect2(18,view.y-226,minf(350,view.x-200),38))
+    var xp_y: float=view.y-226 if narrow else view.y-132
     var xp_width: float=minf(350,view.x-200)
-    place(xp_track,Rect2(28,view.y-213,xp_width-30,8))
-    place(xp_fill,Rect2(28,view.y-213,(xp_width-30)*clampf(game.xp/(30+8*game.level+game.level*game.level),0,1),8))
-    xp.add_theme_color_override("font_color",Style.INK)
-    xp.text="XP %d / LEVEL %d" % [int(game.xp),game.level];place(xp,Rect2(30,view.y-218,minf(300,view.x-210),26))
+    xp_frame.texture=art.texture("support/xp");place(xp_frame,Rect2(18,xp_y,xp_width,38))
+    place(xp_track,Rect2(28,xp_y+13,xp_width-30,8))
+    place(xp_fill,Rect2(28,xp_y+13,(xp_width-30)*clampf(game.xp/(30+8*game.level+game.level*game.level),0,1),8))
+    xp.add_theme_color_override("font_color",Style.PAPER)
+    xp.add_theme_color_override("font_outline_color",Style.DEEP)
+    xp.add_theme_constant_override("outline_size",5)
+    xp.text="XP %d / LEVEL %d" % [int(game.xp),game.level]
+    place(xp,Rect2(24,xp_y-25,minf(300,view.x-210),24))
     wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-190)/2,128 if narrow else 28,190,70))
     wave.text="%s\n%02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d / 5" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
     wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-178)/2,138 if narrow else 38,170,55))
@@ -350,26 +377,27 @@ func hud_layout() -> void:
     if game.mode!="playing":current="disabled"
     elif state(game.flex_button)=="pressed":current="pressed"
     elif game.flex_button.has_focus():current="focused"
-    var empty:=StyleBoxEmpty.new()
+    var empty:=empty_style
     for key in ["normal","hover","pressed","focus","disabled"]:game.flex_button.add_theme_stylebox_override(key,empty)
     flex_image.texture=art.texture("flex/"+game.hero["id"]+"-"+current);place(flex_image,Rect2(Vector2.ZERO,Vector2.ONE*extent))
     aura_arc.progress=game.aura/100.0;place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*extent));aura_arc.queue_redraw()
     flex_caption.text=game.hero["flex"]+"\n"+(game.flex_status() if game.flex_time>0 else "RECOVERY %.1fs" % game.flex_lock if game.flex_lock>0 else "READY" if game.aura>=100 else "AURA %d%%" % int(game.aura))
     flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-48,230,45))
-    var slot_width:=48.0;var start_y:=view.y-174
+    var slot_width:=48.0;var start_y:=view.y-174 if narrow else view.y-90
     for i in range(8):
         var weapon:=i<3;var index:=i if weapon else i-3
         var items: Array=game.weapons if weapon else game.passives
         var item: Dictionary=items[index] if index<items.size() else {}
         var parts: Dictionary=equipment[i]
-        var at:=Vector2(18+index*(slot_width+10),start_y+(0 if weapon else 82))
+        var at:=Vector2(18+(index if narrow else i)*(slot_width+10)+(14 if not narrow and not weapon else 0),start_y+(82 if narrow and not weapon else 0))
         var kind: String="weapon" if weapon else "passive"
         parts["frame"].texture=art.texture("equipment/"+kind+("-empty" if item.is_empty() else "-filled"));place(parts["frame"],Rect2(at,Vector2.ONE*slot_width))
         parts["icon"].texture=ui.item_icons.texture(kind,item["id"]) if not item.is_empty() else null;place(parts["icon"],Rect2(at+Vector2(5,5),Vector2.ONE*32))
         parts["level"].text="" if item.is_empty() else str(item["level"]);place(parts["level"],Rect2(at+Vector2(32,30),Vector2(16,18)))
         parts["name"].add_theme_color_override("font_color",Style.INK)
-        var readable:=StyleBoxFlat.new();readable.bg_color=Style.PAPER;parts["name"].add_theme_stylebox_override("normal",readable)
-        parts["name"].text=("WEAPON" if weapon else "PASSIVE") if item.is_empty() else ui.catalog[item["id"]]["name"]
+        parts["name"].add_theme_stylebox_override("normal",caption_style)
+        parts["name"].visible=not item.is_empty()
+        parts["name"].text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
         place(parts["name"],Rect2(at+Vector2(0,50),Vector2(slot_width+8,30)))
 
 func reveal_selected(index: int, expected_signature: String) -> void:
