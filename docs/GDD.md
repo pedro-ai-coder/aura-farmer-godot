@@ -406,3 +406,94 @@ Events do not pause the wave or create off-system free cards. If an event boss s
 
 Berserk is **not a scripted wipe at 12:00**. With 30,000 HP, the initial regeneration is **30 HP/s**; ignoring other defenses, sustained **raw DPS greater than 30 / 0.65 ≈ 46.2** can in principle overcome it. This arithmetic illustrates possibility, **not validated encounter difficulty**. At **240 s of boss combat** (nominal game **14:00**), display a final-effort warning; there is still **no hard time-limit defeat**. Boss adds grant no kill XP/death Aura and cannot be farmed for endless level-25 recovery. Victory/defeat freezes unresolved combat properly, permits correct result saving and does not award bonus loot for dragging the encounter.
 
+## 6. Approved recovery mechanics — Godot solo parity
+
+**P1, P2 and P3 are production-approved for exact Phaser solo parity**, not new inventions or optional prototypes. All unspecified seeded drop logic, eligible-kill filtering, special-drop limits and audio/visual feedback use the existing Phaser solo implementation as reference, constrained by the contracts below. Preserve save compatibility and RNG consistency.
+
+| ID / name | Drop chance, when eligible | Pickup / activation | Exact effect |
+| --- | --- | --- | --- |
+| **P1 — Street Snack** | **5%** normal enemy kill; **20%** elite kill | **56 U pickup radius** | Restore **18% of player max HP**, capped at max HP; never overheal |
+| **P2 — Aura Magnet** | **2%** normal enemy kill; **8%** elite kill | **72 U pickup radius** | Collect **every currently available XP crystal**, each at most once; create **no extra XP or duplicate rewards** and do **not** generate Aura from the pickup's name |
+| **P3 — Safe Spot** | Authored map station, not a kill drop | At **(1100, 565)** in **Ruin Alley**, **68 U** activation radius | Require **2 uninterrupted active seconds** inside zone **while below max HP**; heal **25% of max HP**; enter **90 s of active-gameplay cooldown** |
+
+**P3 charge reset:** leaving the area or no longer meeting the health/activation conditions resets the current charge; pause freezes its active-simulation time. Restore the original world-space marker and clear charge, ready, healing and cooldown feedback. The Safe Spot does not create an additional upgrade, currency or hidden fourth recovery rule.
+
+**Static map covers:** the two original solid obstacles are static collisions and approved decorative sprites. They are **not P4 destructible loot crates**.
+
+**P4–P7:** owner-approved **concept directions for isolated prototypes only**, not authorized for default M0/M1 play, new numeric tuning or artwork promotion. P4 explores separately authored destructible reward crates (never the existing two covers); P5 Viral Burst explores limited common-enemy clear/knockback with no boss deletion or duplicate XP; P6 Trend Challenges explores optional short objectives with existing rewards and no mandatory progression gate or disruption of authored event times; P7 Meme Combos / conditional synergies may prototype specifically described weapon-passive pairings, first as UI highlighting of already approved effects. The optional one-reroll experiment is also **not a normal-build rule**. P8 map-exclusive events remain **unapproved even as a concept**.
+
+No P4–P8 mechanic, event, new drop art, reroll economy or extra progression loop is included in M0/M1 without a later owner-approved rule contract.
+
+## 7. Web interaction and mobile touch controls
+
+### 7.1 Approved floating circular joystick
+
+The approved **23 October 2026** control supersedes all left-only, left-48%-viewport and diamond-shaped joystick designs:
+
+- The **first eligible touch-down anywhere on unobstructed visible gameplay terrain**, at the **left, center or right**, spawns a **floating circular** joystick at that touch origin, edge-adjusted only for actual safe-area/usable-bound constraints.
+- Reference geometry: outer ring **approximately 80 canvas units radius**, inner thumb **approximately 35**, and direction/travel saturation **approximately 119**; about **40% larger** than the earlier procedural reference. Scale responsively without restricting activation to a left zone or inventing a speed buff.
+- **Actual live interactive control hit rectangles** (Flex, Pause, menus, cards, confirmations, scroll areas, sliders, disabled controls and all visible UI interactions) get priority; a UI-origin touch/drag cannot start the joystick. Passive HUD decoration that does not intercept input does not prohibit movement on the underlying terrain.
+- Movement owns its initiating touch pointer. An **independent second pointer can activate Flex**, without cancelling, reassigning or moving the first pointer. A finger released away from a button must not trigger that button, and synthetic mouse events from touch must not double-activate actions.
+- Release, loss of focus, pause, modal activation, run termination/restart, viewport/orientation change and other relevant lifecycle transitions reset joystick/button ownership and transient control visuals safely. A joystick cannot initiate during menu/modal gameplay suspension.
+- The joystick is **circular in artwork and behavior**, not a rhombus/diamond, and uses the approved corrected Clean Cut family where available. Browser input, live control states and game movement vectors must remain distinct; desktop keyboard/mouse aiming behavior must be unaffected.
+
+### 7.2 Mobile Web layout, accessibility and feedback
+
+- Favor **landscape** for mobile Web; request fullscreen/orientation lock when the platform allows it after an eligible interaction. The browser/OS may reject either, especially on iOS. Provide a **nonblocking rotation hint and functional fallback**; portrait is acceptable only when the actual usable viewport accommodates safe controls, readable HUD and selection cards.
+- Maintain readable **XP versus Aura**, pickup crystals versus hostile projectiles, weapon and Flex cues, boss health and wave/clock information. Never obscure hostile telegraphs with larger friendly effects or HUD overlays.
+- Normal three-card upgrade and six-card legendary modals must support constrained landscape and portrait layouts with internal scrolling, actual selected states and visible/accessible Confirm/Defer paths. Preserve current offers and selection when a responsive layout changes.
+- Keep functional touch targets around **48 physical pixels or larger** when feasible, respect safe-area insets, non-overlapping UI, text contrast, keyboard focus and reduced flashes/shake/effect budgets. Real mobile-browser QA is required for claiming mobile Web usability; emulator-only or staged captures are insufficient evidence.
+- Picking up XP, Aura, Street Snack and Magnet uses distinct silhouettes, short comprehensible feedback and true game-state visual responses; do not rely on color alone.
+
+## 8. Visual Art Bible — current Clean Cut production contract
+
+### 8.1 Hierarchy, approval and exact assets
+
+**Current direction:** **Character Hype Broadcast — Clean Cut**, evolved from Hero Spotlight V5 and the original Option A / Cartoon Arcade actor/environment identities. Clean Cut is approved **for now**. This determines the **current art direction**, not an automatic final approval of a particular live screenshot or any newly generated more-polished replacement.
+
+**Authority order for visual production:** latest explicit creator decision for the specific artwork/version → exact hash-pinned [Clean Cut five-screen approval](art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md) and [icon approval](art/CREATOR_ICON_APPROVAL_2026-10-24.md) → current Clean Cut component specs/manifests → historical Hero Spotlight V5 compositions only where not superseded → original Option A masters for immutable hero/enemy/world identity. **Game rules are always determined by this GDD, not sample values in mockups.**
+
+| Approved source group | Verified owner-approved content | Source and runtime authority | Production use |
+| --- | --- | --- | --- |
+| **Original masters** | **19 pinned approved original resources** covering hero/world/enemy and animation masters | [`assets/approved-assets.json`](../assets/approved-assets.json) | Preserve bytes/identities/pivots and existing approved actor/map animation provenance |
+| **Weapon icons** | **9 approved PNGs**: eight exact V5 weapons and **Touch Grass Clean Cut v2** | [creator icon approval](art/CREATOR_ICON_APPROVAL_2026-10-24.md), [icon ledger](art/icon_approvals.json), [runtime manifest](../assets/runtime-icons/manifest.json) | All nine current playable weapons; appropriate icon at 32/64 px with real item data |
+| **Passive icons** | **28 approved PNGs**, **23** active identities and **five future-only illustrations** | Same approved icon ledger and runtime manifest | Future-only illustration must not add a gameplay offer |
+| **Clean Cut UI components** | **84 exact promoted source resources** for approved corrected five-screen compositions | [creator five-screen approval](art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md), [runtime manifest](../assets/runtime-clean-cut/v2/manifest.json), [integration PR #71](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/71) | Live, independently interactive UI components with real dynamic labels; no single baked screen used as gameplay control |
+| **Historical composition reference** | **22** older V5 scene references | [V5 handoff](art/HERO_SPOTLIGHT_V5.md) | Composition/layout guidance only when consistent with later corrected Clean Cut and current mechanics; no automatic standalone-asset approval |
+
+**Changed/revoked approvals:** when the owner rejects or supersedes a previously approved **specific image**, record the **exact source/version/hash and replacement status** in the art register. Do not treat every Clean Cut reference or previously merged asset as permanently **final** merely because it once passed an approval gate. Equally, do not falsely revoke **unidentified** byte-approved art by implication. An adjusted PNG/SVG, alternate pose, new projectile, custom title or newly illustrated screen must have its own explicit approval where identity-bearing.
+
+**Technical asset discipline:** verify source hashes, provenance, transparency, rendering scale, no accidental import/export of review-only or candidate directories, and correct live binding. Never transplant the rejected diamond joystick or overwrite original approved hero masters with unreviewed approximations. The Touch Grass v2 PNG is approved, but an old V5 SVG must **not** be relabeled as its matching v2 source.
+
+### 8.2 Style language, typography and responsive composition
+
+- **Illustration:** expressive original 2D cartoon actors with heavy dark blue/ink outlines, strong silhouettes, meaningful cel-shaded volume, readable disproportionate hands/heads/accessories and distinct enemy-family forms. Keep Ruin Alley readable, with ground detail less contrast-dominant than characters, projectiles and threat geometry.
+- **Clean Cut interface:** differentiated poster/street-broadcast framing, deliberately asymmetric emphasis, illustrated hero spotlight, independent cards/buttons, sharp cut graphics and brand accents; **do not revert to generic identical rounded-panel dashboard widgets** or a pasted V5 palette without the composition language. Clean Cut corrected frame families supersede earlier generic V5 menu/card compositions.
+- **Palette reference:** ink navy `#253449`, deep ink `#13233A`, panel blue `#1F3E63`, warm light `#F7EDCD`, Aura gold `#F8C45F`, sky blue `#4EA3FF`, hostile coral `#E57461`, support teal `#6EAAB0`, Cool Kid magenta `#F04BA5`, Epic violet `#A66BFF`, healing green `#78C85C`. Specific approved Clean Cut component artwork and semantic contrast take precedence over treating these color tokens as the entire visual system.
+- **Typography:** licensed, packaged Inter family for readable live UI; bold compact display attitude for headers, strong named rarity/item identity and readable numeric HUD text. Preserve the separately approved illustrated wordmark artwork and its recorded technical raster conversion. Do not introduce an unlicensed font or assume a PDF itself supplies font binaries. Numeric values and localized body text stay editable runtime text, never baked screenshot labels.
+- **Reference layout:** 1600×900 art comps and responsive actual Godot Controls for desktop/mobile Web. Preserve usability at **1920×1080, 1600×900, 1280×720, 915×412, 844×390 and 390×844** where applicable. Use a consistent spacing rhythm, safe areas and functional focus/hover/pressed/selected/disabled states; do not simply stretch a background/reference image.
+- **Visual priorities:** threat readability > actual gameplay affordances > decorative overlays. Build detail may expand into separate inspection screen; permanent desktop HUD should generally remain compact (earlier **≤15% playfield** guidance is a quality target, not permission to hide essential information). Do not make giant Safe Spot signals, repeating equipment labels or oversized HP/XP plates cover enemy threats.
+
+### 8.3 Required polished M0 player journey
+
+Every reachable M0 screen must form one **coherent finished game**: **Main Menu → Hero Selection → Ruin Alley gameplay/HUD → three-card upgrade / six-card legendary / legal replacement → pause/build/settings/exit confirmation → true boss and berserk → victory/defeat → retry or menu**. Include in-world hero, enemy, weapon, projectile, pickup, impact, damage, shield, Flex and wave/encounter VFX, correct animation feedback and accessible mobile-Web presentation.
+
+The first five Clean Cut screen packages are approved **art sources**, but **secondary screens must be brought to the same quality**. Existing runtime fallbacks to older generic pause/settings/result/profile panels are **not allowed in a release-ready M0**. The current recovery branch and staged captures are implementation evidence only, not final creator acceptance.
+
+**Per-flow minimum evidence:** actual Godot render screenshots at relevant viewports, full live button/card/control interaction, real selected/disabled/hover/focus states, correct game-state-driven names/values, character silhouette and move/attack/hurt/Flex state, boss danger visibility, and before/after comparison against the applicable **most recently approved** visual target. Include an actual game run video. No placeholder fallbacks or silent reuse of unapproved future artwork.
+
+### 8.4 Animation and combat visual detail
+
+- Original heroes and enemies remain recognizable by silhouette/accessories even in small dense fights. Cool Kid keeps the **blue beanie** and agile keyboard silhouette; Alpha Chad remains large/heavy with an **actual shield, three timed slams and one countershock**; Sigma keeps dark hood and visible thrown-cap/marked-target identity. The **old enlarged Cool Kid Rampage artwork is historical**, not Alpha's current Flex.
+- The existing art-production direction targets **eight logical movement/aim directions**, readable idle/run/attack/hurt/defeat, and distinctive Flex startup/action/recovery. A historical production guideline is **four run frames per direction**, **two idle**, **three attack**, **four combined hurt/defeat** and **at least six Flex visual poses where a transformation occurs**; use reviewed source assets and real animation timing rather than claiming unavailable frames exist. Mirroring is allowed only without reversed text/props or corrupted directional meaning.
+- Keep authentic NPC/Hater/Beta Bot/Big Hater silhouettes and other class-specific tells. Real obstacles obey authored collision and appropriate cover navigation. Attack danger must be indicated with shape/ground warning/audio and synchronized to actual hit frames; contact hits, delayed secondary explosions and stagger do not borrow visual timers to change game damage.
+- Weapon art must be visibly distinctive: Ratio gun projectiles, No Cap thrown cap, Feed marked explosive area, Keyboard double key strikes, Hammer slam, Grass whip, Shield bash/barrier, Hands punches/slam and Space pulse. Legendary behavior should be a meaningful visible transformation, not merely increased glow.
+- Reduced-motion mode retains functional attack boundaries. Keep hostile fire/telegraphs more readable than friendly particles, UI overdraw or cosmetic shake.
+- **World assets:** Ruin Alley is the sole active M0/M1 map. Crown Court and Toxic Garden are future content references (some older visuals call them Crown Chamber and Toxic Rooftop). Do not enable additional maps or equate decorative plants/props with functional hazards. The original two static cover obstacles remain non-destructible.
+
+### 8.5 Artistic acceptance and distinction from PR checks
+
+**Owner-facing M0 visual acceptance is mandatory.** Passing automated tests proves specific integration behavior but does **not** prove visual polish, full-run fluidity, combat readability, correct art approval or completed gameplay UI. A reference PDF/mockup cannot substitute for actual runtime captures; an art-source approval cannot substitute for final runtime integration approval. Each unresolved screen/asset difference must appear in a tracking matrix with source version, actual screenshot/build, problem, owner verdict and status.
+
+If the owner rejects a currently rendered treatment, correct that precise treatment and re-review it. Preserve other explicitly approved masters and identical-source art unless separately revoked. The M0 visual-polish requirement cannot be waived merely by a green PR check.
+
