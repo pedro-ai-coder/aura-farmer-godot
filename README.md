@@ -2,11 +2,11 @@
 
 Godot 4.7.2 / GDScript solo game using the Compatibility renderer. Approved milestones: **M0** restricted-group Web playtest; **M1** public alpha on Web and Discord with backend and in-game feedback; **M2+** consideration of native multiplatform expansion. The canonical [GDD](docs/GDD.md) and its [Owner Decision Register](docs/GDD_DECISION_REGISTER.md) govern current scope. Phaser remains reference-only.
 
-## Approved visual identity (23 October 2026)
+## Current approved visual identity (24–25 October 2026)
 
 The **current production visual direction is Character Hype Broadcast — Clean Cut**, preserving original Option A hero/world identities and building on the [GDD §26](docs/GDD.md) and [approved five-screen package](docs/art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md). The [production visual tokens](docs/art/hero_spotlight_v5_tokens.json) give stable palette, typography and component reference dimensions.
 
-The illustrated **Production Visual Art Bible V5** contains 22 finished-look scene targets plus 9 weapon and 28 passive icon designs. These visual handoff binaries were delivered separately and **are not checked into this repository by the documentation approval PR**. The development team must import and verify the actual master files before implementation and visual acceptance; do not treat text-only specifications as replacement artwork.
+The 22 historical Hero Spotlight V5 scenes remain supporting references, superseded where the approved Clean Cut V2 package specifies a later treatment. **Approved runtime inventory:** 19 pinned original character/world/enemy resources, **37 approved item icon PNGs** (nine weapons and 28 passives), and **84 approved Clean Cut V2 production UI resources** for five screens. See the [decision register](docs/GDD_DECISION_REGISTER.md) and exact approved source/hash manifests; five passive illustrations are for future-only items, not unlocked gameplay. Neither source approval nor runtime integration constitutes final visual acceptance.
 
 The GDD remains authoritative for all gameplay labels, rules and timing. In particular, the current starter Flexes are **Deadpan Verdict (Sigma)**, **CTRL + CHAOS (Cool Kid)** and **Giga Chad Rampage (Alpha Chad)**, with the approved 10-minute survival schedule. Do not reuse historical Flex labels or earlier run durations visible in concept-art mockups. This approval does not authorize gameplay changes, Phaser edits or release.
 
