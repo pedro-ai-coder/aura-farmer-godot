@@ -1,0 +1,217 @@
+{
+  "baseline": "7768e1c9cf39c9896a232b87ca0b9c1ca714ed47",
+  "runtime_source": "c30bb05bf612aa6075019feebef1fb8898950172",
+  "renderer": "Godot 4.7.2 Compatibility / native X11 Mesa 25.2.8 llvmpipe",
+  "kind": "Staged real native screenshots, JPEG-encoded without cropping; not browser or normal-run evidence",
+  "captures": [
+    {
+      "file": "baseline-playing.jpg",
+      "source_png_sha256": "a143a9c00d3b1d6ed0525da7bed17cfa5e001320a549508878138eb6805691e4",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "baseline",
+      "state": "playing",
+      "staged": true
+    },
+    {
+      "file": "baseline-paused.jpg",
+      "source_png_sha256": "a222aca10132147eadbb0aed848251d277d1a94a242141bad7cda360f7edee9a",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "baseline",
+      "state": "paused",
+      "staged": true
+    },
+    {
+      "file": "baseline-build.jpg",
+      "source_png_sha256": "17aaa03a3e64e339afcda28e9f56b7f6adc0a0e127f13c5f52224dce20933599",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "baseline",
+      "state": "build",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-playing.jpg",
+      "source_png_sha256": "f3254fb56e5a0d769c809491a01a340f420dd8041c80e412a030e52f886557c9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "playing",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-paused.jpg",
+      "source_png_sha256": "4039584aae5902d0ade1061985a747d5114680ab5013820cf1700cc765942b03",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "paused",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-build.jpg",
+      "source_png_sha256": "d90bfb7bbfe12141cd279a5d254094a8ae7af4467efce8401c03f9b19e8c1a40",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "build",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-options.jpg",
+      "source_png_sha256": "3e91e2d69e3a3e4fe2068d19e390a18a661bc16107fc123b228d32b5a4803534",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "options",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-profile_import.jpg",
+      "source_png_sha256": "02b69f1f7bb25d8bcbb63454ab96751066d3e3187421d48e3a9badfad77001df",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "profile_import",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-won.jpg",
+      "source_png_sha256": "e85d939e9ccb32db26b3329988dfe13424bf723418cb44a95cab4e4f78c0a4f9",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "won",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-choice.jpg",
+      "source_png_sha256": "7ed27a94d1f281197a7703c99a2db467a8cc488410cb5b5c5dfedd74804b4712",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "choice",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-legendary.jpg",
+      "source_png_sha256": "3d0270bbd035273890cab203462d35fdff9ace643afb0e8cb05f7cd399aea4b3",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "legendary",
+      "staged": true
+    },
+    {
+      "file": "final-desktop-berserk.jpg",
+      "source_png_sha256": "da1b87adfe7edb7cc6f2921677ee5ce5dc1e3fc333087b5c6bd16b9e4b92d639",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "group": "final-desktop",
+      "state": "berserk",
+      "staged": true
+    },
+    {
+      "file": "final-landscape-playing.jpg",
+      "source_png_sha256": "4d2defe8424f52fb92b44e15737550fd351ab362b0146777efdfa4c7ee207ced",
+      "dimensions": [
+        915,
+        411
+      ],
+      "group": "final-landscape",
+      "state": "playing",
+      "staged": true
+    },
+    {
+      "file": "final-landscape-options.jpg",
+      "source_png_sha256": "e1dfe0090608c9e6830ffb77ef11d5b9fbd7c3855e41cd13673888bd23dc9fe8",
+      "dimensions": [
+        915,
+        411
+      ],
+      "group": "final-landscape",
+      "state": "options",
+      "staged": true
+    },
+    {
+      "file": "final-landscape-paused.jpg",
+      "source_png_sha256": "61756592eee50cf9fedda7f251416099fe71c15951ef082148e667ade4188a69",
+      "dimensions": [
+        915,
+        411
+      ],
+      "group": "final-landscape",
+      "state": "paused",
+      "staged": true
+    },
+    {
+      "file": "final-portrait-playing.jpg",
+      "source_png_sha256": "e127cb0326ddbe3158e588bbb10fb46864f645104a79e4997c3568b8092ca936",
+      "dimensions": [
+        390,
+        843
+      ],
+      "group": "final-portrait",
+      "state": "playing",
+      "staged": true
+    },
+    {
+      "file": "final-portrait-options.jpg",
+      "source_png_sha256": "645b7ddae39ef72acaf21b5580ed427cc0d582e86cbe24862c59eeff4fa52869",
+      "dimensions": [
+        390,
+        843
+      ],
+      "group": "final-portrait",
+      "state": "options",
+      "staged": true
+    },
+    {
+      "file": "final-portrait-build.jpg",
+      "source_png_sha256": "287b7fe75139cdda48a5bff66168078144f454ea35ff1b094ace2ec0f18892d6",
+      "dimensions": [
+        390,
+        843
+      ],
+      "group": "final-portrait",
+      "state": "build",
+      "staged": true
+    },
+    {
+      "file": "final-portrait-legendary.jpg",
+      "source_png_sha256": "0d1488e56fef82fe6a9b0f2c7c4a869499eb78c730b39e60b6be3872810372f0",
+      "dimensions": [
+        390,
+        843
+      ],
+      "group": "final-portrait",
+      "state": "legendary",
+      "staged": true
+    }
+  ]
+}
