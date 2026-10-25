@@ -1,10 +1,10 @@
 # Aura Farmer — Godot
 
-Godot 4.7.2 / GDScript solo game using the Compatibility renderer. Approved milestones: **M0** restricted-group Web playtest; **M1** public alpha on Web and Discord with backend and in-game feedback; **M2+** consideration of native multiplatform expansion. The canonical [GDD](docs/GDD.md) and its [Owner Decision Register](docs/GDD_DECISION_REGISTER.md) govern current scope. Phaser remains reference-only.
+Godot 4.7.2 / GDScript solo game using the Compatibility renderer. Approved milestones: **M0** fully visually polished **closed Web playtest with no backend** for a very restricted group; **M1** public alpha on **Web and Discord Activity**, with an operational **backend** and **in-game feedback requests for testers**; **M2+** consideration of native multiplatform expansion. The canonical [GDD](docs/GDD.md) and its [Owner Decision Register](docs/GDD_DECISION_REGISTER.md) govern current scope. Phaser remains reference-only.
 
 ## Current approved visual identity (24–25 October 2026)
 
-The **current production visual direction is Character Hype Broadcast — Clean Cut**, preserving original Option A hero/world identities and building on the [GDD §26](docs/GDD.md) and [approved five-screen package](docs/art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md). The [production visual tokens](docs/art/hero_spotlight_v5_tokens.json) give stable palette, typography and component reference dimensions.
+The **current production visual direction is Character Hype Broadcast — Clean Cut**, preserving original Option A hero/world identities and binding the [GDD V3 §8](docs/GDD.md) and [approved five-screen package](docs/art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md). The [production visual tokens](docs/art/hero_spotlight_v5_tokens.json) give stable palette, typography and component reference dimensions.
 
 The 22 historical Hero Spotlight V5 scenes remain supporting references, superseded where the approved Clean Cut V2 package specifies a later treatment. **Approved runtime inventory:** 19 pinned original character/world/enemy resources, **37 approved item icon PNGs** (nine weapons and 28 passives), and **84 approved Clean Cut V2 production UI resources** for five screens. See the [decision register](docs/GDD_DECISION_REGISTER.md) and exact approved source/hash manifests; five passive illustrations are for future-only items, not unlocked gameplay. Neither source approval nor runtime integration constitutes final visual acceptance.
 
@@ -14,7 +14,7 @@ The GDD remains authoritative for all gameplay labels, rules and timing. In part
 
 The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. The Cartoon Arcade UI preserves approved menu art and catalog symbols. Menus include explicit hero Play, options/save navigation, card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved art is fetched from pinned, hash-verified Phaser assets.
 
-This is **not public alpha release or final visual approval**. Normal-play balance, browser/Discord interaction, audio/animation polish and performance still require honest evidence. The historic 85/100 PoC score and native-device parity are not automatic M0/M1 PR blockers. A scoped PR needs passing applicable mandatory checks and owner approval. Read `docs/MIGRATION_PROGRESS.md` and `docs/NATIVE_READINESS.md` for evidence and limits.
+This is **not M0 visual-polish approval, an M0 restricted-test release, or M1 public alpha release**. Normal-play balance, browser/Discord interaction, audio/animation polish and performance still require honest evidence. The historic 85/100 PoC score and native-device parity are not automatic M0/M1 PR blockers; the **fully polished visual build is nevertheless mandatory for M0 readiness**. A scoped PR needs passing applicable mandatory checks and owner approval. Read `docs/MIGRATION_PROGRESS.md` and `docs/NATIVE_READINESS.md` for evidence and limits.
 
 ## Run and validate
 
@@ -33,4 +33,4 @@ Vercel uses `scripts/build_web.sh` with the official verified engine/templates. 
 
 ## Integration workflow
 
-Use one scoped implementation PR at a time. For M0/M1, passing applicable mandatory checks makes the PR eligible for owner approval; green checks do not automatically authorize merge or public release. Backend/feedback architecture and any new costs require their own scoped specification/approvals. This does not approve new mechanics, artwork, paid services, native releases or a claim of complete parity.
+Use one scoped implementation PR at a time. For M0/M1, passing applicable mandatory checks makes the PR eligible for owner approval; green checks do not automatically authorize merge, M0 visual sign-off or public release. Backend/feedback architecture and any new costs require their own scoped specification/approvals. This does not approve new mechanics, artwork, paid services, native releases or a claim of complete parity.
