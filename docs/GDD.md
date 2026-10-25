@@ -223,3 +223,101 @@ All nine heroes use the single **Aura** resource and common activation rules in 
 
 These are **testing examples** and may contain catalogue items **outside the current 23-passive offer subset**. They are not guarantees that all such offers can appear in M0/M1.
 
+### 5.9 Nine canonical weapons — exactly three per class
+
+One equipped starter occupies a normal weapon slot; players can never equip more than **three distinct weapons** and cannot duplicate a weapon ID. Weapon class compatibility remains binding. The intervals below are **base intervals before equipment-level and frequency modifiers**, and `P` is the current offensive power.
+
+| Stable weapon ID | Class | Base cadence / geometry | Level-1 primary attack and operational contract |
+| --- | --- | --- | --- |
+| `ratio-blaster` — Ratio Blaster | Ranged | **0.65 s**; target within **520 U**; projectile **650 U/s** | One **0.20P** shot; stops at first valid enemy or obstacle; auto/manual aim, max **0.8 s** flight |
+| `no-cap` — No Cap | Ranged | **1.60 s**; directional **600 U × 32 U** line | Thrown cap deals **0.50P**, piercing up to **four enemies** (once each), at **750 U/s**; no return-leg bonus hit |
+| `brainrot-feed` — Brainrot Feed | Ranged | **3.00 s**; nearest enemy within **480 U** | Mark the enemy's **current position**; after **0.45 s**, explode in **100 U** radius for **0.65P**; telegraph does **not** track the target |
+| `keyboard-warrior` — Keyboard Warrior | Melee | **0.75 s**; **100° cone / 95 U** | Two key-strikes **0.18P** each at **0.00/0.12 s**; one total primary proc; facing locked at start |
+| `ban-hammer` — Ban Hammer | Melee | **2.40 s**; **120° cone / 125 U** | **0.30 s** windup included; **0.90P** hit, **40 U** push on commons and **15 boss stagger** within attribution limits |
+| `touch-grass` — Touch Grass | Melee | **1.50 s**; **180° arc / 145 U** | **0.40P** grass whip; **15% slow for 1.5 s**; remains melee |
+| `cope-shield` — Cope Shield | Tank | **2.00 s**; **100° cone / 100 U** | **0.45P** bash; grants own **4% max-HP shield for 2 s only on a real hit**; this own-shield source does not stack with itself |
+| `chad-hands` — Chad Hands | Tank | **1.20 s**; **90° cone / 90 U** | Two **0.22P** punches at **0.00/0.18 s**; every **third successful activation** replaces second punch with **0.40P / 110 U slam**; one proc total |
+| `personal-space` — Personal Space | Tank | **2.80 s**; **135 U** centered pulse | **0.40P** once per target; targets hit inflict **8% less damage for 2 s**; no continuous damage ticks or no-hit defensive benefit |
+
+#### 5.9.1 Item levels, rarity, and replacement rules
+
+**Rarity level caps:** Common **1–4**, Rare **1–3**, Epic **1–2**, Legendary **level 1 only**. Item rarity and level are separate persistent-in-run fields; item rarity promotion retains `min(old_level, new_rarity_cap)`.
+
+**Weapon rarity multiplier R:** Common **1.00**, Rare **1.50**, Epic **2.00**, Legendary **2.60**. Weapon's own damage and own-shield generation multiply by `R × [1 + 0.15 × (item_level − 1)]`. Its base attack interval decreases **5% per level above 1**, then undergoes the global frequency formula in §5.2. Distinct support pulses from legendary weapons have their separately specified support formulas and must **not** receive an additional weapon-rarity multiplier unless explicitly stated.
+
+UI must accurately compare old/current/new values and their trade-offs. A Common-4 cadence can be preferable to Rare-1, so **do not** present every promotion as strictly superior. Upgrading an existing weapon does not consume another slot. Replacing a passive with a different passive starts the new item at **level 1 of its fixed rarity**, removes the old item's buffs/stacks and active effects, and **preserves any per-ID cooldown history** until the run ends to prevent re-equip exploits. Weapon and passive levels do not share a progression counter.
+
+#### 5.9.2 Nine approved legendary weapon variants
+
+All have **R = 2.60, level 1**; extra hits are secondary unless otherwise explicitly specified and do **not** grant extra procs:
+
+| Weapon | Legendary name | Approved additional effect |
+| --- | --- | --- |
+| Ratio Blaster | **Comment Apocalypse** | Every fourth activation sends **two extra 0.10P raw-before-R shots**, same direction, separated by **0.08 s** |
+| No Cap | **Final Verdict** | Cap leaves a line which detonates after **0.7 s** for **0.25P × R**, at most one secondary hit per target |
+| Brainrot Feed | **Infinite Scroll** | Main explosion is followed after **0.3 s** by three fixed side impacts spaced **80 U**, each **0.15P × R**, max one such secondary hit per target |
+| Keyboard Warrior | **Caps Lock** | Every third activation finishes with **120 U / 0.25P × R** additional arc |
+| Ban Hammer | **Perma Ban** | After primary impact, a **220 U** forward fissure triggers after **0.5 s**, **0.30P × R**, with warning |
+| Touch Grass | **Go Outside** | Every third activation replaces the arc with a **150 U** circle; damage **×1.25**, **25% slow for 2 s** |
+| Cope Shield | **Unbothered** | Every third successful strike gives allies within **140 U** a **5% caster max HP × S/100** shield for **3 s**; do **not** also multiply this support pulse by R |
+| Chad Hands | **Gigachad Moment** | Third-successful-activation slam adds **0.20P × R** and reaches **140 U** |
+| Personal Space | **My Aura, My Rules** | Every second pulse grants a **4% caster max HP × S/100** shield within **160 U** for **3 s**; do **not** also multiply this support pulse by R |
+
+### 5.10 Passive catalogue: ten Common, eight Rare, six Epic, four Legendary
+
+Every passive retains a unique stable ID and its approved class eligibility. The initial M0/M1 offer subset has **23 passive IDs**; the five future-only entries are listed at the end of this section. All passive timers use the paused active-simulation clock. `C` denotes current Common level (1–4), `R` Rare level (1–3), and `E` Epic level (1–2). Level contributions within one passive add rather than recursively multiplying themselves. Support quantities use `S/100` and applicable Certified W effects unless described as an attribute or a source-specific exception.
+
+#### 5.10.1 Ten Common passives — all currently offerable
+
+| Stable ID / name | Eligible class | Exact effect and conditions |
+| --- | --- | --- |
+| `main-character` — Main Character Energy | All | **+6%C weapon damage** (up to +24%); never increases healing/shields |
+| `terminally-online` — Terminally Online | All | **+5%C weapon attack frequency** (up to +20%); respects global +100% cap, does not speed passive timers |
+| `built-different` — Built Different | All | **+8%C max HP** (up to +32%); acquiring heals only the new HP capacity, removing clamps current HP to new maximum |
+| `thick-skin` — Thick Skin | All | **3%C damage reduction** (up to 12%), combining multiplicatively with other reductions |
+| `caught-4k` — Caught in 4K | All | **+5%C movement speed** (up to +20%); overall bonus movement cap **+60%** |
+| `big-meme` — Big Meme Energy | All | **+6%C area radius** (up to +24%); does not automatically increase projectile travel or healing range |
+| `timeline` — Across the Timeline | Ranged | **+8%C weapon range** (up to +32%); projectile speed adapts to preserve maximum flight time |
+| `hands-on-sight` — Hands On Sight | Melee | **+7%C damage against a target within 150 U** (up to +28%); evaluated per actual hit |
+| `cope-harder` — Cope Harder | Tank | **+8%C shields granted** (up to +32%), subject to global cap; creates no shield by itself |
+| `certified-w` — Certified W | All | **+6%C healing and shields granted** (up to +24%); does not automatically heal, can multiply applicable Cope Harder bonus |
+
+#### 5.10.2 Eight Rare passives — five currently offerable, three future-only
+
+| Stable ID / name | Eligible class | Exact effect and conditions | Initial offer status |
+| --- | --- | --- | --- |
+| `get-ratiod` — Get Ratio'd | Ranged | After **3 primary hits on one enemy within 4 s**, that target takes **+[4+2(R−1)]% team damage** for **4 s**; **6 s/caster** cooldown; same marks do not stack | **Future-only** |
+| `no-cap-streak` — No Cap Streak | Ranged | Every **fifth directional weapon activation** gets **+R pierces and +10% damage**; nontravelling AoE gets damage only; once per activation | **M0/M1** |
+| `w-wifi` — W Wi-Fi | Ranged | After **12 s in combat**, and every 12 s thereafter, a stationary **160 U** zone lasts **4 s**, granting **+[8+4(R−1)]% weapon frequency** to self/allies; same zones do not stack | **M0/M1** |
+| `let-him-cook` — Let Him Cook | Melee | Each primary-hit event grants a stack of **+[2+R]% damage**, max **5 stacks**, expires **3 s after most recent hit** | **M0/M1** |
+| `ego-check` — Ego Check | Melee | After **4 primary hits on one enemy within 5 s**, target receives **+[4+2(R−1)]% damage** for **4 s**; **8 s/caster** cooldown; shares Exposed category with Get Ratio'd, strongest only | **Future-only** |
+| `homie-check` — Homie Check | Melee | Every **8 primary hits** heal self/allies within **140 U** for **[2+R]% caster max HP** × S/100, with minimum **6 s** between pulses; hits inside lockout do not accumulate | **M0/M1** |
+| `uno-reverse` — Uno Reverse | Tank | Receiving **10% own max HP** in premitigation **direct attack** damage within **6 s** charges the next weapon attack with **+[15+10(R−1)]% damage** for up to **4 s**; **6 s** cooldown; transfers/hazards excluded | **Future-only** |
+| `big-chad` — Big Chad Energy | Tank | Every **10 s in combat**, grant self/allies within **160 U** a **[5+2(R−1)]% caster max HP** shield for **4 s**; first pulse at 10 s, equivalent shields refresh not sum | **M0/M1** |
+
+#### 5.10.3 Six Epic passives — four currently offerable, two future-only
+
+| Stable ID / name | Eligible class | Exact effect and conditions | Initial offer status |
+| --- | --- | --- | --- |
+| `its-over` — It's So Over | All | **+[15+10(E−1)]% damage** against targets below **30% HP**; no automatic execute/percentage-boss-HP effect | **M0/M1** |
+| `brainrot-rain` — Brainrot Rain | All, PvE only | Every **10 s** with a valid enemy within **320 U**, four **[0.25+0.10(E−1)]P / 65 U** impacts; seeded positions telegraph **0.8 s** ahead, hits separated **0.2 s**, max **2 hits per target/cast** | **Future-only** |
+| `aura-viral` — Aura Goes Viral | All | On Flex activation, self/allies within **180 U** gain **+[12+6(E−1)]% frequency** for **5 s**; strongest with W Wi-Fi, no Flex cooldown benefit | **M0/M1** |
+| `take-l` — Take the L | All | Every **1 s**, link lowest-health ally within **180 U**, redirect **[10+5(E−1)]%** of their damage to caster; max **15% caster HP per 5 s**, disengages below **25% caster HP**; no recursive transfer | **Future-only** |
+| `so-back` — We Are So Back | All | Crossing from **≥30% to below 30% HP** due to damage starts **[10+5(E−1)]% max HP** healing over **5 ticks/5 s**, plus **10% max-HP shield for 3 s**; **45 s** cooldown; never prevents fatal hit or revives | **M0/M1** |
+| `six-to-seven` — Six → Seven | All | On **seventh primary hit across all three weapons**, **[0.35+0.15(E−1)]P** explosion within **90 U** around struck target; at least **2 s** between explosions, counter freezes during lockout; sixth hit signals 6/7; secondary blast creates no loop | **M0/M1** |
+
+**Transfer compatibility for later content:** Take the L and Beta Flex may transfer damage at most once per original hit using the **largest eligible** percentage. Transferred damage creates no Aura, proc, reactive shield or further transfer; support absorption metrics do not become offensive boss damage counters.
+
+#### 5.10.4 Four Legendary passives — level 1 only, all currently offerable
+
+| Stable ID / name | Effect | Trigger and limits |
+| --- | --- | --- |
+| `absolute-cinema` — Absolute Cinema | **+25% weapon damage** always; **+20% additional weapon damage** while Flex is active | Does not multiply support or Flex-generated damage; one legendary total |
+| `w-squad` — W Squad | **+25% healing/shields granted**; on Flex activation grant self/allies within **200 U +10% weapon damage** | Team buff lasts **6 s**, same-source buffs do not stack; no Flex recharge |
+| `too-sigma` — Too Sigma to Fall | Shield self/allies within **200 U** for **25% of caster max HP** | Trigger only on damage crossing caster HP **from ≥25% to below 25%**; shield lasts **5 s**, **60 s** cooldown; no fatal-hit prevention/revive |
+| `no-u` — No U | Control pulse within **200 U** deals **0.30P** and reduces normal-enemy damage by **20%** | Every **15 s in combat**, debuff **4 s**, first trigger at 15 s; boss instead **10% reduction for 2 s**; no reflected damage/recursive procs |
+
+**Design balance principle:** legitimate support builds contribute via effective healing, shielding, prevention and amplified allied damage. They must not be judged only by direct DPS, nor assumed to grant all support advantages plus peak damage.
+
+**Exactly five catalogue entries remain excluded from current M0/M1 offers:** `get-ratiod`, `ego-check`, `uno-reverse`, `brainrot-rain` and `take-l`. Approved icon artwork for these identities is **not** gameplay/content approval. The other **23** entries listed above are the active initial passive subset.
+
