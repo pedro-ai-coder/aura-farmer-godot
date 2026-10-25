@@ -321,3 +321,88 @@ Every passive retains a unique stable ID and its approved class eligibility. The
 
 **Exactly five catalogue entries remain excluded from current M0/M1 offers:** `get-ratiod`, `ego-check`, `uno-reverse`, `brainrot-rain` and `take-l`. Approved icon artwork for these identities is **not** gameplay/content approval. The other **23** entries listed above are the active initial passive subset.
 
+### 5.11 Rarity generation, choices and the single legendary window
+
+Normal upgrades first choose a **legal category** (upgrade equipped / acquire new compatible item / legal rarity promotion), then roll a legal rarity. No normal upgrade can roll Legendary; reweight among remaining legal options without inventing a rarity for a fixed-rarity passive.
+
+| Wave | Common | Rare | Epic | Legendary in normal offers |
+| --- | ---: | ---: | ---: | ---: |
+| **1** | 90% | 10% | 0% | 0% |
+| **2** | 70% | 28% | 2% | 0% |
+| **3** | 45% | 45% | 10% | 0% |
+| **4** | 25% | 50% | 25% | 0% |
+| **5** | 10% | 50% | 40% | 0% |
+
+If there is an eligible equipped-item upgrade, favor including at least one in the three distinct normal cards. Do not force one offence, defence or support category on every draw; preserve long-run variety and class/slot legality. Ordinary card descriptions show current value → new value, correct rarity level/cap and any replacement impact.
+
+**Legendary opportunity (exactly one selection per run):**
+1. At **6:00** during wave 4, show **six legal cards**: the player's **three compatible legendary weapons** plus **three different legendary passive buffs from the four-item pool**.
+2. The player may **take one** or **defer**. At **8:00** in wave 5, re-display the **same six stored offers**, **no reroll**.
+3. After another deferral, the same existing offer may be reopened through an actual live in-game control until **9:55**. After that it expires without automatic selection.
+4. Taking any one legendary **consumes the entire run's single legendary right**. No second legendary, even if the first is discarded/replaced later. If a weapon is already equipped, promote it in the same slot; otherwise use a legal free slot or require explicit replacement confirmation. A passive legendary occupies a passive slot and may similarly require confirmed replacement. Never enable Confirm for an illegal state.
+5. Legendary and ordinary offers obey one-modal priority, pause the solo simulation, preserve input ownership and cannot let background gameplay continue. The deferred-reopen control is a required working element, not a hidden legacy button.
+
+### 5.12 Bestiary, enemy behaviors and spawn integrity
+
+The enemy ID `beta` represents the **hostile Beta Bot**, distinct from the future playable **Beta Bro**. Enemy combinations should create danger through different counterplay and clearly distinct silhouettes rather than invisible rule changes.
+
+**Baseline table is wave-1 solo before normal enemy/elite scaling.** Contact damage cooldown is at least **0.75 s per enemy**, with **0.25 s of global protection against subsequent contact hits**; this does not necessarily nullify hostile projectiles or telegraphed hazards.
+
+| Stable enemy ID / name | HP / speed U/s / damage / XP | First appearance | Approved behavior, warning and counterplay |
+| --- | --- | --- | --- |
+| `npc` — NPC | **35 / 75 / 8 / 5** | Wave 1 | Chases nearest player; gray phone-carrying enemy, contact only |
+| `hater` — Hater | **50 / 60 / 10 / 8** | **1:00 during wave 1** | Maintains **260 U** range; every **3 s** sends comment-line projectile at **180 U/s** for **10** damage, with **0.6 s** warning; flank/close distance |
+| `reply-goblin` — Reply Goblin | **25 / 125 / 6 / 6** | Wave 2 | Fast group contact chaser; low HP and compact tilted outline |
+| `beta` — Beta Bot | **120 / 45 / 16 / 12** | Wave 2 | Heavy frontal plate reduces damage from forward **100° cone by 40%**; rear vulnerable; turns at most **90°/s** |
+| `ratio-ram` — Ratio Ram | **80 / 60 / 20 / 10** | Wave 2 | Every **5 s**, locks direction through **0.9 s** warning then charges **280 U at 320 U/s**; no steering mid-charge |
+| `doomscroller` — Doomscroller | **70 / 50 / 8 per tick / 12** | Wave 3 | Every **6 s** marks a target's current floor location; **1 s** warning, **70 U** zone for **3 s**, ticks **1/s** |
+| `hype-bot` — Hype Bot | **65 / 55 / 6 contact / 12** | Wave 3 | Every **8 s** grants up to **three mobs within 160 U** shields worth **15% of their max HP for 4 s**; never shields a boss |
+| `fanum-leech` — Fanum Leech | **90 / 70 / 10 / 12** | Wave 3 | Every **5 s** warns **0.8 s** and tethers a player within **200 U**, dealing **three ticks of 5**; breaks past **240 U**, steals no XP/items/currency |
+| `ping-sniper` — Ping Sniper | **60 / 40 / 24 / 12** | Wave 4 | Seeks **400 U** spacing, every **6 s** locks laser direction with **1.2 s** telegraph then fires once; dodge laterally/use real cover |
+| `copium-puffer` — Copium Puffer | **90 / 45 / 12 per tick / 12** | Wave 4 | After death, **1 s** warning before **80 U** cloud lasts **3 s**, ticking **1/s** |
+| `comment-mod` — Comment Mod | **100 / 50 / 10 / 14** | Wave 5 | Every **8 s** heals up to three nearby mobs within **180 U** by **8% of their max HP**; never heals boss or other Mods |
+
+**Spawn:** enemies arrive at least **260 U** from players, with **0.8 s** portal warning and legal placement away from solid or inescapable geometry. Ranged attacks honor covers. **Elites begin wave 3**, have **×2.5 max HP, ×1.3 damage, 60 XP** and a clearly distinct enlarged silhouette. Each elite gets **exactly one visible modifier**: either **+15% speed** or an initial **20% shield**, never a hidden combination. At most **two simultaneous elites in solo** (four in future co-op).
+
+**Navigation quality:** active chasers must navigate around the two existing static solid covers and arena boundaries; they may not remain unexpectedly blocked. Intended attack-range holds, boss telegraph locks, knockback and stagger recovery are distinct from pathfinding failures. The **two original static obstacles are non-destructible**, not prototype P4 loot crates.
+
+### 5.13 Event encounters — four fixed encounters
+
+Event-boss HP below is the approved encounter-time solo value: do **not** multiply by wave HP again. In future co-op only the explicitly defined party-count boss factor applies; event adds scale with their normal wave rules.
+
+| Event boss / clock | Solo HP / XP | Attack and counterplay contract |
+| --- | --- | --- |
+| **Reply Guy — 2:15** | **1,400 / 120** | Comment cone **18 damage**, **0.8 s** warning, every **4 s**; summons **four NPCs every 12 s**; **1.5 s** vulnerable window after cone |
+| **Mod Supremo — 4:15** | **3,200 / 240** | **130 U** circular Ban Slam **28 damage**, **1 s** warning, every **6 s**; two ground silence lines every **10 s**, **15 damage** without disabling controls; at **50% HP**, summon **two Haters once** |
+| **Ohio Express — 6:15** | **2,800 / 120** | Every **9 s**, sequence of **three fixed straight charges**, **22 damage** each and **0.8 s** warning per charge; **2 s** recovery; no direction change mid-charge |
+| **Doomscroll Prime — 8:15** | **5,200 / 240** | Every **7 s**, two **100 U** zones with **1 s** warning, **12 damage/s** lasting **3 s**; forward burst every **4 s** for **18 damage**; destroying **two 250-HP terminals** interrupts next zone sequence for **4 s** |
+
+Events do not pause the wave or create off-system free cards. If an event boss survives into a later wave, do not apply another HP multiplier. At **10:00**, all surviving event bosses withdraw **without XP/loot**; defeating them is a reward opportunity, not a hidden final-boss prerequisite.
+
+### 5.14 Big Hater — final boss and recoverable Berserk
+
+**Encounter entry:** boss telegraph at **9:30**, Big Hater at **10:00** on a readable bounded arena. Remaining ordinary mobs leave without XP. Existing uncollected XP crystals are collected without inventing new XP. Big Hater starts at the **approved initial solo tuning value of 30,000 max HP**, with no additional wave-5 HP multiplier. **Its actual viability with ten minutes of normal build progression is not yet balance-proven** and must be reviewed without silent HP/XP/damage tuning.
+
+**Base combat:** boss contact deals **12 damage once each 1 s**, never stacking contact and a main slam on the same frame. Primary attack slots last **6 s** and repeat in this order: **Hate Slam → Ratio Beam → Comment Ring → Adds**. Preparation and execution fit the slot; incompatible main attacks do not overlap.
+
+- **Hate Slam:** **120° cone / 200 U**, **1 s** warning, **35 damage**, locks position/direction **0.3 s** before hit, then **1.2 s** recovery.
+- **Ratio Beam:** **600 × 60 U** straight beam, **1.2 s** warning, **30 damage**; direction stays fixed after lock, honors designated solid cover.
+- **Comment Ring:** expanding ring **80 → 280 U in 1.5 s**, **25 damage once per expansion**, **25 U** band width, **1 s** warning with a clearly signaled **70° safe gap**.
+- **Adds:** **four NPCs plus one Hype Bot**; at most **eight living adds solo** (16 in five-player scale). Adds cannot shield/heal boss. Defeating Hype Bot applies **+10% boss damage taken for 3 s**, sharing Exposed category with other modifiers (strongest, not additive).
+
+**Persistent HP thresholds:** at **70% HP**, Comment Ring becomes **two expansions separated by 0.8 s**, with safe opening maintained. At **35% HP**, Ratio Beam leaves a **2 s** lingering zone dealing **8 damage/s**. Each threshold unlocks once even if later regeneration raises health.
+
+**Stagger:** shared **0–100** meter; heavy weapons and named effects contribute up to **20 stagger/s total**. At 100 the boss is exposed/stationary for **3 s**, takes **+15% damage**, and then the meter resets with a **20 s** filling lock. Stagger interrupts windup but never erases already resolved damage; identical exposure bonuses use the largest. Stagger remains useful during Berserk, without reverting Berserk.
+
+**Berserk / FULL HATER MODE:** warnings at **60/30/10 s remaining**. After **120 active seconds of boss combat**, enter recoverable Berserk (nominal **12:00** game clock), change silhouette/audio/outline, and apply all of the following **without** instant healing, teleporting, cancelling existing hits or increasing max HP:
+
+| Berserk property | Approved initial rule |
+| --- | --- |
+| Extra resistance | **35% reduced received damage**, multiplicative with other applicable modifiers; cannot be removed by Ego Check |
+| Regeneration | **0.10% of max HP per second**, **1 s** tick, capped at max HP |
+| Damage per blow | **×2 immediately**, then **×1.10 per 30 s of Berserk**, capped at **×3 pre-Berserk damage** |
+| Primary attack interval | **6 s → 4.8 s**, with at least **0.8 s** warning |
+| Stagger | Still functions; during a **3 s** exposed window **regeneration is suspended** without resetting its underlying timer |
+
+Berserk is **not a scripted wipe at 12:00**. With 30,000 HP, the initial regeneration is **30 HP/s**; ignoring other defenses, sustained **raw DPS greater than 30 / 0.65 ≈ 46.2** can in principle overcome it. This arithmetic illustrates possibility, **not validated encounter difficulty**. At **240 s of boss combat** (nominal game **14:00**), display a final-effort warning; there is still **no hard time-limit defeat**. Boss adds grant no kill XP/death Aura and cannot be farmed for endless level-25 recovery. Victory/defeat freezes unresolved combat properly, permits correct result saving and does not award bonus loot for dragging the encounter.
+
