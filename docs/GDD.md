@@ -497,3 +497,115 @@ The first five Clean Cut screen packages are approved **art sources**, but **sec
 
 If the owner rejects a currently rendered treatment, correct that precise treatment and re-review it. Preserve other explicitly approved masters and identical-source art unless separately revoked. The M0 visual-polish requirement cannot be waived merely by a green PR check.
 
+## 9. M1-specific delivery requirements — Discord Activity, backend, tester feedback
+
+### 9.1 Shared Web and Discord gameplay
+
+M1 is a **public alpha**, not a new gameplay mode. Maintain one deterministic core simulation for standalone Web and Discord Activity. A supported Discord entry must actually create/play/resume the game in the Activity environment as allowed by platform capabilities; dynamic sizing, pointer and keyboard/touch routing, audio policies, lifecycle, storage restrictions and safe fallback behavior must be tested in that environment.
+
+Do **not** require a Discord account to access the normal Web entry. Discord authentication, if used by the Activity SDK for its permitted integration, does not itself authorize a general cross-platform player-identity service. Do not grant content, ranks or combat power differently by access channel.
+
+### 9.2 Available backend — mandatory capability, architecture undecided
+
+For M1, the backend must be **available and working in the deployed public-alpha environment**. A future **Technical Design Document (TDD)** must make explicit its approved responsibilities, API contracts, deployment/health checks, data-processing policy and failure behavior. Backend does not automatically mean online multiplayer, combat authority, persistent accounts, centralized inventory, analytics resale, cloud save or monetary transactions.
+
+- **Required:** implement the actual backend capabilities approved for M1 (including support for the in-game feedback submission flow), supply reproducible configuration and checks, deploy to an authorized environment, and confirm healthy request/response behavior against the real Web and Discord builds.
+- **Decision needed before external data collection:** field-level data schema, consent/notice, minimum necessary identifying context, legal/privacy obligations, storage retention, access/deletion policy, secret handling, abuse/rate limits, operational ownership and cost exposure. Do not put service credentials in the client, repository or visual captures.
+- **Gameplay resilience:** where backend feedback is temporarily unavailable, the game remains locally playable and uses truthful non-destructive feedback UI. No undocumented gameplay effects or destructive save/profile migration.
+
+### 9.3 In-game feedback requested from alpha testers
+
+The approved M1 requirement is not merely to include a static feedback link: **the alpha asks testers for feedback from within the game**, and the tester can complete a real submission.
+
+The feedback experience must be **discoverable, readable, dismissible and non-blocking**. It should offer a timely invitation (such as a post-run prompt) and an accessible in-game path to submit feedback, without interrupting a boss attack or commandeering movement input. Use an ordinary confirmed user action before transmission; report send success/failure honestly and avoid accidental duplicates. The exact prompts, frequency, collected fields, categorization and moderation flow are **not yet approved** and must be scoped by the M1 UI/backend implementation work.
+
+Feedback submissions must be verifiably receivable by the approved backend and retrievable by the authorized review process. A displayed “submitted” state without confirmed acceptance, or a design-only mockup without a real service path, does not complete this M1 requirement.
+
+## 10. Quality gates, PR acceptance and milestone release readiness
+
+### 10.1 Owner-approved M0/M1 pull-request acceptance policy
+
+**For M0 and M1, scoped PRs are approved by the owner once their applicable mandatory checks/tests pass.** Required checks must be truly run and green on the proposed commit; do not reinterpret a failed/skipped/unknown check as a pass. A documentation-only change requires the relevant repository checks and content review; a gameplay change requires the impacted deterministic/simulation tests; a UI/input change requires actual event-routing and responsive regression coverage; and an M1 backend/Discord/feedback change requires appropriate integration, delivery and privacy/security tests. The exact check suite for each feature will be established in its technical work item and CI configuration; do not silently waive mandatory checks.
+
+**PR approval is distinct from M0 or M1 release readiness.** A passing PR does not automatically merge, deploy publicly, authorize extra spending, approve new art, alter balance, or certify that the full visual experience is finished. Keep branches/reviews scoped, publish evidence with source commit, and only integrate according to the approved repository workflow.
+
+The older **85/100 PoC evaluation score** is **not** an M0/M1 PR acceptance threshold. Historical desktop **60 FPS** and mobile **30 FPS** reference goals and **300 enemies + 150 projectiles** stress objectives may be used as profiling/diagnostics, but are **not newly declared blocking M0/M1 PR numeric gates** by this decision. Do not claim achieved FPS without representative measurements. The current gameplay cap of **100 ordinary simultaneous enemies solo** remains distinct from a laboratory 300-enemy stress fixture.
+
+### 10.2 M0 closed-Web-release readiness — all must be demonstrated
+
+1. **Canonical solo functionality:** three starter heroes, nine weapons, 23 offerable passives, strict 3+5 slots, correct rarity/level caps, XP, seeded Aura/Flex and approved P1–P3 recovery; complete 10-minute wave schedule, legal three-card offers, six-card one-time legendary (defer/reopen/expiration), events, Big Hater, recoverable Berserk, real win/loss/retry and non-destructive local saves.
+2. **Fully polished visual game:** creator sign-off on current actual **Clean Cut** screens, characters, enemies, animation/weapon/pickup feedback, HUD, upgrade/legendary/secondary menus, readable boss telegraphs, responsive Web controls, focus/selected/disabled states and transitions. No unexplained generic panels or placeholder inventory.
+3. **Real playable evidence:** a normal-health full run on the intended Web build (not only a controlled/survival-bot script), inspect gameplay responsiveness and enemy navigation under ordinary and dense play, and verify important input/UI edge cases. Owner play review is evidence of experience; a CI-green state alone is not.
+4. **Web integrity and access:** closed distribution for the **very restricted tester cohort** only; static Web hosting works without backend, Vercel READY alone does not prove game interaction, and no backend is needed to begin/play/save/finish.
+5. **Checks and transparency:** required CI/regressions green on the exact candidate revision; known blocking failures closed or transparently evaluated; record browser/viewport, source commit, demonstrated journeys and unresolved limitations. Do not call a staged screenshot a recorded gameplay run.
+6. **Authorization:** owner decides when the polished build is suitable for the very restricted group, independent of individual PR approvals.
+
+### 10.3 M1 public-alpha-release readiness — all must be demonstrated
+
+1. M0's **approved gameplay and fully polished presentation** remain functional; no stealth reduction of quality or new gameplay scope.
+2. **Standalone Web** has a live, working publicly accessible alpha entry; **Discord Activity** loads and plays the real shared Godot game, with verified application-specific SDK, viewport, control and lifecycle behavior.
+3. The **backend is available and operational**, with an approved documented technical contract, tests, deployment configuration, appropriate secret handling and verified real-request behavior.
+4. The game **requests feedback from testers** through live in-game UI, accepts legitimate input, submits successfully to the backend, supports dismissal and meaningful error behavior, and follows the approved privacy/retention/abuse-protection contract.
+5. Required applicable automated tests for each PR are green; integrated Web/Discord/backend/feedback journeys are validated together on the intended deployment and source revision.
+6. The owner authorizes the **actual public alpha opening** separately from PR merges; no automatic announcement, native release, extra spending or future content approval is implied.
+
+**Important distinction:** the owner has approved this **milestone scope and PR-level rule**, but the specific M1 backend architecture, operational/privacy design, feedback fields/UX and launch procedure still require scoped decisions and implementation before M1 itself can be called delivered.
+
+### 10.4 Technical evidence and exception handling
+
+For each meaningful acceptance claim, retain the build identifier/commit, used engine and configuration, automated test commands with real results, representative browser/device conditions, current screenshot/video evidence where visuals matter, and any honest blockers. Profile real simulation **plus** rendering for performance concerns; do not present headless simulation results or software-render benchmark numbers as measured physical-device FPS. Verify no UI controls are dead, input pointers do not leak through modals, a high-density run preserves readable hostile attacks, and enemy chasers do not get stuck on static covers.
+
+Historical PoC checklists or newer Work status documents may support QA but cannot redefine the owner-approved M0/M1 launch scope or override this GDD.
+
+## 11. Future design reference — excluded from M0 and M1
+
+This section preserves approved **design intent** and numeric reference contracts for later consideration. It does **not** require implementing these modes, exposing dormant menus, wiring a multiplayer backend in M1, or granting future gameplay.
+
+### 11.1 Cooperative PvE design (future)
+
+- **Up to five players**, with Normal and Ranked variants. Normal matchmaking may use account level; Ranked considers level/rank/MMR. No rank-based combat damage multiplier; exact matchmaking and reward coefficients remain undecided.
+- At `n` players, common/elite HP multiplier **`1 + 0.30(n−1)`**, spawn density multiplier **`1 + 0.45(n−1)`**, common damage multiplier **`min(1.20, 1 + 0.05(n−1))`**; boss HP multiplier **`1 + 0.85(n−1)`**, boss damage multiplier **`min(1.32, 1 + 0.08(n−1))`**. At five players Big Hater HP is **×4.4** and boss damage **×1.32**. Initial scaling is fixed at run start, does not shrink as players die, and may require later balance review.
+- Shared XP bar and synchronized level advances, **individual legal offers**, team pause-batch policy from §5.4, no XP/drop duplication and no forced healer/tank in matchmaking.
+- **Down/revive:** zero HP in solo ends the run. In co-op, player is down for up to **20 s**; an ally within **70 U** can revive by uninterrupted **4 s** interaction, interrupted by moving or being damaged; revive restores **30% HP** without Flex charge. Expiry leaves the player spectating until a later eligible event-boss reward, never during Big Hater, subject to tuning. If no living ally can continue/revive the team, defeat is immediate. Tentative maximum **two revives per player per run**; UI displays remaining revives. Do not imply this is implemented in M0/M1.
+- **Wild** remains a future nice-to-have without current matchmaking, economy, UI or acceptance requirements.
+
+### 11.2 Arena/PvP design (future)
+
+Proposed game modes: **1v1, 2v2 and 3v3**, with **no power advantages from account progression**, no combat RNG/probabilistic critical hits/procs/spread/random drops, and equal competitive options. PvP requires its own explicit weapon/passive presets, separate win/duration/map/respawn/matchmaking anti-stall design, and dedicated skill/balance approval; **current PvE numbers are not approved PvP presets**. PvE wave/XP/legendary/boss schedule never carries into arena. Any future Brainrot Rain, forced targeting or contact-immunity mechanism needs PvP-specific evaluation.
+
+### 11.3 Economy, unlocks, content expansions and optional experiments
+
+Local versioned saves preserve legitimate unlock progress without permanent pre-run weapon buffs in the initial slice. Monetization concepts (cosmetics, optional seasons, battle pass, non-pay-to-win play) and currency/source/sink/prices are **future proposals only**. M0 has no payment service; M1 backend authorization does not approve commerce or a gameplay account system.
+
+Future items include remaining six heroes, five additional playable passives, additional maps and progression unlock conditions; concept-only P4–P7 experiments and optional one-reroll trials; possible Aura Archive, Hater Levels, broader native multiplatform targets and separate game modes. Each must receive a detailed owner-approved numeric/gameplay/asset contract and technical delivery gate before entering production. **P8 is not approved**.
+
+## 12. Source reconciliation, preserved history and change control
+
+### 12.1 Exact legacy source preservation
+
+The earlier **GDD V2.0 has been archived verbatim** in [`docs/GDD_V2_ARCHIVE.md`](GDD_V2_ARCHIVE.md). Its historic summaries, Phaser pipeline, 15-minute timeline, older V5 artwork examples, old platform policy and old delivery claims are **historical evidence only**, not competing current requirements. This new V3 document preserves its detailed gameplay constraints through the corresponding consolidated sections rather than leaving readers to choose between conflicting historical snippets.
+
+| Legacy GDD source | Current authoritative location | Status |
+| --- | --- | --- |
+| V2 §§1–2: original product, roster and scope | V3 §§1–3 | Initial slice explicitly 3 heroes/9 weapons/23 passives; future catalogue separate |
+| V2 §§3–6: progression, combat, XP, Aura | V3 §§5.1–5.5 | Current 120-second waves and 10-minute boss schedule; formulas preserved |
+| V2 §7: hero stats, traits and all Flex rules | V3 §§5.6–5.8 | Approved Flex 2.0 names, exact starter abilities and future six designs retained |
+| V2 §§8–10: weapons, passives and rarity | V3 §§5.9–5.11 | Nine weapons; 10/8/6/4 passive catalog; 23 offered; single legendary window |
+| V2 §§11–12: enemies, events, Big Hater | V3 §§5.12–5.14 | Current fixed event and boss clocks; Hater first arrival reconciled to **1:00** |
+| V2 Annex C.2: solo recoveries and future concepts | V3 §6 and §11.3 | P1–P3 production-approved; P4–P7 prototype-only; P8 unapproved |
+| V2 Annex C.1: joystick | V3 §7 | Full-playfield circular touch ownership, not left 48% |
+| V2 §26 and Annex A: artistic direction | V3 §8 | Current **Clean Cut** and exact art approvals; old V5 only supplementary |
+| V2 §23: equal-priority Web/Android/iOS release | V3 §§2, 9–10 | **M0 Web polished/no backend, M1 Web + Discord Activity + backend + feedback; M2+ native decision** |
+| V2 Annex B, §§0/17–22: Phaser implementation/history | V3 §§4, 10–12 | Godot active, history archived, no obsolete CI/Phaser-first commands as current rules |
+| V2 §§13–15, §24: multiplayer/PvP/economy/prototypes | V3 §11 | Future design intent retained but excluded from M0/M1 implementation |
+
+### 12.2 Revision/approval rules
+
+1. **The GDD is the gameplay source of truth.** Approved new mechanics, tuning, milestone revisions, release promises and specific UI/asset changes must be reconciled here with author/date/status and explicit replacement of affected clauses. A Work prompt or implementation branch is not an implicit new design rule.
+2. Exact approved art decisions and resource hashes remain in their dedicated ledgers; their **artistic approval** is not the same as **rendered game acceptance**. Update each ledger for precise owner-rejected/replaced versions rather than generalizing from an aesthetic comment.
+3. Technical architecture, CI, provider configuration, budget approval and deployment runbooks may live in dedicated TDD and operations documents, which **implement but never overrule** this GDD.
+4. Preserve original Phaser and approved source masters, player IDs, seeded deterministic events and versioned save compatibility. No historical-backfill edits may silently change behavior.
+5. Review all documentation-only PRs under the same owner-approved M0/M1 PR policy: applicable checks pass; owner reviews; merging does not itself authorize public alpha opening.
+
+**V3.0 consolidation scope:** document and milestone reconciliation **only**. No changes to Godot/Phaser runtime, art bytes, balance, backend infrastructure or production release are made by authoring this GDD.
+
