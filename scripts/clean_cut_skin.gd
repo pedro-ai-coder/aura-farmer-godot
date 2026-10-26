@@ -362,7 +362,7 @@ func hud_layout() -> void:
     hp.add_theme_color_override("font_color",Style.PAPER)
     hp.add_theme_color_override("font_outline_color",Style.DEEP)
     hp.add_theme_constant_override("outline_size",4)
-    hp.text="%s\n%d / %d HP   ·   %d SHIELD" % [game.hero["name"],ceili(game.hp),ceili(game.max_hp),ceili(game.shield)]
+    hp.text="%s\nHP %d / %d  ·  SHIELD %d" % [game.hero["name"],ceili(game.hp),ceili(game.max_hp),ceili(game.shield)]
     place(hp,Rect2(82,38,minf(280,view.x-244),60))
     var xp_y: float=view.y-226 if narrow else view.y-132
     var xp_width: float=minf(350,view.x-200)
