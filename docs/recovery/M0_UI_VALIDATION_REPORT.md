@@ -1,5 +1,7 @@
 # Clean Cut recovery — implementation and validation
 
+> Historical UI checkpoint. The [later combat recovery report](COMBAT_RECOVERY_REPORT.md) supersedes the open R12 discrepancy and records current CI and Web blockers. Images, timings and survival results below apply only to the sources identified here.
+
 ## Problem and behavior
 
 Secondary navigation previously returned to the hidden/legacy presentation while primary screens used Clean Cut. Full skin refreshes also recreated styles every frame, and a naive layout cache would let the native presenter overwrite live skin controls. The recovery retains all original actions and data, adds eight secondary destinations, tracks native presentation revisions, caches immutable styles, and refreshes layout only when represented state or interaction state changes.

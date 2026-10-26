@@ -4,7 +4,11 @@
 
 The current mandate is [the attached M0 execution directive](CREATOR_M0_EXECUTION_DIRECTIVE_2026-10-25.md). The earlier directive and evidence remain in Git history and this directory. The canonical GDD V3 entered main through merged PR #75 (`9d1b44f7c5ec9ea62382b0e83161ee7e5295aa1f`). Recovery was continued by merging that main revision into the existing branch, preserving the original deferred-legendary fix and provenance. No competing recovery PR was created.
 
-## Delivered in this checkpoint
+## Latest combat checkpoint
+
+Runtime `ef089759553ec3691b5bbf2e72d958908b05c3b2` adds bounded hit/death/pickup feedback, weapon geometry cues, larger reward/equipment art, consistent HP rounding and collectible phase XP. **48 Godot phases, 11 Python tests and Node checks pass in [CI run 40373810656](https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/40373810656).** See [combat recovery report](COMBAT_RECOVERY_REPORT.md) for current source identity and limitations. New local media was lost before publication and must be regenerated; older captures below remain historical.
+
+## Earlier UI checkpoint
 
 - Live Clean Cut pause, build inspection, settings, exit confirmation, profile import/export and victory/defeat flows reuse the original signal-bound controls.
 - Presentation revision invalidation prevents legacy layout/styles from overwriting the cached skin. Idle refreshes reuse layout and styles; keyboard focus follows the visible production controls.
@@ -42,7 +46,7 @@ See [the validation report](M0_UI_VALIDATION_REPORT.md), [capture inventory](evi
 | R08 | Graphical execution | Native X11/Compatibility rendering now works. Earlier missing-display blocker is resolved for native only |
 | R09 | Berserk artwork timing | Corrected and boundary-tested at 719.99 / 720 / 800 seconds; simulation timing unchanged |
 | R10 | Illustrative XP in approved source | Masked by live values, verified at zero and half progress; source artwork preserved |
-| R11 | Web interaction / full-run recording | **Not verified**. Vercel metadata access returned 403 for the owning team; no working WebGL2 interaction or normal human-run video is supplied |
-| R12 | Wave reward specification audit | **Open discrepancy**: V3 §5.4 specifies a collectible phase-transition crystal, while `_advance()` currently credits `40 * wave` directly through `_gain_xp`. This pre-existing behavior was not altered in this presentation checkpoint; requires a focused gameplay regression and reconciliation before full GDD acceptance |
+| R11 | Web interaction / full-run recording | **Not verified**. Earlier Vercel permission obstacle was resolved; the observed cloud browser lacked WebGL2. Current-source human-run video and physical-device QA remain pending |
+| R12 | Phase-transition crystal | Implemented in `ef08975`: collectible 80/120/160/200 XP at canonical phase boundaries; progression, clock, collection and magnet regressions pass. Human presentation review remains pending |
 
 Five-screen final composition/animation polish, all weapon/Flex visual states, full normal-play videos, complete device/browser QA and creator sign-off are **not complete**. Native staged captures, automated survival, green CI and a successful Web export do not establish those gates. No Phaser edits, new mechanics, balance adjustments, backend, new source artwork, manual public deployment, access expansion or merge were performed.
