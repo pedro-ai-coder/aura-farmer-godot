@@ -309,7 +309,8 @@ func cards_layout() -> void:
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
         parts["icon"].texture=ui.item_icons.texture(category,id)
         parts["name"].text=native["name"].text;parts["body"].text=native["body"].text;parts["comparison"].text=native["comparison"].text
-        parts["body"].tooltip_text = parts["body"].text
+        # Full offer text is presented on-card; avoid a large pointer tooltip obscuring the CTA.
+        parts["body"].tooltip_text = ""
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         parts["state"].text="SELECTED — CONFIRM BELOW" if selected else "SELECT ITEM"
         Type.apply(parts["name"],"card_title",view.x<700)
@@ -430,7 +431,9 @@ func hud_layout() -> void:
         parts["level"].text="" if item.is_empty() else str(item["level"]);place(parts["level"],Rect2(at+Vector2(40,38),Vector2(16,18)))
         parts["name"].add_theme_color_override("font_color",Style.INK)
         parts["name"].add_theme_stylebox_override("normal",caption_style)
-        parts["name"].visible=not item.is_empty()
+        # Icons and levels carry the compact in-combat equipment strip. Full names
+        # remain accessible from Build; 64px captions were clipped and illegible.
+        parts["name"].visible=false
         parts["name"].autowrap_mode=TextServer.AUTOWRAP_OFF
         parts["name"].text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
         parts["name"].tooltip_text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
