@@ -15,12 +15,14 @@ func install(owner_skin) -> void:
     skin=owner_skin;game=skin.game;ui=skin.ui
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     caption=skin.label(self,18,skin.Style.INK)
+    skin.Type.apply(caption,"section")
     caption.add_theme_stylebox_override("normal",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
     result_portrait=skin.image(self)
     result_scroll=ScrollContainer.new()
     result_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
     add_child(result_scroll)
     result=skin.label(result_scroll,20)
+    skin.Type.apply(result,"hud_value")
     result.size_flags_horizontal=Control.SIZE_EXPAND_FILL
     for button: Button in [ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run,ui.back_button,game.retry_button]:
         skin.adopt(button,self)
@@ -60,6 +62,8 @@ func layout() -> void:
     result_scroll.visible=result_portrait.visible
     caption.visible=true
     caption.text=ui.subtitle.text
+    skin.Type.apply(caption,"section",view.x<700)
+    skin.Type.apply(result,"hud_value",view.x<700)
     var titles := {"paused":"TAKE A BREATHER","build":"YOUR BUILD","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"VICTORY!","lost":"RUN OVER"}
     skin.headline(titles.get(mode,""))
     skin.place(caption,Rect2(28,94,view.x-56,68))
@@ -116,6 +120,8 @@ func layout() -> void:
     elif mode in ["won","lost"]:
         caption.text=ui.secondary.result_caption.text
         result.text=ui.secondary.result_stats.text
+        result.add_theme_color_override("font_color",skin.Style.DEEP)
+        result.add_theme_constant_override("line_spacing",9)
         result_portrait.texture=game.art.texture(game.hero["id"])
         var narrow:=view.x<700
         result_portrait.visible=not narrow
