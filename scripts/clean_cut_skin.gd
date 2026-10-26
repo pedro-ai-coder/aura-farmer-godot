@@ -2,6 +2,7 @@ extends Control
 ## Production live-Control visual skin. Only immutable creator-approved runtime sources.
 const Cache=preload("res://scripts/clean_cut_assets.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
+const Type=preload("res://scripts/clean_cut_typography.gd")
 var game
 var ui
 var art
@@ -63,7 +64,7 @@ var empty_style := StyleBoxEmpty.new()
 var caption_style := StyleBoxFlat.new()
 func label(parent: Node, pixels: int=18, color: Color=Style.INK) -> Label:
     var node:=Label.new();parent.add_child(node)
-    node.add_theme_font_override("font",Style.BODY)
+    Type.apply(node,"body")
     node.add_theme_font_size_override("font_size",pixels)
     node.add_theme_color_override("font_color",color)
     node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -103,8 +104,7 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
     for action in ["hover","pressed","disabled","focus"]:
         var alt: String=family+"-"+action
         button.add_theme_stylebox_override(action,box(alt if art.rows.has(alt) else key))
-    button.add_theme_font_override("font",Style.BLACK)
-    button.add_theme_font_size_override("font_size",20)
+    Type.button(button,view.x<700)
     for color_key in ["font_color","font_hover_color","font_pressed_color","font_focus_color"]:button.add_theme_color_override(color_key,Style.INK)
     button.add_theme_color_override("font_disabled_color",Style.INK.lightened(0.3))
     for child in native_children.get(button,[]):
@@ -113,15 +113,16 @@ func install(owner_game, source_root: String) -> void:
     game=owner_game;ui=game.presentation;art=Cache.new(source_root)
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.layer.add_child(self)
-    italic=FontVariation.new();italic.base_font=Style.BLACK
-    italic.variation_transform=Transform2D(Vector2(1,0),Vector2(-0.17,1),Vector2.ZERO)
+    # Avoid synthetic italic and displaced duplicate title glyphs.
     background=image(self);background.stretch_mode=TextureRect.STRETCH_SCALE
     poster_surface=PosterSurface.new();poster_surface.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(poster_surface)
     wordmark=image(self);wordmark.texture=art.texture("support/wordmark")
     poster_hero=image(self);poster_hero.texture=game.art.texture("sigma")
     heading_shadow=label(self,34,Style.GOLD);heading=label(self,34,Style.PAPER)
-    for node in [heading,heading_shadow]:node.add_theme_font_override("font",italic)
+    Type.apply(heading,"display")
+    heading_shadow.hide()
     home_caption=label(self,24,Style.PAPER)
+    Type.apply(home_caption,"section")
     for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.legendary_button]:adopt(button,self)
     hero_scroll=ScrollContainer.new();hero_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(hero_scroll)
     hero_content=Control.new();hero_scroll.add_child(hero_content)
@@ -129,14 +130,18 @@ func install(owner_game, source_root: String) -> void:
         var button: Button=game.menu_buttons[i];adopt(button,hero_content);button.text=""
         var parts: Dictionary={"portrait":image(button),"name":label(button,24),"role":label(button,15),"icon":image(button),"starter":label(button,17),"flex":label(button,18),"help":label(button,16)}
         parts["portrait"].texture=game.art.texture(game.HEROES[i]["id"])
-        parts["name"].add_theme_font_override("font",Style.BLACK)
+        Type.apply(parts["name"],"card_title")
         hero_parts.append(parts)
     offers_scroll=ScrollContainer.new();offers_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(offers_scroll)
     offers_content=Control.new();offers_scroll.add_child(offers_content)
     for button: Button in game.offer_buttons:
         adopt(button,offers_content);button.text=""
         var parts: Dictionary={"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
-        parts["name"].add_theme_font_override("font",Style.BLACK)
+        Type.apply(parts["name"],"card_title")
+        Type.apply(parts["meta"],"micro")
+        Type.apply(parts["body"],"body")
+        Type.apply(parts["comparison"],"caption")
+        Type.apply(parts["state"],"micro")
         parts["body"].clip_text = true
         parts["body"].max_lines_visible = 5
         parts["body"].text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -144,20 +149,25 @@ func install(owner_game, source_root: String) -> void:
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
     hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
     portrait=image(self);hp=label(self,17)
+    Type.apply(hp,"hud_value")
     xp_frame=image(self);xp_frame.stretch_mode=TextureRect.STRETCH_SCALE
     xp_track=ColorRect.new();xp_track.color=Style.DEEP;xp_track.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(xp_track)
     xp_fill=ColorRect.new();xp_fill.color=Style.SKY;xp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(xp_fill)
     xp=label(self,15)
+    Type.apply(xp,"hud_value")
     boss_plate=image(self);boss_plate.stretch_mode=TextureRect.STRETCH_SCALE;boss_text=label(self,17)
     game.touch_joystick.self_modulate=Color(1,1,1,0)
     joystick_ring=image(game.touch_joystick);joystick_thumb=image(game.touch_joystick)
     wave_frame=image(self);wave=label(self,19)
+    Type.apply(wave,"hud_value")
     warning=label(self,16,Style.GOLD)
     flex_image=image(game.flex_button);aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.flex_button.add_child(aura_arc);flex_caption=label(self,14,Style.PAPER)
     flex_caption.add_theme_stylebox_override("normal",Style.box(Style.DEEP,Style.DEEP,0,0))
     hud_nodes.assign([player_plate,hp_fill,portrait,hp,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_caption,boss_plate,boss_text])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
+        Type.apply(parts["level"],"micro")
+        Type.apply(parts["name"],"micro")
         equipment.append(parts)
         for node in parts.values():hud_nodes.append(node)
     watermark=label(self,13,Style.CORAL);watermark.text=""
@@ -204,7 +214,7 @@ func refresh() -> void:
     background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
-    heading.visible=mode!="playing";heading_shadow.visible=heading.visible
+    heading.visible=mode!="playing";heading_shadow.hide()
     for node in hud_nodes:node.visible=mode=="playing"
     place(watermark,Rect2(12,3,view.x-24,20))
     if mode=="menu":home_layout()
@@ -215,11 +225,11 @@ func refresh() -> void:
     auxiliary.visible=mode in auxiliary.MODES
     ui._focus_ring()
 func headline(text: String) -> void:
-    heading.text=text;heading_shadow.text=text
+    heading.text=text
+    Type.apply(heading,"display",view.x<700)
     heading.add_theme_color_override("font_color",Style.PAPER)
-    heading_shadow.add_theme_color_override("font_color",Style.GOLD)
-    for node in [heading,heading_shadow]:node.add_theme_font_size_override("font_size",24 if view.x<700 else 36)
-    place(heading_shadow,Rect2(28,39,view.x-56,50));place(heading,Rect2(25,36,view.x-56,50))
+    heading_shadow.hide()
+    place(heading,Rect2(28,32,view.x-56,64))
 func home_layout() -> void:
     background.modulate=Color.WHITE
     background.texture=art.texture("support/poster");place(background,Rect2(Vector2.ZERO,view))
@@ -301,7 +311,10 @@ func cards_layout() -> void:
         parts["name"].text=native["name"].text;parts["body"].text=native["body"].text;parts["comparison"].text=native["comparison"].text
         parts["body"].tooltip_text = parts["body"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
-        parts["state"].text="SELECTED / CONFIRM BELOW" if selected else "SELECT THIS ITEM"
+        parts["state"].text="SELECTED — CONFIRM BELOW" if selected else "SELECT ITEM"
+        Type.apply(parts["name"],"card_title",view.x<700)
+        Type.apply(parts["meta"],"micro")
+        Type.apply(parts["comparison"],"caption")
         if legendary:
             place(parts["icon"],Rect2(18,48,86,86));place(parts["name"],Rect2(116,48,width-136,80))
             parts["meta"].hide();place(parts["body"],Rect2(18,144,width-36,height-180));parts["comparison"].hide()
@@ -348,7 +361,7 @@ func hud_layout() -> void:
     hp.add_theme_color_override("font_color",Style.PAPER)
     hp.add_theme_color_override("font_outline_color",Style.DEEP)
     hp.add_theme_constant_override("outline_size",4)
-    hp.text="%s\nHP %d / %d  / SHIELD %d" % [game.hero["name"],ceili(game.hp),ceili(game.max_hp),ceili(game.shield)]
+    hp.text="%s\n%d / %d HP   ·   %d SHIELD" % [game.hero["name"],ceili(game.hp),ceili(game.max_hp),ceili(game.shield)]
     place(hp,Rect2(82,38,minf(280,view.x-244),60))
     var xp_y: float=view.y-226 if narrow else view.y-132
     var xp_width: float=minf(350,view.x-200)
@@ -361,11 +374,11 @@ func hud_layout() -> void:
     xp.add_theme_color_override("font_color",Style.PAPER)
     xp.add_theme_color_override("font_outline_color",Style.DEEP)
     xp.add_theme_constant_override("outline_size",5)
-    xp.text="XP %d / LEVEL %d" % [int(game.xp),game.level]
+    xp.text="LV %d   ·   %d XP" % [game.level,int(game.xp)]
     place(xp,Rect2(24,xp_y-25,minf(300,view.x-210),24))
     wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-240)/2,128 if narrow else 28,240,64))
     wave.text="%s  /  %02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
-    wave.add_theme_font_size_override("font_size",17)
+    Type.apply(wave,"hud_value",narrow)
     wave.autowrap_mode=TextServer.AUTOWRAP_OFF
     wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-220)/2,145 if narrow else 45,220,28))
     warning.text=game.SoloClock.warning(game.run_time);place(warning,Rect2((view.x-360)/2,210 if narrow else 108,360,40))
