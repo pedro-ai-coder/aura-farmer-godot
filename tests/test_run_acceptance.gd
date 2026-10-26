@@ -18,6 +18,13 @@ func _verify() -> void:
             game.set("run_time", float((wave - 1) * 120) - 0.01)
             game.set("spawn_timer", 1e9)
             game.call("_advance", 0.02)
+            var crystal: Dictionary = {}
+            for drop: Dictionary in game.pickups:
+                if int(drop.get("phase",0)) == wave: crystal = drop
+            _expect(not crystal.is_empty(), "Each phase emits one collectible reward")
+            if not crystal.is_empty():
+                game.player_pos = crystal["pos"]
+                game._collect_drops()
             total += float(40 * wave)
             _expect(is_equal_approx(game.get("total_xp"), total), "Every hero receives the four exact wave XP rewards once")
             var safety := 0

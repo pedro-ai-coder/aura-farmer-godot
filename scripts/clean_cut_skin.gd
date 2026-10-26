@@ -166,7 +166,15 @@ func install(owner_game, source_root: String) -> void:
     add_child(auxiliary)
     auxiliary.install(self)
     refresh()
-func _process(_delta: float) -> void:refresh()
+func _process(delta: float) -> void:
+    refresh()
+    if game == null or not offers_scroll.visible: return
+    for i in range(offer_parts.size()):
+        var icon: TextureRect = offer_parts[i]["icon"]
+        var active: bool = game.selected_card_index == i or game.offer_buttons[i].has_focus() or game.offer_buttons[i].is_hovered()
+        var target := Vector2.ONE * (1.08 if active else 1.0)
+        icon.pivot_offset = icon.size * 0.5
+        icon.scale = target if game.profile["settings"]["reducedMotion"] else icon.scale.lerp(target, 1.0-exp(-18.0*delta))
 func refresh() -> void:
     if game==null:return
     visible=true;ui.visible=false
@@ -208,6 +216,8 @@ func refresh() -> void:
     ui._focus_ring()
 func headline(text: String) -> void:
     heading.text=text;heading_shadow.text=text
+    heading.add_theme_color_override("font_color",Style.PAPER)
+    heading_shadow.add_theme_color_override("font_color",Style.GOLD)
     for node in [heading,heading_shadow]:node.add_theme_font_size_override("font_size",24 if view.x<700 else 36)
     place(heading_shadow,Rect2(28,39,view.x-56,50));place(heading,Rect2(25,36,view.x-56,50))
 func home_layout() -> void:
@@ -264,10 +274,13 @@ func cards_layout() -> void:
     var legendary: bool=game.mode=="legendary"
     background.modulate=Color.WHITE;background.texture=art.texture("support/legendary-bg" if legendary else "support/upgrade-bg")
     place(background,Rect2(Vector2.ZERO,view));headline("THE LEGENDARY DROP" if legendary else "MAKE ROOM" if game.mode=="replace" else "CHOOSE YOUR NEXT MOVE")
+    if legendary:
+        heading.add_theme_color_override("font_color",Style.INK)
+        heading_shadow.add_theme_color_override("font_color",Style.PAPER)
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
     var gap:=16.0;var width: float=(view.x-64-gap*(columns-1))/columns
-    var height: float=minf(440,view.y-190) if not legendary else minf(230,(view.y-200)/2) if view.y>=650 and columns==3 else 270.0
+    var height: float=minf(520,view.y-212) if not legendary else minf(250,(view.y-212)/2) if view.y>=650 and columns==3 else 270.0
     height=maxf(height,220 if legendary and view.y>=650 and columns==3 else 250 if legendary else 360)
     place(offers_scroll,Rect2(24,106,view.x-48,view.y-196))
     offers_content.custom_minimum_size=Vector2(view.x-64,ceili(float(items.size())/columns)*(height+gap));offers_content.size=offers_content.custom_minimum_size
@@ -290,15 +303,15 @@ func cards_layout() -> void:
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         parts["state"].text="SELECTED / CONFIRM BELOW" if selected else "SELECT THIS ITEM"
         if legendary:
-            place(parts["icon"],Rect2(18,48,62,62));place(parts["name"],Rect2(92,48,width-112,55))
-            parts["meta"].hide();place(parts["body"],Rect2(18,122,width-36,height-158));parts["comparison"].hide()
+            place(parts["icon"],Rect2(18,48,86,86));place(parts["name"],Rect2(116,48,width-136,80))
+            parts["meta"].hide();place(parts["body"],Rect2(18,144,width-36,height-180));parts["comparison"].hide()
             parts["body"].add_theme_font_size_override("font_size",16)
         else:
             parts["meta"].show();parts["body"].add_theme_font_size_override("font_size",18)
-            place(parts["icon"],Rect2((width-80)/2,74,80,80));place(parts["name"],Rect2(20,168,width-40,54))
-            place(parts["meta"],Rect2(20,226,width-40,34));place(parts["body"],Rect2(20,265,width-40,height-375));parts["comparison"].show()
-            place(parts["comparison"],Rect2(20,height-102,width-40,55))
-        if not legendary and height<420:
+            place(parts["icon"],Rect2((width-136)/2,68,136,136));place(parts["name"],Rect2(20,216,width-40,54))
+            place(parts["meta"],Rect2(20,276,width-40,34));place(parts["body"],Rect2(20,306,width-40,height-428));parts["comparison"].show()
+            place(parts["comparison"],Rect2(20,height-116,width-40,55))
+        if not legendary and height<490:
             place(parts["icon"],Rect2(18,78,60,60));place(parts["name"],Rect2(90,78,width-108,60))
             place(parts["meta"],Rect2(18,150,width-36,32));place(parts["body"],Rect2(18,188,width-36,height-280))
             parts["body"].add_theme_font_size_override("font_size",16)
@@ -332,7 +345,10 @@ func hud_layout() -> void:
     var hp_width: float=minf(350,view.x-160)
     place(hp_fill,Rect2(18+33*hp_width/463,28+47*86.0/92,(381*hp_width/463)*clampf(game.hp/maxf(1,game.max_hp),0,1),30*86.0/92))
     portrait.texture=game.art.texture(game.hero["id"]);place(portrait,Rect2(25,30,50,55))
-    hp.text="%s\nHP %d / %d  / SHIELD %d" % [game.hero["name"],ceili(game.hp),int(game.max_hp),ceili(game.shield)]
+    hp.add_theme_color_override("font_color",Style.PAPER)
+    hp.add_theme_color_override("font_outline_color",Style.DEEP)
+    hp.add_theme_constant_override("outline_size",4)
+    hp.text="%s\nHP %d / %d  / SHIELD %d" % [game.hero["name"],ceili(game.hp),ceili(game.max_hp),ceili(game.shield)]
     place(hp,Rect2(82,38,minf(280,view.x-244),60))
     var xp_y: float=view.y-226 if narrow else view.y-132
     var xp_width: float=minf(350,view.x-200)
@@ -347,9 +363,11 @@ func hud_layout() -> void:
     xp.add_theme_constant_override("outline_size",5)
     xp.text="XP %d / LEVEL %d" % [int(game.xp),game.level]
     place(xp,Rect2(24,xp_y-25,minf(300,view.x-210),24))
-    wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-190)/2,128 if narrow else 28,190,70))
-    wave.text="%s\n%02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d / 5" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
-    wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-178)/2,138 if narrow else 38,170,55))
+    wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-240)/2,128 if narrow else 28,240,64))
+    wave.text="%s  /  %02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
+    wave.add_theme_font_size_override("font_size",17)
+    wave.autowrap_mode=TextServer.AUTOWRAP_OFF
+    wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-220)/2,145 if narrow else 45,220,28))
     warning.text=game.SoloClock.warning(game.run_time);place(warning,Rect2((view.x-360)/2,210 if narrow else 108,360,40))
     game.pause_button.show();game.pause_button.text="II";place(game.pause_button,Rect2(view.x-90,28,64,64));button_skin(game.pause_button,"menu/secondary")
     # The legacy presentation is hidden while this skin owns gameplay. Keep
@@ -386,7 +404,7 @@ func hud_layout() -> void:
     aura_arc.progress=game.aura/100.0;place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*extent));aura_arc.queue_redraw()
     flex_caption.text=game.hero["flex"]+"\n"+(game.flex_status() if game.flex_time>0 else "RECOVERY %.1fs" % game.flex_lock if game.flex_lock>0 else "READY" if game.aura>=100 else "AURA %d%%" % int(game.aura))
     flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-62,230,58))
-    var slot_width:=48.0;var start_y:=view.y-174 if narrow else view.y-90
+    var slot_width:=56.0;var start_y:=view.y-174 if narrow else view.y-90
     for i in range(8):
         var weapon:=i<3;var index:=i if weapon else i-3
         var items: Array=game.weapons if weapon else game.passives
@@ -395,13 +413,16 @@ func hud_layout() -> void:
         var at:=Vector2(18+(index if narrow else i)*(slot_width+10)+(14 if not narrow and not weapon else 0),start_y+(82 if narrow and not weapon else 0))
         var kind: String="weapon" if weapon else "passive"
         parts["frame"].texture=art.texture("equipment/"+kind+("-empty" if item.is_empty() else "-filled"));place(parts["frame"],Rect2(at,Vector2.ONE*slot_width))
-        parts["icon"].texture=ui.item_icons.texture(kind,item["id"]) if not item.is_empty() else null;place(parts["icon"],Rect2(at+Vector2(5,5),Vector2.ONE*32))
-        parts["level"].text="" if item.is_empty() else str(item["level"]);place(parts["level"],Rect2(at+Vector2(32,30),Vector2(16,18)))
+        parts["icon"].texture=ui.item_icons.texture(kind,item["id"]) if not item.is_empty() else null;place(parts["icon"],Rect2(at+Vector2(5,5),Vector2.ONE*44))
+        parts["level"].text="" if item.is_empty() else str(item["level"]);place(parts["level"],Rect2(at+Vector2(40,38),Vector2(16,18)))
         parts["name"].add_theme_color_override("font_color",Style.INK)
         parts["name"].add_theme_stylebox_override("normal",caption_style)
         parts["name"].visible=not item.is_empty()
+        parts["name"].autowrap_mode=TextServer.AUTOWRAP_OFF
+        parts["name"].text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
+        parts["name"].tooltip_text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
         parts["name"].text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
-        place(parts["name"],Rect2(at+Vector2(0,50),Vector2(slot_width+8,30)))
+        place(parts["name"],Rect2(at+Vector2(0,58),Vector2(slot_width+8,22)))
 
 func reveal_selected(index: int, expected_signature: String) -> void:
     # Scroll ranges settle after container sorting, not when card positions are assigned.

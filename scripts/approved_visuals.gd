@@ -145,7 +145,7 @@ static func enemy_visual_kind(enemy: Dictionary, animation_time: float) -> Strin
         return "boss-berserk"
     return kind
 
-func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0) -> bool:
+func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0, reduced_motion: bool = false) -> bool:
     var kind := enemy_visual_kind(enemy,animation_time)
     if kind == "terminal":
         var atlas := texture("enemies")
@@ -170,8 +170,14 @@ func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0
     if phase in ["warning","charge-warning","charging"]: face_left = Vector2(enemy.get("locked_direction",Vector2.RIGHT)).x < -0.05
     var attack: Dictionary = enemy.get("attack_pose",{})
     if not attack.is_empty() and animation_time < float(attack["end"]): face_left = cos(float(attack["angle"])) < -0.05
-    canvas.draw_set_transform(position, 0.0, Vector2(-1.0, 1.0) if face_left else Vector2.ONE)
-    canvas.draw_texture_rect(image, Rect2(-pivot * scale, image.get_size() * scale), false,Color(1,1,1,1.0 if death_age < 0 else clampf((0.85-death_age)/0.3,0,1)))
+    var flash := clampf(1.0-(animation_time-float(enemy.get("hurt_at",-100.0)))/0.12,0.0,1.0) if death_age < 0 else 0.0
+    var stretch := Vector2.ONE
+    if not reduced_motion:
+        if death_age >= 0.0:
+            stretch = Vector2(1.0+minf(death_age,0.20)*0.5,1.0-minf(death_age,0.20)*0.8)
+        else: stretch = Vector2(1.0+flash*0.05,1.0-flash*0.05)
+    canvas.draw_set_transform(position, 0.0, stretch * (Vector2(-1.0, 1.0) if face_left else Vector2.ONE))
+    canvas.draw_texture_rect(image, Rect2(-pivot * scale, image.get_size() * scale), false,Color(1.0+flash*0.6,1.0+flash*0.6,1.0+flash*0.6,1.0 if death_age < 0 else clampf((0.85-death_age)/0.3,0,1)))
     canvas.draw_set_transform(Vector2.ZERO)
     return true
 

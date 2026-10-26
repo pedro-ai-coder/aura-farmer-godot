@@ -76,6 +76,7 @@ run_check passive-effects --headless --path . --script res://tests/test_passive_
 run_check approved-icon-batch --headless --path . --script res://tests/test_approved_icon_batch.gd
 run_check icon-registry --headless --path . --script res://tests/test_icon_registry.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
+run_check combat-feedback --headless --path . --script res://tests/test_combat_feedback.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
 run_check legendary-combat --headless --path . --script res://tests/test_legendary_combat.gd
 run_check weapon-timing --headless --path . --script res://tests/test_weapon_timing.gd
