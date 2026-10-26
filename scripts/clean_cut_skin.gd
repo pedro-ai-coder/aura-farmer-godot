@@ -309,8 +309,8 @@ func cards_layout() -> void:
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
         parts["icon"].texture=ui.item_icons.texture(category,id)
         parts["name"].text=native["name"].text;parts["body"].text=native["body"].text;parts["comparison"].text=native["comparison"].text
-        # Full offer text is presented on-card; avoid a large pointer tooltip obscuring the CTA.
-        parts["body"].tooltip_text = ""
+        # Preserve the full legendary description for accessibility and compact layouts.
+        parts["body"].tooltip_text = parts["body"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         parts["state"].text="SELECTED — CONFIRM BELOW" if selected else "SELECT ITEM"
         Type.apply(parts["name"],"card_title",view.x<700)
