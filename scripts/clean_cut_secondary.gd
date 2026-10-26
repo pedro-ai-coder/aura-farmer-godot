@@ -1,4 +1,5 @@
 extends Control
+const Type = preload("res://scripts/clean_cut_typography.gd")
 ## Secondary journeys use the same approved sources and existing signal-bound controls.
 const MODES = ["paused","build","options","confirm_exit","profile_import","profile_export","won","lost"]
 var skin
@@ -15,14 +16,14 @@ func install(owner_skin) -> void:
     skin=owner_skin;game=skin.game;ui=skin.ui
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     caption=skin.label(self,18,skin.Style.INK)
-    skin.Type.apply(caption,"section")
+    Type.apply(caption,"section")
     caption.add_theme_stylebox_override("normal",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
     result_portrait=skin.image(self)
     result_scroll=ScrollContainer.new()
     result_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
     add_child(result_scroll)
     result=skin.label(result_scroll,20)
-    skin.Type.apply(result,"hud_value")
+    Type.apply(result,"hud_value")
     result.size_flags_horizontal=Control.SIZE_EXPAND_FILL
     for button: Button in [ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run,ui.back_button,game.retry_button]:
         skin.adopt(button,self)
@@ -62,8 +63,8 @@ func layout() -> void:
     result_scroll.visible=result_portrait.visible
     caption.visible=true
     caption.text=ui.subtitle.text
-    skin.Type.apply(caption,"section",view.x<700)
-    skin.Type.apply(result,"hud_value",view.x<700)
+    Type.apply(caption,"section",view.x<700)
+    Type.apply(result,"hud_value",view.x<700)
     var titles := {"paused":"TAKE A BREATHER","build":"YOUR BUILD","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"VICTORY!","lost":"RUN OVER"}
     skin.headline(titles.get(mode,""))
     skin.place(caption,Rect2(28,94,view.x-56,68))
