@@ -10,12 +10,12 @@ const INK = Color("253449")
 const PAPER = Color("fff9e9")
 # family, desktop px, compact px, tracking px, extra line spacing, capitalization.
 const TOKENS = {
-    "display_xl":["display",56,40,1,0,"upper"],
-    "display_l":["display",44,32,1,0,"upper"],
-    "section_header":["display",32,26,1,2,"upper"],
-    "card_title":["display",34,30,0,2,"identity"],
-    "button_label":["semibold",22,20,1,0,"upper"],
-    "hud_stat":["bold",22,22,0,0,"identity"],
+    "display_xl":["bold",54,38,1,0,"upper"],
+    "display_l":["bold",42,30,1,0,"upper"],
+    "section_header":["bold",28,24,0,2,"upper"],
+    "card_title":["bold",32,28,0,2,"identity"],
+    "button_label":["bold",22,20,1,0,"upper"],
+    "hud_stat":["bold",24,21,0,0,"identity"],
     "hud_secondary":["semibold",17,16,0,2,"identity"],
     "body_m":["body",20,19,0,3,"sentence"],
     "body_s":["body",17,17,0,2,"sentence"],
@@ -50,9 +50,10 @@ static func apply(control: Control, role: String, compact: bool=false, color: Co
     control.add_theme_font_override("font",font(role))
     control.add_theme_font_size_override("font_size",token[2] if compact else token[1])
     control.add_theme_color_override("font_color",color)
-    control.add_theme_color_override("font_outline_color",Color("13233a"))
-    control.add_theme_constant_override("outline_size",2 if on_world else 0)
-    control.add_theme_color_override("font_shadow_color",Color(0,0,0,0.25) if on_world else Color.TRANSPARENT)
+    var strong: bool=role in ["display_xl","display_l","section_header","card_title","numeric_emphasis"]
+    control.add_theme_color_override("font_outline_color",Color("13233a") if on_world or color!=INK else INK)
+    control.add_theme_constant_override("outline_size",3 if on_world else 1 if strong else 0)
+    control.add_theme_color_override("font_shadow_color",Color(0,0,0,0.20) if on_world else Color.TRANSPARENT)
     control.add_theme_constant_override("shadow_offset_x",0)
     control.add_theme_constant_override("shadow_offset_y",1 if on_world else 0)
     control.add_theme_constant_override("line_spacing",token[4])
