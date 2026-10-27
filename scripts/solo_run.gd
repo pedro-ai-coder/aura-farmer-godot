@@ -1,4 +1,5 @@
 extends Node2D
+const Typography = preload("res://scripts/clean_cut_typography.gd")
 
 const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
@@ -2216,7 +2217,7 @@ func _draw() -> void:
         draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
         draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
     if run_time < float(hero_state.get("flex_caption_until",0.0)):
-        draw_string(ThemeDB.fallback_font,player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
+        draw_string(Typography.font("hud_secondary"),player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
 
 func _draw_combat_feedback() -> void:
     var reduced: bool = profile["settings"]["reducedMotion"]
@@ -2299,10 +2300,11 @@ func _draw_recovery() -> void:
     draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
     var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
     if progress > 0.0: draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
-    draw_string(ThemeDB.fallback_font,point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
+    draw_string_outline(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,2,Color("13233a"))
+    draw_string(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
     for feedback: Dictionary in pickup_feedback:
         var age := 0.9 - (float(feedback["until"]) - run_time)
         var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))
         var at: Vector2 = Vector2(feedback["pos"]) + offset
-        draw_string_outline(ThemeDB.fallback_font,at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,5,Color("253449"))
-        draw_string(ThemeDB.fallback_font,at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))
+        draw_string_outline(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,2,Color("253449"))
+        draw_string(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))

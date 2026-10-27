@@ -1,5 +1,4 @@
 extends Control
-const Type = preload("res://scripts/clean_cut_typography.gd")
 ## Secondary journeys use the same approved sources and existing signal-bound controls.
 const MODES = ["paused","build","options","confirm_exit","profile_import","profile_export","won","lost"]
 var skin
@@ -9,6 +8,9 @@ var caption: Label
 var result_portrait: TextureRect
 var result_scroll: ScrollContainer
 var result: Label
+var result_rows: VBoxContainer
+var result_values: Array[Label] = []
+var result_hero: Label
 var actions: Array[Button] = []
 var build_frames: Array[TextureRect] = []
 
@@ -16,15 +18,41 @@ func install(owner_skin) -> void:
     skin=owner_skin;game=skin.game;ui=skin.ui
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     caption=skin.label(self,18,skin.Style.INK)
-    Type.apply(caption,"section")
     caption.add_theme_stylebox_override("normal",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
     result_portrait=skin.image(self)
     result_scroll=ScrollContainer.new()
+    result_scroll.add_theme_stylebox_override("panel",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
     result_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
     add_child(result_scroll)
-    result=skin.label(result_scroll,20)
-    Type.apply(result,"hud_value")
-    result.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    result_rows=VBoxContainer.new()
+    result_rows.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    result_rows.add_theme_constant_override("separation",6)
+    result_scroll.add_child(result_rows)
+    result_hero=skin.label(result_rows)
+    skin.Type.apply(result_hero,"card_title")
+    result=skin.label(result_rows,20)
+    result.hide()
+    for title in ["TIME","WAVE","LEVEL","KILLS","WEAPONS","PASSIVES","DAMAGE","HEALING","SHIELD ABSORBED","FLEX USES"]:
+        var row:=HBoxContainer.new()
+        row.add_theme_constant_override("separation",16)
+        result_rows.add_child(row)
+        var label: Label=skin.label(row)
+        label.text=title
+        label.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+        skin.Type.apply(label,"hud_secondary")
+        var value: Label=skin.label(row)
+        value.autowrap_mode=TextServer.AUTOWRAP_OFF
+        value.custom_minimum_size.x=112
+        value.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+        skin.Type.apply(value,"numeric_emphasis")
+        result_values.append(value)
+    skin.Type.apply(game.profile_text,"body_s",false,skin.Style.PAPER)
+    for state in ["normal","read_only"]:
+        game.profile_text.add_theme_stylebox_override(state,skin.Style.box(skin.Style.DEEP,skin.Style.INK,0,0))
+    game.profile_text.add_theme_color_override("font_readonly_color",skin.Style.PAPER)
+    game.profile_text.add_theme_color_override("caret_color",skin.Style.PAPER)
+    game.profile_text.add_theme_color_override("selection_color",skin.Style.BLUE)
+    skin.Type.apply(ui.volume_label,"body_m")
     for button: Button in [ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run,ui.back_button,game.retry_button]:
         skin.adopt(button,self)
         actions.append(button)
@@ -63,8 +91,6 @@ func layout() -> void:
     result_scroll.visible=result_portrait.visible
     caption.visible=true
     caption.text=ui.subtitle.text
-    Type.apply(caption,"section",view.x<700)
-    Type.apply(result,"hud_value",view.x<700)
     var titles := {"paused":"TAKE A BREATHER","build":"YOUR BUILD","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"VICTORY!","lost":"RUN OVER"}
     skin.headline(titles.get(mode,""))
     skin.place(caption,Rect2(28,94,view.x-56,68))
@@ -97,6 +123,8 @@ func layout() -> void:
                 build_frames[i].texture=skin.art.texture("equipment/"+kind+("-filled" if occupied else "-empty"))
                 skin.place(build_frames[i],Rect2(0,4,96,96))
                 skin.place(parts["image"],Rect2(20,24,56,56))
+                skin.Type.apply(parts["label"],"card_title")
+                skin.Type.apply(parts["meta"],"hud_secondary")
                 skin.place(parts["label"],Rect2(104,12,parts["panel"].size.x-116,66))
                 skin.place(parts["meta"],Rect2(104,82,parts["panel"].size.x-116,34))
         else:
@@ -121,8 +149,9 @@ func layout() -> void:
     elif mode in ["won","lost"]:
         caption.text=ui.secondary.result_caption.text
         result.text=ui.secondary.result_stats.text
-        result.add_theme_color_override("font_color",skin.Style.DEEP)
-        result.add_theme_constant_override("line_spacing",9)
+        result_hero.text=game.hero["name"]
+        var values: Array=["%02d:%02d" % [int(game.run_time)/60,int(game.run_time)%60],"%d / 5" % game.wave,str(game.level),str(game.kills),"%d / 3" % game.weapons.size(),"%d / 5" % game.passives.size(),"%.0f" % game.run_metrics["damage"],"%.0f" % game.run_metrics["healing"],"%.0f" % game.run_metrics["protection"],str(int(game.run_metrics["flexes"]))]
+        for i in range(values.size()):result_values[i].text=values[i]
         result_portrait.texture=game.art.texture(game.hero["id"])
         var narrow:=view.x<700
         result_portrait.visible=not narrow

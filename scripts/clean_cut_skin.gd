@@ -1,8 +1,8 @@
 extends Control
 ## Production live-Control visual skin. Only immutable creator-approved runtime sources.
 const Cache=preload("res://scripts/clean_cut_assets.gd")
-const Style=preload("res://scripts/arcade_theme.gd")
 const Type=preload("res://scripts/clean_cut_typography.gd")
+const Style=preload("res://scripts/arcade_theme.gd")
 var game
 var ui
 var art
@@ -41,6 +41,8 @@ var boss_plate: TextureRect
 var boss_text: Label
 var joystick_ring: TextureRect
 var joystick_thumb: TextureRect
+var hero_name: Label
+var shield_label: Label
 var hp: Label
 var xp_frame: TextureRect
 var xp: Label
@@ -56,17 +58,13 @@ var last_selected := -1
 var view := Vector2.ZERO
 var shift := Vector2.ZERO
 var styles: Dictionary={}
-var italic: FontVariation
 var auxiliary
 var layout_key := ""
 var layout_count := 0
 var empty_style := StyleBoxEmpty.new()
-var caption_style := StyleBoxFlat.new()
 func label(parent: Node, pixels: int=18, color: Color=Style.INK) -> Label:
     var node:=Label.new();parent.add_child(node)
-    Type.apply(node,"body")
-    node.add_theme_font_size_override("font_size",pixels)
-    node.add_theme_color_override("font_color",color)
+    Type.apply(node,"body_m" if pixels >= 18 else "body_s",false,color)
     node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
     node.mouse_filter=Control.MOUSE_FILTER_IGNORE
     return node
@@ -104,7 +102,7 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
     for action in ["hover","pressed","disabled","focus"]:
         var alt: String=family+"-"+action
         button.add_theme_stylebox_override(action,box(alt if art.rows.has(alt) else key))
-    Type.button(button,view.x<700)
+    Type.apply(button,"button_label",view.x<700)
     for color_key in ["font_color","font_hover_color","font_pressed_color","font_focus_color"]:button.add_theme_color_override(color_key,Style.INK)
     button.add_theme_color_override("font_disabled_color",Style.INK.lightened(0.3))
     for child in native_children.get(button,[]):
@@ -113,16 +111,15 @@ func install(owner_game, source_root: String) -> void:
     game=owner_game;ui=game.presentation;art=Cache.new(source_root)
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.layer.add_child(self)
-    # Avoid synthetic italic and displaced duplicate title glyphs.
+    theme=Type.theme()
     background=image(self);background.stretch_mode=TextureRect.STRETCH_SCALE
     poster_surface=PosterSurface.new();poster_surface.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(poster_surface)
     wordmark=image(self);wordmark.texture=art.texture("support/wordmark")
     poster_hero=image(self);poster_hero.texture=game.art.texture("sigma")
     heading_shadow=label(self,34,Style.GOLD);heading=label(self,34,Style.PAPER)
-    Type.apply(heading,"display")
-    heading_shadow.hide()
+    Type.apply(heading,"display_l",false,Style.PAPER)
     home_caption=label(self,24,Style.PAPER)
-    Type.apply(home_caption,"section")
+    Type.apply(home_caption,"section_header",false,Style.PAPER)
     for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.legendary_button]:adopt(button,self)
     hero_scroll=ScrollContainer.new();hero_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(hero_scroll)
     hero_content=Control.new();hero_scroll.add_child(hero_content)
@@ -131,17 +128,21 @@ func install(owner_game, source_root: String) -> void:
         var parts: Dictionary={"portrait":image(button),"name":label(button,24),"role":label(button,15),"icon":image(button),"starter":label(button,17),"flex":label(button,18),"help":label(button,16)}
         parts["portrait"].texture=game.art.texture(game.HEROES[i]["id"])
         Type.apply(parts["name"],"card_title")
+        for key in ["role","starter"]:Type.apply(parts[key],"hud_secondary")
+        Type.apply(parts["flex"],"section_header")
+        Type.apply(parts["help"],"body_s")
         hero_parts.append(parts)
     offers_scroll=ScrollContainer.new();offers_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(offers_scroll)
     offers_content=Control.new();offers_scroll.add_child(offers_content)
     for button: Button in game.offer_buttons:
         adopt(button,offers_content);button.text=""
-        var parts: Dictionary={"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
+        var parts: Dictionary={"category":label(button),"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
         Type.apply(parts["name"],"card_title")
-        Type.apply(parts["meta"],"micro")
-        Type.apply(parts["body"],"body")
-        Type.apply(parts["comparison"],"caption")
-        Type.apply(parts["state"],"micro")
+        Type.apply(parts["category"],"micro_label")
+        parts["category"].add_theme_stylebox_override("normal",StyleBoxFlat.new())
+        Type.apply(parts["meta"],"micro_label")
+        Type.apply(parts["comparison"],"body_s")
+        Type.apply(parts["state"],"micro_label")
         parts["body"].clip_text = true
         parts["body"].max_lines_visible = 5
         parts["body"].text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -149,29 +150,32 @@ func install(owner_game, source_root: String) -> void:
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
     hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
     portrait=image(self);hp=label(self,17)
-    Type.apply(hp,"hud_value")
+    hero_name=label(self);shield_label=label(self)
     xp_frame=image(self);xp_frame.stretch_mode=TextureRect.STRETCH_SCALE
     xp_track=ColorRect.new();xp_track.color=Style.DEEP;xp_track.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(xp_track)
     xp_fill=ColorRect.new();xp_fill.color=Style.SKY;xp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(xp_fill)
     xp=label(self,15)
-    Type.apply(xp,"hud_value")
     boss_plate=image(self);boss_plate.stretch_mode=TextureRect.STRETCH_SCALE;boss_text=label(self,17)
     game.touch_joystick.self_modulate=Color(1,1,1,0)
     joystick_ring=image(game.touch_joystick);joystick_thumb=image(game.touch_joystick)
     wave_frame=image(self);wave=label(self,19)
-    Type.apply(wave,"hud_value")
     warning=label(self,16,Style.GOLD)
     flex_image=image(game.flex_button);aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.flex_button.add_child(aura_arc);flex_caption=label(self,14,Style.PAPER)
     flex_caption.add_theme_stylebox_override("normal",Style.box(Style.DEEP,Style.DEEP,0,0))
-    hud_nodes.assign([player_plate,hp_fill,portrait,hp,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_caption,boss_plate,boss_text])
+    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_caption,boss_plate,boss_text])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
-        Type.apply(parts["level"],"micro")
-        Type.apply(parts["name"],"micro")
+        Type.apply(parts["level"],"micro_label")
+        Type.apply(parts["name"],"equipment_label",false,Style.PAPER)
+        var name_plate:=StyleBoxFlat.new()
+        name_plate.bg_color=Style.DEEP
+        name_plate.content_margin_left=2;name_plate.content_margin_right=2
+        parts["name"].add_theme_stylebox_override("normal",name_plate)
+        parts["name"].uppercase=false
+        parts["name"].mouse_filter=Control.MOUSE_FILTER_PASS
         equipment.append(parts)
         for node in parts.values():hud_nodes.append(node)
     watermark=label(self,13,Style.CORAL);watermark.text=""
-    caption_style.bg_color=Style.PAPER
     auxiliary=load("res://scripts/clean_cut_secondary.gd").new()
     add_child(auxiliary)
     auxiliary.install(self)
@@ -214,7 +218,7 @@ func refresh() -> void:
     background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
-    heading.visible=mode!="playing";heading_shadow.hide()
+    heading.visible=mode!="playing";heading_shadow.visible=heading.visible
     for node in hud_nodes:node.visible=mode=="playing"
     place(watermark,Rect2(12,3,view.x-24,20))
     if mode=="menu":home_layout()
@@ -226,10 +230,10 @@ func refresh() -> void:
     ui._focus_ring()
 func headline(text: String) -> void:
     heading.text=text
-    Type.apply(heading,"display",view.x<700)
-    heading.add_theme_color_override("font_color",Style.PAPER)
     heading_shadow.hide()
-    place(heading,Rect2(28,32,view.x-56,64))
+    Type.apply(heading,"display_l",view.x<700,Style.PAPER)
+    heading.autowrap_mode=TextServer.AUTOWRAP_OFF
+    place(heading,Rect2(28,28,view.x-56,60))
 func home_layout() -> void:
     background.modulate=Color.WHITE
     background.texture=art.texture("support/poster");place(background,Rect2(Vector2.ZERO,view))
@@ -286,12 +290,12 @@ func cards_layout() -> void:
     place(background,Rect2(Vector2.ZERO,view));headline("THE LEGENDARY DROP" if legendary else "MAKE ROOM" if game.mode=="replace" else "CHOOSE YOUR NEXT MOVE")
     if legendary:
         heading.add_theme_color_override("font_color",Style.INK)
-        heading_shadow.add_theme_color_override("font_color",Style.PAPER)
+        heading_shadow.hide()
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
     var gap:=16.0;var width: float=(view.x-64-gap*(columns-1))/columns
     var height: float=minf(520,view.y-212) if not legendary else minf(250,(view.y-212)/2) if view.y>=650 and columns==3 else 270.0
-    height=maxf(height,220 if legendary and view.y>=650 and columns==3 else 250 if legendary else 360)
+    height=maxf(height,220 if legendary and view.y>=650 and columns==3 else 250 if legendary else 414)
     place(offers_scroll,Rect2(24,106,view.x-48,view.y-196))
     offers_content.custom_minimum_size=Vector2(view.x-64,ceili(float(items.size())/columns)*(height+gap));offers_content.size=offers_content.custom_minimum_size
     var current_signature: String=game.run_id+game.mode+JSON.stringify(items)
@@ -307,28 +311,31 @@ func cards_layout() -> void:
         button_skin(button,family,selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
+        parts["category"].text=("LEGENDARY · " if legendary else "")+category
+        var category_plate: StyleBoxFlat=parts["category"].get_theme_stylebox("normal")
+        category_plate.bg_color=(Style.SKY if category=="weapon" else Style.GOLD) if legendary else Style.PAPER
+        if legendary:
+            place(parts["category"],Rect2(width*68/438,height*10/304,width*338/438,height*42/304))
+        else:
+            place(parts["category"],Rect2(20,height*34/486,width-40,height*28/486))
         parts["icon"].texture=ui.item_icons.texture(category,id)
         parts["name"].text=native["name"].text;parts["body"].text=native["body"].text;parts["comparison"].text=native["comparison"].text
-        # Preserve the full legendary description for accessibility and compact layouts.
         parts["body"].tooltip_text = parts["body"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
-        parts["state"].text="SELECTED — CONFIRM BELOW" if selected else "SELECT ITEM"
-        Type.apply(parts["name"],"card_title",view.x<700)
-        Type.apply(parts["meta"],"micro")
-        Type.apply(parts["comparison"],"caption")
+        parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "SELECT ITEM"
         if legendary:
             place(parts["icon"],Rect2(18,48,86,86));place(parts["name"],Rect2(116,48,width-136,80))
             parts["meta"].hide();place(parts["body"],Rect2(18,144,width-36,height-180));parts["comparison"].hide()
-            parts["body"].add_theme_font_size_override("font_size",16)
+            Type.apply(parts["body"],"body_s")
         else:
-            parts["meta"].show();parts["body"].add_theme_font_size_override("font_size",18)
-            place(parts["icon"],Rect2((width-136)/2,68,136,136));place(parts["name"],Rect2(20,216,width-40,54))
-            place(parts["meta"],Rect2(20,276,width-40,34));place(parts["body"],Rect2(20,306,width-40,height-428));parts["comparison"].show()
-            place(parts["comparison"],Rect2(20,height-116,width-40,55))
+            parts["meta"].show();Type.apply(parts["body"],"body_m")
+            place(parts["icon"],Rect2((width-136)/2,68,136,136));place(parts["name"],Rect2(20,210,width-40,70))
+            place(parts["meta"],Rect2(20,278,width-40,26));place(parts["body"],Rect2(20,310,width-40,height-414));parts["comparison"].show()
+            place(parts["comparison"],Rect2(20,height-126,width-40,62))
         if not legendary and height<490:
-            place(parts["icon"],Rect2(18,78,60,60));place(parts["name"],Rect2(90,78,width-108,60))
+            place(parts["icon"],Rect2(18,78,60,60));place(parts["name"],Rect2(90,70,width-108,76))
             place(parts["meta"],Rect2(18,150,width-36,32));place(parts["body"],Rect2(18,188,width-36,height-280))
-            parts["body"].add_theme_font_size_override("font_size",16)
+            Type.apply(parts["body"],"body_s")
             place(parts["comparison"],Rect2(18,height-86,width-36,48))
         place(parts["state"],Rect2(18,height-28,width-36,22))
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
@@ -359,12 +366,18 @@ func hud_layout() -> void:
     var hp_width: float=minf(350,view.x-160)
     place(hp_fill,Rect2(18+33*hp_width/463,28+47*86.0/92,(381*hp_width/463)*clampf(game.hp/maxf(1,game.max_hp),0,1),30*86.0/92))
     portrait.texture=game.art.texture(game.hero["id"]);place(portrait,Rect2(25,30,50,55))
-    hp.add_theme_color_override("font_color",Style.PAPER)
-    hp.add_theme_color_override("font_outline_color",Style.DEEP)
-    hp.add_theme_constant_override("outline_size",4)
-    hp.text="%s\nHP %d / %d  ·  SHIELD %d" % [game.hero["name"],ceili(game.hp),ceili(game.max_hp),ceili(game.shield)]
-    place(hp,Rect2(82,38,minf(280,view.x-244),60))
-    var xp_y: float=view.y-226 if narrow else view.y-132
+    Type.apply(hero_name,"section_header",true,Style.INK)
+    hero_name.text=game.hero["name"]
+    hero_name.autowrap_mode=TextServer.AUTOWRAP_OFF
+    place(hero_name,Rect2(82,28,hp_width-70,32))
+    Type.apply(hp,"hud_stat",narrow,Style.INK)
+    hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
+    hp.autowrap_mode=TextServer.AUTOWRAP_OFF
+    place(hp,Rect2(82,58,hp_width-70,30))
+    Type.apply(shield_label,"hud_secondary",narrow,Style.INK)
+    shield_label.text="SHIELD %d" % ceili(game.shield)
+    place(shield_label,Rect2(82,88,hp_width-70,22))
+    var xp_y: float=view.y-248 if narrow else view.y-150
     var xp_width: float=minf(350,view.x-200)
     xp_frame.texture=art.texture("support/xp");place(xp_frame,Rect2(18,xp_y,xp_width,38))
     # Approved SVG contains an illustrative blue segment (x28..330,y24..41).
@@ -372,16 +385,15 @@ func hud_layout() -> void:
     var track:=Rect2(18+27*xp_width/540,xp_y+23*38.0/120,467*xp_width/540,19*38.0/120)
     place(xp_track,track)
     place(xp_fill,Rect2(track.position,Vector2(track.size.x*clampf(game.xp/(30+8*game.level+game.level*game.level),0,1),track.size.y)))
-    xp.add_theme_color_override("font_color",Style.PAPER)
-    xp.add_theme_color_override("font_outline_color",Style.DEEP)
-    xp.add_theme_constant_override("outline_size",5)
-    xp.text="LV %d   ·   %d XP" % [game.level,int(game.xp)]
+    Type.apply(xp,"hud_secondary",narrow,Style.PAPER,true)
+    xp.text="XP %d / LEVEL %d" % [int(game.xp),game.level]
     place(xp,Rect2(24,xp_y-25,minf(300,view.x-210),24))
     wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-240)/2,128 if narrow else 28,240,64))
     wave.text="%s  /  %02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
-    Type.apply(wave,"hud_value",narrow)
+    Type.apply(wave,"hud_stat",narrow)
     wave.autowrap_mode=TextServer.AUTOWRAP_OFF
     wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-220)/2,145 if narrow else 45,220,28))
+    Type.apply(warning,"hud_secondary",narrow,Style.GOLD,true)
     warning.text=game.SoloClock.warning(game.run_time);place(warning,Rect2((view.x-360)/2,210 if narrow else 108,360,40))
     game.pause_button.show();game.pause_button.text="II";place(game.pause_button,Rect2(view.x-90,28,64,64));button_skin(game.pause_button,"menu/secondary")
     # The legacy presentation is hidden while this skin owns gameplay. Keep
@@ -407,7 +419,7 @@ func hud_layout() -> void:
         var thumb_at: Vector2=game.touch_joystick.center+game.touch_direction*game.touch_joystick.THUMB_OFFSET*scale
         place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
     var extent:=128.0
-    game.flex_button.show();game.flex_button.text="";place(game.flex_button,Rect2(view.x-extent-26,view.y-extent-68,extent,extent))
+    game.flex_button.show();game.flex_button.text="";place(game.flex_button,Rect2(view.x-extent-26,view.y-320 if narrow else view.y-extent-68,extent,extent))
     var current: String="active" if game.flex_time>0 else "recovery" if game.flex_lock>0 else "ready" if game.aura>=100 else "charging"
     if game.mode!="playing":current="disabled"
     elif state(game.flex_button)=="pressed":current="pressed"
@@ -416,29 +428,29 @@ func hud_layout() -> void:
     for key in ["normal","hover","pressed","focus","disabled"]:game.flex_button.add_theme_stylebox_override(key,empty)
     flex_image.texture=art.texture("flex/"+game.hero["id"]+"-"+current);place(flex_image,Rect2(Vector2.ZERO,Vector2.ONE*extent))
     aura_arc.progress=game.aura/100.0;place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*extent));aura_arc.queue_redraw()
+    Type.apply(flex_caption,"hud_secondary",narrow,Style.PAPER)
     flex_caption.text=game.hero["flex"]+"\n"+(game.flex_status() if game.flex_time>0 else "RECOVERY %.1fs" % game.flex_lock if game.flex_lock>0 else "READY" if game.aura>=100 else "AURA %d%%" % int(game.aura))
-    flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-62,230,58))
-    var slot_width:=56.0;var start_y:=view.y-174 if narrow else view.y-90
+    flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-188 if narrow else view.y-62,230,58))
+    var slot_width:=56.0;var slot_pitch:=80.0;var start_y:=view.y-196 if narrow else view.y-106
     for i in range(8):
         var weapon:=i<3;var index:=i if weapon else i-3
         var items: Array=game.weapons if weapon else game.passives
         var item: Dictionary=items[index] if index<items.size() else {}
         var parts: Dictionary=equipment[i]
-        var at:=Vector2(18+(index if narrow else i)*(slot_width+10)+(14 if not narrow and not weapon else 0),start_y+(82 if narrow and not weapon else 0))
+        var at:=Vector2(18+(index if narrow else i)*slot_pitch+(14 if not narrow and not weapon else 0),start_y+(94 if narrow and not weapon else 0))
         var kind: String="weapon" if weapon else "passive"
         parts["frame"].texture=art.texture("equipment/"+kind+("-empty" if item.is_empty() else "-filled"));place(parts["frame"],Rect2(at,Vector2.ONE*slot_width))
         parts["icon"].texture=ui.item_icons.texture(kind,item["id"]) if not item.is_empty() else null;place(parts["icon"],Rect2(at+Vector2(5,5),Vector2.ONE*44))
         parts["level"].text="" if item.is_empty() else str(item["level"]);place(parts["level"],Rect2(at+Vector2(40,38),Vector2(16,18)))
-        parts["name"].add_theme_color_override("font_color",Style.INK)
-        parts["name"].add_theme_stylebox_override("normal",caption_style)
-        # Icons and levels carry the compact in-combat equipment strip. Full names
-        # remain accessible from Build; 64px captions were clipped and illegible.
-        parts["name"].visible=false
-        parts["name"].autowrap_mode=TextServer.AUTOWRAP_OFF
-        parts["name"].text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
+        parts["name"].visible=not item.is_empty()
+        parts["name"].autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+        parts["name"].text_overrun_behavior=TextServer.OVERRUN_NO_TRIMMING
+        parts["name"].max_lines_visible=2
+        parts["name"].horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
         parts["name"].tooltip_text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
-        parts["name"].text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
-        place(parts["name"],Rect2(at+Vector2(0,58),Vector2(slot_width+8,22)))
+        parts["name"].text="" if item.is_empty() else Type.equipment_name(item["id"],ui.catalog[item["id"]]["name"])
+        place(parts["name"],Rect2(at+Vector2(-6,58),Vector2(76,40)))
+
 
 func reveal_selected(index: int, expected_signature: String) -> void:
     # Scroll ranges settle after container sorting, not when card positions are assigned.

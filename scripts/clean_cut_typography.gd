@@ -1,36 +1,80 @@
 class_name CleanCutTypography
 extends RefCounted
-
-## Shared runtime typography rules. Reuses the repository's existing licensed font assets.
-const Style = preload("res://scripts/arcade_theme.gd")
-const ROLES = {
-    "display": {"font": "display", "size": 38},
-    "section": {"font": "black", "size": 26},
-    "card_title": {"font": "black", "size": 26},
-    "button": {"font": "black", "size": 20},
-    "hud_value": {"font": "numbers", "size": 18},
-    "hud_label": {"font": "black", "size": 15},
-    "body": {"font": "body", "size": 18},
-    "caption": {"font": "body", "size": 15},
-    "micro": {"font": "numbers", "size": 13}
+## Packaged SIL OFL fonts. No system-font/network dependency or synthetic slant.
+const DISPLAY = preload("res://assets/fonts/clean-cut/BarlowCondensed-Bold.ttf")
+const BODY = preload("res://assets/fonts/clean-cut/Barlow-Medium.ttf")
+const SEMIBOLD = preload("res://assets/fonts/clean-cut/Barlow-SemiBold.ttf")
+const BOLD = preload("res://assets/fonts/clean-cut/Barlow-Bold.ttf")
+const SYMBOLS = preload("res://assets/fonts/Inter-Body.ttf")
+const INK = Color("253449")
+const PAPER = Color("fff9e9")
+# family, desktop px, compact px, tracking px, extra line spacing, capitalization.
+const TOKENS = {
+    "display_xl":["display",56,40,1,0,"upper"],
+    "display_l":["display",44,32,1,0,"upper"],
+    "section_header":["display",30,26,1,2,"upper"],
+    "card_title":["display",32,30,0,2,"identity"],
+    "button_label":["semibold",20,20,1,0,"upper"],
+    "hud_stat":["bold",22,22,0,0,"identity"],
+    "hud_secondary":["semibold",16,16,0,2,"identity"],
+    "body_m":["body",19,19,0,3,"sentence"],
+    "body_s":["body",17,17,0,2,"sentence"],
+    "micro_label":["semibold",14,14,1,1,"upper"],
+    "equipment_label":["semibold",14,14,0,1,"identity"],
+    "numeric_emphasis":["bold",28,26,0,2,"identity"],
 }
+static var fonts: Dictionary = {}
+static var shared_theme: Theme
 
-static func size_for(role: String, compact: bool = false) -> int:
-    var entry: Dictionary = ROLES.get(role, ROLES["body"])
-    var pixels: int = int(entry["size"])
-    return maxi(12, pixels - (6 if role == "display" and compact else 3 if compact else 0))
+static func _static_init() -> void:
+    var symbols: FontFile = SYMBOLS
+    symbols.allow_system_fallback = false
+    for face: FontFile in [DISPLAY,BODY,SEMIBOLD,BOLD]:
+        face.allow_system_fallback = false
+        face.fallbacks = [SYMBOLS]
 
-static func apply(label: Label, role: String, compact: bool = false) -> void:
-    var entry: Dictionary = ROLES.get(role, ROLES["body"])
-    label.add_theme_font_override("font", Style.font(str(entry["font"])))
-    label.add_theme_font_size_override("font_size", size_for(role, compact))
-    label.add_theme_constant_override("outline_size", 0)
-    label.add_theme_constant_override("shadow_offset_x", 0)
-    label.add_theme_constant_override("shadow_offset_y", 0)
-    label.add_theme_color_override("font_shadow_color", Color.TRANSPARENT)
+static func font(role: String) -> Font:
+    if fonts.has(role): return fonts[role]
+    var token: Array = TOKENS[role]
+    var variation := FontVariation.new()
+    variation.base_font = {"display":DISPLAY,"body":BODY,"semibold":SEMIBOLD,"bold":BOLD}[token[0]]
+    variation.spacing_glyph = token[3]
+    if role in ["hud_stat","numeric_emphasis","hud_secondary"]:
+        variation.opentype_features = {"tnum":1}
+    fonts[role] = variation
+    return variation
 
-static func button(button: Button, compact: bool = false) -> void:
-    button.add_theme_font_override("font", Style.font("black"))
-    button.add_theme_font_size_override("font_size", size_for("button", compact))
-    button.clip_text = true
-    button.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+static func apply(control: Control, role: String, compact: bool=false, color: Color=INK, on_world: bool=false) -> void:
+    var token: Array = TOKENS[role]
+    control.set_meta("typography_role",role)
+    control.add_theme_font_override("font",font(role))
+    control.add_theme_font_size_override("font_size",token[2] if compact else token[1])
+    control.add_theme_color_override("font_color",color)
+    control.add_theme_color_override("font_outline_color",Color("13233a"))
+    control.add_theme_constant_override("outline_size",2 if on_world else 0)
+    control.add_theme_color_override("font_shadow_color",Color(0,0,0,0.25) if on_world else Color.TRANSPARENT)
+    control.add_theme_constant_override("shadow_offset_x",0)
+    control.add_theme_constant_override("shadow_offset_y",1 if on_world else 0)
+    control.add_theme_constant_override("line_spacing",token[4])
+    if control is Label: control.uppercase = token[5] == "upper"
+
+static func theme() -> Theme:
+    if shared_theme != null: return shared_theme
+    shared_theme = Theme.new()
+    shared_theme.default_font = BODY
+    shared_theme.default_font_size = 19
+    for kind in ["Label","Button","TextEdit","LineEdit","TooltipLabel"]:
+        shared_theme.set_font("font",kind,BODY)
+        shared_theme.set_font_size("font_size",kind,17 if kind == "TooltipLabel" else 19)
+    return shared_theme
+
+static func equipment_name(id: String, full_name: String) -> String:
+    if font("equipment_label").get_string_size(full_name,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x <= 72: return full_name
+    # Stable, recognizable aliases; full identity remains in tooltip/build inspection.
+    return {"main-character":"Main\nCharacter", "caught-4k":"Caught\nin 4K",
+        "big-meme":"Big Meme\nEnergy", "timeline":"Across the\nTimeline",
+        "hands-on-sight":"Hands On\nSight", "no-cap-streak":"No Cap\nStreak",
+        "let-him-cook":"Let Him\nCook", "big-chad":"Big Chad\nEnergy",
+        "its-over":"It's So\nOver", "aura-viral":"Aura Goes\nViral",
+        "so-back":"We Are\nSo Back", "six-to-seven":"Six →\nSeven",
+        "too-sigma":"Too Sigma\nto Fall"}.get(id,full_name.replace(" ","\n"))

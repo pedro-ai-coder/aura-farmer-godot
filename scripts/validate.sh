@@ -41,6 +41,7 @@ bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
 python3 scripts/promote_approved_icons.py
 python3 scripts/verify_clean_cut_art.py
+python3 scripts/verify_typography.py
 python3 -m unittest discover -s tests -p test_icon_pipeline.py
 run_check import --headless --path . --import
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
@@ -77,6 +78,7 @@ run_check approved-icon-batch --headless --path . --script res://tests/test_appr
 run_check icon-registry --headless --path . --script res://tests/test_icon_registry.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check combat-feedback --headless --path . --script res://tests/test_combat_feedback.gd
+run_check clean-cut-typography --headless --path . --script res://tests/test_clean_cut_typography.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
 run_check legendary-combat --headless --path . --script res://tests/test_legendary_combat.gd
 run_check weapon-timing --headless --path . --script res://tests/test_weapon_timing.gd

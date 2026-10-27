@@ -1,7 +1,7 @@
 class_name ArcadeTheme
 extends RefCounted
 
-## Hero Spotlight V5 semantic treatment. Isolated illustration exports remain gated.
+## Shared Clean Cut color/component adapters; lettering is owned by Typography.
 const INK := Color("253449")
 const DEEP := Color("13233a")
 const BLUE := Color("1f3e63")
@@ -12,15 +12,14 @@ const GOLD := Color("f8c45f")
 const TEAL := Color("6eaab0")
 const CORAL := Color("e57461")
 const RARITY := {"common":Color("c9c5b5"),"rare":SKY,"epic":Color("a66bff"),"legendary":GOLD}
-const BODY = preload("res://assets/fonts/Inter-Body.ttf")
-const NUMBERS = preload("res://assets/fonts/Inter-Numbers.ttf")
-const BLACK = preload("res://assets/fonts/Inter-Black.ttf")
-const DISPLAY = preload("res://assets/fonts/Inter-Display.ttf")
+const Typography = preload("res://scripts/clean_cut_typography.gd")
+const BODY = Typography.BODY
+const NUMBERS = Typography.BOLD
+const BLACK = Typography.DISPLAY
+const DISPLAY = Typography.DISPLAY
 
 static func font(role: String = "body") -> Font:
-    var chosen: Font = {"body":BODY,"numbers":NUMBERS,"black":BLACK,"display":DISPLAY}.get(role,BODY)
-    if chosen.fallbacks.is_empty(): chosen.fallbacks = [ThemeDB.fallback_font]
-    return chosen
+    return Typography.font({"body":"body_m","numbers":"hud_stat","black":"card_title","display":"display_l"}.get(role,"body_m"))
 
 static func box(fill: Color, border: Color = INK, radius: int = 12, shadow: int = 4) -> StyleBoxFlat:
     var style := StyleBoxFlat.new()

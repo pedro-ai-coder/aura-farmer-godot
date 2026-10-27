@@ -23,6 +23,12 @@ func _capture() -> void:
     for state in ["menu","character","playing","mobile","obstacles","recovery","station","choice","legendary","paused","build","flex_sigma","flex_cool","flex_alpha","confirm_exit","wave","boss_warning","boss","berserk","last_effort","won","lost","options","profile_import","profile_export","dense","legendary_shield","legendary_space","chad_slam"]:
         if not requested.is_empty() and state != requested: continue
         game.start_run(0)
+        if "--full-equipment" in args:
+            game.weapons.clear();game.passives.clear()
+            for id in ["keyboard-warrior","personal-space","brainrot-feed"]:
+                game.weapons.append({"id":id,"level":4,"rarity":"common","timer":0.0})
+            for id in ["main-character","terminally-online","built-different","absolute-cinema","too-sigma"]:
+                game.passives.append({"id":id,"level":4,"rarity":"common"})
         if state == "menu" or state == "character":
             game._return_to_menu()
             if state == "character":

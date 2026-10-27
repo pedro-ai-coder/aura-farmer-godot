@@ -52,6 +52,7 @@ func _init(owner_game = null) -> void:
     mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func install() -> void:
+    theme = ArcadeStyle.Typography.theme()
     catalog = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ui-catalog.json"))
     var original: Array[Node] = game.layer.get_children()
     game.layer.add_child(self)
