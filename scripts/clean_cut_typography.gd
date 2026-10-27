@@ -20,7 +20,7 @@ const TOKENS = {
     "body_m":["body",19,19,0,3,"sentence"],
     "body_s":["body",17,17,0,2,"sentence"],
     "micro_label":["semibold",14,14,1,1,"upper"],
-    "equipment_label":["semibold",14,14,0,1,"identity"],
+    "equipment_label":["semibold",16,16,0,1,"identity"],
     "numeric_emphasis":["bold",28,26,0,2,"identity"],
 }
 static var fonts: Dictionary = {}
@@ -69,12 +69,12 @@ static func theme() -> Theme:
     return shared_theme
 
 static func equipment_name(id: String, full_name: String) -> String:
-    if font("equipment_label").get_string_size(full_name,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x <= 72: return full_name
+    if font("equipment_label").get_string_size(full_name,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x <= 72: return full_name
     # Stable, recognizable aliases; full identity remains in tooltip/build inspection.
-    return {"main-character":"Main\nCharacter", "caught-4k":"Caught\nin 4K",
-        "big-meme":"Big Meme\nEnergy", "timeline":"Across the\nTimeline",
+    return {"terminally-online":"Term.\nOnline", "main-character":"Main\nCharacter", "caught-4k":"Caught\nin 4K",
+        "big-meme":"Big Meme\nEnergy", "timeline":"Across\nTimeline",
         "hands-on-sight":"Hands On\nSight", "no-cap-streak":"No Cap\nStreak",
         "let-him-cook":"Let Him\nCook", "big-chad":"Big Chad\nEnergy",
         "its-over":"It's So\nOver", "aura-viral":"Aura Goes\nViral",
         "so-back":"We Are\nSo Back", "six-to-seven":"Six →\nSeven",
-        "too-sigma":"Too Sigma\nto Fall"}.get(id,full_name.replace(" ","\n"))
+        "too-sigma":"Too\nSigma"}.get(id,full_name.replace(" ","\n"))

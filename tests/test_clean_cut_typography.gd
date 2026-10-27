@@ -21,7 +21,7 @@ func verify() -> void:
         var name: String=Type.equipment_name(id,game.presentation.catalog[id]["name"])
         expect(name.split("\n").size() <= 2,"Equipment name uses at most two lines: "+id)
         for line in name.split("\n"):
-            expect(Type.font("equipment_label").get_string_size(line,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x <= 72,"Equipment name fits its slot: "+id)
+            expect(Type.font("equipment_label").get_string_size(line,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x <= 72,"Equipment name fits its slot: "+id)
     for extent in [Vector2i(1280,720),Vector2i(915,412),Vector2i(390,844)]:
         root.size=extent
         game.presentation._window_changed(true)
