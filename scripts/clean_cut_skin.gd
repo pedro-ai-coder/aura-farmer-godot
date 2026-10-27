@@ -32,6 +32,7 @@ var wordmark: TextureRect
 var poster_hero: TextureRect
 var heading: Label
 var heading_shadow: Label
+var headline_accent: ColorRect
 var watermark: Label
 var home_caption: Label
 var hero_scroll: ScrollContainer
@@ -131,6 +132,8 @@ func install(owner_game, source_root: String) -> void:
     poster_hero=image(self);poster_hero.texture=game.art.texture("sigma")
     heading_shadow=label(self,34,Style.GOLD);heading=label(self,34,Style.PAPER)
     Type.apply(heading,"display_l",false,Style.PAPER)
+    headline_accent=ColorRect.new();headline_accent.color=Style.GOLD
+    headline_accent.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(headline_accent)
     home_caption=label(self,24,Style.PAPER)
     Type.apply(home_caption,"section_header",false,Style.PAPER)
     for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.legendary_button]:adopt(button,self)
@@ -237,7 +240,7 @@ func refresh() -> void:
     background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
-    heading.visible=mode!="playing";heading_shadow.visible=heading.visible
+    heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
     for node in hud_nodes:node.visible=mode=="playing"
     place(watermark,Rect2(12,3,view.x-24,20))
     if mode=="menu":home_layout()
@@ -252,7 +255,9 @@ func headline(text: String) -> void:
     heading_shadow.hide()
     Type.apply(heading,"display_l",view.x<700,Style.PAPER)
     heading.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(heading,Rect2(28,28,view.x-56,60))
+    place(heading,Rect2(28,25,view.x-56,64))
+    headline_accent.show()
+    place(headline_accent,Rect2(30,92,minf(116,view.x*0.25),5))
 func home_layout() -> void:
     background.modulate=Color.WHITE
     background.texture=art.texture("support/poster");place(background,Rect2(Vector2.ZERO,view))
@@ -260,7 +265,7 @@ func home_layout() -> void:
     place(wordmark,Rect2(35,45,view.x*(0.78 if narrow else 0.38),125))
     place(poster_hero,Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
     poster_hero.visible=not narrow
-    heading.hide();heading_shadow.hide()
+    heading.hide();heading_shadow.hide();headline_accent.hide()
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
     place(home_caption,Rect2(40,180,view.x-80 if narrow else view.x*0.5,90))
     var compact_landscape: bool=view.y<515
@@ -332,7 +337,8 @@ func cards_layout() -> void:
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
         parts["category"].text=("LEGENDARY · " if legendary else "")+category
         var category_plate: StyleBoxFlat=parts["category"].get_theme_stylebox("normal")
-        category_plate.bg_color=(Style.SKY if category=="weapon" else Style.GOLD) if legendary else Style.PAPER
+        category_plate.bg_color=Style.SKY if category=="weapon" else Style.GOLD
+        parts["category"].add_theme_color_override("font_color",Style.DEEP)
         if legendary:
             place(parts["category"],Rect2(width*68/438,height*10/304,width*338/438,height*42/304))
         else:
