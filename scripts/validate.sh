@@ -84,6 +84,7 @@ run_check legendary-combat --headless --path . --script res://tests/test_legenda
 run_check weapon-timing --headless --path . --script res://tests/test_weapon_timing.gd
 run_check player-projectiles --headless --path . --script res://tests/test_player_projectiles.gd
 run_check mobile-touch --headless --path . --script res://tests/test_mobile_joystick.gd
+run_check flex-readability --headless --path . --script res://tests/test_flex_readability.gd
 run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10
 
