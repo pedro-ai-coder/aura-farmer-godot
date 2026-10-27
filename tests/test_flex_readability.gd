@@ -38,7 +38,7 @@ func verify() -> void:
         game.flex_lock = 27.0
         game.aura = 0.0
         skin.refresh()
-        check(skin.flex_status.text == "FLEX ACTIVE","Active Flex clearly communicates activation")
+        check(skin.flex_status.text.begins_with("ACTIVE ") and skin.flex_status.text.ends_with("S"),"Active Flex shows remaining canonical duration")
         check(skin.aura_arc.visual_state == "active","Active Flex receives distinct high-contrast ring")
         game.flex_time = 0.0
         skin.refresh()
