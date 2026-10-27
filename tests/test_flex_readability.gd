@@ -26,6 +26,7 @@ func verify() -> void:
         check(skin.flex_status.text == "AURA 42%","Charging Flex reports live Aura at %s" % viewport_size)
         check(skin.flex_badge.mouse_filter == Control.MOUSE_FILTER_IGNORE,"Flex badge does not capture gameplay touches")
         game.aura = 100.0
+        game._update_text()
         skin.refresh()
         check(skin.flex_status.text == "FLEX READY","Ready Flex is explicitly legible at %s" % viewport_size)
         check(skin.aura_arc.visual_state == "ready","Ready Flex has a full high-contrast Aura ring")
