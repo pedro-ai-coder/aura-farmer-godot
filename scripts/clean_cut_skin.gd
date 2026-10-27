@@ -416,7 +416,7 @@ func hud_layout() -> void:
         var held: String="pressed" if game.touch_direction.length()>0.05 else "idle"
         joystick_ring.texture=art.texture("joystick/ring-"+held);joystick_thumb.texture=art.texture("joystick/thumb-"+held)
         place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
-        var thumb_at: Vector2=game.touch_joystick.center+game.touch_direction*game.touch_joystick.THUMB_OFFSET*scale
+        var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
         place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
     var extent:=128.0
     game.flex_button.show();game.flex_button.text="";place(game.flex_button,Rect2(view.x-extent-26,view.y-320 if narrow else view.y-extent-68,extent,extent))
