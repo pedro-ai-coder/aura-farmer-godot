@@ -459,7 +459,7 @@ func hud_layout() -> void:
     if active_state:
         current="active"
         state_color=Style.TEAL
-        status_text="FLEX ACTIVE"
+        status_text="ACTIVE %.1fS" % game.flex_time
     elif ready_state:
         current="ready"
         state_color=Style.GOLD
