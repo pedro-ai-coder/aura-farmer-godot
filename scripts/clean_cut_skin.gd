@@ -13,8 +13,19 @@ class PosterSurface extends Control:
         draw_rect(Rect2(size.x*24/1600,0,size.x*10/1600,size.y),Color("f8c45f"))
 class AuraArc extends Control:
     var progress:=0.0
+    var visual_state: String="charging"
     func _draw() -> void:
-        draw_arc(size*0.5,minf(size.x,size.y)*0.43,-PI*0.5,-PI*0.5+TAU*clampf(progress,0,1),64,Color("f8c45f"),5,true)
+        var radius: float=minf(size.x,size.y)*0.43
+        var ink: Color=Color("13233a")
+        var aura: Color=Color("f8c45f")
+        var teal: Color=Color("6eaab0")
+        var accent: Color=teal if visual_state=="active" else aura
+        draw_arc(size*0.5,radius,-PI*0.5,PI*1.5,64,Color(ink,0.88),8,true)
+        draw_arc(size*0.5,radius,-PI*0.5,-PI*0.5+TAU*clampf(progress,0,1),64,accent,7,true)
+        if visual_state=="ready":
+            draw_arc(size*0.5,radius+6,0.0,TAU,64,Color(aura,0.9),3,true)
+        elif visual_state=="active":
+            draw_arc(size*0.5,radius+6,0.0,TAU,64,Color(teal,0.9),3,true)
 var poster_surface: Control
 var background: TextureRect
 var wordmark: TextureRect
@@ -50,6 +61,8 @@ var wave_frame: TextureRect
 var wave: Label
 var warning: Label
 var flex_image: TextureRect
+var flex_badge: Panel
+var flex_status: Label
 var flex_caption: Label
 var equipment: Array[Dictionary]=[]
 var last_mode := ""
@@ -160,9 +173,15 @@ func install(owner_game, source_root: String) -> void:
     joystick_ring=image(game.touch_joystick);joystick_thumb=image(game.touch_joystick)
     wave_frame=image(self);wave=label(self,19)
     warning=label(self,16,Style.GOLD)
-    flex_image=image(game.flex_button);aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE;game.flex_button.add_child(aura_arc);flex_caption=label(self,14,Style.PAPER)
-    flex_caption.add_theme_stylebox_override("normal",Style.box(Style.DEEP,Style.DEEP,0,0))
-    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_caption,boss_plate,boss_text])
+    flex_image=image(game.flex_button)
+    aura_arc=AuraArc.new();aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    game.flex_button.add_child(aura_arc)
+    flex_badge=Panel.new();flex_badge.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(flex_badge)
+    flex_status=label(self,24,Style.GOLD);flex_caption=label(self,16,Style.PAPER)
+    Type.apply(flex_status,"numeric_emphasis",false,Style.GOLD)
+    Type.apply(flex_caption,"hud_secondary",false,Style.PAPER)
+    for node in [flex_status,flex_caption]:node.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,flex_badge,flex_status,flex_caption,boss_plate,boss_text])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
         Type.apply(parts["level"],"micro_label")
@@ -418,19 +437,48 @@ func hud_layout() -> void:
         place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
         var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
         place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
-    var extent:=128.0
-    game.flex_button.show();game.flex_button.text="";place(game.flex_button,Rect2(view.x-extent-26,view.y-320 if narrow else view.y-extent-68,extent,extent))
-    var current: String="active" if game.flex_time>0 else "recovery" if game.flex_lock>0 else "ready" if game.aura>=100 else "charging"
-    if game.mode!="playing":current="disabled"
-    elif state(game.flex_button)=="pressed":current="pressed"
-    elif game.flex_button.has_focus():current="focused"
-    var empty:=empty_style
-    for key in ["normal","hover","pressed","focus","disabled"]:game.flex_button.add_theme_stylebox_override(key,empty)
-    flex_image.texture=art.texture("flex/"+game.hero["id"]+"-"+current);place(flex_image,Rect2(Vector2.ZERO,Vector2.ONE*extent))
-    aura_arc.progress=game.aura/100.0;place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*extent));aura_arc.queue_redraw()
-    Type.apply(flex_caption,"hud_secondary",narrow,Style.PAPER)
-    flex_caption.text=game.hero["flex"]+"\n"+(game.flex_status() if game.flex_time>0 else "RECOVERY %.1fs" % game.flex_lock if game.flex_lock>0 else "READY" if game.aura>=100 else "AURA %d%%" % int(game.aura))
-    flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(flex_caption,Rect2(view.x-240,view.y-188 if narrow else view.y-62,230,58))
+    # The action keeps its approved button artwork and interactive hitbox;
+    # a separate noninteractive badge makes its state legible on any viewport.
+    var compact_flex: bool=narrow or view.y<520.0
+    var extent: float=116.0 if compact_flex else 140.0
+    var center_x: float=view.x-extent*0.5-22.0
+    var circle_y: float=view.y-extent-(103.0 if compact_flex else 91.0)
+    game.flex_button.show();game.flex_button.text=""
+    place(game.flex_button,Rect2(center_x-extent*0.5,circle_y,extent,extent))
+    var ready: bool=game.aura>=100.0 and game.flex_lock<=0.0 and game.flex_time<=0.0
+    var active: bool=game.flex_time>0.0
+    var recovering: bool=game.flex_lock>0.0 and not active
+    var current: String="active" if active else "recovery" if recovering else "ready" if ready else "charging"
+    var image_state: String=current
+    if state(game.flex_button)=="pressed":image_state="pressed"
+    elif game.flex_button.has_focus():image_state="focused"
+    for key in ["normal","hover","pressed","focus","disabled"]:
+        game.flex_button.add_theme_stylebox_override(key,empty_style)
+    flex_image.texture=art.texture("flex/"+game.hero["id"]+"-"+image_state)
+    place(flex_image,Rect2(Vector2.ZERO,Vector2.ONE*extent))
+    aura_arc.progress=1.0 if ready or active else game.aura/100.0
+    aura_arc.visual_state=current
+    place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*extent))
+    aura_arc.queue_redraw()
+    var badge_width: float=205.0 if compact_flex else 250.0
+    var badge_height: float=76.0
+    var badge_rect:=Rect2(view.x-badge_width-12.0,view.y-badge_height-7.0,badge_width,badge_height)
+    var accent: Color=Style.TEAL if active else Style.GOLD if ready else Style.BLUE.lightened(0.32)
+    var background_style:=StyleBoxFlat.new()
+    background_style.bg_color=Style.DEEP
+    background_style.border_color=accent
+    background_style.set_border_width_all(3 if ready or active else 2)
+    background_style.set_corner_radius_all(2)
+    flex_badge.add_theme_stylebox_override("panel",background_style)
+    place(flex_badge,badge_rect)
+    flex_status.text="FLEX ACTIVE" if active else "FLEX READY" if ready else "RECOVERY %.1fs" % game.flex_lock if recovering else "AURA %d%%" % int(game.aura)
+    Type.apply(flex_status,"numeric_emphasis",compact_flex,accent)
+    flex_status.autowrap_mode=TextServer.AUTOWRAP_OFF
+    place(flex_status,Rect2(badge_rect.position+Vector2(7,6),Vector2(badge_width-14,34)))
+    flex_caption.text=str(game.hero["flex"]).to_upper()
+    Type.apply(flex_caption,"hud_secondary",compact_flex,Style.PAPER)
+    flex_caption.autowrap_mode=TextServer.AUTOWRAP_OFF
+    place(flex_caption,Rect2(badge_rect.position+Vector2(7,43),Vector2(badge_width-14,25))
     var slot_width:=56.0;var slot_pitch:=80.0;var start_y:=view.y-196 if narrow else view.y-106
     for i in range(8):
         var weapon:=i<3;var index:=i if weapon else i-3
