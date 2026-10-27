@@ -2098,8 +2098,9 @@ func _input(event: InputEvent) -> void:
         if touch_ui_pointers.has(event.index):
             get_viewport().set_input_as_handled()
         elif touch_active and event.index == touch_index and mode == "playing":
-            touch_direction = (event.position-touch_origin).limit_length(touch_joystick.saturation())/touch_joystick.saturation()
-            touch_joystick.show_at(touch_visual_origin,touch_direction)
+            var drag_offset: Vector2 = event.position - touch_origin
+            touch_direction = touch_joystick.direction_from_offset(drag_offset)
+            touch_joystick.show_at(touch_visual_origin,touch_joystick.visual_from_offset(drag_offset))
             get_viewport().set_input_as_handled()
 
 ## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
