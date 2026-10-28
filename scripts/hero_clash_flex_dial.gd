@@ -1,48 +1,87 @@
 extends Control
-## Original vector Flex dial for the Hero Clash M0 interface candidate.
-## Presentation-only: actual action/button, Aura, timing and ownership live in SoloRun.
-var progress: float = 0.0
-var visual_state: String = "charging"
-var emphasized: bool = false
-var highlighted: bool = false
+## Original state-driven circular Flex dial: a visual invitation, never auto-use.
+## Only game.aura and existing _use_flex control authorize ability activation.
+var progress: float=0.0
+var visual_state: String="charging"
+var emphasized: bool=false
+var highlighted: bool=false
+var reduced_motion: bool=false
+var ready_phase: float=0.0
+var ready_introduction: float=0.0
+var push_target: float=0.0
+var push_current: float=0.0
 
-func show_state(aura_fraction: float, next_state: String, button_emphasized: bool = false) -> void:
-    var value: float = clampf(aura_fraction,0.0,1.0)
-    if is_equal_approx(value,progress) and visual_state == next_state and emphasized == button_emphasized:
-        return
-    progress = value
-    visual_state = next_state
-    emphasized = button_emphasized
+func _ready() -> void:
+    mouse_filter=Control.MOUSE_FILTER_IGNORE
+    set_process(false)
+
+func show_state(aura_fraction: float, next_state: String, button_emphasized: bool=false, low_motion: bool=false) -> void:
+    var value: float=clampf(aura_fraction,0.0,1.0)
+    var entering_ready: bool=next_state=="ready" and visual_state!="ready"
+    var changed: bool=not is_equal_approx(value,progress) or visual_state!=next_state or emphasized!=button_emphasized or reduced_motion!=low_motion
+    progress=value
+    visual_state=next_state
+    emphasized=button_emphasized
+    reduced_motion=low_motion
+    if entering_ready:
+        ready_phase=0.0
+        ready_introduction=1.0
+    if reduced_motion:
+        ready_introduction=0.0
+        push_current=push_target
+    set_process((visual_state=="ready" and not reduced_motion and is_visible_in_tree()) or absf(push_target-push_current)>0.001 or ready_introduction>0.0)
+    if changed:
+        queue_redraw()
+
+func set_pressed(pressed: bool) -> void:
+    push_target=1.0 if pressed else 0.0
+    if reduced_motion:
+        push_current=push_target
+    set_process(not reduced_motion or absf(push_target-push_current)>0.001)
     queue_redraw()
 
+func _process(delta: float) -> void:
+    if visual_state=="ready" and not reduced_motion and is_visible_in_tree():
+        ready_phase+=delta
+    if ready_introduction>0.0:
+        ready_introduction=maxf(0.0,ready_introduction-delta*3.0)
+    push_current=lerpf(push_current,push_target,clampf(delta*18.0,0.0,1.0))
+    if absf(push_target-push_current)<0.003:
+        push_current=push_target
+    queue_redraw()
+    if (visual_state!="ready" or reduced_motion or not is_visible_in_tree()) and ready_introduction<=0.0 and push_current==push_target:
+        set_process(false)
+
 func _draw() -> void:
-    if size.x <= 0.0 or size.y <= 0.0:
+    if size.x<=0.0 or size.y<=0.0:
         return
-    var center: Vector2 = size * 0.5
-    var radius: float = minf(size.x,size.y) * 0.5 - 10.0
-    var ink := Color("13233a")
-    var blue := Color("4ea3ff")
-    var gold := Color("f8c45f")
-    var teal := Color("6eaab0")
-    var paper := Color("f7edcd")
-    var color: Color = teal if visual_state == "active" else gold if visual_state == "ready" else blue
-    var complete: bool = visual_state == "ready"
-    # Restrained depth and concentric rims: readable over the detailed Ruin Alley.
-    draw_circle(center + Vector2(0,3),radius+7.0,Color(0.02,0.05,0.09,0.38))
+    var center: Vector2=size*0.5
+    var squash: float=1.0-0.065*push_current
+    var radius: float=(minf(size.x,size.y)*0.5-10.0)*squash
+    var ink:=Color("13233a")
+    var blue:=Color("4ea3ff")
+    var gold:=Color("f8c45f")
+    var teal:=Color("6eaab0")
+    var paper:=Color("f7edcd")
+    var accent: Color=teal if visual_state=="active" else gold if visual_state=="ready" else blue
+    var complete: bool=visual_state=="ready"
+    draw_circle(center+Vector2(0,4.0*(1.0-push_current)),radius+7.0,Color(0.02,0.05,0.09,0.45))
     draw_circle(center,radius+3.0,ink)
     draw_circle(center,radius-6.0,Color("1f3e63"))
     draw_circle(center,radius-13.0,ink)
     draw_arc(center,radius-1.0,-PI*0.5,PI*1.5,72,Color("45617a"),7.0,true)
-    draw_arc(center,radius-1.0,-PI*0.5,-PI*0.5+TAU*progress,72,color,8.0,true)
+    draw_arc(center,radius-1.0,-PI*0.5,-PI*0.5+TAU*progress,72,accent,8.0,true)
     if complete:
-        # A stable gold READY halo; no flashing, constant animation or gameplay RNG.
-        draw_arc(center,radius+5.0,0.0,TAU,72,gold,4.0,true)
+        # Slow two-second visual breathing makes READY discoverable without
+        # flashing or automatically pressing the player action.
+        var breathe: float=0.0 if reduced_motion else (0.5+0.5*sin(ready_phase*PI))
+        var expansion: float=0.0 if reduced_motion else 3.0*breathe+2.0*ready_introduction
+        draw_arc(center,radius+5.0+expansion,0.0,TAU,72,gold,3.0+2.0*breathe,true)
         for i in range(8):
             var theta: float=TAU*float(i)/8.0
-            var start: Vector2=center+Vector2.RIGHT.rotated(theta)*(radius+7.0)
-            var stop: Vector2=center+Vector2.RIGHT.rotated(theta)*(radius+11.0)
-            draw_line(start,stop,gold,2.5,true)
-    elif visual_state == "active":
+            var direction: Vector2=Vector2.RIGHT.rotated(theta)
+            draw_line(center+direction*(radius+7.0+expansion),center+direction*(radius+10.0+expansion),gold,2.5,true)
+    elif visual_state=="active":
         draw_arc(center,radius+5.0,0.0,TAU,72,teal,3.0,true)
-    if emphasized:
-        draw_arc(center,radius+5.0,0.0,TAU,72,paper,2.0,true)
+    if emphasized or push_current>0.01:
+        draw_arc(center,radius+4.0,0.0,TAU,72,paper,2.0,true)

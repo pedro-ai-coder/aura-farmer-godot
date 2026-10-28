@@ -221,6 +221,10 @@ func install(owner_game, source_root: String) -> void:
     aura_arc=HeroFlexDial.new()
     aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.flex_button.add_child(aura_arc)
+    # Real Button signals change the drawn depth only; ability activation
+    # remains exclusively owned by the existing _use_flex connection.
+    game.flex_button.button_down.connect(func():aura_arc.set_pressed(true))
+    game.flex_button.button_up.connect(func():aura_arc.set_pressed(false))
     aura_arc.show()
     flex_badge=ColorRect.new()
     flex_badge.mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -636,7 +640,7 @@ func hud_layout() -> void:
     flex_badge.hide()
     aura_arc.show()
     place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*diameter))
-    aura_arc.show_state(aura_progress,current,emphasised)
+    aura_arc.show_state(aura_progress,current,emphasised,bool(game.profile["settings"].get("reducedMotion",false)))
     var foreground: Color=Style.GOLD if ready_flex else Style.PAPER
     Type.apply(flex_title,"section_header",compact_flex,foreground)
     flex_title.text="FLEX"
