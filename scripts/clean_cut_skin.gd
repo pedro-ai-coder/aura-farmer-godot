@@ -3,6 +3,7 @@ extends Control
 const Cache=preload("res://scripts/clean_cut_assets.gd")
 const Type=preload("res://scripts/clean_cut_typography.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
+const HeroBrand=preload("res://scripts/hero_clash_brand.gd")
 var game
 var ui
 var art
@@ -23,6 +24,7 @@ class AuraArc extends Control:
 var poster_surface: Control
 var background: TextureRect
 var wordmark: TextureRect
+var candidate_brand: Control
 var poster_hero: TextureRect
 var heading: Label
 var heading_shadow: Label
@@ -127,6 +129,9 @@ func install(owner_game, source_root: String) -> void:
     background=image(self);background.stretch_mode=TextureRect.STRETCH_SCALE
     poster_surface=PosterSurface.new();poster_surface.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(poster_surface)
     wordmark=image(self);wordmark.texture=art.texture("support/wordmark")
+    candidate_brand=HeroBrand.new()
+    candidate_brand.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    add_child(candidate_brand)
     poster_hero=image(self);poster_hero.texture=game.art.texture("sigma")
     heading_shadow=label(self,34,Style.GOLD);heading=label(self,34,Style.PAPER)
     Type.apply(heading,"display_l",false,Style.PAPER)
@@ -252,7 +257,12 @@ func refresh() -> void:
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
         for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button,game.legendary_button,game.retry_button]:button.hide()
-    background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
+    background.visible=mode!="playing"
+    # Approved artwork remains an immutable source; show only this isolated
+    # candidate's original vector lockup on the review branch.
+    wordmark.hide()
+    candidate_brand.visible=mode=="menu"
+    poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
@@ -281,15 +291,20 @@ func home_layout() -> void:
     background.modulate=Color.WHITE
     background.texture=art.texture("support/poster");place(background,Rect2(Vector2.ZERO,view))
     var narrow:=view.x<700
-    place(wordmark,Rect2(35,45,view.x*(0.78 if narrow else 0.38),125))
+    # The wordmark is visually dominant but stays inside the illustration's
+    # poster half. It scales down rather than cropping on narrow/mobile views.
+    var logo_width: float=minf(590.0,view.x*0.47) if not narrow else view.x-38.0
+    var logo_height: float=154.0 if view.y<540.0 else 190.0
+    place(candidate_brand,Rect2(28,24,logo_width,logo_height))
     place(poster_hero,Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
     poster_hero.visible=not narrow
     heading.hide();heading_shadow.hide();headline_accent.hide()
+    Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
-    place(home_caption,Rect2(40,180,view.x-80 if narrow else view.x*0.5,90))
+    place(home_caption,Rect2(40,183 if view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
-    var top:=maxf(280,view.y*0.53)
+    var top:=maxf(300.0,view.y*0.51)
     for i in range(3):
         var button: Button=[ui.play_button,ui.home.hero_destination,ui.options_button][i]
         button.show();button.text=["PLAY","HERO SELECTION","SETTINGS"][i]

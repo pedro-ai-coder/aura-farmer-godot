@@ -48,7 +48,7 @@ func verify() -> void:
         skin.refresh()
         check(skin.flex_status.text == "AURA 0%","Empty Aura reverts to charging state")
         check(skin.flex_image.visible == false,"Rejected cryptic crosshair image is not rendered")
-        check(skin.flex_title.get_theme_font("font").get_font_name().contains("Barlow"),"Packaged prominent display font renders Flex label")
+        check(skin.flex_title.get_theme_font("font").get_font_name().contains("Archivo"),"Packaged prominent display font renders Flex label")
     game.queue_free()
     if failures.is_empty():
         print("PASS: Flex clarity, readiness, active/recovery display and touch-safe layout across desktop/mobile")
