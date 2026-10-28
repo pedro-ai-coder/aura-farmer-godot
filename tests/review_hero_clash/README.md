@@ -1,15 +1,26 @@
 # Hero Clash — Phase 01 runtime typography review
 
-**UNAPPROVED CANDIDATES. Production remains Clean Cut. No merge or release.**
+**UNAPPROVED CANDIDATES A/B/C. Production remains Clean Cut. No merge or release.**
 
-This is a working Godot review path, not an art replacement. Launch `review.tscn` to play the real game with either candidate. Press **F8** to switch A/B. The production main scene, approved artwork, gameplay scripts and export presets are unchanged. Review profiles never write saves.
+This is a working Godot review path, not an art replacement. Launch `review.tscn` to play the real game with either candidate. Press **F8** to switch A/B/C. The production main scene, approved artwork, gameplay scripts and export presets are unchanged. Review profiles never write saves.
 
 ```sh
 godot --path . tests/review_hero_clash/review.tscn -- --candidate=a
 godot --path . tests/review_hero_clash/review.tscn -- --candidate=b
+godot --path . tests/review_hero_clash/review.tscn -- --candidate=c
 godot --headless --path . --script res://tests/review_hero_clash/test_review.gd
 bash tests/review_hero_clash/capture_matrix.sh /absolute/capture/directory
 ```
+
+## Phase 01.5 — C: Clash Hybrid (creator-directed, not production approved)
+
+The creator prefers **A's bold Archivo Black / Archivo typography** with the **stronger B-style circuit framing and title emphasis**. Candidate C is the implemented third review alternative: Archivo Black display, Archivo body/numbers, an original flat navy/blue/gold angular logo lockup and a more prominent menu title position. A and B remain unchanged and selectable; all gameplay rules, approved resource hashes and production exports stay as before.
+
+The new logo artwork is drawn from original Godot vector shapes at runtime for review only. It is **not** the separately approved production wordmark; further production vector/PNG artwork will require creator approval and supersession documentation. The visual design deliberately avoids a technology-like display font and retains a short, high-contrast graphic crown and angular treatment without compromising secondary text legibility.
+
+Use **F8** to compare A → B → C in the same playable scene. Capture C with `godot --path . --audio-driver Dummy --script res://tests/review_hero_clash/capture.gd -- 1280 720 /absolute/output --candidate=c`; `capture_matrix.sh` now supports all three candidates.
+
+Review caveats: this is a source-level candidate until actual Godot screenshots and associated validation have completed. No browser WebGL2 or physical-device acceptance is implied.
 
 ## Compare the real renders
 

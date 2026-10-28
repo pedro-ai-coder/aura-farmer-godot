@@ -11,7 +11,12 @@ func run() -> void:
     game.set_process(false)
     await process_frame
     var adapter = game.review_adapter
-    for candidate in ["a","b"]:
+    for candidate in ["a","b","c"]:
+        check(adapter.logo.treatment() in ["clash_bold","clash_circuit","clash_hybrid"],"All review candidates have explicit treatment identity")
+        if candidate == "c":
+            check(adapter.typography.FACES["c"][0] == adapter.typography.FACES["a"][0],"Hybrid uses Archivo Black display from candidate A")
+            check(adapter.typography.FACES["c"][1] == adapter.typography.FACES["a"][1],"Hybrid uses Archivo UI from candidate A")
+            check(adapter.typography.FACES["c"][0] != adapter.typography.FACES["b"][0],"Hybrid does not replace Bold display with Oxanium")
         adapter.typography.candidate = candidate
         adapter.typography.cache.clear()
         for role in adapter.typography.TOKENS:
@@ -35,6 +40,10 @@ func run() -> void:
             check(not game.flex_button.get_signal_connection_list("pressed").is_empty(),"Original Flex action connected")
             check(game.clean_cut_skin.flex_status.text == "READY","Ready fixture")
             check(not game.clean_cut_skin.wordmark.visible,"Approved wordmark hidden only in review")
+            if candidate == "c":
+                check(adapter.logo.treatment() == "clash_hybrid","Hybrid logo graphic treatment is selected")
+                check(adapter.logo.size.x > 0.0 and adapter.logo.size.y >= 140.0,"Hybrid title has a significant review layout footprint")
+                check(adapter.logo.visible == (game.mode == "menu"),"Hybrid logo never covers gameplay")
     game.queue_free()
     await process_frame
     print("Hero Clash review checks: ",failures," failures")

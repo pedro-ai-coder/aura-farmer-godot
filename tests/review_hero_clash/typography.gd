@@ -3,6 +3,8 @@ extends RefCounted
 const FACES = {
     "a": [preload("fonts/archivoblack/ArchivoBlack.ttf"), preload("fonts/archivo/Archivo.ttf")],
     "b": [preload("fonts/oxanium/Oxanium.ttf"), preload("fonts/rubik/Rubik.ttf")],
+    # C combines A typography with B-inspired original angular brand graphics.
+    "c": [preload("fonts/archivoblack/ArchivoBlack.ttf"), preload("fonts/archivo/Archivo.ttf")],
 }
 const SYMBOLS = preload("res://assets/fonts/Inter-Body.ttf")
 # family, weight, desktop size, compact size, extra line spacing, capitalization.

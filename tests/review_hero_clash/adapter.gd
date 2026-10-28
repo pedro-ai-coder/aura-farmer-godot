@@ -38,6 +38,16 @@ func refresh() -> void:
     fit_tree(skin)
     logo.position = skin.wordmark.position
     logo.size = Vector2(skin.wordmark.size.x,140)
+    if game.mode == "menu" and typography.candidate == "c":
+        # Correct the under-emphasized A logo. The hero still owns the right
+        # side of the poster and interactive menu buttons retain their bounds.
+        var compact_menu: bool = skin.view.x < 700.0 or skin.view.y < 550.0
+        var width_ratio: float = 0.90 if skin.view.x < 700.0 else 0.47
+        var logo_width: float = minf(skin.view.x-50.0,skin.view.x*width_ratio)
+        var logo_height: float = 155.0 if compact_menu else 170.0
+        logo.position = Vector2(28,22)
+        logo.size = Vector2(logo_width,logo_height)
+        skin.home_caption.position.y = 191.0 if compact_menu else 208.0
     logo.visible = game.mode == "menu"
     skin.wordmark.hide()
     logo.queue_redraw()

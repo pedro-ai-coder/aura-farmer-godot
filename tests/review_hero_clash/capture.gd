@@ -18,7 +18,8 @@ func capture() -> void:
     game.touch_device = width < 1000
     var adapter = preload("adapter.gd").new()
     root.add_child(adapter)
-    adapter.install(game,"b" if "--candidate=b" in args else "a")
+    var selected: String = "c" if "--candidate=c" in args else "b" if "--candidate=b" in args else "a"
+    adapter.install(game,selected)
     var measurements: Array = []
     for state in ["menu","character","playing","ready","choice","legendary","won","lost"]:
         seed(7301)
