@@ -3,6 +3,8 @@ extends Control
 const Cache=preload("res://scripts/clean_cut_assets.gd")
 const Type=preload("res://scripts/clean_cut_typography.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
+const HeroBrand=preload("res://scripts/hero_clash_brand.gd")
+const HeroFlexDial=preload("res://scripts/hero_clash_flex_dial.gd")
 var game
 var ui
 var art
@@ -23,6 +25,7 @@ class AuraArc extends Control:
 var poster_surface: Control
 var background: TextureRect
 var wordmark: TextureRect
+var candidate_brand: Control
 var poster_hero: TextureRect
 var heading: Label
 var heading_shadow: Label
@@ -35,6 +38,7 @@ var hero_parts: Array[Dictionary]=[]
 var offers_scroll: ScrollContainer
 var offers_content: Control
 var offer_parts: Array[Dictionary]=[]
+var card_plate_styles: Dictionary={}
 var native_children: Dictionary={}
 var hud_nodes: Array[Control]=[]
 var player_plate: TextureRect
@@ -89,6 +93,13 @@ func image(parent: Node) -> TextureRect:
 func place(node: Control, rect: Rect2) -> void:
     node.position=rect.position;node.size=rect.size
     if node is Label:node.set_deferred("size",rect.size)
+func fit_line(node: Label, minimum: int = 13) -> void:
+    var font: Font=node.get_theme_font("font")
+    var pixels: int=node.get_theme_font_size("font_size")
+    while pixels > minimum and font.get_string_size(node.text,HORIZONTAL_ALIGNMENT_LEFT,-1,pixels).x > node.size.x:
+        pixels -= 1
+    node.add_theme_font_size_override("font_size",pixels)
+
 func adopt(button: Button, parent: Node) -> void:
     if not native_children.has(button):native_children[button]=button.get_children()
     button.reparent(parent)
@@ -127,6 +138,9 @@ func install(owner_game, source_root: String) -> void:
     background=image(self);background.stretch_mode=TextureRect.STRETCH_SCALE
     poster_surface=PosterSurface.new();poster_surface.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(poster_surface)
     wordmark=image(self);wordmark.texture=art.texture("support/wordmark")
+    candidate_brand=HeroBrand.new()
+    candidate_brand.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    add_child(candidate_brand)
     poster_hero=image(self);poster_hero.texture=game.art.texture("sigma")
     heading_shadow=label(self,34,Style.GOLD);heading=label(self,34,Style.PAPER)
     Type.apply(heading,"display_l",false,Style.PAPER)
@@ -152,12 +166,18 @@ func install(owner_game, source_root: String) -> void:
     offers_content=Control.new();offers_scroll.add_child(offers_content)
     for button: Button in game.offer_buttons:
         adopt(button,offers_content);button.text=""
-        var parts: Dictionary={"category":label(button),"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
+        var rim:=ColorRect.new()
+        rim.mouse_filter=Control.MOUSE_FILTER_IGNORE
+        button.add_child(rim)
+        var icon_plate:=Panel.new()
+        icon_plate.mouse_filter=Control.MOUSE_FILTER_IGNORE
+        button.add_child(icon_plate)
+        var parts: Dictionary={"rim":rim,"icon_plate":icon_plate,"category":label(button),"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
         Type.apply(parts["name"],"card_title")
         Type.apply(parts["category"],"micro_label")
         parts["category"].add_theme_stylebox_override("normal",StyleBoxFlat.new())
         Type.apply(parts["meta"],"micro_label")
-        Type.apply(parts["comparison"],"body_s")
+        Type.apply(parts["comparison"],"hud_secondary")
         Type.apply(parts["state"],"micro_label")
         parts["body"].clip_text = true
         parts["body"].max_lines_visible = 5
@@ -176,20 +196,28 @@ func install(owner_game, source_root: String) -> void:
     joystick_ring=image(game.touch_joystick);joystick_thumb=image(game.touch_joystick)
     wave_frame=image(self);wave=label(self,19)
     warning=label(self,16,Style.GOLD)
-    # The creator rejected the cryptic crosshair glyph. The original approved
-    # textures remain in the manifest; the actual action is now text-first.
+    # The previous crosshair and rectangle are rejected. The approved source
+    # images remain unchanged, but this candidate renders a circular Flex dial.
     flex_image=image(game.flex_button)
     flex_image.hide()
-    aura_arc=AuraArc.new()
+    aura_arc=HeroFlexDial.new()
     aura_arc.mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.flex_button.add_child(aura_arc)
-    aura_arc.hide()
+    aura_arc.show()
     flex_badge=ColorRect.new()
     flex_badge.mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.flex_button.add_child(flex_badge)
     flex_title=label(game.flex_button,36,Style.PAPER)
     flex_status=label(game.flex_button,16,Style.GOLD)
-    flex_caption=label(game.flex_button,18,Style.PAPER)
+    flex_caption=label(self,18,Style.PAPER)
+    Type.apply(flex_caption,"hud_secondary",true,Style.PAPER)
+    flex_caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+    var caption_style:=StyleBoxFlat.new()
+    caption_style.bg_color=Color(Style.DEEP,0.93)
+    caption_style.border_color=Style.BLUE
+    caption_style.set_border_width_all(2)
+    caption_style.set_corner_radius_all(4)
+    flex_caption.add_theme_stylebox_override("normal",caption_style)
     flex_status.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
     flex_track=ColorRect.new()
     flex_track.color=Style.BLUE
@@ -199,7 +227,7 @@ func install(owner_game, source_root: String) -> void:
     flex_fill.color=Style.GOLD
     flex_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.flex_button.add_child(flex_fill)
-    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text])
+    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text,flex_caption])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
         Type.apply(parts["level"],"micro_label")
@@ -252,7 +280,12 @@ func refresh() -> void:
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
         for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button,game.legendary_button,game.retry_button]:button.hide()
-    background.visible=mode!="playing";wordmark.visible=mode=="menu";poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
+    background.visible=mode!="playing"
+    # Approved artwork remains an immutable source; show only this isolated
+    # candidate's original vector lockup on the review branch.
+    wordmark.hide()
+    candidate_brand.visible=mode=="menu"
+    poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
@@ -281,15 +314,20 @@ func home_layout() -> void:
     background.modulate=Color.WHITE
     background.texture=art.texture("support/poster");place(background,Rect2(Vector2.ZERO,view))
     var narrow:=view.x<700
-    place(wordmark,Rect2(35,45,view.x*(0.78 if narrow else 0.38),125))
+    # The wordmark is visually dominant but stays inside the illustration's
+    # poster half. It scales down rather than cropping on narrow/mobile views.
+    var logo_width: float=minf(590.0,view.x*0.47) if not narrow else view.x-38.0
+    var logo_height: float=154.0 if view.y<540.0 else 190.0
+    place(candidate_brand,Rect2(28,24,logo_width,logo_height))
     place(poster_hero,Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
     poster_hero.visible=not narrow
     heading.hide();heading_shadow.hide();headline_accent.hide()
+    Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
-    place(home_caption,Rect2(40,180,view.x-80 if narrow else view.x*0.5,90))
+    place(home_caption,Rect2(40,183 if view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
-    var top:=maxf(280,view.y*0.53)
+    var top:=maxf(300.0,view.y*0.51)
     for i in range(3):
         var button: Button=[ui.play_button,ui.home.hero_destination,ui.options_button][i]
         button.show();button.text=["PLAY","HERO SELECTION","SETTINGS"][i]
@@ -336,11 +374,24 @@ func cards_layout() -> void:
         heading_shadow.hide()
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
-    var gap:=16.0;var width: float=(view.x-64-gap*(columns-1))/columns
+    var compact_cards: bool=view.y<=560.0 and columns==3
+    var gap:=12.0 if compact_cards else 16.0
+    var available_width: float=view.x-48.0 if compact_cards else view.x-64.0
+    var width: float=(available_width-gap*(columns-1))/columns
     var height: float=minf(520,view.y-212) if not legendary else minf(250,(view.y-212)/2) if view.y>=650 and columns==3 else 270.0
     height=maxf(height,220 if legendary and view.y>=650 and columns==3 else 250 if legendary else 414)
-    place(offers_scroll,Rect2(24,106,view.x-48,view.y-196))
-    offers_content.custom_minimum_size=Vector2(view.x-64,ceili(float(items.size())/columns)*(height+gap));offers_content.size=offers_content.custom_minimum_size
+    if compact_cards:
+        # Three legible cards can fit in 844x390/915x412 without requiring
+        # the player to scroll simply to find the benefit and selection state.
+        height=view.y-138.0
+        Type.apply(heading,"display_l",true,Style.INK if legendary else Style.PAPER)
+        place(heading,Rect2(18,5,view.x-36,49))
+        fit_line(heading,19)
+        place(headline_accent,Rect2(22,55,94,5))
+    var scroll_y: float=68.0 if compact_cards else 106.0
+    var scroll_height: float=view.y-136.0 if compact_cards else view.y-196.0
+    place(offers_scroll,Rect2(16 if compact_cards else 24,scroll_y,view.x-32 if compact_cards else view.x-48,scroll_height))
+    offers_content.custom_minimum_size=Vector2(available_width,ceili(float(items.size())/columns)*(height+gap));offers_content.size=offers_content.custom_minimum_size
     var current_signature: String=game.run_id+game.mode+JSON.stringify(items)
     if current_signature!=signature:signature=current_signature;offers_scroll.scroll_vertical=0;last_selected=-1
     for i in range(6):
@@ -354,9 +405,25 @@ func cards_layout() -> void:
         button_skin(button,family,selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
-        parts["category"].text=("LEGENDARY · " if legendary else "")+category
+        var rarity_name: String=str(item.get("rarity","legendary" if legendary else "common")).to_lower()
+        var rarity_color: Color=Style.RARITY.get(rarity_name,Style.SKY)
+        parts["rim"].color=Style.SKY if selected else rarity_color
+        place(parts["rim"],Rect2(9,10,7,height-20))
+        parts["category"].text=("LEGENDARY · " if legendary else "")+category.to_upper()
+        Type.apply(parts["category"],"micro_label",view.x<700,Style.INK)
         var category_plate: StyleBoxFlat=parts["category"].get_theme_stylebox("normal")
-        category_plate.bg_color=(Style.SKY if category=="weapon" else Style.GOLD) if legendary else Style.PAPER
+        category_plate.bg_color=Style.SKY if category=="weapon" else Style.GOLD
+        category_plate.content_margin_left=10.0
+        category_plate.content_margin_right=10.0
+        var style_key: String=rarity_name+("/selected" if selected else "")
+        if not card_plate_styles.has(style_key):
+            var plate_style:=StyleBoxFlat.new()
+            plate_style.bg_color=Style.CARD
+            plate_style.border_color=Style.SKY if selected else rarity_color
+            plate_style.set_border_width_all(4 if selected else 3)
+            plate_style.set_corner_radius_all(5)
+            card_plate_styles[style_key]=plate_style
+        parts["icon_plate"].add_theme_stylebox_override("panel",card_plate_styles[style_key])
         if legendary:
             place(parts["category"],Rect2(width*68/438,height*10/304,width*338/438,height*42/304))
         else:
@@ -366,22 +433,53 @@ func cards_layout() -> void:
         parts["body"].tooltip_text = parts["body"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         Type.apply(parts["meta"],"hud_secondary",view.x<700,Style.INK)
-        parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "SELECT ITEM"
+        parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "TAP TO SELECT"
+        Type.apply(parts["state"],"micro_label",view.x<700,Style.SKY if selected else Style.INK)
         if legendary:
-            place(parts["icon"],Rect2(18,48,86,86));place(parts["name"],Rect2(116,48,width-136,80))
+            place(parts["icon_plate"],Rect2(18,48,88,88))
+            place(parts["icon"],Rect2(25,55,74,74))
+            place(parts["name"],Rect2(116,48,width-136,80))
             parts["meta"].hide();place(parts["body"],Rect2(18,144,width-36,height-180));parts["comparison"].hide()
             Type.apply(parts["body"],"body_s")
         else:
             parts["meta"].show();Type.apply(parts["body"],"body_m")
-            place(parts["icon"],Rect2((width-136)/2,68,136,136));place(parts["name"],Rect2(20,210,width-40,70))
+            place(parts["icon_plate"],Rect2((width-128)/2,68,128,128))
+            place(parts["icon"],Rect2((width-112)/2,76,112,112))
+            place(parts["name"],Rect2(20,210,width-40,70))
             place(parts["meta"],Rect2(20,278,width-40,26));place(parts["body"],Rect2(20,310,width-40,height-414));parts["comparison"].show()
             place(parts["comparison"],Rect2(20,height-126,width-40,62))
         if not legendary and height<490:
-            place(parts["icon"],Rect2(18,78,60,60));place(parts["name"],Rect2(90,70,width-108,76))
+            place(parts["icon_plate"],Rect2(18,78,66,66))
+            place(parts["icon"],Rect2(24,84,54,54))
+            place(parts["name"],Rect2(92,70,width-110,76))
             place(parts["meta"],Rect2(18,150,width-36,32));place(parts["body"],Rect2(18,188,width-36,height-280))
             Type.apply(parts["body"],"body_s")
             place(parts["comparison"],Rect2(18,height-86,width-36,48))
-        place(parts["state"],Rect2(18,height-28,width-36,22))
+        if compact_cards:
+            # Godot uses e.g. a logical 1125x520 area for a physical 844x390
+            # browser viewport. Fill that real usable space rather than hiding
+            # half the reward card below an unnecessary scroll.
+            place(parts["category"],Rect2(16,12,width-32,27))
+            place(parts["icon_plate"],Rect2(16,44,84,84))
+            place(parts["icon"],Rect2(24,52,68,68))
+            place(parts["name"],Rect2(110,46,width-126,80))
+            Type.apply(parts["name"],"card_title",true)
+            if legendary:
+                parts["meta"].hide()
+                Type.apply(parts["body"],"body_m")
+                place(parts["body"],Rect2(16,144,width-32,height-192))
+            else:
+                parts["meta"].show()
+                place(parts["meta"],Rect2(16,137,width-32,27))
+                Type.apply(parts["body"],"body_m")
+                place(parts["body"],Rect2(16,174,width-32,height-280))
+                parts["comparison"].show()
+                place(parts["comparison"],Rect2(16,height-89,width-32,28))
+                Type.apply(parts["comparison"],"hud_secondary",true)
+        place(parts["state"],Rect2(14 if compact_cards else 18,height-36 if compact_cards else height-30,width-(28 if compact_cards else 36),27 if compact_cards else 24))
+        parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+        fit_line(parts["name"],17 if compact_cards else 18)
+        if parts["meta"].visible: fit_line(parts["meta"],13)
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
     game.confirm_button.disabled=game.selected_card_index<0
     place(game.confirm_button,Rect2(view.x-350,view.y-78,326,64));button_skin(game.confirm_button,"menu/primary")
@@ -400,6 +498,14 @@ func cards_layout() -> void:
         place(game.restart_button,Rect2(24,view.y-78,half if view.x<700 else 180,64))
         if view.x<700:place(game.confirm_button,Rect2(40+half,view.y-78,half,64))
         button_skin(game.restart_button,"menu/secondary")
+    if compact_cards:
+        # Preserve the GDD physical touch target despite the shorter cards.
+        var confirm_width: float=250.0
+        place(game.confirm_button,Rect2(view.x-confirm_width-16.0,view.y-66.0,confirm_width,64.0))
+        if legendary:
+            place(game.defer_button,Rect2(16,view.y-66.0,200,64.0))
+        elif game.mode=="replace":
+            place(game.restart_button,Rect2(16,view.y-66.0,180,64.0))
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
         call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index
@@ -414,6 +520,7 @@ func hud_layout() -> void:
     hero_name.text=game.hero["name"]
     hero_name.autowrap_mode=TextServer.AUTOWRAP_OFF
     place(hero_name,Rect2(82,28,hp_width-70,32))
+    fit_line(hero_name,15)
     Type.apply(shield_label,"micro_label",narrow,Style.INK)
     shield_label.text="SHIELD %d" % ceili(game.shield)
     shield_label.autowrap_mode=TextServer.AUTOWRAP_OFF
@@ -422,6 +529,7 @@ func hud_layout() -> void:
     hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
     hp.autowrap_mode=TextServer.AUTOWRAP_OFF
     place(hp,Rect2(82,79,hp_width-70,27))
+    fit_line(hp,14)
     var xp_y: float=view.y-248 if narrow else view.y-150
     var xp_width: float=minf(350,view.x-200)
     xp_frame.texture=art.texture("support/xp");place(xp_frame,Rect2(18,xp_y,xp_width,38))
@@ -433,11 +541,13 @@ func hud_layout() -> void:
     Type.apply(xp,"hud_stat",narrow,Style.PAPER,true)
     xp.text="LEVEL %d   ·   XP %d" % [game.level,int(game.xp)]
     place(xp,Rect2(24,xp_y-25,minf(300,view.x-210),24))
+    fit_line(xp,14)
     wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-240)/2,128 if narrow else 28,240,64))
     wave.text="%s  /  %02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
     Type.apply(wave,"hud_stat",narrow,Style.INK)
     wave.autowrap_mode=TextServer.AUTOWRAP_OFF
     wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-220)/2,145 if narrow else 45,220,28))
+    fit_line(wave,14)
     Type.apply(warning,"hud_secondary",narrow,Style.GOLD,true)
     warning.text=game.SoloClock.warning(game.run_time);place(warning,Rect2((view.x-360)/2,210 if narrow else 108,360,40))
     game.pause_button.show();game.pause_button.text="II";place(game.pause_button,Rect2(view.x-90,28,64,64));button_skin(game.pause_button,"menu/secondary")
@@ -463,74 +573,51 @@ func hud_layout() -> void:
         place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
         var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
         place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
-    # One recognizable, explicit special-action button for touch and keyboard.
-    # The button itself owns input. All lettering and the charge strip ignore it.
-    var compact_flex: bool=view.y<520.0 or view.x<700.0
-    var portrait_flex: bool=view.x<700.0 and view.y>=view.x
-    var button_width: float=198.0 if portrait_flex else 208.0 if compact_flex else 264.0
-    var button_height: float=94.0 if compact_flex else 110.0
-    var button_x: float=view.x-button_width-(12.0 if compact_flex else 22.0)
-    var button_y: float=view.y-390.0 if portrait_flex else view.y-button_height-(12.0 if compact_flex else 22.0)
+    # Circular special action with live Aura, an unmistakable gold READY ring,
+    # and the actual existing Flex Button handling all pointer activation.
+    var compact_flex: bool = view.y < 540.0 or view.x < 700.0
+    var portrait_flex: bool = view.x < 700.0 and view.y >= view.x
+    var diameter: float = 116.0 if compact_flex else 144.0
+    var button_x: float = view.x - diameter - (12.0 if compact_flex else 22.0)
+    var button_y: float = view.y-diameter-(186.0 if portrait_flex else 12.0 if compact_flex else 22.0)
     game.flex_button.show()
     game.flex_button.text=""
-    place(game.flex_button,Rect2(button_x,button_y,button_width,button_height))
-    var active_flex: bool=game.flex_time>0.0
-    var ready_flex: bool=game.aura>=100.0 and game.flex_lock<=0.0 and not active_flex
-    var recovery_flex: bool=game.flex_lock>0.0 and not active_flex
-    var flex_state: String="charging"
-    var state_color: Color=Style.SKY
-    var status_text: String="AURA %d%%" % int(game.aura)
-    if active_flex:
-        flex_state="active"
-        state_color=Style.TEAL
-        status_text="ACTIVE %.1fs" % game.flex_time
-    elif ready_flex:
-        flex_state="ready"
-        state_color=Style.GOLD
-        status_text="READY"
-    elif recovery_flex:
-        flex_state="recovery"
-        state_color=Style.TEAL
-        status_text="LOCK %.0fs" % game.flex_lock
-    var style_key: String=flex_state
-    for action in ["normal","hover","pressed","disabled","focus"]:
-        var variant: String=action
-        if action=="disabled":variant="normal"
-        var cache_key: String=style_key+"/"+variant
-        if not flex_styles.has(cache_key):
-            var surface:=StyleBoxFlat.new()
-            surface.bg_color=Style.GOLD.darkened(0.16) if ready_flex and variant=="pressed" else Style.GOLD if ready_flex else Style.DEEP.lightened(0.10) if variant=="hover" else Style.DEEP
-            surface.border_color=Style.INK if ready_flex else state_color
-            surface.set_border_width_all(4 if ready_flex or active_flex else 3)
-            surface.set_corner_radius_all(5)
-            surface.shadow_color=Color(0.04,0.07,0.13,0.55)
-            surface.shadow_size=4 if ready_flex else 2
-            surface.shadow_offset=Vector2(0,3)
-            flex_styles[cache_key]=surface
-        game.flex_button.add_theme_stylebox_override(action,flex_styles[cache_key])
+    place(game.flex_button,Rect2(button_x,button_y,diameter,diameter))
+    var active_flex: bool = game.flex_time > 0.0
+    var ready_flex: bool = game.aura >= 100.0 and game.flex_lock <= 0.0 and not active_flex
+    var recovering: bool = game.flex_lock > 0.0 and not active_flex
+    var current: String = "active" if active_flex else "ready" if ready_flex else "recovery" if recovering else "charging"
+    var aura_progress: float = 1.0 if ready_flex or active_flex else 0.0 if recovering else clampf(game.aura/100.0,0.0,1.0)
+    var action_state: String = state(game.flex_button)
+    var emphasised: bool = action_state in ["pressed","hover","focus"]
+    for key in ["normal","hover","pressed","disabled","focus"]:
+        game.flex_button.add_theme_stylebox_override(key,empty_style)
     flex_image.hide()
-    aura_arc.hide()
-    flex_badge.color=Style.INK if ready_flex else state_color
-    place(flex_badge,Rect2(7,8,5,button_height-16))
-    var main_color: Color=Style.INK if ready_flex else Style.PAPER
-    Type.apply(flex_title,"display_l",compact_flex,main_color)
+    flex_track.hide()
+    flex_fill.hide()
+    flex_badge.hide()
+    aura_arc.show()
+    place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*diameter))
+    aura_arc.show_state(aura_progress,current,emphasised)
+    var foreground: Color=Style.GOLD if ready_flex else Style.PAPER
+    Type.apply(flex_title,"section_header",compact_flex,foreground)
     flex_title.text="FLEX"
+    flex_title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     flex_title.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(flex_title,Rect2(18,4,100,48))
-    Type.apply(flex_status,"micro_label",compact_flex,Style.INK if ready_flex else state_color)
-    flex_status.text=status_text
+    place(flex_title,Rect2(8,diameter*0.32,diameter-16,42))
+    Type.apply(flex_status,"micro_label",compact_flex,Style.GOLD if ready_flex else Style.TEAL if active_flex else Style.PAPER)
+    flex_status.text="READY" if ready_flex else "ACTIVE %.1fs" % game.flex_time if active_flex else "LOCK %.0fs" % game.flex_lock if recovering else "AURA %d%%" % int(game.aura)
+    flex_status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     flex_status.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(flex_status,Rect2(91,14,button_width-105,30))
-    Type.apply(flex_caption,"hud_secondary",compact_flex,Style.INK if ready_flex else Style.PAPER)
+    place(flex_status,Rect2(8,diameter*0.61,diameter-16,25))
+    Type.apply(flex_caption,"hud_secondary",compact_flex,Style.PAPER)
     flex_caption.text=str(game.hero["flex"]).to_upper()
     flex_caption.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(flex_caption,Rect2(18,48,button_width-31,27))
-    place(flex_track,Rect2(18,button_height-16,button_width-32,6))
-    flex_track.color=Color(Style.INK,0.40) if ready_flex else Style.BLUE
-    flex_fill.color=state_color
-    var fill_ratio: float=1.0 if ready_flex or active_flex else 0.0 if recovery_flex else clampf(game.aura/100.0,0.0,1.0)
-    place(flex_fill,Rect2(18,button_height-16,(button_width-32)*fill_ratio,6))
-    var slot_width:=56.0;var slot_pitch:=80.0;var start_y:=view.y-196 if narrow else view.y-106
+    var caption_width: float=diameter+54.0
+    var caption_x: float=clampf(button_x-(caption_width-diameter)*0.5,8.0,maxf(8.0,view.x-caption_width-8.0))
+    place(flex_caption,Rect2(caption_x,button_y-32.0,caption_width,27.0))
+    fit_line(flex_caption,13)
+    var slot_width:=56.0;var slot_pitch:=76.0;var start_y:=view.y-196 if narrow else view.y-104
     for i in range(8):
         var weapon:=i<3;var index:=i if weapon else i-3
         var items: Array=game.weapons if weapon else game.passives
@@ -540,15 +627,14 @@ func hud_layout() -> void:
         var kind: String="weapon" if weapon else "passive"
         parts["frame"].texture=art.texture("equipment/"+kind+("-empty" if item.is_empty() else "-filled"));place(parts["frame"],Rect2(at,Vector2.ONE*slot_width))
         parts["icon"].texture=ui.item_icons.texture(kind,item["id"]) if not item.is_empty() else null;place(parts["icon"],Rect2(at+Vector2(5,5),Vector2.ONE*44))
-        parts["level"].text="" if item.is_empty() else str(item["level"]);place(parts["level"],Rect2(at+Vector2(40,38),Vector2(16,18)))
-        parts["name"].visible=not item.is_empty()
-        parts["name"].autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-        parts["name"].text_overrun_behavior=TextServer.OVERRUN_NO_TRIMMING
-        parts["name"].max_lines_visible=2
-        parts["name"].horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-        parts["name"].tooltip_text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
+        parts["level"].text="" if item.is_empty() else "LV%d" % int(item["level"])
+        Type.apply(parts["level"],"micro_label",true,Style.PAPER,true)
+        place(parts["level"],Rect2(at+Vector2(18,38),Vector2(43,21)))
+        # Keep gameplay clean: the 8 approved icons plus clear level marks
+        # are visible; full names remain accessible in Build inspection.
+        parts["name"].hide()
         parts["name"].text="" if item.is_empty() else Type.equipment_name(item["id"],ui.catalog[item["id"]]["name"])
-        place(parts["name"],Rect2(at+Vector2(-6,58),Vector2(76,40)))
+        parts["name"].tooltip_text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
 
 
 func reveal_selected(index: int, expected_signature: String) -> void:

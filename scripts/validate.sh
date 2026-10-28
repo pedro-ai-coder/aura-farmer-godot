@@ -79,6 +79,7 @@ run_check icon-registry --headless --path . --script res://tests/test_icon_regis
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
 run_check combat-feedback --headless --path . --script res://tests/test_combat_feedback.gd
 run_check clean-cut-typography --headless --path . --script res://tests/test_clean_cut_typography.gd
+run_check hero-clash-ui-candidate --headless --path . --script res://tests/test_hero_clash_ui.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
 run_check legendary-combat --headless --path . --script res://tests/test_legendary_combat.gd
 run_check weapon-timing --headless --path . --script res://tests/test_weapon_timing.gd

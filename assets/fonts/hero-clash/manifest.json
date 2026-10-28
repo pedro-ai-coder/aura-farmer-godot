@@ -1,0 +1,18 @@
+{
+  "status": "CREATOR_REVIEW_CANDIDATE",
+  "source": "PR #78 Hero Clash A, byte-identical original SIL OFL fonts",
+  "fonts": [
+    {
+      "path": "assets/fonts/hero-clash/ArchivoBlack.ttf",
+      "sha256": "dd9a89a019b4849f66ab75455fe7bdf931311042cbb0f0f97acc061539703180",
+      "bytes": 90988,
+      "license": "assets/fonts/hero-clash/OFL-ArchivoBlack.txt"
+    },
+    {
+      "path": "assets/fonts/hero-clash/Archivo.ttf",
+      "sha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053",
+      "bytes": 658596,
+      "license": "assets/fonts/hero-clash/OFL-Archivo.txt"
+    }
+  ]
+}

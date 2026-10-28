@@ -15,7 +15,7 @@ func verify() -> void:
     skin.set_process(false)
     for font: Font in [Type.BODY,Type.BOLD,Type.SEMIBOLD,Type.DISPLAY]:
         for character in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789éçã→":
-            expect(font.has_char(character.unicode_at(0)),"Packaged font covers UI glyph: "+character)
+            expect(font.has_char(character.unicode_at(0)),"Packaged Hero Clash candidate font covers UI glyph: "+character)
     for id in game.presentation.catalog:
         if not game.WEAPONS.has(id) and not game.PASSIVES.has(id):continue
         var name: String=Type.equipment_name(id,game.presentation.catalog[id]["name"])
@@ -31,7 +31,7 @@ func verify() -> void:
         await process_frame
         expect(skin.hp.text=="HP 130 / 130","Numeric HUD preserves fractional rounding")
         for node: Label in [skin.hero_name,skin.hp,skin.shield_label,skin.wave,skin.xp]:
-            expect(node.get_theme_font("font").get_font_name().contains("Barlow"),"HUD uses packaged typography")
+            expect(node.get_theme_font("font").get_font_name().contains("Archivo"),"HUD uses packaged typography")
             expect(node.get_theme_font("font").get_string_size(node.text,HORIZONTAL_ALIGNMENT_LEFT,-1,node.get_theme_font_size("font_size")).x <= node.size.x,"HUD line fits: "+node.text)
         game._gain_xp(39);game._open_choice();game._show_ui();game._update_text();skin.refresh()
         await process_frame
