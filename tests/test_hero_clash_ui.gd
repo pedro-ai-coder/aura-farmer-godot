@@ -14,7 +14,7 @@ func verify() -> void:
     game.set_process(false)
     var skin=game.clean_cut_skin
     skin.set_process(false)
-    for viewport in [Vector2i(1600,900),Vector2i(915,412),Vector2i(390,844)]:
+    for viewport in [Vector2i(1600,900),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
         root.size=viewport
         game.presentation._window_changed(true)
         game._return_to_menu()
@@ -57,6 +57,9 @@ func verify() -> void:
         skin.refresh()
         check(game.mode=="choice" and game.offer_buttons[0].visible,"Three real upgrades available")
         var parts: Dictionary=skin.offer_parts[0]
+        if viewport.x>=844 and viewport.y<=412:
+            check(game.offer_buttons[0].size.y <= skin.offers_scroll.size.y,"Full first mobile-landscape reward is visible without initial scrolling")
+            check(skin.heading.size.y <= 54.0,"Compact heading frees space for actual rewards")
         check(parts["rim"].visible and parts["icon_plate"].visible,"Reward has semantic frame and icon backing")
         check(parts["icon"].texture!=null,"Actual approved item icon retained")
         check(parts["body"].get_rect().end.y<=parts["state"].position.y+1.0,"Body does not collide with state")

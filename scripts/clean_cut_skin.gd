@@ -374,7 +374,7 @@ func cards_layout() -> void:
         heading_shadow.hide()
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
-    var compact_cards: bool=view.y<520.0 and columns==3
+    var compact_cards: bool=view.y<=560.0 and columns==3
     var gap:=12.0 if compact_cards else 16.0
     var available_width: float=view.x-48.0 if compact_cards else view.x-64.0
     var width: float=(available_width-gap*(columns-1))/columns
@@ -383,8 +383,8 @@ func cards_layout() -> void:
     if compact_cards:
         # Three legible cards can fit in 844x390/915x412 without requiring
         # the player to scroll simply to find the benefit and selection state.
-        height=254.0
-        Type.apply(heading,"section_header",true,Style.INK if legendary else Style.PAPER)
+        height=view.y-138.0
+        Type.apply(heading,"display_l",true,Style.INK if legendary else Style.PAPER)
         place(heading,Rect2(18,5,view.x-36,49))
         fit_line(heading,19)
         place(headline_accent,Rect2(22,55,94,5))
@@ -456,25 +456,29 @@ func cards_layout() -> void:
             Type.apply(parts["body"],"body_s")
             place(parts["comparison"],Rect2(18,height-86,width-36,48))
         if compact_cards:
-            place(parts["category"],Rect2(14,9,width-28,24))
-            place(parts["icon_plate"],Rect2(15,38,60,60))
-            place(parts["icon"],Rect2(20,43,50,50))
-            place(parts["name"],Rect2(82,36,width-97,60))
+            # Godot uses e.g. a logical 1125x520 area for a physical 844x390
+            # browser viewport. Fill that real usable space rather than hiding
+            # half the reward card below an unnecessary scroll.
+            place(parts["category"],Rect2(16,12,width-32,27))
+            place(parts["icon_plate"],Rect2(16,44,84,84))
+            place(parts["icon"],Rect2(24,52,68,68))
+            place(parts["name"],Rect2(110,46,width-126,80))
             Type.apply(parts["name"],"card_title",true)
             if legendary:
                 parts["meta"].hide()
-                place(parts["body"],Rect2(14,111,width-28,112))
+                Type.apply(parts["body"],"body_m")
+                place(parts["body"],Rect2(16,144,width-32,height-192))
             else:
                 parts["meta"].show()
-                place(parts["meta"],Rect2(14,99,width-28,25))
-                Type.apply(parts["body"],"body_s",true)
-                place(parts["body"],Rect2(14,125,width-28,80))
+                place(parts["meta"],Rect2(16,137,width-32,27))
+                Type.apply(parts["body"],"body_m")
+                place(parts["body"],Rect2(16,174,width-32,height-280))
                 parts["comparison"].show()
-                place(parts["comparison"],Rect2(14,205,width-28,22))
-                Type.apply(parts["comparison"],"micro_label",true)
-        place(parts["state"],Rect2(14 if compact_cards else 18,height-26 if compact_cards else height-30,width-(28 if compact_cards else 36),21 if compact_cards else 24))
+                place(parts["comparison"],Rect2(16,height-89,width-32,28))
+                Type.apply(parts["comparison"],"hud_secondary",true)
+        place(parts["state"],Rect2(14 if compact_cards else 18,height-36 if compact_cards else height-30,width-(28 if compact_cards else 36),27 if compact_cards else 24))
         parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
-        fit_line(parts["name"],16 if compact_cards else 18)
+        fit_line(parts["name"],17 if compact_cards else 18)
         if parts["meta"].visible: fit_line(parts["meta"],13)
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
     game.confirm_button.disabled=game.selected_card_index<0
