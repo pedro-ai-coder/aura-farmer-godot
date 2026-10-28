@@ -344,17 +344,17 @@ func home_layout() -> void:
     # The wordmark is visually dominant but stays inside the illustration's
     # poster half. It scales down rather than cropping on narrow/mobile views.
     var logo_width: float=minf(590.0,view.x*0.47) if not narrow else view.x-38.0
-    var logo_height: float=154.0 if view.y<540.0 else 190.0
+    var logo_height: float=154.0 if narrow or view.y<540.0 else 190.0
     place(candidate_brand,Rect2(28,24,logo_width,logo_height))
     # Selected hero must be the visible hero on the menu, not a fixed Sigma.
     poster_hero.texture=game.art.texture(str(game.HEROES[game.hero_index]["id"]))
-    var mobile_portrait: bool=narrow and view.y>=700.0
-    place(poster_hero,Rect2(view.x-188.0,view.y*0.26,164,200) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
+    var mobile_portrait: bool=narrow and view.y>=780.0
+    place(poster_hero,Rect2(view.x-188.0,view.y*0.30,164,176) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
     poster_hero.visible=not narrow or mobile_portrait
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
-    place(home_caption,Rect2(40,183 if view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
+    place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
     var top:=maxf(300.0,view.y*0.51)
