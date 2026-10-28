@@ -470,7 +470,7 @@ func cards_layout() -> void:
                 Type.apply(parts["body"],"body_s",true)
                 place(parts["body"],Rect2(14,125,width-28,80))
                 parts["comparison"].show()
-                place(parts["comparison"],Rect2(14,207,width-28,25))
+                place(parts["comparison"],Rect2(14,205,width-28,22))
                 Type.apply(parts["comparison"],"micro_label",true)
         place(parts["state"],Rect2(14 if compact_cards else 18,height-26 if compact_cards else height-30,width-(28 if compact_cards else 36),21 if compact_cards else 24))
         parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
