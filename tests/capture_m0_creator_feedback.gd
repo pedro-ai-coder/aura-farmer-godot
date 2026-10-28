@@ -21,11 +21,16 @@ func capture() -> void:
     var skin=game.clean_cut_skin
     skin.set_process(false)
     var measurements: Array=[]
-    for state in ["hero-menu","hero-selection","playing-shield","ready","paused","confirm-exit"]:
+    for state in ["hero-menu","play-pressed","hero-selection","playing-shield","ready","choice-selected","paused","confirm-exit"]:
         game.start_run(1)
-        if state=="hero-menu":
+        if state=="hero-menu" or state=="play-pressed":
             game._return_to_menu()
             game.presentation.select_hero(1)
+        elif state=="choice-selected":
+            game._gain_xp(100.0)
+            game._open_choice()
+            game._show_ui()
+            game.pick_upgrade(0)
         elif state=="hero-selection":
             game.presentation.open_heroes()
             game.presentation.select_hero(1)
@@ -50,6 +55,10 @@ func capture() -> void:
         await process_frame
         skin.layout_key=""
         skin.refresh()
+        if state=="play-pressed":
+            # Staged visual fixture only; this is not a synthetic gameplay click.
+            game.presentation.play_button.button_down.emit()
+        await process_frame
         await process_frame
         await RenderingServer.frame_post_draw
         var file: String=output.path_join("m0-%s-%dx%d.png" % [state,width,height])
@@ -57,6 +66,8 @@ func capture() -> void:
             push_error("Screenshot failed: "+file)
             quit(1)
             return
+        if state=="play-pressed":
+            game.presentation.play_button.button_up.emit()
         measurements.append({
             "state":state,"pixels":[width,height],"logical_view":str(skin.view),
             "selected_hero":game.HEROES[game.hero_index]["id"],
