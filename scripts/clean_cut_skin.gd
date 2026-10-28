@@ -38,6 +38,7 @@ var hero_parts: Array[Dictionary]=[]
 var offers_scroll: ScrollContainer
 var offers_content: Control
 var offer_parts: Array[Dictionary]=[]
+var card_plate_styles: Dictionary={}
 var native_children: Dictionary={}
 var hud_nodes: Array[Control]=[]
 var player_plate: TextureRect
@@ -165,12 +166,18 @@ func install(owner_game, source_root: String) -> void:
     offers_content=Control.new();offers_scroll.add_child(offers_content)
     for button: Button in game.offer_buttons:
         adopt(button,offers_content);button.text=""
-        var parts: Dictionary={"category":label(button),"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
+        var rim:=ColorRect.new()
+        rim.mouse_filter=Control.MOUSE_FILTER_IGNORE
+        button.add_child(rim)
+        var icon_plate:=Panel.new()
+        icon_plate.mouse_filter=Control.MOUSE_FILTER_IGNORE
+        button.add_child(icon_plate)
+        var parts: Dictionary={"rim":rim,"icon_plate":icon_plate,"category":label(button),"icon":image(button),"name":label(button,23),"meta":label(button,16),"body":label(button,18),"comparison":label(button,15),"state":label(button,14)}
         Type.apply(parts["name"],"card_title")
         Type.apply(parts["category"],"micro_label")
         parts["category"].add_theme_stylebox_override("normal",StyleBoxFlat.new())
         Type.apply(parts["meta"],"micro_label")
-        Type.apply(parts["comparison"],"body_s")
+        Type.apply(parts["comparison"],"hud_secondary")
         Type.apply(parts["state"],"micro_label")
         parts["body"].clip_text = true
         parts["body"].max_lines_visible = 5
@@ -385,9 +392,25 @@ func cards_layout() -> void:
         button_skin(button,family,selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
-        parts["category"].text=("LEGENDARY · " if legendary else "")+category
+        var rarity_name: String=str(item.get("rarity","legendary" if legendary else "common")).to_lower()
+        var rarity_color: Color=Style.RARITY.get(rarity_name,Style.SKY)
+        parts["rim"].color=Style.SKY if selected else rarity_color
+        place(parts["rim"],Rect2(9,10,7,height-20))
+        parts["category"].text=("LEGENDARY · " if legendary else "")+category.to_upper()
+        Type.apply(parts["category"],"micro_label",view.x<700,Style.INK)
         var category_plate: StyleBoxFlat=parts["category"].get_theme_stylebox("normal")
-        category_plate.bg_color=(Style.SKY if category=="weapon" else Style.GOLD) if legendary else Style.PAPER
+        category_plate.bg_color=Style.SKY if category=="weapon" else Style.GOLD
+        category_plate.content_margin_left=10.0
+        category_plate.content_margin_right=10.0
+        var style_key: String=rarity_name+("/selected" if selected else "")
+        if not card_plate_styles.has(style_key):
+            var plate_style:=StyleBoxFlat.new()
+            plate_style.bg_color=Style.CARD
+            plate_style.border_color=Style.SKY if selected else rarity_color
+            plate_style.set_border_width_all(4 if selected else 3)
+            plate_style.set_corner_radius_all(5)
+            card_plate_styles[style_key]=plate_style
+        parts["icon_plate"].add_theme_stylebox_override("panel",card_plate_styles[style_key])
         if legendary:
             place(parts["category"],Rect2(width*68/438,height*10/304,width*338/438,height*42/304))
         else:
@@ -397,22 +420,32 @@ func cards_layout() -> void:
         parts["body"].tooltip_text = parts["body"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         Type.apply(parts["meta"],"hud_secondary",view.x<700,Style.INK)
-        parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "SELECT ITEM"
+        parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "TAP TO SELECT"
+        Type.apply(parts["state"],"micro_label",view.x<700,Style.SKY if selected else Style.INK)
         if legendary:
-            place(parts["icon"],Rect2(18,48,86,86));place(parts["name"],Rect2(116,48,width-136,80))
+            place(parts["icon_plate"],Rect2(18,48,88,88))
+            place(parts["icon"],Rect2(25,55,74,74))
+            place(parts["name"],Rect2(116,48,width-136,80))
             parts["meta"].hide();place(parts["body"],Rect2(18,144,width-36,height-180));parts["comparison"].hide()
             Type.apply(parts["body"],"body_s")
         else:
             parts["meta"].show();Type.apply(parts["body"],"body_m")
-            place(parts["icon"],Rect2((width-136)/2,68,136,136));place(parts["name"],Rect2(20,210,width-40,70))
+            place(parts["icon_plate"],Rect2((width-128)/2,68,128,128))
+            place(parts["icon"],Rect2((width-112)/2,76,112,112))
+            place(parts["name"],Rect2(20,210,width-40,70))
             place(parts["meta"],Rect2(20,278,width-40,26));place(parts["body"],Rect2(20,310,width-40,height-414));parts["comparison"].show()
             place(parts["comparison"],Rect2(20,height-126,width-40,62))
         if not legendary and height<490:
-            place(parts["icon"],Rect2(18,78,60,60));place(parts["name"],Rect2(90,70,width-108,76))
+            place(parts["icon_plate"],Rect2(18,78,66,66))
+            place(parts["icon"],Rect2(24,84,54,54))
+            place(parts["name"],Rect2(92,70,width-110,76))
             place(parts["meta"],Rect2(18,150,width-36,32));place(parts["body"],Rect2(18,188,width-36,height-280))
             Type.apply(parts["body"],"body_s")
             place(parts["comparison"],Rect2(18,height-86,width-36,48))
-        place(parts["state"],Rect2(18,height-28,width-36,22))
+        place(parts["state"],Rect2(18,height-30,width-36,24))
+        parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+        fit_line(parts["name"],18)
+        if parts["meta"].visible: fit_line(parts["meta"],13)
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
     game.confirm_button.disabled=game.selected_card_index<0
     place(game.confirm_button,Rect2(view.x-350,view.y-78,326,64));button_skin(game.confirm_button,"menu/primary")

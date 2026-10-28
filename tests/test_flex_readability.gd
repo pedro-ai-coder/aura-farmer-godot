@@ -29,9 +29,12 @@ func verify() -> void:
         game._update_text()
         skin.refresh()
         check(skin.flex_status.text == "READY" and skin.flex_title.text == "FLEX","Ready special action is explicit at %s" % viewport_size)
-        check(skin.flex_fill.size.x >= skin.flex_track.size.x-1.0,"Ready Flex has a full visible charge strip")
+        check(skin.aura_arc.progress >= 1.0,"Ready Flex has a complete circular Aura ring")
+        check(skin.aura_arc.visual_state == "ready","Ready Flex has a dedicated gold highlight")
         var safe_screen := Rect2(Vector2.ZERO,game.presentation.view).grow(0.5)
-        check(skin.flex_badge.get_parent() == game.flex_button,"Flex decoration belongs to the live action")
+        check(skin.aura_arc.get_parent() == game.flex_button,"Flex dial belongs to the live action")
+        check(skin.aura_arc.mouse_filter == Control.MOUSE_FILTER_IGNORE,"Flex dial never captures movement touches")
+        check(absf(game.flex_button.size.x-game.flex_button.size.y)<0.1,"Flex visible action remains square/circular at %s" % viewport_size)
         check(safe_screen.encloses(game.flex_button.get_rect()),"Flex action fits useful viewport at %s" % viewport_size)
         check(safe_screen.encloses(game.flex_button.get_rect()),"Actual Flex action remains on-screen at %s" % viewport_size)
         check(game.flex_button.visible and not game.flex_button.disabled,"Full Aura keeps actual Flex action tappable")
@@ -40,7 +43,7 @@ func verify() -> void:
         game.aura = 0.0
         skin.refresh()
         check(skin.flex_status.text.begins_with("ACTIVE ") and skin.flex_status.text.ends_with("s"),"Active Flex shows remaining canonical duration")
-        check(skin.flex_fill.color == skin.Style.TEAL,"Active Flex has its own visual signal")
+        check(skin.aura_arc.visual_state == "active","Active Flex has a distinct teal ring")
         game.flex_time = 0.0
         skin.refresh()
         check(skin.flex_status.text.begins_with("LOCK"),"Cooldown is clearly distinct from READY")
