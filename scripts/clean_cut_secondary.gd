@@ -143,9 +143,9 @@ func layout() -> void:
         action(game.confirm_button,Rect2(40+half,footer,half,64),true)
     elif mode=="confirm_exit":
         caption.text="This unfinished run will not count towards your profile.\nYour settings and completed results remain saved."
-        game.restart_button.text="STAY";game.confirm_button.text="QUIT RUN"
-        action(game.restart_button,Rect2(24,footer,half,64),true)
-        action(game.confirm_button,Rect2(40+half,footer,half,64))
+        game.restart_button.text="STAY";game.confirm_button.text="CONFIRM QUIT"
+        action(game.restart_button,Rect2(24,footer,half,64))
+        action(game.confirm_button,Rect2(40+half,footer,half,64),true)
     elif mode in ["won","lost"]:
         caption.text=ui.secondary.result_caption.text
         result.text=ui.secondary.result_stats.text

@@ -203,6 +203,8 @@ func select_hero(index: int) -> void:
     if game.mode not in ["menu","heroes"]: return
     game.hero_index = index
     refresh()
+    # The production menu hero art is owned by the live Clean Cut skin.
+    if game.clean_cut_skin != null: game.clean_cut_skin.refresh()
 
 func open_heroes() -> void:
     game.mode = "heroes"
