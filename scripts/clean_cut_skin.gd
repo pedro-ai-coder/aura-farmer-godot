@@ -79,7 +79,7 @@ var view := Vector2.ZERO
 var shift := Vector2.ZERO
 var styles: Dictionary={}
 var auxiliary
-var scene_accent: Control
+var scene_accent
 var layout_key := ""
 var layout_count := 0
 var empty_style := StyleBoxEmpty.new()
@@ -137,13 +137,14 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
         if child is Control:child.hide()
     # Feedback is attached to the already-signal-bound button and never
     # intercepts or replaces mouse, keyboard or touchscreen input.
-    var feedback: Control=button.get_node_or_null("ClashButtonFeedback")
+    var feedback=button.get_node_or_null("ClashButtonFeedback")
     if feedback==null:
-        feedback=ButtonFeedback.new()
-        feedback.name="ClashButtonFeedback"
-        button.add_child(feedback)
-        feedback.install(button,game)
-    feedback.configure(family,selected)
+        var new_feedback:=ButtonFeedback.new()
+        new_feedback.name="ClashButtonFeedback"
+        button.add_child(new_feedback)
+        new_feedback.install(button,game)
+        feedback=new_feedback
+    feedback.call("configure",family,selected)
 func install(owner_game, source_root: String) -> void:
     game=owner_game;ui=game.presentation;art=Cache.new(source_root)
     mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -359,9 +360,9 @@ func _animate_new_screen(mode: String) -> void:
     for button in reveal_buttons:
         if not button.is_visible_in_tree():
             continue
-        var feedback: Control=button.get_node_or_null("ClashButtonFeedback")
+        var feedback=button.get_node_or_null("ClashButtonFeedback")
         if feedback!=null:
-            feedback.reveal(minf(float(visible_index)*0.045,0.22))
+            feedback.call("reveal",minf(float(visible_index)*0.045,0.22))
             visible_index+=1
 func headline(text: String) -> void:
     heading.text=text
