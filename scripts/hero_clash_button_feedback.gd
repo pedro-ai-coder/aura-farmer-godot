@@ -181,9 +181,15 @@ func _draw() -> void:
         return
     # Three-layer original pseudo-3D finish for the approved flat button art.
     # Draw *inside* the button bounds: real hit target never changes.
-    var bevel_y: float=h-(3.0+5.0*(1.0-depth))
-    var base_tint: Color=Color(ink,0.68-0.38*depth)
-    draw_line(Vector2(edge+5,bevel_y),Vector2(w-edge-5,bevel_y),base_tint,4.0-2.0*depth,true)
+    # Thick bottom inset forms a visible lifted edge at rest, compressed on
+    # press. It is painted INSIDE the real approved click rectangle.
+    var bevel_y: float=h-(4.0+7.0*(1.0-depth))
+    var base_tint: Color=Color(ink,0.78-0.36*depth)
+    draw_colored_polygon(PackedVector2Array([
+        Vector2(edge+3.0,bevel_y),Vector2(w-edge-3.0,bevel_y),
+        Vector2(w-edge-6.0,h-edge+1.0),Vector2(edge+1.0,h-edge+1.0)
+    ]),Color(ink,0.34*(1.0-depth)+0.22))
+    draw_line(Vector2(edge+6,bevel_y),Vector2(w-edge-7,bevel_y),base_tint,3.0-1.0*depth,true)
     var upper: Color=Color(paper,(0.44+hover_glow*0.35)*(1.0-depth*0.80))
     draw_line(Vector2(edge+7,edge),Vector2(w-edge-7,edge),upper,2.4,true)
     draw_line(Vector2(edge+4,edge+3),Vector2(edge+4,h-edge-7),Color(paper,0.23*(1.0-depth)),1.6,true)
@@ -199,8 +205,11 @@ func _draw() -> void:
         draw_line(Vector2(edge+14,edge+1),Vector2(w-edge-42,edge+1),Color(accent,0.72*glow),3.0,true)
         draw_line(Vector2(edge+9,h-edge-1),Vector2(w-edge-9,h-edge-1),Color(accent,0.27*glow),2.0,true)
     if depth>0.01:
-        # Compressed bevel and upper edge = tangible click even in Reduced Motion.
-        draw_line(Vector2(edge+9,edge+4),Vector2(w-edge-9,edge+4),Color(ink,0.20*depth),2.0,true)
+        # Clear inset shading and top/bottom edge inversion at full press:
+        # no scaling of the actual Control or hit-testing rectangle.
+        draw_rect(Rect2(edge+5,edge+7,maxf(1.0,w-edge*2.0-10.0),maxf(1.0,h-edge*2.0-17.0)),Color(ink,0.11*depth),true)
+        draw_line(Vector2(edge+10,edge+5),Vector2(w-edge-10,edge+5),Color(ink,0.48*depth),3.0,true)
+        draw_line(Vector2(edge+9,h-edge-2),Vector2(w-edge-9,h-edge-2),Color(paper,0.30*depth),3.0,true)
     if release_flash>0.01:
         draw_line(Vector2(edge+10,edge+1),Vector2(w-edge-10,edge+1),Color(paper,0.72*release_flash),3.0,true)
         draw_line(Vector2(edge+12,h-edge-1),Vector2(w-edge-12,h-edge-1),Color(accent,0.65*release_flash),2.0,true)
