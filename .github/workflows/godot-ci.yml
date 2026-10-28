@@ -18,7 +18,7 @@ jobs:
     name: godot-validation
     # Keep this isolated art review unmergeable as a draft while running the full checks.
     # Other drafts retain the existing runner-saving behavior.
-    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' }}
+    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:

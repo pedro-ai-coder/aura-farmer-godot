@@ -1,0 +1,1628 @@
+[
+  {
+    "candidate": "a",
+    "flex_hit_size": "(264.0, 110.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "menu",
+    "text": [
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 2,
+        "rect": "[P: (40.0, 180.0), S: (562.5, 90.0)]",
+        "role": "section_heading",
+        "size": "(562.5, 90.0)",
+        "text": "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY.",
+        "visible_lines": 2
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(264.0, 110.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "character",
+    "text": [
+      {
+        "font_px": 30,
+        "line_height": 38,
+        "lines": 1,
+        "rect": "[P: (28.0, 25.0), S: (1069.0, 64.0)]",
+        "role": "screen_heading",
+        "size": "(1069.0, 64.0)",
+        "text": "PICK YOUR FARMER.",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (48.0, 144.0), S: (292.3333, 40.0)]",
+        "role": "hero_name",
+        "size": "(292.3333, 40.0)",
+        "text": "THE SIGMA",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (48.0, 185.0), S: (292.3333, 24.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(292.3333, 24.0)",
+        "text": "RANGED",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (104.0, 382.0), S: (240.3333, 55.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(240.3333, 55.0)",
+        "text": "STARTER / No Cap",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 23,
+        "line_height": 29,
+        "lines": 1,
+        "rect": "[P: (48.0, 450.0), S: (292.3333, 48.0)]",
+        "role": "section_heading",
+        "size": "(292.3333, 48.0)",
+        "text": "Deadpan Verdict",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 3,
+        "rect": "[P: (48.0, 500.0), S: (292.3333, 75.0)]",
+        "role": "body_text",
+        "size": "(292.3333, 75.0)",
+        "text": "Hit the mark with three weapon attacks to trigger one Verdict. Requires an eligible target.",
+        "visible_lines": 3
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (408.3333, 144.0), S: (292.3333, 40.0)]",
+        "role": "hero_name",
+        "size": "(292.3333, 40.0)",
+        "text": "COOL KID",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (408.3333, 185.0), S: (292.3333, 24.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(292.3333, 24.0)",
+        "text": "MELEE",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (464.3333, 382.0), S: (240.3333, 55.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(240.3333, 55.0)",
+        "text": "STARTER / Keyboard Warrior",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 23,
+        "line_height": 29,
+        "lines": 1,
+        "rect": "[P: (408.3333, 450.0), S: (292.3333, 48.0)]",
+        "role": "section_heading",
+        "size": "(292.3333, 48.0)",
+        "text": "CTRL + CHAOS",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 4,
+        "rect": "[P: (408.3333, 500.0), S: (292.3333, 101.0)]",
+        "role": "body_text",
+        "size": "(292.3333, 101.0)",
+        "text": "Aim six keyboard beats, then land the directional ENTER! finisher. Move faster; projectiles and hazards still hurt.",
+        "visible_lines": 4
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (768.6667, 144.0), S: (292.3333, 40.0)]",
+        "role": "hero_name",
+        "size": "(292.3333, 40.0)",
+        "text": "ALPHA CHAD",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (768.6667, 185.0), S: (292.3333, 24.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(292.3333, 24.0)",
+        "text": "TANK",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (824.6667, 382.0), S: (240.3333, 55.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(240.3333, 55.0)",
+        "text": "STARTER / Cope Shield",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 23,
+        "line_height": 29,
+        "lines": 1,
+        "rect": "[P: (768.6667, 450.0), S: (292.3333, 48.0)]",
+        "role": "section_heading",
+        "size": "(292.3333, 48.0)",
+        "text": "Giga Chad Rampage",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 4,
+        "rect": "[P: (768.6667, 500.0), S: (292.3333, 101.0)]",
+        "role": "body_text",
+        "size": "(292.3333, 101.0)",
+        "text": "Gain a shield, draw nearby mobs and land three slams. Finish with a countershock powered by absorbed shield damage.",
+        "visible_lines": 4
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(128.0, 128.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "playing",
+    "text": [
+      {
+        "font_px": 27,
+        "line_height": 34,
+        "lines": 1,
+        "rect": "[P: (983.0, 394.0), S: (108.0, 38.0)]",
+        "role": "screen_heading",
+        "size": "(108.0, 38.0)",
+        "text": "FLEX",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (982.0, 434.0), S: (110.0, 24.0)]",
+        "role": "ability_status",
+        "size": "(110.0, 24.0)",
+        "text": "46%",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 22,
+        "line_height": 28,
+        "lines": 1,
+        "rect": "[P: (82.0, 79.0), S: (280.0, 28.0)]",
+        "role": "hud_primary_stat",
+        "size": "(280.0, 28.0)",
+        "text": "HP 100 / 100",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 24,
+        "line_height": 30,
+        "lines": 1,
+        "rect": "[P: (82.0, 28.0), S: (280.0, 32.0)]",
+        "role": "hero_name",
+        "size": "(280.0, 32.0)",
+        "text": "THE SIGMA",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (82.0, 57.0), S: (280.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(280.0, 20.0)",
+        "text": "SHIELD 0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 22,
+        "line_height": 28,
+        "lines": 1,
+        "rect": "[P: (24.0, 345.0), S: (300.0, 28.0)]",
+        "role": "hud_primary_stat",
+        "size": "(300.0, 28.0)",
+        "text": "LEVEL 1   ·   XP 0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 22,
+        "line_height": 28,
+        "lines": 1,
+        "rect": "[P: (452.5, 45.0), S: (220.0, 28.0)]",
+        "role": "hud_primary_stat",
+        "size": "(220.0, 28.0)",
+        "text": "WAVE 1  /  00:00",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (58.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (12.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Keyboard",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (138.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (92.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Personal\nSpace",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (218.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (172.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Brainrot\nFeed",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (312.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (266.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Main\nChar.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (392.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (346.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Term.\nOnline",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (472.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (426.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Built\nDifferent",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (552.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (506.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Absolute\nCinema",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (632.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (586.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Too\nSigma",
+        "visible_lines": 2
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(128.0, 128.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "ready",
+    "text": [
+      {
+        "font_px": 27,
+        "line_height": 34,
+        "lines": 1,
+        "rect": "[P: (983.0, 394.0), S: (108.0, 38.0)]",
+        "role": "screen_heading",
+        "size": "(108.0, 38.0)",
+        "text": "FLEX",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (982.0, 434.0), S: (110.0, 24.0)]",
+        "role": "ability_status",
+        "size": "(110.0, 24.0)",
+        "text": "READY",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 22,
+        "line_height": 28,
+        "lines": 1,
+        "rect": "[P: (82.0, 79.0), S: (280.0, 30.0)]",
+        "role": "hud_primary_stat",
+        "size": "(280.0, 30.0)",
+        "text": "HP 100 / 100",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 24,
+        "line_height": 30,
+        "lines": 1,
+        "rect": "[P: (82.0, 28.0), S: (280.0, 32.0)]",
+        "role": "hero_name",
+        "size": "(280.0, 32.0)",
+        "text": "THE SIGMA",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (82.0, 57.0), S: (280.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(280.0, 20.0)",
+        "text": "SHIELD 0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 22,
+        "line_height": 28,
+        "lines": 1,
+        "rect": "[P: (24.0, 345.0), S: (300.0, 30.0)]",
+        "role": "hud_primary_stat",
+        "size": "(300.0, 30.0)",
+        "text": "LEVEL 1   ·   XP 0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 22,
+        "line_height": 28,
+        "lines": 1,
+        "rect": "[P: (452.5, 45.0), S: (220.0, 30.0)]",
+        "role": "hud_primary_stat",
+        "size": "(220.0, 30.0)",
+        "text": "WAVE 1  /  00:00",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (58.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (12.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Keyboard",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (138.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (92.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Personal\nSpace",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (218.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (172.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Brainrot\nFeed",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (312.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (266.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Main\nChar.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (392.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (346.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Term.\nOnline",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (472.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (426.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Built\nDifferent",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (552.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (506.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Absolute\nCinema",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (632.0, 452.0), S: (16.0, 20.0)]",
+        "role": "micro_label",
+        "size": "(16.0, 20.0)",
+        "text": "4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 2,
+        "rect": "[P: (586.0, 469.0), S: (76.0, 40.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(76.0, 40.0)",
+        "text": "Too\nSigma",
+        "visible_lines": 2
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(226.0, 64.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "choice",
+    "text": [
+      {
+        "font_px": 30,
+        "line_height": 38,
+        "lines": 1,
+        "rect": "[P: (28.0, 25.0), S: (1069.0, 64.0)]",
+        "role": "screen_heading",
+        "size": "(1069.0, 64.0)",
+        "text": "CHOOSE YOUR NEXT MOVE",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (44.0, 134.963), S: (303.0, 23.85185)]",
+        "role": "rarity_label",
+        "size": "(303.0, 23.85185)",
+        "text": "weapon",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (114.0, 158.0), S: (235.0, 66.0)]",
+        "role": "upgrade_card_title",
+        "size": "(235.0, 66.0)",
+        "text": "No Cap",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (42.0, 228.0), S: (307.0, 32.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(307.0, 32.0)",
+        "text": "COMMON / WEAPON  /  LV 2/4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 1,
+        "rect": "[P: (42.0, 262.0), S: (307.0, 66.0)]",
+        "role": "body_text",
+        "size": "(307.0, 66.0)",
+        "text": "Throw a cap through up to four rivals.",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 2,
+        "rect": "[P: (42.0, 346.0), S: (307.0, 52.0)]",
+        "role": "body_text",
+        "size": "(307.0, 52.0)",
+        "text": "LV 1 common → LV 2 common\n51 dmg · 1.60s → 59 dmg · 1.52s",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (42.0, 402.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (403.0, 134.963), S: (303.0, 23.85185)]",
+        "role": "rarity_label",
+        "size": "(303.0, 23.85185)",
+        "text": "passive",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 2,
+        "rect": "[P: (473.0, 158.0), S: (235.0, 68.0)]",
+        "role": "upgrade_card_title",
+        "size": "(235.0, 68.0)",
+        "text": "Across the Timeline",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (401.0, 228.0), S: (307.0, 32.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(307.0, 32.0)",
+        "text": "COMMON / PASSIVE  /  LV 1/4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 2,
+        "rect": "[P: (401.0, 262.0), S: (307.0, 66.0)]",
+        "role": "body_text",
+        "size": "(307.0, 66.0)",
+        "text": "+8% weapon range per level; projectile speed follows.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 1,
+        "rect": "[P: (401.0, 346.0), S: (307.0, 52.0)]",
+        "role": "body_text",
+        "size": "(307.0, 52.0)",
+        "text": "Uses one passive slot",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (401.0, 402.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (762.0, 134.963), S: (303.0, 23.85185)]",
+        "role": "rarity_label",
+        "size": "(303.0, 23.85185)",
+        "text": "passive",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (832.0, 158.0), S: (235.0, 66.0)]",
+        "role": "upgrade_card_title",
+        "size": "(235.0, 66.0)",
+        "text": "Caught in 4K",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (760.0, 228.0), S: (307.0, 32.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(307.0, 32.0)",
+        "text": "COMMON / PASSIVE  /  LV 1/4",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 1,
+        "rect": "[P: (760.0, 262.0), S: (307.0, 66.0)]",
+        "role": "body_text",
+        "size": "(307.0, 66.0)",
+        "text": "+5% movement speed per level.",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 1,
+        "rect": "[P: (760.0, 346.0), S: (307.0, 52.0)]",
+        "role": "body_text",
+        "size": "(307.0, 52.0)",
+        "text": "Uses one passive slot",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (760.0, 402.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(226.0, 64.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "legendary",
+    "text": [
+      {
+        "font_px": 30,
+        "line_height": 38,
+        "lines": 1,
+        "rect": "[P: (28.0, 25.0), S: (1069.0, 64.0)]",
+        "role": "screen_heading",
+        "size": "(1069.0, 64.0)",
+        "text": "THE LEGENDARY DROP",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (77.25114, 114.8816), S: (264.6895, 37.30263)]",
+        "role": "rarity_label",
+        "size": "(264.6895, 37.30263)",
+        "text": "LEGENDARY · passive",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (140.0, 154.0), S: (207.0, 80.0)]",
+        "role": "upgrade_card_title",
+        "size": "(207.0, 80.0)",
+        "text": "W Squad",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 2,
+        "rect": "[P: (42.0, 236.0), S: (307.0, 104.0)]",
+        "role": "body_text",
+        "size": "(307.0, 104.0)",
+        "text": "+25% healing/shields. Flex grants +10% weapon damage for 6s.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (42.0, 348.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (436.2511, 114.8816), S: (264.6895, 37.30263)]",
+        "role": "rarity_label",
+        "size": "(264.6895, 37.30263)",
+        "text": "LEGENDARY · passive",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 2,
+        "rect": "[P: (499.0, 154.0), S: (207.0, 80.0)]",
+        "role": "upgrade_card_title",
+        "size": "(207.0, 80.0)",
+        "text": "Absolute Cinema",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 2,
+        "rect": "[P: (401.0, 236.0), S: (307.0, 104.0)]",
+        "role": "body_text",
+        "size": "(307.0, 104.0)",
+        "text": "+25% weapon damage, plus 20% during Flex.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (401.0, 348.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (795.2512, 114.8816), S: (264.6895, 37.30263)]",
+        "role": "rarity_label",
+        "size": "(264.6895, 37.30263)",
+        "text": "LEGENDARY · passive",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (858.0, 154.0), S: (207.0, 80.0)]",
+        "role": "upgrade_card_title",
+        "size": "(207.0, 80.0)",
+        "text": "No U",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 3,
+        "rect": "[P: (760.0, 236.0), S: (307.0, 104.0)]",
+        "role": "body_text",
+        "size": "(307.0, 104.0)",
+        "text": "Every 15s: 30% power pulse in 200U, reducing mob damage 20%/4s (boss 10%/2s).",
+        "visible_lines": 3
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (760.0, 348.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (77.25114, 400.8816), S: (264.6895, 37.30263)]",
+        "role": "rarity_label",
+        "size": "(264.6895, 37.30263)",
+        "text": "LEGENDARY · weapon",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (140.0, 440.0), S: (207.0, 80.0)]",
+        "role": "upgrade_card_title",
+        "size": "(207.0, 80.0)",
+        "text": "Ratio Blaster",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 2,
+        "rect": "[P: (42.0, 522.0), S: (307.0, 104.0)]",
+        "role": "body_text",
+        "size": "(307.0, 104.0)",
+        "text": "Every fourth activation adds two 0.10P shots, 0.08s apart.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (42.0, 634.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (436.2511, 400.8816), S: (264.6895, 37.30263)]",
+        "role": "rarity_label",
+        "size": "(264.6895, 37.30263)",
+        "text": "LEGENDARY · weapon",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (499.0, 440.0), S: (207.0, 80.0)]",
+        "role": "upgrade_card_title",
+        "size": "(207.0, 80.0)",
+        "text": "No Cap",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 2,
+        "rect": "[P: (401.0, 522.0), S: (307.0, 104.0)]",
+        "role": "body_text",
+        "size": "(307.0, 104.0)",
+        "text": "A line blast follows the cap after 0.7s for 0.25P × rarity.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (401.0, 634.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (795.2512, 400.8816), S: (264.6895, 37.30263)]",
+        "role": "rarity_label",
+        "size": "(264.6895, 37.30263)",
+        "text": "LEGENDARY · weapon",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (858.0, 440.0), S: (207.0, 80.0)]",
+        "role": "upgrade_card_title",
+        "size": "(207.0, 80.0)",
+        "text": "Brainrot Feed",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 2,
+        "rect": "[P: (760.0, 522.0), S: (307.0, 104.0)]",
+        "role": "body_text",
+        "size": "(307.0, 104.0)",
+        "text": "Three fixed side blasts follow after 0.3s; one secondary hit per rival.",
+        "visible_lines": 2
+      },
+      {
+        "font_px": 16,
+        "line_height": 20,
+        "lines": 1,
+        "rect": "[P: (760.0, 634.0), S: (307.0, 22.0)]",
+        "role": "ability_status",
+        "size": "(307.0, 22.0)",
+        "text": "SELECT ITEM",
+        "visible_lines": 1
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(226.0, 64.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "won",
+    "text": [
+      {
+        "font_px": 38,
+        "line_height": 47,
+        "lines": 1,
+        "rect": "[P: (28.0, 25.0), S: (1069.0, 64.0)]",
+        "role": "display_xl",
+        "size": "(1069.0, 64.0)",
+        "text": "VICTORY!",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 1,
+        "rect": "[P: (28.0, 94.0), S: (1069.0, 68.0)]",
+        "role": "body_text",
+        "size": "(1069.0, 68.0)",
+        "text": "BIG HATER DEFEATED",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (554.0, 174.0), S: (480.0, 33.0)]",
+        "role": "hero_name",
+        "size": "(480.0, 33.0)",
+        "text": "THE SIGMA",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 218.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "TIME",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 213.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "00:00",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 257.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "WAVE",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 252.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "1 / 5",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 296.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "LEVEL",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 291.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "1",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 335.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "KILLS",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 330.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 374.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "WEAPONS",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 369.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "1 / 3",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 413.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "PASSIVES",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 408.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0 / 5",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 452.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "DAMAGE",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 447.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 491.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "HEALING",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 486.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 530.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "SHIELD ABSORBED",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 525.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 569.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "FLEX USES",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 564.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      }
+    ]
+  },
+  {
+    "candidate": "a",
+    "flex_hit_size": "(226.0, 64.0)",
+    "logical_viewport": "(1125.0, 520.0)",
+    "pixels": [
+      844,
+      390
+    ],
+    "state": "lost",
+    "text": [
+      {
+        "font_px": 38,
+        "line_height": 47,
+        "lines": 1,
+        "rect": "[P: (28.0, 25.0), S: (1069.0, 64.0)]",
+        "role": "display_xl",
+        "size": "(1069.0, 64.0)",
+        "text": "RUN OVER",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 18,
+        "line_height": 23,
+        "lines": 1,
+        "rect": "[P: (28.0, 94.0), S: (1069.0, 68.0)]",
+        "role": "body_text",
+        "size": "(1069.0, 68.0)",
+        "text": "THE STREETS WON THIS ROUND",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (554.0, 174.0), S: (480.0, 33.0)]",
+        "role": "hero_name",
+        "size": "(480.0, 33.0)",
+        "text": "THE SIGMA",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 218.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "TIME",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 213.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "00:00",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 257.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "WAVE",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 252.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "1 / 5",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 296.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "LEVEL",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 291.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "1",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 335.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "KILLS",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 330.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 374.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "WEAPONS",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 369.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "1 / 3",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 413.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "PASSIVES",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 408.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0 / 5",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 452.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "DAMAGE",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 447.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 491.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "HEALING",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 486.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 530.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "SHIELD ABSORBED",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 525.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 17,
+        "line_height": 22,
+        "lines": 1,
+        "rect": "[P: (554.0, 569.0), S: (352.0, 22.0)]",
+        "role": "hud_secondary_stat",
+        "size": "(352.0, 22.0)",
+        "text": "FLEX USES",
+        "visible_lines": 1
+      },
+      {
+        "font_px": 26,
+        "line_height": 33,
+        "lines": 1,
+        "rect": "[P: (922.0, 564.0), S: (112.0, 33.0)]",
+        "role": "numeric_emphasis",
+        "size": "(112.0, 33.0)",
+        "text": "0",
+        "visible_lines": 1
+      }
+    ]
+  }
+]
