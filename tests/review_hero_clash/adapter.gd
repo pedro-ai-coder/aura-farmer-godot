@@ -36,8 +36,9 @@ func refresh() -> void:
     typography.apply(skin.auxiliary.result_hero,"hero_name",compact)
     refine_layout(skin)
     fit_tree(skin)
-    logo.position = skin.wordmark.position
-    logo.size = Vector2(skin.wordmark.size.x,140)
+    # Review the A/B/C candidates at the same live menu brand footprint.
+    logo.position = skin.candidate_brand.position
+    logo.size = skin.candidate_brand.size
     if game.mode == "menu" and typography.candidate == "c":
         # Correct the under-emphasized A logo. The hero still owns the right
         # side of the poster and interactive menu buttons retain their bounds.
@@ -50,6 +51,7 @@ func refresh() -> void:
         skin.home_caption.position.y = 191.0 if compact_menu else 208.0
     logo.visible = game.mode == "menu"
     skin.wordmark.hide()
+    skin.candidate_brand.hide()
     logo.queue_redraw()
 
 func apply_tree(node: Node, compact: bool) -> void:
