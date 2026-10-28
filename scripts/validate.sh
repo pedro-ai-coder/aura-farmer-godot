@@ -41,6 +41,7 @@ bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
 python3 scripts/promote_approved_icons.py
 python3 scripts/verify_clean_cut_art.py
+python3 scripts/verify_typography.py
 python3 -m unittest discover -s tests -p test_icon_pipeline.py
 run_check import --headless --path . --import
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
@@ -76,16 +77,21 @@ run_check passive-effects --headless --path . --script res://tests/test_passive_
 run_check approved-icon-batch --headless --path . --script res://tests/test_approved_icon_batch.gd
 run_check icon-registry --headless --path . --script res://tests/test_icon_registry.gd
 run_check approved-art --headless --path . --script res://tests/test_approved_visuals.gd
+run_check combat-feedback --headless --path . --script res://tests/test_combat_feedback.gd
+run_check clean-cut-typography --headless --path . --script res://tests/test_clean_cut_typography.gd
 run_check weapon-vfx --headless --path . --script res://tests/test_weapon_visuals.gd
 run_check legendary-combat --headless --path . --script res://tests/test_legendary_combat.gd
 run_check weapon-timing --headless --path . --script res://tests/test_weapon_timing.gd
 run_check player-projectiles --headless --path . --script res://tests/test_player_projectiles.gd
 run_check mobile-touch --headless --path . --script res://tests/test_mobile_joystick.gd
+run_check flex-readability --headless --path . --script res://tests/test_flex_readability.gd
 run_check playable --headless --path . --script res://tests/test_playable_slice.gd
 run_check scene --headless --path . --quit-after 10
 
 run_check approved-clean-cut-runtime --headless --path . --script res://tests/test_clean_cut_runtime.gd
 run_check clean-cut-pointer-input --headless --path . --script res://tests/test_clean_cut_pointer_input.gd
+run_check clean-cut-secondary-input --headless --path . --script res://tests/test_clean_cut_secondary_input.gd
+run_check clean-cut-deferred-legendary --headless --path . --script res://tests/test_clean_cut_deferred_legendary.gd
 run_check candidate-bindings --headless --path . --script res://tests/review_clean_cut_candidates.gd -- user://clean-cut-review --check
 run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
 

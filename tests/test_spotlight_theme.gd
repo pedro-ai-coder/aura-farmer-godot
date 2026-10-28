@@ -11,7 +11,7 @@ func verify() -> void:
     var ui = game.presentation
     var skin: Control = game.clean_cut_skin
     expect(skin != null, "Clean Cut production skin is installed")
-    expect(ui.subtitle.get_theme_font("font").get_font_name().contains("Inter"), "Licensed Inter retained for body typography")
+    expect(ui.subtitle.get_theme_font("font").get_font_name().contains("Barlow"), "Licensed Barlow used for body typography")
     var tokens: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/art/hero_spotlight_v5_tokens.json"))
     expect(Color(tokens["palette"]["panel.blue"]) == Color("1f3e63"), "Approved navy blue token is preserved")
     if skin != null:

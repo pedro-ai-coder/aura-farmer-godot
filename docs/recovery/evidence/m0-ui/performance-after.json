@@ -1,0 +1,222 @@
+{
+  "rows": [
+    {
+      "enemies": 0,
+      "final_mode": "menu",
+      "frame": {
+        "fps": 77.3936401776184,
+        "max_ms": 30.827,
+        "mean_ms": 12.9209583333333,
+        "median_ms": 12.429,
+        "p95_ms": 16.823,
+        "p99_ms": 21.262
+      },
+      "process_including_presenter": {
+        "fps": 10135.9912154743,
+        "max_ms": 0.279,
+        "mean_ms": 0.0986583333333333,
+        "median_ms": 0.076,
+        "p95_ms": 0.251,
+        "p99_ms": 0.278
+      },
+      "projectiles": 0,
+      "scene": "menu",
+      "skin_refresh": {
+        "fps": 7538.63550697324,
+        "max_ms": 0.694,
+        "mean_ms": 0.13265,
+        "median_ms": 0.115,
+        "p95_ms": 0.205,
+        "p99_ms": 0.353
+      }
+    },
+    {
+      "enemies": 0,
+      "final_mode": "heroes",
+      "frame": {
+        "fps": 79.3299265537097,
+        "max_ms": 16.524,
+        "mean_ms": 12.6055833333333,
+        "median_ms": 12.333,
+        "p95_ms": 15.59,
+        "p99_ms": 16.466
+      },
+      "process_including_presenter": {
+        "fps": 9414.71834300957,
+        "max_ms": 0.31,
+        "mean_ms": 0.106216666666667,
+        "median_ms": 0.082,
+        "p95_ms": 0.251,
+        "p99_ms": 0.287
+      },
+      "projectiles": 0,
+      "scene": "heroes",
+      "skin_refresh": {
+        "fps": 7882.80890757406,
+        "max_ms": 0.405,
+        "mean_ms": 0.126858333333333,
+        "median_ms": 0.114,
+        "p95_ms": 0.179,
+        "p99_ms": 0.228
+      }
+    },
+    {
+      "enemies": 1,
+      "final_mode": "playing",
+      "frame": {
+        "fps": 112.685261612921,
+        "max_ms": 31.272,
+        "mean_ms": 8.874275,
+        "median_ms": 7.53,
+        "p95_ms": 16.506,
+        "p99_ms": 19.563
+      },
+      "process_including_presenter": {
+        "fps": 4568.46994327483,
+        "max_ms": 0.775,
+        "mean_ms": 0.218891666666667,
+        "median_ms": 0.182,
+        "p95_ms": 0.418,
+        "p99_ms": 0.597
+      },
+      "projectiles": 0,
+      "scene": "opening",
+      "skin_refresh": {
+        "fps": 6385.35624966743,
+        "max_ms": 1.987,
+        "mean_ms": 0.156608333333333,
+        "median_ms": 0.108,
+        "p95_ms": 0.217,
+        "p99_ms": 1.659
+      }
+    },
+    {
+      "enemies": 96,
+      "final_mode": "playing",
+      "frame": {
+        "fps": 65.5827657236047,
+        "max_ms": 25.421,
+        "mean_ms": 15.2479083333333,
+        "median_ms": 14.981,
+        "p95_ms": 19.482,
+        "p99_ms": 22.948
+      },
+      "process_including_presenter": {
+        "fps": 587.803085966201,
+        "max_ms": 3.416,
+        "mean_ms": 1.70125,
+        "median_ms": 1.607,
+        "p95_ms": 2.265,
+        "p99_ms": 3.103
+      },
+      "projectiles": 0,
+      "scene": "dense",
+      "skin_refresh": {
+        "fps": 5930.02569677802,
+        "max_ms": 1.437,
+        "mean_ms": 0.168633333333333,
+        "median_ms": 0.123,
+        "p95_ms": 0.281,
+        "p99_ms": 1.36
+      }
+    },
+    {
+      "enemies": 0,
+      "final_mode": "choice",
+      "frame": {
+        "fps": 107.987473453079,
+        "max_ms": 13.707,
+        "mean_ms": 9.26033333333333,
+        "median_ms": 8.98,
+        "p95_ms": 11.778,
+        "p99_ms": 12.715
+      },
+      "process_including_presenter": {
+        "fps": 9337.06816059757,
+        "max_ms": 0.448,
+        "mean_ms": 0.1071,
+        "median_ms": 0.069,
+        "p95_ms": 0.303,
+        "p99_ms": 0.379
+      },
+      "projectiles": 0,
+      "scene": "choice",
+      "skin_refresh": {
+        "fps": 9014.42307692307,
+        "max_ms": 0.301,
+        "mean_ms": 0.110933333333333,
+        "median_ms": 0.107,
+        "p95_ms": 0.14,
+        "p99_ms": 0.182
+      }
+    },
+    {
+      "enemies": 0,
+      "final_mode": "legendary",
+      "frame": {
+        "fps": 111.275964391691,
+        "max_ms": 14.376,
+        "mean_ms": 8.98666666666667,
+        "median_ms": 8.811,
+        "p95_ms": 10.333,
+        "p99_ms": 10.684
+      },
+      "process_including_presenter": {
+        "fps": 9069.60925100144,
+        "max_ms": 0.395,
+        "mean_ms": 0.110258333333333,
+        "median_ms": 0.067,
+        "p95_ms": 0.352,
+        "p99_ms": 0.385
+      },
+      "projectiles": 0,
+      "scene": "legendary",
+      "skin_refresh": {
+        "fps": 9062.75961030133,
+        "max_ms": 0.273,
+        "mean_ms": 0.110341666666667,
+        "median_ms": 0.106,
+        "p95_ms": 0.143,
+        "p99_ms": 0.182
+      }
+    },
+    {
+      "enemies": 1,
+      "final_mode": "playing",
+      "frame": {
+        "fps": 152.791695262057,
+        "max_ms": 13.325,
+        "mean_ms": 6.54485833333333,
+        "median_ms": 6.175,
+        "p95_ms": 8.691,
+        "p99_ms": 9.847
+      },
+      "process_including_presenter": {
+        "fps": 5495.00870043044,
+        "max_ms": 0.604,
+        "mean_ms": 0.181983333333333,
+        "median_ms": 0.148,
+        "p95_ms": 0.399,
+        "p99_ms": 0.487
+      },
+      "projectiles": 0,
+      "scene": "boss",
+      "skin_refresh": {
+        "fps": 9084.02725208176,
+        "max_ms": 1.469,
+        "mean_ms": 0.110083333333333,
+        "median_ms": 0.087,
+        "p95_ms": 0.127,
+        "p99_ms": 1.249
+      }
+    }
+  ],
+  "samples_per_scene": 120,
+  "scope": "Staged native simulation plus rendering; software Mesa llvmpipe; not Web/device acceptance",
+  "seed": 451,
+  "viewport": [
+    1280,
+    720
+  ],
+  "warmup": 30
+}

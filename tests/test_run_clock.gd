@@ -18,7 +18,14 @@ func _verify() -> void:
         game._advance(0.01)
         _expect(game.wave == index,"Wave cannot start before its two-minute boundary")
         game._advance(0.02)
-        _expect(game.wave == index+1 and game.total_xp == float(40*(index+1)),"Wave boundary credits its unchanged reward exactly once")
+        _expect(game.wave == index+1 and game.total_xp == 0.0,"Wave boundary creates a collectible rather than granting direct XP")
+        _expect(game.pickups.size() == 1 and game.pickups[0]["xp"] == float(40*(index+1)),"Exactly one crystal holds the canonical transition reward")
+        var crystal: Dictionary = game.pickups[0]
+        _expect(game.SoloWorldRulesScript.walkable(crystal["pos"]),"Transition reward remains reachable")
+        game.player_pos = crystal["pos"]
+        game._collect_drops()
+        game._collect_drops()
+        _expect(game.total_xp == float(40*(index+1)) and game.pickups.is_empty(),"Collection credits transition XP exactly once")
     for pair in [[135.0,"reply-guy"],[255.0,"mod-supremo"],[375.0,"ohio-express"],[495.0,"doomscroll-prime"]]:
         game.start_run(0)
         game.event_index = int((float(pair[0])-135.0)/120.0)

@@ -44,6 +44,17 @@ static func draw_attack(canvas: CanvasItem, effect: Dictionary) -> void:
     var paper := Color(PAPER, life)
     var aura := Color(AURA, life)
     var teal := Color(TEAL, life)
+    # Actual emitted geometry; cosmetic outline, never another hitbox.
+    if effect.has("radius"):
+        var radius := float(effect["radius"])
+        var half := deg_to_rad(float(effect.get("arc", 360.0)) * 0.5)
+        var heading: float = Vector2(effect.get("facing", forward)).angle()
+        var accent := teal if type in ["keyboard", "leaf", "shield", "segments"] else aura
+        if type == "phone" or half >= PI:
+            canvas.draw_arc(origin, radius, 0, TAU, 40, Color(accent, life * 0.65), 3.0)
+        else:
+            canvas.draw_arc(origin, radius, heading-half, heading+half, 24, Color(ink, life*0.65), 5.0)
+            canvas.draw_arc(origin, radius, heading-half, heading+half, 24, accent, 2.5)
     match type:
         "dart":
             _triangle(canvas, target + forward * 14.0,

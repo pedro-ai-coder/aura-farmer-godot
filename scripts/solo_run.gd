@@ -1,4 +1,5 @@
 extends Node2D
+const Typography = preload("res://scripts/clean_cut_typography.gd")
 
 const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
@@ -85,6 +86,7 @@ var spawn_timer := 0.7
 var hurt_timer := 0.0
 var attack_flash := 0.0
 var attack_visuals: Array[Dictionary] = []
+var combat_feedback: Array[Dictionary] = []
 var attack_target := Vector2.ZERO
 var pending_choices := 0
 var selection: Array[Dictionary] = []
@@ -448,6 +450,7 @@ func start_run(index: int) -> void:
     hurt_timer = 0.0
     attack_flash = 0.0
     attack_visuals.clear()
+    combat_feedback.clear()
     _clear_touch()
     run_time = 0.0
     level = 1
@@ -513,7 +516,7 @@ func _process(delta: float) -> void:
     if mode == "playing":
         attack_flash = maxf(attack_flash - delta, 0.0)
         for effect: Dictionary in attack_visuals.duplicate():
-            effect["life"] = float(effect["life"]) - delta
+            effect["life"] = maxf(0.0, float(effect.get("until",run_time)) - run_time)
             if float(effect["life"]) <= 0.0:
                 attack_visuals.erase(effect)
     _update_platform(delta)
@@ -537,6 +540,8 @@ func _advance(dt: float) -> void:
     if mode != "playing":
         return
     run_time += dt
+    for cue: Dictionary in combat_feedback.duplicate():
+        if run_time >= float(cue["until"]): combat_feedback.erase(cue)
     _tick_recovery(dt)
     _expire_weapon_shields()
     hurt_timer = maxf(0.0, hurt_timer - dt)
@@ -553,7 +558,7 @@ func _advance(dt: float) -> void:
     var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
         wave += 1
-        _gain_xp(float(40 * wave))
+        _spawn_phase_crystal()
     _spawn_logic(dt)
     _check_legendary_window()
     if mode == "playing" and pending_choices > 0:
@@ -581,6 +586,24 @@ func _advance(dt: float) -> void:
     _check_legendary_window()
     if mode == "playing" and pending_choices > 0:
         _open_choice()
+
+func _spawn_phase_crystal() -> void:
+    # GDD V3 5.4: one collectible, not direct XP. Nearby walkable placement
+    # outside the existing pickup radius, with no gameplay RNG consumption.
+    var point := player_pos
+    for step in range(16):
+        var candidate := player_pos + movement_direction.normalized().rotated(step * TAU / 16.0) * 96.0
+        if SoloWorldRulesScript.walkable(candidate) and SoloWorldRulesScript.clear_line(player_pos, candidate):
+            point = candidate
+            break
+    pickups.append({"pos": point, "xp": float(40 * wave), "kind": "aura", "phase": wave})
+    _pickup_cue("phase", point, "WAVE %d / +%d XP CRYSTAL" % [wave, 40 * wave])
+
+func _combat_cue(kind: String, point: Vector2, direction: Vector2 = Vector2.RIGHT) -> void:
+    # Bounded visual state; active simulation time, no RNG or damage callbacks.
+    if combat_feedback.size() >= 64: combat_feedback.pop_front()
+    combat_feedback.append({"kind": kind, "pos": point, "dir": direction,
+        "at": run_time, "until": run_time + (0.32 if kind == "defeat" else 0.20)})
 
 func _tick_passives(dt: float) -> void:
     # All passive clocks advance only inside _advance while the run is playing.
@@ -1388,7 +1411,7 @@ func _step_weapon_areas() -> void:
             area["impact_shown"] = true
             if attack_visuals.size() >= 12:
                 attack_visuals.pop_front()
-            attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if area["shape"] == "line" or float(area["arc"]) < 360.0 else center, "life": 0.18})
+            attack_visuals.append({"id": area["id"], "origin": center, "target": center + facing * radius if area["shape"] == "line" or float(area["arc"]) < 360.0 else center, "life": 0.18, "until": run_time + 0.18, "radius": radius, "arc": area["arc"], "facing": facing})
 
 func _grant_weapon_shield(source: String, raw_amount: float, duration: float) -> void:
     # Weapon sources refresh themselves instead of stacking, and share the 40% cap.
@@ -1464,7 +1487,9 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
         enemy["shield"] = float(enemy["shield"]) - blocked
         amount -= blocked
     run_metrics["damage"] = float(run_metrics["damage"]) + minf(maxf(0.0, float(enemy["hp"])), maxf(0.0, amount))
-    enemy["hurt_at"] = run_time
+    if amount > 0.0:
+        enemy["hurt_at"] = run_time
+        _combat_cue("hit", Vector2(enemy["pos"]) + Vector2(0, -18), (Vector2(enemy["pos"]) - player_pos).normalized())
     enemy["hp"] = float(enemy["hp"]) - amount
     if enemy["kind"] == "boss":
         if float(enemy["hp"]) <= float(enemy["max"]) * 0.70: enemy["ring_phase"] = true
@@ -1472,6 +1497,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
     if float(enemy["hp"]) <= 0.0:
         if enemy["kind"] == "copium-puffer":
             _schedule_hazard(Vector2(enemy["pos"]), 80.0, 1.0, 3.0, float(enemy["damage"]), "circle", Vector2.RIGHT, enemy)
+        _combat_cue("defeat", Vector2(enemy["pos"]) + Vector2(0, -18))
         var visual: Dictionary = enemy.duplicate(true)
         visual["defeated_at"] = run_time
         defeated_visuals.append(visual)
@@ -1543,7 +1569,9 @@ func _collect_drops() -> void:
                     pickups.erase(item)
             _gain_xp(collected)
             _pickup_cue("magnet", drop["pos"], "AURA MAGNET · ALL XP COLLECTED")
-        else: _gain_xp(float(drop["xp"]))
+        else:
+            _combat_cue("pickup", drop["pos"])
+            _gain_xp(float(drop["xp"]))
         if mode != "playing": break
 
 func _heal_player(amount: float) -> void:
@@ -2070,8 +2098,9 @@ func _input(event: InputEvent) -> void:
         if touch_ui_pointers.has(event.index):
             get_viewport().set_input_as_handled()
         elif touch_active and event.index == touch_index and mode == "playing":
-            touch_direction = (event.position-touch_origin).limit_length(touch_joystick.saturation())/touch_joystick.saturation()
-            touch_joystick.show_at(touch_visual_origin,touch_direction)
+            var drag_offset: Vector2 = event.position - touch_origin
+            touch_direction = touch_joystick.direction_from_offset(drag_offset)
+            touch_joystick.show_at(touch_visual_origin,touch_joystick.visual_from_offset(drag_offset))
             get_viewport().set_input_as_handled()
 
 ## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
@@ -2086,6 +2115,8 @@ func _draw_pickup(drop: Dictionary) -> void:
     var ink := Color(0.14, 0.20, 0.29)
     var paper := Color(0.97, 0.93, 0.80)
     if kind == "aura":
+        if drop.has("phase"):
+            draw_arc(at, 19.0, 0, TAU, 24, Color("f8c45f"), 3.0)
         var pulse := 1.0 if profile["settings"]["reducedMotion"] else 1.0 + 0.08 * sin(run_time * 5.0 + at.x * 0.05)
         var diamond := PackedVector2Array([
             at + Vector2(0, -12) * pulse, at + Vector2(9, 0) * pulse,
@@ -2123,6 +2154,7 @@ func _draw() -> void:
             draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
         for gy in range(0, 1087, 128):
             draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
+    draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
     _draw_recovery()
     for drop: Dictionary in pickups:
@@ -2144,11 +2176,6 @@ func _draw() -> void:
             draw_arc(center, float(zone["radius"]), facing.angle() - PI / 3.0, facing.angle() + PI / 3.0, 32, tint, 4.0)
         else:
             draw_arc(center, float(zone["radius"]), 0.0, TAU, 48, tint, 4.0 if warning else 6.0)
-    for shot: Dictionary in hostile_shots:
-        var shot_pos: Vector2 = shot["pos"]
-        var shot_dir: Vector2 = shot["dir"]
-        draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
-        draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
     for area: Dictionary in weapon_areas:
         if area.get("shape", "sector") == "line":
             draw_line(area["center"], Vector2(area["center"]) + Vector2(area["facing"]) * float(area["radius"]), Color(0.97, 0.77, 0.37, 0.65), 3.0)
@@ -2165,8 +2192,6 @@ func _draw() -> void:
             "id": shot["id"], "origin": Vector2(shot["pos"]) - Vector2(shot["direction"]) * 24.0,
             "target": shot["pos"], "life": 0.18
         })
-    for effect: Dictionary in attack_visuals:
-        WeaponVisualsScript.draw_attack(self, effect)
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
     var outline: Dictionary = hero_state.get("flex_outline",{})
@@ -2184,8 +2209,34 @@ func _draw() -> void:
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
+    for effect: Dictionary in attack_visuals:
+        WeaponVisualsScript.draw_attack(self, effect)
+    _draw_combat_feedback()
+    for shot: Dictionary in hostile_shots:
+        var shot_pos: Vector2 = shot["pos"]
+        var shot_dir: Vector2 = shot["dir"]
+        draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
+        draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
     if run_time < float(hero_state.get("flex_caption_until",0.0)):
-        draw_string(ThemeDB.fallback_font,player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
+        draw_string(Typography.font("hud_secondary"),player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
+
+func _draw_combat_feedback() -> void:
+    var reduced: bool = profile["settings"]["reducedMotion"]
+    for cue: Dictionary in combat_feedback:
+        var age := run_time - float(cue["at"])
+        var life := clampf((float(cue["until"]) - run_time) / (float(cue["until"]) - float(cue["at"])), 0.0, 1.0)
+        var point: Vector2 = cue["pos"]
+        var pickup: bool = cue["kind"] == "pickup"
+        var color := Color("5cf0b4") if pickup else Color("fff1bf")
+        var radius := 9.0 if reduced else 7.0 + age * (80.0 if cue["kind"] == "defeat" else 45.0)
+        if pickup:
+            draw_arc(point, radius, 0, TAU, 16, Color(color, life), 2.0)
+        else:
+            var direction: Vector2 = cue["dir"]
+            for i in range(6 if cue["kind"] == "defeat" else 4):
+                var ray := direction.rotated(float(i) * TAU / (6.0 if cue["kind"] == "defeat" else 4.0))
+                draw_line(point + ray * radius * 0.45, point + ray * radius, Color("253449", life), 5.0)
+                draw_line(point + ray * radius * 0.45, point + ray * radius, Color(color, life), 2.5)
 
 func _draw_depth_actors() -> void:
     var actors: Array[Dictionary] = [{"kind":"hero", "pos":player_pos}]
@@ -2196,7 +2247,7 @@ func _draw_depth_actors() -> void:
     for actor: Dictionary in actors:
         if actor["kind"] == "hero": _draw_hero_actor()
         elif actor["kind"] == "cover": art.draw_cover(self, actor["pos"])
-        elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age)
+        elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
         else: _draw_enemy_actor(actor["enemy"])
 
 func _draw_enemy_actor(e: Dictionary) -> void:
@@ -2217,7 +2268,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
     _draw_contact_shadow(e["pos"], radius)
-    if not art.draw_enemy(self, e, run_time):
+    if not art.draw_enemy(self, e, run_time, -1.0, profile["settings"]["reducedMotion"]):
         draw_circle(e["pos"], radius, color)
     var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
     var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
@@ -2242,18 +2293,19 @@ func _draw_recovery() -> void:
     var point: Vector2 = RecoveryRulesScript.SAFE_SPOT
     var cooldown := maxf(0.0, safe_spot_ready_at - run_time)
     var tint := Color("5cf0b4") if cooldown <= 0.0 else Color("8394aa")
-    draw_circle(point, 68.0, Color(tint, 0.19))
-    draw_arc(point, 68.0, 0.0, TAU, 48, tint, 4.0)
-    draw_rect(Rect2(point-Vector2(43,26),Vector2(86,52)),Color("24364a"))
-    draw_rect(Rect2(point-Vector2(43,26),Vector2(86,52)),tint,false,3.0)
+    draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.07))
+    draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,0.65), 2.0)
+    draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),Color("24364a"))
+    draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),tint,false,3.0)
     draw_rect(Rect2(point-Vector2(5,16),Vector2(10,32)),tint)
     draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
     var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
-    if progress > 0.0: draw_arc(point,52.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
-    draw_string(ThemeDB.fallback_font,point+Vector2(-41,90),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
+    if progress > 0.0: draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
+    draw_string_outline(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,2,Color("13233a"))
+    draw_string(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
     for feedback: Dictionary in pickup_feedback:
         var age := 0.9 - (float(feedback["until"]) - run_time)
         var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))
         var at: Vector2 = Vector2(feedback["pos"]) + offset
-        draw_string_outline(ThemeDB.fallback_font,at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,5,Color("253449"))
-        draw_string(ThemeDB.fallback_font,at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))
+        draw_string_outline(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,2,Color("253449"))
+        draw_string(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))

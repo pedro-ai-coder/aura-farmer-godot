@@ -1,0 +1,449 @@
+Verified existing approved asset: ruin-alley.png
+Verified existing approved asset: main-menu.png
+Verified existing approved asset: sigma.png
+Verified existing approved asset: cool-kid.png
+Verified existing approved asset: alpha.png
+Verified existing approved asset: phone-guy.png
+Verified existing approved asset: hater.png
+Verified existing approved asset: big-hater.png
+Verified existing approved asset: sigma-atlas.png
+Verified existing approved asset: cool-kid-atlas.png
+Verified existing approved asset: alpha-atlas.png
+Verified existing approved asset: cool-kid-flex-v2.png
+Verified existing approved asset: cool-kid-rear-v2.png
+Verified existing approved asset: alpha-rear-v2.png
+Verified existing approved asset: enemies-a-v2.png
+Verified existing approved asset: enemies-b-v2.png
+Verified existing approved asset: events-v2.png
+Verified existing approved asset: haters-v2.png
+Verified existing approved asset: enemies.png
+PASS: 19 approved Phaser art files downloaded and hash-checked
+PASS: 37 exact creator-approved runtime icons; candidate isolation preserved
+Godot executable: /workspace/scratch/22f87ea00ea2/tooling/godot
+4.7.2.stable.official.ed1daf0bf
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Unable to open Android 'build-tools' directory.
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Unable to open Android 'build-tools' directory.
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-atlas.png-39d08a521261e9c1dcb934816e07b2cf.ctex[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/approved/alpha-atlas.png.import[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-rear-v2.png-9d5ef764e39dbdc716834f5036703264.ctex[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/approved/alpha-rear-v2.png.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha.png-b94c63d554d3c81c4fbcc4d339f0c0a2.ctex[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/approved/alpha.png.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/big-hater.png-ac2e8675ade5a93bc2be23994623b285.ctex[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/approved/big-hater.png.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-atlas.png-0d4b99d2b8420f83c900f8a64e91fb99.ctex[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/approved/cool-kid-atlas.png.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-flex-v2.png-9ab5f700beab83b318fdc550c57096e5.ctex[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/approved/cool-kid-flex-v2.png.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-rear-v2.png-ad1df1beb1d687364138771e33345a77.ctex[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/approved/cool-kid-rear-v2.png.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid.png-ed028b300581240d199c8e8a070e6591.ctex[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/approved/cool-kid.png.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/enemies-a-v2.png-60a63ec02b5fc98c15888ecbfcb18e6f.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/approved/enemies-a-v2.png.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/enemies-b-v2.png-5757ad2062c324c5b46fe2c885027a27.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/approved/enemies-b-v2.png.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/enemies.png-d2ec79094f7ac3de65abb0a4d33e81e8.ctex[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/approved/enemies.png.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/events-v2.png-05122ecef1036961712621ec4ab0f1fb.ctex[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/approved/events-v2.png.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hater.png-cc96d05c35c5979899aa9479b53a3e45.ctex[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/approved/hater.png.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/haters-v2.png-d21f66e86022ee82184e44b15a90cf55.ctex[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/approved/haters-v2.png.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/main-menu.png-c0b73b332d5023912753291eeffac116.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/approved/main-menu.png.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/phone-guy.png-c82a9948c669c39b9ec104da5e8dccaf.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/approved/phone-guy.png.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ruin-alley.png-8ec218ccc00411cf45de563c3d6c81b6.ctex[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/approved/ruin-alley.png.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-atlas.png-61c471ad34891edae73c0cf178743891.ctex[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/approved/sigma-atlas.png.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma.png-4ab59db94ced49960bb2233a62bbd3c9.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/approved/sigma.png.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Inter-Black.ttf-76085f86385cd42ec10281e58f968f43.fontdata[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/Inter-Black.ttf.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Inter-Body.ttf-09a32f9702018b849be70c1176284e5e.fontdata[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/Inter-Body.ttf.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Inter-Display.ttf-424551953aacc2c54a415fd3eb649c9f.fontdata[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/Inter-Display.ttf.import[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Inter-Numbers.ttf-9201800e9fc2a28ff25454770b0907f3.fontdata[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/Inter-Numbers.ttf.import[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/manifest.json[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-passive-focus.png-c54c2bec047e5a0cf90ae002ef2b53c7.ctex[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-focus.png.import[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-passive-hover.png-408daea176d703473609be8096f349f1.ctex[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-hover.png.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-passive-idle.png-73dec6e790fd114c05fceed6b20319cf.ctex[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-idle.png.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-passive-selected.png-8c9e0958763bd9ebb3ad76334729e45d.ctex[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-selected.png.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-weapon-focus.png-0a12f8024f93c6b89e1c514b20860af9.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-focus.png.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-weapon-hover.png-1197967a4093e5bb091795420201bbe8.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-hover.png.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-weapon-idle.png-c9e26ba045df83f71b70bea643a0bf9b.ctex[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-idle.png.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-mobile-weapon-selected.png-7f970d6ad3e1ad8d1c241b25e5af0b7d.ctex[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-selected.png.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-passive-focus.png-f0c1f817a047321f28935edaf56b72b1.ctex[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-passive-focus.png.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-passive-hover.png-97cc8a47a0195cfa00520c45a06b18a7.ctex[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-passive-hover.png.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-passive-idle.png-35d07512ff075fb3d0bb028bb51250eb.ctex[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-passive-idle.png.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-passive-selected.png-8e20014f55cfb5c40562559383e19559.ctex[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-passive-selected.png.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-weapon-focus.png-7f307cc42d21ad9a1096416d2fbb13fd.ctex[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-weapon-focus.png.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-weapon-hover.png-5540ff4804999121d57705093343b330.ctex[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-weapon-hover.png.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-weapon-idle.png-34429439c87498de683764c563f71a49.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-weapon-idle.png.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-weapon-selected.png-4ef687c5a100588c8b7b457c1d2cd91c.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/legendary-weapon-selected.png.import[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-focus.png-4121d83631a1fcbe314a2824db840204.ctex[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/passive-focus.png.import[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-hover.png-d316126ac8c5c27bb67c02d006f44068.ctex[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/passive-hover.png.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-idle.png-045b589a2b2c54d40d59d1f94b4fc4d1.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/passive-idle.png.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-pressed.png-148267122016572acfec9bfbb50e7359.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/passive-pressed.png.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-selected.png-9c6233d6604187d0c68e1ad07d871e4f.ctex[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/passive-selected.png.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-focus.png-394c857a1df457cf86f400a4f5a243f1.ctex[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/weapon-focus.png.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-hover.png-cb02d73a93feb7e95710baf1bbd69636.ctex[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/weapon-hover.png.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-idle.png-ed6af185fa9df98b6db04774b515f5f4.ctex[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/weapon-idle.png.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-pressed.png-3244f73de0cf30ea0fbc9a68d1bc9b21.ctex[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/weapon-pressed.png.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-selected.png-21abd2e1eefdad9669234843db945d0f.ctex[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/cards/weapon-selected.png.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-empty.png-251562903b113f72cf9d3bd64df59095.ctex[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/passive-empty.png.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-filled.png-555db82e25096033b94338c22118c93e.ctex[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/passive-filled.png.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-focus.png-c3ded110425d35dd518efac415b79edd.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/passive-focus.png.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/passive-selected.png-b53249a3ffd82153a5ec107cdde88f91.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/passive-selected.png.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-empty.png-03ae99c0a2e8c1428ef36d83d593fb09.ctex[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/weapon-empty.png.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-filled.png-4d369534593b0bcaaca06feb3a1dd683.ctex[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/weapon-filled.png.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-focus.png-6b0eb8bb48b6aedb136c2a6e1e559f1f.ctex[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/weapon-focus.png.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weapon-selected.png-8aa5b7285fb943cd4b74db4523e90adb.ctex[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/equipment/weapon-selected.png.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-active.png-5b79a99d2e1fd1d3377ad898dad18525.ctex[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-active.png.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-charging.png-09b7e4456efbc368c0fc0bee53a19063.ctex[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-charging.png.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-disabled.png-be8d877d301765a5b53b4d3dbfbad603.ctex[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-disabled.png.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-focused.png-978ba89f6dfb16a3f85ca761bc8880bb.ctex[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-focused.png.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-pressed.png-746b5b94b31e8c8ce0fd218aaba9aaf7.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-pressed.png.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-ready.png-03ca3eb2a1d2502178827f257a21d4eb.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-ready.png.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/alpha-recovery.png-f79564af24586bf73f5a5551d8238dab.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/alpha-recovery.png.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-active.png-be1040549915a493fd181bba74c0a66f.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-active.png.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-charging.png-f5420c44bac418b9f65e2357a367b4a6.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-charging.png.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-disabled.png-51962cdfe6e950d16e9f03f0964b02f8.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-disabled.png.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-focused.png-0e65be218ae941274fb9d57db48718af.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-focused.png.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-pressed.png-4732ca74c84464955370337ede5de89e.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-pressed.png.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-ready.png-133b602a50023770baf51f98b13fe490.ctex[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-ready.png.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cool-kid-recovery.png-6a80a9676232017c487882a1b406c259.ctex[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/cool-kid-recovery.png.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-active.png-aa056b65d32d55fd5af6622825bd8d69.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-active.png.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-charging.png-f039071f29c80a2fb0815c67d8127be9.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-charging.png.import[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-disabled.png-4302c81c8912464278a6ee4343390762.ctex[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-disabled.png.import[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-focused.png-9984889de3026e68141224634c42916b.ctex[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-focused.png.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-pressed.png-961e9c460cce28af65695c87805bc342.ctex[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-pressed.png.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-ready.png-f4732532255beef80e4d6877e9e671bc.ctex[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-ready.png.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sigma-recovery.png-568a0ee5cb8398e2b4c60589128df7ae.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/flex/sigma-recovery.png.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/card-confirm.png-405f602d0f892653dc83ddb5157ee7b7.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/hero-select/card-confirm.png.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/card-focus.png-e105c92316cb9b7447652938399f92fb.ctex[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/hero-select/card-focus.png.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/card-hover.png-d9405dfdcb1fc9ad4052c213efc996d1.ctex[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/hero-select/card-hover.png.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/card-idle.png-cdeba2b7437c2c22fc2d81b3dee99580.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/hero-select/card-idle.png.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/card-selected.png-e77f0b053340eba0a60902a0ab653fca.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/hero-select/card-selected.png.import[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/card-unavailable.png-2ba1799336576c95c17068e326c0a0e1.ctex[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/hero-select/card-unavailable.png.import[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/activation-ripple.png-b6f957ffd5bfd91b014a982b8bda5449.ctex[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/joystick/activation-ripple.png.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ring-idle.png-403713f7bf96b85cdb786c26615343b1.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/joystick/ring-idle.png.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ring-pressed.png-a6bdb2ba8103c211dc2588f98280a64c.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/joystick/ring-pressed.png.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/thumb-idle.png-8da9742d4eb6a953651a8e3342406974.ctex[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/joystick/thumb-idle.png.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/thumb-pressed.png-ed790992bb9af125e656f15fc2132b7d.ctex[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/joystick/thumb-pressed.png.import[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/primary-default.png-da8e9780456ff62cee55732041abe59b.ctex[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/primary-default.png.import[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/primary-disabled.png-0f110e47bf315ab497b990a6399edc65.ctex[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/primary-disabled.png.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/primary-focus.png-b771982fd7387d7cf6f0868ad03131e1.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/primary-focus.png.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/primary-hover.png-80708157cbb543b0d604706cb1f111f7.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/primary-hover.png.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/primary-pressed.png-9082c1249f8f5f2479d38fe8a5afcc16.ctex[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/primary-pressed.png.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/secondary-default.png-d78eefe99e197d9ff653c6c42a469c88.ctex[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/secondary-default.png.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/secondary-disabled.png-2c715e3759accb9b0027b90f391d51f1.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/secondary-disabled.png.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/secondary-focus.png-2f44b018701a514b8ea44753f39c926b.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/secondary-focus.png.import[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/secondary-hover.png-6ac5a860f7eb6405af53b74dbcee40e7.ctex[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/secondary-hover.png.import[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/secondary-pressed.png-743ca99dfcb67bfd6e542ff8fd65a57f.ctex[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/menu/secondary-pressed.png.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hp.svg-71f075919c2b51e7acd18abca15b0fd1.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/hp.svg.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/legendary-bg.svg-74a886492e4420bcd0c262a31f7eb722.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/legendary-bg.svg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pause.svg-5ec4af4b1802e6a5bee0d98cd18f23ff.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/pause.svg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/poster.png-41293846b42e7fe1c65159177a3aa5e8.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/poster.png.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/upgrade-bg.svg-6dcc77d95f032747369054290d5a2952.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/upgrade-bg.svg.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wave.svg-a139b2fd228503391cf2c799c436153e.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/wave.svg.import[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wordmark.png-a06063ff3444f07292ff8d19d674a2cb.ctex[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/wordmark.png.import[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/xp.svg-9cf98bd11021a4b7f1fe3757f7495b50.ctex[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/support/xp.svg.import[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-clean-cut/v2/manifest.json[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png-27469f45b727f99c3f622bb82067e917.ctex[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/absolute-cinema/f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png.import[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png-88df51e3be8dde9cd4531a6b4700ed5c.ctex[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/aura-viral/825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png.import[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png-22730d979053b4f20813c930e040534c.ctex[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/big-chad/ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png.import[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png-73365fa632db6db0f9547101c81a9932.ctex[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/big-meme/4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png.import[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png-a923e1bade150c9c6b5578aa614f3462.ctex[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/brainrot-rain/774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png.import[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png-08e79f2661418fd3619cedc7e03c9df8.ctex[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/built-different/7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png.import[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png-de565268b0647052763951748096058f.ctex[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/caught-4k/d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png.import[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png-a42b142cc27039788157a95b3f02782d.ctex[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/certified-w/13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png.import[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png-0ea231d9742cb5f8d59d68a98dd9f66d.ctex[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/cope-harder/60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png.import[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png-ef2f044ace33c7f37a803bc0bee2ff3a.ctex[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/ego-check/5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png.import[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png-a081812fa4fa64bf194649c63ad642ca.ctex[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/get-ratiod/dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png.import[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png-78f71002f008a07eae6fdd3c517bfcde.ctex[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/hands-on-sight/0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png.import[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png-0fe46c002203306f3d6d72efc5f31800.ctex[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/homie-check/3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png.import[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png-cd712aad24c50f1094662bb6551b0b29.ctex[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/its-over/afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png.import[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png-edb48b42e89824a6b969a6f4ab999218.ctex[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/let-him-cook/74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png.import[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png-0a4d4b38c82178e8c0bb9447c0d8f550.ctex[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/main-character/fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png.import[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png-736b4edb2d8f8a607d546037b7fe437f.ctex[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/no-cap-streak/bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png.import[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png-adf4d6c8e07538d96be4fc46101322f8.ctex[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/no-u/08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png.import[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png-51a766253a9842383bdcd850f8734faf.ctex[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/six-to-seven/233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png.import[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png-89112a05e1b0b06c8ad7d5828ebecf79.ctex[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/so-back/a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png.import[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png-62ca93740f34436d7ed595120cdec039.ctex[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/take-l/c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png.import[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png-37e63b6d2f904da512a30e54712a4f2d.ctex[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/terminally-online/a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png.import[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png-e62864a5a3e0a72b9dfd6cd8cee78026.ctex[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/thick-skin/b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png.import[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png-79f39d7897f13b31e6173c40061c48fd.ctex[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/timeline/4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png.import[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png-04fd08e2bc618025c95573b03e67b802.ctex[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/too-sigma/5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png.import[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png-d7a9bf8021a9e1b7f61aa957050997a9.ctex[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/uno-reverse/d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png.import[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png-6899fdd394a5e1d0df9e604e0316e936.ctex[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/w-squad/e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png.import[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png-35ece730833c93ec613547bb29318089.ctex[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/passives/w-wifi/4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png.import[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png-e9ef394fda09cf13960196a442bf874a.ctex[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/ban-hammer/086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png.import[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png-2c635afd836b77f3170c6da59293ba28.ctex[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/brainrot-feed/4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png.import[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png-424ef9999d3248b87fd0bd84908c5c91.ctex[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/chad-hands/08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png.import[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png-bb84b885753bbe7de744d6e2fc126797.ctex[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/cope-shield/37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png.import[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png-4cf720502790d412df9f5a5ac847aa8e.ctex[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/keyboard-warrior/66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png.import[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png-e14b753c98d928c7ad7a4d2af49affa9.ctex[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/no-cap/b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png.import[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png-1ad2c02396de05a1e887b4f313a83b0f.ctex[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/personal-space/1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png.import[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png-adc22b350c77bb3cca93a491f94cfdd3.ctex[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/ratio-blaster/687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png.import[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png-cc09823f1069d8d75e2be2e6d770c6f2.ctex[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/weapons/touch-grass/3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png.import[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://assets/runtime-icons/manifest.json[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://assets/approved-assets.json[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://assets/approved-enemy-frames.json[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://assets/ui-catalog.json[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://docs/art/CLEAN_CUT_ICON_AUDIT.json[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://docs/art/CLEAN_CUT_PUBLISHED_EXPORT.json[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://docs/art/CLEAN_CUT_REVIEW_RESOURCES.json[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://docs/art/CLEAN_CUT_V2_INTAKE.json[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://docs/art/hero_spotlight_v5_tokens.json[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://docs/art/icon_approvals.json[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://docs/art/v5_icon_readiness.json[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://docs/migration/G0_2_ASSET_INVENTORY.json[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://docs/migration/G0_2_SAVE_CONTRACT.json[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://docs/qa/clock_comparison.json[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://docs/FLEX_V2_RUNS.json[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://docs/SURVIVAL_STRATEGIC_RUNS.json[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://docs/V5_RENDER_PROFILE.json[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://docs/V5_SURVIVAL_RUNS.json[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://docs/WEB_ALPHA_CHAD_SURVIVAL_RUNS.json[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://docs/WEB_ALPHA_SURVIVAL_RUNS.json[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/approved_icon_registry.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/approved_visuals.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://scripts/arcade_presentation.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://scripts/arcade_theme.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/camera_framing.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/clean_cut_assets.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/clean_cut_secondary.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/clean_cut_skin.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/enemy_navigation.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/floating_joystick.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/game_rules.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/hero_animation.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/phaser_rng.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/player.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/profile_store.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/recovery_rules.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_clock.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_enemy_rules.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_offer_rules.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_passive_rules.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_run.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_world_rules.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_components.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_home.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_hud.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_offer_card.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_secondary.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/weapon_visuals.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/web_platform.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://vercel.json[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://web/platform.js[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/main.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/player.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/approved_icon_registry.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/approved_visuals.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/arcade_presentation.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/arcade_theme.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/camera_framing.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/clean_cut_assets.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/clean_cut_secondary.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/clean_cut_skin.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/enemy_navigation.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/floating_joystick.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/game_rules.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/hero_animation.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/phaser_rng.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/profile_store.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/recovery_rules.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_clock.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_enemy_rules.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_offer_rules.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_passive_rules.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_run.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/solo_world_rules.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_components.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_home.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_hud.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_offer_card.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/spotlight_secondary.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/weapon_visuals.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/web_platform.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m
+PASS: {"bytes": 31856368, "sha256": "d719313b3270936d8aa830d2f2c4155df543ed7fcca80ecee3f910b8437265b4", "directory_entries": 379, "approved_icon_count": 37, "approved_clean_cut_count": 84, "candidate_entries": 0, "original_masters": 19, "enemy_metadata": true}
+SUCCESS: Official Godot Web export prepared in build/web
+69M	build/web

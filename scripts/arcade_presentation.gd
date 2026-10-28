@@ -44,12 +44,15 @@ var last_selected := -1
 var last_mode := ""
 var error_message := ""
 var last_signature := ""
+# Increment whenever native controls are rewritten; the live skin must reclaim them.
+var revision := 0
 
 func _init(owner_game = null) -> void:
     game = owner_game
     mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func install() -> void:
+    theme = ArcadeStyle.Typography.theme()
     catalog = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ui-catalog.json"))
     var original: Array[Node] = game.layer.get_children()
     game.layer.add_child(self)
@@ -248,15 +251,16 @@ func refresh(force: bool = false) -> void:
     for item: Dictionary in game.weapons + game.passives: equipment += "%s:%s:%s;" % [item["id"],item["rarity"],item["level"]]
     var signature: String = str(game.mode) + str(game.hero_index) + str(game.selected_card_index) + str(game.level) + equipment + JSON.stringify(game.selection) + JSON.stringify(game.legendary_offers) + str(game.profile["settings"]) + error_message + str(game.touch_device)
     var ready := int(game.aura >= 100.0 and game.flex_lock <= 0.0)
-    if ready != last_flex_ready:
+    if ready != last_flex_ready and game.clean_cut_skin == null:
         ArcadeStyle.button(game.flex_button,ready == 1)
         last_flex_ready = ready
-    game.flex_button.text = game.flex_status()
+    if game.clean_cut_skin == null: game.flex_button.text = game.flex_status()
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not force and signature == last_signature:
         queue_redraw()
         return
     last_signature = signature
+    revision += 1
     if game.mode != last_mode:
         error_message = ""
         last_mode = game.mode
@@ -365,7 +369,7 @@ func refresh(force: bool = false) -> void:
             var settings_x := 0.0 if stacked else body_width-settings_width
             var settings_y := 0.0
             detail.visible = options and not stacked
-            detail.text = "MAKE YOUR OWN AURA\n\nWASD / arrows — move\nSpace / E — Flex\nM — switch aim\nP / Escape — pause\n\nTouch: drag on the left to move."
+            detail.text = "MAKE YOUR OWN AURA\n\nWASD / arrows — move\nSpace / E — Flex\nM — switch aim\nP / Escape — pause\n\nTouch: drag anywhere on clear terrain to move."
             _place(detail,Rect2(content_rect.position,Vector2(maxf(0,content_rect.size.x-settings_width-24),content_rect.size.y)))
             var build_height := 0.0
             if game.mode == "build":
@@ -411,7 +415,7 @@ func refresh(force: bool = false) -> void:
     if game.mode == "paused": _place(game.pause_button,Rect2(modal_panel.end.x-190,modal_panel.position.y+18,166,64))
     _place(game.flex_button,Rect2(width-246,height-78,226,64))
     _place(game.legendary_button,Rect2(20 if width < 1000 else width-500,height-78,minf(238,width-286) if width < 1000 else 238,64))
-    game.flex_button.text = game.flex_status()
+    if game.clean_cut_skin == null: game.flex_button.text = game.flex_status()
     game.flex_button.disabled = game.aura < 100.0 or game.flex_lock > 0.0
     if not cards:
         for button: Button in game.offer_buttons: button.hide()
@@ -594,7 +598,7 @@ func hud_rectangles() -> Array[Rect2]:
 
 func _focus_ring() -> void:
     var buttons: Array[Control] = []
-    _visible_buttons(self,buttons)
+    _visible_buttons(game.clean_cut_skin if game.clean_cut_skin != null else self,buttons)
     for i in range(buttons.size()):
         buttons[i].focus_next = buttons[(i+1)%buttons.size()].get_path()
         buttons[i].focus_previous = buttons[(i+buttons.size()-1)%buttons.size()].get_path()

@@ -104,5 +104,6 @@ for file in index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BA
     fi
 done
 python3 scripts/check_icon_pack.py "build/web/$EXPORT_BASENAME.pck"
+python3 scripts/verify_typography.py "build/web/$EXPORT_BASENAME.pck"
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

@@ -9,6 +9,9 @@ const OUTER_RADIUS := 80.0
 const THUMB_RADIUS := 35.0
 const SATURATION_TRAVEL := 119.0
 const THUMB_OFFSET := 61.6
+# Movement is digital at normal GDD speed after a short touch dead zone.
+# The visual thumb still follows analog travel through the approved 119-unit range.
+const MOVEMENT_DEADZONE := 18.0
 const FOOTPRINT := THUMB_RADIUS + THUMB_OFFSET
 var center := Vector2.ZERO
 var axis := Vector2.ZERO
@@ -24,6 +27,18 @@ func clamp_center(at: Vector2, bounds: Rect2) -> Vector2:
 
 func saturation() -> float:
     return maxf(1.0,SATURATION_TRAVEL*geometry_scale)
+
+## Independent axes: full-speed gameplay direction versus proportional visual travel.
+## This is an input responsiveness correction, not a movement-speed/balance change.
+func direction_from_offset(offset: Vector2) -> Vector2:
+    if offset.length_squared() <= pow(MOVEMENT_DEADZONE * geometry_scale, 2.0):
+        return Vector2.ZERO
+    return offset.normalized()
+
+func visual_from_offset(offset: Vector2) -> Vector2:
+    if offset.length_squared() <= pow(MOVEMENT_DEADZONE * geometry_scale, 2.0):
+        return Vector2.ZERO
+    return offset.limit_length(saturation()) / saturation()
 
 func show_at(position: Vector2, movement: Vector2) -> void:
     center = position

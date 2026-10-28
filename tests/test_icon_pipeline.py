@@ -62,7 +62,7 @@ def pack(paths):
 
 class ExportIsolation(unittest.TestCase):
     def test_candidate_directory_and_imports_rejected(self):
-        for path in ['assets/art-production/source.png.import','.godot/imported/icon-v5-candidate.png-hash.ctex','docs/art/evidence/clean-cut-review/sheet.jpg']:
+        for path in ['assets/art-production/source.png.import','.godot/imported/icon-v5-candidate.png-hash.ctex','docs/art/evidence/clean-cut-review/sheet.jpg','tests/review_recovery_performance.gdc','tests/test_clean_cut_secondary_input.gd.remap']:
             with self.assertRaises(ValueError):inspect(pack([path]),[])
     def test_promoted_texture_requires_both_remap_and_import(self):
         row=dict(resource_path='res://assets/runtime-icons/weapons/ratio-blaster/'+'a'*64+'.png',promoted_sha256='a'*64)

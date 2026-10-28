@@ -17,8 +17,11 @@ func _verify() -> void:
     game.call("start_run", 0)
     game.set("run_time", 119.99)
     game.call("_advance", 0.02)
-    _expect(game.get("wave") == 2 and game.get("total_xp") == 80.0, "Wave transition credits exactly its approved XP")
-    _expect(game.get("mode") == "choice", "Transition pauses immediately for a pending level choice")
+    _expect(game.get("wave") == 2 and game.get("total_xp") == 0.0 and game.pickups.size() == 1 and game.pickups[0]["xp"] == 80.0, "Wave transition creates exactly its approved collectible XP")
+    _expect(game.mode == "playing", "Uncollected phase XP does not force a level choice")
+    game.player_pos = game.pickups[0]["pos"]
+    game._advance(0.01)
+    _expect(game.get("mode") == "choice", "Collecting phase XP pauses immediately for the earned level choice")
     var frozen_time: float = game.get("run_time")
     game.call("_advance", 0.10)
     _expect(game.get("run_time") == frozen_time, "A modal cannot advance the simulation even through direct stepping")

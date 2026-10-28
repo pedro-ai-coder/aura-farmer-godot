@@ -40,6 +40,12 @@ func _check() -> void:
     ]:
         if ResourceLoader.exists(candidate):
             missing.append(candidate + " (unapproved candidate imported)")
+    for time in [719.99,720.0,800.0]:
+        var expected := "boss-berserk" if time>=720.0 else "boss"
+        if visuals.enemy_visual_kind({"kind":"boss"},time)!=expected:
+            missing.append("Boss visual must follow canonical Berserk boundary at " + str(time))
+        if visuals.enemy_visual_kind({"kind":"npc"},time)!="npc":
+            missing.append("Berserk cannot transform ordinary enemies")
     if missing.is_empty():
         print("PASS: All 19 approved art assets and 17 enemy animations loaded as Godot textures")
         quit(0)

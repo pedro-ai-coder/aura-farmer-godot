@@ -28,8 +28,13 @@ func verify() -> void:
             game._input(touch(2,point,true))
             expect(game.touch_active,"Free terrain left/center/right/top activates at %s" % extent)
             expect(game.touch_direction == Vector2.ZERO,"Clamped visual cannot create initial movement")
+            game._input(drag(2,point+Vector2(7,0)))
+            expect(game.touch_direction == Vector2.ZERO,"Sub-deadzone jitter must never move the hero")
+            game._input(drag(2,point+Vector2(40,0)))
+            expect(is_equal_approx(game.touch_direction.length(),1),"Ordinary 40-unit touch drag reaches normal hero speed")
+            expect(is_equal_approx(game.touch_joystick.axis.length(),40.0/game.touch_joystick.saturation()),"Visual thumb retains proportional analog displacement")
             game._input(drag(2,point+Vector2(119,0)))
-            expect(is_equal_approx(game.touch_direction.length(),1),"Saturation stays normalized without speed changes")
+            expect(is_equal_approx(game.touch_direction.length(),1),"Far touch drag uses the same normal movement speed")
             expect(game.touch_joystick.OUTER_RADIUS == 80 and game.touch_joystick.THUMB_RADIUS == 35,"Approved enlarged circular geometry")
             var center: Vector2 = game.touch_joystick.center
             var footprint: float = game.touch_joystick.FOOTPRINT*game.touch_joystick.geometry_scale
@@ -84,6 +89,17 @@ func verify() -> void:
         game._gain_xp(100);game._open_choice()
         game._input(touch(8,free,true))
         expect(not game.touch_active,"Upgrade cards block movement everywhere")
+    # The same canonical U/s must apply to touch as to desktop keyboard.
+    # Test a clear collision-free section using each hero's exact GDD speed.
+    for hero_id in range(3):
+        game.start_run(hero_id)
+        game.player_pos=Vector2(724,540)
+        game.touch_direction=game.touch_joystick.direction_from_offset(Vector2(40,0))
+        var from: Vector2=game.player_pos
+        game._move_player(0.1)
+        var expected: float=float(game.hero["speed"])*0.1
+        expect(absf(game.player_pos.distance_to(from)-expected)<0.1,"Mobile touch matches canonical desktop distance for "+str(game.hero["id"]))
+        game.touch_direction=Vector2.ZERO
     # Actual SceneTree event routing, not only direct handler calls.
     root.size = Vector2i(1280,720)
     game.presentation._window_changed(true)
