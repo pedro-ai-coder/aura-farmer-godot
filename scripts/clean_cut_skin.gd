@@ -6,6 +6,7 @@ const Style=preload("res://scripts/arcade_theme.gd")
 const HeroBrand=preload("res://scripts/hero_clash_brand.gd")
 const HeroFlexDial=preload("res://scripts/hero_clash_flex_dial.gd")
 const ButtonFeedback=preload("res://scripts/hero_clash_button_feedback.gd")
+const SceneAccent=preload("res://scripts/hero_clash_scene_accent.gd")
 var game
 var ui
 var art
@@ -78,6 +79,7 @@ var view := Vector2.ZERO
 var shift := Vector2.ZERO
 var styles: Dictionary={}
 var auxiliary
+var scene_accent: Control
 var layout_key := ""
 var layout_count := 0
 var empty_style := StyleBoxEmpty.new()
@@ -268,6 +270,9 @@ func install(owner_game, source_root: String) -> void:
     auxiliary=load("res://scripts/clean_cut_secondary.gd").new()
     add_child(auxiliary)
     auxiliary.install(self)
+    scene_accent=SceneAccent.new()
+    scene_accent.name="HeroClashSceneAccent"
+    add_child(scene_accent)
     refresh()
 func _process(delta: float) -> void:
     refresh()
@@ -303,7 +308,8 @@ func refresh() -> void:
     if game.pause_button.get_parent()!=self:game.pause_button.reparent(self)
     view=ui.view;shift=ui.position;position=shift;size=view
     var mode: String=game.mode
-    if mode!=last_mode:
+    var mode_changed: bool=mode!=last_mode
+    if mode_changed:
         hero_scroll.scroll_vertical=0;offers_scroll.scroll_vertical=0;last_mode=mode
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
@@ -326,7 +332,37 @@ func refresh() -> void:
     elif mode in ["choice","legendary","replace"]:cards_layout()
     else:auxiliary.layout()
     auxiliary.visible=mode in auxiliary.MODES
+    if mode_changed:
+        _animate_new_screen(mode)
     ui._focus_ring()
+
+func _animate_new_screen(mode: String) -> void:
+    var reduced: bool=bool(game.profile["settings"].get("reducedMotion",false))
+    scene_accent.play(mode,view,reduced)
+    if reduced or mode=="playing":
+        return
+    var reveal_buttons: Array[Button]=[]
+    if mode=="menu":
+        reveal_buttons=[ui.play_button,ui.home.hero_destination,ui.options_button]
+    elif mode=="heroes":
+        reveal_buttons=game.menu_buttons.duplicate()
+        reveal_buttons.append(ui.home.start_button)
+        reveal_buttons.append(ui.home.return_button)
+    elif mode in ["choice","replace","legendary"]:
+        reveal_buttons=game.offer_buttons.duplicate()
+        reveal_buttons.append(game.confirm_button)
+        if mode=="legendary":reveal_buttons.append(game.defer_button)
+    else:
+        reveal_buttons=auxiliary.actions.duplicate()
+        reveal_buttons.append_array([game.confirm_button,game.restart_button,game.retry_button])
+    var visible_index: int=0
+    for button in reveal_buttons:
+        if not button.is_visible_in_tree():
+            continue
+        var feedback: Control=button.get_node_or_null("ClashButtonFeedback")
+        if feedback!=null:
+            feedback.reveal(minf(float(visible_index)*0.045,0.22))
+            visible_index+=1
 func headline(text: String) -> void:
     heading.text=text
     heading_shadow.hide()
