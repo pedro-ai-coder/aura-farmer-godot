@@ -119,30 +119,7 @@ func refine_layout(skin) -> void:
             body.max_lines_visible = -1
             body.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
     if game.mode != "playing": return
-    # A circular visual sample on the existing signal-bound Flex button.
-    var diameter := 128.0
-    var at: Vector2 = Vector2(skin.view.x-diameter-24,skin.view.y-diameter-28)
-    if skin.view.x < 700: at.y = skin.view.y-390
-    game.flex_button.position = at
-    game.flex_button.size = Vector2.ONE*diameter
-    for state in ["normal","hover","pressed","disabled","focus"]:
-        var surface: StyleBoxFlat = game.flex_button.get_theme_stylebox(state).duplicate()
-        surface.set_corner_radius_all(64)
-        game.flex_button.add_theme_stylebox_override(state,surface)
-    skin.flex_badge.hide();skin.flex_track.hide();skin.flex_fill.hide()
-    skin.flex_title.position = Vector2(10,30)
-    skin.flex_title.size = Vector2(108,36)
-    skin.flex_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    skin.flex_title.add_theme_font_size_override("font_size",27)
-    skin.flex_status.position = Vector2(9,70)
-    skin.flex_status.size = Vector2(110,24)
-    skin.flex_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    skin.flex_status.text = "READY" if game.aura >= 100 else "%d%%" % int(game.aura)
-    skin.flex_caption.hide()
-    game.flex_button.tooltip_text = str(game.hero["flex"]) + " — " + skin.flex_status.text
-    skin.aura_arc.progress = game.aura/100.0
-    skin.aura_arc.visual_state = "ready" if game.aura >= 100 else "charging"
+    # Production now owns the actual circular Flex dial. The font review may
+    # change lettering, but must never replace its geometry or state component.
     skin.aura_arc.show()
-    skin.aura_arc.position = Vector2.ZERO
-    skin.aura_arc.size = Vector2.ONE*diameter
-    skin.aura_arc.queue_redraw()
+    skin.aura_arc.show_state(game.aura/100.0,"ready" if game.aura>=100.0 else "charging")
