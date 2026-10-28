@@ -495,10 +495,13 @@ func cards_layout() -> void:
         if view.x<700:place(game.confirm_button,Rect2(40+half,view.y-78,half,64))
         button_skin(game.restart_button,"menu/secondary")
     if compact_cards:
+        # Preserve the GDD physical touch target despite the shorter cards.
         var confirm_width: float=250.0
-        place(game.confirm_button,Rect2(view.x-confirm_width-16.0,view.y-61.0,confirm_width,49.0))
+        place(game.confirm_button,Rect2(view.x-confirm_width-16.0,view.y-66.0,confirm_width,64.0))
         if legendary:
-            place(game.defer_button,Rect2(16,view.y-61.0,200,49))
+            place(game.defer_button,Rect2(16,view.y-66.0,200,64.0))
+        elif game.mode=="replace":
+            place(game.restart_button,Rect2(16,view.y-66.0,180,64.0))
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
         call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index
