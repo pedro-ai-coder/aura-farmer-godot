@@ -18,7 +18,7 @@ jobs:
     name: godot-validation
     # Keep this isolated art review unmergeable as a draft while running the full checks.
     # Other drafts retain the existing runner-saving behavior.
-    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' }}
+    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -178,6 +178,69 @@ jobs:
         with:
           name: hero-clash-ui-production-candidate
           path: ${{ runner.temp }}/hero-clash-ui/
+          if-no-files-found: error
+          retention-days: 21
+          compression-level: 1
+
+  m0-creator-feedback-evidence:
+    name: m0-creator-feedback-evidence
+    if: ${{ github.head_ref == 'fix/m0-hud-hero-quit-feedback' }}
+    needs: godot-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout proposed merge
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Install Godot 4.7.2
+        uses: chickensoft-games/setup-godot@f166999204a4f2722c6fe042fbaa3b3ea0d9c789 # v2.4.1
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: false
+          cache: true
+
+      - name: Import art for actual native capture
+        shell: bash
+        run: |
+          if ! command -v xvfb-run >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends xvfb libgl1-mesa-dri
+          fi
+          python3 scripts/sync_approved_assets.py
+          godot --headless --path . --import
+
+      - name: Capture real UI fixes across six resolutions
+        shell: bash
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          output="$RUNNER_TEMP/m0-ui-feedback"
+          mkdir -p "$output"
+          for dims in '1920 1080' '1600 900' '1280 720' '915 412' '844 390' '390 844'; do
+            read -r width height <<< "$dims"
+            xvfb-run -a -s '-screen 0 1920x1080x24' timeout 90s \
+              godot --path . --audio-driver Dummy --rendering-driver opengl3 \
+              --script res://tests/capture_m0_creator_feedback.gd -- \
+              "$width" "$height" "$output" 2>&1 | tee "$output/capture-$width-$height.log"
+            if grep -Eiq 'SCRIPT ERROR:|Parse Error:|Failed to load|Failed to open|(^|[[:space:]])ERROR:' "$output/capture-$width-$height.log"; then
+              echo "Native capture errors at $width x $height" >&2
+              exit 1
+            fi
+            test -s "$output/m0-ready-$width"\x"$height.png"
+            test -s "$output/m0-hero-menu-$width"\x"$height.png"
+            test -s "$output/m0-confirm-exit-$width"\x"$height.png"
+          done
+
+      - name: Upload genuine native UI evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: m0-creator-feedback-godot
+          path: ${{ runner.temp }}/m0-ui-feedback/
           if-no-files-found: error
           retention-days: 21
           compression-level: 1
