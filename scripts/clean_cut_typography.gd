@@ -78,10 +78,20 @@ static func theme() -> Theme:
 static func equipment_name(id: String, full_name: String) -> String:
     if font("equipment_label").get_string_size(full_name,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x <= 72: return full_name
     # Stable, recognizable aliases; full identity remains in tooltip/build inspection.
-    return {"terminally-online":"Term.\nOnline", "main-character":"Main\nCharacter", "caught-4k":"Caught\nin 4K",
+    var alias: String={"terminally-online":"Term.\nOnline", "main-character":"Main\nCharacter", "caught-4k":"Caught\nin 4K",
         "big-meme":"Big Meme\nEnergy", "timeline":"Across\nTimeline",
         "hands-on-sight":"Hands On\nSight", "no-cap-streak":"No Cap\nStreak",
         "let-him-cook":"Let Him\nCook", "big-chad":"Big Chad\nEnergy",
         "its-over":"It's So\nOver", "aura-viral":"Aura Goes\nViral",
         "so-back":"We Are\nSo Back", "six-to-seven":"Six →\nSeven",
-        "too-sigma":"Too\nSigma"}.get(id,full_name.replace(" ","\n"))
+        "too-sigma":"Too\nSigma"} .get(id,full_name.replace(" ","\n"))
+    # Source names stay complete in the Build screen; legacy 72px aliases must
+    # remain stable under the larger Archivo text metrics if drawn in a tooltip.
+    var lines: PackedStringArray=alias.split("\n")
+    var adjusted: PackedStringArray=PackedStringArray()
+    for raw_line in lines:
+        var fragment: String=raw_line
+        while fragment.length()>1 and font("equipment_label").get_string_size(fragment,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x>72.0:
+            fragment=fragment.substr(0,fragment.length()-1)
+        adjusted.append(fragment)
+    return "\n".join(adjusted)
