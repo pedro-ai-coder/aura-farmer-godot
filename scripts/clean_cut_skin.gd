@@ -564,7 +564,7 @@ func hud_layout() -> void:
     flex_title.autowrap_mode=TextServer.AUTOWRAP_OFF
     place(flex_title,Rect2(8,diameter*0.32,diameter-16,42))
     Type.apply(flex_status,"micro_label",compact_flex,Style.GOLD if ready_flex else Style.TEAL if active_flex else Style.PAPER)
-    flex_status.text="READY" if ready_flex else "%.1fs" % game.flex_time if active_flex else "LOCK %.0fs" % game.flex_lock if recovering else "AURA %d%%" % int(game.aura)
+    flex_status.text="READY" if ready_flex else "ACTIVE %.1fs" % game.flex_time if active_flex else "LOCK %.0fs" % game.flex_lock if recovering else "AURA %d%%" % int(game.aura)
     flex_status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     flex_status.autowrap_mode=TextServer.AUTOWRAP_OFF
     place(flex_status,Rect2(8,diameter*0.61,diameter-16,25))
