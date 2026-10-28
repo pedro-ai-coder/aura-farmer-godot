@@ -135,11 +135,13 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
         if child is Control:child.hide()
     # Feedback is attached to the already-signal-bound button and never
     # intercepts or replaces mouse, keyboard or touchscreen input.
-    if not button.has_meta("hero_clash_feedback"):
-        var feedback:=ButtonFeedback.new()
+    var feedback: Control=button.get_node_or_null("ClashButtonFeedback")
+    if feedback==null:
+        feedback=ButtonFeedback.new()
+        feedback.name="ClashButtonFeedback"
         button.add_child(feedback)
         feedback.install(button,game)
-        button.set_meta("hero_clash_feedback",true)
+    feedback.configure(family,selected)
 func install(owner_game, source_root: String) -> void:
     game=owner_game;ui=game.presentation;art=Cache.new(source_root)
     mouse_filter=Control.MOUSE_FILTER_IGNORE
