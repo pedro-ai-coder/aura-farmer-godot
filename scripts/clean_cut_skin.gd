@@ -374,11 +374,24 @@ func cards_layout() -> void:
         heading_shadow.hide()
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
-    var gap:=16.0;var width: float=(view.x-64-gap*(columns-1))/columns
+    var compact_cards: bool=view.y<520.0 and columns==3
+    var gap:=12.0 if compact_cards else 16.0
+    var available_width: float=view.x-48.0 if compact_cards else view.x-64.0
+    var width: float=(available_width-gap*(columns-1))/columns
     var height: float=minf(520,view.y-212) if not legendary else minf(250,(view.y-212)/2) if view.y>=650 and columns==3 else 270.0
     height=maxf(height,220 if legendary and view.y>=650 and columns==3 else 250 if legendary else 414)
-    place(offers_scroll,Rect2(24,106,view.x-48,view.y-196))
-    offers_content.custom_minimum_size=Vector2(view.x-64,ceili(float(items.size())/columns)*(height+gap));offers_content.size=offers_content.custom_minimum_size
+    if compact_cards:
+        # Three legible cards can fit in 844x390/915x412 without requiring
+        # the player to scroll simply to find the benefit and selection state.
+        height=254.0
+        Type.apply(heading,"section_header",true,Style.INK if legendary else Style.PAPER)
+        place(heading,Rect2(18,5,view.x-36,49))
+        fit_line(heading,19)
+        place(headline_accent,Rect2(22,55,94,5))
+    var scroll_y: float=68.0 if compact_cards else 106.0
+    var scroll_height: float=view.y-136.0 if compact_cards else view.y-196.0
+    place(offers_scroll,Rect2(16 if compact_cards else 24,scroll_y,view.x-32 if compact_cards else view.x-48,scroll_height))
+    offers_content.custom_minimum_size=Vector2(available_width,ceili(float(items.size())/columns)*(height+gap));offers_content.size=offers_content.custom_minimum_size
     var current_signature: String=game.run_id+game.mode+JSON.stringify(items)
     if current_signature!=signature:signature=current_signature;offers_scroll.scroll_vertical=0;last_selected=-1
     for i in range(6):
@@ -442,9 +455,26 @@ func cards_layout() -> void:
             place(parts["meta"],Rect2(18,150,width-36,32));place(parts["body"],Rect2(18,188,width-36,height-280))
             Type.apply(parts["body"],"body_s")
             place(parts["comparison"],Rect2(18,height-86,width-36,48))
-        place(parts["state"],Rect2(18,height-30,width-36,24))
+        if compact_cards:
+            place(parts["category"],Rect2(14,9,width-28,24))
+            place(parts["icon_plate"],Rect2(15,38,60,60))
+            place(parts["icon"],Rect2(20,43,50,50))
+            place(parts["name"],Rect2(82,36,width-97,60))
+            Type.apply(parts["name"],"card_title",true)
+            if legendary:
+                parts["meta"].hide()
+                place(parts["body"],Rect2(14,111,width-28,112))
+            else:
+                parts["meta"].show()
+                place(parts["meta"],Rect2(14,99,width-28,25))
+                Type.apply(parts["body"],"body_s",true)
+                place(parts["body"],Rect2(14,125,width-28,80))
+                parts["comparison"].show()
+                place(parts["comparison"],Rect2(14,207,width-28,25))
+                Type.apply(parts["comparison"],"micro_label",true)
+        place(parts["state"],Rect2(14 if compact_cards else 18,height-26 if compact_cards else height-30,width-(28 if compact_cards else 36),21 if compact_cards else 24))
         parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
-        fit_line(parts["name"],18)
+        fit_line(parts["name"],16 if compact_cards else 18)
         if parts["meta"].visible: fit_line(parts["meta"],13)
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
     game.confirm_button.disabled=game.selected_card_index<0
@@ -464,6 +494,11 @@ func cards_layout() -> void:
         place(game.restart_button,Rect2(24,view.y-78,half if view.x<700 else 180,64))
         if view.x<700:place(game.confirm_button,Rect2(40+half,view.y-78,half,64))
         button_skin(game.restart_button,"menu/secondary")
+    if compact_cards:
+        var confirm_width: float=250.0
+        place(game.confirm_button,Rect2(view.x-confirm_width-16.0,view.y-61.0,confirm_width,49.0))
+        if legendary:
+            place(game.defer_button,Rect2(16,view.y-61.0,200,49))
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
         call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index
@@ -572,7 +607,8 @@ func hud_layout() -> void:
     flex_caption.text=str(game.hero["flex"]).to_upper()
     flex_caption.autowrap_mode=TextServer.AUTOWRAP_OFF
     var caption_width: float=diameter+54.0
-    place(flex_caption,Rect2(button_x-(caption_width-diameter)*0.5,button_y-32.0,caption_width,27.0))
+    var caption_x: float=clampf(button_x-(caption_width-diameter)*0.5,8.0,maxf(8.0,view.x-caption_width-8.0))
+    place(flex_caption,Rect2(caption_x,button_y-32.0,caption_width,27.0))
     fit_line(flex_caption,13)
     var slot_width:=56.0;var slot_pitch:=76.0;var start_y:=view.y-196 if narrow else view.y-104
     for i in range(8):
