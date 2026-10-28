@@ -1,0 +1,18 @@
+{
+  "status": "LOCAL_CHECKS_PASS_CREATOR_APPROVAL_PENDING",
+  "phases": 51,
+  "screenshots": 122,
+  "resolutions": 6,
+  "candidates": 2,
+  "script_errors": 0,
+  "review_checks_failures": 0,
+  "production_pack_sha256": "626433a5d53bea4bf5291a83d25383fc240b5ff44f52fa6e152986ee8120c2d4",
+  "review_pack_sha256": "f4ca55f911735ede84b548e5d702c513e4e0e45ea8edde6bc63361437e7f9c5d",
+  "production_candidate_paths": 0,
+  "review_web_fonts": 4,
+  "review_web_licenses": 4,
+  "browser_runtime_verified": false,
+  "physical_devices_verified": false,
+  "initial_test_failure": "Existing keyboard test expected a fresh profile; passed using a new isolated XDG_DATA_HOME. No production code change.",
+  "execution": "Validation run resumed after hero-combat; all named phases covered by combined logs."
+}

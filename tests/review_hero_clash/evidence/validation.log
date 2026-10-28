@@ -1,0 +1,110 @@
+PASS: Fullscreen permitted/denied/unavailable, orientation fallbacks, eligible gestures and safe-area metrics
+PASS: 37 exact creator-approved runtime icons; candidate isolation preserved
+PASS: 84 immutable creator-approved Clean Cut visual resources match SHA-256 sources
+PASS: four hash-pinned OFL typography fonts
+Ran 11 tests in 0.037s
+OK
+Validating Godot phase: import
+Validating Godot phase: mobile-layout
+PASS: Six viewport UI bounds, touch targets, safe areas, selection, stable camera and focus pause
+Validating Godot phase: card-keyboard
+PASS: Focused card keyboard selection and explicit confirmation
+Validating Godot phase: spotlight-secondary
+PASS: Compact pause/build/settings/quit/results and responsive replay
+Validating Godot phase: spotlight-hud
+PASS: Simulation-bound wave/boss HUD feedback and danger priority
+Validating Godot phase: spotlight-navigation
+PASS: Six viewport home, selection, current signatures, focus and real start
+Validating Godot phase: spotlight-theme
+PASS: Approved Clean Cut Inter, palette, artwork-backed button states, category cards and compact selection
+Validating Godot phase: arcade-ui
+PASS: Arcade home/options, explicit hero play, import feedback, readable cards and six-choice footer
+Validating Godot phase: enemy-navigation
+PASS: Actual enemy pursuit around both covers and concave floor corners preserves geometry
+Validating Godot phase: seeded-rng
+PASS: Seeded integer JavaScript parity, shared draw state, offers and enemy selection
+Validating Godot phase: hero-animation
+PASS: Authored hero poses, fixed sheet scales, Flex timing, defeat, travel clock and pause
+Validating Godot phase: recovery
+PASS: Exact Phaser seeded drops, caps, collection, Safe Spot lifecycle and boss recovery
+Validating Godot phase: survival-review-policy
+PASS: Strategic review controller routes actual recovery, respects station/Flex gates and leaves simulation unchanged
+Validating Godot phase: camera-cover
+PASS: Six viewport camera bounds, time-based follow and exact static-cover sprite/geometry
+Validating Godot phase: continuous-run
+CONTINUOUS RUN: sigma, time=693.733333333031, level=25, XP=8850.0, kills=730, choices=24, max queue=3; protected player and explicit final hit if required
+CONTINUOUS RUN: cool-kid, time=651.099999999736, level=25, XP=9271.0, kills=713, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: alpha, time=746.916666666316, level=25, XP=8281.0, kills=712, choices=24, max queue=1; protected player and explicit final hit if required
+PASS: Continuous seeded three-hero progression, legal offers, combat drops, boss result and clean restart
+Validating Godot phase: run-acceptance
+PASS: Controlled three-hero wave/boss/victory timeline, portal/elite/drop contracts and headless stress fixture
+Validating Godot phase: menu-flow
+PASS: Explicit choice confirmation, modal input/exit isolation, save transfer/preferences and result retry
+Validating Godot phase: signature-flex
+PASS: Signature timing, caps, mitigation, attribution, retarget, proc isolation and lifecycle
+Validating Godot phase: hero-combat
+PASS: Stable targeting/manual aim, three hero traits, signature contact mitigation, Alpha slam timing and Beta facing armor
+Validating Godot phase: run-clock
+PASS: Exact canonical wave, event, Hater, boss, berserk and legendary boundaries
+Validating Godot phase: run-progression
+PASS: Wave pause, level-cap recovery, rolling Aura, passive replacement/periodicity, frequency stacking and terminal isolation
+Validating Godot phase: profile-store
+PASS: Phaser v2/v1 and Godot migration, corrupt data, unique completed results, bounded history, atomic storage and restart
+Validating Godot phase: contracts
+PASS: foundational GDD contract checks
+Validating Godot phase: catalog
+PASS: GDD rarity, role, level cap, nonduplicate card and three-hero catalog tests
+Validating Godot phase: legendary
+PASS: 6:00/8:00 same six cards, legal role, defer, one-per-run and expiry
+Validating Godot phase: boss-lifecycle
+PASS: Stagger, berserk regeneration/exposure, threshold latching, capped adds, independent event timers and expanding safe-gap ring
+Validating Godot phase: enemy-windows
+PASS: Boss commitment/recovery, event recovery and breakable three-tick Leech tether
+Validating Godot phase: ranged-sources
+PASS: Committed ranged aim, swept cover collision, canonical charge warning and persistent source attribution
+Validating Godot phase: bestiary
+PASS: 17 enemy IDs, wave pools, event/boss timing, telegraphed ranged attacks
+Validating Godot phase: ruin-alley
+PASS: Ruin Alley polygon, cover collision, line of sight and seeded floor spawns
+Validating Godot phase: passive-effects
+PASS: GDD passive modifiers, Aura hit caps, low-health shields and Sigma Flex
+Validating Godot phase: approved-icon-batch
+PASS: All 37 approved PNG pixel identities, Touch Grass v2, legal offers, future-only scope and unchanged simulation
+Validating Godot phase: icon-registry
+PASS: Approval registry, cached identity, fallback, live card/build resize and unchanged simulation
+Validating Godot phase: approved-art
+PASS: All 19 approved art assets and 17 enemy animations loaded as Godot textures
+Validating Godot phase: combat-feedback
+PASS: combat feedback lifecycle, bounded effects, fractional HP and phase-crystal magnet
+Validating Godot phase: clean-cut-typography
+PASS: packaged typography, glyph coverage, equipment fit, HUD and three-viewports hierarchy
+Validating Godot phase: weapon-vfx
+PASS: Nine Phaser Option A weapon motifs, travelling No Cap and contact starter cues
+Validating Godot phase: legendary-combat
+PASS: Legendary projectile delays, secondary damage/proc isolation, shared hit memory and third-hit transformations
+Validating Godot phase: weapon-timing
+PASS: Fixed blast position, windup, paired hits and shared primary activation
+Validating Godot phase: player-projectiles
+PASS: Player projectile travel, collision, hit memory, restart and cover
+Validating Godot phase: mobile-touch
+PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle
+Validating Godot phase: flex-readability
+PASS: Flex clarity, readiness, active/recovery display and touch-safe layout across desktop/mobile
+Validating Godot phase: playable
+PASS: Godot solo hero, combat, progression, Flex and boss smoke tests
+Validating Godot phase: scene
+Validating Godot phase: approved-clean-cut-runtime
+PASS: Production Clean Cut 84 approved assets, live five-flow controls and unchanged RNG across three viewports
+Validating Godot phase: clean-cut-pointer-input
+PASS: Real viewport mouse clicks activate PLAY/HERO SELECTION/SETTINGS and BACK at desktop and compact viewports
+Validating Godot phase: clean-cut-secondary-input
+PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at three viewports
+Validating Godot phase: clean-cut-deferred-legendary
+PASS: Deferred legendary remains visible, clickable, unchanged and deadline-bound across three viewports
+Validating Godot phase: candidate-bindings
+PASS: Five-screen live candidate composition, actual offers/hero/Flex and unchanged simulation; not production approval
+Validating Godot phase: candidate-navigation
+PASS: Candidate real hero/start, three-card confirmation, six-card defer/cache/pick and pause/resume at three viewports
+PASS: Godot import, GDD rule contracts, and main scene smoke test.
+Validating Godot phase: hero-clash-review
+Hero Clash review checks: 0 failures

@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aura Farmer — Hero Clash runtime comparison</title>
+<style>body{background:#142638;color:#fff9e9;font:16px system-ui;margin:24px}label{margin-right:24px}select{font:inherit;padding:8px}main{display:grid;grid-template-columns:1fr 1fr;gap:16px}img{max-width:100%;height:auto}figure{margin:20px 0}a{color:#ffd55c}small{display:block;margin:12px 0}h1{font-size:24px}</style>
+<h1>Aura Farmer — two unapproved runtime candidates</h1><p>A: Archivo Black + Archivo · B: Oxanium + Rubik. Actual Godot 4.7.2 captures, identical fixtures. Use full-size links to judge lettering.</p>
+<label>Screen <select id="screen"></select></label><label>Resolution <select id="resolution"></select></label><small>Scrollable screens include bottom views where available. These images are staged native runtime evidence, not browser/device acceptance or creator approval.</small>
+<main><figure><h2>A — Clash Bold</h2><a id="alink"><img id="a" alt="Candidate A runtime capture"></a></figure><figure><h2>B — Clash Circuit</h2><a id="blink"><img id="b" alt="Candidate B runtime capture"></a></figure></main>
+<script>
+const screens=['menu','character','playing','ready','choice','legendary','won','lost','character-bottom','choice-bottom','legendary-bottom'];
+const resolutions=['1920x1080','1600x900','1280x720','915x412','844x390','390x844'];
+for(const [id,items] of [['screen',screens],['resolution',resolutions]])for(const x of items)document.getElementById(id).add(new Option(x,x));
+document.getElementById('resolution').value='1280x720';
+function update(){for(const c of ['a','b']){const path=`${c}-${document.getElementById('screen').value}-${document.getElementById('resolution').value}.jpg`;document.getElementById(c).src=path;document.getElementById(c+'link').href=path;document.getElementById(c).onerror=()=>{document.getElementById(c).alt='No scrolling needed at this resolution; choose the top view.'}}}
+document.querySelectorAll('select').forEach(s=>s.onchange=update);update();
+</script></html>

@@ -96,3 +96,5 @@ run_check candidate-bindings --headless --path . --script res://tests/review_cle
 run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
 
 echo "PASS: Godot import, GDD rule contracts, and main scene smoke test."
+
+run_check hero-clash-review --headless --path . --script res://tests/review_hero_clash/test_review.gd

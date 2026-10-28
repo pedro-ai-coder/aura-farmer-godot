@@ -1,0 +1,84 @@
+{
+  "status": "UNAPPROVED_REVIEW_ONLY",
+  "fonts": [
+    {
+      "family": "archivoblack",
+      "path": "tests/review_hero_clash/fonts/archivoblack/ArchivoBlack.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/archivoblack/ArchivoBlack-Regular.ttf",
+      "sha256": "dd9a89a019b4849f66ab75455fe7bdf931311042cbb0f0f97acc061539703180",
+      "bytes": 90988,
+      "license": "SIL OFL 1.1",
+      "license_sha256": "3173acd82f8c6159b5b1037b539fcbd4edff68e65c2ea8b9412b5a5ca97b08ff",
+      "glyph_count": 423,
+      "portuguese_and_ascii_digits": true,
+      "axes": {},
+      "reserved_font_name_declaration": "None in the copyright header",
+      "modified": false
+    },
+    {
+      "family": "archivo",
+      "path": "tests/review_hero_clash/fonts/archivo/Archivo.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/archivo/Archivo%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053",
+      "bytes": 658596,
+      "license": "SIL OFL 1.1",
+      "license_sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b",
+      "glyph_count": 653,
+      "portuguese_and_ascii_digits": true,
+      "axes": {
+        "wght": [
+          100.0,
+          600.0,
+          900.0
+        ],
+        "wdth": [
+          62.0,
+          100.0,
+          125.0
+        ]
+      },
+      "reserved_font_name_declaration": "None in the copyright header",
+      "modified": false
+    },
+    {
+      "family": "oxanium",
+      "path": "tests/review_hero_clash/fonts/oxanium/Oxanium.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/oxanium/Oxanium%5Bwght%5D.ttf",
+      "sha256": "2ce01d946e1e1ffc8d7eecfffbda8623bedd63eaf811a20488c4b69af45babb0",
+      "bytes": 43536,
+      "license": "SIL OFL 1.1",
+      "license_sha256": "fe17c0f2581d71b4e1ea7e636e7f4877c29223e11bb1dd1a871e8c3f2a86336b",
+      "glyph_count": 357,
+      "portuguese_and_ascii_digits": true,
+      "axes": {
+        "wght": [
+          200.0,
+          200.0,
+          800.0
+        ]
+      },
+      "reserved_font_name_declaration": "None in the copyright header",
+      "modified": false
+    },
+    {
+      "family": "rubik",
+      "path": "tests/review_hero_clash/fonts/rubik/Rubik.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/rubik/Rubik%5Bwght%5D.ttf",
+      "sha256": "1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88",
+      "bytes": 359804,
+      "license": "SIL OFL 1.1",
+      "license_sha256": "472cbe7c25441df63e9c7864b43eb3c0f4b3df950c66a76224e6cfe1eae843fb",
+      "glyph_count": 885,
+      "portuguese_and_ascii_digits": true,
+      "axes": {
+        "wght": [
+          300.0,
+          300.0,
+          900.0
+        ]
+      },
+      "reserved_font_name_declaration": "None in the copyright header",
+      "modified": false
+    }
+  ]
+}
