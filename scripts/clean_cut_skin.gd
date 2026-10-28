@@ -5,6 +5,7 @@ const Type=preload("res://scripts/clean_cut_typography.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
 const HeroBrand=preload("res://scripts/hero_clash_brand.gd")
 const HeroFlexDial=preload("res://scripts/hero_clash_flex_dial.gd")
+const ButtonFeedback=preload("res://scripts/hero_clash_button_feedback.gd")
 var game
 var ui
 var art
@@ -44,6 +45,8 @@ var hud_nodes: Array[Control]=[]
 var player_plate: TextureRect
 var portrait: TextureRect
 var hp_fill: ColorRect
+var shield_track: ColorRect
+var shield_fill: ColorRect
 var xp_fill: ColorRect
 var xp_track: ColorRect
 var aura_arc: Control
@@ -130,6 +133,13 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
     button.add_theme_color_override("font_disabled_color",Style.INK.lightened(0.3))
     for child in native_children.get(button,[]):
         if child is Control:child.hide()
+    # Feedback is attached to the already-signal-bound button and never
+    # intercepts or replaces mouse, keyboard or touchscreen input.
+    if not button.has_meta("hero_clash_feedback"):
+        var feedback:=ButtonFeedback.new()
+        button.add_child(feedback)
+        feedback.install(button,game)
+        button.set_meta("hero_clash_feedback",true)
 func install(owner_game, source_root: String) -> void:
     game=owner_game;ui=game.presentation;art=Cache.new(source_root)
     mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -185,6 +195,14 @@ func install(owner_game, source_root: String) -> void:
         offer_parts.append(parts)
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
     hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
+    shield_track=ColorRect.new()
+    shield_track.color=Style.DEEP
+    shield_track.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    add_child(shield_track)
+    shield_fill=ColorRect.new()
+    shield_fill.color=Style.SKY
+    shield_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    add_child(shield_fill)
     portrait=image(self);hp=label(self,17)
     hero_name=label(self);shield_label=label(self)
     xp_frame=image(self);xp_frame.stretch_mode=TextureRect.STRETCH_SCALE
@@ -227,7 +245,7 @@ func install(owner_game, source_root: String) -> void:
     flex_fill.color=Style.GOLD
     flex_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.flex_button.add_child(flex_fill)
-    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text,flex_caption])
+    hud_nodes.assign([player_plate,hp_fill,shield_track,shield_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text,flex_caption])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
         Type.apply(parts["level"],"micro_label")
@@ -271,7 +289,11 @@ func refresh() -> void:
         game.touch_joystick.center,game.legendary_spent,boss_hp])
     if next_key==layout_key:return
     layout_key=next_key;layout_count+=1
-    if game.confirm_button.get_parent()!=self:game.confirm_button.reparent(self)
+    # Exit/profile confirmation belongs to the active secondary shell. Never
+    # reparent it away every frame: doing so can cancel a held pointer press.
+    var confirmation_parent: Control=auxiliary if game.mode in auxiliary.MODES else self
+    if game.confirm_button.get_parent()!=confirmation_parent:
+        game.confirm_button.reparent(confirmation_parent)
     if game.pause_button.get_parent()!=self:game.pause_button.reparent(self)
     view=ui.view;shift=ui.position;position=shift;size=view
     var mode: String=game.mode
@@ -285,7 +307,8 @@ func refresh() -> void:
     # candidate's original vector lockup on the review branch.
     wordmark.hide()
     candidate_brand.visible=mode=="menu"
-    poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
+    poster_hero.visible=mode=="menu"
+    home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
@@ -319,8 +342,11 @@ func home_layout() -> void:
     var logo_width: float=minf(590.0,view.x*0.47) if not narrow else view.x-38.0
     var logo_height: float=154.0 if view.y<540.0 else 190.0
     place(candidate_brand,Rect2(28,24,logo_width,logo_height))
-    place(poster_hero,Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
-    poster_hero.visible=not narrow
+    # Selected hero must be the visible hero on the menu, not a fixed Sigma.
+    poster_hero.texture=game.art.texture(str(game.HEROES[game.hero_index]["id"]))
+    var mobile_portrait: bool=narrow and view.y>=700.0
+    place(poster_hero,Rect2(view.x-188.0,view.y*0.26,164,200) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
+    poster_hero.visible=not narrow or mobile_portrait
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
@@ -354,7 +380,10 @@ func heroes_layout() -> void:
         button_skin(button,"hero-select/card",selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var data: Dictionary=game.HEROES[i];var parts: Dictionary=hero_parts[i]
-        parts["name"].text=data["name"];parts["role"].text=data["role"].to_upper()
+        parts["portrait"].texture=game.art.texture(str(data["id"]))
+        parts["portrait"].show()
+        parts["name"].text=data["name"]
+        parts["role"].text=data["role"].to_upper()+(" · SELECTED" if selected else "")
         place(parts["name"],Rect2(24,44,width-48,40));place(parts["role"],Rect2(24,85,width-48,24))
         place(parts["portrait"],Rect2(40,118,width-80,160))
         parts["icon"].texture=ui.item_icons.texture("weapon",data["starter"]);place(parts["icon"],Rect2(24,282,45,45))
@@ -521,10 +550,19 @@ func hud_layout() -> void:
     hero_name.autowrap_mode=TextServer.AUTOWRAP_OFF
     place(hero_name,Rect2(82,28,hp_width-70,32))
     fit_line(hero_name,15)
-    Type.apply(shield_label,"micro_label",narrow,Style.INK)
+    # Shield has its own dedicated blue progress track below the HP bar.
+    # The former overlapping shield label is no longer on top of the red HP.
+    var shield_left: float=18.0
+    var shield_y: float=109.0
+    var shield_ratio: float=clampf(game.shield/maxf(1.0,game.max_hp),0.0,1.0)
+    place(shield_track,Rect2(shield_left,shield_y,hp_width,17))
+    place(shield_fill,Rect2(shield_left+3.0,shield_y+3.0,(hp_width-6.0)*shield_ratio,11))
+    shield_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+    Type.apply(shield_label,"micro_label",true,Style.PAPER,true)
     shield_label.text="SHIELD %d" % ceili(game.shield)
     shield_label.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(shield_label,Rect2(82,57,hp_width-70,20))
+    place(shield_label,Rect2(shield_left+5.0,shield_y-1.0,hp_width-10.0,19.0))
+    fit_line(shield_label,13)
     Type.apply(hp,"hud_stat",narrow,Style.PAPER,true)
     hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
     hp.autowrap_mode=TextServer.AUTOWRAP_OFF
