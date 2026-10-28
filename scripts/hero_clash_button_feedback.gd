@@ -19,6 +19,8 @@ var hover_glow: float = 0.0
 var release_flash: float = 0.0
 var selection_flash: float = 0.0
 var pulse_clock: float = 0.0
+var reveal_remaining: float = 0.0
+var reveal_delay: float = 0.0
 var low_motion: bool = false
 
 func install(target: Button, owner_game) -> void:
@@ -50,6 +52,15 @@ func configure(new_family: String, new_selected: bool=false) -> void:
     if changed:
         queue_redraw()
     _update_processing()
+
+func reveal(stagger: float = 0.0) -> void:
+    if _reduced_motion():
+        reveal_remaining=0.0
+        reveal_delay=0.0
+        return
+    reveal_remaining=1.0
+    reveal_delay=maxf(0.0,stagger)
+    set_process(true)
 
 func _reduced_motion() -> bool:
     return game==null or bool(game.profile.get("settings",{}).get("reducedMotion",false))
@@ -101,6 +112,8 @@ func _visibility_changed() -> void:
     hover_glow=0.0
     release_flash=0.0
     selection_flash=0.0
+    reveal_remaining=0.0
+    reveal_delay=0.0
     set_process(false)
     queue_redraw()
 
@@ -111,11 +124,13 @@ func _update_processing() -> void:
         hover_glow=1.0 if hovered or focused else 0.0
         release_flash=0.0
         selection_flash=0.0
+        reveal_remaining=0.0
+        reveal_delay=0.0
         set_process(false)
         queue_redraw()
         return
     var active: bool=held or (hovered or focused) != (hover_glow>0.999)
-    active=active or press_depth>0.003 or release_flash>0.003 or selection_flash>0.003
+    active=active or press_depth>0.003 or release_flash>0.003 or selection_flash>0.003 or reveal_remaining>0.003 or reveal_delay>0.003
     set_process(active and is_visible_in_tree())
 
 func _process(delta: float) -> void:
@@ -129,10 +144,14 @@ func _process(delta: float) -> void:
     hover_glow=move_toward(hover_glow,target_glow,delta*7.0)
     release_flash=move_toward(release_flash,0.0,delta*FLASH_DECAY)
     selection_flash=move_toward(selection_flash,0.0,delta*3.6)
+    if reveal_delay>0.0:
+        reveal_delay=maxf(0.0,reveal_delay-delta)
+    elif reveal_remaining>0.0:
+        reveal_remaining=maxf(0.0,reveal_remaining-delta*3.7)
     pulse_clock+=delta
     queue_redraw()
     # No per-frame UI work after the brief interaction ends.
-    if not held and is_zero_approx(press_depth) and is_equal_approx(hover_glow,target_glow) and is_zero_approx(release_flash) and is_zero_approx(selection_flash):
+    if not held and is_zero_approx(press_depth) and is_equal_approx(hover_glow,target_glow) and is_zero_approx(release_flash) and is_zero_approx(selection_flash) and is_zero_approx(reveal_remaining) and is_zero_approx(reveal_delay):
         set_process(false)
 
 func _draw() -> void:
@@ -185,3 +204,8 @@ func _draw() -> void:
     if release_flash>0.01:
         draw_line(Vector2(edge+10,edge+1),Vector2(w-edge-10,edge+1),Color(paper,0.72*release_flash),3.0,true)
         draw_line(Vector2(edge+12,h-edge-1),Vector2(w-edge-12,h-edge-1),Color(accent,0.65*release_flash),2.0,true)
+    if reveal_remaining>0.01 and reveal_delay<=0.0:
+        # Short traveling metal sheen on screen entry (edge only, no text cover).
+        var traveled: float=1.0-reveal_remaining
+        var sheen_x: float=lerpf(edge+12.0,w-edge-32.0,traveled)
+        draw_line(Vector2(sheen_x,edge+1),Vector2(minf(w-edge-7,sheen_x+26),edge+1),Color(paper,0.66*reveal_remaining),3.0,true)
