@@ -852,7 +852,8 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var stats: Dictionary = SoloEnemyRulesScript.DATA[kind]
     var pos: Vector2 = special.get("pos", Vector2.ZERO)
     if not special.has("pos"):
-        var candidate = SoloWorldRulesScript.spawn_point(player_pos, rng)
+        var spawn_radius: float=float(stats["radius"])*(1.2 if bool(special.get("elite",false)) and not bool(stats["boss"]) and kind!="terminal" else 1.0)
+        var candidate = SoloWorldRulesScript.spawn_point(player_pos, rng,spawn_radius)
         if candidate == null:
             return
         pos = candidate
@@ -1095,6 +1096,8 @@ func _step_enemies(dt: float) -> void:
                 var goal := player_pos if direction.dot(to_player) >= 0.0 else pos+direction*120.0
                 destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy)
             enemy["pos"] = destination
+            if EnemyNavigationScript.diagnostics_enabled and enemy["phase"]!="charging" and speed>0.0:
+                EnemyNavigationScript.observe(enemy,player_pos,pos,direction*speed*dt,dt,run_time,wave)
             var travelled := destination.distance_to(pos)
             enemy["anim_moving"] = travelled > 0.001
             enemy["anim_walk"] = float(enemy.get("anim_walk",0.0))+travelled/maxf(5.0,float(enemy["speed"])/9.0)

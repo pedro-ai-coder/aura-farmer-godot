@@ -104,3 +104,6 @@ run_check hero-clash-review --headless --path . --script res://tests/review_hero
 
 python3 scripts/verify_button_candidates.py
 run_check button-art-components --headless --path . --script res://tests/button_art/test_components.gd
+
+run_check navigation-recovery --headless --path . --script res://tests/recovery_m01/test_navigation_stress.gd
+run_check layout-recovery --headless --path . --script res://tests/recovery_m01/test_layout.gd

@@ -112,21 +112,39 @@ func layout() -> void:
         skin.place(ui.body_scroll,Rect2(24,170,view.x-48,maxf(60,view.y-270)))
         var width: float=view.x-64
         if mode=="build":
-            var height: float=ui._equipment(width)
-            ui.body_content.custom_minimum_size=Vector2(width,height)
+            ui._equipment(width) # Populate canonical labels, metadata and icons.
+            var columns: int=2 if width>=760.0 else 1
+            var gap: float=16.0
+            var tile_width: float=(width-gap*(columns-1))/columns
+            var row_height: float=142.0
+            var weapon_rows: int=ceili(3.0/columns)
+            var passive_y: float=44.0+weapon_rows*(row_height+gap)+16.0
+            skin.place(ui.equipment_headings[0],Rect2(0,0,width,30))
+            skin.place(ui.equipment_headings[1],Rect2(0,passive_y,width,30))
             for i in range(ui.equipment_slots.size()):
                 var parts: Dictionary=ui.equipment_slots[i]
-                var kind: String="weapon" if i<3 else "passive"
-                var items: Array=game.weapons if i<3 else game.passives
-                var occupied: bool=(i if i<3 else i-3)<items.size()
+                var weapon: bool=i<3
+                var index: int=i if weapon else i-3
+                var items: Array=game.weapons if weapon else game.passives
+                var occupied: bool=index<items.size()
+                var top: float=44.0 if weapon else passive_y+44.0
+                skin.place(parts["panel"],Rect2((index%columns)*(tile_width+gap),top+int(index/columns)*(row_height+gap),tile_width,row_height))
                 parts["panel"].add_theme_stylebox_override("panel",skin.empty_style)
-                build_frames[i].texture=skin.art.texture("equipment/"+kind+("-filled" if occupied else "-empty"))
-                skin.place(build_frames[i],Rect2(0,4,96,96))
-                skin.place(parts["image"],Rect2(20,24,56,56))
-                skin.Type.apply(parts["label"],"card_title")
+                build_frames[i].texture=skin.art.texture("equipment/"+("weapon" if weapon else "passive")+("-filled" if occupied else "-empty"))
+                skin.place(build_frames[i],Rect2(0,4,88,88));skin.place(parts["image"],Rect2(18,22,52,52))
+                skin.Type.apply(parts["label"],"card_title",view.x<700)
                 skin.Type.apply(parts["meta"],"hud_secondary")
-                skin.place(parts["label"],Rect2(104,12,parts["panel"].size.x-116,66))
-                skin.place(parts["meta"],Rect2(104,82,parts["panel"].size.x-116,34))
+                # Empty capacity is still explicit, but its counter belongs in
+                # metadata so the title cannot grow through the following row.
+                if not occupied:
+                    parts["label"].text="EMPTY WEAPON SLOT" if weapon else "EMPTY PASSIVE SLOT"
+                    parts["meta"].text="%d / %d" % [index+1,3 if weapon else 5]
+                parts["meta"].show()
+                skin.place(parts["label"],Rect2(104,8,tile_width-116,82))
+                skin.place(parts["meta"],Rect2(104,100,tile_width-116,28))
+            var height: float=passive_y+44.0+ceili(5.0/columns)*(row_height+gap)
+            skin.place(ui.equipment_board,Rect2(0,0,width,height))
+            ui.body_content.custom_minimum_size=Vector2(width,height)
         else:
             caption.text="Preferences are saved on this device.\nTouch: drag anywhere on clear terrain to move."
             skin.place(ui.volume_label,Rect2(8,0,width-16,32))

@@ -3,7 +3,7 @@ name: Godot CI
 # PR-only validation; deliberately no push, schedule or deployment triggers.
 on:
   pull_request:
-    branches: [main, fix/m0-hud-hero-quit-feedback]
+    branches: [main, fix/m0-hud-hero-quit-feedback, art/m0-final-button-components]
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
     name: godot-validation
     # Keep this isolated art review unmergeable as a draft while running the full checks.
     # Other drafts retain the existing runner-saving behavior.
-    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' }}
+    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' || github.head_ref == 'fix/m0-navigation-ui-recovery' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -184,7 +184,7 @@ jobs:
 
   m0-creator-feedback-evidence:
     name: m0-creator-feedback-evidence
-    if: ${{ github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' }}
+    if: ${{ github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' || github.head_ref == 'fix/m0-navigation-ui-recovery' }}
     needs: godot-validation
     runs-on: ubuntu-latest
     timeout-minutes: 12
@@ -221,11 +221,16 @@ jobs:
           set -euo pipefail
           output="$RUNNER_TEMP/m0-ui-feedback"
           mkdir -p "$output"
+          capture_script="res://tests/capture_m0_creator_feedback.gd"
+          if [[ "$GITHUB_HEAD_REF" == "fix/m0-navigation-ui-recovery" ]]; then
+            capture_script="res://tests/recovery_m01/capture.gd"
+            godot --headless --path . --script res://tests/recovery_m01/test_layout.gd -- "$output/layout-audit.json"
+          fi
           for dims in '1920 1080' '1600 900' '1280 720' '915 412' '844 390' '390 844'; do
             read -r width height <<< "$dims"
             xvfb-run -a -s '-screen 0 1920x1080x24' timeout 90s \
               godot --path . --audio-driver Dummy --rendering-driver opengl3 \
-              --script res://tests/capture_m0_creator_feedback.gd -- \
+              --script "$capture_script" -- \
               "$width" "$height" "$output" 2>&1 | tee "$output/capture-$width-$height.log"
             if grep -Eiq 'SCRIPT ERROR:|Parse Error:|Failed to load|Failed to open|(^|[[:space:]])ERROR:' "$output/capture-$width-$height.log"; then
               echo "Native capture errors at $width x $height" >&2
@@ -239,7 +244,7 @@ jobs:
       - name: Upload genuine native UI evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: m0-creator-feedback-godot
+          name: ${{ github.head_ref == 'fix/m0-navigation-ui-recovery' && 'm0-navigation-ui-recovery-godot' || 'm0-creator-feedback-godot' }}
           path: ${{ runner.temp }}/m0-ui-feedback/
           if-no-files-found: error
           retention-days: 21

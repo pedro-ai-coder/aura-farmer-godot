@@ -1,0 +1,419 @@
+PASS: Fullscreen permitted/denied/unavailable, orientation fallbacks, eligible gestures and safe-area metrics
+PASS: 37 exact creator-approved runtime icons; candidate isolation preserved
+PASS: 84 immutable creator-approved Clean Cut visual resources match SHA-256 sources
+PASS: four approved Barlow fonts and two separately licensed Hero Clash candidate fonts
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.028s
+
+OK
+Validating Godot phase: import
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (5 steps)
+[   0% ] update_scripts_classes |
+[  16% ] update_scripts_classes |
+[  33% ] update_scripts_classes | SoloWorldRules
+[  50% ] update_scripts_classes |
+[  66% ] update_scripts_classes |
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started Scanning actions... (3 steps)
+[   0% ] _update_scan_actions | game-09ad704e5e0e.apple-touch-icon.png
+[  25% ] _update_scan_actions | game-09ad704e5e0e.icon.png
+[  50% ] _update_scan_actions | game-09ad704e5e0e.png
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started (Re)Importing Assets (3 steps)
+[   0% ] reimport | Preparing files to reimport...
+[  25% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | game-09ad704e5e0e.apple-touch-icon.png
+[  25% ] reimport | game-09ad704e5e0e.icon.png
+[  50% ] reimport | game-09ad704e5e0e.png
+[  75% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (3 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+Validating Godot phase: mobile-layout
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport UI bounds, touch targets, safe areas, selection, stable camera and focus pause
+Validating Godot phase: card-keyboard
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Focused card keyboard selection and explicit confirmation
+Validating Godot phase: spotlight-secondary
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Compact pause/build/settings/quit/results and responsive replay
+Validating Godot phase: spotlight-hud
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Simulation-bound wave/boss HUD feedback and danger priority
+Validating Godot phase: spotlight-navigation
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport home, selection, current signatures, focus and real start
+Validating Godot phase: spotlight-theme
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Archivo typography, approved palette, candidate artwork-backed button states, category cards and compact selection
+Validating Godot phase: arcade-ui
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Arcade home/options, explicit hero play, import feedback, readable cards and six-choice footer
+Validating Godot phase: enemy-navigation
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PURSUIT {"end":[465.180877685547,614.268737792969],"kind":"reply-goblin","max_blocked_seconds":0.0,"reached":true,"start":[643.0,550.0],"target":[433.701690673828,618.883056640625]}
+PURSUIT {"end":[468.304931640625,614.496643066406],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[646.0,550.0],"target":[433.701690673828,618.883056640625]}
+PURSUIT {"end":[813.87109375,745.112121582031],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[992.0,680.0],"target":[773.70166015625,748.883056640625]}
+PURSUIT {"end":[731.693969726562,614.496520996094],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[554.0,550.0],"target":[766.298278808594,618.883056640625]}
+PURSUIT {"end":[1066.12890625,614.887878417969],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[888.0,680.0],"target":[1106.29833984375,611.116943359375]}
+PURSUIT {"end":[313.457855224609,746.08349609375],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[831.0,950.0],"target":[280.0,740.0]}
+PURSUIT {"end":[339.486389160156,742.849975585938],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[830.0,935.0],"target":[300.0,735.0]}
+PASS: Actual enemy pursuit around both covers and concave floor corners preserves geometry
+Validating Godot phase: seeded-rng
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Seeded integer JavaScript parity, shared draw state, offers and enemy selection
+Validating Godot phase: hero-animation
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Authored hero poses, fixed sheet scales, Flex timing, defeat, travel clock and pause
+Validating Godot phase: recovery
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Exact Phaser seeded drops, caps, collection, Safe Spot lifecycle and boss recovery
+Validating Godot phase: survival-review-policy
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Strategic review controller routes actual recovery, respects station/Flex gates and leaves simulation unchanged
+Validating Godot phase: camera-cover
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport camera bounds, time-based follow and exact static-cover sprite/geometry
+Validating Godot phase: continuous-run
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CONTINUOUS RUN: sigma, time=670.349999999719, level=25, XP=9387.0, kills=730, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: cool-kid, time=650.949999999737, level=25, XP=9220.0, kills=719, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: alpha, time=719.049999999675, level=25, XP=8522.0, kills=729, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS CPU ELAPSED: 21767 ms; not rendered FPS
+PASS: Continuous seeded three-hero progression, legal offers, combat drops, boss result and clean restart
+Validating Godot phase: run-acceptance
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+HEADLESS CPU SAMPLE: 300 enemies / 150 initial projectiles, 60 simulation iterations, 1544.771 ms; not rendered FPS or device acceptance
+PASS: Controlled three-hero wave/boss/victory timeline, portal/elite/drop contracts and headless stress fixture
+Validating Godot phase: menu-flow
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Explicit choice confirmation, modal input/exit isolation, save transfer/preferences and result retry
+Validating Godot phase: signature-flex
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Signature timing, caps, mitigation, attribution, retarget, proc isolation and lifecycle
+Validating Godot phase: hero-combat
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Stable targeting/manual aim, three hero traits, signature contact mitigation, Alpha slam timing and Beta facing armor
+Validating Godot phase: run-clock
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Exact canonical wave, event, Hater, boss, berserk and legendary boundaries
+Validating Godot phase: run-progression
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Wave pause, level-cap recovery, rolling Aura, passive replacement/periodicity, frequency stacking and terminal isolation
+Validating Godot phase: profile-store
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Phaser v2/v1 and Godot migration, corrupt data, unique completed results, bounded history, atomic storage and restart
+Validating Godot phase: contracts
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: foundational GDD contract checks
+Validating Godot phase: catalog
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: GDD rarity, role, level cap, nonduplicate card and three-hero catalog tests
+Validating Godot phase: legendary
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 6:00/8:00 same six cards, legal role, defer, one-per-run and expiry
+Validating Godot phase: boss-lifecycle
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Stagger, berserk regeneration/exposure, threshold latching, capped adds, independent event timers and expanding safe-gap ring
+Validating Godot phase: enemy-windows
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Boss commitment/recovery, event recovery and breakable three-tick Leech tether
+Validating Godot phase: ranged-sources
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Committed ranged aim, swept cover collision, canonical charge warning and persistent source attribution
+Validating Godot phase: bestiary
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 17 enemy IDs, wave pools, event/boss timing, telegraphed ranged attacks
+Validating Godot phase: ruin-alley
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Ruin Alley polygon, cover collision, line of sight and seeded floor spawns
+Validating Godot phase: passive-effects
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: GDD passive modifiers, Aura hit caps, low-health shields and Sigma Flex
+Validating Godot phase: approved-icon-batch
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: All 37 approved PNG pixel identities, Touch Grass v2, legal offers, future-only scope and unchanged simulation
+Validating Godot phase: icon-registry
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ICON MAPPINGS PENDING:
+PASS: Approval registry, cached identity, fallback, live card/build resize and unchanged simulation
+Validating Godot phase: approved-art
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: All 19 approved art assets and 17 enemy animations loaded as Godot textures
+Validating Godot phase: combat-feedback
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: combat feedback lifecycle, bounded effects, fractional HP and phase-crystal magnet
+Validating Godot phase: clean-cut-typography
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: packaged typography, glyph coverage, equipment fit, HUD and three-viewports hierarchy
+Validating Godot phase: hero-clash-ui-candidate
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Hero Clash UI candidate brand, circular Aura Flex, clear equipment and reward controls
+Validating Godot phase: weapon-vfx
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Nine Phaser Option A weapon motifs, travelling No Cap and contact starter cues
+Validating Godot phase: legendary-combat
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Legendary projectile delays, secondary damage/proc isolation, shared hit memory and third-hit transformations
+Validating Godot phase: weapon-timing
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Fixed blast position, windup, paired hits and shared primary activation
+Validating Godot phase: player-projectiles
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Player projectile travel, collision, hit memory, restart and cover
+Validating Godot phase: mobile-touch
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle
+Validating Godot phase: flex-readability
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Flex clarity, readiness, active/recovery display and touch-safe layout across desktop/mobile
+Validating Godot phase: playable
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Godot solo hero, combat, progression, Flex and boss smoke tests
+Validating Godot phase: scene
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Validating Godot phase: approved-clean-cut-runtime
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Production Clean Cut 84 approved assets, live five-flow controls and unchanged RNG across three viewports
+Validating Godot phase: clean-cut-pointer-input
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Real viewport mouse clicks activate PLAY/HERO SELECTION/SETTINGS and BACK at desktop and compact viewports
+Validating Godot phase: clean-cut-secondary-input
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at three viewports
+Validating Godot phase: m0-ui-creator-feedback
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Real Quit/STAY/Confirm clicks, hero identity, separate Shield and animated READY Flex on desktop/mobile
+Validating Godot phase: hero-clash-button-motion
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Hero Clash tactile buttons, selected/reveal states, reduced motion and real pointer journeys
+Validating Godot phase: clean-cut-deferred-legendary
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Deferred legendary remains visible, clickable, unchanged and deadline-bound across three viewports
+Validating Godot phase: candidate-bindings
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Five-screen live candidate composition, actual offers/hero/Flex and unchanged simulation; not production approval
+Validating Godot phase: candidate-navigation
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Candidate real hero/start, three-card confirmation, six-card defer/cache/pick and pause/resume at three viewports
+PASS: Godot import, GDD rule contracts, and main scene smoke test.
+Validating Godot phase: hero-clash-review
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Hero Clash review checks: 0 failures
+PASS: 24 original button states, exact SVG/PNG hashes, unapproved candidate status
+Validating Godot phase: button-art-components
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PLAY TARGET (1920, 1080) logical=(360.0, 64.0) physical=(540.0, 96.0) label_px=33.0
+PLAY TARGET (1600, 900) logical=(360.0, 64.0) physical=(450.0, 80.0) label_px=27.5
+PLAY TARGET (1280, 720) logical=(360.0, 64.0) physical=(360.0, 64.0) label_px=22.0
+PLAY TARGET (915, 412) logical=(360.0, 64.0) physical=(270.0, 47.91257) label_px=16.4699449539185
+PLAY TARGET (844, 390) logical=(360.0, 64.0) physical=(269.76, 48.0) label_px=16.5
+PLAY TARGET (390, 844) logical=(360.0, 64.0) physical=(270.0, 47.95733) label_px=14.2373331189156
+PASS: 24 cached artwork states, six-resolution real pointer/confirmation, unchanged hit geometry
+Validating Godot phase: navigation-recovery
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+NAV BENCH: 100 actors, 3600 frames / five moving-goal segments, 2921708 us; CPU fixture, not FPS
+NAV ROUTES: 220/220 reached; total us=4132541
+PASS: Cover tangents, radii, moving goals, concave approaches, dense-wave legality and RNG
+Validating Godot phase: layout-recovery
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Actual Controls, six viewport bounds/peer overlaps, boss HUD, dynamic text, full build and modal rows

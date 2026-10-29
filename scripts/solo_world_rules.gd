@@ -56,11 +56,13 @@ static func clear_line(start: Vector2, ending: Vector2) -> bool:
             return false
     return true
 
-static func spawn_point(player: Vector2, rng):
-    # Identical sample rectangle, 80 attempts and 24px clearance as Phaser.
+static func spawn_point(player: Vector2, rng, collision_radius: float = 24.0):
+    # Preserve the sample rectangle, 80-attempt bound and 260 U arrival distance.
+    # Large enemies need their actual collider clearance at birth; 24 U was
+    # insufficient for elites/events/Big Hater and could create embedded actors.
     # RandomNumberGenerator is an input: geometry itself never consumes RNG.
     for attempt in range(80):
         var position := Vector2(180.0 + rng.randf() * 1100.0, 300.0 + rng.randf() * 650.0)
-        if walkable(position, 24.0) and position.distance_to(player) >= 260.0:
+        if walkable(position, maxf(24.0,collision_radius)) and position.distance_to(player) >= 260.0:
             return position
     return null

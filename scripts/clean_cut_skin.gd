@@ -198,9 +198,9 @@ func install(owner_game, source_root: String) -> void:
         Type.apply(parts["meta"],"micro_label")
         Type.apply(parts["comparison"],"hud_secondary")
         Type.apply(parts["state"],"micro_label")
-        parts["body"].clip_text = true
-        parts["body"].max_lines_visible = 5
-        parts["body"].text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+        parts["body"].clip_text = false
+        parts["body"].max_lines_visible = -1
+        parts["body"].text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
         offer_parts.append(parts)
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
     hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
@@ -418,6 +418,15 @@ func heroes_layout() -> void:
     var columns:=1 if view.x<700 else 3
     var gap:=20.0;var width: float=(view.x-64-gap*(columns-1))/columns
     var height:=maxf(460,view.y-188) if columns==3 else 520.0
+    # Reserve the full approved Flex help text, including the longest hero.
+    # A fixed 460 U mobile card let the Label minimum escape its lower edge.
+    for i in range(3):
+        var help: Label=hero_parts[i]["help"]
+        help.text=ui.catalog[game.HEROES[i]["id"]]["flex_help"]
+        var flex_name: Label=hero_parts[i]["flex"]
+        flex_name.text=game.HEROES[i]["flex"]
+        var help_top: float=350.0+maxf(48.0,text_height(flex_name,width-48.0))+12.0
+        height=maxf(height,help_top+text_height(help,width-48.0)+20.0)
     place(hero_scroll,Rect2(24,100,view.x-48,view.y-190))
     hero_content.custom_minimum_size=Vector2(view.x-64,ceili(3.0/columns)*(height+gap));hero_content.size=hero_content.custom_minimum_size
     for i in range(3):
@@ -435,34 +444,61 @@ func heroes_layout() -> void:
         place(parts["portrait"],Rect2(40,118,width-80,160))
         parts["icon"].texture=ui.item_icons.texture("weapon",data["starter"]);place(parts["icon"],Rect2(24,282,45,45))
         parts["starter"].text="STARTER / "+game.WEAPONS[data["starter"]]["name"];place(parts["starter"],Rect2(80,282,width-100,55))
-        parts["flex"].text=data["flex"];place(parts["flex"],Rect2(24,350,width-48,48))
-        parts["help"].text=ui.catalog[data["id"]]["flex_help"];place(parts["help"],Rect2(24,400,width-48,height-420))
+        parts["flex"].text=data["flex"]
+        var flex_height: float=maxf(48.0,text_height(parts["flex"],width-48.0))
+        var help_top: float=350.0+flex_height+12.0
+        place(parts["flex"],Rect2(24,350,width-48,flex_height))
+        parts["help"].text=ui.catalog[data["id"]]["flex_help"]
+        place(parts["help"],Rect2(24,help_top,width-48,height-help_top-20.0))
     ui.home.return_button.show();ui.home.start_button.show()
     place(ui.home.return_button,Rect2(24,view.y-78,150,64));place(ui.home.start_button,Rect2(view.x-300,view.y-78,276,64))
     ui.home.start_button.text="START RUN"
     button_skin(ui.home.return_button,"menu/secondary");button_skin(ui.home.start_button,"menu/primary")
+func text_height(node: Label, width: float) -> float:
+    var font: Font=node.get_theme_font("font")
+    var pixels: int=node.get_theme_font_size("font_size")
+    var measured: Vector2=font.get_multiline_string_size(node.text.to_upper() if node.uppercase else node.text,HORIZONTAL_ALIGNMENT_LEFT,width,pixels,-1,TextServer.BREAK_MANDATORY|TextServer.BREAK_WORD_BOUND|TextServer.BREAK_ADAPTIVE)
+    var lines: float=maxf(1.0,ceilf(measured.y/font.get_height(pixels)))
+    return ceilf(measured.y+(lines-1.0)*node.get_theme_constant("line_spacing"))+4.0
+
 func cards_layout() -> void:
     var legendary: bool=game.mode=="legendary"
     background.modulate=Color.WHITE;background.texture=art.texture("support/legendary-bg" if legendary else "support/upgrade-bg")
     place(background,Rect2(Vector2.ZERO,view));headline("THE LEGENDARY DROP" if legendary else "MAKE ROOM" if game.mode=="replace" else "CHOOSE YOUR NEXT MOVE")
-    if legendary:
-        heading.add_theme_color_override("font_color",Style.INK)
-        heading_shadow.hide()
+    if legendary:heading.add_theme_color_override("font_color",Style.INK)
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
     var compact_cards: bool=view.y<=560.0 and columns==3
     var gap:=12.0 if compact_cards else 16.0
     var available_width: float=view.x-48.0 if compact_cards else view.x-64.0
     var width: float=(available_width-gap*(columns-1))/columns
-    var height: float=minf(520,view.y-212) if not legendary else minf(250,(view.y-212)/2) if view.y>=650 and columns==3 else 270.0
-    height=maxf(height,220 if legendary and view.y>=650 and columns==3 else 250 if legendary else 414)
+    var height: float=view.y-138.0 if compact_cards else 250.0 if legendary else 440.0
+    var metrics: Array=[]
+    # Measure live strings first, then reserve independent rows. No negative
+    # body heights, overlapping comparison row, or hidden/truncated description.
+    for i in range(items.size()):
+        var item: Dictionary=items[i]
+        var parts: Dictionary=offer_parts[i];var native: Dictionary=ui.card_parts[i]
+        parts["name"].text=native["name"].text
+        parts["body"].text=native["body"].text
+        parts["body"].tooltip_text=parts["body"].text
+        parts["comparison"].text=native["comparison"].text
+        parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
+        Type.apply(parts["name"],"card_title",compact_cards or view.x<700)
+        Type.apply(parts["body"],"body_m",compact_cards)
+        Type.apply(parts["meta"],"hud_secondary",view.x<700)
+        Type.apply(parts["comparison"],"hud_secondary",compact_cards)
+        var title_height: float=maxf(84.0,text_height(parts["name"],width-132.0))
+        var meta_y: float=68.0+title_height+10.0
+        var body_y: float=meta_y if legendary else meta_y+38.0
+        var body_height: float=maxf(80.0,text_height(parts["body"],width-32.0))
+        var comparison_y: float=body_y+body_height+12.0
+        var comparison_height: float=0.0 if legendary else text_height(parts["comparison"],width-32.0)
+        height=maxf(height,comparison_y+comparison_height+46.0)
+        metrics.append({"title":title_height,"meta":meta_y,"body":body_y,"body_height":body_height,"comparison":comparison_y,"comparison_height":comparison_height})
     if compact_cards:
-        # Three legible cards can fit in 844x390/915x412 without requiring
-        # the player to scroll simply to find the benefit and selection state.
-        height=view.y-138.0
         Type.apply(heading,"display_l",true,Style.INK if legendary else Style.PAPER)
-        place(heading,Rect2(18,5,view.x-36,49))
-        fit_line(heading,19)
+        place(heading,Rect2(18,5,view.x-36,49));fit_line(heading,19)
         place(headline_accent,Rect2(22,55,94,5))
     var scroll_y: float=68.0 if compact_cards else 106.0
     var scroll_height: float=view.y-136.0 if compact_cards else view.y-196.0
@@ -476,86 +512,35 @@ func cards_layout() -> void:
         var item: Dictionary=items[i];var id: String=item["id"]
         var category: String="weapon" if game.WEAPONS.has(id) else "passive"
         var selected: bool=game.selected_card_index==i
-        var family: String="cards/"+("legendary-" if legendary else "")+category
-        button.text=""
-        button_skin(button,family,selected)
+        button.text="";button_skin(button,"cards/"+("legendary-" if legendary else "")+category,selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
-        var native: Dictionary=ui.card_parts[i];var parts: Dictionary=offer_parts[i]
+        var parts: Dictionary=offer_parts[i];var measured: Dictionary=metrics[i]
         var rarity_name: String=str(item.get("rarity","legendary" if legendary else "common")).to_lower()
         var rarity_color: Color=Style.RARITY.get(rarity_name,Style.SKY)
-        parts["rim"].color=Style.SKY if selected else rarity_color
-        place(parts["rim"],Rect2(9,10,7,height-20))
+        parts["rim"].color=Style.SKY if selected else rarity_color;place(parts["rim"],Rect2(9,10,7,height-20))
         parts["category"].text=("LEGENDARY · " if legendary else "")+category.to_upper()
         Type.apply(parts["category"],"micro_label",view.x<700,Style.INK)
         var category_plate: StyleBoxFlat=parts["category"].get_theme_stylebox("normal")
         category_plate.bg_color=Style.SKY if category=="weapon" else Style.GOLD
-        category_plate.content_margin_left=10.0
-        category_plate.content_margin_right=10.0
+        category_plate.content_margin_left=10;category_plate.content_margin_right=10
+        place(parts["category"],Rect2(16,12,width-32,44))
         var style_key: String=rarity_name+("/selected" if selected else "")
         if not card_plate_styles.has(style_key):
-            var plate_style:=StyleBoxFlat.new()
-            plate_style.bg_color=Style.CARD
-            plate_style.border_color=Style.SKY if selected else rarity_color
-            plate_style.set_border_width_all(4 if selected else 3)
-            plate_style.set_corner_radius_all(5)
-            card_plate_styles[style_key]=plate_style
+            var plate_style:=StyleBoxFlat.new();plate_style.bg_color=Style.CARD;plate_style.border_color=Style.SKY if selected else rarity_color
+            plate_style.set_border_width_all(4 if selected else 3);plate_style.set_corner_radius_all(5);card_plate_styles[style_key]=plate_style
         parts["icon_plate"].add_theme_stylebox_override("panel",card_plate_styles[style_key])
-        if legendary:
-            place(parts["category"],Rect2(width*68/438,height*10/304,width*338/438,height*42/304))
-        else:
-            place(parts["category"],Rect2(20,height*34/486,width-40,height*28/486))
         parts["icon"].texture=ui.item_icons.texture(category,id)
-        parts["name"].text=native["name"].text;parts["body"].text=native["body"].text;parts["comparison"].text=native["comparison"].text
-        parts["body"].tooltip_text = parts["body"].text
-        parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
-        Type.apply(parts["meta"],"hud_secondary",view.x<700,Style.INK)
+        place(parts["icon_plate"],Rect2(16,68,84,84));place(parts["icon"],Rect2(24,76,68,68))
+        place(parts["name"],Rect2(112,68,width-132,measured["title"]))
+        parts["meta"].visible=not legendary
+        place(parts["meta"],Rect2(16,measured["meta"],width-32,28))
+        place(parts["body"],Rect2(16,measured["body"],width-32,measured["body_height"]))
+        parts["comparison"].visible=not legendary
+        place(parts["comparison"],Rect2(16,measured["comparison"],width-32,measured["comparison_height"]))
         parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "TAP TO SELECT"
         Type.apply(parts["state"],"micro_label",view.x<700,Style.SKY if selected else Style.INK)
-        if legendary:
-            place(parts["icon_plate"],Rect2(18,48,88,88))
-            place(parts["icon"],Rect2(25,55,74,74))
-            place(parts["name"],Rect2(116,48,width-136,80))
-            parts["meta"].hide();place(parts["body"],Rect2(18,144,width-36,height-180));parts["comparison"].hide()
-            Type.apply(parts["body"],"body_s")
-        else:
-            parts["meta"].show();Type.apply(parts["body"],"body_m")
-            place(parts["icon_plate"],Rect2((width-128)/2,68,128,128))
-            place(parts["icon"],Rect2((width-112)/2,76,112,112))
-            place(parts["name"],Rect2(20,210,width-40,70))
-            place(parts["meta"],Rect2(20,278,width-40,26));place(parts["body"],Rect2(20,310,width-40,height-414));parts["comparison"].show()
-            place(parts["comparison"],Rect2(20,height-126,width-40,62))
-        if not legendary and height<490:
-            place(parts["icon_plate"],Rect2(18,78,66,66))
-            place(parts["icon"],Rect2(24,84,54,54))
-            place(parts["name"],Rect2(92,70,width-110,76))
-            place(parts["meta"],Rect2(18,150,width-36,32));place(parts["body"],Rect2(18,188,width-36,height-280))
-            Type.apply(parts["body"],"body_s")
-            place(parts["comparison"],Rect2(18,height-86,width-36,48))
-        if compact_cards:
-            # Godot uses e.g. a logical 1125x520 area for a physical 844x390
-            # browser viewport. Fill that real usable space rather than hiding
-            # half the reward card below an unnecessary scroll.
-            place(parts["category"],Rect2(16,12,width-32,27))
-            place(parts["icon_plate"],Rect2(16,44,84,84))
-            place(parts["icon"],Rect2(24,52,68,68))
-            place(parts["name"],Rect2(110,46,width-126,80))
-            Type.apply(parts["name"],"card_title",true)
-            if legendary:
-                parts["meta"].hide()
-                Type.apply(parts["body"],"body_m")
-                place(parts["body"],Rect2(16,144,width-32,height-192))
-            else:
-                parts["meta"].show()
-                place(parts["meta"],Rect2(16,137,width-32,27))
-                Type.apply(parts["body"],"body_m")
-                place(parts["body"],Rect2(16,174,width-32,height-280))
-                parts["comparison"].show()
-                place(parts["comparison"],Rect2(16,height-89,width-32,28))
-                Type.apply(parts["comparison"],"hud_secondary",true)
-        place(parts["state"],Rect2(14 if compact_cards else 18,height-36 if compact_cards else height-30,width-(28 if compact_cards else 36),27 if compact_cards else 24))
+        place(parts["state"],Rect2(16,height-30,width-32,24))
         parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
-        fit_line(parts["name"],17 if compact_cards else 18)
-        if parts["meta"].visible: fit_line(parts["meta"],13)
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
     game.confirm_button.disabled=game.selected_card_index<0
     place(game.confirm_button,Rect2(view.x-350,view.y-78,326,64));button_skin(game.confirm_button,"menu/primary")
@@ -646,10 +631,14 @@ func hud_layout() -> void:
     boss_plate.hide();boss_text.hide()
     for enemy: Dictionary in game.enemies:
         if enemy["kind"]!="boss":continue
-        var rect: Rect2=ui.spotlight_hud.boss_rectangle(enemy)
-        rect.size.y=60
+        var boss_width: float=minf(420.0,view.x-48.0)
+        var boss_top: float=maxf(shield_track.get_rect().end.y,wave_frame.get_rect().end.y)+10.0
+        var rect:=Rect2((view.x-boss_width)*0.5,boss_top,boss_width,52)
         boss_plate.show();boss_text.show();boss_plate.texture=art.texture("support/hp")
-        place(boss_plate,rect);boss_text.text="BIG HATER / %d HP" % ceili(enemy["hp"]);place(boss_text,Rect2(rect.position+Vector2(28,8),rect.size-Vector2(56,12)))
+        place(boss_plate,rect);boss_text.text="BIG HATER / %d HP" % ceili(enemy["hp"])
+        Type.apply(boss_text,"hud_secondary",narrow,Style.INK)
+        place(boss_text,Rect2(rect.position+Vector2(20,4),rect.size-Vector2(40,8)))
+        place(warning,Rect2((view.x-360)*0.5,rect.end.y+8.0,360,28))
         break
     if game.touch_joystick.active:
         var scale: float=game.touch_joystick.geometry_scale
