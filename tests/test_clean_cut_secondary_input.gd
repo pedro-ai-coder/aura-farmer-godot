@@ -44,7 +44,9 @@ func verify() -> void:
         expect(game.rng.state==rng, "UI refresh consumes no gameplay RNG")
         game.presentation.refresh(true)
         skin.refresh()
-        expect(game.pause_button.get_theme_stylebox("normal") is StyleBoxEmpty and game.pause_button.get_node("ClashButtonFeedback").art_family=="secondary", "Native refresh cannot restore legacy face over candidate artwork")
+        # HUD V2 intentionally replaces the generic secondary face with its own
+        # authored angular Pause. Keep the same anti-regression contract.
+        expect(game.pause_button.get_theme_stylebox("normal")==skin.gameplay_hud.pause_style("normal"), "Native refresh cannot restore a legacy face over the cached HUD V2 Pause artwork")
         expect(game.flex_button.get_theme_stylebox("normal")==style, "Flex keeps cached empty style after native refresh")
         expect(game.flex_button.text.is_empty(), "Legacy Flex text cannot overlay artwork")
         expect(not skin.xp.get_rect().intersects(skin.xp_track.get_rect()), "XP caption does not intersect progress bar")

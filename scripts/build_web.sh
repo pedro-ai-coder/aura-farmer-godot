@@ -107,5 +107,6 @@ done
 python3 scripts/check_icon_pack.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_typography.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_button_candidates.py "build/web/$EXPORT_BASENAME.pck"
+python3 scripts/verify_hud_candidates.py "build/web/$EXPORT_BASENAME.pck"
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

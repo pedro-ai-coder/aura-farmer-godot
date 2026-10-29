@@ -169,6 +169,10 @@ var clean_cut_skin: Control
 var touch_device := OS.has_feature("mobile")
 var web_metrics: Dictionary = {}
 var platform_poll := 0.0
+var _safe_spot_label_style: StyleBoxFlat=make_safe_spot_label_style()
+static func make_safe_spot_label_style() -> StyleBoxFlat:
+    var style:=StyleBoxFlat.new();style.bg_color=Color("102d43");style.set_corner_radius_all(5)
+    return style
 var safe_spot_charge := 0.0
 var safe_spot_ready_at := 0.0
 var safe_spot_uses := 0
@@ -2295,7 +2299,7 @@ func _draw_hero_actor() -> void:
 func _draw_recovery() -> void:
     var point: Vector2 = RecoveryRulesScript.SAFE_SPOT
     var cooldown := maxf(0.0, safe_spot_ready_at - run_time)
-    var tint := Color("5cf0b4") if cooldown <= 0.0 else Color("8394aa")
+    var tint := Color("29d3d2") if cooldown <= 0.0 else Color("8394aa")
     draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.07))
     draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,0.65), 2.0)
     draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),Color("24364a"))
@@ -2304,8 +2308,14 @@ func _draw_recovery() -> void:
     draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
     var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
     if progress > 0.0: draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
-    draw_string_outline(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,2,Color("13233a"))
-    draw_string(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
+    var label_text: String="SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown)
+    var label_at: Vector2=point+Vector2(-48,35)
+    if clean_cut_skin!=null and clean_cut_skin.gameplay_hud!=null:
+        label_at=clean_cut_skin.gameplay_hud.safe_label_origin(point,Vector2(96,24))
+    if label_at.is_finite():
+        draw_style_box(_safe_spot_label_style,Rect2(label_at,Vector2(96,24)))
+        var label_width: float=Typography.font("hud_secondary").get_string_size(label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x
+        draw_string(Typography.font("hud_secondary"),label_at+Vector2((96-label_width)*0.5,18),label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff9e9"))
     for feedback: Dictionary in pickup_feedback:
         var age := 0.9 - (float(feedback["until"]) - run_time)
         var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))

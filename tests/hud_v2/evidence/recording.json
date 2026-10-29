@@ -1,0 +1,15 @@
+{
+  "browser": false,
+  "fps": 15,
+  "frames": 465,
+  "hp": 100.0,
+  "human": false,
+  "kills": 23,
+  "level": 1,
+  "mode": "playing",
+  "normal_health_unmodified": true,
+  "pause_resume_real_pointer": true,
+  "physical_device": false,
+  "scripted_steering": true,
+  "simulation_time": 29.9999999999996
+}

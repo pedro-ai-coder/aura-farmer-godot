@@ -1,0 +1,592 @@
+[
+  {
+    "aura": 9.0,
+    "controls": [
+      {
+        "node": "@Label@311",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          35.0,
+          350.0,
+          40.0
+        ],
+        "text": "THE SIGMA"
+      },
+      {
+        "node": "@Label@310",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          98.75,
+          350.0,
+          36.25
+        ],
+        "text": "HP 100 / 100"
+      },
+      {
+        "node": "@Label@312",
+        "physical_font_px": 17.5,
+        "rect": [
+          28.75,
+          135.0,
+          425.0,
+          23.75
+        ],
+        "text": "SHIELD 0"
+      },
+      {
+        "node": "@Label@322",
+        "physical_font_px": 28.75,
+        "rect": [
+          662.5,
+          56.25,
+          275.0,
+          36.25
+        ],
+        "text": "WAVE 1  /  00:09"
+      },
+      {
+        "node": "@Label@316",
+        "physical_font_px": 28.75,
+        "rect": [
+          30.0,
+          681.25,
+          375.0,
+          36.25
+        ],
+        "text": "LEVEL 1   ·   XP 0"
+      },
+      {
+        "node": "@Label@327",
+        "physical_font_px": 35.0,
+        "rect": [
+          1402.5,
+          750.100036621094,
+          160.0,
+          52.5
+        ],
+        "text": "FLEX"
+      },
+      {
+        "node": "@Label@328",
+        "physical_font_px": 18.75,
+        "rect": [
+          1402.5,
+          802.299926757812,
+          160.0,
+          31.25
+        ],
+        "text": "AURA 9%"
+      },
+      {
+        "node": "@Label@329",
+        "physical_font_px": 21.25,
+        "rect": [
+          1342.5,
+          652.5,
+          247.5,
+          33.75
+        ],
+        "text": "DEADPAN VERDICT"
+      },
+      {
+        "node": "@Button@27",
+        "physical_font_px": 27.5,
+        "rect": [
+          1487.5,
+          35.0,
+          80.0,
+          80.0
+        ],
+        "text": "II"
+      },
+      {
+        "node": "@Button@26",
+        "physical_font_px": 27.5,
+        "rect": [
+          1392.5,
+          692.5,
+          180.0,
+          180.0
+        ],
+        "text": ""
+      }
+    ],
+    "hero": "sigma",
+    "hp": 100.0,
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "max_hp": 100.0,
+    "mode": "playing",
+    "passives": [],
+    "pixels": [
+      1600,
+      900
+    ],
+    "shield": 0.0,
+    "state": "start",
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 1,
+        "rarity": "common",
+        "timer": 0.0
+      }
+    ]
+  },
+  {
+    "aura": 9.0,
+    "controls": [
+      {
+        "node": "@Label@311",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          35.0,
+          350.0,
+          40.0
+        ],
+        "text": "THE SIGMA"
+      },
+      {
+        "node": "@Label@310",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          98.75,
+          350.0,
+          36.25
+        ],
+        "text": "HP 116 / 116"
+      },
+      {
+        "node": "@Label@312",
+        "physical_font_px": 17.5,
+        "rect": [
+          28.75,
+          135.0,
+          425.0,
+          23.75
+        ],
+        "text": "SHIELD 0"
+      },
+      {
+        "node": "@Label@322",
+        "physical_font_px": 28.75,
+        "rect": [
+          662.5,
+          56.25,
+          275.0,
+          36.25
+        ],
+        "text": "WAVE 3  /  04:05"
+      },
+      {
+        "node": "@Label@316",
+        "physical_font_px": 28.75,
+        "rect": [
+          30.0,
+          681.25,
+          375.0,
+          36.25
+        ],
+        "text": "LEVEL 9   ·   XP 48"
+      },
+      {
+        "node": "@Label@327",
+        "physical_font_px": 35.0,
+        "rect": [
+          1402.5,
+          750.100036621094,
+          160.0,
+          52.5
+        ],
+        "text": "FLEX"
+      },
+      {
+        "node": "@Label@328",
+        "physical_font_px": 18.75,
+        "rect": [
+          1402.5,
+          802.299926757812,
+          160.0,
+          31.25
+        ],
+        "text": "AURA 9%"
+      },
+      {
+        "node": "@Label@329",
+        "physical_font_px": 21.25,
+        "rect": [
+          1342.5,
+          652.5,
+          247.5,
+          33.75
+        ],
+        "text": "DEADPAN VERDICT"
+      },
+      {
+        "node": "@Button@27",
+        "physical_font_px": 27.5,
+        "rect": [
+          1487.5,
+          35.0,
+          80.0,
+          80.0
+        ],
+        "text": "II"
+      },
+      {
+        "node": "@Button@26",
+        "physical_font_px": 27.5,
+        "rect": [
+          1392.5,
+          692.5,
+          180.0,
+          180.0
+        ],
+        "text": ""
+      }
+    ],
+    "hero": "sigma",
+    "hp": 116.0,
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "max_hp": 116.0,
+    "mode": "playing",
+    "passives": [
+      {
+        "id": "main-character",
+        "level": 2,
+        "rarity": "common"
+      },
+      {
+        "id": "terminally-online",
+        "level": 2,
+        "rarity": "common"
+      },
+      {
+        "id": "caught-4k",
+        "level": 2,
+        "rarity": "common"
+      },
+      {
+        "id": "certified-w",
+        "level": 2,
+        "rarity": "common"
+      },
+      {
+        "id": "aura-viral",
+        "level": 2,
+        "rarity": "epic"
+      }
+    ],
+    "pixels": [
+      1600,
+      900
+    ],
+    "shield": 0.0,
+    "state": "full-build",
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 1,
+        "rarity": "common",
+        "timer": 0.0
+      },
+      {
+        "id": "ratio-blaster",
+        "level": 3,
+        "rarity": "rare",
+        "timer": 0.0
+      },
+      {
+        "id": "brainrot-feed",
+        "level": 4,
+        "rarity": "epic",
+        "timer": 0.0
+      }
+    ]
+  },
+  {
+    "aura": 100.0,
+    "controls": [
+      {
+        "node": "@Label@311",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          35.0,
+          350.0,
+          40.0
+        ],
+        "text": "THE SIGMA"
+      },
+      {
+        "node": "@Label@310",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          98.75,
+          350.0,
+          36.25
+        ],
+        "text": "HP 100 / 100"
+      },
+      {
+        "node": "@Label@312",
+        "physical_font_px": 17.5,
+        "rect": [
+          28.75,
+          135.0,
+          425.0,
+          23.75
+        ],
+        "text": "SHIELD 0"
+      },
+      {
+        "node": "@Label@322",
+        "physical_font_px": 28.75,
+        "rect": [
+          662.5,
+          56.25,
+          275.0,
+          36.25
+        ],
+        "text": "WAVE 1  /  00:09"
+      },
+      {
+        "node": "@Label@316",
+        "physical_font_px": 28.75,
+        "rect": [
+          30.0,
+          681.25,
+          375.0,
+          36.25
+        ],
+        "text": "LEVEL 1   ·   XP 0"
+      },
+      {
+        "node": "@Label@327",
+        "physical_font_px": 35.0,
+        "rect": [
+          1402.5,
+          750.100036621094,
+          160.0,
+          52.5
+        ],
+        "text": "FLEX"
+      },
+      {
+        "node": "@Label@328",
+        "physical_font_px": 18.75,
+        "rect": [
+          1402.5,
+          802.299926757812,
+          160.0,
+          31.25
+        ],
+        "text": "READY"
+      },
+      {
+        "node": "@Label@329",
+        "physical_font_px": 21.25,
+        "rect": [
+          1342.5,
+          652.5,
+          247.5,
+          33.75
+        ],
+        "text": "DEADPAN VERDICT"
+      },
+      {
+        "node": "@Button@27",
+        "physical_font_px": 27.5,
+        "rect": [
+          1487.5,
+          35.0,
+          80.0,
+          80.0
+        ],
+        "text": "II"
+      },
+      {
+        "node": "@Button@26",
+        "physical_font_px": 27.5,
+        "rect": [
+          1392.5,
+          692.5,
+          180.0,
+          180.0
+        ],
+        "text": ""
+      }
+    ],
+    "hero": "sigma",
+    "hp": 100.0,
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "max_hp": 100.0,
+    "mode": "playing",
+    "passives": [],
+    "pixels": [
+      1600,
+      900
+    ],
+    "shield": 0.0,
+    "state": "ready",
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 1,
+        "rarity": "common",
+        "timer": 0.0
+      }
+    ]
+  },
+  {
+    "aura": 9.0,
+    "controls": [
+      {
+        "node": "@Label@311",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          35.0,
+          350.0,
+          40.0
+        ],
+        "text": "THE SIGMA"
+      },
+      {
+        "node": "@Label@310",
+        "physical_font_px": 28.75,
+        "rect": [
+          102.5,
+          98.75,
+          350.0,
+          36.25
+        ],
+        "text": "HP 100 / 100"
+      },
+      {
+        "node": "@Label@312",
+        "physical_font_px": 17.5,
+        "rect": [
+          28.75,
+          135.0,
+          425.0,
+          23.75
+        ],
+        "text": "SHIELD 40"
+      },
+      {
+        "node": "@Label@322",
+        "physical_font_px": 28.75,
+        "rect": [
+          662.5,
+          56.25,
+          275.0,
+          36.25
+        ],
+        "text": "BIG HATER  /  10:25"
+      },
+      {
+        "node": "@Label@316",
+        "physical_font_px": 28.75,
+        "rect": [
+          30.0,
+          681.25,
+          375.0,
+          36.25
+        ],
+        "text": "LEVEL 1   ·   XP 0"
+      },
+      {
+        "node": "@Label@327",
+        "physical_font_px": 35.0,
+        "rect": [
+          1402.5,
+          750.100036621094,
+          160.0,
+          52.5
+        ],
+        "text": "FLEX"
+      },
+      {
+        "node": "@Label@328",
+        "physical_font_px": 18.75,
+        "rect": [
+          1402.5,
+          802.299926757812,
+          160.0,
+          31.25
+        ],
+        "text": "AURA 9%"
+      },
+      {
+        "node": "@Label@329",
+        "physical_font_px": 21.25,
+        "rect": [
+          1342.5,
+          652.5,
+          247.5,
+          33.75
+        ],
+        "text": "DEADPAN VERDICT"
+      },
+      {
+        "node": "@Button@27",
+        "physical_font_px": 27.5,
+        "rect": [
+          1487.5,
+          35.0,
+          80.0,
+          80.0
+        ],
+        "text": "II"
+      },
+      {
+        "node": "@Button@26",
+        "physical_font_px": 27.5,
+        "rect": [
+          1392.5,
+          692.5,
+          180.0,
+          180.0
+        ],
+        "text": ""
+      }
+    ],
+    "hero": "sigma",
+    "hp": 100.0,
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "max_hp": 100.0,
+    "mode": "playing",
+    "passives": [],
+    "pixels": [
+      1600,
+      900
+    ],
+    "shield": 40.0,
+    "state": "boss",
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 1,
+        "rarity": "common",
+        "timer": 0.0
+      }
+    ]
+  }
+]

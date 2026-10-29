@@ -1,6 +1,7 @@
 extends Control
 ## Original state-driven circular Flex dial: a visual invitation, never auto-use.
 ## Only game.aura and existing _use_flex control authorize ability activation.
+const BODY=preload("res://assets/ui-hud-candidates/v2/flex-body.svg")
 var progress: float=0.0
 var visual_state: String="charging"
 var emphasized: bool=false
@@ -59,16 +60,14 @@ func _draw() -> void:
     var squash: float=1.0-0.065*push_current
     var radius: float=(minf(size.x,size.y)*0.5-10.0)*squash
     var ink:=Color("13233a")
-    var blue:=Color("4ea3ff")
-    var gold:=Color("f8c45f")
+    var blue:=Color("20d9ff")
+    var gold:=Color("ffce30")
     var teal:=Color("6eaab0")
     var paper:=Color("f7edcd")
     var accent: Color=teal if visual_state=="active" else gold if visual_state=="ready" else blue
     var complete: bool=visual_state=="ready"
-    draw_circle(center+Vector2(0,4.0*(1.0-push_current)),radius+7.0,Color(0.02,0.05,0.09,0.45))
-    draw_circle(center,radius+3.0,ink)
-    draw_circle(center,radius-6.0,Color("1f3e63"))
-    draw_circle(center,radius-13.0,ink)
+    var body_radius: float=(radius+7.0)
+    draw_texture_rect(BODY,Rect2(center-Vector2.ONE*body_radius,Vector2.ONE*body_radius*2.0),false,Color(0.72,0.78,0.85) if visual_state in ["recovery","disabled"] else Color.WHITE)
     draw_arc(center,radius-1.0,-PI*0.5,PI*1.5,72,Color("45617a"),7.0,true)
     draw_arc(center,radius-1.0,-PI*0.5,-PI*0.5+TAU*progress,72,accent,8.0,true)
     if complete:
