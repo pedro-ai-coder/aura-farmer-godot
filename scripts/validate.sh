@@ -92,6 +92,9 @@ run_check scene --headless --path . --quit-after 10
 run_check approved-clean-cut-runtime --headless --path . --script res://tests/test_clean_cut_runtime.gd
 run_check clean-cut-pointer-input --headless --path . --script res://tests/test_clean_cut_pointer_input.gd
 run_check clean-cut-secondary-input --headless --path . --script res://tests/test_clean_cut_secondary_input.gd
+run_check m0-technical-ui --headless --path . --script res://tests/test_m0_interface_fixes.gd
+run_check m0-navigation-recovery --headless --path . --script res://tests/recovery_m01/test_navigation_stress.gd
+run_check m0-mobile-fluency --headless --path . --script res://tests/mobile_fluency/test_drag.gd
 run_check clean-cut-deferred-legendary --headless --path . --script res://tests/test_clean_cut_deferred_legendary.gd
 run_check candidate-bindings --headless --path . --script res://tests/review_clean_cut_candidates.gd -- user://clean-cut-review --check
 run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
@@ -99,3 +102,6 @@ run_check candidate-navigation --headless --path . --script res://tests/test_cle
 echo "PASS: Godot import, GDD rule contracts, and main scene smoke test."
 
 run_check hero-clash-review --headless --path . --script res://tests/review_hero_clash/test_review.gd
+
+# Web fullscreen/refusal/retry and CSS/DPR lifecycle regression.
+node tests/test_web_platform.cjs
