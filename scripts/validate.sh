@@ -101,3 +101,6 @@ run_check candidate-navigation --headless --path . --script res://tests/test_cle
 echo "PASS: Godot import, GDD rule contracts, and main scene smoke test."
 
 run_check hero-clash-review --headless --path . --script res://tests/review_hero_clash/test_review.gd
+
+python3 scripts/verify_button_candidates.py
+run_check button-art-components --headless --path . --script res://tests/button_art/test_components.gd

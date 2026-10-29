@@ -17,17 +17,13 @@ func verify() -> void:
     if skin != null:
         skin.set_process(false)
         skin.refresh()
-        var normal: StyleBox = ui.options_button.get_theme_stylebox("normal")
-        var pressed: StyleBox = ui.options_button.get_theme_stylebox("pressed")
-        var focus: StyleBox = ui.options_button.get_theme_stylebox("focus")
-        expect(normal is StyleBoxTexture, "Menu uses creator-approved image-backed Clean Cut chassis")
-        expect(pressed is StyleBoxTexture and focus is StyleBoxTexture, "Pressed and keyboard focus use distinct approved artwork")
-        if normal is StyleBoxTexture:
-            expect(normal.texture == skin.art.texture("menu/secondary-default"), "Secondary menu button uses approved idle image")
-        if pressed is StyleBoxTexture:
-            expect(pressed.texture == skin.art.texture("menu/secondary-pressed"), "Pressed action uses approved tactile artwork")
-        if focus is StyleBoxTexture:
-            expect(focus.texture == skin.art.texture("menu/secondary-focus"), "Focus has its own keyboard-visible artwork")
+        var art=preload("res://scripts/hero_clash_button_art.gd")
+        var feedback=ui.options_button.get_node("ClashButtonFeedback")
+        expect(feedback.art_family=="secondary", "Secondary menu uses original candidate family")
+        for state in ["normal","pressed","focus"]:
+            expect(ui.options_button.get_theme_stylebox(state) is StyleBoxEmpty, "Legacy face cannot bleed through candidate: "+state)
+            expect(art.style("secondary",state).texture==art.TEXTURES["secondary-"+state], "State uses its own authored PNG: "+state)
+        expect(art.style("secondary","pressed").texture!=art.style("secondary","focus").texture, "Pressed and focus remain visually distinct")
         game.start_run(0)
         game._gain_xp(100)
         game._open_choice()
@@ -38,7 +34,8 @@ func verify() -> void:
         var selected: StyleBox = game.offer_buttons[0].get_theme_stylebox("normal")
         expect(selected is StyleBoxTexture, "Selected card uses the correct illustrated frame")
         if selected is StyleBoxTexture:
-            expect(selected.texture == skin.art.texture("cards/"+category+"-selected"), "Weapon/passive selected art is category-aware")
+            expect(selected.texture == skin.art.texture("cards/"+category+"-idle"), "Selected overlay retains category-aware approved backing")
+        expect(game.offer_buttons[0].get_node("ClashButtonFeedback").selected, "Selected card has original transparent candidate frame")
         expect(ui.card_parts[0]["state"].text.contains("SELECTED"), "Selected item retains a textual, accessible state label")
         root.size = Vector2i(915,412)
         ui._window_changed(true)
@@ -48,7 +45,7 @@ func verify() -> void:
         expect(skin.offers_scroll.scroll_vertical == 0, "Compact first selected offer remains reachable")
     game.queue_free()
     if failures.is_empty():
-        print("PASS: Approved Clean Cut Inter, palette, artwork-backed button states, category cards and compact selection")
+        print("PASS: Archivo typography, approved palette, candidate artwork-backed button states, category cards and compact selection")
         quit(0)
     else:
         for failure in failures: push_error(failure)

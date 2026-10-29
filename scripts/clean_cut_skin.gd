@@ -126,6 +126,10 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
     var key:=family+"-"+current
     if not art.rows.has(key):key=family+"-"+("selected" if selected and art.rows.has(family+"-selected") else "idle")
     if not art.rows.has(key):key=family+"-default"
+    # Preserve approved idle card/hero art; the candidate's transparent selection
+    # shell owns the state badge, avoiding a duplicate or obscured legacy tick.
+    if not family.begins_with("menu/") and selected and art.rows.has(family+"-idle"):
+        key=family+"-idle"
     button.add_theme_stylebox_override("normal",box(key))
     for action in ["hover","pressed","disabled","focus"]:
         var alt: String=family+"-"+action

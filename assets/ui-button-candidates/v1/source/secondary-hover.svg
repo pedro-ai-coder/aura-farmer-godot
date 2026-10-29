@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="96" viewBox="0 0 512 96">
+ <defs><linearGradient id="face" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".38" stop-color="#ddd8bf"/><stop offset="1" stop-color="#ddd8bf"/></linearGradient>
+ <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#aab6b7"/><stop offset="1" stop-color="#3c5f78"/></linearGradient></defs>
+ <path d="M20 7 H474 Q481 7 486 12 L503 29 Q506 32 506 39 V74 Q506 80 501 84 L489 91 H20 Q13 91 9 87 L5 81 V25 Q5 19 10 14Z" fill="#13233a"/>
+ <path d="M12 52 H500 V74 L486 86 H22 L12 77Z" fill="url(#edge)"/>
+ <path d="M23 80 H480 L492 72 V79 L484 85 H24Z" fill="#aab6b7"/>
+ <g transform="translate(0,0)">
+ <path d="M23 5 H474 Q480 5 484 9 L500 25 V65 Q500 69 496 72 L484 79 H24 L11 68 V22 Q11 16 16 11Z" fill="#aab6b7"/>
+ <path d="M25 9 H473 L495 28 V62 L482 72 H27 L17 63 V24Z" fill="url(#face)"/>
+ <path d="M25 9 H473 L487 21 H32 L17 33 V24Z" fill="#ffffff" opacity=".75"/>
+ <path d="M17 33 L32 22 V61 L27 68 L17 59Z" fill="#aab6b7" opacity=".52"/>
+ <path d="M480 23 L495 35 V62 L482 72 L474 63Z" fill="#aab6b7" opacity=".66"/>
+ <path d="M32 62 H474 L482 72 H27Z" fill="#aab6b7" opacity=".30"/>
+ <path d="M34 18 H468" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".58"/>
+ </g></svg>
