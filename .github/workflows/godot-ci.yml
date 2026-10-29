@@ -3,7 +3,7 @@ name: Godot CI
 # PR-only validation; deliberately no push, schedule or deployment triggers.
 on:
   pull_request:
-    branches: [main, fix/m0-hud-hero-quit-feedback, art/m0-final-button-components]
+    branches: [main, fix/m0-hud-hero-quit-feedback, art/m0-final-button-components, fix/m0-navigation-ui-recovery]
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
     name: godot-validation
     # Keep this isolated art review unmergeable as a draft while running the full checks.
     # Other drafts retain the existing runner-saving behavior.
-    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' || github.head_ref == 'fix/m0-navigation-ui-recovery' }}
+    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' || github.head_ref == 'fix/m0-navigation-ui-recovery' || github.head_ref == 'ui/hero-clash-gameplay-hud-v2' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -249,3 +249,49 @@ jobs:
           if-no-files-found: error
           retention-days: 21
           compression-level: 1
+
+  gameplay-hud-v2-evidence:
+    name: gameplay-hud-v2-evidence
+    if: ${{ github.head_ref == 'ui/hero-clash-gameplay-hud-v2' }}
+    needs: godot-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: chickensoft-games/setup-godot@f166999204a4f2722c6fe042fbaa3b3ea0d9c789
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: false
+          cache: true
+      - name: Prepare native Compatibility rendering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends xvfb libgl1-mesa-dri
+          python3 scripts/sync_approved_assets.py
+          godot --headless --path . --import
+      - name: Capture actual six-viewport HUD state matrix
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          output="$RUNNER_TEMP/hud-v2"
+          mkdir -p "$output"
+          for dimensions in '1920 1080' '1600 900' '1280 720' '915 412' '844 390' '390 844'; do
+            read -r width height <<< "$dimensions"
+            xvfb-run -a -s '-screen 0 1920x1080x24' timeout 60s \
+              godot --path . --audio-driver Dummy --rendering-driver opengl3 \
+              --script res://tests/hud_v2/capture.gd -- "$width" "$height" "$output" \
+              2>&1 | tee "$output/capture-$width-$height.log"
+            if grep -Eiq 'SCRIPT ERROR:|Parse Error:|(^|[[:space:]])ERROR:|Failed to load|Failed to open' "$output/capture-$width-$height.log"; then exit 1; fi
+            test -s "$output/start-$width"\x"$height.png"
+            test -s "$output/ready-$width"\x"$height.png"
+            test -s "$output/full-build-$width"\x"$height.png"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: gameplay-hud-v2-native-six-viewports
+          path: ${{ runner.temp }}/hud-v2
+          retention-days: 14

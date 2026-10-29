@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="126" viewBox="0 0 900 126">
+<defs>
+<linearGradient id="paper" x2="0.1" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#e8dfc5"/></linearGradient>
+<linearGradient id="gold" x2="0.12" y2="1"><stop stop-color="#ffe467"/><stop offset="0.45" stop-color="#ffce21"/><stop offset="1" stop-color="#e9a60b"/></linearGradient>
+<linearGradient id="blue" x2="0.2" y2="1"><stop stop-color="#168fe4"/><stop offset="1" stop-color="#074d89"/></linearGradient>
+<linearGradient id="navy" x2="0.3" y2="1"><stop stop-color="#153c5c"/><stop offset="1" stop-color="#071c30"/></linearGradient>
+<radialGradient id="dial" cx="0.3" cy="0.15" r="0.9"><stop stop-color="#144d78"/><stop offset="0.58" stop-color="#0b2a45"/><stop offset="1" stop-color="#041529"/></radialGradient>
+<pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.85" fill="#0b2034" opacity="0.19"/></pattern>
+</defs>
+
+<path d="M8 4H880L897 23V94L878 123H23L2 103V18Z" fill="#0b2034"/>
+<path d="M14 8H875L891 26V92L874 117H25L9 100V20Z" fill="url(#navy)"/>
+<path d="M22 97H879L867 116H30Z" fill="#071d31"/>
+<path d="M14 8H875L880 13H19Z" fill="#3a6684"/>
+<path d="M15 88H20V103L32 116H24L9 101V88Z M872 99H884L871 119H859Z" fill="url(#gold)"/>
+<path d="M339 16H342V116H339Z" fill="#427b9e"/>
+
+</svg>

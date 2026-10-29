@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="78" viewBox="0 0 430 78">
+<defs>
+<linearGradient id="paper" x2="0.1" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#e8dfc5"/></linearGradient>
+<linearGradient id="gold" x2="0.12" y2="1"><stop stop-color="#ffe467"/><stop offset="0.45" stop-color="#ffce21"/><stop offset="1" stop-color="#e9a60b"/></linearGradient>
+<linearGradient id="blue" x2="0.2" y2="1"><stop stop-color="#168fe4"/><stop offset="1" stop-color="#074d89"/></linearGradient>
+<linearGradient id="navy" x2="0.3" y2="1"><stop stop-color="#153c5c"/><stop offset="1" stop-color="#071c30"/></linearGradient>
+<radialGradient id="dial" cx="0.3" cy="0.15" r="0.9"><stop stop-color="#144d78"/><stop offset="0.58" stop-color="#0b2a45"/><stop offset="1" stop-color="#041529"/></radialGradient>
+<pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.85" fill="#0b2034" opacity="0.19"/></pattern>
+</defs>
+
+<path d="M27 2H317L335 20H383L429 75H0Z" fill="#0b2034"/>
+<path d="M31 7H315L332 25H380L418 69H10Z" fill="url(#gold)"/>
+<path d="M35 10H308L325 27H375L408 65H17Z" fill="url(#paper)"/>
+<path d="M317 7H327L344 20H383L390 28H337Z" fill="url(#blue)"/>
+<path d="M56 43H379L395 62H42Z" fill="#0b2034"/>
+<path d="M57 46H377L388 59H48Z" fill="#073052"/>
+<path d="M298 12H307L318 25H289Z" fill="url(#dots)"/>
+
+</svg>

@@ -109,3 +109,6 @@ run_check navigation-recovery --headless --path . --script res://tests/recovery_
 run_check layout-recovery --headless --path . --script res://tests/recovery_m01/test_layout.gd
 
 run_check mobile-fluency --headless --path . --script res://tests/mobile_fluency/test_drag.gd
+
+python3 scripts/verify_hud_candidates.py
+run_check hud-v2 --headless --path . --script res://tests/hud_v2/test_hud.gd

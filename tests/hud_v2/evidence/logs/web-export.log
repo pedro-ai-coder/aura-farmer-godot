@@ -1,0 +1,10 @@
+PASS: 19 approved Phaser art files downloaded and hash-checked
+PASS: 37 exact creator-approved runtime icons; candidate isolation preserved
+Godot executable: /workspace/scratch/22f87ea00ea2/tooling/engine/Godot_v4.7.2-stable_linux.x86_64
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+PASS: {"bytes": 32849344, "sha256": "04a9e8eb0aed7f4bdcd69c7c06a080039215531a54dc6112d79abafc4e155364", "directory_entries": 504, "approved_icon_count": 37, "approved_clean_cut_count": 84, "candidate_entries": 0, "original_masters": 19, "enemy_metadata": true}
+PASS: four approved Barlow fonts and two separately licensed Hero Clash candidate fonts in Web export
+PASS: 24 original button states, exact SVG/PNG hashes, unapproved candidate status; Web PNGs/manifest present, editable sources excluded
+PASS: 20 original editable HUD SVGs, exact hashes and pending approval; Web resources present, generator/review fixtures excluded
+SUCCESS: Official Godot Web export prepared in build/web

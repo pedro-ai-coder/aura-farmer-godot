@@ -1,13 +1,16 @@
 extends Control
-## Production live-Control visual skin. Only immutable creator-approved runtime sources.
+## Live-Control skin. Approved sources stay immutable; HUD V2 candidates are separately inventoried.
 const Cache=preload("res://scripts/clean_cut_assets.gd")
 const Type=preload("res://scripts/clean_cut_typography.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
 const HeroBrand=preload("res://scripts/hero_clash_brand.gd")
+const GameplayHud=preload("res://scripts/hero_clash_hud.gd")
+const HudMeter=preload("res://scripts/hero_clash_hud_meter.gd")
 const HeroFlexDial=preload("res://scripts/hero_clash_flex_dial.gd")
 const ButtonFeedback=preload("res://scripts/hero_clash_button_feedback.gd")
 const SceneAccent=preload("res://scripts/hero_clash_scene_accent.gd")
 var game
+var gameplay_hud
 var ui
 var art
 class PosterSurface extends Control:
@@ -45,10 +48,10 @@ var native_children: Dictionary={}
 var hud_nodes: Array[Control]=[]
 var player_plate: TextureRect
 var portrait: TextureRect
-var hp_fill: ColorRect
+var hp_fill: Control
 var shield_track: ColorRect
-var shield_fill: ColorRect
-var xp_fill: ColorRect
+var shield_fill: Control
+var xp_fill: Control
 var xp_track: ColorRect
 var aura_arc: Control
 var boss_plate: TextureRect
@@ -203,20 +206,20 @@ func install(owner_game, source_root: String) -> void:
         parts["body"].text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
         offer_parts.append(parts)
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
-    hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
+    hp_fill=HudMeter.new();hp_fill.install(GameplayHud.texture("hp-fill"));add_child(hp_fill)
     shield_track=ColorRect.new()
     shield_track.color=Style.DEEP
     shield_track.mouse_filter=Control.MOUSE_FILTER_IGNORE
     add_child(shield_track)
-    shield_fill=ColorRect.new()
-    shield_fill.color=Style.SKY
+    shield_fill=HudMeter.new()
+    shield_fill.install(GameplayHud.texture("shield-fill"))
     shield_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE
     add_child(shield_fill)
     portrait=image(self);hp=label(self,17)
     hero_name=label(self);shield_label=label(self)
     xp_frame=image(self);xp_frame.stretch_mode=TextureRect.STRETCH_SCALE
     xp_track=ColorRect.new();xp_track.color=Style.DEEP;xp_track.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(xp_track)
-    xp_fill=ColorRect.new();xp_fill.color=Style.SKY;xp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(xp_fill)
+    xp_fill=HudMeter.new();xp_fill.install(GameplayHud.texture("shield-fill"));add_child(xp_fill)
     xp=label(self,15)
     boss_plate=image(self);boss_plate.stretch_mode=TextureRect.STRETCH_SCALE;boss_text=label(self,17)
     game.touch_joystick.self_modulate=Color(1,1,1,0)
@@ -260,7 +263,10 @@ func install(owner_game, source_root: String) -> void:
     game.flex_button.add_child(flex_fill)
     hud_nodes.assign([player_plate,hp_fill,shield_track,shield_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text,flex_caption])
     for i in range(8):
-        var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
+        var parts: Dictionary={"frame":image(self),"icon":image(self),"tab":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
+        parts["tab"].texture=GameplayHud.texture("level-tab")
+        var rarity:=ColorRect.new();rarity.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(rarity)
+        parts["rarity"]=rarity
         Type.apply(parts["level"],"micro_label")
         Type.apply(parts["name"],"equipment_label",false,Style.PAPER)
         var name_plate:=StyleBoxFlat.new()
@@ -271,6 +277,7 @@ func install(owner_game, source_root: String) -> void:
         parts["name"].mouse_filter=Control.MOUSE_FILTER_PASS
         equipment.append(parts)
         for node in parts.values():hud_nodes.append(node)
+    gameplay_hud=GameplayHud.new(self)
     watermark=label(self,13,Style.CORAL);watermark.text=""
     auxiliary=load("res://scripts/clean_cut_secondary.gd").new()
     add_child(auxiliary)
@@ -584,136 +591,7 @@ func update_joystick_visuals() -> void:
 
 func hud_layout() -> void:
     background.modulate=Color.WHITE
-    var narrow:=view.x<700
-    player_plate.texture=art.texture("support/hp");place(player_plate,Rect2(18,28,minf(350,view.x-160),86))
-    var hp_width: float=minf(350,view.x-160)
-    place(hp_fill,Rect2(18+33*hp_width/463,28+47*86.0/92,(381*hp_width/463)*clampf(game.hp/maxf(1,game.max_hp),0,1),30*86.0/92))
-    portrait.texture=game.art.texture(game.hero["id"]);place(portrait,Rect2(25,30,50,55))
-    Type.apply(hero_name,"section_header",true,Style.INK)
-    hero_name.text=game.hero["name"]
-    hero_name.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(hero_name,Rect2(82,28,hp_width-70,32))
-    fit_line(hero_name,15)
-    # Shield has its own dedicated blue progress track below the HP bar.
-    # The former overlapping shield label is no longer on top of the red HP.
-    var shield_left: float=18.0
-    var shield_y: float=109.0
-    var shield_ratio: float=clampf(game.shield/maxf(1.0,game.max_hp),0.0,1.0)
-    place(shield_track,Rect2(shield_left,shield_y,hp_width,17))
-    place(shield_fill,Rect2(shield_left+3.0,shield_y+3.0,(hp_width-6.0)*shield_ratio,11))
-    shield_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-    Type.apply(shield_label,"micro_label",true,Style.PAPER,true)
-    shield_label.text="SHIELD %d" % ceili(game.shield)
-    shield_label.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(shield_label,Rect2(shield_left+5.0,shield_y-1.0,hp_width-10.0,19.0))
-    fit_line(shield_label,13)
-    Type.apply(hp,"hud_stat",narrow,Style.PAPER,true)
-    hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
-    hp.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(hp,Rect2(82,79,hp_width-70,27))
-    fit_line(hp,14)
-    var xp_y: float=view.y-248 if narrow else view.y-150
-    var xp_width: float=minf(350,view.x-200)
-    xp_frame.texture=art.texture("support/xp");place(xp_frame,Rect2(18,xp_y,xp_width,38))
-    # Approved SVG contains an illustrative blue segment (x28..330,y24..41).
-    # Mask it completely before drawing the actual XP; never show sample progress.
-    var track:=Rect2(18+27*xp_width/540,xp_y+23*38.0/120,467*xp_width/540,19*38.0/120)
-    place(xp_track,track)
-    place(xp_fill,Rect2(track.position,Vector2(track.size.x*clampf(game.xp/(30+8*game.level+game.level*game.level),0,1),track.size.y)))
-    Type.apply(xp,"hud_stat",narrow,Style.PAPER,true)
-    xp.text="LEVEL %d   ·   XP %d" % [game.level,int(game.xp)]
-    place(xp,Rect2(24,xp_y-25,minf(300,view.x-210),24))
-    fit_line(xp,14)
-    wave_frame.texture=art.texture("support/wave");place(wave_frame,Rect2((view.x-240)/2,128 if narrow else 28,240,64))
-    wave.text="%s  /  %02d:%02d" % ["BIG HATER" if game.boss_spawned else "WAVE %d" % game.wave,int(game.run_time)/60,int(game.run_time)%60]
-    Type.apply(wave,"hud_stat",narrow,Style.INK)
-    wave.autowrap_mode=TextServer.AUTOWRAP_OFF
-    wave.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;place(wave,Rect2((view.x-220)/2,145 if narrow else 45,220,28))
-    fit_line(wave,14)
-    Type.apply(warning,"hud_secondary",narrow,Style.GOLD,true)
-    warning.text=game.SoloClock.warning(game.run_time);place(warning,Rect2((view.x-360)/2,210 if narrow else 108,360,40))
-    game.pause_button.show();game.pause_button.text="II";place(game.pause_button,Rect2(view.x-90,28,64,64));button_skin(game.pause_button,"menu/secondary")
-    # The legacy presentation is hidden while this skin owns gameplay. Keep
-    # its original action reachable after Defer without changing offers or RNG.
-    game.legendary_button.visible = game.run_time >= game.SoloClock.LEGENDARY_FIRST and game.run_time < game.SoloClock.LEGENDARY_DEADLINE and not game.legendary_spent and not game.legendary_offers.is_empty()
-    if game.legendary_button.visible:
-        game.legendary_button.text = "LEGENDARY [L]"
-        place(game.legendary_button,Rect2(18,view.y-302,minf(238,view.x-36),64))
-        button_skin(game.legendary_button,"menu/primary")
-    boss_plate.hide();boss_text.hide()
-    for enemy: Dictionary in game.enemies:
-        if enemy["kind"]!="boss":continue
-        var boss_width: float=minf(420.0,view.x-48.0)
-        var boss_top: float=maxf(shield_track.get_rect().end.y,wave_frame.get_rect().end.y)+10.0
-        var rect:=Rect2((view.x-boss_width)*0.5,boss_top,boss_width,52)
-        boss_plate.show();boss_text.show();boss_plate.texture=art.texture("support/hp")
-        place(boss_plate,rect);boss_text.text="BIG HATER / %d HP" % ceili(enemy["hp"])
-        Type.apply(boss_text,"hud_secondary",narrow,Style.INK)
-        place(boss_text,Rect2(rect.position+Vector2(20,4),rect.size-Vector2(40,8)))
-        place(warning,Rect2((view.x-360)*0.5,rect.end.y+8.0,360,28))
-        break
-    # Circular special action with live Aura, an unmistakable gold READY ring,
-    # and the actual existing Flex Button handling all pointer activation.
-    var compact_flex: bool = view.y < 540.0 or view.x < 700.0
-    var portrait_flex: bool = view.x < 700.0 and view.y >= view.x
-    var diameter: float = 116.0 if compact_flex else 144.0
-    var button_x: float = view.x - diameter - (12.0 if compact_flex else 22.0)
-    var button_y: float = view.y-diameter-(186.0 if portrait_flex else 12.0 if compact_flex else 22.0)
-    game.flex_button.show()
-    game.flex_button.text=""
-    place(game.flex_button,Rect2(button_x,button_y,diameter,diameter))
-    var active_flex: bool = game.flex_time > 0.0
-    var ready_flex: bool = game.aura >= 100.0 and game.flex_lock <= 0.0 and not active_flex
-    var recovering: bool = game.flex_lock > 0.0 and not active_flex
-    var current: String = "active" if active_flex else "ready" if ready_flex else "recovery" if recovering else "charging"
-    var aura_progress: float = 1.0 if ready_flex or active_flex else 0.0 if recovering else clampf(game.aura/100.0,0.0,1.0)
-    var action_state: String = state(game.flex_button)
-    var emphasised: bool = action_state in ["pressed","hover","focus"]
-    for key in ["normal","hover","pressed","disabled","focus"]:
-        game.flex_button.add_theme_stylebox_override(key,empty_style)
-    flex_image.hide()
-    flex_track.hide()
-    flex_fill.hide()
-    flex_badge.hide()
-    aura_arc.show()
-    place(aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*diameter))
-    aura_arc.show_state(aura_progress,current,emphasised,bool(game.profile["settings"].get("reducedMotion",false)))
-    var foreground: Color=Style.GOLD if ready_flex else Style.PAPER
-    Type.apply(flex_title,"section_header",compact_flex,foreground)
-    flex_title.text="FLEX"
-    flex_title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-    flex_title.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(flex_title,Rect2(8,diameter*0.32,diameter-16,42))
-    Type.apply(flex_status,"micro_label",compact_flex,Style.GOLD if ready_flex else Style.TEAL if active_flex else Style.PAPER)
-    flex_status.text="READY" if ready_flex else "ACTIVE %.1fs" % game.flex_time if active_flex else "LOCK %.0fs" % game.flex_lock if recovering else "AURA %d%%" % int(game.aura)
-    flex_status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-    flex_status.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(flex_status,Rect2(8,diameter*0.61,diameter-16,25))
-    Type.apply(flex_caption,"hud_secondary",compact_flex,Style.PAPER)
-    flex_caption.text=str(game.hero["flex"]).to_upper()
-    flex_caption.autowrap_mode=TextServer.AUTOWRAP_OFF
-    var caption_width: float=diameter+54.0
-    var caption_x: float=clampf(button_x-(caption_width-diameter)*0.5,8.0,maxf(8.0,view.x-caption_width-8.0))
-    place(flex_caption,Rect2(caption_x,button_y-32.0,caption_width,27.0))
-    fit_line(flex_caption,13)
-    var slot_width:=56.0;var slot_pitch:=76.0;var start_y:=view.y-196 if narrow else view.y-104
-    for i in range(8):
-        var weapon:=i<3;var index:=i if weapon else i-3
-        var items: Array=game.weapons if weapon else game.passives
-        var item: Dictionary=items[index] if index<items.size() else {}
-        var parts: Dictionary=equipment[i]
-        var at:=Vector2(18+(index if narrow else i)*slot_pitch+(14 if not narrow and not weapon else 0),start_y+(94 if narrow and not weapon else 0))
-        var kind: String="weapon" if weapon else "passive"
-        parts["frame"].texture=art.texture("equipment/"+kind+("-empty" if item.is_empty() else "-filled"));place(parts["frame"],Rect2(at,Vector2.ONE*slot_width))
-        parts["icon"].texture=ui.item_icons.texture(kind,item["id"]) if not item.is_empty() else null;place(parts["icon"],Rect2(at+Vector2(5,5),Vector2.ONE*44))
-        parts["level"].text="" if item.is_empty() else "LV%d" % int(item["level"])
-        Type.apply(parts["level"],"micro_label",true,Style.PAPER,true)
-        place(parts["level"],Rect2(at+Vector2(18,38),Vector2(43,21)))
-        # Keep gameplay clean: the 8 approved icons plus clear level marks
-        # are visible; full names remain accessible in Build inspection.
-        parts["name"].hide()
-        parts["name"].text="" if item.is_empty() else Type.equipment_name(item["id"],ui.catalog[item["id"]]["name"])
-        parts["name"].tooltip_text="" if item.is_empty() else ui.catalog[item["id"]]["name"]
+    gameplay_hud.layout()
 
 
 func reveal_selected(index: int, expected_signature: String) -> void:
