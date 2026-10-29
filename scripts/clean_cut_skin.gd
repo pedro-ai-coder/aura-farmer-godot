@@ -44,6 +44,8 @@ var hud_nodes: Array[Control]=[]
 var player_plate: TextureRect
 var portrait: TextureRect
 var hp_fill: ColorRect
+var shield_track: ColorRect
+var shield_fill: ColorRect
 var xp_fill: ColorRect
 var xp_track: ColorRect
 var aura_arc: Control
@@ -185,6 +187,14 @@ func install(owner_game, source_root: String) -> void:
         offer_parts.append(parts)
     player_plate=image(self);player_plate.stretch_mode=TextureRect.STRETCH_SCALE
     hp_fill=ColorRect.new();hp_fill.color=Style.CORAL;hp_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(hp_fill)
+    shield_track=ColorRect.new()
+    shield_track.color=Style.DEEP
+    shield_track.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    add_child(shield_track)
+    shield_fill=ColorRect.new()
+    shield_fill.color=Style.SKY
+    shield_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    add_child(shield_fill)
     portrait=image(self);hp=label(self,17)
     hero_name=label(self);shield_label=label(self)
     xp_frame=image(self);xp_frame.stretch_mode=TextureRect.STRETCH_SCALE
@@ -227,7 +237,7 @@ func install(owner_game, source_root: String) -> void:
     flex_fill.color=Style.GOLD
     flex_fill.mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.flex_button.add_child(flex_fill)
-    hud_nodes.assign([player_plate,hp_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text,flex_caption])
+    hud_nodes.assign([player_plate,hp_fill,shield_track,shield_fill,portrait,hp,hero_name,shield_label,xp_frame,xp_track,xp_fill,xp,wave_frame,wave,warning,boss_plate,boss_text,flex_caption])
     for i in range(8):
         var parts: Dictionary={"frame":image(self),"icon":image(self),"level":label(self,12),"name":label(self,12,Style.PAPER)}
         Type.apply(parts["level"],"micro_label")
@@ -256,6 +266,7 @@ func _process(delta: float) -> void:
         icon.scale = target if game.profile["settings"]["reducedMotion"] else icon.scale.lerp(target, 1.0-exp(-18.0*delta))
 func refresh() -> void:
     if game==null:return
+    update_joystick_visuals()
     visible=true;ui.visible=false
     view=ui.view;shift=ui.position;position=shift;size=view
     # Live pointer/focus states invalidate independently of simulation and presenter.
@@ -267,15 +278,19 @@ func refresh() -> void:
         if enemy["kind"]=="boss":boss_hp=float(enemy["hp"]);break
     var next_key := str([ui.revision,view,shift,game.mode,game.hero_index,game.selected_card_index,interactions,
         ceili(game.hp),game.max_hp,ceili(game.shield),game.xp,game.level,int(game.run_time),game.wave,
-        int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.touch_direction,game.touch_joystick.active,
-        game.touch_joystick.center,game.legendary_spent,boss_hp])
+        int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),bool(game.profile["settings"].get("reducedMotion",false)),game.legendary_spent,boss_hp])
     if next_key==layout_key:return
     layout_key=next_key;layout_count+=1
-    if game.confirm_button.get_parent()!=self:game.confirm_button.reparent(self)
+    # Exit/profile confirmation belongs to the active secondary shell. Never
+    # reparent it away every frame: doing so can cancel a held pointer press.
+    var confirmation_parent: Control=auxiliary if game.mode in auxiliary.MODES else self
+    if game.confirm_button.get_parent()!=confirmation_parent:
+        game.confirm_button.reparent(confirmation_parent)
     if game.pause_button.get_parent()!=self:game.pause_button.reparent(self)
     view=ui.view;shift=ui.position;position=shift;size=view
     var mode: String=game.mode
-    if mode!=last_mode:
+    var mode_changed: bool=mode!=last_mode
+    if mode_changed:
         hero_scroll.scroll_vertical=0;offers_scroll.scroll_vertical=0;last_mode=mode
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
@@ -285,7 +300,8 @@ func refresh() -> void:
     # candidate's original vector lockup on the review branch.
     wordmark.hide()
     candidate_brand.visible=mode=="menu"
-    poster_hero.visible=mode=="menu";home_caption.visible=mode=="menu"
+    poster_hero.visible=mode=="menu"
+    home_caption.visible=mode=="menu"
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
@@ -317,14 +333,17 @@ func home_layout() -> void:
     # The wordmark is visually dominant but stays inside the illustration's
     # poster half. It scales down rather than cropping on narrow/mobile views.
     var logo_width: float=minf(590.0,view.x*0.47) if not narrow else view.x-38.0
-    var logo_height: float=154.0 if view.y<540.0 else 190.0
+    var logo_height: float=154.0 if narrow or view.y<540.0 else 190.0
     place(candidate_brand,Rect2(28,24,logo_width,logo_height))
-    place(poster_hero,Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
-    poster_hero.visible=not narrow
+    # Selected hero must be the visible hero on the menu, not a fixed Sigma.
+    poster_hero.texture=game.art.texture(str(game.HEROES[game.hero_index]["id"]))
+    var mobile_portrait: bool=narrow and view.y>=780.0
+    place(poster_hero,Rect2(view.x-188.0,view.y*0.30,164,176) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
+    poster_hero.visible=not narrow or mobile_portrait
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
     home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
-    place(home_caption,Rect2(40,183 if view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
+    place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
     var top:=maxf(300.0,view.y*0.51)
@@ -354,7 +373,10 @@ func heroes_layout() -> void:
         button_skin(button,"hero-select/card",selected)
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var data: Dictionary=game.HEROES[i];var parts: Dictionary=hero_parts[i]
-        parts["name"].text=data["name"];parts["role"].text=data["role"].to_upper()
+        parts["portrait"].texture=game.art.texture(str(data["id"]))
+        parts["portrait"].show()
+        parts["name"].text=data["name"]
+        parts["role"].text=data["role"].to_upper()+(" · SELECTED" if selected else "")
         place(parts["name"],Rect2(24,44,width-48,40));place(parts["role"],Rect2(24,85,width-48,24))
         place(parts["portrait"],Rect2(40,118,width-80,160))
         parts["icon"].texture=ui.item_icons.texture("weapon",data["starter"]);place(parts["icon"],Rect2(24,282,45,45))
@@ -509,6 +531,18 @@ func cards_layout() -> void:
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
         call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index
+func update_joystick_visuals() -> void:
+    # Touch motion changes two sprites, never the entire HUD layout/theme.
+    var shown: bool=game.mode=="playing" and game.touch_joystick.active
+    joystick_ring.visible=shown;joystick_thumb.visible=shown
+    if not shown:return
+    var scale: float=game.touch_joystick.geometry_scale
+    var held: String="pressed" if game.touch_direction.length()>0.05 else "idle"
+    joystick_ring.texture=art.texture("joystick/ring-"+held);joystick_thumb.texture=art.texture("joystick/thumb-"+held)
+    place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
+    var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
+    place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
+
 func hud_layout() -> void:
     background.modulate=Color.WHITE
     var narrow:=view.x<700
@@ -521,10 +555,19 @@ func hud_layout() -> void:
     hero_name.autowrap_mode=TextServer.AUTOWRAP_OFF
     place(hero_name,Rect2(82,28,hp_width-70,32))
     fit_line(hero_name,15)
-    Type.apply(shield_label,"micro_label",narrow,Style.INK)
+    # Shield has its own dedicated blue progress track below the HP bar.
+    # The former overlapping shield label is no longer on top of the red HP.
+    var shield_left: float=18.0
+    var shield_y: float=109.0
+    var shield_ratio: float=clampf(game.shield/maxf(1.0,game.max_hp),0.0,1.0)
+    place(shield_track,Rect2(shield_left,shield_y,hp_width,17))
+    place(shield_fill,Rect2(shield_left+3.0,shield_y+3.0,(hp_width-6.0)*shield_ratio,11))
+    shield_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+    Type.apply(shield_label,"micro_label",true,Style.PAPER,true)
     shield_label.text="SHIELD %d" % ceili(game.shield)
     shield_label.autowrap_mode=TextServer.AUTOWRAP_OFF
-    place(shield_label,Rect2(82,57,hp_width-70,20))
+    place(shield_label,Rect2(shield_left+5.0,shield_y-1.0,hp_width-10.0,19.0))
+    fit_line(shield_label,13)
     Type.apply(hp,"hud_stat",narrow,Style.PAPER,true)
     hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
     hp.autowrap_mode=TextServer.AUTOWRAP_OFF
@@ -566,13 +609,6 @@ func hud_layout() -> void:
         boss_plate.show();boss_text.show();boss_plate.texture=art.texture("support/hp")
         place(boss_plate,rect);boss_text.text="BIG HATER / %d HP" % ceili(enemy["hp"]);place(boss_text,Rect2(rect.position+Vector2(28,8),rect.size-Vector2(56,12)))
         break
-    if game.touch_joystick.active:
-        var scale: float=game.touch_joystick.geometry_scale
-        var held: String="pressed" if game.touch_direction.length()>0.05 else "idle"
-        joystick_ring.texture=art.texture("joystick/ring-"+held);joystick_thumb.texture=art.texture("joystick/thumb-"+held)
-        place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
-        var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
-        place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
     # Circular special action with live Aura, an unmistakable gold READY ring,
     # and the actual existing Flex Button handling all pointer activation.
     var compact_flex: bool = view.y < 540.0 or view.x < 700.0
