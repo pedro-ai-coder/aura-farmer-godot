@@ -95,9 +95,10 @@ run_godot() {
 run_godot import --headless --path . --import
 run_godot export --headless --path . --export-release "Web" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
+cp web/platform.js web/aura.webmanifest build/web/
 printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
 
-for file in index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
+for file in platform.js aura.webmanifest index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
     if [[ ! -s "build/web/$file" ]]; then
         echo "ERROR: Web export missing or empty: build/web/$file" >&2
         exit 5

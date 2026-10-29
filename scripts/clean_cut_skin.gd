@@ -290,6 +290,7 @@ func _process(delta: float) -> void:
         icon.scale = target if game.profile["settings"]["reducedMotion"] else icon.scale.lerp(target, 1.0-exp(-18.0*delta))
 func refresh() -> void:
     if game==null:return
+    update_joystick_visuals()
     visible=true;ui.visible=false
     view=ui.view;shift=ui.position;position=shift;size=view
     # Live pointer/focus states invalidate independently of simulation and presenter.
@@ -301,8 +302,7 @@ func refresh() -> void:
         if enemy["kind"]=="boss":boss_hp=float(enemy["hp"]);break
     var next_key := str([ui.revision,view,shift,game.mode,game.hero_index,game.selected_card_index,interactions,
         ceili(game.hp),game.max_hp,ceili(game.shield),game.xp,game.level,int(game.run_time),game.wave,
-        int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),bool(game.profile["settings"].get("reducedMotion",false)),game.touch_direction,game.touch_joystick.active,
-        game.touch_joystick.center,game.legendary_spent,boss_hp])
+        int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),bool(game.profile["settings"].get("reducedMotion",false)),game.legendary_spent,boss_hp])
     if next_key==layout_key:return
     layout_key=next_key;layout_count+=1
     # Exit/profile confirmation belongs to the active secondary shell. Never
@@ -570,6 +570,18 @@ func cards_layout() -> void:
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
         call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index
+func update_joystick_visuals() -> void:
+    # Touch motion changes two sprites, never the entire HUD layout/theme.
+    var shown: bool=game.mode=="playing" and game.touch_joystick.active
+    joystick_ring.visible=shown;joystick_thumb.visible=shown
+    if not shown:return
+    var scale: float=game.touch_joystick.geometry_scale
+    var held: String="pressed" if game.touch_direction.length()>0.05 else "idle"
+    joystick_ring.texture=art.texture("joystick/ring-"+held);joystick_thumb.texture=art.texture("joystick/thumb-"+held)
+    place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
+    var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
+    place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
+
 func hud_layout() -> void:
     background.modulate=Color.WHITE
     var narrow:=view.x<700
@@ -640,13 +652,6 @@ func hud_layout() -> void:
         place(boss_text,Rect2(rect.position+Vector2(20,4),rect.size-Vector2(40,8)))
         place(warning,Rect2((view.x-360)*0.5,rect.end.y+8.0,360,28))
         break
-    if game.touch_joystick.active:
-        var scale: float=game.touch_joystick.geometry_scale
-        var held: String="pressed" if game.touch_direction.length()>0.05 else "idle"
-        joystick_ring.texture=art.texture("joystick/ring-"+held);joystick_thumb.texture=art.texture("joystick/thumb-"+held)
-        place(joystick_ring,Rect2(game.touch_joystick.center-Vector2.ONE*100*scale,Vector2.ONE*200*scale))
-        var thumb_at: Vector2=game.touch_joystick.center+game.touch_joystick.axis*game.touch_joystick.THUMB_OFFSET*scale
-        place(joystick_thumb,Rect2(thumb_at-Vector2.ONE*44*scale,Vector2.ONE*88*scale))
     # Circular special action with live Aura, an unmistakable gold READY ring,
     # and the actual existing Flex Button handling all pointer activation.
     var compact_flex: bool = view.y < 540.0 or view.x < 700.0

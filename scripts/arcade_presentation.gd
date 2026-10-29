@@ -169,13 +169,21 @@ func _button(text: String, action: Callable) -> Button:
     ArcadeStyle.button(button)
     return button
 
+static func layout_extent(physical: Vector2, metrics: Dictionary, web: bool) -> Vector2i:
+    var layout_size := physical
+    if web and metrics.get("width",0)>0 and metrics.get("height",0)>0:
+        layout_size=Vector2(float(metrics["width"]),float(metrics["height"]))
+    var scale := clampf(minf(layout_size.x/1280.0,layout_size.y/720.0),0.75,1.5)
+    return Vector2i(layout_size/scale)
+
 func _window_changed(force: bool = false) -> void:
     var window: Window = game.get_window()
     if window.size == last_window_size and not force: return
     last_window_size = window.size
     var physical := Vector2(window.size)
-    var scale := clampf(minf(physical.x/1280.0,physical.y/720.0),0.75,1.5)
-    window.content_scale_size = Vector2i(physical / scale)
+    # Web framebuffer pixels include DPR. Layout and touch targets use the
+    # CSS viewport so Retina cannot shrink the HUD to a different composition.
+    window.content_scale_size = layout_extent(physical,game.web_metrics,OS.has_feature("web"))
     full_view = Vector2(window.content_scale_size)
     var insets := Vector4.ZERO
     var safe: Array = game.web_metrics.get("safe",[])

@@ -179,7 +179,7 @@ func _ready() -> void:
     rng.seed = 451
     _load_profile()
     WebPlatformScript.install()
-    web_metrics = WebPlatformScript.metrics()
+    web_metrics = WebPlatformScript.metrics(mode)
     touch_device = touch_device or bool(web_metrics.get("touch",false))
     camera = Camera2D.new()
     camera.enabled = true
@@ -2000,7 +2000,7 @@ func _update_platform(delta: float) -> void:
     if platform_poll > 0.0 or not OS.has_feature("web"): return
     platform_poll = 0.5
     var previous: String = JSON.stringify(web_metrics)
-    web_metrics = WebPlatformScript.metrics()
+    web_metrics = WebPlatformScript.metrics(mode)
     touch_device = touch_device or bool(web_metrics.get("touch",false))
     if JSON.stringify(web_metrics) != previous and presentation != null: presentation._window_changed(true)
 

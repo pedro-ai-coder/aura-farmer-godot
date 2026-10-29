@@ -107,3 +107,5 @@ run_check button-art-components --headless --path . --script res://tests/button_
 
 run_check navigation-recovery --headless --path . --script res://tests/recovery_m01/test_navigation_stress.gd
 run_check layout-recovery --headless --path . --script res://tests/recovery_m01/test_layout.gd
+
+run_check mobile-fluency --headless --path . --script res://tests/mobile_fluency/test_drag.gd
