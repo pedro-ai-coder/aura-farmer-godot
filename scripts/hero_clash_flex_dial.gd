@@ -12,6 +12,12 @@ var ready_introduction: float=0.0
 var push_target: float=0.0
 var push_current: float=0.0
 var hero_id: String="sigma"
+var body_alpha: float=1.0
+
+func set_occluded(covered: bool) -> void:
+    var alpha: float=0.18 if covered else 1.0
+    if is_equal_approx(alpha,body_alpha):return
+    body_alpha=alpha;queue_redraw()
 
 func set_identity(id: String) -> void:
     if hero_id==id:return
@@ -72,7 +78,7 @@ func _draw() -> void:
     var accent: Color=teal if visual_state=="active" else gold if visual_state=="ready" else blue
     var complete: bool=visual_state=="ready"
     var body_radius: float=(radius+7.0)
-    draw_texture_rect(BODY,Rect2(center-Vector2.ONE*body_radius,Vector2.ONE*body_radius*2.0),false,Color(0.72,0.78,0.85) if visual_state in ["recovery","disabled"] else Color.WHITE)
+    draw_texture_rect(BODY,Rect2(center-Vector2.ONE*body_radius,Vector2.ONE*body_radius*2.0),false,Color(0.72,0.78,0.85,body_alpha) if visual_state in ["recovery","disabled"] else Color(1,1,1,body_alpha))
     draw_arc(center,radius-1.0,-PI*0.5,PI*1.5,72,Color("45617a"),7.0,true)
     draw_arc(center,radius-1.0,-PI*0.5,-PI*0.5+TAU*progress,72,accent,8.0,true)
     if complete:

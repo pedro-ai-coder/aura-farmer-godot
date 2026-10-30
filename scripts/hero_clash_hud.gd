@@ -3,6 +3,8 @@ extends RefCounted
 ## Immutable SVG textures/styles are shared. Geometry and data invalidate separately.
 const Type=preload("res://scripts/clean_cut_typography.gd")
 const Meter=preload("res://scripts/hero_clash_hud_meter.gd")
+const ThreatOverlay=preload("res://scripts/hero_clash_threat_overlay.gd")
+const FLEX_BLEED: float=8.0 # Includes READY introduction rays and antialiasing.
 const ART="res://assets/ui-hud-candidates/v2/"
 const CROP=preload("res://assets/ui-hud-candidates/v2/portrait_crop.gdshader")
 const INK=Color("0b2034")
@@ -49,6 +51,7 @@ var desktop: bool=false
 var max_level_plate: TextureRect
 var bottom_joins: Array[ColorRect]=[]
 var boss_phase_backdrop: ColorRect
+var threat_overlay: Control
 
 static func texture(id: String) -> Texture2D:
     if not textures.has(id):textures[id]=load(ART+id+".svg")
@@ -117,6 +120,12 @@ func _init(owner_skin) -> void:
     ability_plate.texture=texture("ability-nameplate")
     game.pause_button.tooltip_text="Pause [P / Esc]"
     game.flex_button.tooltip_text="Flex [Space] — 100 Aura required"
+    threat_overlay=ThreatOverlay.new();skin.add_child(threat_overlay);threat_overlay.install(self)
+    # Hostile outlines pass above decoration and below the essential values.
+    for node in [skin.hero_name,skin.hp,skin.shield_label,skin.wave,wave_clock,skin.xp,skin.flex_title,skin.flex_status,skin.flex_caption,skin.boss_text,boss_hp,skin.warning]:node.z_index=2
+
+func update_threat_readability(force: bool=false) -> void:
+    threat_overlay.sample(force)
 
 func move_into(id: String, nodes: Array) -> void:
     for node in nodes:node.reparent(modules[id],false)
@@ -163,6 +172,8 @@ func layout() -> void:
         parts["name"].hide()
         parts["tab"].visible=not parts["level"].text.is_empty()
         parts["rarity"].visible=parts["tab"].visible
+    if threat_overlay.visible:
+        skin.portrait.visible=not threat_overlay.faded[0];skin.hero_name.visible=not threat_overlay.faded[0]
 
 func layout_geometry() -> void:
     var view: Vector2=skin.view
@@ -254,7 +265,7 @@ func layout_geometry() -> void:
     place(skin.xp_track,xp_rect);skin.xp_track.color=Color("073c64")
     place(skin.xp,Rect2(xp_width*0.09,18 if game.level>=25 else 1,xp_width*0.82,40 if game.level>=25 else 31))
     text_style(skin.xp,"hud_stat",20 if compact else 22,INK)
-    var flex_module:=anchor("BottomRightFlex",Vector2(1,1),Vector2(diameter,diameter+34),Vector2(-6,-maxf(6,lower_offset)))
+    var flex_module:=anchor("BottomRightFlex",Vector2(1,1),Vector2(diameter,diameter+34),Vector2(-6-FLEX_BLEED,-maxf(6,lower_offset)-FLEX_BLEED))
     place(game.flex_button,Rect2(0,34,diameter,diameter))
     place(skin.aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*diameter));skin.aura_arc.show()
     place(skin.flex_title,Rect2(diameter*0.13,diameter*0.39,diameter*0.74,diameter*0.25))

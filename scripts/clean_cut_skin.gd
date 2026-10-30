@@ -289,6 +289,7 @@ func install(owner_game, source_root: String) -> void:
 func _process(delta: float) -> void:
     refresh()
     gameplay_hud.tick_feedback()
+    gameplay_hud.update_threat_readability()
     if game == null or not offers_scroll.visible: return
     for i in range(offer_parts.size()):
         var icon: TextureRect = offer_parts[i]["icon"]
