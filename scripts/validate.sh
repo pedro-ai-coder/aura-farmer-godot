@@ -39,6 +39,7 @@ run_check() {
 
 bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
+node tests/test_performance_web.cjs
 python3 scripts/promote_approved_icons.py
 python3 scripts/verify_clean_cut_art.py
 python3 scripts/verify_typography.py
@@ -112,3 +113,7 @@ run_check mobile-fluency --headless --path . --script res://tests/mobile_fluency
 
 python3 scripts/verify_hud_candidates.py
 run_check hud-v2 --headless --path . --script res://tests/hud_v2/test_hud.gd
+
+run_check frame-pacing-probe --headless --path . --script res://tests/frame_pacing/test_probe.gd
+run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd
+run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd

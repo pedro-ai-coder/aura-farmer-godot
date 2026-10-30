@@ -16,13 +16,61 @@ const COVERS := [
     {"pos": Vector2(940, 680), "radius": 30.0}
 ]
 
+# The approved polygon is immutable. Dense navigation checks it thousands of
+# times per frame; cache edge geometry instead of reconstructing it per actor.
+static var _floor_polygon := PackedVector2Array(FLOOR)
+static var _floor_edges: Array[Vector2] = _make_floor_edges()
+static var _floor_lengths: PackedFloat64Array = _make_floor_lengths()
+# A conservative spatial certificate, not an approximate collider. The distance
+# to any boundary is 1-Lipschitz: a point nearer to a certified cell center than
+# (clearance - actor radius) cannot cross that boundary. Uncertain points still
+# execute the exact original test. No covers or actor radii are baked into it.
+const _CELL_SIZE := 32.0
+const _GRID_WIDTH := 46
+const _GRID_HEIGHT := 34
+static var _floor_clearance: PackedFloat64Array = _make_floor_clearance()
+
+static func _make_floor_edges() -> Array[Vector2]:
+    var result: Array[Vector2] = []
+    for i in range(FLOOR.size()):result.append(FLOOR[(i + 1) % FLOOR.size()] - FLOOR[i])
+    return result
+
+static func _make_floor_lengths() -> PackedFloat64Array:
+    var result := PackedFloat64Array()
+    for edge in _floor_edges:result.append(edge.length_squared())
+    return result
+
+static func _make_floor_clearance() -> PackedFloat64Array:
+    var result := PackedFloat64Array()
+    result.resize(_GRID_WIDTH * _GRID_HEIGHT)
+    for y in range(_GRID_HEIGHT):
+        for x in range(_GRID_WIDTH):
+            var center := Vector2(x + 0.5, y + 0.5) * _CELL_SIZE
+            if not Geometry2D.is_point_in_polygon(center, _floor_polygon):continue
+            var clearance := INF
+            for i in range(FLOOR.size()):
+                var a: Vector2 = FLOOR[i]
+                var edge: Vector2 = _floor_edges[i]
+                var fraction := clampf((center-a).dot(edge)/_floor_lengths[i],0.0,1.0)
+                clearance=minf(clearance,center.distance_to(a+edge*fraction))
+            # Conservative allowance exceeds Vector2 float roundoff at this
+            # world's extent. It only selects the exact fallback more often.
+            result[y*_GRID_WIDTH+x]=maxf(0.0,clearance-0.01)
+    return result
+
 static func in_floor(point: Vector2, radius: float = 16.0) -> bool:
+    if radius >= 1.0:
+        var cell_x := floori(point.x/_CELL_SIZE)
+        var cell_y := floori(point.y/_CELL_SIZE)
+        if cell_x>=0 and cell_x<_GRID_WIDTH and cell_y>=0 and cell_y<_GRID_HEIGHT:
+            var center := Vector2(cell_x+0.5,cell_y+0.5)*_CELL_SIZE
+            if _floor_clearance[cell_y*_GRID_WIDTH+cell_x]>radius+point.distance_to(center):return true
     var inside := false
     for i in range(FLOOR.size()):
         var a: Vector2 = FLOOR[i]
         var b: Vector2 = FLOOR[(i + 1) % FLOOR.size()]
-        var edge := b - a
-        var nearest_fraction := clampf((point - a).dot(edge) / edge.length_squared(), 0.0, 1.0)
+        var edge: Vector2 = _floor_edges[i]
+        var nearest_fraction := clampf((point - a).dot(edge) / _floor_lengths[i], 0.0, 1.0)
         if point.distance_to(a + edge * nearest_fraction) < radius:
             return false
         if (a.y > point.y) != (b.y > point.y):
@@ -42,9 +90,9 @@ static func move(point: Vector2, delta: Vector2, radius: float = 16.0) -> Vector
     # Phaser separates axes, allowing sliding along walls instead of snapping
     # actors through the collider when both movement axes are requested.
     var horizontal := point + Vector2(delta.x, 0.0)
-    var after_x := horizontal if walkable(horizontal, radius) else point
+    var after_x := horizontal if delta.x != 0.0 and walkable(horizontal, radius) else point
     var vertical := after_x + Vector2(0.0, delta.y)
-    return vertical if walkable(vertical, radius) else after_x
+    return vertical if delta.y != 0.0 and walkable(vertical, radius) else after_x
 
 static func clear_line(start: Vector2, ending: Vector2) -> bool:
     var delta := ending - start

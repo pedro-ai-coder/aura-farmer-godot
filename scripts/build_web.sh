@@ -93,9 +93,12 @@ run_godot() {
     fi
 }
 run_godot import --headless --path . --import
-run_godot export --headless --path . --export-release "Web" "build/web/$EXPORT_BASENAME.html"
+EXPORT_PRESET="Web"
+if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
+run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
+if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then cp web/performance.js build/web/; fi
 printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
 
 for file in platform.js aura.webmanifest index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
@@ -108,5 +111,8 @@ python3 scripts/check_icon_pack.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_typography.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_button_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_hud_candidates.py "build/web/$EXPORT_BASENAME.pck"
+PERFORMANCE_CHECK=()
+if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
+python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

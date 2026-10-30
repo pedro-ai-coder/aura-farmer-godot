@@ -297,6 +297,7 @@ func _process(delta: float) -> void:
         icon.scale = target if game.profile["settings"]["reducedMotion"] else icon.scale.lerp(target, 1.0-exp(-18.0*delta))
 func refresh() -> void:
     if game==null:return
+    var perf_hud_start: int=Time.get_ticks_usec() if game.performance_probe!=null else 0
     update_joystick_visuals()
     visible=true;ui.visible=false
     view=ui.view;shift=ui.position;position=shift;size=view
@@ -310,7 +311,9 @@ func refresh() -> void:
     var next_key := str([ui.revision,view,shift,game.mode,game.hero_index,game.selected_card_index,interactions,
         ceili(game.hp),game.max_hp,ceili(game.shield),game.xp,game.level,int(game.run_time),game.wave,
         int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),bool(game.profile["settings"].get("reducedMotion",false)),game.legendary_spent,boss_hp])
-    if next_key==layout_key:return
+    if next_key==layout_key:
+        if game.performance_probe!=null:game.performance_probe.add(&"hud",Time.get_ticks_usec()-perf_hud_start)
+        return
     layout_key=next_key;layout_count+=1
     # Exit/profile confirmation belongs to the active secondary shell. Never
     # reparent it away every frame: doing so can cancel a held pointer press.
@@ -347,6 +350,7 @@ func refresh() -> void:
     if mode_changed:
         _animate_new_screen(mode)
     ui._focus_ring()
+    if game.performance_probe!=null:game.performance_probe.add(&"hud",Time.get_ticks_usec()-perf_hud_start)
 
 func _animate_new_screen(mode: String) -> void:
     var reduced: bool=bool(game.profile["settings"].get("reducedMotion",false))

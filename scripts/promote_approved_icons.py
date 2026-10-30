@@ -71,8 +71,13 @@ def validate(root=ROOT):
     if not (root/'assets/art-production/.gdignore').is_file():
         raise ValueError('Candidate import isolation is missing')
     presets = (root/'export_presets.cfg').read_text()
-    filters = re.findall(r'^exclude_filter="([^"]*)"',presets,re.M)
-    if len(filters) != 3 or any('assets/art-production/*' not in f.split(',') for f in filters):
+    sections = re.findall(r'^\[preset\.\d+\]\n(.*?)(?=^\[|\Z)',presets,re.M|re.S)
+    names = [re.findall(r'^name="([^"]*)"',section,re.M) for section in sections]
+    filters = [re.findall(r'^exclude_filter="([^"]*)"',section,re.M) for section in sections]
+    # Additional development presets must preserve the same art exclusions;
+    # validate every preset instead of assuming exactly three will exist.
+    if (any(len(n)!=1 for n in names) or not {'Web','Android','iOS'}.issubset({n[0] for n in names})
+            or any(len(f)!=1 or 'assets/art-production/*' not in f[0].split(',') for f in filters)):
         raise ValueError('Candidate exclusions required on Web/Android/iOS')
     return expected
 
