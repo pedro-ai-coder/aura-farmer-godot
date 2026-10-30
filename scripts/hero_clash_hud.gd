@@ -73,7 +73,7 @@ func _init(owner_skin) -> void:
     boss_fill=Meter.new();skin.add_child(boss_fill);boss_fill.install(texture("hp-fill"))
     skin.move_child(boss_fill,skin.boss_text.get_index())
     skin.hud_nodes.append_array([strip,weapon_group,passive_group,ability_plate,shield_mark,boss_fill])
-    boss_portrait=skin.image(skin);boss_portrait.texture=game.art.texture("big-hater")
+    boss_portrait=skin.image(skin);boss_portrait.texture=game.art.enemy_frame("boss",0)
     boss_hp=skin.label(skin);wave_clock=skin.label(skin)
     skin.hud_nodes.append_array([boss_portrait,boss_hp,wave_clock])
     max_level_plate=skin.image(skin);max_level_plate.texture=texture("wave-frame")
@@ -213,17 +213,18 @@ func layout_geometry() -> void:
     place(game.pause_button,Rect2(Vector2.ZERO,pause_size))
     var boss_width: float=300 if compact else 320
     if not portrait:boss_width=minf(boss_width,view.x-2.0*(status.get_rect().end.x+6))
-    var boss_size:=Vector2(boss_width,88)
+    var boss_size:=Vector2(boss_width,82)
     var boss_module:=anchor("TopCenterBossStatus",Vector2(0.5,0),boss_size,Vector2(0,wave_module.get_rect().end.y+2))
     boss_rect=boss_module.get_rect()
-    place(skin.boss_plate,Rect2(0,0,boss_width,84));skin.boss_plate.texture=texture("boss-frame")
-    place(boss_portrait,Rect2(15,8,43,47))
-    place(skin.boss_text,Rect2(64,5,boss_size.x-92,25))
-    text_style(skin.boss_text,"section_header",18,INK)
-    place(boss_hp,Rect2(64,29,boss_size.x-92,23))
-    text_style(boss_hp,"hud_secondary",18,INK)
-    place(boss_phase_backdrop,Rect2(16,66,boss_size.x-32,22))
-    place(skin.warning,Rect2(24,66,boss_size.x-48,22))
+    # Reuse the angular navy/gold nameplate; no new identity artwork.
+    place(skin.boss_plate,Rect2(0,0,boss_width,82));skin.boss_plate.texture=texture("ability-nameplate")
+    place(boss_portrait,Rect2(18,10,48,49))
+    place(skin.boss_text,Rect2(76,7,boss_size.x-100,23))
+    text_style(skin.boss_text,"section_header",18,GOLD)
+    place(boss_hp,Rect2(76,29,boss_size.x-100,23))
+    text_style(boss_hp,"hud_secondary",18,PAPER)
+    place(boss_phase_backdrop,Rect2(24,63,boss_size.x-48,15))
+    place(skin.warning,Rect2(24,60,boss_size.x-48,22))
     text_style(skin.warning,"hud_secondary",16,PAPER)
     skin.warning.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     # The 3+5 rail is centered independently from the XP and Flex end modules.
@@ -328,7 +329,7 @@ func sync_data() -> void:
         skin.warning.add_theme_color_override("font_color",GOLD if game.run_time>=game.SoloClock.BERSERK_AT else PAPER)
         skin.boss_text.text="BIG HATER"
         boss_hp.text="%d / %d HP" % [ceili(boss["hp"]),ceili(boss["max"])]
-        boss_fill.update_meter(Rect2(60,57,boss_rect.size.x-88,9),float(boss["hp"])/maxf(1.0,float(boss["max"])))
+        boss_fill.update_meter(Rect2(76,53,boss_rect.size.x-108,9),float(boss["hp"])/maxf(1.0,float(boss["max"])))
     var active_flex: bool=game.flex_time>0.0
     var ready: bool=game.aura>=100 and game.flex_lock<=0 and not active_flex
     var recovering: bool=game.flex_lock>0 and not active_flex
