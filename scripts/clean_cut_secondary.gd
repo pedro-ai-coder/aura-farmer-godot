@@ -236,13 +236,13 @@ func build_layout() -> void:
         parts["panel"].add_theme_stylebox_override("panel",panel_style("equipment"))
         parts["panel"].mouse_filter=Control.MOUSE_FILTER_PASS
         build_frames[i].texture=skin.art.texture("equipment/"+("weapon" if weapon else "passive")+("-filled" if not item.is_empty() else "-empty"))
-        skin.place(build_frames[i],Rect2(10,22,62,62));skin.place(parts["image"],Rect2(20,32,42,42))
+        skin.place(build_frames[i],Rect2(10,26,62,62));skin.place(parts["image"],Rect2(20,36,42,42))
         skin.Type.apply(parts["label"],"card_title",false,skin.Style.INK)
         parts["label"].add_theme_font_size_override("font_size",20)
-        skin.place(parts["label"],Rect2(90,9,tile_width-104,52))
+        skin.place(parts["label"],Rect2(100,9,tile_width-114,52))
         skin.Type.apply(parts["meta"],"hud_secondary",false,skin.Style.BLUE)
         parts["meta"].add_theme_font_size_override("font_size",16)
-        parts["meta"].show();skin.place(parts["meta"],Rect2(90,64,tile_width-104,24))
+        parts["meta"].show();skin.place(parts["meta"],Rect2(100,64,tile_width-114,24))
         var description: String="Available weapon position." if weapon else "Available passive position."
         if item.is_empty():
             parts["label"].text="EMPTY WEAPON SLOT" if weapon else "EMPTY PASSIVE SLOT"
@@ -257,7 +257,7 @@ func build_layout() -> void:
         extra["status"].add_theme_font_size_override("font_size",14)
         extra["status"].autowrap_mode=TextServer.AUTOWRAP_OFF
         # Status shares the icon column; rarity and actual level stay explicit.
-        skin.place(extra["status"],Rect2(10,0,72,20))
+        skin.place(extra["status"],Rect2(12,4,72,18))
         extra["rim"].color=skin.Style.RARITY.get(item.get("rarity",""),skin.Style.BLUE)
         skin.place(extra["rim"],Rect2(0,8,4,row_height-16))
     var rows: int=ceili(5.0/columns)
@@ -267,7 +267,14 @@ func build_layout() -> void:
 
 func settings_layout() -> void:
     var view: Vector2=skin.view
-    var panel_size:=Vector2(minf(720,view.x-32),minf(540 if ui.settings_return=="menu" else 468,view.y-32))
+    var panel_width: float=minf(720,view.x-32)
+    var width: float=panel_width-64
+    var columns: int=2 if width>=560 else 1
+    var fullscreen_y: float=108+ceili(2.0/columns)*76+8
+    var save_y: float=fullscreen_y+110
+    var has_save_actions: bool=game.import_button.visible or game.export_button.visible
+    var height: float=save_y+ceili(2.0/columns)*76-12 if has_save_actions else fullscreen_y+98
+    var panel_size:=Vector2(panel_width,minf(height+140,view.y-32))
     var panel:=Rect2((view-panel_size)*0.5,panel_size)
     screen_header("YOUR SETTINGS","Preferences are saved on this device.")
     skin.place(screen_panel,panel)
@@ -279,16 +286,13 @@ func settings_layout() -> void:
     skin.place(caption,Rect2(panel.position+Vector2(24,86),Vector2(panel_size.x-48,26)))
     action(ui.back_button,Rect2(panel.position+Vector2(panel_size.x-156,18),Vector2(132,64)))
     skin.place(ui.body_scroll,Rect2(panel.position+Vector2(24,122),panel_size-Vector2(48,140)))
-    var width: float=panel_size.x-64
     skin.place(ui.volume_label,Rect2(0,0,width,30))
-    skin.place(ui.volume_slider,Rect2(0,36,width,56))
-    var columns: int=2 if width>=560 else 1
+    skin.place(ui.volume_slider,Rect2(0,32,width,64))
     var cell: float=(width-14*(columns-1))/columns
     for i in range(2):
         var button: Button=game.sound_button if i==0 else game.motion_button
-        skin.place(button,Rect2((i%columns)*(cell+14),108+int(i/columns)*78,cell,64))
+        skin.place(button,Rect2((i%columns)*(cell+14),108+int(i/columns)*76,cell,64))
         skin.button_skin(button,"menu/secondary")
-    var fullscreen_y: float=108+ceili(2.0/columns)*78+12
     fullscreen_bounds=Rect2((width-minf(400,width))*0.5,fullscreen_y,minf(400,width),64)
     skin.place(fullscreen_button,fullscreen_bounds);skin.button_skin(fullscreen_button,"menu/secondary")
     fullscreen_button.visible=not OS.has_feature("web")
@@ -299,14 +303,12 @@ func settings_layout() -> void:
     fullscreen_status.text="FULLSCREEN ACTIVE" if active else "Enter fullscreen for a wider view."
     fullscreen_status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     fullscreen_status.visible=not OS.has_feature("web") or active
-    skin.place(fullscreen_status,Rect2(4,fullscreen_y+70,width-8,44))
-    var save_y: float=fullscreen_y+124
+    skin.place(fullscreen_status,Rect2(4,fullscreen_y+68,width-8,30))
     for i in range(2):
         var button: Button=game.import_button if i==0 else game.export_button
         if button.visible:
-            skin.place(button,Rect2((i%columns)*(cell+14),save_y+int(i/columns)*78,cell,64))
+            skin.place(button,Rect2((i%columns)*(cell+14),save_y+int(i/columns)*76,cell,64))
             skin.button_skin(button,"menu/secondary")
-    var height: float=save_y+(ceili(2.0/columns)*78 if game.import_button.visible else 0)
     ui.body_content.custom_minimum_size=Vector2(width,height);ui.body_content.size=ui.body_content.custom_minimum_size
     _sync_fullscreen_bounds()
 

@@ -105,13 +105,17 @@ mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
 # Reuse the exact approved button face and already licensed display font for
 # the trusted browser fullscreen action embedded in the Godot settings panel.
-cp assets/runtime-clean-cut/v2/menu/secondary-default.png build/web/fullscreen-button.png
-cp assets/fonts/hero-clash/ArchivoBlack.ttf build/web/fullscreen-archivo.ttf
-cp assets/fonts/hero-clash/OFL-ArchivoBlack.txt build/web/fullscreen-font-license.txt
+# Match the already-integrated candidate secondary family, without promoting art.
+cp assets/ui-button-candidates/v1/secondary-normal.png build/web/fullscreen-button.png
+for state in hover focus pressed; do
+    cp "assets/ui-button-candidates/v1/secondary-$state.png" "build/web/fullscreen-button-$state.png"
+done
+cp assets/fonts/hero-clash/Archivo.ttf build/web/fullscreen-archivo.ttf
+cp assets/fonts/hero-clash/OFL-Archivo.txt build/web/fullscreen-font-license.txt
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then cp web/performance.js build/web/; fi
 printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
 
-for file in platform.js aura.webmanifest fullscreen-button.png fullscreen-archivo.ttf fullscreen-font-license.txt index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
+for file in platform.js aura.webmanifest fullscreen-button.png fullscreen-button-hover.png fullscreen-button-focus.png fullscreen-button-pressed.png fullscreen-archivo.ttf fullscreen-font-license.txt index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
     if [[ ! -s "build/web/$file" ]]; then
         echo "ERROR: Web export missing or empty: build/web/$file" >&2
         exit 5

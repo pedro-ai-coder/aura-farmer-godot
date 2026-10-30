@@ -12,7 +12,13 @@
   probe.style.cssText = 'position:fixed;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)';
   document.body.appendChild(probe);
   const fontStyle = document.createElement('style');
-  fontStyle.textContent = '@font-face{font-family:AuraArchivo;src:url(fullscreen-archivo.ttf) format("truetype");font-display:swap;}';
+  fontStyle.textContent = '@font-face{font-family:AuraArchivo;src:url(fullscreen-archivo.ttf) format("truetype");font-weight:100 900;font-display:swap;}';
+  fontStyle.textContent += `
+#aura-fullscreen.aura-secondary{border-image-source:url(fullscreen-button.png);border-image-slice:16 64 24 64 fill;border-image-repeat:stretch;outline:none;}
+#aura-fullscreen.aura-secondary:hover{border-image-source:url(fullscreen-button-hover.png);}
+#aura-fullscreen.aura-secondary:focus-visible{border-image-source:url(fullscreen-button-focus.png);}
+#aura-fullscreen.aura-secondary:active{border-image-source:url(fullscreen-button-pressed.png);}
+`;
   document.body.appendChild(fontStyle);
   const launcher = document.createElement('button');
   launcher.type = 'button'; launcher.id = 'aura-fullscreen'; launcher.textContent = 'FULLSCREEN';
@@ -27,14 +33,15 @@
   function supported() { return root.requestFullscreen ? document.fullscreenEnabled !== false : !!root.webkitRequestFullscreen && document.webkitFullscreenEnabled !== false; }
   function controls() {
     const embedded = state.mode === 'options';
+    launcher.className = embedded ? 'aura-secondary' : '';
     launcher.hidden = !['menu','options','paused'].includes(state.mode) || active() || standalone() || (embedded && !settingsBounds);
     launcher.textContent = supported() ? 'FULLSCREEN' : 'FULLSCREEN HELP';
     if (embedded && settingsBounds) {
       const [x,y,w,h] = settingsBounds;
-      Object.assign(launcher.style,{left:x+'px',top:y+'px',right:'auto',bottom:'auto',width:w+'px',height:h+'px',boxSizing:'border-box',fontSize:Math.max(18,Math.round(h*0.4))+'px',fontFamily:'AuraArchivo,system-ui,sans-serif',background:'transparent url(fullscreen-button.png) center / 100% 100% no-repeat',color:'#0b2034',border:'0'});
-      Object.assign(hint.style,{left:x+'px',top:(y+h+4)+'px',right:'auto',bottom:'auto',width:w+'px',maxWidth:w+'px',maxHeight:'56px',overflow:'hidden',boxSizing:'border-box',padding:'2px 4px',background:'transparent',color:'#13233a',border:'0'});
+      Object.assign(launcher.style,{left:x+'px',top:y+'px',right:'auto',bottom:'auto',width:w+'px',height:h+'px',boxSizing:'border-box',fontSize:Math.round(h*22/64)+'px',fontWeight:'600',fontFamily:'AuraArchivo,system-ui,sans-serif',background:'transparent',color:'#253449',borderStyle:'solid',borderColor:'transparent',borderWidth:[h/12,h/3,h/8,h/3].map(v=>v+'px').join(' '),borderImageWidth:'1',padding:'0 0 '+(h*6/64)+'px'});
+      Object.assign(hint.style,{left:x+'px',top:(y+h+4)+'px',right:'auto',bottom:'auto',width:w+'px',maxWidth:w+'px',maxHeight:(h*30/64)+'px',overflow:'hidden',boxSizing:'border-box',padding:'2px 4px',background:'transparent',color:'#13233a',border:'0'});
     } else {
-      Object.assign(launcher.style,{left:'auto',top:'auto',right:'max(12px,env(safe-area-inset-right))',bottom:'max(10px,env(safe-area-inset-bottom))',width:'auto',height:'auto',fontSize:'14px',fontFamily:'system-ui,sans-serif',background:'#13233a',color:'#fff9e9',border:'2px solid #f8c45f'});
+      Object.assign(launcher.style,{left:'auto',top:'auto',right:'max(12px,env(safe-area-inset-right))',bottom:'max(10px,env(safe-area-inset-bottom))',width:'auto',height:'auto',fontSize:'14px',fontWeight:'700',padding:'8px 16px',fontFamily:'system-ui,sans-serif',background:'#13233a',color:'#fff9e9',border:'2px solid #f8c45f'});
       Object.assign(hint.style,{left:'auto',top:'auto',right:'12px',bottom:'62px',width:'auto',maxWidth:'min(330px,85vw)',maxHeight:'none',padding:'12px',background:'#13233a',color:'#fff9e9',border:'1px solid #f8c45f'});
     }
     if (launcher.hidden) hint.hidden = true;
@@ -64,9 +71,9 @@
     cachedMetrics = JSON.stringify({touch:state.touch,safe:state.safe,width:state.width,height:state.height,pixelRatio:state.pixelRatio,fullscreen:state.fullscreen,orientation:state.orientation});
   }
   function explain() {
-    hint.textContent = 'standalone' in navigator
-      ? 'For fullscreen, add Aura Farmer to your Home Screen, then open it there.'
-      : 'Fullscreen is unavailable here. Open the game directly in your browser.';
+    hint.textContent = state.mode === 'options'
+      ? ('standalone' in navigator ? 'Add to Home Screen for fullscreen.' : 'Open directly in your browser.')
+      : ('standalone' in navigator ? 'For fullscreen, add Aura Farmer to your Home Screen, then open it there.' : 'Fullscreen is unavailable here. Open the game directly in your browser.');
     hint.hidden = false;
   }
   async function enter(event, explicit) {
@@ -89,7 +96,7 @@
       }
     } catch (_) {
       state.fullscreen='denied';
-      if (explicit) { hint.textContent='Fullscreen was blocked. Tap FULLSCREEN to try again.'; hint.hidden=false; }
+      if (explicit) { hint.textContent=state.mode === 'options' ? 'Fullscreen blocked. Tap to retry.' : 'Fullscreen was blocked. Tap FULLSCREEN to try again.'; hint.hidden=false; }
     }
     refresh();
   }
