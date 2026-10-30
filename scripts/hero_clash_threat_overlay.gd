@@ -1,15 +1,10 @@
 extends Control
 ## Presentation only: 20 Hz actor checks, live danger strokes, cached HUD geometry.
 ## No input ownership, camera adjustment, simulation writes or gameplay RNG.
-## Re-expose only hostile boundary segments actually covered by passive HUD.
+## Preserve permanent HUD identity; reveal real hostile danger lines and contextual boss cues without changing HUD opacity.
 var hud
 var game
-var decoration: Array[Array]=[]
-var essential: Array[Array]=[]
-var dark_text: StyleBoxFlat
-var light_text: StyleBoxFlat
 var regions: Array[Rect2]=[]
-var faded: Array[bool]=[]
 var traces: Array[Dictionary]=[]
 var cue: Label
 var cue_direction:=Vector2.ZERO
@@ -28,26 +23,11 @@ func install(owner_hud) -> void:
     cue_box.set_content_margin_all(0);cue_box.set_border_width_all(1)
     cue.add_theme_stylebox_override("normal",cue_box)
     cue.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;cue.hide()
-    decoration.assign([
-        [hud.skin.player_plate,hud.shield_mark,hud.skin.shield_track,hud.skin.shield_fill.face,hud.skin.hp_fill.face],
-        [hud.skin.wave_frame], [hud.skin.boss_plate,hud.boss_portrait,hud.boss_fill.face,hud.boss_phase_backdrop],
-        [], [hud.skin.xp_frame,hud.skin.xp_track,hud.skin.xp_fill.face,hud.max_level_plate], [hud.strip], [hud.ability_plate]])
-    essential.assign([[hud.skin.hp,hud.skin.shield_label],[hud.skin.wave,hud.wave_clock],[hud.skin.boss_text,hud.boss_hp,hud.skin.warning],[],[hud.skin.xp],[],[hud.skin.flex_title,hud.skin.flex_status,hud.skin.flex_caption]])
-    dark_text=hud.skin.Style.box(Color(hud.INK,0.88),Color.TRANSPARENT,0,0)
-    light_text=hud.skin.Style.box(Color(hud.PAPER,0.88),Color.TRANSPARENT,0,0)
-    # These are text contrast surfaces, not padded panels. Default panel
-    # margins would enlarge live Labels and overlap the Flex hit rectangle.
-    for surface in [dark_text,light_text]:
-        surface.set_content_margin_all(0);surface.set_border_width_all(0)
-    for parts in hud.skin.equipment:
-        for id in ["frame","icon","tab","rarity"]:decoration[5].append(parts[id])
-        essential[5].append(parts["level"])
-    for i in range(decoration.size()):faded.append(false)
 
 func sample(force: bool=false) -> void:
     if game.mode!="playing":
         if visible:
-            hide();cue.hide();traces.clear();restore();queue_redraw()
+            hide();cue.hide();traces.clear();queue_redraw()
         return
     show()
     var now: int=Time.get_ticks_msec()
@@ -63,7 +43,7 @@ func sample(force: bool=false) -> void:
             if id=="BottomRightFlex":region=region.merge(Rect2(hud.modules[id].position+hud.ability_plate.position,hud.ability_plate.size))
             regions.append(region)
     var had_cue: bool=cue.visible
-    faded.fill(false);actor_hits=0;clipped_boss=false;cue.hide()
+    actor_hits=0;clipped_boss=false;cue.hide()
     var safe:=Rect2(Vector2.ZERO,hud.skin.view)
     var cue_bounds:=Rect2();var cue_name: String=""
     for enemy: Dictionary in game.enemies:
@@ -77,18 +57,9 @@ func sample(force: bool=false) -> void:
             clipped_boss=not safe.encloses(bounds)
     update_traces(transform)
     if not cue_name.is_empty():place_cue(cue_bounds,cue_name+(" · EDGE" if clipped_boss else ""))
-    for i in range(decoration.size()):
-        for node: CanvasItem in decoration[i]:
-            var alpha: float=0.18 if faded[i] else 1.0
-            if not is_equal_approx(node.self_modulate.a,alpha):node.self_modulate.a=alpha
-        for label: Label in essential[i]:
-            var needs_contrast: bool=faded[i] and not label.text.is_empty()
-            if needs_contrast and not label.has_theme_stylebox_override("normal"):label.add_theme_stylebox_override("normal",light_text if i in [1,4] else dark_text)
-            elif not needs_contrast and label.has_theme_stylebox_override("normal"):label.remove_theme_stylebox_override("normal")
-    # The portrait crop shader intentionally ignores vertex modulation. Hide
-    # decorative identity here instead of editing its hash-pinned source.
-    hud.skin.portrait.visible=not faded[0];hud.skin.hero_name.visible=not faded[0]
-    hud.skin.aura_arc.set_occluded(faded[6])
+    # A threat crossing a HUD boundary must never replace, fade, or hide permanent UI.
+    # Lines are rendered above decoration; the contextual boss cue remains outside reserved HUD.
+
     if had_cue or cue.visible:queue_redraw()
 
 func update_traces(transform: Transform2D) -> void:
@@ -117,14 +88,6 @@ func update_traces(transform: Transform2D) -> void:
         add_path(points,Color(1,0.61,0.22,0.95) if warning else Color(0.98,0.29,0.31,0.95))
     if had_traces or not traces.is_empty():queue_redraw()
 
-func restore() -> void:
-    for group in decoration:
-        for node: CanvasItem in group:node.self_modulate.a=1.0
-    for group in essential:
-        for label: Label in group:label.remove_theme_stylebox_override("normal")
-    hud.skin.portrait.visible=game.mode=="playing";hud.skin.hero_name.visible=game.mode=="playing"
-    hud.skin.aura_arc.set_occluded(false)
-
 func enemy_bounds(enemy: Dictionary, transform: Transform2D) -> Rect2:
     # Same trimmed frame, pivot, pose flip and hurt stretch as draw_enemy().
     var kind: String=game.art.enemy_visual_kind(enemy,game.run_time)
@@ -144,11 +107,11 @@ func enemy_bounds(enemy: Dictionary, transform: Transform2D) -> Rect2:
     return transform*Transform2D(0,Vector2(-1 if left else 1,1)*Vector2(1+flash*0.05,1-flash*0.05)*scale,0,enemy["pos"])*Rect2(-Vector2(data["pivot"]),image.get_size())
 
 func mark_regions(bounds: Rect2) -> bool:
-    var hit:=false;var index:=0
+    var index:=0
     for id in hud.modules:
-        if hud.modules[id].visible and bounds.intersects(regions[index]):faded[index]=true;hit=true
+        if hud.modules[id].visible and bounds.intersects(regions[index]):return true
         index+=1
-    return hit
+    return false
 
 func add_path(points: PackedVector2Array, color: Color) -> void:
     # Clip real boundary segments to reserved HUD rectangles, not their AABBs.
@@ -161,7 +124,7 @@ func add_path(points: PackedVector2Array, color: Color) -> void:
             for i in range(points.size()-1):
                 var segment:=clip_segment(points[i],points[i+1],regions[index])
                 if not segment.is_empty():
-                    traces.append({"points":segment,"color":color});faded[index]=true
+                    traces.append({"points":segment,"color":color})
         index+=1
 
 static func clip_segment(a: Vector2,b: Vector2,rect: Rect2) -> PackedVector2Array:
