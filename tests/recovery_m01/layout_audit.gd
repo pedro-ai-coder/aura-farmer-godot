@@ -26,7 +26,8 @@ static func report(game) -> Dictionary:
     if game.mode=="playing":
         regions={"health":skin.player_plate.get_global_rect().merge(skin.shield_track.get_global_rect()),"wave":skin.wave_frame.get_global_rect(),"pause":game.pause_button.get_global_rect(),"xp":skin.xp_frame.get_global_rect().merge(skin.xp.get_global_rect()),"flex":game.flex_button.get_global_rect(),"flex_caption":skin.flex_caption.get_global_rect()}
         if skin.boss_plate.visible:regions["boss"]=skin.boss_plate.get_global_rect()
-        if not skin.warning.text.is_empty():regions["warning"]=skin.warning.get_global_rect()
+        # The boss phase label intentionally belongs inside the live boss module.
+        if not skin.warning.text.is_empty() and not skin.boss_plate.visible:regions["warning"]=skin.warning.get_global_rect()
         if game.legendary_button.visible:regions["legendary"]=game.legendary_button.get_global_rect()
         var keys:=regions.keys()
         for i in range(keys.size()):

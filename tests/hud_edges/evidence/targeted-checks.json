@@ -1,0 +1,66 @@
+[
+  {
+    "test": "hud_v2/test_hud.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: HUD V2 all heroes/six viewports, live damage/heal/shield/XP, 3+5 icons, state lifecycle, geometry cache and real Pause/Quit"
+    ]
+  },
+  {
+    "test": "test_flex_readability.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Flex clarity, readiness, active/recovery display and touch-safe layout across desktop/mobile"
+    ]
+  },
+  {
+    "test": "test_mobile_joystick.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle"
+    ]
+  },
+  {
+    "test": "mobile_fluency/test_drag.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Six viewport real touch drag/release, stable HUD layout, unchanged RNG and CSS/DPR target parity"
+    ]
+  },
+  {
+    "test": "test_clean_cut_secondary_input.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at three viewports"
+    ]
+  },
+  {
+    "test": "recovery_m01/test_layout.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Actual Controls, six viewport bounds/peer overlaps, boss HUD, dynamic text, full build and modal rows"
+    ]
+  },
+  {
+    "test": "frame_pacing/state_trace.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Irregular-frame state hashes, canonical hero displacement, keyboard/touch, release/reversal and pause/resume { \"normal\": \"b36b9dfab8baef81659ba3040bf90e26ac910b8bd68f1226997116eb54ad03a6\", \"dense\": \"645b257d9495b673079e415e60ae4bd7649ee960f65d0061505749e873ea3107\", \"flex\": \"63ae00700184c8a1dc5e13a4fb2d6e9f5a25c2156bbd6d672c2ac623b5117311\" }"
+    ]
+  },
+  {
+    "test": "test_clean_cut_typography.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: packaged typography, glyph coverage, equipment fit, HUD and three-viewports hierarchy"
+    ]
+  }
+]

@@ -13,10 +13,20 @@ var result_values: Array[Label] = []
 var result_hero: Label
 var actions: Array[Button] = []
 var build_frames: Array[TextureRect] = []
+var pause_dim: ColorRect
+var pause_panel: Panel
+var pause_accent: ColorRect
 
 func install(owner_skin) -> void:
     skin=owner_skin;game=skin.game;ui=skin.ui
     mouse_filter=Control.MOUSE_FILTER_IGNORE
+    pause_dim=ColorRect.new();pause_dim.color=Color(0.025,0.045,0.075,0.68)
+    pause_dim.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(pause_dim)
+    pause_panel=Panel.new();pause_panel.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    pause_panel.add_theme_stylebox_override("panel",skin.Style.box(skin.Style.PAPER,skin.Style.INK,4,3))
+    add_child(pause_panel)
+    pause_accent=ColorRect.new();pause_accent.color=skin.Style.GOLD;pause_accent.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    pause_panel.add_child(pause_accent)
     caption=skin.label(self,18,skin.Style.INK)
     caption.add_theme_stylebox_override("normal",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
     result_portrait=skin.image(self)
@@ -78,6 +88,10 @@ func layout() -> void:
     skin.background.texture=skin.art.texture("support/upgrade-bg")
     skin.place(skin.background,Rect2(Vector2.ZERO,view))
     var mode: String=game.mode
+    pause_dim.visible=mode=="paused";pause_panel.visible=pause_dim.visible
+    if pause_dim.visible:
+        skin.background.hide()
+        skin.place(pause_dim,Rect2(-skin.shift,ui.full_view))
     var shown: Array=[]
     if mode=="paused":shown=[ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run]
     elif mode in ["build","options"]:shown=[ui.back_button]
@@ -98,13 +112,21 @@ func layout() -> void:
     var footer: float=view.y-78
     if mode=="paused":
         caption.text="Simulation paused. Take your time."
-        var width:=minf(440,view.x-48)
-        var two_columns:=view.y<620
+        var two_columns:=view.y<580 and view.x>=700
+        var panel_size:=Vector2(minf(720 if two_columns else 600,view.x-32),304 if two_columns else 476)
+        var panel:=Rect2((view-panel_size)*0.5,panel_size)
+        skin.place(pause_panel,panel);skin.place(pause_accent,Rect2(24,3,112,4))
+        skin.Type.apply(skin.heading,"display_l",view.x<700,skin.Style.INK)
+        skin.place(skin.heading,Rect2(panel.position+Vector2(24,18),Vector2(panel_size.x-48,58)))
+        skin.fit_line(skin.heading,24)
+        skin.headline_accent.hide()
+        skin.place(caption,Rect2(panel.position+Vector2(24,80),Vector2(panel_size.x-48,32)))
+        var gap:=14.0
+        var columns:=2 if two_columns else 1
+        var cell_width: float=(panel_size.x-48-gap*(columns-1))/columns
         for i in range(4):
             var button: Button=[ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run][i]
-            var columns:=2 if two_columns else 1
-            var cell_width: float=half if two_columns else width
-            action(button,Rect2(24+(i%columns)*(half+16) if two_columns else (view.x-width)/2,170+int(i/columns)*78,cell_width,64),i==0)
+            action(button,Rect2(panel.position+Vector2(24+(i%columns)*(cell_width+gap),128+int(i/columns)*78),Vector2(cell_width,64)),i==0)
     elif mode in ["build","options"]:
         action(ui.back_button,Rect2(24,footer,minf(240,view.x-48),64))
         ui.back_button.text="BACK"

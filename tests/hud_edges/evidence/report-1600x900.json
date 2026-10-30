@@ -1,0 +1,223 @@
+[
+  {
+    "aura": 9.0,
+    "controls": [
+      {
+        "node": "@Label@313",
+        "physical_font_px": 37.5,
+        "rect": [
+          192.802429199219,
+          27.3235301971436,
+          310.282287597656,
+          47.5
+        ],
+        "text": "THE SIGMA"
+      },
+      {
+        "node": "@Label@312",
+        "physical_font_px": 30.0,
+        "rect": [
+          196.229843139648,
+          83.6176452636719,
+          318.407287597656,
+          37.5
+        ],
+        "text": "HP 100 / 100"
+      },
+      {
+        "node": "@Label@314",
+        "physical_font_px": 22.5,
+        "rect": [
+          208.75,
+          125.35294342041,
+          292.278259277344,
+          28.7499923706055
+        ],
+        "text": "SHIELD 0"
+      },
+      {
+        "node": "@Label@325",
+        "physical_font_px": 31.25,
+        "rect": [
+          642.5,
+          8.75,
+          315.0,
+          40.0
+        ],
+        "text": "WAVE 1 / 5"
+      },
+      {
+        "node": "@Label@392",
+        "physical_font_px": 30.0,
+        "rect": [
+          642.5,
+          47.5,
+          315.0,
+          37.5
+        ],
+        "text": "00:09"
+      },
+      {
+        "node": "@Label@391",
+        "physical_font_px": 22.5,
+        "rect": [
+          1170.0,
+          41.25,
+          285.0,
+          28.75
+        ],
+        "text": ""
+      },
+      {
+        "node": "@Label@319",
+        "physical_font_px": 27.5,
+        "rect": [
+          34.25,
+          823.75,
+          266.5,
+          38.75
+        ],
+        "text": "LV 1  ·  XP 0"
+      },
+      {
+        "node": "@Label@330",
+        "physical_font_px": 47.5,
+        "rect": [
+          1392.40002441406,
+          752.200012207031,
+          170.200073242188,
+          58.75
+        ],
+        "text": "FLEX"
+      },
+      {
+        "node": "@Label@331",
+        "physical_font_px": 25.0,
+        "rect": [
+          1380.89990234375,
+          814.299987792969,
+          193.199951171875,
+          41.3999633789062
+        ],
+        "text": "AURA 9%"
+      },
+      {
+        "node": "@Label@332",
+        "physical_font_px": 22.5,
+        "rect": [
+          1328.75,
+          620.0,
+          247.5,
+          40.0
+        ],
+        "text": "DEADPAN VERDICT"
+      },
+      {
+        "node": "@Button@27",
+        "physical_font_px": 27.5,
+        "rect": [
+          0.0,
+          0.0,
+          215.0,
+          95.0
+        ],
+        "text": "RESUME [P]"
+      },
+      {
+        "node": "@Button@26",
+        "physical_font_px": 27.5,
+        "rect": [
+          1362.5,
+          662.5,
+          230.0,
+          230.0
+        ],
+        "text": ""
+      }
+    ],
+    "hero": "sigma",
+    "hp": 100.0,
+    "joystick_active": false,
+    "logical_view": [
+      1280.0,
+      720.0
+    ],
+    "max_hp": 100.0,
+    "mode": "paused",
+    "modules": {
+      "BottomCenterEquipment": {
+        "anchors": [
+          0.5,
+          1.0
+        ],
+        "rect": "[P: (310.0, 616.0), S: (660.0, 100.0)]",
+        "visible": false
+      },
+      "BottomLeftXP": {
+        "anchors": [
+          0.0,
+          1.0
+        ],
+        "rect": "[P: (4.0, 658.0), S: (260.0, 58.0)]",
+        "visible": false
+      },
+      "BottomRightFlex": {
+        "anchors": [
+          1.0,
+          1.0
+        ],
+        "rect": "[P: (1090.0, 496.0), S: (184.0, 218.0)]",
+        "visible": false
+      },
+      "TopCenterWaveTimer": {
+        "anchors": [
+          0.5,
+          0.0
+        ],
+        "rect": "[P: (490.0, 4.0), S: (300.0, 72.0)]",
+        "visible": false
+      },
+      "TopLeftHeroStatus": {
+        "anchors": [
+          0.0,
+          0.0
+        ],
+        "rect": "[P: (4.0, 4.0), S: (450.0, 132.0)]",
+        "visible": false
+      },
+      "TopRightBossStatus": {
+        "anchors": [
+          1.0,
+          0.0
+        ],
+        "rect": "[P: (872.0, 4.0), S: (320.0, 84.0)]",
+        "visible": false
+      },
+      "TopRightPause": {
+        "anchors": [
+          1.0,
+          0.0
+        ],
+        "rect": "[P: (1196.0, 4.0), S: (80.0, 76.0)]",
+        "visible": false
+      }
+    },
+    "passives": [],
+    "pixels": [
+      1600,
+      900
+    ],
+    "readback_pixels": "(1600, 900)",
+    "safe_offset": "(0.0, 0.0)",
+    "shield": 0.0,
+    "state": "paused",
+    "weapons": [
+      {
+        "id": "no-cap",
+        "level": 1,
+        "rarity": "common",
+        "timer": 0.0
+      }
+    ]
+  }
+]

@@ -11,6 +11,11 @@ var ready_phase: float=0.0
 var ready_introduction: float=0.0
 var push_target: float=0.0
 var push_current: float=0.0
+var hero_id: String="sigma"
+
+func set_identity(id: String) -> void:
+    if hero_id==id:return
+    hero_id=id;queue_redraw()
 
 func _ready() -> void:
     mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -82,5 +87,17 @@ func _draw() -> void:
             draw_line(center+direction*(radius+7.0+expansion),center+direction*(radius+10.0+expansion),gold,2.5,true)
     elif visual_state=="active":
         draw_arc(center,radius+5.0,0.0,TAU,72,teal,3.0,true)
+    # Original lightweight UI motifs; all hero artwork stays byte-identical.
+    var mark:=Vector2(center.x,size.y*0.26)
+    var unit: float=size.x/184.0
+    if hero_id=="sigma":
+        draw_polyline(PackedVector2Array([mark+Vector2(-16,0)*unit,mark+Vector2(-7,-7)*unit,mark+Vector2(7,-7)*unit,mark+Vector2(16,0)*unit,mark+Vector2(7,7)*unit,mark+Vector2(-7,7)*unit,mark+Vector2(-16,0)*unit]),paper,2*unit,true)
+        draw_circle(mark,4*unit,accent)
+    elif hero_id=="cool-kid":
+        draw_rect(Rect2(mark-Vector2(17,10)*unit,Vector2(34,20)*unit),paper,false,2*unit)
+        draw_polyline(PackedVector2Array([mark+Vector2(8,-5)*unit,mark+Vector2(8,3)*unit,mark+Vector2(-8,3)*unit,mark+Vector2(-3,-2)*unit,mark+Vector2(-8,3)*unit,mark+Vector2(-3,8)*unit]),accent,2*unit,true)
+    else:
+        draw_polyline(PackedVector2Array([mark+Vector2(0,-11)*unit,mark+Vector2(13,-6)*unit,mark+Vector2(11,6)*unit,mark+Vector2(0,13)*unit,mark+Vector2(-11,6)*unit,mark+Vector2(-13,-6)*unit,mark+Vector2(0,-11)*unit]),paper,2*unit,true)
+        draw_line(mark+Vector2(0,-5)*unit,mark+Vector2(0,6)*unit,accent,3*unit,true)
     if emphasized or push_current>0.01:
         draw_arc(center,radius+4.0,0.0,TAU,72,paper,2.0,true)

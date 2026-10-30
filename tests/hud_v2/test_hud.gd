@@ -15,6 +15,7 @@ func verify() -> void:
             game.start_run(hero);game.presentation._window_changed(true)
             await process_frame;await process_frame
             skin.refresh()
+            check_edges(skin,hud)
             if hud.desktop:
                 var occupied:=0.0
                 for region in hud.reserved:occupied+=region.get_area()
@@ -53,7 +54,7 @@ func verify() -> void:
             expect(skin.hp.text.begins_with("HP %d" % ceili(game.hp)),"Actual healing reaches HUD")
             var old_max: float=game.max_hp
             game._gain_xp(100);game._update_text();skin.refresh()
-            expect(game.max_hp>old_max and skin.xp.text.begins_with("LEVEL %d" % game.level),"Level and max-HP progression stay live")
+            expect(game.max_hp>old_max and skin.xp.text.begins_with("LV %d" % game.level),"Level and max-HP progression stay live")
             game.aura=9;game.flex_time=0;game.flex_lock=0;game._update_text();skin.refresh()
             expect(is_equal_approx(skin.aura_arc.progress,0.09) and skin.flex_status.text=="AURA 9%","Actual 9% ring")
             game.aura=100;game._update_text();skin.refresh()
@@ -77,8 +78,16 @@ func verify() -> void:
         game.boss_spawned=true;game.run_time=625
         game._spawn_enemy("boss",{"pos":Vector2(1030,540)})
         game._show_ui();skin.refresh()
-        expect(skin.wave.text.begins_with("BIG HATER") and skin.boss_text.visible,"Compact banner retains live boss information")
+        expect(skin.wave.text.begins_with("WAVE ") and hud.wave_clock.text=="10:25" and skin.boss_text.visible,"Centered wave/clock remain separate from live boss information")
         expect(skin.wave.get_theme_font("font").get_string_size(skin.wave.text,HORIZONTAL_ALIGNMENT_LEFT,-1,skin.wave.get_theme_font_size("font_size")).x<=skin.wave.size.x+1,"Boss clock remains unclipped")
+        expect(hud.boss_hp.text=="30000 / 30000 HP","Boss HP comes from actual canonical simulation values")
+        expect(hud.boss_portrait.texture==game.art.texture("big-hater"),"Original Big Hater master identifies the encounter")
+        var boss_module: Control=hud.modules["TopRightBossStatus"]
+        var pause_module: Control=hud.modules["TopRightPause"]
+        expect(boss_module.get_rect().get_center().x>skin.view.x*0.5 and not boss_module.get_rect().intersects(pause_module.get_rect()),"Boss stays at right edge without displacing Pause")
+        game.enemies[-1]["hp"]=17001;game.run_time=720;skin.refresh()
+        expect(hud.boss_hp.text=="17001 / 30000 HP" and skin.warning.text=="FULL HATER MODE","Live damage and Berserk phase remain visible within boss module")
+        game.run_time=625;skin.refresh()
         for i in range(hud.reserved.size()):
             for j in range(i+1,hud.reserved.size()):expect(not hud.reserved[i].intersects(hud.reserved[j]),"Boss HUD regions remain separate")
         var station: Vector2=game.RecoveryRulesScript.SAFE_SPOT
@@ -91,6 +100,10 @@ func verify() -> void:
         # Real held pointer across refresh, actual pause and confirmation callbacks.
         await click(game.pause_button)
         expect(game.mode=="paused","V2 Pause retains actual pointer behavior")
+        expect(skin.auxiliary.pause_panel.visible and skin.auxiliary.pause_dim.visible and not skin.background.visible,"Pause uses a modal over the frozen arena")
+        expect(skin.auxiliary.pause_panel.get_rect().get_center().is_equal_approx(skin.view*0.5),"Pause modal stays centered in the usable viewport")
+        for button in [game.presentation.secondary.resume,game.presentation.secondary.build,game.presentation.secondary.settings,game.presentation.secondary.quit_run]:
+            expect(skin.auxiliary.pause_panel.get_global_rect().encloses(button.get_global_rect()),"Existing Pause actions remain inside the single modal")
         await click(game.presentation.secondary.quit_run)
         expect(game.mode=="confirm_exit","Two-step Quit retained")
         await click(game.restart_button)
@@ -98,6 +111,17 @@ func verify() -> void:
         game._toggle_pause();skin.refresh()
         game._deal_damage_to_player(100000)
         expect(game.mode=="lost" and not skin.player_plate.visible,"Death hides gameplay HUD")
+    game.start_run(0);skin.refresh()
+    game._deal_damage_to_player(20);skin.refresh()
+    expect(hud.feedback_state=="damage","Actual damage starts bounded status feedback")
+    game._heal_player(5);skin.refresh()
+    expect(hud.feedback_state=="healing","Actual healing starts bounded status feedback")
+    game._grant_weapon_shield("edge-status",40,4);skin.refresh()
+    expect(hud.feedback_state=="shield-gained","Real shield grant is identified separately")
+    game._deal_damage_to_player(40);skin.refresh()
+    expect(hud.feedback_state=="shield-depleted" and game.shield==0,"Real shield depletion retains its own feedback")
+    game.hp=10;skin.refresh();game.run_time+=0.4;hud.tick_feedback()
+    expect(hud.feedback_state=="critical" and skin.hp.get_theme_color("font_color")!=hud.PAPER,"Critical HP retains static numeric emphasis with Reduced Motion")
     game.start_run(0);game.spawn_timer=INF;game.hp=50
     var station: Vector2=game.RecoveryRulesScript.SAFE_SPOT
     expect(game._safe_spot_context_label().is_empty(),"Ordinary distant station has no permanent name or countdown")
@@ -118,8 +142,45 @@ func verify() -> void:
         expect(game._safe_spot_context_label()=="RECOVERY 90s","Reduced Motion retains readable state information")
     game.player_pos=station+Vector2(120,0)
     expect(game._safe_spot_context_label().is_empty() and game.rng.state==rng,"Distant cooldown stays subdued without presentation RNG")
+    # Resize and synthetic browser safe-area metrics exercise real anchoring,
+    # not hand-computed fixture rectangles or physical-device claims.
+    for extent in [Vector2i(1366,768),Vector2i(1000,700),Vector2i(720,480),Vector2i(844,390)]:
+        root.size=extent;game.touch_device=extent.x<1000
+        game.web_metrics={"width":extent.x,"height":extent.y,"safe":[44,8,34,12]}
+        game.start_run(2);game.presentation._window_changed(true)
+        await process_frame;await process_frame
+        skin.refresh();check_edges(skin,hud)
+        var safe:=Rect2(game.presentation.position,game.presentation.view)
+        for node in [skin.player_plate,skin.wave_frame,game.pause_button,skin.xp_frame,hud.strip,game.flex_button]:
+            expect(safe.grow(0.1).encloses(node.get_global_rect()),"Resized live Control stays inside asymmetric safe area: "+str(node.name))
+        for i in range(hud.reserved.size()):
+            for j in range(i+1,hud.reserved.size()):expect(not hud.reserved[i].intersects(hud.reserved[j]),"Constrained safe-area HUD peers do not overlap")
+        var point: Vector2=hud.strip.get_global_rect().get_center()
+        expect(game._touch_ui_at(game.layer,point)==null,"Passive equipment rail does not steal terrain input")
     game.queue_free()
     if failures.is_empty():print("PASS: HUD V2 all heroes/six viewports, live damage/heal/shield/XP, 3+5 icons, state lifecycle, geometry cache and real Pause/Quit");quit()
     else:
         for failure in failures:push_error(failure)
         quit(1)
+
+func check_edges(skin,hud) -> void:
+    var status: Control=hud.modules["TopLeftHeroStatus"]
+    var wave: Control=hud.modules["TopCenterWaveTimer"]
+    var pause: Control=hud.modules["TopRightPause"]
+    var xp: Control=hud.modules["BottomLeftXP"]
+    var rail: Control=hud.modules["BottomCenterEquipment"]
+    var flex: Control=hud.modules["BottomRightFlex"]
+    expect(status.position.is_equal_approx(Vector2(4,4)),"Hero status anchors to safe upper-left corner")
+    expect(is_equal_approx(wave.get_rect().get_center().x,skin.view.x*0.5),"Wave uses true safe-viewport center")
+    expect(is_equal_approx(pause.get_rect().end.x,skin.view.x-4) and is_equal_approx(pause.position.y,4),"Pause stays at extreme upper-right")
+    expect(is_equal_approx(xp.position.x,4),"XP stays on safe left edge")
+    expect(is_equal_approx(rail.get_rect().get_center().x,skin.view.x*0.5) and is_equal_approx(rail.get_rect().end.y,skin.view.y-4),"3+5 equipment rail anchors to bottom-center")
+    expect(is_equal_approx(flex.get_rect().end.x,skin.view.x-6),"Circular Flex anchors to safe right edge")
+    if not hud.stacked_bottom:
+        expect(is_equal_approx(xp.get_rect().end.y,skin.view.y-4) and is_equal_approx(flex.get_rect().end.y,skin.view.y-6),"XP and Flex share bottom boundary on supported landscape")
+    else:
+        expect(xp.get_rect().end.y<=rail.position.y-6 and flex.get_rect().end.y<=rail.position.y-6,"Constrained fallback is directly attached above bottom rail")
+    for i in range(8):
+        expect(skin.equipment[i]["frame"].get_parent()==rail,"Eight independent slots belong to one centered rail")
+        expect(is_equal_approx(skin.equipment[i]["frame"].position.y,4),"Weapons and passives share one baseline")
+    expect(hud.weapon_group.text=="WEAPONS" and hud.passive_group.text=="PASSIVES","Three and five slots retain clear group labels")

@@ -1,0 +1,46 @@
+{
+  "final_simulation_time": 6.37829899999999,
+  "input": "Scripted real keyboard events; actual game _process and pause callbacks",
+  "not_human_or_browser_or_device_validation": true,
+  "paused_simulation_time": 5.56666666666666,
+  "sampling_is_not_engine_fps": true,
+  "source": "Godot 4.7.2 Compatibility native software rendering",
+  "trace": [
+    {
+      "aura": 1.7,
+      "hp": 100.0,
+      "mode": "playing",
+      "position": "(976.0001, 540.0)",
+      "simulation_time": 1.4
+    },
+    {
+      "aura": 3.41666666666666,
+      "hp": 92.0,
+      "mode": "playing",
+      "position": "(718.0001, 540.0)",
+      "simulation_time": 2.83333333333333
+    },
+    {
+      "aura": 4.96942433333334,
+      "hp": 92.0,
+      "mode": "playing",
+      "position": "(718.0001, 341.0072)",
+      "simulation_time": 3.93884866666666
+    },
+    {
+      "aura": 6.52781066666669,
+      "hp": 92.0,
+      "mode": "playing",
+      "position": "(718.0001, 542.0263)",
+      "simulation_time": 5.05562133333332
+    },
+    {
+      "aura": 6.78333333333337,
+      "hp": 92.0,
+      "mode": "playing",
+      "position": "(718.0001, 542.0263)",
+      "simulation_time": 5.56666666666666
+    }
+  ],
+  "video_sampling_fps": 30
+}

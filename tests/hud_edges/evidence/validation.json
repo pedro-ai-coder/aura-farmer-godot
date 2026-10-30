@@ -1,0 +1,213 @@
+{
+  "baseline_commit": "812001968dd108eae8e76d99c4d915d02e9fe7ba",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "renderer": "Compatibility / OpenGL / Mesa llvmpipe software X11",
+  "canonical_viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1600,
+      900
+    ],
+    [
+      1280,
+      720
+    ],
+    [
+      915,
+      412
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "additional_safe_area_resize_tests": [
+    [
+      1366,
+      768
+    ],
+    [
+      1000,
+      700
+    ],
+    [
+      720,
+      480
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "synthetic_safe_area_css_px": [
+    44,
+    8,
+    34,
+    12
+  ],
+  "native_capture_limitations": "Native software rendering with controlled fixtures. 844x390 reads back as 843x390. Not browser, physical-device or human playtesting.",
+  "video": "Actual running simulation and scripted routed keyboard input; 30fps recorder sampling is not engine FPS. Real pause/resume callback and active clock asserted.",
+  "approval": "Pending creator visual review. No merge or art-registry promotion.",
+  "ci": "See exact PR commit checks for full validation and Web export.",
+  "images": [
+    {
+      "file": "active-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "7b093f0aed4674e2c02d15755c44098080b0230b312e7b5aa1e6a95e0f0c3899"
+    },
+    {
+      "file": "before-after.jpg",
+      "pixels": [
+        1920,
+        582
+      ],
+      "sha256": "91869b405fea2719da65780b3e1e6efabfd9de2d7f83b56084d992b23ff26c94"
+    },
+    {
+      "file": "berserk-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "5414e41805e3768232d14bf1f8be81d936c8668fc4e80ea53f3731617efb514d"
+    },
+    {
+      "file": "boss-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "20131f2a01f8cab89a66906ab008a74e2a81519cb675b2a966cfd8a18033380c"
+    },
+    {
+      "file": "boss-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "ec21a3aef865ec0af9630683cda020d27cd2dd7df0223f9c8b01177b752ffb8c"
+    },
+    {
+      "file": "boss-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "sha256": "0ca91307740977fd675a7a42745f377e7d7e2897ecad111f280456a9050eba25"
+    },
+    {
+      "file": "boss-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "sha256": "eeb9d445c233df8a937f5ff90588f2a8d5f687411a026625564247effbe65081"
+    },
+    {
+      "file": "boss-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "sha256": "ac0d0a7793fb6f3c7a8f0df8ea23dbc72fafe91c967daa6ff152cef8ea410dc3"
+    },
+    {
+      "file": "full-build-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "7710717449ab8d37b8e341273d44ffb048754948998987ed557da28babaeb103"
+    },
+    {
+      "file": "full-build-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "sha256": "c68f267b293bce1586f942f58734abaa5bb4a6cfc34b8a9bae3e7a45beccccf8"
+    },
+    {
+      "file": "mobile-touch-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "sha256": "23551fd28f27f736a3ae2dd55fc1082f2f65d3f009befb8a5233112d714a8590"
+    },
+    {
+      "file": "mobile-touch-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "sha256": "baab3093cfb8641510e713ce155eeb073de494b1de9e77481bb42ba6114bfdd2"
+    },
+    {
+      "file": "normal-boss.jpg",
+      "pixels": [
+        1920,
+        582
+      ],
+      "sha256": "1f12e24e5fe60d4aeb592c0424e8da354e3fd0893d2d807734a49b16a3a20599"
+    },
+    {
+      "file": "paused-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "1737d1d8a813e7d06fa06551204c614873213bf770683cef64f30574551351af"
+    },
+    {
+      "file": "paused-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "sha256": "deccc1e704c3bbd9cebd6c543e57a05be3693b54f0957a99b7453b1561567f1b"
+    },
+    {
+      "file": "ready-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "e29213556ac0675345eff9140fa4aeeec0ad10ea3d46a152758a5cf083238451"
+    },
+    {
+      "file": "start-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "cedacc1dd55e9bde3d8d4f9de17043384ec1f48a0763072acd1c25e44623f3e8"
+    },
+    {
+      "file": "start-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "3fb8366bf92df44b8f99a538dfba5eea8857e2a7b0caf03c13d9083587cbbf8e"
+    },
+    {
+      "file": "start-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b265e23a4f32dd36e2a4cf78b03efab64487d1fa33fb6b60359f5042b095b313"
+    }
+  ]
+}
