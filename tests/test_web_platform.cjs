@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const code=fs.readFileSync(require('node:path').join(__dirname,'../web/platform.js'),'utf8');
-function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,orientationDeny=false,active=true,dpr=3,touch=5,standalone=false,ios=false,width=844,height=390}={}){
+function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,orientationDeny=false,active=true,dpr=3,touch=5,standalone=false,ios=false,width=844,height=390,performanceReview=null}={}){
  const events=new Map(),elements=new Map();let calls=0,locks=0,reads=0;
  function element(){return {style:{},hidden:false,addEventListener(type,fn){this[type]=fn},setAttribute(){}}}
  const canvas=element();canvas.width=300;canvas.height=150;elements.set('canvas',canvas);
@@ -10,11 +10,16 @@ function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,or
  if(fullscreen)root[prefixed?'webkitRequestFullscreen':'requestFullscreen']=request;
  if(prefixed){delete document.fullscreenEnabled;document.webkitFullscreenEnabled=true;}
  const navigator={maxTouchPoints:touch,userActivation:{isActive:active}};if(ios)navigator.standalone=standalone;
- const context={window:{devicePixelRatio:dpr},document,navigator,screen:{orientation:orientation?{lock:async()=>{locks++;if(orientationDeny)throw Error('unsupported')}}:{}},innerWidth:width,innerHeight:height,matchMedia:q=>({matches:standalone&&q==='(display-mode: standalone)'}),getComputedStyle(){reads++;return{paddingLeft:'14px',paddingTop:'8px',paddingRight:'16px',paddingBottom:'12px'}},addEventListener(type,fn){events.set(type,{fn})}};
+ const context={window:{devicePixelRatio:dpr,__auraPerformance:performanceReview},document,navigator,screen:{orientation:orientation?{lock:async()=>{locks++;if(orientationDeny)throw Error('unsupported')}}:{}},innerWidth:width,innerHeight:height,matchMedia:q=>({matches:standalone&&q==='(display-mode: standalone)'}),getComputedStyle(){reads++;return{paddingLeft:'14px',paddingTop:'8px',paddingRight:'16px',paddingBottom:'12px'}},addEventListener(type,fn){events.set(type,{fn})}};
  vm.runInNewContext(code,context);
  return {context,document,canvas,events,elements,state:context.window.__auraPlatform,get calls(){return calls},get locks(){return locks},get reads(){return reads},deny(value){deny=value},gesture(type='pointerup',extra={}){return events.get(type).fn({type,target:canvas,pointerType:'touch',isTrusted:true,...extra})}};
 }
 (async()=>{
+ let calls=[];let diagnostic=scenario({performanceReview:{enabled:true,rasterRatio:1,setMode:mode=>calls.push(mode)}});
+ assert.equal(diagnostic.canvas.width,844);assert.equal(diagnostic.canvas.height,390);
+ assert.equal(JSON.parse(diagnostic.state.metrics()).width,844);assert.equal(JSON.parse(diagnostic.state.metrics()).pixelRatio,1);
+ diagnostic.state.setMode('playing');assert.deepEqual(calls,['playing']);
+ diagnostic=scenario({performanceReview:{enabled:false,rasterRatio:1}});assert.equal(diagnostic.canvas.width,1266);
  let s=scenario();assert.equal(s.events.get('pointerup').options.capture,true);assert.equal(s.events.get('touchend').options.capture,true);
  await s.gesture();assert.equal(s.state.fullscreen,'active');assert.equal(s.state.orientation,'locked');assert.equal(s.calls,1);
  await s.gesture('touchend');assert.equal(s.calls,1,'Pointer/Touch duplicate does not re-enter');

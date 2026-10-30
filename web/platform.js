@@ -34,6 +34,10 @@
     const dpr = window.devicePixelRatio || 1;
     const compactTouch = state.touch && Math.min(innerWidth,innerHeight) < 900;
     state.pixelRatio = compactTouch ? Math.min(dpr,1.5) : dpr;
+    // Only the opt-in Performance Review shell supplies this reversible A/B
+    // raster cap. Logical layout/input metrics continue to use CSS dimensions.
+    const diagnosticRatio = window.__auraPerformance?.rasterRatio;
+    if (window.__auraPerformance?.enabled && diagnosticRatio) state.pixelRatio=Math.min(state.pixelRatio,diagnosticRatio);
     // The Web preset uses resize policy None: exactly one owner writes raster
     // dimensions. CSS coordinates remain independent of Retina pixel density.
     if (canvas) {
@@ -105,7 +109,7 @@
   document.body.style.margin='0';
   if (canvas) canvas.style.touchAction='none';
   state.metrics = () => cachedMetrics;
-  state.setMode = mode => { state.mode=mode;controls(); };
+  state.setMode = mode => { state.mode=mode;controls();if(window.__auraPerformance)window.__auraPerformance.setMode(mode); };
   state.enter = event => enter(event,true);
   window.__auraPlatform = state; changed();
   if (state.touch && !supported() && !standalone()) explain();
