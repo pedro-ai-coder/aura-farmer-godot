@@ -40,7 +40,18 @@ function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,or
  await s.gesture('touchend');assert.equal(s.calls,1);
  s=scenario();s.state.setMode('playing');assert.equal(s.elements.get('aura-fullscreen').hidden,true);
  for(const mode of ['heroes','choice','legendary','replace','confirm_exit','won','lost']){s.state.setMode(mode);assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Launcher must not obscure game/modal controls');}
- s.state.setMode('options');assert.equal(s.elements.get('aura-fullscreen').hidden,false);
+ s.state.setMode('options');assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Settings launcher waits for an unclipped live Control row');
+ s.state.setFullscreenBounds([80,120,320,48]);
+ const launcher=s.elements.get('aura-fullscreen');assert.equal(launcher.hidden,false);assert.equal(launcher.style.left,'80px');assert.equal(launcher.style.top,'120px');
+ assert.equal(launcher.style.width,'320px');assert.match(launcher.style.background,/fullscreen-button/);
+ const raster=s.canvas.width;const embeddedReads=s.reads;s.state.setFullscreenBounds(null);
+ assert.equal(launcher.hidden,true,'Clipped settings rows never leave a floating click target');
+ s.state.setFullscreenBounds([80,180,320,48]);assert.equal(launcher.style.top,'180px');assert.equal(s.canvas.width,raster);assert.equal(s.reads,embeddedReads,'Settings positioning does not resample layout or framebuffer density');
+ s.state.setMode('playing');assert.equal(launcher.hidden,true);
+ s.state.setMode('options');assert.equal(launcher.hidden,true,'Reentry requires fresh safe-area bounds');
+ s=scenario({deny:true});s.state.setMode('options');s.state.setFullscreenBounds([80,120,320,48]);
+ await s.elements.get('aura-fullscreen').click({isTrusted:true});assert.equal(s.state.fullscreen,'denied');assert.equal(s.elements.get('aura-fullscreen-help').hidden,false);
+ s.deny(false);await s.elements.get('aura-fullscreen').click({isTrusted:true});assert.equal(s.state.fullscreen,'active');assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Actual fullscreen replaces the action with state feedback');
  for(const [w,h] of [[1920,1080],[1600,900],[1280,720],[915,412],[844,390],[390,844]]){
   s=scenario({width:w,height:h});const ratio=Math.min(w,h)<900?1.5:3;
   assert.equal(s.canvas.width,Math.round(w*ratio));assert.equal(s.canvas.height,Math.round(h*ratio));

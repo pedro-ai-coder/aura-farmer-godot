@@ -82,9 +82,10 @@ func verify() -> void:
         expect(skin.wave.get_theme_font("font").get_string_size(skin.wave.text,HORIZONTAL_ALIGNMENT_LEFT,-1,skin.wave.get_theme_font_size("font_size")).x<=skin.wave.size.x+1,"Boss clock remains unclipped")
         expect(hud.boss_hp.text=="30000 / 30000 HP","Boss HP comes from actual canonical simulation values")
         expect(hud.boss_portrait.texture==game.art.texture("big-hater"),"Original Big Hater master identifies the encounter")
-        var boss_module: Control=hud.modules["TopRightBossStatus"]
+        var boss_module: Control=hud.modules["TopCenterBossStatus"]
         var pause_module: Control=hud.modules["TopRightPause"]
-        expect(boss_module.get_rect().get_center().x>skin.view.x*0.5 and not boss_module.get_rect().intersects(pause_module.get_rect()),"Boss stays at right edge without displacing Pause")
+        expect(is_equal_approx(boss_module.get_rect().get_center().x,skin.view.x*0.5) and not boss_module.get_rect().intersects(pause_module.get_rect()),"Boss stays below the centered wave without displacing Pause")
+        expect(is_equal_approx(boss_module.position.y,hud.modules["TopCenterWaveTimer"].get_rect().end.y+2),"Boss frame connects immediately beneath Wave")
         game.enemies[-1]["hp"]=17001;game.run_time=720;skin.refresh()
         expect(hud.boss_hp.text=="17001 / 30000 HP" and skin.warning.text=="FULL HATER MODE","Live damage and Berserk phase remain visible within boss module")
         game.run_time=625;skin.refresh()

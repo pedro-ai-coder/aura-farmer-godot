@@ -46,6 +46,9 @@ var reserved: Array[Rect2]=[]
 var compact: bool=false
 var portrait: bool=false
 var desktop: bool=false
+var max_level_plate: TextureRect
+var bottom_joins: Array[ColorRect]=[]
+var boss_phase_backdrop: ColorRect
 
 static func texture(id: String) -> Texture2D:
     if not textures.has(id):textures[id]=load(ART+id+".svg")
@@ -70,16 +73,24 @@ func _init(owner_skin) -> void:
     boss_portrait=skin.image(skin);boss_portrait.texture=game.art.texture("big-hater")
     boss_hp=skin.label(skin);wave_clock=skin.label(skin)
     skin.hud_nodes.append_array([boss_portrait,boss_hp,wave_clock])
+    max_level_plate=skin.image(skin);max_level_plate.texture=texture("wave-frame")
+    max_level_plate.stretch_mode=TextureRect.STRETCH_SCALE
+    skin.hud_nodes.append(max_level_plate)
+    boss_phase_backdrop=ColorRect.new();boss_phase_backdrop.color=INK;boss_phase_backdrop.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    skin.add_child(boss_phase_backdrop);skin.hud_nodes.append(boss_phase_backdrop)
+    for i in range(2):
+        var join:=ColorRect.new();join.color=Color("427b9e");join.mouse_filter=Control.MOUSE_FILTER_IGNORE
+        skin.add_child(join);skin.move_child(join,0);bottom_joins.append(join);skin.hud_nodes.append(join)
     # Each module is a live, non-intercepting Control anchored inside the
     # presenter's existing safe area. Buttons keep their original signals.
-    for id in ["TopLeftHeroStatus","TopCenterWaveTimer","TopRightBossStatus","TopRightPause","BottomLeftXP","BottomCenterEquipment","BottomRightFlex"]:
+    for id in ["TopLeftHeroStatus","TopCenterWaveTimer","TopCenterBossStatus","TopRightPause","BottomLeftXP","BottomCenterEquipment","BottomRightFlex"]:
         var module:=Control.new();module.name=id;module.mouse_filter=Control.MOUSE_FILTER_IGNORE
         skin.add_child(module);modules[id]=module;skin.hud_nodes.append(module)
     move_into("TopLeftHeroStatus",[skin.player_plate,skin.hp_fill,skin.shield_track,skin.shield_fill,skin.portrait,skin.hero_name,skin.hp,shield_mark,skin.shield_label])
     move_into("TopCenterWaveTimer",[skin.wave_frame,skin.wave,wave_clock])
-    move_into("TopRightBossStatus",[skin.boss_plate,boss_fill,boss_portrait,skin.boss_text,boss_hp,skin.warning])
+    move_into("TopCenterBossStatus",[skin.boss_plate,boss_fill,boss_portrait,skin.boss_text,boss_hp,boss_phase_backdrop,skin.warning])
     move_into("TopRightPause",[game.pause_button])
-    move_into("BottomLeftXP",[skin.xp_frame,skin.xp_track,skin.xp_fill,skin.xp])
+    move_into("BottomLeftXP",[skin.xp_frame,skin.xp_track,skin.xp_fill,max_level_plate,skin.xp])
     move_into("BottomCenterEquipment",[strip,weapon_group,passive_group])
     for parts in skin.equipment:move_into("BottomCenterEquipment",parts.values())
     move_into("BottomRightFlex",[game.flex_button,ability_plate,skin.flex_caption])
@@ -136,14 +147,18 @@ func layout() -> void:
     game.flex_button.show();game.flex_button.text=""
     for state in ["normal","hover","focus","pressed","disabled"]:
         game.flex_button.add_theme_stylebox_override(state,skin.empty_style)
-    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,game.touch_device,not game.SoloClock.warning(game.run_time).is_empty()])
+    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,game.touch_device,game.level>=25,not game.SoloClock.warning(game.run_time).is_empty()])
     if geometry_key!=next_geometry:
         geometry_key=next_geometry;geometry_count+=1
         layout_geometry()
         data_key=""
     sync_data()
-    modules["TopRightBossStatus"].visible=has_boss or not skin.warning.text.is_empty()
+    modules["TopCenterBossStatus"].visible=has_boss or not skin.warning.text.is_empty()
     for node in [skin.boss_plate,skin.boss_text,boss_hp,boss_fill,boss_portrait]:node.visible=has_boss
+    boss_phase_backdrop.visible=has_boss and not skin.warning.text.is_empty()
+    max_level_plate.visible=game.level>=25
+    for node in [skin.xp_frame,skin.xp_track,skin.xp_fill]:node.visible=not max_level_plate.visible
+    for join in bottom_joins:join.visible=not stacked_bottom
     for parts in skin.equipment:
         parts["name"].hide()
         parts["tab"].visible=not parts["level"].text.is_empty()
@@ -185,22 +200,19 @@ func layout_geometry() -> void:
     var pause_size:=Vector2(72,68) if compact else Vector2(80,76)
     var pause_module:=anchor("TopRightPause",Vector2(1,0),pause_size,Vector2(-4,4))
     place(game.pause_button,Rect2(Vector2.ZERO,pause_size))
-    var boss_size:=Vector2(300 if compact else 320,84)
-    var boss_top:=4.0
-    var boss_right: float=-pause_size.x-8.0
-    # A second row belongs to the right edge, never the center of combat.
-    if view.x+boss_right-boss_size.x<wave_module.get_rect().end.x+8:
-        boss_right=-4
-        boss_top=maxf(status.get_rect().end.y,wave_module.get_rect().end.y)+8
-    var boss_module:=anchor("TopRightBossStatus",Vector2(1,0),boss_size,Vector2(boss_right,boss_top))
+    var boss_width: float=300 if compact else 320
+    if not portrait:boss_width=minf(boss_width,view.x-2.0*(status.get_rect().end.x+6))
+    var boss_size:=Vector2(boss_width,88)
+    var boss_module:=anchor("TopCenterBossStatus",Vector2(0.5,0),boss_size,Vector2(0,wave_module.get_rect().end.y+2))
     boss_rect=boss_module.get_rect()
-    place(skin.boss_plate,Rect2(Vector2.ZERO,boss_size));skin.boss_plate.texture=texture("boss-frame")
+    place(skin.boss_plate,Rect2(0,0,boss_width,84));skin.boss_plate.texture=texture("boss-frame")
     place(boss_portrait,Rect2(15,8,43,47))
     place(skin.boss_text,Rect2(64,5,boss_size.x-92,25))
     text_style(skin.boss_text,"section_header",18,INK)
     place(boss_hp,Rect2(64,29,boss_size.x-92,23))
     text_style(boss_hp,"hud_secondary",18,INK)
-    place(skin.warning,Rect2(24,64,boss_size.x-48,20))
+    place(boss_phase_backdrop,Rect2(16,66,boss_size.x-32,22))
+    place(skin.warning,Rect2(24,66,boss_size.x-48,22))
     text_style(skin.warning,"hud_secondary",16,PAPER)
     skin.warning.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     # The 3+5 rail is centered independently from the XP and Flex end modules.
@@ -237,9 +249,10 @@ func layout_geometry() -> void:
     if stacked_bottom:xp_width=minf(250,view.x-diameter-24)
     var xp_module:=anchor("BottomLeftXP",Vector2(0,1),Vector2(xp_width,58),Vector2(4,-lower_offset))
     place(skin.xp_frame,Rect2(Vector2.ZERO,xp_module.size))
+    place(max_level_plate,Rect2(0,18,xp_width,40))
     xp_rect=Rect2(xp_width*0.115,58*0.585,xp_width*0.785,58*0.19)
     place(skin.xp_track,xp_rect);skin.xp_track.color=Color("073c64")
-    place(skin.xp,Rect2(xp_width*0.09,1,xp_width*0.82,31))
+    place(skin.xp,Rect2(xp_width*0.09,18 if game.level>=25 else 1,xp_width*0.82,40 if game.level>=25 else 31))
     text_style(skin.xp,"hud_stat",20 if compact else 22,INK)
     var flex_module:=anchor("BottomRightFlex",Vector2(1,1),Vector2(diameter,diameter+34),Vector2(-6,-maxf(6,lower_offset)))
     place(game.flex_button,Rect2(0,34,diameter,diameter))
@@ -256,6 +269,10 @@ func layout_geometry() -> void:
     place(skin.flex_caption,Rect2(caption_left+19,0,caption_width-32,32))
     text_style(skin.flex_caption,"section_header",18,PAPER)
     for node in [skin.flex_image,skin.flex_track,skin.flex_fill,skin.flex_badge]:node.hide()
+    # Narrow joins stay within the existing bottom boundary; no opaque overlay
+    # or extra input exclusion is added to the combat field.
+    place(bottom_joins[0],Rect2(xp_module.get_rect().end.x-8,view.y-8,maxf(0,strip_module.position.x-xp_module.get_rect().end.x+16),3))
+    place(bottom_joins[1],Rect2(strip_module.get_rect().end.x-8,view.y-8,maxf(0,flex_module.get_rect().get_center().x-strip_module.get_rect().end.x+8),3))
     place(game.legendary_button,Rect2(4,xp_module.position.y-68,minf(250,view.x-8),60))
     reserved.assign([status.get_rect(),wave_module.get_rect(),pause_module.get_rect(),strip_module.get_rect(),xp_module.get_rect(),Rect2(flex_module.position+game.flex_button.position,game.flex_button.size)])
     # The nameplate extends left of the circular target but never intercepts input.
@@ -282,7 +299,8 @@ func sync_data() -> void:
     # Shield remains a percentage of real max HP, as before; no artificial max.
     skin.shield_fill.update_meter(Rect2(shield_rect.position+Vector2(3,3),shield_rect.size-Vector2(6,6)),game.shield/maxf(1.0,game.max_hp))
     skin.shield_label.text="SHIELD %d" % ceili(game.shield)
-    skin.xp.text="LV %d  ·  XP %d" % [game.level,int(game.xp)];skin.fit_line(skin.xp,18)
+    skin.xp.text="MAX LV 25" if game.level>=25 else "LV %d  ·  XP %d" % [game.level,int(game.xp)]
+    skin.fit_line(skin.xp,18)
     skin.xp_fill.update_meter(xp_rect,game.xp/(30+8*game.level+game.level*game.level))
     skin.wave.text="WAVE %d / %d" % [game.wave,int(game.SoloClock.BOSS_AT/game.SoloClock.WAVE_SECONDS)]
     wave_clock.text="%02d:%02d" % [int(game.run_time)/60,int(game.run_time)%60]
@@ -291,7 +309,7 @@ func sync_data() -> void:
     for node in [skin.boss_plate,skin.boss_text,boss_hp,boss_fill,boss_portrait]:node.visible=has_boss
     skin.warning.visible=not skin.warning.text.is_empty()
     if not has_boss:
-        place(skin.warning,Rect2(12,0,modules["TopRightBossStatus"].size.x-24,25))
+        place(skin.warning,Rect2(12,0,modules["TopCenterBossStatus"].size.x-24,25))
         text_style(skin.warning,"hud_secondary",18,GOLD)
         skin.warning.add_theme_constant_override("outline_size",2)
         skin.warning.add_theme_color_override("font_outline_color",INK)

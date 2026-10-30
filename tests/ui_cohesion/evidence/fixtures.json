@@ -1,0 +1,798 @@
+{
+  "before": [
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "build",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "build",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "options",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "options",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 421,
+      "level": 20,
+      "metrics": {
+        "damage": 128765.0,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "won",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "won",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "build",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(843, 390)",
+      "requested": [
+        844,
+        390
+      ],
+      "run_time": 625.0,
+      "state": "build",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    }
+  ],
+  "after": [
+    {
+      "hero": "sigma",
+      "hp": 129.32832,
+      "kills": 420,
+      "level": 25,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 354.11232,
+        "protection": 180
+      },
+      "mode": "playing",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 545.0,
+      "state": "max-level",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "playing",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 725.0,
+      "state": "boss",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "build",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "build",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "options",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "options",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 421,
+      "level": 20,
+      "metrics": {
+        "damage": 128765.0,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "won",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "won",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 0.0,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 220.0
+      },
+      "mode": "lost",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(1600, 900)",
+      "requested": [
+        1600,
+        900
+      ],
+      "run_time": 625.0,
+      "state": "lost",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    },
+    {
+      "hero": "sigma",
+      "hp": 131.1552,
+      "kills": 420,
+      "level": 20,
+      "metrics": {
+        "damage": 98765,
+        "flex_absorbed": 0.0,
+        "flex_damage": 0.0,
+        "flex_finishers": 0,
+        "flex_prevented": 0.0,
+        "flexes": 6,
+        "healing": 342,
+        "protection": 180
+      },
+      "mode": "build",
+      "passives": [
+        {
+          "id": "main-character",
+          "level": 1,
+          "rarity": "common"
+        },
+        {
+          "id": "terminally-online",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "built-different",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "caught-4k",
+          "level": 4,
+          "rarity": "common"
+        },
+        {
+          "id": "certified-w",
+          "level": 4,
+          "rarity": "common"
+        }
+      ],
+      "readback": "(843, 390)",
+      "requested": [
+        844,
+        390
+      ],
+      "run_time": 625.0,
+      "state": "build",
+      "weapons": [
+        {
+          "id": "no-cap",
+          "level": 4,
+          "rarity": "common",
+          "timer": 0.0
+        },
+        {
+          "id": "ratio-blaster",
+          "level": 3,
+          "rarity": "rare",
+          "timer": 0.0
+        },
+        {
+          "id": "brainrot-feed",
+          "level": 4,
+          "rarity": "epic",
+          "timer": 0.0
+        }
+      ],
+      "xp": 110.0
+    }
+  ]
+}
