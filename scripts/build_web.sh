@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# Only this development branch family opts Vercel previews into diagnostics.
+# Production and every ordinary local Web export retain the standard preset.
+if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == perf/m0-mobile-* ]]; then
+    PERFORMANCE_REVIEW="${PERFORMANCE_REVIEW:-1}"
+fi
 # Reproducible Godot Web export for Vercel's standard Linux build image.
 # Uses only official Godot 4.7.2 binaries, verified against published SHA-256.
 VERSION="4.7.2"
