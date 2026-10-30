@@ -172,8 +172,6 @@ func layout() -> void:
         parts["name"].hide()
         parts["tab"].visible=not parts["level"].text.is_empty()
         parts["rarity"].visible=parts["tab"].visible
-    if threat_overlay.visible:
-        skin.portrait.visible=not threat_overlay.faded[0];skin.hero_name.visible=not threat_overlay.faded[0]
 
 func layout_geometry() -> void:
     var view: Vector2=skin.view
