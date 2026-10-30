@@ -81,7 +81,7 @@ func verify() -> void:
         expect(skin.wave.text.begins_with("WAVE ") and hud.wave_clock.text=="10:25" and skin.boss_text.visible,"Centered wave/clock remain separate from live boss information")
         expect(skin.wave.get_theme_font("font").get_string_size(skin.wave.text,HORIZONTAL_ALIGNMENT_LEFT,-1,skin.wave.get_theme_font_size("font_size")).x<=skin.wave.size.x+1,"Boss clock remains unclipped")
         expect(hud.boss_hp.text=="30000 / 30000 HP","Boss HP comes from actual canonical simulation values")
-        expect(hud.boss_portrait.texture==game.art.texture("big-hater"),"Original Big Hater master identifies the encounter")
+        expect(hud.boss_portrait.texture==game.art.enemy_frame("boss",0),"Original approved Big Hater frame identifies the encounter")
         var boss_module: Control=hud.modules["TopCenterBossStatus"]
         var pause_module: Control=hud.modules["TopRightPause"]
         expect(is_equal_approx(boss_module.get_rect().get_center().x,skin.view.x*0.5) and not boss_module.get_rect().intersects(pause_module.get_rect()),"Boss stays below the centered wave without displacing Pause")
@@ -176,9 +176,9 @@ func check_edges(skin,hud) -> void:
     expect(is_equal_approx(pause.get_rect().end.x,skin.view.x-4) and is_equal_approx(pause.position.y,4),"Pause stays at extreme upper-right")
     expect(is_equal_approx(xp.position.x,4),"XP stays on safe left edge")
     expect(is_equal_approx(rail.get_rect().get_center().x,skin.view.x*0.5) and is_equal_approx(rail.get_rect().end.y,skin.view.y-4),"3+5 equipment rail anchors to bottom-center")
-    expect(is_equal_approx(flex.get_rect().end.x,skin.view.x-6),"Circular Flex anchors to safe right edge")
+    expect(is_equal_approx(flex.get_rect().end.x,skin.view.x-14),"Circular Flex anchors to safe right edge")
     if not hud.stacked_bottom:
-        expect(is_equal_approx(xp.get_rect().end.y,skin.view.y-4) and is_equal_approx(flex.get_rect().end.y,skin.view.y-6),"XP and Flex share bottom boundary on supported landscape")
+        expect(is_equal_approx(xp.get_rect().end.y,skin.view.y-4) and is_equal_approx(flex.get_rect().end.y,skin.view.y-14),"XP and Flex share bottom boundary on supported landscape")
     else:
         expect(xp.get_rect().end.y<=rail.position.y-6 and flex.get_rect().end.y<=rail.position.y-6,"Constrained fallback is directly attached above bottom rail")
     for i in range(8):

@@ -1,4 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const exportScript=fs.readFileSync(require('node:path').join(__dirname,'../scripts/build_web.sh'),'utf8');
+for(const state of ['normal','hover','focus','pressed']){assert.match(exportScript,new RegExp(state==='normal'?'secondary-normal.png':'for state in hover focus pressed'));}
+assert.match(exportScript,/hero-clash\/Archivo.ttf/);assert.match(exportScript,/OFL-Archivo.txt/);
 const code=fs.readFileSync(require('node:path').join(__dirname,'../web/platform.js'),'utf8');
 function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,orientationDeny=false,active=true,dpr=3,touch=5,standalone=false,ios=false,width=844,height=390,performanceReview=null}={}){
  const events=new Map(),elements=new Map();let calls=0,locks=0,reads=0;
@@ -14,6 +17,8 @@ function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,or
  vm.runInNewContext(code,context);
  return {context,document,canvas,events,elements,state:context.window.__auraPlatform,get calls(){return calls},get locks(){return locks},get reads(){return reads},deny(value){deny=value},gesture(type='pointerup',extra={}){return events.get(type).fn({type,target:canvas,pointerType:'touch',isTrusted:true,...extra})}};
 }
+for(const state of ['hover','focus-visible','active'])assert.ok(code.includes('.aura-secondary:'+state),'Full native-family pointer/focus states: '+state);
+assert.ok(code.includes('border-image-slice:16 64 24 64 fill'));
 (async()=>{
  let calls=[];let diagnostic=scenario({performanceReview:{enabled:true,rasterRatio:1,setMode:mode=>calls.push(mode)}});
  assert.equal(diagnostic.canvas.width,844);assert.equal(diagnostic.canvas.height,390);
@@ -43,15 +48,17 @@ function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,or
  s.state.setMode('options');assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Settings launcher waits for an unclipped live Control row');
  s.state.setFullscreenBounds([80,120,320,48]);
  const launcher=s.elements.get('aura-fullscreen');assert.equal(launcher.hidden,false);assert.equal(launcher.style.left,'80px');assert.equal(launcher.style.top,'120px');
- assert.equal(launcher.style.width,'320px');assert.match(launcher.style.background,/fullscreen-button/);
+ assert.equal(launcher.style.width,'320px');assert.equal(launcher.className,'aura-secondary');assert.equal(launcher.style.borderStyle,'solid');assert.equal(launcher.style.borderWidth,'4px 16px 6px 16px');assert.equal(launcher.style.fontWeight,'600');
  const raster=s.canvas.width;const embeddedReads=s.reads;s.state.setFullscreenBounds(null);
  assert.equal(launcher.hidden,true,'Clipped settings rows never leave a floating click target');
  s.state.setFullscreenBounds([80,180,320,48]);assert.equal(launcher.style.top,'180px');assert.equal(s.canvas.width,raster);assert.equal(s.reads,embeddedReads,'Settings positioning does not resample layout or framebuffer density');
- s.state.setMode('playing');assert.equal(launcher.hidden,true);
+ s.state.setMode('playing');assert.equal(launcher.hidden,true);assert.equal(launcher.className,'');
  s.state.setMode('options');assert.equal(launcher.hidden,true,'Reentry requires fresh safe-area bounds');
  s=scenario({deny:true});s.state.setMode('options');s.state.setFullscreenBounds([80,120,320,48]);
  await s.elements.get('aura-fullscreen').click({isTrusted:true});assert.equal(s.state.fullscreen,'denied');assert.equal(s.elements.get('aura-fullscreen-help').hidden,false);
+ assert.equal(s.elements.get('aura-fullscreen-help').textContent,'Fullscreen blocked. Tap to retry.','Embedded denial copy fits the compact status row');
  s.deny(false);await s.elements.get('aura-fullscreen').click({isTrusted:true});assert.equal(s.state.fullscreen,'active');assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Actual fullscreen replaces the action with state feedback');
+ for(const ios of [true,false]){s=scenario({fullscreen:false,ios});s.state.setMode('options');s.state.setFullscreenBounds([80,120,278,48]);await s.elements.get('aura-fullscreen').click({isTrusted:true});assert.ok(s.elements.get('aura-fullscreen-help').textContent.length<=34,'Embedded platform help stays concise without changing support detection');}
  for(const [w,h] of [[1920,1080],[1600,900],[1280,720],[915,412],[844,390],[390,844]]){
   s=scenario({width:w,height:h});const ratio=Math.min(w,h)<900?1.5:3;
   assert.equal(s.canvas.width,Math.round(w*ratio));assert.equal(s.canvas.height,Math.round(h*ratio));
