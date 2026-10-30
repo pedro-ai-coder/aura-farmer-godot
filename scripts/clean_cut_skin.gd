@@ -288,6 +288,7 @@ func install(owner_game, source_root: String) -> void:
     refresh()
 func _process(delta: float) -> void:
     refresh()
+    gameplay_hud.tick_feedback()
     if game == null or not offers_scroll.visible: return
     for i in range(offer_parts.size()):
         var icon: TextureRect = offer_parts[i]["icon"]
@@ -320,7 +321,8 @@ func refresh() -> void:
     var confirmation_parent: Control=auxiliary if game.mode in auxiliary.MODES else self
     if game.confirm_button.get_parent()!=confirmation_parent:
         game.confirm_button.reparent(confirmation_parent)
-    if game.pause_button.get_parent()!=self:game.pause_button.reparent(self)
+    var pause_parent: Control=gameplay_hud.modules["TopRightPause"] if game.mode=="playing" else self
+    if game.pause_button.get_parent()!=pause_parent:game.pause_button.reparent(pause_parent,false)
     view=ui.view;shift=ui.position;position=shift;size=view
     var mode: String=game.mode
     var mode_changed: bool=mode!=last_mode
@@ -339,6 +341,8 @@ func refresh() -> void:
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
+    var heading_parent: Control=auxiliary if mode=="paused" else self
+    if heading.get_parent()!=heading_parent:heading.reparent(heading_parent,false)
     for node in hud_nodes:node.visible=mode=="playing"
     place(watermark,Rect2(12,3,view.x-24,20))
     if mode=="menu":home_layout()
