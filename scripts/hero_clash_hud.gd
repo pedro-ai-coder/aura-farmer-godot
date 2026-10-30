@@ -32,6 +32,7 @@ var boss_rect:=Rect2()
 var reserved: Array[Rect2]=[]
 var compact: bool=false
 var portrait: bool=false
+var desktop: bool=false
 
 static func texture(id: String) -> Texture2D:
     if not textures.has(id):textures[id]=load(ART+id+".svg")
@@ -93,7 +94,7 @@ func layout() -> void:
     game.flex_button.show();game.flex_button.text=""
     for state in ["normal","hover","focus","pressed","disabled"]:
         game.flex_button.add_theme_stylebox_override(state,skin.empty_style)
-    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned])
+    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,game.touch_device])
     if geometry_key!=next_geometry:
         geometry_key=next_geometry;geometry_count+=1
         layout_geometry()
@@ -109,36 +110,38 @@ func layout_geometry() -> void:
     var view: Vector2=skin.view
     compact=view.y<580.0 or view.x<700.0
     portrait=view.x<700.0 and view.y>view.x
+    desktop=not compact and not game.touch_device
     var status:=Rect2(22,30,530,144)
+    if desktop:status=Rect2(22,24,450,132)
     if compact:status=Rect2(14,14,390 if not portrait else minf(395,view.x-110),112 if not portrait else 118)
     place(skin.player_plate,status)
     place(skin.portrait,rect_in(status,26,22,154,118))
-    place(skin.hero_name,rect_in(status,207,30,342,41))
-    text_style(skin.hero_name,"section_header",25 if compact else 32,INK)
-    hp_rect=rect_in(status,197,79,373,34)
+    place(skin.hero_name,rect_in(status,207,23 if desktop else 30,342,48 if desktop else 41))
+    text_style(skin.hero_name,"section_header",25 if compact else 30 if desktop else 32,INK)
+    hp_rect=rect_in(status,197,81 if desktop else 79,373,36 if desktop else 34)
     place(skin.hp,Rect2(hp_rect.position+Vector2(15,0),hp_rect.size-Vector2(24,0)))
     text_style(skin.hp,"hud_stat",20 if compact else 24,PAPER)
-    shield_rect=rect_in(status,186,121,369,25)
+    shield_rect=rect_in(status,186,124 if desktop else 121,369,29 if desktop else 25)
     place(skin.shield_track,shield_rect);skin.shield_track.color=Color("082b4b")
     place(shield_mark,Rect2(shield_rect.position+Vector2(8,2),Vector2(18,shield_rect.size.y-4)))
     place(skin.shield_label,Rect2(shield_rect.position+Vector2(34,0),shield_rect.size-Vector2(42,0)))
-    text_style(skin.shield_label,"hud_secondary",18 if compact else 20,PAPER)
-    var wave_width: float=300.0 if compact else 390.0
-    var wave_height: float=60.0 if compact else 70.0
+    text_style(skin.shield_label,"hud_secondary",18 if compact or desktop else 20,PAPER)
+    var wave_width: float=300.0 if compact else 340.0 if desktop else 390.0
+    var wave_height: float=60.0 if compact else 64.0 if desktop else 70.0
     var wave_left: float=view.x*0.62-wave_width*0.5
-    var wave_top: float=22.0 if compact else 46.0
+    var wave_top: float=22.0 if compact else 36.0 if desktop else 46.0
     if portrait:wave_left=(view.x-wave_width)*0.5;wave_top=status.end.y+14.0
     place(skin.wave_frame,Rect2(wave_left,wave_top,wave_width,wave_height))
     place(skin.wave,Rect2(wave_left+25,wave_top+5,wave_width-50,wave_height-13))
-    text_style(skin.wave,"section_header",23 if compact else 30,INK)
-    var pause_size:=Vector2(72,68) if compact else Vector2(88,84)
+    text_style(skin.wave,"section_header",23 if compact else 28 if desktop else 30,INK)
+    var pause_size:=Vector2(72,68) if compact else Vector2(80,76) if desktop else Vector2(88,84)
     place(game.pause_button,Rect2(Vector2(view.x-pause_size.x-16,status.position.y),pause_size))
-    var strip_height: float=214.0 if portrait else 98.0 if compact else 114.0
-    var strip_width: float=view.x-28.0 if portrait else 640.0 if compact else 760.0
+    var strip_height: float=214.0 if portrait else 98.0 if compact else 100.0 if desktop else 114.0
+    var strip_width: float=view.x-28.0 if portrait else 640.0 if compact else 660.0 if desktop else 760.0
     var strip_rect:=Rect2(14 if compact else 22,view.y-strip_height-14,strip_width,strip_height)
     place(strip,strip_rect);strip.texture=texture("equipment-portrait" if portrait else "equipment-strip")
-    var slot: float=76.0 if portrait else 68.0 if compact else 82.0
-    var pitch: float=86.0 if portrait else 76.0 if compact else 91.0
+    var slot: float=76.0 if portrait else 68.0 if compact else 72.0 if desktop else 82.0
+    var pitch: float=86.0 if portrait else 76.0 if compact else 78.0 if desktop else 91.0
     for i in range(8):
         var weapon: bool=i<3
         var index: int=i if weapon else i-3
@@ -146,46 +149,47 @@ func layout_geometry() -> void:
         var parts: Dictionary=skin.equipment[i]
         place(parts["frame"],Rect2(at,Vector2.ONE*slot))
         place(parts["icon"],Rect2(at+Vector2(8,6),Vector2(slot-16,slot-18)))
-        place(parts["tab"],Rect2(at+Vector2(12,slot-23),Vector2(slot-17,22)))
-        place(parts["level"],Rect2(at+Vector2(10,slot-24),Vector2(slot-14,24)))
-        text_style(parts["level"],"hud_secondary",18 if compact else 19,PAPER)
+        place(parts["tab"],Rect2(at+Vector2(12,slot-(29 if desktop else 23)),Vector2(slot-17,22)))
+        place(parts["level"],Rect2(at+Vector2(10,slot-(32 if desktop else 24)),Vector2(slot-14,24)))
+        text_style(parts["level"],"hud_secondary",18 if compact or desktop else 19,PAPER)
         parts["level"].horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
         place(parts["rarity"],Rect2(at+Vector2(13,slot-6),Vector2(slot-25,3)))
         parts["name"].hide()
     weapon_group.text="WEAPONS";passive_group.text="PASSIVES"
-    text_style(weapon_group,"micro_label",15 if compact else 16,PAPER)
-    text_style(passive_group,"micro_label",15 if compact else 16,PAPER)
+    text_style(weapon_group,"micro_label",15 if compact else 13 if desktop else 16,Color(PAPER,0.75) if desktop else PAPER)
+    text_style(passive_group,"micro_label",15 if compact else 13 if desktop else 16,Color(PAPER,0.75) if desktop else PAPER)
     if portrait:
         place(weapon_group,Rect2(strip_rect.position+Vector2(282,30),Vector2(strip_width-300,30)))
         place(passive_group,Rect2(strip_rect.position+Vector2(14,89),Vector2(strip_width-28,24)))
     else:
-        place(weapon_group,Rect2(strip_rect.position+Vector2(18,strip_height-23),Vector2(3*pitch-18,22)))
-        place(passive_group,Rect2(strip_rect.position+Vector2(3*pitch+30,strip_height-23),Vector2(strip_width-3*pitch-42,22)))
+        var group_top: float=strip_height-(18 if desktop else 23)
+        place(weapon_group,Rect2(strip_rect.position+Vector2(18,group_top),Vector2(3*pitch-18,16 if desktop else 22)))
+        place(passive_group,Rect2(strip_rect.position+Vector2(3*pitch+30,group_top),Vector2(strip_width-3*pitch-42,16 if desktop else 22)))
         weapon_group.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
         passive_group.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-    var xp_width: float=minf(350,view.x-30) if compact else 390.0
-    var xp_height: float=58.0 if compact else 66.0
+    var xp_width: float=minf(350,view.x-30) if compact else 340.0 if desktop else 390.0
+    var xp_height: float=58.0 if compact else 56.0 if desktop else 66.0
     var xp_top: float=strip_rect.position.y-xp_height-5
     place(skin.xp_frame,Rect2(strip_rect.position.x,xp_top,xp_width,xp_height))
     xp_rect=Rect2(strip_rect.position.x+xp_width*0.115,xp_top+xp_height*0.585,xp_width*0.785,xp_height*0.19)
     place(skin.xp_track,xp_rect);skin.xp_track.color=Color("073052")
     place(skin.xp,Rect2(strip_rect.position.x+xp_width*0.12,xp_top+1,xp_width*0.72,xp_height*0.55))
-    text_style(skin.xp,"hud_stat",21 if compact else 24,INK)
-    var diameter: float=164.0 if compact else 208.0
+    text_style(skin.xp,"hud_stat",21 if compact else 22 if desktop else 24,INK)
+    var diameter: float=164.0 if compact else 184.0 if desktop else 208.0
     var flex_rect:=Rect2(view.x-diameter-16,view.y-diameter-(strip_height+104 if portrait else 14),diameter,diameter)
     place(game.flex_button,flex_rect)
     place(skin.aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*diameter));skin.aura_arc.show()
     place(skin.flex_title,Rect2(diameter*0.13,diameter*0.32,diameter*0.74,diameter*0.25))
-    text_style(skin.flex_title,"section_header",32 if compact else 43,PAPER)
+    text_style(skin.flex_title,"section_header",32 if compact else 38 if desktop else 43,PAPER)
     skin.flex_title.text="FLEX"
     place(skin.flex_status,Rect2(diameter*0.11,diameter*0.60,diameter*0.78,diameter*0.18))
-    text_style(skin.flex_status,"hud_stat",19 if compact else 22,PAPER)
-    var caption_width: float=230.0 if compact else 250.0
+    text_style(skin.flex_status,"hud_stat",19 if compact else 20 if desktop else 22,PAPER)
+    var caption_width: float=230.0 if compact or desktop else 250.0
     var caption_left: float=maxf(8.0,minf(view.x-caption_width-10.0,flex_rect.get_center().x-caption_width*0.5))
-    var caption_rect:=Rect2(caption_left,flex_rect.position.y-39,caption_width,35)
+    var caption_rect:=Rect2(caption_left,flex_rect.position.y-(36 if desktop else 39),caption_width,32 if desktop else 35)
     place(ability_plate,caption_rect)
     place(skin.flex_caption,Rect2(caption_rect.position+Vector2(20,0),caption_rect.size-Vector2(34,0)))
-    text_style(skin.flex_caption,"section_header",18 if compact else 20,PAPER)
+    text_style(skin.flex_caption,"section_header",18 if compact or desktop else 20,PAPER)
     for node in [skin.flex_image,skin.flex_track,skin.flex_fill,skin.flex_badge]:node.hide()
     boss_rect=Rect2((view.x-minf(440,view.x-40))*0.5,maxf(status.end.y,skin.wave_frame.get_rect().end.y)+12,minf(440,view.x-40),44)
     place(skin.boss_plate,boss_rect);skin.boss_plate.texture=texture("boss-frame")
@@ -241,7 +245,10 @@ func sync_data() -> void:
     skin.flex_status.text="READY" if ready else "ACTIVE %.1fs" % game.flex_time if active_flex else "LOCK %.0fs" % game.flex_lock if recovering else "AURA %d%%" % int(game.aura)
     skin.flex_status.add_theme_color_override("font_color",GOLD if ready else Color("6ff3df") if active_flex else PAPER)
     skin.fit_line(skin.flex_status,17)
-    skin.flex_caption.text=str(game.hero["flex"]).to_upper();skin.fit_line(skin.flex_caption,16 if compact else 18)
+    skin.flex_caption.text=str(game.hero["flex"]).to_upper();skin.fit_line(skin.flex_caption,16 if compact or desktop else 18)
+    var caption_alpha: float=0.72 if desktop and current=="charging" else 1.0
+    ability_plate.modulate=Color(1,1,1,caption_alpha);skin.flex_caption.modulate=ability_plate.modulate
+    game.flex_button.tooltip_text=str(game.hero["flex"])+" [Space] — 100 Aura required"
     game.legendary_button.visible=game.run_time>=game.SoloClock.LEGENDARY_FIRST and game.run_time<game.SoloClock.LEGENDARY_DEADLINE and not game.legendary_spent and not game.legendary_offers.is_empty()
     if game.legendary_button.visible:game.legendary_button.text="LEGENDARY [L]";skin.button_skin(game.legendary_button,"menu/primary")
     for i in range(8):
@@ -260,7 +267,10 @@ func sync_data() -> void:
 func safe_label_origin(world: Vector2, label_size: Vector2) -> Vector2:
     # Try presentation offsets only. The station/radius/activation never move.
     var transform: Transform2D=skin.get_global_transform_with_canvas().affine_inverse()*game.get_global_transform_with_canvas()
-    for offset in SAFE_LABEL_OFFSETS:
+    for i in range(SAFE_LABEL_OFFSETS.size()):
+        var offset: Vector2=SAFE_LABEL_OFFSETS[i]
+        if i<2:offset.x=-label_size.x*0.5
+        elif i==2:offset.x=-label_size.x-34.0
         var at: Vector2=world+offset
         var candidate: Rect2=transform*Rect2(at,label_size)
         var blocked: bool=(not skin.warning.text.is_empty() and candidate.intersects(skin.warning.get_rect().grow(4))) or (game.legendary_button.visible and candidate.intersects(game.legendary_button.get_rect().grow(4)))

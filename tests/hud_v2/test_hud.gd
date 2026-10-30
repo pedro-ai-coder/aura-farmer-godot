@@ -15,6 +15,13 @@ func verify() -> void:
             game.start_run(hero);game.presentation._window_changed(true)
             await process_frame;await process_frame
             skin.refresh()
+            if hud.desktop:
+                var occupied:=0.0
+                for region in hud.reserved:occupied+=region.get_area()
+                expect(occupied<275406.0*0.82,"Desktop HUD releases at least 18% of its previous reserved area")
+                expect(skin.hp.get_theme_font_size("font_size")>=22 and skin.shield_label.get_theme_font_size("font_size")>=18,"Critical desktop health text stays readable")
+            elif hud.compact:
+                expect(is_equal_approx(game.flex_button.size.x,164),"Mobile circular Flex target retains its existing geometry")
             expect(skin.portrait.texture==game.art.texture(game.HEROES[hero]["id"]),"Approved hero source identity remains exact")
             expect(skin.hero_name.text==str(game.hero["name"]).to_upper(),"Live hero name")
             expect(skin.flex_caption.text==str(game.hero["flex"]).to_upper(),"Canonical live ability name")
@@ -66,6 +73,14 @@ func verify() -> void:
         for i in range(8):
             var item: Dictionary=game.weapons[i] if i<3 else game.passives[i-3]
             expect(skin.equipment[i]["icon"].texture==game.presentation.item_icons.texture("weapon" if i<3 else "passive",item["id"]),"Exact approved icon and item ordering")
+            if hud.desktop:expect(skin.equipment[i]["level"].get_rect().end.y<=skin.equipment[i]["rarity"].position.y,"Desktop level text stays above its rarity stroke")
+        game.boss_spawned=true;game.run_time=625
+        game._spawn_enemy("boss",{"pos":Vector2(1030,540)})
+        game._show_ui();skin.refresh()
+        expect(skin.wave.text.begins_with("BIG HATER") and skin.boss_text.visible,"Compact banner retains live boss information")
+        expect(skin.wave.get_theme_font("font").get_string_size(skin.wave.text,HORIZONTAL_ALIGNMENT_LEFT,-1,skin.wave.get_theme_font_size("font_size")).x<=skin.wave.size.x+1,"Boss clock remains unclipped")
+        for i in range(hud.reserved.size()):
+            for j in range(i+1,hud.reserved.size()):expect(not hud.reserved[i].intersects(hud.reserved[j]),"Boss HUD regions remain separate")
         var station: Vector2=game.RecoveryRulesScript.SAFE_SPOT
         var label_at: Vector2=hud.safe_label_origin(station,Vector2(96,24))
         expect(station==Vector2(1100,565) and game.RecoveryRulesScript.SAFE_RADIUS==68,"World recovery geometry remains canonical")
@@ -83,6 +98,26 @@ func verify() -> void:
         game._toggle_pause();skin.refresh()
         game._deal_damage_to_player(100000)
         expect(game.mode=="lost" and not skin.player_plate.visible,"Death hides gameplay HUD")
+    game.start_run(0);game.spawn_timer=INF;game.hp=50
+    var station: Vector2=game.RecoveryRulesScript.SAFE_SPOT
+    expect(game._safe_spot_context_label().is_empty(),"Ordinary distant station has no permanent name or countdown")
+    game.player_pos=station+Vector2(80,0)
+    expect(game._safe_spot_context_label()=="HEAL AVAILABLE","Nearby injured player gets contextual availability")
+    game._tick_recovery(1.0)
+    expect(game.safe_spot_charge==0,"Presentation proximity does not expand the canonical activation radius")
+    game.player_pos=station;game._tick_recovery(1.0)
+    expect(game._safe_spot_context_label()=="HEALING 50%","Charge label follows the real two-second activation")
+    game._toggle_pause();game._process(0.25)
+    expect(game.safe_spot_charge==1.0,"Pause freezes actual healing progress")
+    game._toggle_pause();game._tick_recovery(1.0)
+    expect(game.hp==75 and game.safe_spot_uses==1 and game.safe_spot_ready_at==90,"Presentation preserves actual heal amount and cooldown")
+    expect(game._safe_spot_context_label()=="RECOVERY 90s" and game.pickup_feedback[-1]["text"]=="HP RESTORED","Real healing triggers the short completion cue and contextual cooldown")
+    var rng: int=game.rng.state
+    for reduced in [true,false]:
+        game.profile["settings"]["reducedMotion"]=reduced
+        expect(game._safe_spot_context_label()=="RECOVERY 90s","Reduced Motion retains readable state information")
+    game.player_pos=station+Vector2(120,0)
+    expect(game._safe_spot_context_label().is_empty() and game.rng.state==rng,"Distant cooldown stays subdued without presentation RNG")
     game.queue_free()
     if failures.is_empty():print("PASS: HUD V2 all heroes/six viewports, live damage/heal/shield/XP, 3+5 icons, state lifecycle, geometry cache and real Pause/Quit");quit()
     else:

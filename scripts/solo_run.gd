@@ -1592,7 +1592,7 @@ func _tick_recovery(dt: float) -> void:
             safe_spot_uses += 1
             safe_spot_ready_at = run_time + 90.0
             safe_spot_charge = 0.0
-            _pickup_cue("snack", RecoveryRulesScript.SAFE_SPOT, "SAFE SPOT · HP RESTORED")
+            _pickup_cue("snack", RecoveryRulesScript.SAFE_SPOT, "HP RESTORED")
     else: safe_spot_charge = 0.0
 
 func _collect_drops() -> void:
@@ -2345,30 +2345,47 @@ func _draw_hero_actor() -> void:
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
 
+func _safe_spot_context_label() -> String:
+    # Presentation only. All progress/cooldown comes from active gameplay time.
+    var nearby: float=RecoveryRulesScript.SAFE_RADIUS+34.0
+    if player_pos.distance_squared_to(RecoveryRulesScript.SAFE_SPOT)>nearby*nearby:return ""
+    var cooldown: float=maxf(0.0,safe_spot_ready_at-run_time)
+    if cooldown>0.0:return "RECOVERY %ds" % ceili(cooldown)
+    if safe_spot_charge>0.0:return "HEALING %d%%" % mini(100,floori(safe_spot_charge/2.0*100.0))
+    return "HEAL AVAILABLE" if hp<max_hp else ""
+
 func _draw_recovery() -> void:
     var point: Vector2 = RecoveryRulesScript.SAFE_SPOT
     var cooldown := maxf(0.0, safe_spot_ready_at - run_time)
     var tint := Color("29d3d2") if cooldown <= 0.0 else Color("8394aa")
-    draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.07))
-    draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,0.65), 2.0)
+    var reduced: bool=bool(profile["settings"]["reducedMotion"])
+    var pulse: float=0.0 if reduced or cooldown>0.0 else sin(run_time*2.4)*0.06
+    draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.035))
+    draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,(0.38 if cooldown<=0.0 else 0.22)+pulse), 2.0)
     draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),Color("24364a"))
     draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),tint,false,3.0)
     draw_rect(Rect2(point-Vector2(5,16),Vector2(10,32)),tint)
     draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
     var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
-    if progress > 0.0: draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
-    var label_text: String="SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown)
-    var label_at: Vector2=point+Vector2(-48,35)
-    if clean_cut_skin!=null and clean_cut_skin.gameplay_hud!=null:
-        label_at=clean_cut_skin.gameplay_hud.safe_label_origin(point,Vector2(96,24))
-    if label_at.is_finite():
-        draw_style_box(_safe_spot_label_style,Rect2(label_at,Vector2(96,24)))
+    var label_text: String=_safe_spot_context_label()
+    if progress > 0.0 and (cooldown<=0.0 or not label_text.is_empty()):
+        draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e") if cooldown<=0.0 else Color(tint,0.5),4.0)
+    if not label_text.is_empty():
         var label_width: float=Typography.font("hud_secondary").get_string_size(label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x
-        draw_string(Typography.font("hud_secondary"),label_at+Vector2((96-label_width)*0.5,18),label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff9e9"))
+        var label_size:=Vector2(maxf(112,label_width+16),26)
+        var label_at: Vector2=point+Vector2(-label_size.x*0.5,35)
+        if clean_cut_skin!=null and clean_cut_skin.gameplay_hud!=null:
+            label_at=clean_cut_skin.gameplay_hud.safe_label_origin(point,label_size)
+        if label_at.is_finite():
+            draw_style_box(_safe_spot_label_style,Rect2(label_at,label_size))
+            draw_string(Typography.font("hud_secondary"),label_at+Vector2((label_size.x-label_width)*0.5,19),label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff9e9"))
     for feedback: Dictionary in pickup_feedback:
         var age := 0.9 - (float(feedback["until"]) - run_time)
         var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))
         var at: Vector2 = Vector2(feedback["pos"]) + offset
+        if feedback["kind"]=="snack" and Vector2(feedback["pos"])==point:
+            var fade:=clampf(1.0-age/0.9,0.0,1.0)
+            draw_arc(point,34.0+(0.0 if reduced else age*16.0),0.0,TAU,32,Color(0.47,0.91,0.36,fade*0.7),3.0)
         draw_string_outline(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,2,Color("253449"))
         draw_string(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))
 
