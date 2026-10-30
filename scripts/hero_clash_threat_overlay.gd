@@ -6,8 +6,8 @@ var hud
 var game
 var decoration: Array[Array]=[]
 var essential: Array[Array]=[]
-var dark_text: StyleBox
-var light_text: StyleBox
+var dark_text: StyleBoxFlat
+var light_text: StyleBoxFlat
 var regions: Array[Rect2]=[]
 var faded: Array[bool]=[]
 var traces: Array[Dictionary]=[]
@@ -24,8 +24,9 @@ func install(owner_hud) -> void:
     mouse_filter=Control.MOUSE_FILTER_IGNORE;z_index=1
     cue=hud.skin.label(self);hud.text_style(cue,"hud_secondary",18,hud.PAPER)
     cue.autowrap_mode=TextServer.AUTOWRAP_OFF;cue.clip_text=true
-    cue.add_theme_stylebox_override("normal",hud.skin.Style.box(hud.INK,hud.GOLD,1,0))
-    cue.add_theme_constant_override("margin_left",22)
+    var cue_box: StyleBoxFlat=hud.skin.Style.box(hud.INK,hud.GOLD,1,0)
+    cue_box.set_content_margin_all(0);cue_box.set_border_width_all(1)
+    cue.add_theme_stylebox_override("normal",cue_box)
     cue.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;cue.hide()
     decoration.assign([
         [hud.skin.player_plate,hud.shield_mark,hud.skin.shield_track,hud.skin.shield_fill.face,hud.skin.hp_fill.face],
@@ -34,6 +35,10 @@ func install(owner_hud) -> void:
     essential.assign([[hud.skin.hp,hud.skin.shield_label],[hud.skin.wave,hud.wave_clock],[hud.skin.boss_text,hud.boss_hp,hud.skin.warning],[],[hud.skin.xp],[],[hud.skin.flex_title,hud.skin.flex_status,hud.skin.flex_caption]])
     dark_text=hud.skin.Style.box(Color(hud.INK,0.88),Color.TRANSPARENT,0,0)
     light_text=hud.skin.Style.box(Color(hud.PAPER,0.88),Color.TRANSPARENT,0,0)
+    # These are text contrast surfaces, not padded panels. Default panel
+    # margins would enlarge live Labels and overlap the Flex hit rectangle.
+    for surface in [dark_text,light_text]:
+        surface.set_content_margin_all(0);surface.set_border_width_all(0)
     for parts in hud.skin.equipment:
         for id in ["frame","icon","tab","rarity"]:decoration[5].append(parts[id])
         essential[5].append(parts["level"])

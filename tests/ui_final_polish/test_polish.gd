@@ -87,6 +87,9 @@ func verify() -> void:
             if parts["level"].text.is_empty():expect(not parts["level"].has_theme_stylebox_override("normal"),"Empty slots do not create opaque contrast surfaces")
         game.enemies[0]["pos"]=transform.affine_inverse()*(hud.modules["BottomRightFlex"].position+Vector2(80,120))
         hud.update_threat_readability(true);expect(skin.aura_arc.body_alpha<0.2,"Flex yields its body while preserving its ring, values and target")
+        await process_frame;await process_frame
+        expect(not skin.flex_caption.get_global_rect().intersects(game.flex_button.get_global_rect()),"Settled contextual contrast cannot enlarge the ability caption into the actual Flex target")
+        expect(overlay.cue.get_minimum_size().y<=30,"Context cue keeps its allocated height after deferred layout")
         game._toggle_pause();await process_frame;skin.refresh();hud.update_threat_readability(true)
         expect(not overlay.visible and skin.aura_arc.body_alpha==1,"Pause clears threat visuals and restores the control")
         await click(game.presentation.secondary.settings);await settle(game)

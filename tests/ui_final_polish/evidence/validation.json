@@ -59,6 +59,24 @@
   ],
   "after_retained_report": [
     {
+      "boss_bounds": "[P: (50.07744, 29.01288), S: (199.8452, 166.8129)]",
+      "boss_world_pos": "(325.8751, 408.9375)",
+      "flex_hit": "[P: (1082.0, 522.0), S: (184.0, 184.0)]",
+      "hazard_direction": "(0.947712, 0.319128)",
+      "hazard_shape": "line",
+      "hazard_world_pos": "(325.8751, 408.9375)",
+      "hud_intersections": [
+        "TopLeftHeroStatus"
+      ],
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "state": "near-hud",
+      "viewport_clipped": false
+    },
+    {
       "boss_bounds": "[P: (-77.92259, -105.9871), S: (199.8452, 166.8129)]",
       "boss_world_pos": "(221.8751, 299.25)",
       "flex_hit": "[P: (1082.0, 522.0), S: (184.0, 184.0)]",
@@ -75,14 +93,6 @@
       "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
       "state": "clipped",
       "viewport_clipped": true
-    },
-    {
-      "flex_hit": "[P: (2116.0, 1130.0), S: (226.0, 64.0)]",
-      "readback": "(1600, 900)",
-      "requested": "(1600, 900)",
-      "safe_view": "(1280.0, 720.0)",
-      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
-      "state": "build"
     },
     {
       "boss_bounds": "[P: (582.8937, 135.8667), S: (163.0991, 136.1405)]",
@@ -114,7 +124,7 @@
   "evidence": "Six JPEGs composed only from actual native captures. Comparisons preserve scale; crops explicitly labeled. No generated art.",
   "source_sha256": {
     "scripts/hero_clash_hud.gd": "54af194fdc3c6dfed4076e4023095b52f76caf83e3ebd0d965f0b04e9bcfffd9",
-    "scripts/hero_clash_threat_overlay.gd": "82903c5d91195117b9b15a3ea92ae10b0841b168f406c315cf1fd80ff474d1ef",
+    "scripts/hero_clash_threat_overlay.gd": "acf63b0d1277fa902caf023608fe5f730d8be4525eef3072256f85b97f273da1",
     "scripts/hero_clash_flex_dial.gd": "7241bbb8a2eba108cf268cfca811f10e73a47b1c8bfb90235a05eeef36ebc5da",
     "scripts/clean_cut_skin.gd": "23f08a44b951f264a30f7856039846701c6e9d347674bb96c812c78ffdbfd279",
     "scripts/clean_cut_secondary.gd": "16073e511832018892fc8fc8ba159ba633191831219dc3cff058d84b8ef26925",
@@ -142,7 +152,7 @@
         3200,
         1876
       ],
-      "sha256": "649c8b304a36cb394c516288ea58b5e19d9ebce84cf43188206fbc34a2e9d041"
+      "sha256": "6ba464e6a918f73ea9e6435ebdac442338ec234d624b94641ca7290850b121f0"
     },
     "flex-charge-ready.jpg": {
       "size": [
@@ -156,7 +166,7 @@
         843,
         390
       ],
-      "sha256": "91feba71fb7fa7ee039e1a01a3ffa156c5e5c2b7eb9ce4e5f5b7e8ee940b2f25"
+      "sha256": "0d95f540e24fb3bfab8474d0394dc19bb3f83e9b6d1b402a5f6f7f8c07d10318"
     },
     "settings-before-after.jpg": {
       "size": [
@@ -172,5 +182,6 @@
     "World-edge clipping remains a camera/world fact, signaled honestly; camera, enemies, hazards and simulation were not moved.",
     "Artwork reuse changes presentation only; approved masters, HUD/button source hashes and approval status are unchanged.",
     "CI/Web final results and preview URL are recorded on the PR after publication; no merge or production deployment authorized."
-  ]
+  ],
+  "ci_correction": "Initial full CI 41118155474 caught inherited panel padding enlarging contextual Labels by 16 units. Contrast/cue surfaces now have zero content margins, and deferred-layout assertions plus the unchanged recovery_m01 suite pass. Only affected native captures were refreshed; the mandatory CI/export must rerun on the correction."
 }

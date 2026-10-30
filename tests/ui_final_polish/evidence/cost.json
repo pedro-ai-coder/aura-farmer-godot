@@ -3,30 +3,30 @@
   "results": [
     {
       "actor_sample": {
-        "median_ms": 0.891,
-        "p95_ms": 2.511,
-        "p99_ms": 3.508
+        "median_ms": 0.851,
+        "p95_ms": 1.1,
+        "p99_ms": 1.177
       },
       "actors": 100,
       "between_actor_samples": {
-        "median_ms": 0.039,
-        "p95_ms": 0.082,
-        "p99_ms": 0.101
+        "median_ms": 0.04,
+        "p95_ms": 0.052,
+        "p99_ms": 0.062
       },
       "hazards": 0,
       "workload": "100 actors, no hazards"
     },
     {
       "actor_sample": {
-        "median_ms": 0.967,
-        "p95_ms": 1.328,
-        "p99_ms": 1.742
+        "median_ms": 0.985,
+        "p95_ms": 1.214,
+        "p99_ms": 1.328
       },
       "actors": 100,
       "between_actor_samples": {
-        "median_ms": 0.124,
-        "p95_ms": 0.166,
-        "p99_ms": 0.235
+        "median_ms": 0.123,
+        "p95_ms": 0.214,
+        "p99_ms": 0.299
       },
       "hazards": 3,
       "workload": "100 actors, three boss hazards"

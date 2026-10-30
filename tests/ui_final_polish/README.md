@@ -27,12 +27,14 @@ Settings height follows actual columns/content (430 rather than 468 logical unit
 
 ## Verification and limits
 
-[Seven targeted suites](evidence/targeted.json) · [six-viewport/five-state checks](evidence/checks.json) · [small CPU guard](evidence/cost.json) · [capture/provenance](evidence/validation.json).
+[Eight targeted suites](evidence/targeted.json) · [six-viewport/five-state checks](evidence/checks.json) · [small CPU guard](evidence/cost.json) · [capture/provenance](evidence/validation.json).
 
 Actual Godot tests cover live HP, all hostile shapes, clipping versus HUD overlap, safe insets, empty/full equipment, pointer/keyboard Settings persistence, Pause/Quit, joystick/multitouch, Reduced Motion and unchanged irregular-frame simulation/RNG/camera hashes. Node tests cover trusted fullscreen, denial/retry, focus/pointer faces, modal ownership and CSS/DPR invariants. Final mandatory CI/Web export results are recorded on the PR.
 
-The 100-actor headless CPU guard measures the added presentation work, **not FPS**: actor-check medians 0.891–0.967 ms at 20 Hz; between-sample medians 0.039–0.124 ms. It does not establish a mobile frame budget. Physical Pixel 8a/Brave and browser gameplay QA remain pending. Natural camera-edge clipping remains signaled; this task does not claim the earlier mobile stutter is resolved.
+The 100-actor headless CPU guard measures the added presentation work, **not FPS**: timings are recorded separately for 20 Hz actor checks and live boundary updates. It does not establish a mobile frame budget. Physical Pixel 8a/Brave and browser gameplay QA remain pending. Natural camera-edge clipping remains signaled; this task does not claim the earlier mobile stutter is resolved.
 
 Changed runtime files: `hero_clash_{hud,threat_overlay,flex_dial}.gd`, `clean_cut_{skin,secondary}.gd`, `web/platform.js`, `scripts/build_web.sh`. Validation changes: the Draft CI allowlist, `scripts/validate.sh`, HUD/fullscreen tests and this review directory. Gameplay source, camera, save schema, fonts, approved artwork/manifests and historical evidence are unchanged.
 
 Reproduce native captures: `godot --path . --rendering-driver opengl3 --script res://tests/ui_final_polish/capture.gd -- 1600 900 /tmp/ui-final near-hud,clipped,boss,charging,ready,options,build,paused`; use `844 390` and `mobile` for the landscape fixture. Review evidence/tests are excluded from production exports.
+
+The initial full CI caught inherited panel padding enlarging contextual Labels. Zero-margin contrast surfaces now preserve their reserved rectangles; new assertions wait for deferred layout, and the unchanged six-viewport recovery audit passes. Only affected captures were refreshed for the correction.

@@ -54,5 +54,13 @@
     "pass": [
       "PASS: Six viewport real touch drag/release, stable HUD layout, unchanged RNG and CSS/DPR target parity"
     ]
+  },
+  {
+    "test": "recovery_m01/test_layout.gd",
+    "exit": 0,
+    "errors": [],
+    "pass": [
+      "PASS: Actual Controls, six viewport bounds/peer overlaps, boss HUD, dynamic text, full build and modal rows"
+    ]
   }
 ]
