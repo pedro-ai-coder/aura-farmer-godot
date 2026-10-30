@@ -39,8 +39,9 @@ func verify() -> void:
         var bounds: Rect2=overlay.enemy_bounds(boss,transform)
         expect(Rect2(Vector2.ZERO,skin.view).encloses(bounds),"Controlled actor overlaps HUD without viewport clipping")
         expect(overlay.actor_hits==1 and overlay.cue.visible and not overlay.clipped_boss,"HUD occlusion is distinguished from clipping")
-        expect(skin.player_plate.self_modulate.a<0.2 and not skin.portrait.visible and not skin.hero_name.visible,"Only obscuring decoration yields to the actual threat")
-        expect(skin.hp.self_modulate.a==1 and skin.hp.has_theme_stylebox_override("normal"),"Essential HP remains opaque with a tight contrast surface")
+        expect(skin.player_plate.self_modulate.a==1 and skin.portrait.visible and skin.hero_name.visible,"Covered boss never hides hero frame, portrait or name")
+        expect(skin.hp.self_modulate.a==1 and not skin.hp.has_theme_stylebox_override("normal"),"HP retains its approved style without temporary contrast replacements")
+        expect(skin.wave_frame.self_modulate.a==1 and skin.wave.visible and hud.wave_clock.visible,"Wave banner and clock stay intact during boss overlap")
         expect(hud.boss_hp.text=="17001 / 30000 HP" and skin.warning.text=="FULL HATER MODE","Live HP and canonical Berserk remain accurate")
         expect(hud.boss_rect.get_center().x==skin.view.x*0.5 and hud.boss_rect.size.y<88,"Boss stays centered with a smaller vertical footprint")
         for id in ["TopLeftHeroStatus","TopCenterWaveTimer","TopRightPause"]:expect(not hud.boss_rect.intersects(hud.modules[id].get_rect()),"Boss does not overlap peer HUD: "+id)
@@ -79,19 +80,28 @@ func verify() -> void:
             hud.update_threat_readability(true)
             expect(game.hazard_zones[0]["shape"]==shape and game.hazard_zones[0]["at"]==726,"No hazard rule changes for "+shape)
         game.hazard_zones.clear();game.enemies.clear();hud.update_threat_readability(true)
-        expect(not overlay.cue.visible and overlay.traces.is_empty() and skin.player_plate.self_modulate.a==1 and skin.portrait.visible,"Quiet play restores the original HUD without constant warnings")
-        # Bottom equipment/Flex can also cover real enemy silhouettes.
+        expect(not overlay.cue.visible and overlay.traces.is_empty() and skin.player_plate.self_modulate.a==1 and skin.portrait.visible,"Quiet play has no warning and retains permanent HUD visuals")
+        # Regression: actors crossing every HUD boundary must never change permanent HUD art.
         game._spawn_enemy("npc",{"pos":transform.affine_inverse()*hud.modules["BottomCenterEquipment"].get_rect().get_center()})
-        hud.update_threat_readability(true);expect(overlay.faded[5],"Equipment decoration yields to a covered ordinary enemy")
+        var stable_nodes: Array[CanvasItem]=[skin.player_plate,skin.portrait,skin.hero_name,skin.hp,skin.shield_label,skin.wave_frame,skin.wave,hud.wave_clock,hud.strip,skin.xp_frame,hud.ability_plate]
         for parts in skin.equipment:
-            if parts["level"].text.is_empty():expect(not parts["level"].has_theme_stylebox_override("normal"),"Empty slots do not create opaque contrast surfaces")
-        game.enemies[0]["pos"]=transform.affine_inverse()*(hud.modules["BottomRightFlex"].position+Vector2(80,120))
-        hud.update_threat_readability(true);expect(skin.aura_arc.body_alpha<0.2,"Flex yields its body while preserving its ring, values and target")
+            stable_nodes.append(parts["frame"]);stable_nodes.append(parts["icon"])
+        for id in ["TopLeftHeroStatus","TopCenterWaveTimer","BottomCenterEquipment","BottomRightFlex"]:
+            var region: Rect2=hud.modules[id].get_rect()
+            for point_at in [region.get_center(),region.end+Vector2(30,30),region.get_center()]:
+                game.enemies[0]["pos"]=transform.affine_inverse()*point_at
+                hud.update_threat_readability(true)
+                for node: CanvasItem in stable_nodes:
+                    expect(is_equal_approx(node.self_modulate.a,1.0),"No HUD transparency during repeated "+id+" crossings: "+str(node.name))
+                expect(skin.portrait.visible and skin.hero_name.visible and skin.wave.visible and hud.wave_clock.visible,"Identity and Wave always remain visible near "+id)
+                expect(is_equal_approx(skin.aura_arc.body_alpha,1.0),"Flex keeps its complete circular body near "+id)
+        for parts in skin.equipment:
+            expect(not parts["level"].has_theme_stylebox_override("normal"),"Equipment levels retain original style without temporary panels")
         await process_frame;await process_frame
         expect(not skin.flex_caption.get_global_rect().intersects(game.flex_button.get_global_rect()),"Settled contextual contrast cannot enlarge the ability caption into the actual Flex target")
         expect(overlay.cue.get_minimum_size().y<=30,"Context cue keeps its allocated height after deferred layout")
         game._toggle_pause();await process_frame;skin.refresh();hud.update_threat_readability(true)
-        expect(not overlay.visible and skin.aura_arc.body_alpha==1,"Pause clears threat visuals and restores the control")
+        expect(not overlay.visible and skin.aura_arc.body_alpha==1,"Pause clears threat cues without changing the Flex visual")
         await click(game.presentation.secondary.settings);await settle(game)
         var aux=skin.auxiliary;var ui=game.presentation
         expect(game.mode=="options" and aux.screen_panel.size.y<=view_limit(skin,432),"Settings height follows actual two/one-column content")
@@ -101,12 +111,12 @@ func verify() -> void:
         expect(aux.fullscreen_button.get_node("ClashButtonFeedback").art_family==game.sound_button.get_node("ClashButtonFeedback").art_family,"Native Fullscreen uses the same secondary family")
         expect(aux.fullscreen_status.get_rect().end.y<=ui.body_content.size.y+1,"Fullscreen status remains accessible within content")
         await click(ui.back_button);expect(game.mode=="paused","Settings Back preserves pause")
-        rows.append({"viewport":str(extent),"safe_view":str(skin.view),"boss_bounds":str(bounds),"settings_height":aux.screen_panel.size.y,"sampling":"20 Hz actor checks; live hostile boundaries; no HUD reconstruction"})
+        rows.append({"viewport":str(extent),"safe_view":str(skin.view),"boss_bounds":str(bounds),"settings_height":aux.screen_panel.size.y,"sampling":"20 Hz actor checks; live hostile boundaries; permanent HUD remains unchanged"})
     var args:=OS.get_cmdline_user_args()
     if not args.is_empty():
         var file:=FileAccess.open(args[0],FileAccess.WRITE);file.store_string(JSON.stringify({"cases":rows,"failures":failures},"  "));file.close()
     game.queue_free()
-    if failures.is_empty():print("PASS: Six-viewport actual threat geometry, hostile clipping, unchanged simulation, five Flex states/safe insets and compact Settings");quit()
+    if failures.is_empty():print("PASS: Six-viewport static HUD identity, threat cues, unchanged simulation, Flex states/safe insets and compact Settings");quit()
     else:
         for failure in failures:push_error(failure)
         quit(1)
