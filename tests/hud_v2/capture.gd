@@ -17,6 +17,7 @@ func capture() -> void:
     game.clean_cut_skin.set_process(false)
     var states: Array=["start","partial","shield","low-hp","midgame","full-build","ready","active","recovery","boss","safe-near-ui","cool-kid","alpha","pause-focus","pause-pressed","paused"]
     if baseline:states=["start","full-build","ready","boss"]
+    if args.has("--compact-review"):states=["start"] if extent.x<1000 else ["start","ready","safe-available","safe-charge","safe-healed","safe-cooldown"]
     var reports: Array=[]
     for state in states:
         game.start_run(1 if state=="cool-kid" else 2 if state=="alpha" else 0)
@@ -38,6 +39,13 @@ func capture() -> void:
             game.run_time=625;game.boss_spawned=true;game.shield=40
             game._spawn_enemy("boss",{"pos":Vector2(1030,540)})
         if state=="safe-near-ui":game.player_pos=Vector2(870,390)
+        if state.begins_with("safe-") and state!="safe-near-ui":
+            game.player_pos=game.RecoveryRulesScript.SAFE_SPOT+Vector2(80 if state=="safe-available" else -30,0)
+            game.hp=50
+            if state=="safe-charge":game._tick_recovery(1.0)
+            elif state in ["safe-healed","safe-cooldown"]:
+                game._tick_recovery(2.0)
+                if state=="safe-cooldown":game.run_time+=10;game._tick_recovery(0.0)
         game.presentation._window_changed(true)
         game._show_ui();game._update_text();game._update_camera(0.0,true)
         await process_frame;await process_frame
@@ -57,4 +65,5 @@ func capture() -> void:
         print("CAPTURE ",file)
     var report:=FileAccess.open(output.path_join("report-%dx%d.json" % [extent.x,extent.y]),FileAccess.WRITE)
     report.store_string(JSON.stringify(reports,"  "))
+    report.flush();report.close()
     game.queue_free();quit()
