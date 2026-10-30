@@ -18,7 +18,7 @@ jobs:
     name: godot-validation
     # Keep this isolated art review unmergeable as a draft while running the full checks.
     # Other drafts retain the existing runner-saving behavior.
-    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' || github.head_ref == 'fix/m0-navigation-ui-recovery' || github.head_ref == 'ui/hero-clash-gameplay-hud-v2' || github.head_ref == 'perf/m0-mobile-frame-pacing' || github.head_ref == 'ui/desktop-compact-hud' || github.head_ref == 'ui/edge-anchored-gameplay-hud' }}
+    if: ${{ !github.event.pull_request.draft || github.head_ref == 'review/clean-cut-corrections-godot' || github.head_ref == 'recovery/full-visual-gameplay' || github.head_ref == 'review/hero-clash-phase01' || github.head_ref == 'review/hero-clash-ui-polish-m0' || github.head_ref == 'fix/m0-hud-hero-quit-feedback' || github.head_ref == 'art/m0-final-button-components' || github.head_ref == 'fix/m0-navigation-ui-recovery' || github.head_ref == 'ui/hero-clash-gameplay-hud-v2' || github.head_ref == 'perf/m0-mobile-frame-pacing' || github.head_ref == 'ui/desktop-compact-hud' || github.head_ref == 'ui/edge-anchored-gameplay-hud' || github.head_ref == 'ui/m0-screen-cohesion' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:

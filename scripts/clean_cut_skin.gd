@@ -328,6 +328,9 @@ func refresh() -> void:
     var mode_changed: bool=mode!=last_mode
     if mode_changed:
         hero_scroll.scroll_vertical=0;offers_scroll.scroll_vertical=0;last_mode=mode
+        auxiliary.web_fullscreen_key=""
+        if OS.has_feature("web"):
+            JavaScriptBridge.eval("if(window.__auraPlatform)window.__auraPlatform.setMode("+JSON.stringify(mode)+")",true)
         # A hide/show cycle every frame cancels Godot BaseButton pointer presses
         # before mouse release. Only reset visibility when changing screens.
         for button in [ui.play_button,ui.home.hero_destination,ui.options_button,ui.home.start_button,ui.home.return_button,game.confirm_button,game.defer_button,game.flex_button,game.pause_button,game.restart_button,game.legendary_button,game.retry_button]:button.hide()
@@ -341,8 +344,9 @@ func refresh() -> void:
     poster_surface.visible=mode=="menu";place(poster_surface,Rect2(Vector2.ZERO,view));poster_surface.queue_redraw()
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
-    var heading_parent: Control=auxiliary if mode=="paused" else self
+    var heading_parent: Control=auxiliary if mode in auxiliary.MODES else self
     if heading.get_parent()!=heading_parent:heading.reparent(heading_parent,false)
+    if headline_accent.get_parent()!=heading_parent:headline_accent.reparent(heading_parent,false)
     for node in hud_nodes:node.visible=mode=="playing"
     place(watermark,Rect2(12,3,view.x-24,20))
     if mode=="menu":home_layout()

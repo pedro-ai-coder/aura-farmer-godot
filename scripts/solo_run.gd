@@ -1641,7 +1641,9 @@ func _gain_xp(amount: float) -> void:
             hp = minf(max_hp, hp + 2.0)
             pending_choices += 1
         elif run_time >= max_level_heal_at:
+            var before_recovery: float=hp
             _heal_player(max_hp * 0.05 * SoloPassiveRulesScript.support_scale(passives))
+            if hp>before_recovery:_pickup_cue("xp-recovery",player_pos+Vector2(-50,-70),"XP RECOVERY")
             max_level_heal_at = run_time + 20.0
 
 func _passive_level(id: String) -> int:
