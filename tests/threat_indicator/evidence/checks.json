@@ -1,0 +1,257 @@
+{
+  "cases": [
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slightly_clipped",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight_hud_overlap",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "anchor": "[P: (60.0212, 303.8666), S: (210.0, 30.0)]",
+      "case": "meaningfully_clipped",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "hud_occluded",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "anchor": "[P: (8.0, 339.0924), S: (210.0, 30.0)]",
+      "case": "offscreen",
+      "cue": "REPLY GUY",
+      "phase": 2,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slightly_clipped",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight_hud_overlap",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "anchor": "[P: (60.02117, 302.7199), S: (210.0, 30.0)]",
+      "case": "meaningfully_clipped",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "hud_occluded",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "anchor": "[P: (8.0, 337.8858), S: (210.0, 30.0)]",
+      "case": "offscreen",
+      "cue": "REPLY GUY",
+      "phase": 2,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slightly_clipped",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight_hud_overlap",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "anchor": "[P: (60.02117, 301.0001), S: (210.0, 30.0)]",
+      "case": "meaningfully_clipped",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "hud_occluded",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "anchor": "[P: (8.0, 336.0752), S: (210.0, 30.0)]",
+      "case": "offscreen",
+      "cue": "REPLY GUY",
+      "phase": 2,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slightly_clipped",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight_hud_overlap",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "anchor": "[P: (54.00089, 224.6103), S: (210.0, 30.0)]",
+      "case": "meaningfully_clipped",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(915, 412)"
+    },
+    {
+      "anchor": "[P: (38.99996, 122.4634), S: (210.0, 30.0)]",
+      "case": "hud_occluded",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(915, 412)"
+    },
+    {
+      "anchor": "[P: (8.0, 251.346), S: (210.0, 30.0)]",
+      "case": "offscreen",
+      "cue": "REPLY GUY",
+      "phase": 2,
+      "viewport": "(915, 412)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slightly_clipped",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight_hud_overlap",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "anchor": "[P: (51.19143, 212.1334), S: (210.0, 30.0)]",
+      "case": "meaningfully_clipped",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(844, 390)"
+    },
+    {
+      "anchor": "[P: (8.0, 128.0), S: (210.0, 30.0)]",
+      "case": "hud_occluded",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(844, 390)"
+    },
+    {
+      "anchor": "[P: (8.0, 236.0748), S: (210.0, 30.0)]",
+      "case": "offscreen",
+      "cue": "REPLY GUY",
+      "phase": 2,
+      "viewport": "(844, 390)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slightly_clipped",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight_hud_overlap",
+      "cue": "",
+      "phase": 0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "anchor": "[P: (52.41842, 472.2867), S: (210.0, 30.0)]",
+      "case": "meaningfully_clipped",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(390, 844)"
+    },
+    {
+      "anchor": "[P: (128.3333, 288.0), S: (210.0, 30.0)]",
+      "case": "hud_occluded",
+      "cue": "REPLY GUY",
+      "phase": 1,
+      "viewport": "(390, 844)"
+    },
+    {
+      "anchor": "[P: (8.0, 472.2867), S: (210.0, 30.0)]",
+      "case": "offscreen",
+      "cue": "REPLY GUY",
+      "phase": 2,
+      "viewport": "(390, 844)"
+    }
+  ],
+  "failures": []
+}

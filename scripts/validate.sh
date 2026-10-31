@@ -115,6 +115,7 @@ python3 scripts/verify_hud_candidates.py
 run_check hud-v2 --headless --path . --script res://tests/hud_v2/test_hud.gd
 run_check ui-cohesion --headless --path . --script res://tests/ui_cohesion/test_cohesion.gd
 run_check ui-final-polish --headless --path . --script res://tests/ui_final_polish/test_polish.gd
+run_check threat-indicator --headless --path . --script res://tests/threat_indicator/test_indicator.gd
 
 run_check frame-pacing-probe --headless --path . --script res://tests/frame_pacing/test_probe.gd
 run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd

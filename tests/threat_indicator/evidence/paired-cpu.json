@@ -1,0 +1,75 @@
+{
+  "baseline": "05bcef23ae0f040795cacd88e42542b55bc6488e",
+  "environment": "Godot 4.7.2 headless CPU, 1280x720 logical, same live state and warmed caches; no browser, physical-device or rendering-FPS claim",
+  "results": [
+    {
+      "actor_sample": {
+        "median_ms": 0.754,
+        "p95_ms": 0.897,
+        "p99_ms": 2.877
+      },
+      "actors": 100,
+      "between_samples": {
+        "median_ms": 0.039,
+        "p95_ms": 0.052,
+        "p99_ms": 0.057
+      },
+      "cue_steady": true,
+      "hazards": 0,
+      "implementation": "baseline-05bcef2",
+      "workload": "100 actors, no hazards"
+    },
+    {
+      "actor_sample": {
+        "median_ms": 0.085,
+        "p95_ms": 0.101,
+        "p99_ms": 0.124
+      },
+      "actors": 100,
+      "between_samples": {
+        "median_ms": 0.039,
+        "p95_ms": 0.05,
+        "p99_ms": 0.056
+      },
+      "cue_steady": true,
+      "hazards": 0,
+      "implementation": "recovery",
+      "workload": "100 actors, no hazards"
+    },
+    {
+      "actor_sample": {
+        "median_ms": 0.896,
+        "p95_ms": 1.548,
+        "p99_ms": 2.835
+      },
+      "actors": 100,
+      "between_samples": {
+        "median_ms": 0.12,
+        "p95_ms": 0.223,
+        "p99_ms": 0.324
+      },
+      "cue_steady": true,
+      "hazards": 3,
+      "implementation": "baseline-05bcef2",
+      "workload": "100 actors, three boss hazards"
+    },
+    {
+      "actor_sample": {
+        "median_ms": 0.178,
+        "p95_ms": 0.272,
+        "p99_ms": 0.463
+      },
+      "actors": 100,
+      "between_samples": {
+        "median_ms": 0.126,
+        "p95_ms": 0.349,
+        "p99_ms": 0.831
+      },
+      "cue_steady": true,
+      "hazards": 3,
+      "implementation": "recovery",
+      "workload": "100 actors, three boss hazards"
+    }
+  ],
+  "samples_per_path": 240
+}
