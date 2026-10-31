@@ -261,7 +261,7 @@ func refresh(force: bool = false) -> void:
     for item: Dictionary in game.weapons + game.passives: equipment += "%s:%s:%s;" % [item["id"],item["rarity"],item["level"]]
     var signature: String = str(game.mode) + str(game.hero_index) + str(game.hero_appearance) + str(game.selected_card_index) + str(game.level) + equipment + JSON.stringify(game.selection) + JSON.stringify(game.legendary_offers) + str(game.profile["settings"]) + error_message + str(game.touch_device)
     # Selection is functional, but female art/atlases are not playable yet.
-    play_button.disabled = not game.HeroAppearanceScript.can_start(game.hero_appearance)
+    play_button.disabled = not game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"]))
     home.start_button.disabled = play_button.disabled
     var ready := int(game.aura >= 100.0 and game.flex_lock <= 0.0)
     if ready != last_flex_ready and game.clean_cut_skin == null:
