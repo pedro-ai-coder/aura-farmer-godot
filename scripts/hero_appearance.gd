@@ -27,6 +27,7 @@ static func display_name(hero_id: String, appearance: String, original_name: Str
 static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
     if appearance == ORIGINAL:
         return true
-    # Pixel Vixen only: a reviewable art candidate with its own actual atlas.
-    # Other female variants must not fall back to original/male gameplay art.
-    return appearance == FEMALE and hero_id == "sigma" and ResourceLoader.exists("res://assets/art-candidates/pixel-vixen/v1/atlas.png")
+    # Female Sigma is playable only when every V2 runtime asset is really included
+    # in the exported build. The older 36x40 V1 preview is never a fallback.
+    const VIXEN_DIR := "res://assets/art-candidates/pixel-vixen/v2/"
+    return appearance == FEMALE and hero_id == "sigma"         and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-atlas-v2.png")         and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-portrait-v2.png")         and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-hud-v2.png")
