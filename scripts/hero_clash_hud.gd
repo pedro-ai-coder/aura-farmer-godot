@@ -299,8 +299,9 @@ func sync_data() -> void:
     if data_key==key:return
     data_key=key;data_count+=1
     update_status_feedback()
-    skin.hero_name.text=str(game.hero["name"]).to_upper();skin.fit_line(skin.hero_name,20 if compact else 22)
-    skin.portrait.texture=game.art.texture(game.hero["id"])
+    skin.hero_name.text=game.HeroAppearanceScript.display_name(str(game.hero["id"]),game.hero_appearance,str(game.hero["name"]));skin.fit_line(skin.hero_name,20 if compact else 22)
+    skin.portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance)
+    skin.portrait.material=null if game.hero_appearance=="female" and game.hero["id"]=="sigma" else portrait_material
     var regions: Dictionary={"sigma":Vector4(0.18,0.07,0.49,0.54),"cool-kid":Vector4(0.12,0.02,0.65,0.63),"alpha":Vector4(0.14,0.00,0.65,0.62)}
     portrait_material.set_shader_parameter("source_region",regions[game.hero["id"]])
     skin.hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
