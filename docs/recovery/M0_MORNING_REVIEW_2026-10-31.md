@@ -1,0 +1,24 @@
+# Creator morning review — 31 October 2026
+
+The threat recovery is ready to inspect. Production remains `05bcef2`; no merge or production deployment was performed. **M0 is not signed off.**
+
+**Test this build:** [`bfab07e55c0130416199cc5cfaf2180c35942e22` protected preview](https://aura-farmer-godot-nnamtvqcx-pedroestrela6-8110.vercel.app/) — [Draft PR #91](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/91), [mandatory CI passed](https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/41151751846). The official Web export passed and build metadata matches. Use your existing authorized Vercel account.
+
+**What changed:** canonical boss names, no `EDGE`, no cue for slight clipping, a direction for relevant fully off-screen bosses, stable visibility/ownership thresholds and Big Hater priority. Permanent HUD remains visible/opaque; gameplay, speed, camera, original art and saves are unchanged.
+
+**Open first:** [before/after](https://github.com/pedro-ai-coder/aura-farmer-godot/blob/bfab07e55c0130416199cc5cfaf2180c35942e22/tests/threat_indicator/evidence/before-after.jpg), [13-second actual Godot transition video](https://github.com/pedro-ai-coder/aura-farmer-godot/blob/bfab07e55c0130416199cc5cfaf2180c35942e22/tests/threat_indicator/evidence/indicator.mp4), [six-size gallery](https://github.com/pedro-ai-coder/aura-farmer-godot/blob/bfab07e55c0130416199cc5cfaf2180c35942e22/tests/threat_indicator/README.md). The movie is a controlled real-engine fixture, not a human/device run or FPS measurement.
+
+## Acceptance checklist
+
+- [ ] **Reply Guy boundary:** on the preview at its normal 2:15 encounter, bring the boss toward/out of view. Fully visible/slightly clipped should have no redundant name; sustained substantial loss should produce one stable canonical cue. No `EDGE` or rapid name flashing.
+- [ ] **HUD occlusion:** move so a relevant boss is obscured by permanent HUD. Its compact cue should appear in free space while portrait/name/HP/Shield/wave/equipment stay visible and opaque. Real attack danger remains readable.
+- [ ] **Off-screen bearing:** check a boss completely outside the visible play area; the arrow should point toward its actual position and remain inside safe UI space. On return the cue clears after stable recovery, not immediately at a single boundary sample.
+- [ ] **Big Hater priority:** review the recorded controlled multiple-threat fixture: only one eligible final-boss cue, with no secondary-name flash. Normal gameplay retires ordinary actors on boss entry; the fixture is priority coverage, not a claim that simultaneous events normally occur. In an actual boss encounter check health/danger/input normally.
+- [ ] **Pixel 8a / Brave regression:** record browser version, orientation and build. Briefly check movement/reversals, floating joystick, independent second-finger Flex, Pause/Quit/STAY, fullscreen/refusal/retry and HUD reading. Prior smoothness acceptance remains valid for 05bcef2; report only any actual regression in this new build.
+- [ ] **Typography reading:** inspect card descriptions/progression/rarity, Shield/XP and result micro labels at normal device/browser scale. [Desktop/mobile typography](M0_TYPOGRAPHY_AUDIT_2026-10-31.md) records actual small sizes. Confirm comfortable reading or identify the exact label needing adjustment.
+- [ ] **Known footer defect:** confirm the card footer's lower-right text runs into the diagonal cut. Authorize the proposed small inset correction separately; no broad redesign is requested.
+- [ ] **Art decisions:** [compare source references with actual runtime](evidence/overnight-2026-10-31/approved-reference-vs-runtime.jpg). Explicitly approve exact logo/font/button/HUD versions, or request a precise correction. The 24 button states, 20 HUD SVGs/shader and Archivo/procedural brand remain candidates; original approved sources/hashes are preserved.
+- [ ] **PR decisions:** decide whether #91 may merge into integration after regression; separately review the isolated main geometry reconciliation PR carrying this report. Neither decision automatically approves all candidate art or the full main visual consolidation.
+- [ ] **Release decision:** keep production unchanged until explicitly authorized. Before closed-cohort M0 sign-off, resolve the footer, source approvals, exact-build normal-health Web journey and remaining device/Web checks. No public release is proposed.
+
+Outside main remain the integration's candidate UI/art/export dependencies and threat recovery. The technical proposal adds only the independent exact collision cache; [reconciliation report](M0_MAIN_RECONCILIATION_2026-10-31.md) lists every differing file/commit, approval dependencies, clean sequence and rollback. [Full M0 matrix](M0_ACCEPTANCE_2026-10-31.md) distinguishes verified behavior, defects and missing evidence. Issue #76 remains open.
