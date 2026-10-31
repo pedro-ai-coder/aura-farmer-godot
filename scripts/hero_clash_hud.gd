@@ -295,7 +295,7 @@ func sync_data() -> void:
     var boss: Dictionary={}
     for enemy: Dictionary in game.enemies:
         if enemy["kind"]=="boss":boss=enemy;break
-    var key: String=str([skin.ui.revision,game.hero.get("id"),game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("hp",0),boss.get("max",0),inventory])
+    var key: String=str([skin.ui.revision,game.hero.get("id"),game.hero_appearance,game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("hp",0),boss.get("max",0),inventory])
     if data_key==key:return
     data_key=key;data_count+=1
     update_status_feedback()
