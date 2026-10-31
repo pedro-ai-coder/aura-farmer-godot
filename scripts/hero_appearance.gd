@@ -24,7 +24,9 @@ static func display_name(hero_id: String, appearance: String, original_name: Str
         return str(FEMALE_NAMES.get(hero_id, original_name))
     return original_name
 
-static func can_start(appearance: String) -> bool:
-    # The asset/atlas validation gate is intentionally closed for female variants
-    # until the exact approved gameplay artwork is integrated and tested.
-    return appearance == ORIGINAL
+static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
+    if appearance == ORIGINAL:
+        return true
+    # Pixel Vixen only: a reviewable art candidate with its own actual atlas.
+    # Other female variants must not fall back to original/male gameplay art.
+    return appearance == FEMALE and hero_id == "sigma" and ResourceLoader.exists("res://assets/art-candidates/pixel-vixen/v1/atlas.png")
