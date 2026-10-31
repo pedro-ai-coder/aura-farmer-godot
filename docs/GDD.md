@@ -65,6 +65,8 @@ At M2 or later the owner may choose native Android/iOS/Windows/macOS/Linux appli
 | **Concept-only prototype** | Experiment in isolated work only; not enabled in M0/M1 default gameplay. |
 | **Unapproved / TBD** | Do not infer defaults or ship new behavior, artworks, services or balance values. |
 
+**Creator decision — immediately selectable female hero appearances (31 October 2026):** Hero Selection must offer **three canonical playable kits with two visibly distinct appearances each**, for six character presentation options: The Sigma / Pixel Vixen (`sigma`), Cool Kid / Byte Baddie (`cool-kid`), and Alpha Chad / Block Queen (`alpha`). Female versions are **cosmetic variants, not three new heroes**. All share their base hero's canonical weapons, Flex, class, stats, innate trait, targeting, damage rules, inventory, unlocks and progression. The creator prioritizes a **real playable Godot/Web selection now**, not mockups-only or future-roster planning. The existing original appearances and their exact art approvals remain unchanged. New female artwork requires exact-source creator review before final runtime art acceptance. No visual preview alone proves the feature is implemented.
+
 **Initial roster:** Sigma (Ranged), Cool Kid (Melee) and Alpha Chad (Tank); nine playable weapons, three per class; **23 of 28 passives currently offered**, explicitly excluding `get-ratiod`, `ego-check`, `uno-reverse`, `brainrot-rain` and `take-l` from the initial 23. All four approved legendary passives remain in the offer pool. Items with approved future-only illustrations do **not** thereby become playable.
 
 **Full design catalogue, later scope:** nine heroes (three per class); nine weapons; 28 passives (10 Common, 8 Rare, 6 Epic, 4 Legendary); support/DPS build specializations; co-op/arena rules retained for future design reference but **not M0/M1 implementation deliverables**. `Wild` is future-only and not an active mode.
@@ -141,7 +143,7 @@ At **100 Aura**, the hero's manual Flex is **READY**. A successful activation co
 
 ### 5.6 Approved character catalogue and first-run starters
 
-The complete **design roster is nine characters, three per class** (Ranged, Melee, Tank), but **M0/M1 provide only Sigma, Cool Kid and Alpha Chad as playable heroes**. Preserve all eight historical hero IDs and add the ninth (`beta`) only under a separately approved content rollout; do not silently migrate unlock identities. There are no separate Alpha/Sigma resource currencies. `P` and `S` are distinct: **S = 100** for every baseline hero, and DPS/Support are build specializations, not hero classes.
+The current **canonical design catalogue comprises nine named heroes, three per class** (Ranged, Melee, Tank), while **M0/M1 gameplay provides only the `sigma`, `cool-kid` and `alpha` kits**, each with an original and female cosmetic appearance. These six appearances do **not** expand the nine-hero gameplay catalogue, enable future-only heroes or create new stable hero IDs. Preserve all eight historical hero IDs and add the ninth (`beta`) only under a separately approved content rollout; do not silently migrate unlock identities. There are no separate Alpha/Sigma resource currencies. `P` and `S` are distinct: **S = 100** for every baseline hero, and DPS/Support are build specializations, not hero classes.
 
 | Stable ID / hero | Class | Base max HP / speed U/s / P / mitigation | Approved starter weapon | Passive innate trait |
 | --- | --- | --- | --- | --- |
@@ -156,6 +158,24 @@ The complete **design roster is nine characters, three per class** (Ranged, Mele
 | `beta` — Beta Bro (future) | Tank | **120 / 180 / 85 / 10%** | Chad Hands; foam gloves and protective backpack | **Homie First:** every 12 s grants 6% recipient max-HP shield for 4 s to lowest-health ally within 180 U, self in solo |
 
 **Future-only proposed unlock examples (not enabled in M0/M1):** end wave 2 → Nerd; defeat first major event boss → Rizzler; end wave 4 → Ohio; collect 500 cumulative XP → Fanum; complete a run → Six Seven; 1,000 cumulative effective protection/healing → Beta. These are proposals pending progression and solo-fairness review, not current production entitlements.
+
+### 5.6.1 Female cosmetic variants — immediate playable selection (creator decision, 31 October 2026)
+
+**Approved implementation scope:** six selectable visual identities backed by **three canonical playable kits**. The female names and character designs are appearance identities, not new gameplay heroes. This is the creator's first development priority, not a future-only roster feature.
+
+| Canonical gameplay hero ID | Original appearance | Female appearance | Unchanged starter weapon | Unchanged signature Flex |
+| --- | --- | --- | --- | --- |
+| `sigma` | The Sigma | **Pixel Vixen** | **No Cap** | **Deadpan Verdict** |
+| `cool-kid` | Cool Kid | **Byte Baddie** | **Keyboard Warrior** | **CTRL + CHAOS** |
+| `alpha` | Alpha Chad | **Block Queen** | **Cope Shield** | **Giga Chad Rampage** |
+
+**Creator-supplied visual reference:** the image titled "Female Hero Options" defines the intended female costume, palette, accessories, silhouette, posture and visual energy for Pixel Vixen (blue/gold urban ranged), Byte Baddie (black/magenta keyboard fighter) and Block Queen (gold/teal armored tank). Its example **Aura Blaster, Viral Burst, Keybat, Rage Type, Aura Shield and Squad Aura** names, statistics, gameplay descriptions and "future roster expansion" footer are **noncanonical mockup text**, not approved weapons, Flexes or rollout restrictions. The original male presentation stays byte-identical.
+
+**UX contract:** present the three hero kits with two immediately selectable appearance options apiece, with six identifiable character presentations; do not add hero IDs, future unlocks or a separate gameplay roster. Appearance selection must visibly update the live selection portrait and chosen appearance before starting a run, support mouse/keyboard/touch, and work on the six canonical Web viewport sizes.
+
+**Runtime contract:** store `hero_id` as the unchanged canonical stable ID and track cosmetic appearance independently (e.g. `original`/`female`). Gameplay weapons, stats, Flex, hitboxes, enemy targeting, XP, Aura, passives, RNG, and progression must remain functionally identical. Use correct candidate/approved female gameplay atlases for idle, eight-direction movement or corresponding approved directional presentation, attack, hurt, defeat and Flex, preserving pivot, scale, foot position, shadow and attachment anchors. The selected appearance must match the in-game character, HUD portrait and other visible player-identity surfaces. Existing saves default safely to the original appearance; selecting a female appearance cannot rewrite hero identity or reset legitimate progress.
+
+**Art approval and delivery gates:** produce original candidate artwork and an exact file/hash manifest before promotion; preserve the approved original masters. A selection toggle using original male runtime sprites or static-only female portraits is **not done**. Deliver genuine selectable and playable female variants in a protected Godot Web preview, with evidence at desktop and mobile viewports, combat/animation parity tests, CI, and creator review. No automatic merge or production deployment is granted by this documentation decision.
 
 ### 5.7 Hero-specific Flex — approved current PvE contract
 
@@ -486,6 +506,8 @@ This typography requirement authorizes **no gameplay, balance, backend, engine o
 - **Reference layout:** 1600×900 art comps and responsive actual Godot Controls for desktop/mobile Web. Preserve usability at **1920×1080, 1600×900, 1280×720, 915×412, 844×390 and 390×844** where applicable. Use a consistent spacing rhythm, safe areas and functional focus/hover/pressed/selected/disabled states; do not simply stretch a background/reference image.
 - **Visual priorities:** threat readability > actual gameplay affordances > decorative overlays. Build detail may expand into separate inspection screen; permanent desktop HUD should generally remain compact (earlier **≤15% playfield** guidance is a quality target, not permission to hide essential information). Do not make giant Safe Spot signals, repeating equipment labels or oversized HP/XP plates cover enemy threats.
 
+**Hero-selection appearance direction (current priority):** the player must be able to choose any of the six visible appearances while preserving just three underlying gameplay kits. This may be presented as three paired hero cards with an appearance choice or six selection cards; it must not suggest six distinct combat kits or create new unlocks. Preview portrait, live gameplay animation, HUD portrait and relevant result/retry presentation must reflect the chosen appearance. Preserve exact approved original hero masters; label new female artwork as candidate until its exact sources are accepted. Never substitute old male sprites as purported female animation frames.
+
 ### 8.3 Required polished M0 player journey
 
 Every reachable M0 screen must form one **coherent finished game**: **Main Menu → Hero Selection → Ruin Alley gameplay/HUD → three-card upgrade / six-card legendary / legal replacement → pause/build/settings/exit confirmation → true boss and berserk → victory/defeat → retry or menu**. Include in-world hero, enemy, weapon, projectile, pickup, impact, damage, shield, Flex and wave/encounter VFX, correct animation feedback and accessible mobile-Web presentation.
@@ -618,6 +640,8 @@ The earlier **GDD V2.0 has been archived verbatim** in [`docs/GDD_V2_ARCHIVE.md`
 3. Technical architecture, CI, provider configuration, budget approval and deployment runbooks may live in dedicated TDD and operations documents, which **implement but never overrule** this GDD.
 4. Preserve original Phaser and approved source masters, player IDs, seeded deterministic events and versioned save compatibility. No historical-backfill edits may silently change behavior.
 5. Review all documentation-only PRs under the same owner-approved M0/M1 PR policy: applicable checks pass; owner reviews; merging does not itself authorize public alpha opening.
+
+**31 October 2026 creator addendum:** the immediate requested enhancement is **three playable female cosmetic appearances of the existing starters**, guided by the Pixel Vixen, Byte Baddie and Block Queen mockups. This authorizes production and testing of the cosmetic variant implementation but **does not** authorize any new combat kit, balance rule, unreviewed art promotion, automatic merge or production deployment. Keep existing hero IDs and original artwork approvals, and require real Web gameplay plus explicit creator visual acceptance.
 
 **V3.0 consolidation scope:** document and milestone reconciliation **only**. No changes to Godot/Phaser runtime, art bytes, balance, backend infrastructure or production release are made by authoring this GDD.
 
