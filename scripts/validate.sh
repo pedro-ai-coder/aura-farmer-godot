@@ -122,3 +122,4 @@ run_check frame-pacing-probe --headless --path . --script res://tests/frame_paci
 run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd
 run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd
 run_check reconciled-floor-geometry --headless --path . --script res://tests/main_reconciliation/test_geometry.gd
+run_check hero-appearance-selection --headless --path . --script res://tests/test_hero_appearance_selection.gd
