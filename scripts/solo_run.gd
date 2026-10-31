@@ -4,6 +4,8 @@ const Typography = preload("res://scripts/clean_cut_typography.gd")
 const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
+const HeroAppearanceScript = preload("res://scripts/hero_appearance.gd")
+const PixelVixenAnimationScript = preload("res://scripts/pixel_vixen_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const CleanCutSkinScript = preload("res://scripts/clean_cut_skin.gd")
@@ -120,6 +122,7 @@ var max_level_heal_at := 0.0
 var sigma_target: Dictionary = {}
 var rng = PhaserRngScript.new()
 var hero_index := 0
+var hero_appearance := "original"
 var profile: Dictionary = ProfileStoreScript.defaults()
 var run_id := ""
 var run_metrics: Dictionary = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
@@ -427,6 +430,10 @@ func _update_text() -> void:
 
 func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
+        return
+    # No female gameplay atlas is approved yet. Never present an original sprite
+    # as a female variant or start an unrenderable run via keyboard/Retry.
+    if not HeroAppearanceScript.can_start(hero_appearance, str(HEROES[index]["id"])):
         return
     hero_index = index
     selected_card_index = -1
@@ -1972,9 +1979,21 @@ func _finish(won: bool) -> void:
 
 func _load_profile() -> void:
     profile = ProfileStoreScript.load_profile()
+    hero_appearance = HeroAppearanceScript.normalize(profile.get("appearance"))
     for index in range(HEROES.size()):
         if HEROES[index]["id"] == profile["selected"]:
             hero_index = index
+
+func select_appearance(value: String) -> void:
+    if mode not in ["menu", "heroes"] or not HeroAppearanceScript.is_valid(value):
+        return
+    if hero_appearance == value:
+        return
+    hero_appearance = value
+    profile["appearance"] = value
+    _save_profile()
+    if presentation != null: presentation.refresh(true)
+    if clean_cut_skin != null: clean_cut_skin.refresh()
 
 func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
@@ -2334,7 +2353,10 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
 func hero_pose() -> Dictionary:
-    return HeroAnimationScript.pose(str(hero["id"]), {"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing})
+    var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
+    if hero_appearance == "female" and str(hero["id"]) == "sigma":
+        return PixelVixenAnimationScript.pose(state)
+    return HeroAnimationScript.pose(str(hero["id"]), state)
 
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)

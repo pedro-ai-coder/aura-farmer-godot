@@ -122,3 +122,8 @@ run_check frame-pacing-probe --headless --path . --script res://tests/frame_paci
 run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd
 run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd
 run_check reconciled-floor-geometry --headless --path . --script res://tests/main_reconciliation/test_geometry.gd
+run_check appearance-result-identity --headless --path . --script res://tests/test_appearance_result_identity.gd
+python3 -m unittest discover -s tests -p test_pixel_vixen_pack.py
+python3 scripts/verify_pixel_vixen.py
+run_check hero-appearance-selection --headless --path . --script res://tests/test_hero_appearance_selection.gd
+run_check pixel-vixen-appearance --headless --path . --script res://tests/test_pixel_vixen_animation.gd

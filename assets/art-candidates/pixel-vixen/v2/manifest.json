@@ -1,0 +1,71 @@
+{
+  "hero_id": "sigma",
+  "appearance": "female",
+  "display_name": "PIXEL VIXEN",
+  "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+  "runtime_authorization": "PREVIEW_ONLY",
+  "source_atlas": "sprite_atlas_da_pixel_vixen.png",
+  "source_portrait": "image(20261031-163730).png (creator-provided concept reference)",
+  "atlas": "pixel-vixen-atlas-v2.png",
+  "portrait": "pixel-vixen-portrait-v2.png",
+  "hud_portrait": "pixel-vixen-hud-v2.png",
+  "atlas_sha256": "803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d",
+  "portrait_sha256": "13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9",
+  "hud_sha256": "337047c012d476f230091f7cf9fff0373b819f4020eba121dd6cc1524d0f0776",
+  "atlas_dimensions": [
+    896,
+    672
+  ],
+  "portrait_dimensions": [
+    520,
+    460
+  ],
+  "hud_dimensions": [
+    480,
+    320
+  ],
+  "columns": 7,
+  "rows": 7,
+  "cell_size": [
+    128,
+    96
+  ],
+  "frame_count": 49,
+  "states": {
+    "idle": [
+      0,
+      6
+    ],
+    "run_front": [
+      7,
+      13
+    ],
+    "run_side": [
+      14,
+      20
+    ],
+    "attack": [
+      21,
+      27
+    ],
+    "hurt": [
+      28,
+      34
+    ],
+    "flex": [
+      35,
+      41
+    ],
+    "defeat": [
+      42,
+      48
+    ]
+  },
+  "constraints": [
+    "Visual only: canonical sigma gameplay, No Cap, Deadpan Verdict, hitboxes and RNG remain unchanged",
+    "The source atlas uses seven columns and rows; movement direction is mirrored/approximated, not an approved eight-direction master",
+    "The selection and HUD illustrations are cropped/masked from the creator's Pixel Vixen reference, and await creator source approval",
+    "V1 fallback is prohibited; all three V2 PNGs are required for a playable female run",
+    "Do not merge or deploy this candidate without creator approval and successful mandatory CI"
+  ]
+}

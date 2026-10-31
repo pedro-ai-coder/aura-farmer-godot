@@ -295,12 +295,15 @@ func sync_data() -> void:
     var boss: Dictionary={}
     for enemy: Dictionary in game.enemies:
         if enemy["kind"]=="boss":boss=enemy;break
-    var key: String=str([skin.ui.revision,game.hero.get("id"),game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("hp",0),boss.get("max",0),inventory])
+    var key: String=str([skin.ui.revision,game.hero.get("id"),game.hero_appearance,game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("hp",0),boss.get("max",0),inventory])
     if data_key==key:return
     data_key=key;data_count+=1
     update_status_feedback()
-    skin.hero_name.text=str(game.hero["name"]).to_upper();skin.fit_line(skin.hero_name,20 if compact else 22)
-    skin.portrait.texture=game.art.texture(game.hero["id"])
+    skin.hero_name.text=game.HeroAppearanceScript.display_name(str(game.hero["id"]),game.hero_appearance,str(game.hero["name"]));skin.fit_line(skin.hero_name,20 if compact else 22)
+    skin.portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance,"hud")
+    var vixen_portrait: bool=game.hero_appearance=="female" and game.hero["id"]=="sigma"
+    skin.portrait.material=null if vixen_portrait else portrait_material
+    skin.portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED if vixen_portrait else TextureRect.STRETCH_SCALE
     var regions: Dictionary={"sigma":Vector4(0.18,0.07,0.49,0.54),"cool-kid":Vector4(0.12,0.02,0.65,0.63),"alpha":Vector4(0.14,0.00,0.65,0.62)}
     portrait_material.set_shader_parameter("source_region",regions[game.hero["id"]])
     skin.hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]
