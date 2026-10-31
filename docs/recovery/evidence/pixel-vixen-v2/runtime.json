@@ -1,0 +1,1069 @@
+{
+  "captures": [
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "selection-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "heroes",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {},
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "idle-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "moving-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "legacy_frame": 8,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "flex-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "lost-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "lost",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "selection-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "heroes",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {},
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "idle-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "moving-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "legacy_frame": 8,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "flex-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "lost-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "lost",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "selection-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "heroes",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {},
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "idle-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "moving-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "legacy_frame": 8,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "flex-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "lost-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1280.0,
+        720.0
+      ],
+      "mode": "lost",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "selection-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "logical_viewport": [
+        1220.0,
+        549.0
+      ],
+      "mode": "heroes",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {},
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "idle-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1220.0,
+        549.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "moving-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1220.0,
+        549.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "legacy_frame": 8,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "flex-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1220.0,
+        549.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "lost-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1220.0,
+        549.0
+      ],
+      "mode": "lost",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "selection-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "logical_viewport": [
+        1125.0,
+        520.0
+      ],
+      "mode": "heroes",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {},
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "idle-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1125.0,
+        520.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "moving-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1125.0,
+        520.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "legacy_frame": 8,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "flex-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1125.0,
+        520.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "lost-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        1125.0,
+        520.0
+      ],
+      "mode": "lost",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "selection-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "logical_viewport": [
+        520.0,
+        1125.0
+      ],
+      "mode": "heroes",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {},
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "idle-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        520.0,
+        1125.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        724.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "moving-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        520.0,
+        1125.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "legacy_frame": 8,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "flex-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        520.0,
+        1125.0
+      ],
+      "mode": "playing",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hero": "sigma",
+      "file": "lost-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "logical_viewport": [
+        520.0,
+        1125.0
+      ],
+      "mode": "lost",
+      "player_position": [
+        760.0,
+        540.0
+      ],
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    }
+  ],
+  "display": "X11",
+  "engine": "4.7.2-stable (official)",
+  "evidence_type": "staged_native_runtime_not_browser_or_device_test",
+  "failures": [],
+  "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+  "committed_images": [
+    {
+      "file": "selection-1600x900.webp",
+      "sha256": "e929d34e86dcdcd1b429cf4c2ad5ce3896d4d6889dbb8636d21e537fc04095a2",
+      "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
+    },
+    {
+      "file": "idle-1600x900.webp",
+      "sha256": "70a73910cc0aea2dd983097daf32e13318daea1efeda1a125e87c9d54a46f6a6",
+      "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
+    },
+    {
+      "file": "moving-844x390.webp",
+      "sha256": "f35902b267f9fd4c5f68d021377ca7f1649393b05612cc46be3739d203027af7",
+      "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
+    },
+    {
+      "file": "flex-844x390.webp",
+      "sha256": "20b634f7ae0b2f61003fb305995652e877610c71a3ebcfd7547662e8f7c16922",
+      "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
+    },
+    {
+      "file": "selection-390x844.webp",
+      "sha256": "1e0b43f741e8c55b0de6e1f8ce0b248a6dcc9a3bdc12b0be966fa15a48179c4c",
+      "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
+    }
+  ],
+  "source_manifest": "assets/art-candidates/pixel-vixen/v2/manifest.json"
+}

@@ -1,34 +1,43 @@
-# Pixel Vixen V2 integration checkpoint — 31 October 2026
+# Pixel Vixen V2 source import and runtime verification — 31 October 2026
 
-**Status: blocked on the exact source PNGs. Not V2-playable or visually validated yet.** Continue the existing [PR #97](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/97), not a competing implementation. [PR #95](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/95) is already corrected to immediate cosmetic variants; its exact documentation head `77408e9b18a0a1e27f97ff76c56b522922ab9fd7` passed CI. No documentation rewrite or new hero kits are needed.
+**The missing-source blocker is resolved.** The creator attached `pixel_vixen_v2_for_work(1).zip`. Its three original PNGs have been imported into the existing [PR #97](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/97) branch, `feat/m0-pixel-vixen-playable-candidate`. The existing manifest has not been changed to accept different artwork. The ZIP's additional manifest does not replace the repository's provenance or approval record.
 
-Pixel Vixen remains **`sigma` / No Cap / Deadpan Verdict**, with canonical attributes, collisions, RNG, attacks and progression. Byte Baddie and Block Queen keep their existing `cool-kid` and `alpha` mappings and stay art-gated in this staged implementation. Original approved art, hero IDs and v2 save compatibility are preserved. No merge, production deployment or art approval is granted.
+These assets remain **UNAPPROVED_CREATOR_REVIEW_CANDIDATE / PREVIEW_ONLY**. This import is not artistic approval, merge authorization or authorization for production deployment. Byte Baddie and Block Queen remain unavailable pending their own artwork and the creator's staged review.
 
-## Source package required
+## Exact source verification
 
-`pixel_vixen_v2_upload_ready.zip` is referenced by the existing PR but is not attached to this execution. GitHub contains the V2 manifest but none of its three PNGs. The exact package must supply:
+All three files match the existing [V2 manifest](../../assets/art-candidates/pixel-vixen/v2/manifest.json), byte for byte:
 
-| Destination under `assets/art-candidates/pixel-vixen/v2/` | Dimensions |
-| --- | --- |
-| `pixel-vixen-atlas-v2.png` | 896×672; 49 cells, 128×96 |
-| `pixel-vixen-portrait-v2.png` | 520×460 illustrated selection portrait |
-| `pixel-vixen-hud-v2.png` | 480×320 illustrated HUD portrait |
+| File | Dimensions | SHA-256 |
+| --- | --- | --- |
+| `pixel-vixen-atlas-v2.png` | 896 × 672 | `803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d` |
+| `pixel-vixen-portrait-v2.png` | 520 × 460 | `13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9` |
+| `pixel-vixen-hud-v2.png` | 480 × 320 | `337047c012d476f230091f7cf9fff0373b819f4020eba121dd6cc1524d0f0776` |
 
-Exact SHA-256 values remain pinned in the unchanged [V2 manifest](../../assets/art-candidates/pixel-vixen/v2/manifest.json). Do not regenerate approximations, relabel V1, upscale a tiny gameplay cell into a selection portrait, change the expected hashes to accept unrelated bytes, or call missing assets visually approved.
+`python3 scripts/verify_pixel_vixen.py` passes. No regeneration, rescaling, V1 relabeling, replacement of original approved art or approved-registry promotion is part of this import.
 
-## Corrections completed while the source package is unavailable
+## Actual runtime evidence
 
-- Victory and Run Over now route both **name and portrait through the selected appearance**, preserving canonical `sigma` IDs in results. Previously both used male identity even for a female run. The regression fails against the previous source and passes after the correction.
-- Official Web builds now fail before exporting when an expected V2 source is absent, has the wrong hash/header/dimensions, or loses candidate/preview status. After export, the actual PCK must contain all three imported textures and the provenance manifest.
-- Every existing export preset explicitly includes the V2 manifest and excludes the superseded V1 source directory. Historical V1 bytes remain retained in Git; there is no fallback or art-registry promotion.
-- Existing real-asset Godot tests remain mandatory. The result-routing unit test uses an explicitly test-only texture marker; it is not a female sprite, screenshot, gameplay demonstration or replacement for missing art. Binary-header unit fixtures likewise never ship as assets.
+Official **Godot 4.7.2, Compatibility, X11/Mesa llvmpipe** rendered the actual game. The save-isolated [capture harness](../../tests/pixel_vixen/capture.gd) uses real pointer events to open Hero Selection, choose Female and start the run. It verifies the exact resource paths for the illustrated selection portrait, the separate HUD portrait and the gameplay atlas. The V2 HUD bypasses the original male portrait-crop shader. Movement advances the real simulation; Flex uses the canonical target-required activation.
 
-## Actual verification
+Thirty native captures cover selection, idle, movement, Flex and defeat at the six requested window sizes: 1920×1080, 1600×900, 1280×720, 915×412, 844×390 and 390×844. All runtime binding assertions passed, with no script/resource errors. The [runtime report](evidence/pixel-vixen-v2/runtime.json) records the actual dimensions, resource paths, atlas frames, canonical kit and positions. Existing responsive-canvas rounding produces 915×411, 843×390 and 390×843 readbacks for the three compact windows; these images have not been resized to hide that difference.
 
-Official Godot **4.7.2 Compatibility** import passed. Eight executed headless suites passed: appearance result routing (both outcomes), profile store, original hero animation, hero combat, Phaser RNG, secondary input, UI cohesion and irregular-frame state traces. Canonical state hashes remain `b36b9dfab8baef81659ba3040bf90e26ac910b8bd68f1226997116eb54ad03a6` (normal), `645b257d9495b673079e415e60ae4bd7649ee960f65d0061505749e873ea3107` (dense), `63ae00700184c8a1dc5e13a4fb2d6e9f5a25c2156bbd6d672c2ac623b5117311` (Flex). Four Python resource-contract tests passed. Build-script syntax and diff checks passed.
+Selected captures are stored as lossless WebP; decoded RGB pixels were verified identical to the original, unresampled Godot PNG readbacks:
 
-`python3 scripts/verify_pixel_vixen.py` correctly fails on the three missing PNGs. The previous PR head `e774da79b106271c8e575295dd96ba80011a501a` already had failing [CI](https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/41239369366) for missing V2 assets. Final-head CI/export status is linked on PR #97; missing-source failure must remain a blocker, never a waived pass. No full V2 runtime capture, animation-quality validation, successful V2 export, new physical test or artistic approval is claimed.
+- [Desktop Hero Selection](evidence/pixel-vixen-v2/selection-1600x900.webp)
+- [Desktop HUD and gameplay](evidence/pixel-vixen-v2/idle-1600x900.webp)
+- [Mobile landscape movement](evidence/pixel-vixen-v2/moving-844x390.webp)
+- [Mobile landscape Flex](evidence/pixel-vixen-v2/flex-844x390.webp)
+- [Portrait selection](evidence/pixel-vixen-v2/selection-390x844.webp)
 
-## Resume after the ZIP is attached
+These are staged native runtime fixtures, not browser, physical-device, performance or human-playtest measurements. The atlas's mirrored/approximated directional coverage remains as documented in the unchanged manifest; 49 cells do not establish final animation-quality approval.
 
-Copy the exact three PNGs, verify the pinned hashes, run `python3 scripts/verify_pixel_vixen.py`, full mandatory `scripts/validate.sh`, and the official Web export/PCK checks. Inspect actual Hero Selection, HUD, idle/run/attack/hurt/Flex/defeat, result identity and Retry at desktop/mobile sizes on the protected exact-build preview. Review directional coverage/foot pivots against actual art; do not infer production quality from 49 occupied cells alone. Preserve the original Sigma and wait for the creator's Pixel Vixen review before beginning the next female artwork batch.
+## Canonical behavior and export guards
+
+Pixel Vixen remains **`sigma` / No Cap / Deadpan Verdict**, using the existing attributes, collisions, RNG, attacks, progression and profile IDs. This import changes no gameplay implementation. Original hero art and the production art manifests are unchanged. Existing result/Retry appearance routing and backwards-compatible optional appearance persistence remain in place.
+
+The mandatory real-asset suites `test_hero_appearance_selection.gd` and `test_pixel_vixen_animation.gd` pass, including six-viewport selection, exact PNG hashes/dimensions, original-art isolation and shared Sigma animation timing. The existing full `scripts/validate.sh` suite remains mandatory; its authoritative final-head result and the matching protected preview are linked in PR #97.
+
+The official Web build still fails closed on missing or mismatched V2 sources. Its exported PCK must contain all three imported V2 textures and this candidate manifest, and must exclude the superseded V1 directory. Historical V1 source bytes remain in Git but are not a runtime/export fallback. Build success and runtime captures do not supersede the creator's approval gate.
+
+The earlier failed runs on `e774da79` and `4b437b6` genuinely lacked the PNGs. They are historical failures, not waived passes. Review the new exact-build preview before approving Pixel Vixen or beginning the next female artwork batch. Do not merge or deploy this candidate to production automatically.
