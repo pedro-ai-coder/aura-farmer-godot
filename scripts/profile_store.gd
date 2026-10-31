@@ -10,7 +10,7 @@ const HEROES := ["sigma", "cool-kid", "alpha"]
 const CHARACTER_IDS := ["sigma", "nerd", "six-seven", "cool-kid", "ohio", "rizzler", "alpha", "fanum", "beta"]
 
 static func defaults() -> Dictionary:
-    return {"version": 2, "selected": "sigma", "unlocked": HEROES.duplicate(), "results": [], "xp": 0.0, "wins": 0, "runs": 0, "best_wave": 1, "total_kills": 0, "settings": {"reducedMotion": false, "sound": true, "masterVolume": 1.0}}
+    return {"version": 2, "selected": "sigma", "appearance": "original", "unlocked": HEROES.duplicate(), "results": [], "xp": 0.0, "wins": 0, "runs": 0, "best_wave": 1, "total_kills": 0, "settings": {"reducedMotion": false, "sound": true, "masterVolume": 1.0}}
 
 static func _volume(value: Variant) -> float:
     if (value is int or value is float) and is_finite(float(value)): return clampf(float(value),0.0,1.0)
@@ -51,6 +51,7 @@ static func read_data(v2: Variant, legacy: Variant = null, slice: Variant = null
     var profile := defaults()
     if v2 is Dictionary and v2.get("version") == 2:
         if HEROES.has(v2.get("selected")): profile["selected"] = v2["selected"]
+        profile["appearance"] = "female" if v2.get("appearance") == "female" else "original"
         _unlocks(profile, v2.get("unlocked"))
         var unique: Dictionary = {}
         var rows: Variant = v2.get("results")

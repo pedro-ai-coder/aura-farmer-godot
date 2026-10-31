@@ -22,6 +22,9 @@ func _verify() -> void:
     _expect(is_equal_approx(Store.read_data({"version":2,"settings":{"masterVolume":0.37}})["settings"]["masterVolume"],0.37),"Optional master volume survives v2 normalization")
     _expect(Store.read_data({"version":2,"settings":{"masterVolume":2}})["settings"]["masterVolume"] == 1.0,"Master volume clamps safely without changing the profile version")
     _expect(Store.read_data({"version":2,"settings":{"masterVolume":"bad"}})["settings"]["masterVolume"] == 1.0,"Malformed master volume uses the legacy full-volume default")
+    _expect(Store.defaults()["appearance"] == "original", "Existing v2 profiles default to original appearance")
+    _expect(Store.read_data({"version":2,"selected":"sigma","appearance":"female"})["appearance"] == "female", "Female choice is a separate, additive v2 preference")
+    _expect(Store.read_data({"version":2,"appearance":"unknown"})["appearance"] == "original", "Unknown cosmetic values are never treated as hero IDs")
     var corrupt := {"version": 2, "selected": "beta", "unlocked": ["ohio"], "results": [result, result, {"id": "broken"}], "runs": -10, "xp": "bad", "settings": "bad"}
     var clean := Store.read_data(corrupt)
     _expect(clean["results"].size() == 1 and clean["selected"] == "sigma", "Corrupt and duplicate results are rejected; only solo heroes can be selected")
