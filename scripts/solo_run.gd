@@ -5,6 +5,7 @@ const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const HeroAppearanceScript = preload("res://scripts/hero_appearance.gd")
+const PixelVixenAnimationScript = preload("res://scripts/pixel_vixen_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const CleanCutSkinScript = preload("res://scripts/clean_cut_skin.gd")
@@ -432,7 +433,7 @@ func start_run(index: int) -> void:
         return
     # No female gameplay atlas is approved yet. Never present an original sprite
     # as a female variant or start an unrenderable run via keyboard/Retry.
-    if not HeroAppearanceScript.can_start(hero_appearance):
+    if not HeroAppearanceScript.can_start(hero_appearance, str(HEROES[index]["id"])):
         return
     hero_index = index
     selected_card_index = -1
@@ -2352,7 +2353,10 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
 func hero_pose() -> Dictionary:
-    return HeroAnimationScript.pose(str(hero["id"]), {"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing})
+    var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
+    if hero_appearance == "female" and str(hero["id"]) == "sigma":
+        return PixelVixenAnimationScript.pose(state)
+    return HeroAnimationScript.pose(str(hero["id"]), state)
 
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
