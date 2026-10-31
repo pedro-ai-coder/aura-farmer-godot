@@ -12,6 +12,10 @@ class TestRun extends "res://scripts/solo_run.gd":
         pass
 
 func verify() -> void:
+    if not Appearance.can_start("female","sigma"):
+        push_error("Pixel Vixen V2 assets are missing from the PR. Upload the exact atlas, illustrated selection portrait and HUD portrait before accepting this feature; no V1 fallback is permitted.")
+        quit(1)
+        return
     expect(Appearance.normalize("unknown") == "original", "Unrecognized appearance fails safely to original")
     expect(Appearance.normalize(0) == "original", "Malformed cosmetic preference cannot become a hero ID")
     expect(Appearance.display_name("sigma","female","THE SIGMA") == "PIXEL VIXEN", "Sigma remains the Pixel Vixen gameplay kit")
