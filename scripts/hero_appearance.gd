@@ -2,8 +2,8 @@ class_name HeroAppearance
 extends RefCounted
 
 ## Presentation-only identity mapping. Canonical hero IDs and combat kits never change.
-## Female artwork is not yet available; this foundation must not use male poses
-## to misrepresent an unfinished variant as playable.
+## A female appearance is playable only when its real V2 visual assets exist.
+## Never present original male artwork as a substitute.
 const ORIGINAL := "original"
 const FEMALE := "female"
 
@@ -30,4 +30,10 @@ static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
     # Female Sigma is playable only when every V2 runtime asset is really included
     # in the exported build. The older 36x40 V1 preview is never a fallback.
     const VIXEN_DIR := "res://assets/art-candidates/pixel-vixen/v2/"
-    return appearance == FEMALE and hero_id == "sigma"         and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-atlas-v2.png")         and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-portrait-v2.png")         and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-hud-v2.png")
+    return (
+        appearance == FEMALE
+        and hero_id == "sigma"
+        and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-atlas-v2.png")
+        and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-portrait-v2.png")
+        and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-hud-v2.png")
+    )
