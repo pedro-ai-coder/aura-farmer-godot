@@ -105,3 +105,5 @@ run_check hero-clash-review --headless --path . --script res://tests/review_hero
 
 # Web fullscreen/refusal/retry and CSS/DPR lifecycle regression.
 node tests/test_web_platform.cjs
+
+run_check reconciled-floor-geometry --headless --path . --script res://tests/main_reconciliation/test_geometry.gd

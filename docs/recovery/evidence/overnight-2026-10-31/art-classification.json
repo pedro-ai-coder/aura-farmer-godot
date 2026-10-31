@@ -1,0 +1,1842 @@
+{
+  "build": "bfab07e55c0130416199cc5cfaf2180c35942e22",
+  "entries": [
+    {
+      "id": "assets/approved/ruin-alley.png",
+      "path": "assets/approved/ruin-alley.png",
+      "sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/main-menu.png",
+      "path": "assets/approved/main-menu.png",
+      "sha256": "3d6bfc02020a762a097708d500c2978a5039c060f046397f78039bc44bbcf7fb",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/sigma.png",
+      "path": "assets/approved/sigma.png",
+      "sha256": "fe2ebf07353fbc9a016ef60b8ceaeb20b27e4c8cb1add0a613e6720723e92e2f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/cool-kid.png",
+      "path": "assets/approved/cool-kid.png",
+      "sha256": "a7ee0005158ade0a3974c3b5d1f93bf79b5adbd553d46d6a5de58f4b04e7d29a",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/alpha.png",
+      "path": "assets/approved/alpha.png",
+      "sha256": "9311103aebc272e5e165d71132d2509859bc7fa720c7e217bf716e904c2177a9",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/phone-guy.png",
+      "path": "assets/approved/phone-guy.png",
+      "sha256": "b16e0c85366d8dcf6729f1cea38356805e158fb2b3ba8d5ca086e4db51615e0d",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/hater.png",
+      "path": "assets/approved/hater.png",
+      "sha256": "3efbabe21c1abff9024bbd3ce7e86fabb665b62e7b23e6bc879fa79a80b0f80b",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/big-hater.png",
+      "path": "assets/approved/big-hater.png",
+      "sha256": "76e1e512ff2f5a975a74e555797d1d49f11d7137d61ae3742df0424da93fe454",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/sigma-atlas.png",
+      "path": "assets/approved/sigma-atlas.png",
+      "sha256": "fd254c145df532232524b4db27987c22bc2f78566675d01b83c93af06e5aaafb",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/cool-kid-atlas.png",
+      "path": "assets/approved/cool-kid-atlas.png",
+      "sha256": "a440d8a79fffec41e153a0edcf8db52a5d29769a04a1418376b26067cce05f0a",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/alpha-atlas.png",
+      "path": "assets/approved/alpha-atlas.png",
+      "sha256": "f94e8f66dbdd4a19936272ebe960728239a41e09db4cbe4e4c2ae2e85377af96",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/cool-kid-flex-v2.png",
+      "path": "assets/approved/cool-kid-flex-v2.png",
+      "sha256": "a246f52c78341e329b11c46663823d62196488a6371e8ac48046cb1f0678584c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/cool-kid-rear-v2.png",
+      "path": "assets/approved/cool-kid-rear-v2.png",
+      "sha256": "e4f9ac60efc63b363a0108a364d3ef315541dac81d276cdefd6894f8e90a7f0d",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/alpha-rear-v2.png",
+      "path": "assets/approved/alpha-rear-v2.png",
+      "sha256": "b3d996c7c26261056c2b10ef0c32e12d494b50b3ab64c5ac31c734afe418538e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/enemies-a-v2.png",
+      "path": "assets/approved/enemies-a-v2.png",
+      "sha256": "6ec1e03922385372c2c41416dcbf4ca8ad4f76f0199dd374190ae5d3e37e3ef0",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/enemies-b-v2.png",
+      "path": "assets/approved/enemies-b-v2.png",
+      "sha256": "a0fdbebfb1044adaf40f60f0d87e364f5973e1b3834235acea051d87a411fc2f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/events-v2.png",
+      "path": "assets/approved/events-v2.png",
+      "sha256": "b66d26344574f1cf35f109acad79692c5162b91cb48a477dbc3b3d3a50e7042c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/haters-v2.png",
+      "path": "assets/approved/haters-v2.png",
+      "sha256": "e5fbf68144d6968d869e388487f987c0399f9cb29c5e796ddd088ad5d6794aba",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "assets/approved/enemies.png",
+      "path": "assets/approved/enemies.png",
+      "sha256": "8b3f015c27e236ad1440d0374fb4c34cbf12f01d97aad1c3929fbf9fd2405e34",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/approved-assets.json"
+    },
+    {
+      "id": "absolute-cinema",
+      "path": "assets/runtime-icons/passives/absolute-cinema/f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/absolute-cinema/icon-v5-candidate.png",
+      "sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "aura-viral",
+      "path": "assets/runtime-icons/passives/aura-viral/825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/aura-viral/icon-v5-candidate.png",
+      "sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "big-chad",
+      "path": "assets/runtime-icons/passives/big-chad/ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-chad/icon-v5-candidate.png",
+      "sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "big-meme",
+      "path": "assets/runtime-icons/passives/big-meme/4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/big-meme/icon-v5-candidate.png",
+      "sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "brainrot-rain",
+      "path": "assets/runtime-icons/passives/brainrot-rain/774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/brainrot-rain/icon-v5-candidate.png",
+      "sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "built-different",
+      "path": "assets/runtime-icons/passives/built-different/7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/built-different/icon-v5-candidate.png",
+      "sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "caught-4k",
+      "path": "assets/runtime-icons/passives/caught-4k/d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/caught-4k/icon-v5-candidate.png",
+      "sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "certified-w",
+      "path": "assets/runtime-icons/passives/certified-w/13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/certified-w/icon-v5-candidate.png",
+      "sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "cope-harder",
+      "path": "assets/runtime-icons/passives/cope-harder/60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/cope-harder/icon-v5-candidate.png",
+      "sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "ego-check",
+      "path": "assets/runtime-icons/passives/ego-check/5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/ego-check/icon-v5-candidate.png",
+      "sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "get-ratiod",
+      "path": "assets/runtime-icons/passives/get-ratiod/dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/get-ratiod/icon-v5-candidate.png",
+      "sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "hands-on-sight",
+      "path": "assets/runtime-icons/passives/hands-on-sight/0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/hands-on-sight/icon-v5-candidate.png",
+      "sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "homie-check",
+      "path": "assets/runtime-icons/passives/homie-check/3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/homie-check/icon-v5-candidate.png",
+      "sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "its-over",
+      "path": "assets/runtime-icons/passives/its-over/afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/its-over/icon-v5-candidate.png",
+      "sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "let-him-cook",
+      "path": "assets/runtime-icons/passives/let-him-cook/74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/let-him-cook/icon-v5-candidate.png",
+      "sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "main-character",
+      "path": "assets/runtime-icons/passives/main-character/fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/main-character/icon-v5-candidate.png",
+      "sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "no-cap-streak",
+      "path": "assets/runtime-icons/passives/no-cap-streak/bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-cap-streak/icon-v5-candidate.png",
+      "sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "no-u",
+      "path": "assets/runtime-icons/passives/no-u/08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/no-u/icon-v5-candidate.png",
+      "sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "six-to-seven",
+      "path": "assets/runtime-icons/passives/six-to-seven/233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/six-to-seven/icon-v5-candidate.png",
+      "sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "so-back",
+      "path": "assets/runtime-icons/passives/so-back/a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/so-back/icon-v5-candidate.png",
+      "sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "take-l",
+      "path": "assets/runtime-icons/passives/take-l/c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/take-l/icon-v5-candidate.png",
+      "sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "terminally-online",
+      "path": "assets/runtime-icons/passives/terminally-online/a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/terminally-online/icon-v5-candidate.png",
+      "sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "thick-skin",
+      "path": "assets/runtime-icons/passives/thick-skin/b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/thick-skin/icon-v5-candidate.png",
+      "sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "timeline",
+      "path": "assets/runtime-icons/passives/timeline/4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/timeline/icon-v5-candidate.png",
+      "sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "too-sigma",
+      "path": "assets/runtime-icons/passives/too-sigma/5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/too-sigma/icon-v5-candidate.png",
+      "sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "uno-reverse",
+      "path": "assets/runtime-icons/passives/uno-reverse/d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/uno-reverse/icon-v5-candidate.png",
+      "sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "w-squad",
+      "path": "assets/runtime-icons/passives/w-squad/e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-squad/icon-v5-candidate.png",
+      "sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "w-wifi",
+      "path": "assets/runtime-icons/passives/w-wifi/4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/passives/w-wifi/icon-v5-candidate.png",
+      "sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "ban-hammer",
+      "path": "assets/runtime-icons/weapons/ban-hammer/086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ban-hammer/icon-v5-candidate.png",
+      "sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "brainrot-feed",
+      "path": "assets/runtime-icons/weapons/brainrot-feed/4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/brainrot-feed/icon-v5-candidate.png",
+      "sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "chad-hands",
+      "path": "assets/runtime-icons/weapons/chad-hands/08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/chad-hands/icon-v5-candidate.png",
+      "sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "cope-shield",
+      "path": "assets/runtime-icons/weapons/cope-shield/37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/cope-shield/icon-v5-candidate.png",
+      "sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "keyboard-warrior",
+      "path": "assets/runtime-icons/weapons/keyboard-warrior/66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/keyboard-warrior/icon-v5-candidate.png",
+      "sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "no-cap",
+      "path": "assets/runtime-icons/weapons/no-cap/b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/no-cap/icon-v5-candidate.png",
+      "sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "personal-space",
+      "path": "assets/runtime-icons/weapons/personal-space/1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/personal-space/icon-v5-candidate.png",
+      "sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "ratio-blaster",
+      "path": "assets/runtime-icons/weapons/ratio-blaster/687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/ratio-blaster/icon-v5-candidate.png",
+      "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "touch-grass",
+      "path": "assets/runtime-icons/weapons/touch-grass/3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v1/weapons/touch-grass/icon-clean-cut-v2-256.png",
+      "sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-icons/manifest.json"
+    },
+    {
+      "id": "cards/weapon-focus",
+      "path": "assets/runtime-clean-cut/v2/cards/weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-focus.png",
+      "sha256": "2f24e748f8cb96ec012491a5a78c93fe6dafabea7439d94f1a8ced0fd1ae38ca",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-passive-focus",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-focus.png",
+      "sha256": "086e4884d35217fcfb36cdbbc723ff8c20152c92947cf86c54b81dd4ea0b9fc1",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/passive-focus",
+      "path": "assets/runtime-clean-cut/v2/cards/passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-focus.png",
+      "sha256": "69b03b4e73955164feccf0add94456d5d8e78b5bb37b30452ca0fa71a8494738",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/passive-hover",
+      "path": "assets/runtime-clean-cut/v2/cards/passive-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-hover.png",
+      "sha256": "c762dfd7f32fc878a4f5daf59dbb1fb9362ead5f97e5bc082fdcb5902086fb42",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-passive-idle",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-passive-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-idle.png",
+      "sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/passive-idle",
+      "path": "assets/runtime-clean-cut/v2/cards/passive-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-idle.png",
+      "sha256": "cfef92f822d8f622802ce85385fa9c46f741de76a43b5c875e5e62faffd90679",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-weapon-idle",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-weapon-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-idle.png",
+      "sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-weapon-selected",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-selected.png",
+      "sha256": "6ffdfcef4e0c20726d9bcde144a1418a9b8f5a65d32007154f10c5623f443aa4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/weapon-idle",
+      "path": "assets/runtime-clean-cut/v2/cards/weapon-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-idle.png",
+      "sha256": "6223f8180d3bfa0c2373d27fe230ab0e4fd52a6d3c4771d3cf0ae6b8a2b00fe3",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-weapon-hover",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-weapon-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-hover.png",
+      "sha256": "e4fd263f027b4d0dd71b161b80de16c25dfe0e79142d00d081f9eb99440e6fef",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-passive-focus",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-focus.png",
+      "sha256": "37397266e0bb208ab0267707fb756457fc8b30d4113e6bacdaab523d6be84680",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-passive-selected",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-selected.png",
+      "sha256": "ebc947e9d626bc35200f2645e0a7ad510c1125c1b41f1a95beb7d1285b8eb750",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-weapon-idle",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-idle.png",
+      "sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-passive-hover",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-hover.png",
+      "sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-weapon-selected",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-selected.png",
+      "sha256": "edc9ca02af3f99023410267b5be3b9a97a2d275620fd0425392f657a68c0eb2c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/weapon-pressed",
+      "path": "assets/runtime-clean-cut/v2/cards/weapon-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-pressed.png",
+      "sha256": "16b2f65d86a848c2d4bfed13dfe78ef96be1eabc21947a9efb824338fb617638",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-weapon-focus",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-weapon-focus.png",
+      "sha256": "d348772ff73b485cefdb8656c3ddf09b25147f2d6346350dcc504c14602adb9e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/passive-selected",
+      "path": "assets/runtime-clean-cut/v2/cards/passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-selected.png",
+      "sha256": "d1b04c4ecc86bf2b10807551b0c024ccc890e2eb1f375de24cafa899734d3037",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/passive-pressed",
+      "path": "assets/runtime-clean-cut/v2/cards/passive-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/passive-pressed.png",
+      "sha256": "b2343f460c649272b65a1da6dbf9d43af57cee2127c1ea319247d840d1ef2e45",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/weapon-hover",
+      "path": "assets/runtime-clean-cut/v2/cards/weapon-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-hover.png",
+      "sha256": "479d09ace0a8e35ac83c9d3e9bb9227baab747b95d9587cf1c75336d27f652e4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-passive-idle",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-idle.png",
+      "sha256": "cf58fb364f952c74e4f082c3570d15f5da08f5e0262318704c3db276931af2b4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-passive-hover",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-passive-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-passive-hover.png",
+      "sha256": "a308f1b8368e3acea16fb61ddece5ccda70c540857ca7151e75a199058248f96",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-weapon-focus",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-focus.png",
+      "sha256": "0e27b22e9c7c4d7766c743ef91dff374351c8739a75b76d50fe5169073a10aa2",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-weapon-hover",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-weapon-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-weapon-hover.png",
+      "sha256": "626e3bf34516b86faa2d521bdb07d4f1421fdce8e6490544c0a69ddc0439ef4e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/weapon-selected",
+      "path": "assets/runtime-clean-cut/v2/cards/weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/weapon-selected.png",
+      "sha256": "f38a7a22f0f2e5917734ff9a7f48155447829986f7518e7d8bdd6faa31780213",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "cards/legendary-mobile-passive-selected",
+      "path": "assets/runtime-clean-cut/v2/cards/legendary-mobile-passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/cards/legendary-mobile-passive-selected.png",
+      "sha256": "3861181e4b0324894843c50f74ebf04cc9fc316663d1b39d67aed5d97ee58400",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-select/card-unavailable",
+      "path": "assets/runtime-clean-cut/v2/hero-select/card-unavailable.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-unavailable.png",
+      "sha256": "6d3691dbbd171d78dfb7863edb599f760895357d7b3dd34ec3274384a4759d6f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-select/card-focus",
+      "path": "assets/runtime-clean-cut/v2/hero-select/card-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-focus.png",
+      "sha256": "a50ca2fdef5dbab4f7756f59ef33c8c23f45a2e4feec96db9a330976de151cfd",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-select/card-hover",
+      "path": "assets/runtime-clean-cut/v2/hero-select/card-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-hover.png",
+      "sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-select/card-confirm",
+      "path": "assets/runtime-clean-cut/v2/hero-select/card-confirm.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-confirm.png",
+      "sha256": "dcf4bd89c3edbec9f46afd388fa39e0f90b6f92fae3707ecea94090ec1940b11",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-select/card-selected",
+      "path": "assets/runtime-clean-cut/v2/hero-select/card-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-selected.png",
+      "sha256": "e7a6674e8ae6c1b6cf7b0cddff8d729e254ae1d75ddcb1f2ccfef29e4f07123c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-select/card-idle",
+      "path": "assets/runtime-clean-cut/v2/hero-select/card-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/hero-select/card-idle.png",
+      "sha256": "5429b3965ee0a8fbf58a30f55a75dc260d18addc9d20f59752557c0a8da106a8",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/weapon-focus",
+      "path": "assets/runtime-clean-cut/v2/equipment/weapon-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-focus.png",
+      "sha256": "a5023ebda78b306cdb294a28fe5d24445ea3c5477c17116cbe48e8a4e7fe527d",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/passive-focus",
+      "path": "assets/runtime-clean-cut/v2/equipment/passive-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-focus.png",
+      "sha256": "d2a622633243566cae818568563a02fd9e7e85b9bc0cb38ce194b33b9f17b118",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/passive-filled",
+      "path": "assets/runtime-clean-cut/v2/equipment/passive-filled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-filled.png",
+      "sha256": "e8ee2ba5e4ab6a81afb0058b0e61413224e9f7accca86f6ad51172b0914d963d",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/passive-empty",
+      "path": "assets/runtime-clean-cut/v2/equipment/passive-empty.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-empty.png",
+      "sha256": "65f25c5ae67bbffe1212bc0e6ab88318329fff7b7a2bb9ef7eeb70bea446558e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/passive-selected",
+      "path": "assets/runtime-clean-cut/v2/equipment/passive-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/passive-selected.png",
+      "sha256": "f3ae31f5ec23c54539c5f2ffdf0aed51ae49588b79e0dd32a0b74b982261c75f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/weapon-empty",
+      "path": "assets/runtime-clean-cut/v2/equipment/weapon-empty.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-empty.png",
+      "sha256": "d294b8778fd5e6f5a63c37d63333c2356cb622ca017b34a82cd84382bd103e2f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/weapon-filled",
+      "path": "assets/runtime-clean-cut/v2/equipment/weapon-filled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-filled.png",
+      "sha256": "377bba0792b35c5af0e115d28d15db7d40d6f88d567cd1c9f41da7a6465657d2",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "equipment/weapon-selected",
+      "path": "assets/runtime-clean-cut/v2/equipment/weapon-selected.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/equipment/weapon-selected.png",
+      "sha256": "1ecb10ec83afb94c8365c47652208929ffd870db0340e15376e14c8343983258",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-charging",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-charging.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-charging.png",
+      "sha256": "abf7ef671867d8a94dbaff31bd3857f18aa5686af31832aa1bf568e42569f3f4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-active",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-active.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-active.png",
+      "sha256": "0fc3845bd689385dead838e355702175ae0dc0fc52d27f8a96457f92839bdc9b",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-ready",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-ready.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-ready.png",
+      "sha256": "f5b9ad12b1a0d372551ec93e0dc4001690261194fccc79b9f3b5ef68f84930a4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-charging",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-charging.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-charging.png",
+      "sha256": "36d972a6cbd09974da35a7867cd4f43c13c2b46efd03b63c6166651036f339f3",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-disabled",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-disabled.png",
+      "sha256": "9efa3cfc512f56226e23614dd9cbbdb8f78d8052c763b5872ad270bf2986d85d",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-disabled",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-disabled.png",
+      "sha256": "a131cdb97908fd50b0b63cbe7ec6ac6e6a633b70349d9567edb38d98cffd84dd",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-pressed",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-pressed.png",
+      "sha256": "e77a2a4df207159772166092e81eb210d2d42608017a1daa5ce75077aa4a24b9",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-active",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-active.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-active.png",
+      "sha256": "58add6ff0a731b82dfc098d117714272ec5d66ef39c10fba57829b765cda00bd",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-active",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-active.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-active.png",
+      "sha256": "6861b66d27c6e15f3d10a9f6f063cd3f1b5c633c3c125d5031e791ee923cae60",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-focused",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-focused.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-focused.png",
+      "sha256": "243fcdd2e25a5cad6a5cc3fc8ff1d1286ae9bf827dff9e0aab6427b91f4f2449",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-ready",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-ready.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-ready.png",
+      "sha256": "0107dfdcab5632606d40bf1daa9654ba4f299b6e664c38640473589ae59a104f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-focused",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-focused.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-focused.png",
+      "sha256": "9e304dc5007f7da4fb4e0bf994c5c0d6cb257b67ef8184a5a985be3bceb9a203",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-charging",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-charging.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-charging.png",
+      "sha256": "49dea784175411df2dcc3e30f28830272d9714261ecb0a6c47d6b4f56ae493a9",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-pressed",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-pressed.png",
+      "sha256": "a6a6f7a2c68b604295a7cbb9489983f8e4a8ee2745bcaec996d2a535cd3e0e0a",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-recovery",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-recovery.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-recovery.png",
+      "sha256": "1317dfb64ca685ce4cfb407059362409f98ec9cd3ab28bef5d8a8066c0543a5f",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-ready",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-ready.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-ready.png",
+      "sha256": "c2d04a6c01bbbd39232c44cc1703219c47b29ffd0406b3d931c80cc4a3591ddf",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-pressed",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-pressed.png",
+      "sha256": "6ddfa5b40423a63578fb4edcb5bb2d1256d790a404b04ab91744de4fda1f702e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/cool-kid-recovery",
+      "path": "assets/runtime-clean-cut/v2/flex/cool-kid-recovery.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/cool-kid-recovery.png",
+      "sha256": "974e38c6a10c798465b41f17b709802a7434d0353d1ec83603a57a0cb448e077",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-recovery",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-recovery.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-recovery.png",
+      "sha256": "b5ad81fa84bc2d28db0bbb59ce77aa829e4375a614e5119338f5856c9bbe2cd1",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/sigma-focused",
+      "path": "assets/runtime-clean-cut/v2/flex/sigma-focused.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/sigma-focused.png",
+      "sha256": "73fc28f95febcb9a3ef8194e9f74eb5c81bab78da906006335d9bfdf4c5b422c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "flex/alpha-disabled",
+      "path": "assets/runtime-clean-cut/v2/flex/alpha-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/flex/alpha-disabled.png",
+      "sha256": "21f4b0c229fae062b83510570a53359cc51411f940b4fafaa142ae2a39051387",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "joystick/activation-ripple",
+      "path": "assets/runtime-clean-cut/v2/joystick/activation-ripple.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/activation-ripple.png",
+      "sha256": "c2353a4d19b30bb14c6a4837fef448b85215169be1fa25ef24c5e1debbee86a5",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "joystick/thumb-pressed",
+      "path": "assets/runtime-clean-cut/v2/joystick/thumb-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/thumb-pressed.png",
+      "sha256": "7a75287122a0afa1f9cce9538ef3fb8b5fb6c66c06eec7dba3678402f0fdf6a4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "joystick/thumb-idle",
+      "path": "assets/runtime-clean-cut/v2/joystick/thumb-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/thumb-idle.png",
+      "sha256": "3233661c7f062288e8e99a929518f83174d624d7ecdfd44fff68d1284f1bbb2c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "joystick/ring-pressed",
+      "path": "assets/runtime-clean-cut/v2/joystick/ring-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/ring-pressed.png",
+      "sha256": "728b03809962084a21f1f36b66d637e046af7f0544997d2bf910759723e5b7db",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "joystick/ring-idle",
+      "path": "assets/runtime-clean-cut/v2/joystick/ring-idle.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/joystick/ring-idle.png",
+      "sha256": "1ed4075cb059a5e994534049bd224ea593f3794dd3d8346a3c887c48ae48eab7",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/primary-default",
+      "path": "assets/runtime-clean-cut/v2/menu/primary-default.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-default.png",
+      "sha256": "8720bd25b0143619ca2781b63f2c3338de86b327d46699613a63e9231f69e103",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/secondary-pressed",
+      "path": "assets/runtime-clean-cut/v2/menu/secondary-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-pressed.png",
+      "sha256": "1e1a56667dc46b3b1634d1bfddea1c3ba8ce328a27c86fbf51b2ecd848ffde46",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/primary-hover",
+      "path": "assets/runtime-clean-cut/v2/menu/primary-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-hover.png",
+      "sha256": "a3d045dd5389ea2730789b00dd173b307ad4e37d268bce9ed21d1c9ea39606a1",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/secondary-focus",
+      "path": "assets/runtime-clean-cut/v2/menu/secondary-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-focus.png",
+      "sha256": "a6eaaf949b9a57986a6d42e6e474afaf45ec9513a7f4f90efd35fd99112c5a42",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/secondary-disabled",
+      "path": "assets/runtime-clean-cut/v2/menu/secondary-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-disabled.png",
+      "sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/primary-disabled",
+      "path": "assets/runtime-clean-cut/v2/menu/primary-disabled.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-disabled.png",
+      "sha256": "dbe3e90c050319a5c2ffd8b581c3a042a54fa1c93e87139792725a64a2ad7e30",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/primary-focus",
+      "path": "assets/runtime-clean-cut/v2/menu/primary-focus.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-focus.png",
+      "sha256": "b2aef7d6f60537d46007e0c85fd8d603c4fc86fdc6eb8e323c09cfa2d3e25616",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/primary-pressed",
+      "path": "assets/runtime-clean-cut/v2/menu/primary-pressed.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/primary-pressed.png",
+      "sha256": "919b1cf73ff5862f41104f3f457d23feaaa5f26757e37a77fffffe752d28f3c2",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/secondary-hover",
+      "path": "assets/runtime-clean-cut/v2/menu/secondary-hover.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-hover.png",
+      "sha256": "c29a46f86eab2a3ca449d0cacc1f88d67a4cd625a1879931549a309f793ec2a4",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "menu/secondary-default",
+      "path": "assets/runtime-clean-cut/v2/menu/secondary-default.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/exports/menu/secondary-default.png",
+      "sha256": "894729e55e37a191d3cc7658279df02a61042ee7a0328a61f89c48886229a736",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/poster",
+      "path": "assets/runtime-clean-cut/v2/support/poster.png",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/menu-poster-bg-candidate.png",
+      "sha256": "f3feee62b291dd7cb8ea6e948b4a4a6355fb7ba68361c10481f18aec9c59559c",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/wordmark",
+      "path": "assets/runtime-clean-cut/v2/support/wordmark.png",
+      "source_path": "tests/clean_cut_review/generated/wordmark.png",
+      "sha256": "49eb4d1054d6675a5dad42ec3fa0352d202564e3aa655487d69365b2b9e83255",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/upgrade-bg",
+      "path": "assets/runtime-clean-cut/v2/support/upgrade-bg.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/upgrade-three-card-bg.svg",
+      "sha256": "d1a98cf0b6a87933db423e68bab1f4cb6802ee57255e3faeadd2bba52b445c3e",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/legendary-bg",
+      "path": "assets/runtime-clean-cut/v2/support/legendary-bg.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/backgrounds/legendary-six-card-bg.svg",
+      "sha256": "ecadf268759f14ee50ebbb71e2e27e773861da38340a9a4d8115f81db51ddbe0",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/hp",
+      "path": "assets/runtime-clean-cut/v2/support/hp.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/hp-meter-frame.svg",
+      "sha256": "d5866e94b0bfba5ac62b06daec1dcb34e822dec1f59de78b99cfa21a16abb0ff",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/xp",
+      "path": "assets/runtime-clean-cut/v2/support/xp.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/xp-meter-frame.svg",
+      "sha256": "e12972543a075e1c55fdce60d0a8ee80325d7794870464b8a3da5d311bfce1cc",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/wave",
+      "path": "assets/runtime-clean-cut/v2/support/wave.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/wave-time-plate.svg",
+      "sha256": "472a97cf21c24f224366a7b636a72482d041cf4f35553a04fff027a682a32cc9",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "support/pause",
+      "path": "assets/runtime-clean-cut/v2/support/pause.svg",
+      "source_path": "assets/art-production/character-hype-clean-cut/v2/shared/components/pause-default.svg",
+      "sha256": "1d2ad19516155ea27b72d46e870158a319dd178db3a345d2e93698ef02485500",
+      "status": "CREATOR_APPROVED_EXACT_ARTWORK",
+      "runtime_dependency": true,
+      "authority": "assets/runtime-clean-cut/v2/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-disabled/source",
+      "path": "assets/ui-button-candidates/v1/source/destructive-disabled.svg",
+      "sha256": "958b08fb7cbf7f999f4273ec8ae72aa79f2073f5523435e6a65e9dbfa3348c39",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-disabled/runtime",
+      "path": "assets/ui-button-candidates/v1/destructive-disabled.png",
+      "sha256": "375d6c2d50406411165008735a063f4c6bf422bbaf408ffbae4551564a8b9b09",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-focus/source",
+      "path": "assets/ui-button-candidates/v1/source/destructive-focus.svg",
+      "sha256": "3e002a516b6497988ed470cea2248c0dc1d461ce3a3b4181d9e76ef8958810d8",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-focus/runtime",
+      "path": "assets/ui-button-candidates/v1/destructive-focus.png",
+      "sha256": "85035808a67efe2f4f81bbe3cf091f1de04673ab0a05ac2872854cf2ef03202f",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-hover/source",
+      "path": "assets/ui-button-candidates/v1/source/destructive-hover.svg",
+      "sha256": "258d3abb56a01db61107458534c540fc57cb708e7f9864216c0b8dc9fb583ce0",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-hover/runtime",
+      "path": "assets/ui-button-candidates/v1/destructive-hover.png",
+      "sha256": "552055df980be07c2c11b54c21651556d851a300564a708f85261198f6209375",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-normal/source",
+      "path": "assets/ui-button-candidates/v1/source/destructive-normal.svg",
+      "sha256": "d78c99999b65c07ca781b4f4d750223aeeb07e41361c54c836bc8bd51a7293b6",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-normal/runtime",
+      "path": "assets/ui-button-candidates/v1/destructive-normal.png",
+      "sha256": "cfd5413d1ee92ac077f14199fa4a93989f0677fde3231d69f4ca2b39b6aaf524",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-pressed/source",
+      "path": "assets/ui-button-candidates/v1/source/destructive-pressed.svg",
+      "sha256": "50d15311a57fc9f4463ab6da3c6568f61e9c11f44aa859dde5a742b377d116c1",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-pressed/runtime",
+      "path": "assets/ui-button-candidates/v1/destructive-pressed.png",
+      "sha256": "9eee1e66caaa55b566a555f3555eec512d9106c73fdc75e29971b42da31c8932",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-selected/source",
+      "path": "assets/ui-button-candidates/v1/source/destructive-selected.svg",
+      "sha256": "97d9eae828292d2d7984ec15a4dbf01e5c2417a350637843dd240a1beda61eb1",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/destructive-selected/runtime",
+      "path": "assets/ui-button-candidates/v1/destructive-selected.png",
+      "sha256": "d7cf83e176318c93a1f3f702a9e74c52aa3957f2df85106d9f1466f4c88bbfdd",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-disabled/source",
+      "path": "assets/ui-button-candidates/v1/source/primary-disabled.svg",
+      "sha256": "958b08fb7cbf7f999f4273ec8ae72aa79f2073f5523435e6a65e9dbfa3348c39",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-disabled/runtime",
+      "path": "assets/ui-button-candidates/v1/primary-disabled.png",
+      "sha256": "375d6c2d50406411165008735a063f4c6bf422bbaf408ffbae4551564a8b9b09",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-focus/source",
+      "path": "assets/ui-button-candidates/v1/source/primary-focus.svg",
+      "sha256": "a3c0999245317cd9d0b0b00f350b407f320937b8fd50c2d229c3eadbeb2f159d",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-focus/runtime",
+      "path": "assets/ui-button-candidates/v1/primary-focus.png",
+      "sha256": "6d878985164b8757aef9cf446fbfc63a16e997c6ff2e32fc6471266fbe507857",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-hover/source",
+      "path": "assets/ui-button-candidates/v1/source/primary-hover.svg",
+      "sha256": "c0529d87b87a7d224fd10019980e66e167230e3df37400eac2b91b947d9189ae",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-hover/runtime",
+      "path": "assets/ui-button-candidates/v1/primary-hover.png",
+      "sha256": "f072e400a5d7176a1cfb22d787686360df566f331c56a1f793ef668e831df414",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-normal/source",
+      "path": "assets/ui-button-candidates/v1/source/primary-normal.svg",
+      "sha256": "f285a3a3164e898369ac3d7908fbd59663717dac08f7a4161009e46601226bb3",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-normal/runtime",
+      "path": "assets/ui-button-candidates/v1/primary-normal.png",
+      "sha256": "1adb9c4512ecde1807f2926cbb1e5bea96e4cd43d9af17dced63aaa34ece5779",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-pressed/source",
+      "path": "assets/ui-button-candidates/v1/source/primary-pressed.svg",
+      "sha256": "849dee2f7490ecd0c164d20544627f6ff346e4a8d992748ff8092c347cb7e5c9",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-pressed/runtime",
+      "path": "assets/ui-button-candidates/v1/primary-pressed.png",
+      "sha256": "0a1c086754deca1521c9c3e23b574304ba9af62380212084fa96c0c6d68b518c",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-selected/source",
+      "path": "assets/ui-button-candidates/v1/source/primary-selected.svg",
+      "sha256": "56a379281a9224e54ce761be869a928b453587071dd0c5bc01340717c8fa798b",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/primary-selected/runtime",
+      "path": "assets/ui-button-candidates/v1/primary-selected.png",
+      "sha256": "cd4b2832e425dedd7d46663535b0e179b37a593407b3b3a24091edeccb4cf4fb",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-disabled/source",
+      "path": "assets/ui-button-candidates/v1/source/secondary-disabled.svg",
+      "sha256": "958b08fb7cbf7f999f4273ec8ae72aa79f2073f5523435e6a65e9dbfa3348c39",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-disabled/runtime",
+      "path": "assets/ui-button-candidates/v1/secondary-disabled.png",
+      "sha256": "375d6c2d50406411165008735a063f4c6bf422bbaf408ffbae4551564a8b9b09",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-focus/source",
+      "path": "assets/ui-button-candidates/v1/source/secondary-focus.svg",
+      "sha256": "1ca0fee65dcadfdb0f92d75f320b67232439a8d0ef977e3d6c9ef98230dcfd24",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-focus/runtime",
+      "path": "assets/ui-button-candidates/v1/secondary-focus.png",
+      "sha256": "345f1994771ac532b5a3c4b59d08a7cf5c884301a15f5f2d18fafc3865d23b56",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-hover/source",
+      "path": "assets/ui-button-candidates/v1/source/secondary-hover.svg",
+      "sha256": "f2a2f9cecd2a46d4df11d86391591eff11eb40993c5a60c297df07f2f78488f1",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-hover/runtime",
+      "path": "assets/ui-button-candidates/v1/secondary-hover.png",
+      "sha256": "2fc992ab8981af54ab12386ab75d43ea0f28d0fb013d18a35fc5f327ded5aee6",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-normal/source",
+      "path": "assets/ui-button-candidates/v1/source/secondary-normal.svg",
+      "sha256": "0f0267c98a3e0dc1c804a968f20e98fc69bd96bb548b6846aa81f2a2937fea0d",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-normal/runtime",
+      "path": "assets/ui-button-candidates/v1/secondary-normal.png",
+      "sha256": "4d56b760e4d08644a25ebfbffeede25f0003c62b7c1d9297815abc656cde867b",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-pressed/source",
+      "path": "assets/ui-button-candidates/v1/source/secondary-pressed.svg",
+      "sha256": "7a930588874a32411da18c8aaa09e0941ba08d60dd3f70366af288734c168b58",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-pressed/runtime",
+      "path": "assets/ui-button-candidates/v1/secondary-pressed.png",
+      "sha256": "fb3a2b497f0c147ea1b3ecf8777b03e59c60bbaec104c61a20538f7ddab37ede",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-selected/source",
+      "path": "assets/ui-button-candidates/v1/source/secondary-selected.svg",
+      "sha256": "497fbd708570be9e3333ece381829cdd7e8f44fb10947a578e38c42b830e1ef7",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/secondary-selected/runtime",
+      "path": "assets/ui-button-candidates/v1/secondary-selected.png",
+      "sha256": "083ac63d3b9d02bd82085e2408f6f7c732e7a0d226291502296f021864fe2750",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-disabled/source",
+      "path": "assets/ui-button-candidates/v1/source/selection-disabled.svg",
+      "sha256": "5aff74c6e43ab856303530104e10a6827b2451de4572ddd1f60d2dc87752e895",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-disabled/runtime",
+      "path": "assets/ui-button-candidates/v1/selection-disabled.png",
+      "sha256": "53cfe2b35b6a856a36529bf7bd5e5329143613971dc2a67830a3ef2efc662447",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-focus/source",
+      "path": "assets/ui-button-candidates/v1/source/selection-focus.svg",
+      "sha256": "93b5605e1e82997c4ccb8770fee26f7f3b4af43c66e3cedaaab5d51a5a34fa79",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-focus/runtime",
+      "path": "assets/ui-button-candidates/v1/selection-focus.png",
+      "sha256": "65d5a4b9f7bdc41271fddf1c385cf8cd55afe515a6ffc9c356a40f3b1dfec148",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-hover/source",
+      "path": "assets/ui-button-candidates/v1/source/selection-hover.svg",
+      "sha256": "0f685a235405def75ec6a9776c05116d1b1caee61f84be877b24394b55875206",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-hover/runtime",
+      "path": "assets/ui-button-candidates/v1/selection-hover.png",
+      "sha256": "1f64ceaf0066b467d4927829f53335a419de1713fd9fc85a49f31a1f062637d0",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-normal/source",
+      "path": "assets/ui-button-candidates/v1/source/selection-normal.svg",
+      "sha256": "f52cc0db650a722423da9b122c91a3e72add8c725b977893fb22c027c63b6a3d",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-normal/runtime",
+      "path": "assets/ui-button-candidates/v1/selection-normal.png",
+      "sha256": "c30f6dbdb604493bb4fb3c49fa7234d421bc5c2733651bf14b724c9e7ea15c23",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-pressed/source",
+      "path": "assets/ui-button-candidates/v1/source/selection-pressed.svg",
+      "sha256": "a856a4e5080be79b6dcb4c046b0be471c7ad93f65880fdc5a0b963a6aeeb84f0",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-pressed/runtime",
+      "path": "assets/ui-button-candidates/v1/selection-pressed.png",
+      "sha256": "d812349053aa2432d80fbb3bd28b85926ac5adf5f3f9925c9fbafe2a061a908d",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-selected/source",
+      "path": "assets/ui-button-candidates/v1/source/selection-selected.svg",
+      "sha256": "7d6677f4a852689882dc0ad59f0af17c778f7f3e551d04b9f0d83321a411540c",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": false,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hero-clash-button-v1/selection-selected/runtime",
+      "path": "assets/ui-button-candidates/v1/selection-selected.png",
+      "sha256": "984df1ba359c14b74f0a802cc87b6aad789acadeeb517d6e70ec1c832a3c5082",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-button-candidates/v1/manifest.json"
+    },
+    {
+      "id": "hud-v2/player-frame",
+      "path": "assets/ui-hud-candidates/v2/player-frame.svg",
+      "sha256": "73c38ba27d5c0a1073048a4c41571c62c4636921d028d20799ed5d883acd0ad8",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/hp-fill",
+      "path": "assets/ui-hud-candidates/v2/hp-fill.svg",
+      "sha256": "9e25779a62b9c73e2f7a0903dfe75a4f313ebed81e01a1018b897bdf9b3c2203",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/shield-fill",
+      "path": "assets/ui-hud-candidates/v2/shield-fill.svg",
+      "sha256": "f4997529ca74b15cecd9cd5cd41248adfa8ed1b2187c2bcf4b5fe7c32b99477f",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/shield-mark",
+      "path": "assets/ui-hud-candidates/v2/shield-mark.svg",
+      "sha256": "8672084ff9dc39a22fe76d2edbea17991d47ffec90aa16579c3add47702dd7ec",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/wave-frame",
+      "path": "assets/ui-hud-candidates/v2/wave-frame.svg",
+      "sha256": "8b480fdf499211e9f3d9b3d635a1eeb048622a18c5921c3f030f899c63c4e2bc",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/pause-normal",
+      "path": "assets/ui-hud-candidates/v2/pause-normal.svg",
+      "sha256": "a56891d7322d1e9c93d2c0e6532702c4b95f5c25b998e386007a00b0fbc2c349",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/pause-hover",
+      "path": "assets/ui-hud-candidates/v2/pause-hover.svg",
+      "sha256": "dbe578c06327dbda467caf3b6f92178932c9850ff45ee102239c6750ebafa3ce",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/pause-focus",
+      "path": "assets/ui-hud-candidates/v2/pause-focus.svg",
+      "sha256": "a57bf8645e672eac4f4f3640b9f6e05a299fe51dcf82c137587acdea2aeb3e2c",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/pause-pressed",
+      "path": "assets/ui-hud-candidates/v2/pause-pressed.svg",
+      "sha256": "2790e7df3741fb51de51da8575f7303c00ab32d9289c026a842ed56854c7f931",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/pause-disabled",
+      "path": "assets/ui-hud-candidates/v2/pause-disabled.svg",
+      "sha256": "a56891d7322d1e9c93d2c0e6532702c4b95f5c25b998e386007a00b0fbc2c349",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/xp-frame",
+      "path": "assets/ui-hud-candidates/v2/xp-frame.svg",
+      "sha256": "9ef7cf4e4c5299f5f07b30dd242bf9382ee6af75c0b79f8b69a14549e495890b",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/equipment-strip",
+      "path": "assets/ui-hud-candidates/v2/equipment-strip.svg",
+      "sha256": "189c186d9ed4665c641c5b181dd0c45772139214f368d61ed1a595ba95aabae0",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/equipment-portrait",
+      "path": "assets/ui-hud-candidates/v2/equipment-portrait.svg",
+      "sha256": "6c4ed40f7c1fbe889f053fd718f7d5db0613f1e438f6792e5c981a1b54573664",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/slot-empty",
+      "path": "assets/ui-hud-candidates/v2/slot-empty.svg",
+      "sha256": "ddf097f83df46222edc673169be33ddee53adfb6ca2f1a40613e370532b8f1ce",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/slot-equipped",
+      "path": "assets/ui-hud-candidates/v2/slot-equipped.svg",
+      "sha256": "f26b9bf990aa934129ed21ebd349f34cbf1da5b709ca84eec8cfc818e3b6beb3",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/slot-focus",
+      "path": "assets/ui-hud-candidates/v2/slot-focus.svg",
+      "sha256": "50c904500da7af83c5f4996dc3e3a88a4a6aa7f311c453b7c89432cb5818e94b",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/level-tab",
+      "path": "assets/ui-hud-candidates/v2/level-tab.svg",
+      "sha256": "567e3ac7ab0655c3ea94e66a828a5d2319c17403f65cfb1ecdbaea08b1bebf46",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/flex-body",
+      "path": "assets/ui-hud-candidates/v2/flex-body.svg",
+      "sha256": "7c304eb8b4be5c33fa2e40ddbd09d79673b76a16558a173e82cdccf76b24901e",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/ability-nameplate",
+      "path": "assets/ui-hud-candidates/v2/ability-nameplate.svg",
+      "sha256": "766c81837d3a157fd1c4bfca517ac42b347e152c1495c96116228171f0e5921f",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-v2/boss-frame",
+      "path": "assets/ui-hud-candidates/v2/boss-frame.svg",
+      "sha256": "c3faeb6afb9ce95d6a05ea51550c238b416165410647dffdc8ba78a8100f5d0f",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "hud-portrait-shader",
+      "path": "assets/ui-hud-candidates/v2/portrait_crop.gdshader",
+      "sha256": "f3c7098f65080bdd5b7de3129f852e78217ff897f0dd3615f853310abf3fb21a",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/ui-hud-candidates/v2/manifest.json"
+    },
+    {
+      "id": "assets/fonts/hero-clash/ArchivoBlack.ttf",
+      "path": "assets/fonts/hero-clash/ArchivoBlack.ttf",
+      "sha256": "dd9a89a019b4849f66ab75455fe7bdf931311042cbb0f0f97acc061539703180",
+      "license_path": "assets/fonts/hero-clash/OFL-ArchivoBlack.txt",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/fonts/hero-clash/manifest.json"
+    },
+    {
+      "id": "assets/fonts/hero-clash/Archivo.ttf",
+      "path": "assets/fonts/hero-clash/Archivo.ttf",
+      "sha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053",
+      "license_path": "assets/fonts/hero-clash/OFL-Archivo.txt",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "assets/fonts/hero-clash/manifest.json"
+    },
+    {
+      "id": "scripts/clean_cut_typography.gd",
+      "path": "scripts/clean_cut_typography.gd",
+      "sha256": "aad9bbca5600215facef1a726f697bad60cf1be02efc47bd1a4f6213dcba6fb0",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "docs/art/HERO_CLASH_UI_CANDIDATE_2026-10-28.md"
+    },
+    {
+      "id": "scripts/hero_clash_brand.gd",
+      "path": "scripts/hero_clash_brand.gd",
+      "sha256": "ca5b27f63d2f8e17e9c5881e59d10f13ec9df85a475e3d0ed1dceca61ba111f0",
+      "status": "INTEGRATED_CANDIDATE_AWAITING_FORMAL_APPROVAL",
+      "runtime_dependency": true,
+      "authority": "docs/art/HERO_CLASH_UI_CANDIDATE_2026-10-28.md"
+    }
+  ],
+  "review_only": [
+    "assets/art-production/** except exact approved source selections",
+    "tests/**",
+    "docs/recovery/evidence/**"
+  ],
+  "rejected_or_superseded": [
+    "historical diamond/rectangular/left-only joystick treatments; GDD7.1 superseded by approved circular full-playfield joystick",
+    "historical V5 and pre-correction generic Clean Cut scene compositions where corrected V2 supersedes them"
+  ],
+  "note": "Do not revoke exact approved hashes by directory name or stale pre-approval review metadata. Runtime dependency is a role, not artistic approval."
+}

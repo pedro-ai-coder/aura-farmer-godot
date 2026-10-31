@@ -1,0 +1,6705 @@
+{
+  "build": "bfab07e55c0130416199cc5cfaf2180c35942e22",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "renderer": "Compatibility / OpenGL3 / X11 Mesa llvmpipe",
+  "fixture": "tests/recovery_m01/capture.gd",
+  "isolation": "ReviewRun defaults, _save_profile no-op; Reduced Motion true; game processing disabled",
+  "limitations": [
+    "Staged native fixtures, not interactive Web or physical-device validation",
+    "Result fixture calls _finish directly with zero elapsed metrics; it proves presentation only",
+    "Legendary offers are six total; scroll exposes the second row on compact mobile",
+    "Requested 844x390 has native readback 843x390"
+  ],
+  "captures": [
+    {
+      "state": "hero-menu",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "a1d02c47cfd0b5e05260303fa3bad1fd7069846bdad716ba4f8e654e7512acfb",
+      "reported_layout_issues": [],
+      "file": "hero-menu-1600x900.jpg",
+      "sha256": "15cd7373ccee13e269460ddf4367a6a145e9354f6b27a0ef63d00f3a4fa16211"
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "752b50767297f207081a0a664a2ebc97244b30d162d822744d3ca94d2d1d6396",
+      "reported_layout_issues": [],
+      "file": "hero-selection-1600x900.jpg",
+      "sha256": "afcd4c94cbdf809e6486d04609fe29a536c12aed4503314b16d91299cd975a2a"
+    },
+    {
+      "state": "wave1",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "18f6a4a211967336b5cfddffd5202f032087029aba6c5d104bc102148cc8117d",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "dense",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "ded4beb16f32e3169eaacef4a00f12de8aac4132de1aa231133bc5910cb0c9a0",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "cover-left",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "18f6a4a211967336b5cfddffd5202f032087029aba6c5d104bc102148cc8117d",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "cover-right",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "18f6a4a211967336b5cfddffd5202f032087029aba6c5d104bc102148cc8117d",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "2e072a0cdcb8ce5eada44ebf5427d66ed8150ca082683dc4c2fe32ed99a36bb2",
+      "reported_layout_issues": [],
+      "file": "playing-shield-1600x900.jpg",
+      "sha256": "40c6ed633606ad7f33116ebaceb0c06b2c30d201af411c9208d8dec28cca82b6"
+    },
+    {
+      "state": "ready",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "953f750a9ed144895b59d1ef13cfce89b0735e9dfe77e20f0f47c7901439ac9a",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "boss",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "c4bf711224ecf8a4789aa3fbde3be05175c2031f8128873ced08a778a7515f9b",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "312b487c171f485a7cfee0ef7feada8a38f3b6488babef4cdadcb2b4c94bfb7c",
+      "reported_layout_issues": [],
+      "file": "choice-selected-1600x900.jpg",
+      "sha256": "711f02b19df7021a30004393de3cc4354acedb5fa253ca5275c73a6c3bee196b"
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "2d55f6a0ca369dff73a53dddb813085100cbab83b0d4d24f09f7173e46bb4097",
+      "reported_layout_issues": [],
+      "file": "legendary-selected-1600x900.jpg",
+      "sha256": "15a395556caa5c5a433e62883f0389729b484120906a9f6719417d0913013d0f"
+    },
+    {
+      "state": "paused",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "9b253d8370e541613b869a1b46964cc7b8bdebd0642cd06c981b8ca446bf3941",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "build",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "dbf0ab6ac19bea00641ec4eb88c092119a9b391eb66f6712bfbde52954eac4f9",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "settings",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "64d08fccec75e3a00d13f8a7795ae3c8f5475c463cc18537e660c9b75135f4e1",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "confirm-exit",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "a5ffbec62e6cb3b90ca2e522e28cb8d185ed7a006c530bffda1a7afe194be74e",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "174a77cf314709ba1e11e57942b0a4fcfca37c161e5f137ef08ed3e8f1529c1d",
+      "reported_layout_issues": [],
+      "file": "won-1600x900.jpg",
+      "sha256": "f3f9a76c49a9b737263ce94bef11dd20b6973404f53bd761a06ec26334af505b"
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_png_sha256": "a95dcd956df93e7050ebdb2db116d15a0ff1cffa09904953a3f9febf1335032a",
+      "reported_layout_issues": [],
+      "file": "lost-1600x900.jpg",
+      "sha256": "6a17c2f29ee253fb3892803072d158e6ec051a838bb9e593ac82e6a18f06b51c"
+    },
+    {
+      "state": "hero-menu",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "1c8920e0f78012b3cb8cbe4cfaadb678ec199dc1039c15cea37b8bf439ec8071",
+      "reported_layout_issues": [],
+      "file": "hero-menu-844x390.jpg",
+      "sha256": "10b2766aad48104ef8e2ac4a72913a7a046e17918ad160f785ec7739962974a2"
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "b152f1191ea3ac38446e26d7fa4233c624b84463e37a85465f76b1155bf20837",
+      "reported_layout_issues": [],
+      "file": "hero-selection-844x390.jpg",
+      "sha256": "804c353e94531eb13d343e29a774229c72999e68befc6ac919a0d1b48c58c7fb"
+    },
+    {
+      "state": "wave1",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "322dc78ff94f43f3e79f9e4de1b8d2bb6c8924ab94884aca14fe10271cc0e4e0",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "dense",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "45a9022e106f9b42aa2ccd581a5368337b53df312a004c0074141ad9a0ce090a",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "cover-left",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "322dc78ff94f43f3e79f9e4de1b8d2bb6c8924ab94884aca14fe10271cc0e4e0",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "cover-right",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "322dc78ff94f43f3e79f9e4de1b8d2bb6c8924ab94884aca14fe10271cc0e4e0",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "3b7e36f92148f50418815a579a9129aa1665a1f54b4341d8c4217465ea73b6a9",
+      "reported_layout_issues": [],
+      "file": "playing-shield-844x390.jpg",
+      "sha256": "1f083e0c052754a997d126a89f9c87d5563e681389c3339cb199688e94181058"
+    },
+    {
+      "state": "ready",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "dd1bbed416efc68a6ab27182037c5cbd654e19d3e2f80d8fca096f52e6a05693",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "boss",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "70ced5b55d124aa7d2c64524eec7b1a4346b10c45debcb4ba8a78d408aa90d12",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "d4a026b629937bceb0b683880e3b00d50b7d34b9a766f7a321078a32fd8ec23b",
+      "reported_layout_issues": [],
+      "file": "choice-selected-844x390.jpg",
+      "sha256": "226be50c73fe2f4ae2be0e20df314614535391301127189eae638f397ad541bc"
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "b904556f4b8d29d2a47592517c7b70ecd46f228aedf209f816fc7d21f2343b01",
+      "reported_layout_issues": [],
+      "file": "legendary-selected-844x390.jpg",
+      "sha256": "51f444bcc9af837ccd755d962223b75f896efff5e39756832a91a2d4829286ac"
+    },
+    {
+      "state": "paused",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "caafc97cffd0bbfb18e9a1ad4596fa8d4239f41df7d8fd71927a3feaf34a2aad",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "build",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "4c987bc627caba718aeda6839e04e263b811904e47e4ad54802b13e5f2dc3b58",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "settings",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "3aadd0f3b25756a6ae83e35e38b84202ade457e53da61a55436568e061f313cf",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "confirm-exit",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "9f844115304b0132a70b8a102f190440edcd4c1ba34db4182484d2861030f4a1",
+      "reported_layout_issues": []
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "15c53d4fc6907dd013020ee048d357f459d073e1ba828849044cd0db3054d698",
+      "reported_layout_issues": [],
+      "file": "won-844x390.jpg",
+      "sha256": "0223a021883397a59ca762bb613d0c7e340c229e3140cb3e8384e4834c289e46"
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_png_sha256": "6bb2904620b8474be476e8dfe8f96207057f65c006badf77c9d5b1b36e2ced94",
+      "reported_layout_issues": [],
+      "file": "lost-844x390.jpg",
+      "sha256": "82bc7da6704e8173bad5cc1923b5692f044763579b9052b4b042b27722242135"
+    }
+  ],
+  "font_measurements": [
+    {
+      "state": "hero-menu",
+      "requested": "1600x900",
+      "text": "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY.",
+      "font_physical": 21.25,
+      "logical": [
+        40.0,
+        224.0,
+        576.0,
+        64.0
+      ],
+      "screen": [
+        50.0,
+        280.0,
+        720.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "1600x900",
+      "text": "PLAY",
+      "font_physical": 27.5,
+      "logical": [
+        40.0,
+        367.200012207031,
+        360.0,
+        64.0
+      ],
+      "screen": [
+        50.0,
+        459.0,
+        450.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "1600x900",
+      "text": "HERO SELECTION",
+      "font_physical": 27.5,
+      "logical": [
+        40.0,
+        443.200012207031,
+        360.0,
+        64.0
+      ],
+      "screen": [
+        50.0,
+        554.0,
+        450.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "1600x900",
+      "text": "SETTINGS",
+      "font_physical": 27.5,
+      "logical": [
+        40.0,
+        519.200012207031,
+        360.0,
+        64.0
+      ],
+      "screen": [
+        50.0,
+        649.0,
+        450.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "PICK YOUR FARMER.",
+      "font_physical": 57.5,
+      "logical": [
+        28.0,
+        25.0,
+        1224.0,
+        64.0
+      ],
+      "screen": [
+        35.0,
+        31.25,
+        1530.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "START RUN",
+      "font_physical": 27.5,
+      "logical": [
+        980.0,
+        642.0,
+        276.0,
+        64.0
+      ],
+      "screen": [
+        1225.0,
+        802.5,
+        345.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "BACK",
+      "font_physical": 27.5,
+      "logical": [
+        24.0,
+        642.0,
+        150.0,
+        64.0
+      ],
+      "screen": [
+        30.0,
+        802.5,
+        187.5,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "THE SIGMA",
+      "font_physical": 36.25,
+      "logical": [
+        48.0,
+        144.0,
+        344.0,
+        40.0
+      ],
+      "screen": [
+        60.0,
+        180.0,
+        430.0,
+        50.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "RANGED",
+      "font_physical": 21.25,
+      "logical": [
+        48.0,
+        185.0,
+        344.0,
+        24.0
+      ],
+      "screen": [
+        60.0,
+        231.25,
+        430.0,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "STARTER / No Cap",
+      "font_physical": 21.25,
+      "logical": [
+        104.0,
+        382.0,
+        292.0,
+        55.0
+      ],
+      "screen": [
+        130.0,
+        477.5,
+        365.0,
+        68.75
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "Deadpan Verdict",
+      "font_physical": 35.0,
+      "logical": [
+        48.0,
+        450.0,
+        344.0,
+        48.0
+      ],
+      "screen": [
+        60.0,
+        562.5,
+        430.0,
+        60.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "Hit the mark with three weapon attacks to trigger one Verdict. Requires an eligible target.",
+      "font_physical": 21.25,
+      "logical": [
+        48.0,
+        510.0,
+        344.0,
+        102.0
+      ],
+      "screen": [
+        60.0,
+        637.5,
+        430.0,
+        127.5
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "COOL KID",
+      "font_physical": 36.25,
+      "logical": [
+        460.0,
+        144.0,
+        344.0,
+        40.0
+      ],
+      "screen": [
+        575.0,
+        180.0,
+        430.0,
+        50.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "MELEE \u00b7 SELECTED",
+      "font_physical": 21.25,
+      "logical": [
+        460.0,
+        185.0,
+        344.0,
+        24.0
+      ],
+      "screen": [
+        575.0,
+        231.25,
+        430.0,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "STARTER / Keyboard Warrior",
+      "font_physical": 21.25,
+      "logical": [
+        516.0,
+        382.0,
+        292.0,
+        55.0
+      ],
+      "screen": [
+        645.0,
+        477.5,
+        365.0,
+        68.75
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "CTRL + CHAOS",
+      "font_physical": 35.0,
+      "logical": [
+        460.0,
+        450.0,
+        344.0,
+        48.0
+      ],
+      "screen": [
+        575.0,
+        562.5,
+        430.0,
+        60.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "Aim six keyboard beats, then land the directional ENTER! finisher. Move faster; projectiles and hazards still hurt.",
+      "font_physical": 21.25,
+      "logical": [
+        460.0,
+        510.0,
+        344.0,
+        102.0
+      ],
+      "screen": [
+        575.0,
+        637.5,
+        430.0,
+        127.5
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "ALPHA CHAD",
+      "font_physical": 36.25,
+      "logical": [
+        872.0,
+        144.0,
+        344.0,
+        40.0
+      ],
+      "screen": [
+        1090.0,
+        180.0,
+        430.0,
+        50.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "TANK",
+      "font_physical": 21.25,
+      "logical": [
+        872.0,
+        185.0,
+        344.0,
+        24.0
+      ],
+      "screen": [
+        1090.0,
+        231.25,
+        430.0,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "STARTER / Cope Shield",
+      "font_physical": 21.25,
+      "logical": [
+        928.0,
+        382.0,
+        292.0,
+        55.0
+      ],
+      "screen": [
+        1160.0,
+        477.5,
+        365.0,
+        68.75
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "Giga Chad Rampage",
+      "font_physical": 35.0,
+      "logical": [
+        872.0,
+        450.0,
+        344.0,
+        48.0
+      ],
+      "screen": [
+        1090.0,
+        562.5,
+        430.0,
+        60.0
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "1600x900",
+      "text": "Gain a shield, draw nearby mobs and land three slams. Finish with a countershock powered by absorbed shield damage.",
+      "font_physical": 21.25,
+      "logical": [
+        872.0,
+        510.0,
+        344.0,
+        102.0
+      ],
+      "screen": [
+        1090.0,
+        637.5,
+        430.0,
+        127.5
+      ],
+      "clip": [
+        30.0,
+        125.0,
+        1540.0,
+        662.5
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "ALPHA CHAD",
+      "font_physical": 37.5,
+      "logical": [
+        154.241943359375,
+        21.8588237762451,
+        248.225830078125,
+        38.0
+      ],
+      "screen": [
+        192.802429199219,
+        27.3235301971436,
+        310.282287597656,
+        47.5
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "HP 70 / 140",
+      "font_physical": 30.0,
+      "logical": [
+        156.983871459961,
+        66.8941192626953,
+        254.725845336914,
+        30.0
+      ],
+      "screen": [
+        196.229843139648,
+        83.6176452636719,
+        318.407287597656,
+        37.5
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "SHIELD 40",
+      "font_physical": 22.5,
+      "logical": [
+        167.0,
+        100.282356262207,
+        233.822601318359,
+        23.0
+      ],
+      "screen": [
+        208.75,
+        125.35294342041,
+        292.278259277344,
+        28.7499923706055
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "WAVE 1 / 5",
+      "font_physical": 31.25,
+      "logical": [
+        514.0,
+        7.0,
+        252.0,
+        32.0
+      ],
+      "screen": [
+        642.5,
+        8.75,
+        315.0,
+        40.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "00:00",
+      "font_physical": 30.0,
+      "logical": [
+        514.0,
+        38.0,
+        252.0,
+        30.0
+      ],
+      "screen": [
+        642.5,
+        47.5,
+        315.0,
+        37.5
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "LV 1  \u00b7  XP 0",
+      "font_physical": 27.5,
+      "logical": [
+        27.3999996185303,
+        659.0,
+        213.199996948242,
+        31.0
+      ],
+      "screen": [
+        34.25,
+        823.75,
+        266.5,
+        38.75
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "WEAPONS",
+      "font_physical": 17.5,
+      "logical": [
+        319.0,
+        693.0,
+        228.0,
+        20.0
+      ],
+      "screen": [
+        398.75,
+        866.25,
+        285.0,
+        25.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "PASSIVES",
+      "font_physical": 17.5,
+      "logical": [
+        565.0,
+        693.0,
+        384.0,
+        20.0
+      ],
+      "screen": [
+        706.25,
+        866.25,
+        480.0,
+        25.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "LV1",
+      "font_physical": 22.5,
+      "logical": [
+        326.0,
+        662.0,
+        61.0,
+        24.0
+      ],
+      "screen": [
+        407.5,
+        827.5,
+        76.25,
+        30.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "FLEX",
+      "font_physical": 47.5,
+      "logical": [
+        1105.92004394531,
+        593.760009765625,
+        136.160003662109,
+        47.0
+      ],
+      "screen": [
+        1382.40002441406,
+        742.200012207031,
+        170.200073242188,
+        58.75
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "AURA 38%",
+      "font_physical": 25.0,
+      "logical": [
+        1096.71997070312,
+        643.440002441406,
+        154.559997558594,
+        33.1199951171875
+      ],
+      "screen": [
+        1370.89990234375,
+        804.299987792969,
+        193.199951171875,
+        41.3999633789062
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "1600x900",
+      "text": "GIGA CHAD RAMPAGE",
+      "font_physical": 22.5,
+      "logical": [
+        1055.0,
+        488.0,
+        219.0,
+        32.0
+      ],
+      "screen": [
+        1318.75,
+        610.0,
+        273.75,
+        40.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "CHOOSE YOUR NEXT MOVE",
+      "font_physical": 57.5,
+      "logical": [
+        28.0,
+        25.0,
+        1224.0,
+        64.0
+      ],
+      "screen": [
+        35.0,
+        31.25,
+        1530.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "CONFIRM",
+      "font_physical": 27.5,
+      "logical": [
+        930.0,
+        642.0,
+        326.0,
+        64.0
+      ],
+      "screen": [
+        1162.5,
+        802.5,
+        407.5,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "WEAPON",
+      "font_physical": 18.75,
+      "logical": [
+        40.0,
+        118.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        50.0,
+        147.5,
+        453.333312988281,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "Cope Shield",
+      "font_physical": 36.25,
+      "logical": [
+        136.0,
+        174.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        170.0,
+        217.5,
+        328.333312988281,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "COMMON / WEAPON  /  LV 2/4",
+      "font_physical": 21.25,
+      "logical": [
+        40.0,
+        268.0,
+        362.666656494141,
+        28.0
+      ],
+      "screen": [
+        50.0,
+        335.0,
+        453.333312988281,
+        35.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "Shield bash. A hit grants a 4% HP shield for 2s.",
+      "font_physical": 23.75,
+      "logical": [
+        40.0,
+        306.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        50.0,
+        382.5,
+        453.333312988281,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "LV 1 common \u2192 LV 2 common\n41 dmg \u00b7 2.00s \u2192 48 dmg \u00b7 1.90s",
+      "font_physical": 21.25,
+      "logical": [
+        40.0,
+        398.0,
+        362.666656494141,
+        45.0
+      ],
+      "screen": [
+        50.0,
+        497.5,
+        453.333312988281,
+        56.25
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "font_physical": 18.75,
+      "logical": [
+        40.0,
+        516.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        50.0,
+        645.0,
+        453.333312988281,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "PASSIVE",
+      "font_physical": 18.75,
+      "logical": [
+        450.666656494141,
+        118.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        563.333312988281,
+        147.5,
+        453.333312988281,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "Caught in 4K",
+      "font_physical": 36.25,
+      "logical": [
+        546.666625976562,
+        174.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        683.333251953125,
+        217.5,
+        328.333312988281,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "COMMON / PASSIVE  /  LV 1/4",
+      "font_physical": 21.25,
+      "logical": [
+        450.666656494141,
+        268.0,
+        362.666656494141,
+        28.0
+      ],
+      "screen": [
+        563.333312988281,
+        335.0,
+        453.333312988281,
+        35.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "+5% movement speed per level.",
+      "font_physical": 23.75,
+      "logical": [
+        450.666656494141,
+        306.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        563.333312988281,
+        382.5,
+        453.333312988281,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "Uses one passive slot",
+      "font_physical": 21.25,
+      "logical": [
+        450.666656494141,
+        398.0,
+        362.666656494141,
+        23.0
+      ],
+      "screen": [
+        563.333312988281,
+        497.5,
+        453.333312988281,
+        28.75
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        450.666656494141,
+        516.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        563.333312988281,
+        645.0,
+        453.333312988281,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "PASSIVE",
+      "font_physical": 18.75,
+      "logical": [
+        861.333312988281,
+        118.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        1076.66662597656,
+        147.5,
+        453.333374023438,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "Certified W",
+      "font_physical": 36.25,
+      "logical": [
+        957.333312988281,
+        174.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        1196.66662597656,
+        217.5,
+        328.333374023438,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "COMMON / PASSIVE  /  LV 1/4",
+      "font_physical": 21.25,
+      "logical": [
+        861.333312988281,
+        268.0,
+        362.666656494141,
+        28.0
+      ],
+      "screen": [
+        1076.66662597656,
+        335.0,
+        453.333374023438,
+        35.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "+6% healing and shields granted per level.",
+      "font_physical": 23.75,
+      "logical": [
+        861.333312988281,
+        306.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        1076.66662597656,
+        382.5,
+        453.333374023438,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "Uses one passive slot",
+      "font_physical": 21.25,
+      "logical": [
+        861.333312988281,
+        398.0,
+        362.666656494141,
+        23.0
+      ],
+      "screen": [
+        1076.66662597656,
+        497.5,
+        453.333374023438,
+        28.75
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        861.333312988281,
+        516.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        1076.66662597656,
+        645.0,
+        453.333374023438,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "THE LEGENDARY DROP",
+      "font_physical": 57.5,
+      "logical": [
+        28.0,
+        25.0,
+        1224.0,
+        64.0
+      ],
+      "screen": [
+        35.0,
+        31.25,
+        1530.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "CONFIRM LEGENDARY",
+      "font_physical": 27.5,
+      "logical": [
+        930.0,
+        642.0,
+        326.0,
+        64.0
+      ],
+      "screen": [
+        1162.5,
+        802.5,
+        407.5,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "DECIDE LATER",
+      "font_physical": 27.5,
+      "logical": [
+        24.0,
+        642.0,
+        270.0,
+        64.0
+      ],
+      "screen": [
+        30.0,
+        802.5,
+        337.5,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "LEGENDARY \u00b7 PASSIVE",
+      "font_physical": 18.75,
+      "logical": [
+        40.0,
+        118.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        50.0,
+        147.5,
+        453.333312988281,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Absolute Cinema",
+      "font_physical": 36.25,
+      "logical": [
+        136.0,
+        174.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        170.0,
+        217.5,
+        328.333312988281,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "+25% weapon damage, plus 20% during Flex.",
+      "font_physical": 23.75,
+      "logical": [
+        40.0,
+        268.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        50.0,
+        335.0,
+        453.333312988281,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "font_physical": 18.75,
+      "logical": [
+        40.0,
+        376.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        50.0,
+        470.0,
+        453.333312988281,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "LEGENDARY \u00b7 PASSIVE",
+      "font_physical": 18.75,
+      "logical": [
+        450.666656494141,
+        118.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        563.333312988281,
+        147.5,
+        453.333312988281,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Too Sigma to Fall",
+      "font_physical": 36.25,
+      "logical": [
+        546.666625976562,
+        174.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        683.333251953125,
+        217.5,
+        328.333312988281,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Cross below 25% HP: shield 25% HP for 5s. 60s cooldown. Cannot prevent a fatal hit.",
+      "font_physical": 23.75,
+      "logical": [
+        450.666656494141,
+        268.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        563.333312988281,
+        335.0,
+        453.333312988281,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        450.666656494141,
+        376.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        563.333312988281,
+        470.0,
+        453.333312988281,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "LEGENDARY \u00b7 PASSIVE",
+      "font_physical": 18.75,
+      "logical": [
+        861.333312988281,
+        118.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        1076.66662597656,
+        147.5,
+        453.333374023438,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "No U",
+      "font_physical": 36.25,
+      "logical": [
+        957.333312988281,
+        174.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        1196.66662597656,
+        217.5,
+        328.333374023438,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Every 15s: 30% power pulse in 200U, reducing mob damage 20%/4s (boss 10%/2s).",
+      "font_physical": 23.75,
+      "logical": [
+        861.333312988281,
+        268.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        1076.66662597656,
+        335.0,
+        453.333374023438,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        861.333312988281,
+        376.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        1076.66662597656,
+        470.0,
+        453.333374023438,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "LEGENDARY \u00b7 WEAPON",
+      "font_physical": 18.75,
+      "logical": [
+        40.0,
+        434.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        50.0,
+        542.5,
+        453.333312988281,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Cope Shield",
+      "font_physical": 36.25,
+      "logical": [
+        136.0,
+        490.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        170.0,
+        612.5,
+        328.333312988281,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Every third successful bash adds a 5% HP shield for 3s.",
+      "font_physical": 23.75,
+      "logical": [
+        40.0,
+        584.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        50.0,
+        730.0,
+        453.333312988281,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        40.0,
+        692.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        50.0,
+        865.0,
+        453.333312988281,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "LEGENDARY \u00b7 WEAPON",
+      "font_physical": 18.75,
+      "logical": [
+        450.666656494141,
+        434.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        563.333312988281,
+        542.5,
+        453.333312988281,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Chad Hands",
+      "font_physical": 36.25,
+      "logical": [
+        546.666625976562,
+        490.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        683.333251953125,
+        612.5,
+        328.333312988281,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Third successful combo slams 140U for 0.60P \u00d7 rarity.",
+      "font_physical": 23.75,
+      "logical": [
+        450.666656494141,
+        584.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        563.333312988281,
+        730.0,
+        453.333312988281,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        450.666656494141,
+        692.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        563.333312988281,
+        865.0,
+        453.333312988281,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "LEGENDARY \u00b7 WEAPON",
+      "font_physical": 18.75,
+      "logical": [
+        861.333312988281,
+        434.0,
+        362.666656494141,
+        44.0
+      ],
+      "screen": [
+        1076.66662597656,
+        542.5,
+        453.333374023438,
+        55.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Personal Space",
+      "font_physical": 36.25,
+      "logical": [
+        957.333312988281,
+        490.0,
+        262.666656494141,
+        84.0
+      ],
+      "screen": [
+        1196.66662597656,
+        612.5,
+        328.333374023438,
+        105.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "Every second pulse adds a 4% HP shield for 3s.",
+      "font_physical": 23.75,
+      "logical": [
+        861.333312988281,
+        584.0,
+        362.666656494141,
+        80.0
+      ],
+      "screen": [
+        1076.66662597656,
+        730.0,
+        453.333374023438,
+        100.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "1600x900",
+      "text": "TAP TO SELECT",
+      "font_physical": 18.75,
+      "logical": [
+        861.333312988281,
+        692.0,
+        362.666656494141,
+        24.0
+      ],
+      "screen": [
+        1076.66662597656,
+        865.0,
+        453.333374023438,
+        30.0
+      ],
+      "clip": [
+        30.0,
+        132.5,
+        1540.0,
+        655.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "RUN COMPLETE",
+      "font_physical": 35.0,
+      "logical": [
+        30.0,
+        94.0,
+        1220.0,
+        36.0
+      ],
+      "screen": [
+        37.5,
+        117.5,
+        1525.0,
+        45.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "ALPHA CHAD",
+      "font_physical": 36.25,
+      "logical": [
+        550.400024414062,
+        142.0,
+        691.0,
+        36.0
+      ],
+      "screen": [
+        688.0,
+        177.5,
+        863.75,
+        45.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "TIME",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        192.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        240.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "00:00",
+      "font_physical": 45.0,
+      "logical": [
+        564.400024414062,
+        216.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        705.5,
+        270.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "KILLS",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        192.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        240.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 45.0,
+      "logical": [
+        916.400024414062,
+        216.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        1145.5,
+        270.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "LEVEL",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        300.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        375.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "1",
+      "font_physical": 45.0,
+      "logical": [
+        564.400024414062,
+        324.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        705.5,
+        405.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "DAMAGE",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        300.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        375.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 45.0,
+      "logical": [
+        916.400024414062,
+        324.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        1145.5,
+        405.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "WAVE",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        397.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        496.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "1 / 5",
+      "font_physical": 27.5,
+      "logical": [
+        564.400024414062,
+        418.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        705.5,
+        522.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "WEAPONS",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        397.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        496.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "1 / 3",
+      "font_physical": 27.5,
+      "logical": [
+        916.400024414062,
+        418.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        1145.5,
+        522.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "PASSIVES",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        457.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        571.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "0 / 5",
+      "font_physical": 27.5,
+      "logical": [
+        564.400024414062,
+        478.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        705.5,
+        597.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "HEALING",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        457.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        571.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 27.5,
+      "logical": [
+        916.400024414062,
+        478.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        1145.5,
+        597.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "SHIELD ABSORBED",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        517.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        646.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 27.5,
+      "logical": [
+        564.400024414062,
+        538.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        705.5,
+        672.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "FLEX USES",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        517.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        646.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 27.5,
+      "logical": [
+        916.400024414062,
+        538.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        1145.5,
+        672.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "TRY AGAIN",
+      "font_physical": 27.5,
+      "logical": [
+        903.0,
+        640.0,
+        338.599975585938,
+        64.0
+      ],
+      "screen": [
+        1128.75,
+        800.0,
+        423.25,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "MAIN MENU",
+      "font_physical": 27.5,
+      "logical": [
+        550.400024414062,
+        640.0,
+        338.599975585938,
+        64.0
+      ],
+      "screen": [
+        688.0,
+        800.0,
+        423.25,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "1600x900",
+      "text": "VICTORY!",
+      "font_physical": 57.5,
+      "logical": [
+        28.0,
+        25.0,
+        1224.0,
+        64.0
+      ],
+      "screen": [
+        35.0,
+        31.25,
+        1530.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "THE STREETS WON THIS ROUND",
+      "font_physical": 35.0,
+      "logical": [
+        30.0,
+        94.0,
+        1220.0,
+        36.0
+      ],
+      "screen": [
+        37.5,
+        117.5,
+        1525.0,
+        45.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "ALPHA CHAD",
+      "font_physical": 36.25,
+      "logical": [
+        550.400024414062,
+        142.0,
+        691.0,
+        36.0
+      ],
+      "screen": [
+        688.0,
+        177.5,
+        863.75,
+        45.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "TIME",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        192.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        240.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "00:00",
+      "font_physical": 45.0,
+      "logical": [
+        564.400024414062,
+        216.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        705.5,
+        270.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "KILLS",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        192.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        240.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 45.0,
+      "logical": [
+        916.400024414062,
+        216.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        1145.5,
+        270.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "LEVEL",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        300.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        375.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "1",
+      "font_physical": 45.0,
+      "logical": [
+        564.400024414062,
+        324.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        705.5,
+        405.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "DAMAGE",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        300.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        375.0,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 45.0,
+      "logical": [
+        916.400024414062,
+        324.0,
+        303.600006103516,
+        52.0
+      ],
+      "screen": [
+        1145.5,
+        405.0,
+        379.5,
+        65.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "WAVE",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        397.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        496.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "1 / 5",
+      "font_physical": 27.5,
+      "logical": [
+        564.400024414062,
+        418.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        705.5,
+        522.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "WEAPONS",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        397.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        496.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "1 / 3",
+      "font_physical": 27.5,
+      "logical": [
+        916.400024414062,
+        418.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        1145.5,
+        522.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "PASSIVES",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        457.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        571.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "0 / 5",
+      "font_physical": 27.5,
+      "logical": [
+        564.400024414062,
+        478.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        705.5,
+        597.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "HEALING",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        457.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        571.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 27.5,
+      "logical": [
+        916.400024414062,
+        478.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        1145.5,
+        597.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "SHIELD ABSORBED",
+      "font_physical": 17.5,
+      "logical": [
+        564.400024414062,
+        517.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        705.5,
+        646.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 27.5,
+      "logical": [
+        564.400024414062,
+        538.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        705.5,
+        672.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "FLEX USES",
+      "font_physical": 17.5,
+      "logical": [
+        916.400024414062,
+        517.0,
+        303.600006103516,
+        22.0
+      ],
+      "screen": [
+        1145.5,
+        646.25,
+        379.5,
+        27.5
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "0",
+      "font_physical": 27.5,
+      "logical": [
+        916.400024414062,
+        538.0,
+        303.600006103516,
+        28.0
+      ],
+      "screen": [
+        1145.5,
+        672.5,
+        379.5,
+        35.0
+      ],
+      "clip": [
+        688.0,
+        177.5,
+        864.000122070312,
+        597.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "TRY AGAIN",
+      "font_physical": 27.5,
+      "logical": [
+        903.0,
+        640.0,
+        338.599975585938,
+        64.0
+      ],
+      "screen": [
+        1128.75,
+        800.0,
+        423.25,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "MAIN MENU",
+      "font_physical": 27.5,
+      "logical": [
+        550.400024414062,
+        640.0,
+        338.599975585938,
+        64.0
+      ],
+      "screen": [
+        688.0,
+        800.0,
+        423.25,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "1600x900",
+      "text": "RUN OVER",
+      "font_physical": 57.5,
+      "logical": [
+        28.0,
+        25.0,
+        1224.0,
+        64.0
+      ],
+      "screen": [
+        35.0,
+        31.25,
+        1530.0,
+        80.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        1600.0,
+        900.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "844x390",
+      "text": "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY.",
+      "font_physical": 12.75,
+      "logical": [
+        40.0,
+        183.0,
+        506.25,
+        64.0
+      ],
+      "screen": [
+        30.9733333587646,
+        137.25,
+        379.350006103516,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "844x390",
+      "text": "PLAY",
+      "font_physical": 16.5,
+      "logical": [
+        40.0,
+        300.0,
+        360.0,
+        64.0
+      ],
+      "screen": [
+        30.9733333587646,
+        225.0,
+        269.760009765625,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "844x390",
+      "text": "HERO SELECTION",
+      "font_physical": 16.5,
+      "logical": [
+        40.0,
+        376.0,
+        360.0,
+        64.0
+      ],
+      "screen": [
+        30.9733333587646,
+        282.0,
+        269.760009765625,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-menu",
+      "requested": "844x390",
+      "text": "SETTINGS",
+      "font_physical": 16.5,
+      "logical": [
+        40.0,
+        452.0,
+        360.0,
+        64.0
+      ],
+      "screen": [
+        30.9733333587646,
+        339.0,
+        269.760009765625,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "PICK YOUR FARMER.",
+      "font_physical": 34.5,
+      "logical": [
+        28.0,
+        25.0,
+        1069.0,
+        64.0
+      ],
+      "screen": [
+        21.9813327789307,
+        18.75,
+        801.037292480469,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "START RUN",
+      "font_physical": 16.5,
+      "logical": [
+        825.0,
+        442.0,
+        276.0,
+        64.0
+      ],
+      "screen": [
+        619.200012207031,
+        331.5,
+        206.815979003906,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "BACK",
+      "font_physical": 16.5,
+      "logical": [
+        24.0,
+        442.0,
+        150.0,
+        64.0
+      ],
+      "screen": [
+        18.9839992523193,
+        331.5,
+        112.400001525879,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "THE SIGMA",
+      "font_physical": 21.75,
+      "logical": [
+        48.0,
+        144.0,
+        292.333343505859,
+        40.0
+      ],
+      "screen": [
+        36.9679985046387,
+        108.0,
+        219.055099487305,
+        30.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "RANGED",
+      "font_physical": 12.75,
+      "logical": [
+        48.0,
+        185.0,
+        292.333343505859,
+        24.0
+      ],
+      "screen": [
+        36.9679985046387,
+        138.75,
+        219.055099487305,
+        18.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "STARTER / No Cap",
+      "font_physical": 12.75,
+      "logical": [
+        104.0,
+        382.0,
+        240.333312988281,
+        55.0
+      ],
+      "screen": [
+        78.9306640625,
+        286.5,
+        180.089752197266,
+        41.25
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "Deadpan Verdict",
+      "font_physical": 21.0,
+      "logical": [
+        48.0,
+        450.0,
+        292.333343505859,
+        71.0
+      ],
+      "screen": [
+        36.9679985046387,
+        337.5,
+        219.055099487305,
+        53.25
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "Hit the mark with three weapon attacks to trigger one Verdict. Requires an eligible target.",
+      "font_physical": 12.75,
+      "logical": [
+        48.0,
+        529.0,
+        292.333343505859,
+        86.0
+      ],
+      "screen": [
+        36.9679985046387,
+        396.75,
+        219.055099487305,
+        64.5
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "COOL KID",
+      "font_physical": 21.75,
+      "logical": [
+        408.333343505859,
+        144.0,
+        292.333343505859,
+        40.0
+      ],
+      "screen": [
+        306.977783203125,
+        108.0,
+        219.055114746094,
+        30.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "MELEE \u00b7 SELECTED",
+      "font_physical": 12.75,
+      "logical": [
+        408.333343505859,
+        185.0,
+        292.333343505859,
+        24.0
+      ],
+      "screen": [
+        306.977783203125,
+        138.75,
+        219.055114746094,
+        18.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "STARTER / Keyboard Warrior",
+      "font_physical": 12.75,
+      "logical": [
+        464.333343505859,
+        382.0,
+        240.333312988281,
+        55.0
+      ],
+      "screen": [
+        348.940460205078,
+        286.5,
+        180.089752197266,
+        41.25
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "CTRL + CHAOS",
+      "font_physical": 21.0,
+      "logical": [
+        408.333343505859,
+        450.0,
+        292.333343505859,
+        48.0
+      ],
+      "screen": [
+        306.977783203125,
+        337.5,
+        219.055114746094,
+        36.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "Aim six keyboard beats, then land the directional ENTER! finisher. Move faster; projectiles and hazards still hurt.",
+      "font_physical": 12.75,
+      "logical": [
+        408.333343505859,
+        510.0,
+        292.333343505859,
+        105.0
+      ],
+      "screen": [
+        306.977783203125,
+        382.5,
+        219.055114746094,
+        78.75
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "ALPHA CHAD",
+      "font_physical": 21.75,
+      "logical": [
+        768.666687011719,
+        144.0,
+        292.333343505859,
+        40.0
+      ],
+      "screen": [
+        576.987548828125,
+        108.0,
+        219.055114746094,
+        30.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "TANK",
+      "font_physical": 12.75,
+      "logical": [
+        768.666687011719,
+        185.0,
+        292.333343505859,
+        24.0
+      ],
+      "screen": [
+        576.987548828125,
+        138.75,
+        219.055114746094,
+        18.0
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "STARTER / Cope Shield",
+      "font_physical": 12.75,
+      "logical": [
+        824.666687011719,
+        382.0,
+        240.333312988281,
+        55.0
+      ],
+      "screen": [
+        618.950256347656,
+        286.5,
+        180.089782714844,
+        41.25
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "Giga Chad Rampage",
+      "font_physical": 21.0,
+      "logical": [
+        768.666687011719,
+        450.0,
+        292.333343505859,
+        71.0
+      ],
+      "screen": [
+        576.987548828125,
+        337.5,
+        219.055114746094,
+        53.25
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "hero-selection",
+      "requested": "844x390",
+      "text": "Gain a shield, draw nearby mobs and land three slams. Finish with a countershock powered by absorbed shield damage.",
+      "font_physical": 12.75,
+      "logical": [
+        768.666687011719,
+        529.0,
+        292.333343505859,
+        94.0
+      ],
+      "screen": [
+        576.987548828125,
+        396.75,
+        219.055114746094,
+        70.5
+      ],
+      "clip": [
+        18.9839992523193,
+        75.0,
+        807.031982421875,
+        247.5
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "ALPHA CHAD",
+      "font_physical": 18.0,
+      "logical": [
+        120.854843139648,
+        19.1529426574707,
+        193.064529418945,
+        31.6235313415527
+      ],
+      "screen": [
+        91.5605621337891,
+        14.364706993103,
+        144.669677734375,
+        23.7176475524902
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "HP 70 / 140",
+      "font_physical": 15.0,
+      "logical": [
+        125.209678649902,
+        57.3647079467773,
+        194.564514160156,
+        25.0
+      ],
+      "screen": [
+        94.8237838745117,
+        43.0235290527344,
+        145.793670654297,
+        18.75
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "SHIELD 40",
+      "font_physical": 13.5,
+      "logical": [
+        137.0,
+        85.6941223144531,
+        174.306457519531,
+        23.0
+      ],
+      "screen": [
+        103.658668518066,
+        64.2705917358398,
+        130.613647460938,
+        17.25
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "WAVE 1 / 5",
+      "font_physical": 17.25,
+      "logical": [
+        451.5,
+        7.0,
+        222.0,
+        32.0
+      ],
+      "screen": [
+        339.324005126953,
+        5.25,
+        166.352020263672,
+        24.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "00:00",
+      "font_physical": 18.0,
+      "logical": [
+        451.5,
+        38.0,
+        222.0,
+        30.0
+      ],
+      "screen": [
+        339.324005126953,
+        28.5,
+        166.352020263672,
+        22.5
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "LV 1  \u00b7  XP 0",
+      "font_physical": 15.0,
+      "logical": [
+        22.0,
+        459.0,
+        164.0,
+        31.0
+      ],
+      "screen": [
+        17.4853324890137,
+        344.25,
+        122.890655517578,
+        23.25
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "WEAPONS",
+      "font_physical": 10.5,
+      "logical": [
+        241.5,
+        493.0,
+        228.0,
+        20.0
+      ],
+      "screen": [
+        181.964004516602,
+        369.75,
+        170.848007202148,
+        15.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "PASSIVES",
+      "font_physical": 10.5,
+      "logical": [
+        487.5,
+        493.0,
+        384.0,
+        20.0
+      ],
+      "screen": [
+        366.299987792969,
+        369.75,
+        287.743957519531,
+        15.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "LV1",
+      "font_physical": 13.5,
+      "logical": [
+        248.5,
+        462.0,
+        61.0,
+        24.0
+      ],
+      "screen": [
+        187.209335327148,
+        346.5,
+        45.7093353271484,
+        18.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "FLEX",
+      "font_physical": 24.0,
+      "logical": [
+        968.320007324219,
+        405.959991455078,
+        121.359992980957,
+        41.0
+      ],
+      "screen": [
+        726.594421386719,
+        304.470001220703,
+        90.9390869140625,
+        30.75
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "AURA 38%",
+      "font_physical": 13.5,
+      "logical": [
+        960.119995117188,
+        450.239990234375,
+        137.759994506836,
+        29.5199966430664
+      ],
+      "screen": [
+        720.449890136719,
+        337.679992675781,
+        103.228149414062,
+        22.1399841308594
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "playing-shield",
+      "requested": "844x390",
+      "text": "GIGA CHAD RAMPAGE",
+      "font_physical": 13.5,
+      "logical": [
+        900.0,
+        308.0,
+        219.0,
+        32.0
+      ],
+      "screen": [
+        675.399963378906,
+        231.0,
+        164.10400390625,
+        24.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "CHOOSE YOUR NEXT MOVE",
+      "font_physical": 24.0,
+      "logical": [
+        18.0,
+        5.0,
+        1089.0,
+        49.0
+      ],
+      "screen": [
+        14.4879999160767,
+        3.75,
+        816.023986816406,
+        36.75
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "CONFIRM",
+      "font_physical": 16.5,
+      "logical": [
+        859.0,
+        454.0,
+        250.0,
+        64.0
+      ],
+      "screen": [
+        644.677307128906,
+        340.5,
+        187.333312988281,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "WEAPON",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        80.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        24.978666305542,
+        60.0,
+        239.037322998047,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "Cope Shield",
+      "font_physical": 18.75,
+      "logical": [
+        128.0,
+        136.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        96.914665222168,
+        102.0,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "COMMON / WEAPON  /  LV 2/4",
+      "font_physical": 12.75,
+      "logical": [
+        32.0,
+        230.0,
+        319.0,
+        28.0
+      ],
+      "screen": [
+        24.978666305542,
+        172.5,
+        239.037322998047,
+        21.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "Shield bash. A hit grants a 4% HP shield for 2s.",
+      "font_physical": 13.5,
+      "logical": [
+        32.0,
+        268.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        24.978666305542,
+        201.0,
+        239.037322998047,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "LV 1 common \u2192 LV 2 common\n41 dmg \u00b7 2.00s \u2192 48 dmg \u00b7 1.90s",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        360.0,
+        319.0,
+        41.0
+      ],
+      "screen": [
+        24.978666305542,
+        270.0,
+        239.037322998047,
+        30.75
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        420.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        24.978666305542,
+        315.0,
+        239.037322998047,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "PASSIVE",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        80.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        296.986663818359,
+        60.0,
+        239.037322998047,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "Caught in 4K",
+      "font_physical": 18.75,
+      "logical": [
+        491.0,
+        136.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        368.922668457031,
+        102.0,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "COMMON / PASSIVE  /  LV 1/4",
+      "font_physical": 12.75,
+      "logical": [
+        395.0,
+        230.0,
+        319.0,
+        28.0
+      ],
+      "screen": [
+        296.986663818359,
+        172.5,
+        239.037322998047,
+        21.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "+5% movement speed per level.",
+      "font_physical": 13.5,
+      "logical": [
+        395.0,
+        268.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        296.986663818359,
+        201.0,
+        239.037322998047,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "Uses one passive slot",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        360.0,
+        319.0,
+        22.0
+      ],
+      "screen": [
+        296.986663818359,
+        270.0,
+        239.037322998047,
+        16.5
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        420.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        296.986663818359,
+        315.0,
+        239.037322998047,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "PASSIVE",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        80.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        568.99462890625,
+        60.0,
+        239.037353515625,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "Certified W",
+      "font_physical": 18.75,
+      "logical": [
+        854.0,
+        136.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        640.9306640625,
+        102.0,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "COMMON / PASSIVE  /  LV 1/4",
+      "font_physical": 12.75,
+      "logical": [
+        758.0,
+        230.0,
+        319.0,
+        28.0
+      ],
+      "screen": [
+        568.99462890625,
+        172.5,
+        239.037353515625,
+        21.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "+6% healing and shields granted per level.",
+      "font_physical": 13.5,
+      "logical": [
+        758.0,
+        268.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        568.99462890625,
+        201.0,
+        239.037353515625,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "Uses one passive slot",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        360.0,
+        319.0,
+        22.0
+      ],
+      "screen": [
+        568.99462890625,
+        270.0,
+        239.037353515625,
+        16.5
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "choice-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        420.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        568.99462890625,
+        315.0,
+        239.037353515625,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "THE LEGENDARY DROP",
+      "font_physical": 24.0,
+      "logical": [
+        18.0,
+        5.0,
+        1089.0,
+        49.0
+      ],
+      "screen": [
+        14.4879999160767,
+        3.75,
+        816.023986816406,
+        36.75
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "CONFIRM LEGENDARY",
+      "font_physical": 16.5,
+      "logical": [
+        859.0,
+        454.0,
+        250.0,
+        64.0
+      ],
+      "screen": [
+        644.677307128906,
+        340.5,
+        187.333312988281,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "DECIDE LATER",
+      "font_physical": 16.5,
+      "logical": [
+        16.0,
+        454.0,
+        200.0,
+        64.0
+      ],
+      "screen": [
+        12.989333152771,
+        340.5,
+        149.866668701172,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "LEGENDARY \u00b7 PASSIVE",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        80.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        24.978666305542,
+        60.0,
+        239.037322998047,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Absolute Cinema",
+      "font_physical": 18.75,
+      "logical": [
+        128.0,
+        136.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        96.914665222168,
+        102.0,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "+25% weapon damage, plus 20% during Flex.",
+      "font_physical": 13.5,
+      "logical": [
+        32.0,
+        230.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        24.978666305542,
+        172.5,
+        239.037322998047,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        420.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        24.978666305542,
+        315.0,
+        239.037322998047,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "LEGENDARY \u00b7 PASSIVE",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        80.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        296.986663818359,
+        60.0,
+        239.037322998047,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Too Sigma to Fall",
+      "font_physical": 18.75,
+      "logical": [
+        491.0,
+        136.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        368.922668457031,
+        102.0,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Cross below 25% HP: shield 25% HP for 5s. 60s cooldown. Cannot prevent a fatal hit.",
+      "font_physical": 13.5,
+      "logical": [
+        395.0,
+        230.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        296.986663818359,
+        172.5,
+        239.037322998047,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        420.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        296.986663818359,
+        315.0,
+        239.037322998047,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "LEGENDARY \u00b7 PASSIVE",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        80.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        568.99462890625,
+        60.0,
+        239.037353515625,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "No U",
+      "font_physical": 18.75,
+      "logical": [
+        854.0,
+        136.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        640.9306640625,
+        102.0,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Every 15s: 30% power pulse in 200U, reducing mob damage 20%/4s (boss 10%/2s).",
+      "font_physical": 13.5,
+      "logical": [
+        758.0,
+        230.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        568.99462890625,
+        172.5,
+        239.037353515625,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        420.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        568.99462890625,
+        315.0,
+        239.037353515625,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "LEGENDARY \u00b7 WEAPON",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        474.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        24.978666305542,
+        355.5,
+        239.037322998047,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Cope Shield",
+      "font_physical": 18.75,
+      "logical": [
+        128.0,
+        530.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        96.914665222168,
+        397.5,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Every third successful bash adds a 5% HP shield for 3s.",
+      "font_physical": 13.5,
+      "logical": [
+        32.0,
+        624.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        24.978666305542,
+        468.0,
+        239.037322998047,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        32.0,
+        814.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        24.978666305542,
+        610.5,
+        239.037322998047,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "LEGENDARY \u00b7 WEAPON",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        474.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        296.986663818359,
+        355.5,
+        239.037322998047,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Chad Hands",
+      "font_physical": 18.75,
+      "logical": [
+        491.0,
+        530.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        368.922668457031,
+        397.5,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Third successful combo slams 140U for 0.60P \u00d7 rarity.",
+      "font_physical": 13.5,
+      "logical": [
+        395.0,
+        624.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        296.986663818359,
+        468.0,
+        239.037322998047,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        395.0,
+        814.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        296.986663818359,
+        610.5,
+        239.037322998047,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "LEGENDARY \u00b7 WEAPON",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        474.0,
+        319.0,
+        44.0
+      ],
+      "screen": [
+        568.99462890625,
+        355.5,
+        239.037353515625,
+        33.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Personal Space",
+      "font_physical": 18.75,
+      "logical": [
+        854.0,
+        530.0,
+        219.0,
+        84.0
+      ],
+      "screen": [
+        640.9306640625,
+        397.5,
+        164.10400390625,
+        63.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "Every second pulse adds a 4% HP shield for 3s.",
+      "font_physical": 13.5,
+      "logical": [
+        758.0,
+        624.0,
+        319.0,
+        80.0
+      ],
+      "screen": [
+        568.99462890625,
+        468.0,
+        239.037353515625,
+        60.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "legendary-selected",
+      "requested": "844x390",
+      "text": "TAP TO SELECT",
+      "font_physical": 11.25,
+      "logical": [
+        758.0,
+        814.0,
+        319.0,
+        24.0
+      ],
+      "screen": [
+        568.99462890625,
+        610.5,
+        239.037353515625,
+        18.0
+      ],
+      "clip": [
+        12.989333152771,
+        51.0,
+        819.021301269531,
+        288.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "RUN COMPLETE",
+      "font_physical": 21.0,
+      "logical": [
+        30.0,
+        94.0,
+        1065.0,
+        36.0
+      ],
+      "screen": [
+        23.4799995422363,
+        70.5,
+        798.039978027344,
+        27.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "ALPHA CHAD",
+      "font_physical": 21.75,
+      "logical": [
+        483.75,
+        142.0,
+        599.0,
+        36.0
+      ],
+      "screen": [
+        363.489990234375,
+        106.5,
+        448.850646972656,
+        27.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "TIME",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        192.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        144.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "00:00",
+      "font_physical": 27.0,
+      "logical": [
+        497.75,
+        216.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        373.980651855469,
+        162.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "KILLS",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        192.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        144.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 27.0,
+      "logical": [
+        803.75,
+        216.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        603.276672363281,
+        162.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "LEVEL",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        300.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        225.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "1",
+      "font_physical": 27.0,
+      "logical": [
+        497.75,
+        324.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        373.980651855469,
+        243.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "DAMAGE",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        300.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        225.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 27.0,
+      "logical": [
+        803.75,
+        324.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        603.276672363281,
+        243.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "WAVE",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        397.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        297.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "1 / 5",
+      "font_physical": 16.5,
+      "logical": [
+        497.75,
+        418.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        373.980651855469,
+        313.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "WEAPONS",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        397.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        297.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "1 / 3",
+      "font_physical": 16.5,
+      "logical": [
+        803.75,
+        418.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        603.276672363281,
+        313.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "PASSIVES",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        457.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        342.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "0 / 5",
+      "font_physical": 16.5,
+      "logical": [
+        497.75,
+        478.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        373.980651855469,
+        358.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "HEALING",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        457.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        342.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 16.5,
+      "logical": [
+        803.75,
+        478.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        603.276672363281,
+        358.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "SHIELD ABSORBED",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        517.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        387.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 16.5,
+      "logical": [
+        497.75,
+        538.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        373.980651855469,
+        403.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "FLEX USES",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        517.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        387.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 16.5,
+      "logical": [
+        803.75,
+        538.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        603.276672363281,
+        403.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "TRY AGAIN",
+      "font_physical": 16.5,
+      "logical": [
+        794.5,
+        440.0,
+        296.75,
+        64.0
+      ],
+      "screen": [
+        596.345336914062,
+        330.0,
+        222.364685058594,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "MAIN MENU",
+      "font_physical": 16.5,
+      "logical": [
+        483.75,
+        440.0,
+        296.75,
+        64.0
+      ],
+      "screen": [
+        363.489990234375,
+        330.0,
+        222.364685058594,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "won",
+      "requested": "844x390",
+      "text": "VICTORY!",
+      "font_physical": 34.5,
+      "logical": [
+        28.0,
+        25.0,
+        1069.0,
+        64.0
+      ],
+      "screen": [
+        21.9813327789307,
+        18.75,
+        801.037292480469,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "THE STREETS WON THIS ROUND",
+      "font_physical": 21.0,
+      "logical": [
+        30.0,
+        94.0,
+        1065.0,
+        36.0
+      ],
+      "screen": [
+        23.4799995422363,
+        70.5,
+        798.039978027344,
+        27.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "ALPHA CHAD",
+      "font_physical": 21.75,
+      "logical": [
+        483.75,
+        142.0,
+        599.0,
+        36.0
+      ],
+      "screen": [
+        363.489990234375,
+        106.5,
+        448.850646972656,
+        27.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "TIME",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        192.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        144.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "00:00",
+      "font_physical": 27.0,
+      "logical": [
+        497.75,
+        216.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        373.980651855469,
+        162.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "KILLS",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        192.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        144.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 27.0,
+      "logical": [
+        803.75,
+        216.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        603.276672363281,
+        162.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "LEVEL",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        300.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        225.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "1",
+      "font_physical": 27.0,
+      "logical": [
+        497.75,
+        324.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        373.980651855469,
+        243.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "DAMAGE",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        300.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        225.0,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 27.0,
+      "logical": [
+        803.75,
+        324.0,
+        261.75,
+        52.0
+      ],
+      "screen": [
+        603.276672363281,
+        243.0,
+        196.138000488281,
+        39.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "WAVE",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        397.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        297.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "1 / 5",
+      "font_physical": 16.5,
+      "logical": [
+        497.75,
+        418.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        373.980651855469,
+        313.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "WEAPONS",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        397.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        297.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "1 / 3",
+      "font_physical": 16.5,
+      "logical": [
+        803.75,
+        418.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        603.276672363281,
+        313.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "PASSIVES",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        457.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        342.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "0 / 5",
+      "font_physical": 16.5,
+      "logical": [
+        497.75,
+        478.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        373.980651855469,
+        358.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "HEALING",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        457.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        342.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 16.5,
+      "logical": [
+        803.75,
+        478.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        603.276672363281,
+        358.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "SHIELD ABSORBED",
+      "font_physical": 10.5,
+      "logical": [
+        497.75,
+        517.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        373.980651855469,
+        387.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 16.5,
+      "logical": [
+        497.75,
+        538.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        373.980651855469,
+        403.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "FLEX USES",
+      "font_physical": 10.5,
+      "logical": [
+        803.75,
+        517.0,
+        261.75,
+        22.0
+      ],
+      "screen": [
+        603.276672363281,
+        387.75,
+        196.138000488281,
+        16.5
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "0",
+      "font_physical": 16.5,
+      "logical": [
+        803.75,
+        538.0,
+        261.75,
+        28.0
+      ],
+      "screen": [
+        603.276672363281,
+        403.5,
+        196.138000488281,
+        21.0
+      ],
+      "clip": [
+        363.489990234375,
+        106.5,
+        455.219970703125,
+        208.5
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "TRY AGAIN",
+      "font_physical": 16.5,
+      "logical": [
+        794.5,
+        440.0,
+        296.75,
+        64.0
+      ],
+      "screen": [
+        596.345336914062,
+        330.0,
+        222.364685058594,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "MAIN MENU",
+      "font_physical": 16.5,
+      "logical": [
+        483.75,
+        440.0,
+        296.75,
+        64.0
+      ],
+      "screen": [
+        363.489990234375,
+        330.0,
+        222.364685058594,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    },
+    {
+      "state": "lost",
+      "requested": "844x390",
+      "text": "RUN OVER",
+      "font_physical": 34.5,
+      "logical": [
+        28.0,
+        25.0,
+        1069.0,
+        64.0
+      ],
+      "screen": [
+        21.9813327789307,
+        18.75,
+        801.037292480469,
+        48.0
+      ],
+      "clip": [
+        0.0,
+        0.0,
+        844.0,
+        390.0
+      ]
+    }
+  ],
+  "reference_comparisons": [
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/previews/main-menu.jpg",
+      "sha256": "a6465356a2c374dc73951736cd40b3cd723adaa6aabdaffffd8f0e8eccb4a348",
+      "native_state": "hero-menu",
+      "comparison": "Different illustrative state/hero values; same 1600x900 viewport, hierarchy/art comparison only"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/previews/hero-selection.jpg",
+      "sha256": "155258159ca88d84bdb9b70d725fa16c14f588a10503bf06aa3ee68b40d87c4f",
+      "native_state": "hero-selection",
+      "comparison": "Different illustrative state/hero values; same 1600x900 viewport, hierarchy/art comparison only"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/previews/upgrade-selected.jpg",
+      "sha256": "33f13c585ceb5b2e5afa8471f7ad619706547d286b2732c386905b98a6b9b334",
+      "native_state": "choice-selected",
+      "comparison": "Different illustrative state/hero values; same 1600x900 viewport, hierarchy/art comparison only"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/previews/legendary-selected.jpg",
+      "sha256": "68a662dc7ce003c05442426affca53a48c56549454d2a924683181266ea75026",
+      "native_state": "legendary-selected",
+      "comparison": "Different illustrative state/hero values; same 1600x900 viewport, hierarchy/art comparison only"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/creator-corrections-v1/previews/gameplay-hud.jpg",
+      "sha256": "7ee6c1a182f2e3503abd4124929de57fca3df0764cb83ea5c6643d3b683531bf",
+      "native_state": "playing-shield",
+      "comparison": "Different illustrative state/hero values; same 1600x900 viewport, hierarchy/art comparison only"
+    }
+  ]
+}
