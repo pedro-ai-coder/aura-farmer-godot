@@ -1,7 +1,7 @@
 extends SceneTree
 
 const Appearance = preload("res://scripts/hero_appearance.gd")
-const Animation = preload("res://scripts/pixel_vixen_animation.gd")
+const VixenPose = preload("res://scripts/pixel_vixen_animation.gd")
 const Visuals = preload("res://scripts/approved_visuals.gd")
 var failures: Array[String] = []
 
@@ -37,7 +37,7 @@ func _verify() -> void:
             "defeat":
                 input["lost"] = true
                 input["defeat"] = 0.2
-        var pose: Dictionary = Animation.pose(input)
+        var pose: Dictionary = VixenPose.pose(input)
         expect(str(pose.get("sheet","")) == "pixel-vixen", situation + " comes from real candidate atlas")
         expect(int(pose["frame"]) >= 0 and int(pose["frame"]) < 20, situation + " uses a valid atlas cell")
     if failures.is_empty():
