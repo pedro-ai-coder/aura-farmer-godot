@@ -4,12 +4,13 @@
   "display_name": "PIXEL VIXEN",
   "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
   "atlas": "atlas.png",
-  "atlas_width": 364,
-  "atlas_height": 174,
+  "sha256": "4711cea382d8efdd503f0dcfce2896831a8aa8242b7c61bc992b4f12be811175",
+  "atlas_width": 252,
+  "atlas_height": 120,
   "columns": 7,
   "rows": 3,
-  "frame_width": 52,
-  "frame_height": 58,
+  "frame_width": 36,
+  "frame_height": 40,
   "frame_count": 20,
   "frame_groups": {
     "idle": [
