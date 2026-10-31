@@ -1,0 +1,3955 @@
+{
+  "start_state": {
+    "main": "bc690618ac1183e078c2ba84cf49af9839d2d794",
+    "integration": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+    "footer_initial_head": "541ec8988543152de169c438538a60ef63e87a81",
+    "footer_branch": "fix/m0-card-footer-safe-inset",
+    "pr92_head": "4bea450ff499269281a40655740dae9157acb08a",
+    "initial_pr93_ci": [
+      {
+        "id": 41198340165,
+        "head": "541ec8988543152de169c438538a60ef63e87a81",
+        "conclusion": "success",
+        "url": "https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/41198340165"
+      },
+      {
+        "id": 41198299259,
+        "head": "541ec8988543152de169c438538a60ef63e87a81",
+        "conclusion": "skipped",
+        "url": "https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/41198299259"
+      }
+    ],
+    "pr92_ci": [
+      {
+        "id": 41153193424,
+        "head": "4bea450ff499269281a40655740dae9157acb08a",
+        "conclusion": "success",
+        "url": "https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/41153193424"
+      }
+    ],
+    "production_build": {
+      "commit": "05bcef23ae0f040795cacd88e42542b55bc6488e",
+      "engine": "4.7.2",
+      "executable": "game-05bcef23ae0f"
+    },
+    "protection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "browser_review": {
+      "url": "https://aura-farmer-godot-jeq5ztm34-pedroestrela6-8110.vercel.app/",
+      "result": "Godot page visibly reports required WebGL2 missing. No interactive game, normal-health Web run or browser save/reload claimed.",
+      "build": "541ec8988543152de169c438538a60ef63e87a81"
+    },
+    "creator_acceptance": {
+      "source": "Creator-supplied final-recovery directive, 2026-10-31",
+      "scope": "Pixel 8a / Brave PR91 tested build; Reply Guy, bearing, stability, HUD/combat, controls/fluidity and legibility accepted",
+      "limits": "No exact-art source supersession, measured FPS, browser version, all-device approval or new footer approval inferred."
+    }
+  },
+  "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+  "source_compatibility": "All artwork, gameplay, camera, input, profiles and browser adapter bytes unchanged from accepted PR91; only card-footer rectangle changes",
+  "skin_sha256": "a8cea6f381a434f541839f28a5b531d0be0e4e8a9c2d46f90d42a1f04aa1b4e6",
+  "baseline_skin_sha256": "23f08a44b951f264a30f7856039846701c6e9d347674bb96c812c78ffdbfd279",
+  "native_renderer": "Official Godot 4.7.2 Compatibility/OpenGL3/X11 Mesa llvmpipe; no physical-device or delivered-FPS claim",
+  "native_suites": [
+    {
+      "script": "tests/m0_final/test_flow.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Six viewport actual pointer card selection/scrolling, all selected footers, deferred Legendary, five-slot replacement, outcomes/retry and isolated native save reload"
+      ]
+    },
+    {
+      "script": "tests/test_card_keyboard.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Six-viewport focused card keyboard selection and explicit confirmation"
+      ]
+    },
+    {
+      "script": "tests/test_clean_cut_pointer_input.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Real viewport mouse clicks activate PLAY/HERO SELECTION/SETTINGS and BACK at desktop and compact viewports"
+      ]
+    },
+    {
+      "script": "tests/test_clean_cut_secondary_input.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at six viewports"
+      ]
+    },
+    {
+      "script": "tests/recovery_m01/test_layout.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Actual Controls, six viewport bounds/peer overlaps, boss HUD, dynamic text, full build and modal rows"
+      ]
+    },
+    {
+      "script": "tests/ui_cohesion/test_cohesion.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: UI cohesion six-view matrix, 24-to-25 transition, capped XP healing/cooldown, live equipment/results, keyboard/pointer and isolated settings persistence"
+      ]
+    },
+    {
+      "script": "tests/test_clean_cut_typography.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: packaged typography, glyph coverage, equipment fit, HUD and six-viewports hierarchy"
+      ]
+    },
+    {
+      "script": "tests/test_clean_cut_deferred_legendary.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Deferred legendary remains visible, clickable, unchanged and deadline-bound across six viewports"
+      ]
+    },
+    {
+      "script": "tests/test_mobile_joystick.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": [
+        "PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle"
+      ]
+    },
+    {
+      "script": "tests/hud_v2/test_hud.gd",
+      "returncode": 0,
+      "pass": true,
+      "claims": []
+    }
+  ],
+  "selected_card_checks": [
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 5,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1920, 1080)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 5,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1600, 900)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 5,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 318.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(1280, 720)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "choice",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 5,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "legendary",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0000305175781,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 306.666656494141,
+      "mode": "replace",
+      "readback_viewport": "(915, 412)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "choice",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "choice",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "choice",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 59.9999694824219,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "legendary",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "legendary",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "legendary",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 59.9999694824219,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "legendary",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "legendary",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 5,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "legendary",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 59.9999694824219,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 0,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "replace",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 1,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "replace",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 2,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "replace",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 59.9999694824219,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 3,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "replace",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 4,
+      "font_logical": 15,
+      "label_width": 257.227508544922,
+      "mode": "replace",
+      "readback_viewport": "(844, 390)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 223.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "card": 0,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "choice",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 1,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "choice",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 2,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "choice",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 0,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "legendary",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 1,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "legendary",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 2,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "legendary",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 3,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "legendary",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 4,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "legendary",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 5,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "legendary",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 0,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "replace",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 1,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "replace",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 2,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "replace",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 3,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "replace",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    },
+    {
+      "card": 4,
+      "font_logical": 14,
+      "label_width": 380.0,
+      "mode": "replace",
+      "readback_viewport": "(390, 844)",
+      "right_clearance": 60.0,
+      "text": "SELECTED \u00b7 CONFIRM BELOW",
+      "text_width": 208.0,
+      "viewport": "(390, 844)"
+    }
+  ],
+  "captures": [
+    {
+      "version": "before",
+      "runtime_source": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+      "state": "upgrade",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_sha256": "32a22b22784b903d57ed1ca4d554b3001f5ca5122b959a36b4ac73ec27d31671",
+      "file": "before-upgrade-1600x900.jpg",
+      "jpg_sha256": "d913575d30293f99ada3f66a00d8391b6f0011e2e76fbc4d01c27fbdb0ceae74",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 440.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 410.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 440.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 410.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 440.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 410.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(1600, 900)",
+        "requested": "(1600, 900)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "before",
+      "runtime_source": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+      "state": "legendary",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_sha256": "51965f97447e69bef0be849ee7a7a3b9247bc8e09b76d1c1b45f7ab7240d0555",
+      "file": "before-legendary-1600x900.jpg",
+      "jpg_sha256": "3c09e62f510a6ea02e567b6572743c02e3b1f7d8625d31fdada052e2a605a7da",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1600, 900)",
+        "requested": "(1600, 900)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "before",
+      "runtime_source": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+      "state": "legendary-last",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_sha256": "c6f684b65658f055904fc4c5feee044a79b3ab8022b97f8244baf119582b12e9",
+      "file": "before-legendary-last-1600x900.jpg",
+      "jpg_sha256": "20f7cb9d0c57edf77de9d7ef33e64de6e9977f255b852799c46daac466892d0f",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (362.6667, 24.0)]",
+            "label_width": 362.666656494141,
+            "right_clearance": 16.0000305175781,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1600, 900)",
+        "requested": "(1600, 900)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "before",
+      "runtime_source": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+      "state": "upgrade",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_sha256": "1711aa8a3c91492f9bf59ed811b7987746e0d35f24980ff4f799991c6570a524",
+      "file": "before-upgrade-844x390.jpg",
+      "jpg_sha256": "905a278cd093d024dd98e287c6c2e08174988f686ece6f894fb948c89471ef3a",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (351.0, 382.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (363.0, 0.0), S: (351.0, 382.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 0.0), S: (351.0, 382.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(843, 390)",
+        "requested": "(844, 390)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "before",
+      "runtime_source": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+      "state": "legendary",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_sha256": "b904556f4b8d29d2a47592517c7b70ecd46f228aedf209f816fc7d21f2343b01",
+      "file": "before-legendary-844x390.jpg",
+      "jpg_sha256": "0ae83a3dc22b7813835e0b7f4beefe49bededca1702a2413aa0cdf7a358cc30e",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (351.0, 382.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (363.0, 0.0), S: (351.0, 382.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 0.0), S: (351.0, 382.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 394.0), S: (351.0, 382.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (363.0, 394.0), S: (351.0, 382.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 394.0), S: (351.0, 382.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(843, 390)",
+        "requested": "(844, 390)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "before",
+      "runtime_source": "cbdc63776db807ee3082ba3b54920665a5a2b6f3",
+      "state": "legendary-last",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_sha256": "637e41f83b6a9a43de93ed5fbd61a98107bc27f7fa2223789dfd0d7e2561eca0",
+      "file": "before-legendary-last-844x390.jpg",
+      "jpg_sha256": "334b257a792416b25910d908c0267980c9940473feb669b178c49e5822f136d4",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (351.0, 382.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (363.0, 0.0), S: (351.0, 382.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 0.0), S: (351.0, 382.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 394.0), S: (351.0, 382.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (363.0, 394.0), S: (351.0, 382.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 394.0), S: (351.0, 382.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (319.0, 24.0)]",
+            "label_width": 319.0,
+            "right_clearance": 16.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(843, 390)",
+        "requested": "(844, 390)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "upgrade",
+      "requested": "1920x1080",
+      "readback": [
+        1920,
+        1080
+      ],
+      "raw_sha256": "ffa38c5d5fd60df4626ba138fee275a300351d191c5ecc1f858e093325ed3d24",
+      "file": "after-upgrade-1920x1080.jpg",
+      "jpg_sha256": "68cf11ea21bb52628ba61e7e00c299f04c1e932941b946b2d13a85d864da8f8a",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 440.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 440.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 440.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(1920, 1080)",
+        "requested": "(1920, 1080)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary",
+      "requested": "1920x1080",
+      "readback": [
+        1920,
+        1080
+      ],
+      "raw_sha256": "9a0ed15649e6ea4610e1d96d986068549b1b4b27233fadff23a2647fd8edf43b",
+      "file": "after-legendary-1920x1080.jpg",
+      "jpg_sha256": "e0bdac8db617c5c73e9c6f1c06c234a22426959d96a3f9c7e5930cf50473823d",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1920, 1080)",
+        "requested": "(1920, 1080)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary-last",
+      "requested": "1920x1080",
+      "readback": [
+        1920,
+        1080
+      ],
+      "raw_sha256": "a7e6bbc96997b4ef138139d93fa6082c33b79a224249fede429355a437f80d7f",
+      "file": "after-legendary-last-1920x1080.jpg",
+      "jpg_sha256": "3096164c95602456bc7f2c6db5085e0d5eb950b21cc60969f5513e8a216cc9fd",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 22.5,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1920, 1080)",
+        "requested": "(1920, 1080)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "upgrade",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_sha256": "b511f8e62c2181cf1325c879e65328509854cd9e92d50ad23884c622c4639a6d",
+      "file": "after-upgrade-1600x900.jpg",
+      "jpg_sha256": "f51cc7f137997dc1a84f7b585cf307c33d10552e67e57067d0e3912e42c6f0b9",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 440.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 440.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 440.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(1600, 900)",
+        "requested": "(1600, 900)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_sha256": "839e7cd4e21e6ef0c74b056e636909820fbea3e684155933260638972e6c2f10",
+      "file": "after-legendary-1600x900.jpg",
+      "jpg_sha256": "dd5e6a72b20f46b05ff1ab08c89b579d020147a04852b6452abfea4a33d4a7d5",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1600, 900)",
+        "requested": "(1600, 900)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary-last",
+      "requested": "1600x900",
+      "readback": [
+        1600,
+        900
+      ],
+      "raw_sha256": "3cff1e10f6344cde44924a2232523dde696ab61947f310489f462e057ca792db",
+      "file": "after-legendary-last-1600x900.jpg",
+      "jpg_sha256": "93f83872502f109f236210af7564b1802419d6c5a6ee1ed2da81dc89654f51c5",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 18.75,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1600, 900)",
+        "requested": "(1600, 900)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "upgrade",
+      "requested": "1280x720",
+      "readback": [
+        1280,
+        720
+      ],
+      "raw_sha256": "52976dd8a2af82921adf128942b60635dcabe99a3c4288fabf84eea728c8c896",
+      "file": "after-upgrade-1280x720.jpg",
+      "jpg_sha256": "894c8dcd278ed28d87b002e8d1510b229465fc33cf3dcacd752665f00cc30a6f",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 440.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 440.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 440.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 410.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(1280, 720)",
+        "requested": "(1280, 720)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary",
+      "requested": "1280x720",
+      "readback": [
+        1280,
+        720
+      ],
+      "raw_sha256": "625ed8d6cded692371e6b95ff30b747d27c04faaae08a0beef951963ef3cedf4",
+      "file": "after-legendary-1280x720.jpg",
+      "jpg_sha256": "309e6f6293af53b18c567743016778fdd25ede39b7ba382f1d21ba7ac195ba3b",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1280, 720)",
+        "requested": "(1280, 720)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary-last",
+      "requested": "1280x720",
+      "readback": [
+        1280,
+        720
+      ],
+      "raw_sha256": "43c42c98accf44660c9541111be69c71a797dbaf695f0bc602fd4c796ded6de8",
+      "file": "after-legendary-last-1280x720.jpg",
+      "jpg_sha256": "785ed5f9f71f9c6da43b82dd4f2d20ba111330a23eda3a3c2a6423004ee202e4",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (394.6667, 300.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 0.0), S: (394.6667, 300.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 0.0), S: (394.6667, 300.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (394.6667, 300.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (410.6667, 316.0), S: (394.6667, 300.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (821.3333, 316.0), S: (394.6667, 300.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 15.0,
+            "label_rect": "[P: (16.0, 270.0), S: (318.6667, 24.0)]",
+            "label_width": 318.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(1280, 720)",
+        "requested": "(1280, 720)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "upgrade",
+      "requested": "915x412",
+      "readback": [
+        915,
+        411
+      ],
+      "raw_sha256": "e04b1541910cc7a112b550a0340b557e8674c12f2e0d3ceb0c64ab8a1f63f2e6",
+      "file": "after-upgrade-915x412.jpg",
+      "jpg_sha256": "80d0743c99e6eac173bc0e30b2c0c2553d46dec6a40ea4f53f74218a77ae051f",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (382.6667, 411.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (394.6667, 0.0), S: (382.6667, 411.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (789.3333, 0.0), S: (382.6667, 411.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(915, 411)",
+        "requested": "(915, 412)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary",
+      "requested": "915x412",
+      "readback": [
+        915,
+        411
+      ],
+      "raw_sha256": "3ab90404d818d211ba2f371405a1e3ae1eb28be20babaa91b34f25f68a13eea9",
+      "file": "after-legendary-915x412.jpg",
+      "jpg_sha256": "74f74b7966ab3924348929dccbf632766d3f167a28484de671e1b484445dd831",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (382.6667, 411.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (394.6667, 0.0), S: (382.6667, 411.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (789.3333, 0.0), S: (382.6667, 411.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 423.0), S: (382.6667, 411.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (394.6667, 423.0), S: (382.6667, 411.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (789.3333, 423.0), S: (382.6667, 411.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(915, 411)",
+        "requested": "(915, 412)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary-last",
+      "requested": "915x412",
+      "readback": [
+        915,
+        411
+      ],
+      "raw_sha256": "905f4669c62c5331135b8fe0c9b9d61ff4622e05bf27209e8d5d0fdf7bbb06f3",
+      "file": "after-legendary-last-915x412.jpg",
+      "jpg_sha256": "2db4c884e0d45fe807ad2098ba524647eea54bd7c097f5d234b4d5ad344119ba",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (382.6667, 411.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (394.6667, 0.0), S: (382.6667, 411.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (789.3333, 0.0), S: (382.6667, 411.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 423.0), S: (382.6667, 411.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (394.6667, 423.0), S: (382.6667, 411.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (789.3333, 423.0), S: (382.6667, 411.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 11.2295079231262,
+            "label_rect": "[P: (16.0, 381.0), S: (306.6667, 24.0)]",
+            "label_width": 306.666656494141,
+            "right_clearance": 60.0000305175781,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(915, 411)",
+        "requested": "(915, 412)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "upgrade",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_sha256": "23be2324ee55f88bf7108fc503425cece0a528f6a8f52c8121a7de46a27dedd8",
+      "file": "after-upgrade-844x390.jpg",
+      "jpg_sha256": "d24fa6efe4026dee3c0ec827c3e7ad2a5cbec149ff31d3f879ee84ffc81f603f",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (351.0, 382.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (363.0, 0.0), S: (351.0, 382.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 0.0), S: (351.0, 382.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(843, 390)",
+        "requested": "(844, 390)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_sha256": "6cb06e393609d726a4c68ac96a4b36820f4626f93e7fb526c0f4b1210c4725f5",
+      "file": "after-legendary-844x390.jpg",
+      "jpg_sha256": "bb1b723b17a4902ef085a8efbd673e06fcdf06a20e26282d3dd0b91d49a7fce4",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (351.0, 382.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          },
+          {
+            "button_rect": "[P: (363.0, 0.0), S: (351.0, 382.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 0.0), S: (351.0, 382.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 394.0), S: (351.0, 382.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (363.0, 394.0), S: (351.0, 382.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 394.0), S: (351.0, 382.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(843, 390)",
+        "requested": "(844, 390)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary-last",
+      "requested": "844x390",
+      "readback": [
+        843,
+        390
+      ],
+      "raw_sha256": "c02d67552da902ae0404770fbd0250129c2525c50fbdbcfa711eb6b38785151e",
+      "file": "after-legendary-last-844x390.jpg",
+      "jpg_sha256": "79f8bdfdc4dd8e927ca6d36436d41cbcd52ee0d4e15aab92ee40b058f290ca32",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (351.0, 382.0)]",
+            "card": 0,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (363.0, 0.0), S: (351.0, 382.0)]",
+            "card": 1,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 0.0), S: (351.0, 382.0)]",
+            "card": 2,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (0.0, 394.0), S: (351.0, 382.0)]",
+            "card": 3,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (363.0, 394.0), S: (351.0, 382.0)]",
+            "card": 4,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 116.0
+          },
+          {
+            "button_rect": "[P: (726.0, 394.0), S: (351.0, 382.0)]",
+            "card": 5,
+            "font": 15,
+            "font_physical": 11.25,
+            "label_rect": "[P: (16.0, 352.0), S: (275.0, 24.0)]",
+            "label_width": 275.0,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 223.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(843, 390)",
+        "requested": "(844, 390)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "upgrade",
+      "requested": "390x844",
+      "readback": [
+        390,
+        843
+      ],
+      "raw_sha256": "997a5ffcdb145b58fd7f09190b405ac7f691eb50c98ecf7393930acbfbab6045",
+      "file": "after-upgrade-390x844.jpg",
+      "jpg_sha256": "c2b17b237c561078b9d8b943a7576d1f606dd99eac2e919881c7c14461e862f7",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (456.0, 440.0)]",
+            "card": 0,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 410.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 208.0
+          },
+          {
+            "button_rect": "[P: (0.0, 456.0), S: (456.0, 440.0)]",
+            "card": 1,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 410.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 912.0), S: (456.0, 440.0)]",
+            "card": 2,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 410.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          }
+        ],
+        "mode": "choice",
+        "offers": [
+          {
+            "category": "upgrade",
+            "id": "cope-shield",
+            "label": "UPGRADE Cope Shield \u00b7 LV 2",
+            "level": 2,
+            "rarity": "common",
+            "type": "upgrade_weapon"
+          },
+          {
+            "category": "new",
+            "id": "caught-4k",
+            "label": "EQUIP Caught in 4K \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          },
+          {
+            "category": "new",
+            "id": "certified-w",
+            "label": "EQUIP Certified W \u00b7 COMMON",
+            "level": 1,
+            "rarity": "common",
+            "type": "passive"
+          }
+        ],
+        "readback": "(390, 843)",
+        "requested": "(390, 844)",
+        "rng": "4231026584",
+        "selected": 0,
+        "state": "upgrade"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary",
+      "requested": "390x844",
+      "readback": [
+        390,
+        843
+      ],
+      "raw_sha256": "130edd42cbe0345bf4f55c31d83bce465f3846220ff11387b0cb766ddf2f8cfb",
+      "file": "after-legendary-390x844.jpg",
+      "jpg_sha256": "466d6cf04e11b5b3d63edbf24af03e5542c1ccfe1772647b1bf40bd37164c5d2",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (456.0, 300.0)]",
+            "card": 0,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 208.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (456.0, 300.0)]",
+            "card": 1,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 632.0), S: (456.0, 300.0)]",
+            "card": 2,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 948.0), S: (456.0, 300.0)]",
+            "card": 3,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 1264.0), S: (456.0, 300.0)]",
+            "card": 4,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 1580.0), S: (456.0, 300.0)]",
+            "card": 5,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(390, 843)",
+        "requested": "(390, 844)",
+        "rng": "1199730628",
+        "selected": 0,
+        "state": "legendary"
+      }
+    },
+    {
+      "version": "after",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "state": "legendary-last",
+      "requested": "390x844",
+      "readback": [
+        390,
+        843
+      ],
+      "raw_sha256": "56602e5c0ed12f6e8f3e49127c9c669abeec1799b48881b58c4e2f562fc7daa0",
+      "file": "after-legendary-last-390x844.jpg",
+      "jpg_sha256": "6c92ac6e3508dd054a07f5643b26ceb3828ef4ef69c44cf07f8515c1e2a2a218",
+      "actual_fixture": {
+        "footers": [
+          {
+            "button_rect": "[P: (0.0, 0.0), S: (456.0, 300.0)]",
+            "card": 0,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 316.0), S: (456.0, 300.0)]",
+            "card": 1,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 632.0), S: (456.0, 300.0)]",
+            "card": 2,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 948.0), S: (456.0, 300.0)]",
+            "card": 3,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 1264.0), S: (456.0, 300.0)]",
+            "card": 4,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "TAP TO SELECT",
+            "text_width": 108.0
+          },
+          {
+            "button_rect": "[P: (0.0, 1580.0), S: (456.0, 300.0)]",
+            "card": 5,
+            "font": 14,
+            "font_physical": 10.4906665086746,
+            "label_rect": "[P: (16.0, 270.0), S: (380.0, 24.0)]",
+            "label_width": 380.0,
+            "right_clearance": 60.0,
+            "text": "SELECTED \u00b7 CONFIRM BELOW",
+            "text_width": 208.0
+          }
+        ],
+        "mode": "legendary",
+        "offers": [
+          {
+            "id": "absolute-cinema",
+            "label": "Absolute Cinema \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "too-sigma",
+            "label": "Too Sigma to Fall \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "no-u",
+            "label": "No U \u00b7 LEGENDARY PASSIVE",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "passive"
+          },
+          {
+            "id": "cope-shield",
+            "label": "Cope Shield \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "promote_weapon"
+          },
+          {
+            "id": "chad-hands",
+            "label": "Chad Hands \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          },
+          {
+            "id": "personal-space",
+            "label": "Personal Space \u00b7 LEGENDARY WEAPON",
+            "level": 1,
+            "rarity": "legendary",
+            "type": "weapon"
+          }
+        ],
+        "readback": "(390, 843)",
+        "requested": "(390, 844)",
+        "rng": "1199730628",
+        "selected": 5,
+        "state": "legendary-last"
+      }
+    }
+  ],
+  "unchanged_screen_captures": [
+    {
+      "state": "hero-menu",
+      "file": "current-hero-menu-844x390.jpg",
+      "sha256": "c20edb7436cf7e9b2fad4430a2ea2835255f2ff218a995061ed67046d8bbd86c",
+      "raw_png_sha256": "1c8920e0f78012b3cb8cbe4cfaadb678ec199dc1039c15cea37b8bf439ec8071",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "hero-selection",
+      "file": "current-hero-selection-844x390.jpg",
+      "sha256": "c3207d264ecdb12d024c649239d2ea1d3b382b82a5420a9f6526831f6c255e32",
+      "raw_png_sha256": "b152f1191ea3ac38446e26d7fa4233c624b84463e37a85465f76b1155bf20837",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "playing-shield",
+      "file": "current-playing-shield-844x390.jpg",
+      "sha256": "aa2856037e106e3460d598ef3ca14e20126d15080b4c6080cf75372e8267f3ae",
+      "raw_png_sha256": "99792d4abd0e8e584b626b7c081d29287d13e4bc1219dc10d0940bb92cbc28af",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "ready",
+      "file": "current-ready-844x390.jpg",
+      "sha256": "a55a108aaffe4401145ca9b26ce559ac76881d578c245ad686bfc29842077fcc",
+      "raw_png_sha256": "af86933f15f09d5c8d6f22085c68456ae21bf4135954da2b8bf6a62662c53ad9",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "boss",
+      "file": "current-boss-844x390.jpg",
+      "sha256": "10bf7c902599ecabf0d3e744c10f1eea5dcd2572397bc9a646be3d090ef35b39",
+      "raw_png_sha256": "2d85d8a9ccf80a460de1a6f31bdfeab2de3d3780ce399ebc0584dadb8414039a",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "paused",
+      "file": "current-paused-844x390.jpg",
+      "sha256": "c707c93c84f4325977c996e01a279d0c5b921907248a0b7481364213ff55eb69",
+      "raw_png_sha256": "caafc97cffd0bbfb18e9a1ad4596fa8d4239f41df7d8fd71927a3feaf34a2aad",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "build",
+      "file": "current-build-844x390.jpg",
+      "sha256": "2b9a1fcea399a374186b00b98f560a04e334d4bc9cd6af0b7349d8767d657e53",
+      "raw_png_sha256": "0c90e7331dd8c5548ad87390c5a8e83d648385c4f2ba5f97a7a772ca37f4a33c",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "settings",
+      "file": "current-settings-844x390.jpg",
+      "sha256": "cc6c2e297c1624001778669b715b7ce78c3dfa024374c9ff5bd5b1453e2dac86",
+      "raw_png_sha256": "3aadd0f3b25756a6ae83e35e38b84202ade457e53da61a55436568e061f313cf",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "confirm-exit",
+      "file": "current-confirm-exit-844x390.jpg",
+      "sha256": "ee78c0d3a8409f025ce88640c9c4ace4d63f30dad768eb82dfd0b62d33f214ed",
+      "raw_png_sha256": "9f844115304b0132a70b8a102f190440edcd4c1ba34db4182484d2861030f4a1",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "won",
+      "file": "current-won-844x390.jpg",
+      "sha256": "9f0f4cfe9498e5e5318f7246c889fcc0c0190edcc5ec9a547e36c6bae03227ea",
+      "raw_png_sha256": "17289de9d8c08ac23c1d05ce2c6dd176d2334f0ff48ec5bd3f25dd56767e2d4e",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    },
+    {
+      "state": "lost",
+      "file": "current-lost-844x390.jpg",
+      "sha256": "2740a8c2667581a1ec86e865b5b1a7d34e42b1aeb1401892a01e3ae01875a61d",
+      "raw_png_sha256": "eb25f196c61eadbec7813176dcdedcc68aa9a16a78e607c531d0a98b77297a87",
+      "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+      "fixture": "tests/recovery_m01/capture.gd"
+    }
+  ],
+  "reused_evidence": [
+    {
+      "path": "tests/button_art/evidence/components.png",
+      "sha256": "d7458a823bdb86146c078c32470a04a37ac6dcbb11e0a0290568a0eb873ddc8e",
+      "reason": "Exact Art/Type/ButtonFeedback source bytes unchanged since 09ad704; no new static artwork generation needed"
+    },
+    {
+      "url": "https://github.com/pedro-ai-coder/aura-farmer-godot/blob/4bea450ff499269281a40655740dae9157acb08a/docs/recovery/evidence/overnight-2026-10-31/approved-reference-vs-runtime.jpg",
+      "reason": "Current menu/hero/HUD typography sources unchanged; card rows are pre-footer-fix, corrected equivalent-state comparison is supplied separately"
+    }
+  ],
+  "final_head_ci_and_preview": "Recorded on PR93 final head after this evidence commit; initial CI applies only to 541ec898, not substituted for final checks",
+  "limitations": [
+    "Native fixtures are controlled state, not normal-health human Web runs",
+    "Review browser visibly lacks required WebGL2",
+    "No physical Android control; creator PR91 acceptance reused only for unchanged source behavior",
+    "Result fixture directly calls _finish; new test invokes actual lethal damage/boss callbacks but remains a controlled test"
+  ]
+}

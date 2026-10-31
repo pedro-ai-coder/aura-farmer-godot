@@ -42,7 +42,7 @@ func verify() -> void:
             expect(parts["name"].get_meta("typography_role")=="card_title","Card title uses semantic token")
         # Both selected and unselected text must clear the physical card silhouette,
         # not just the rectangular label bounds.
-        for selected_index in [-1,0]:
+        for selected_index in [-1,0,1,2]:
             game.selected_card_index=selected_index;skin.refresh()
             await process_frame
             for i in range(3):
@@ -63,7 +63,7 @@ func verify() -> void:
     for i in range(10):skin.refresh()
     expect(before==game.rng.state,"Typography does not consume gameplay RNG")
     game.queue_free()
-    if failures.is_empty():print("PASS: packaged typography, glyph coverage, equipment fit, HUD and three-viewports hierarchy");quit(0)
+    if failures.is_empty():print("PASS: packaged typography, glyph coverage, equipment fit, HUD and six-viewports hierarchy");quit(0)
     else:
         for failure in failures:push_error(failure)
         quit(1)
