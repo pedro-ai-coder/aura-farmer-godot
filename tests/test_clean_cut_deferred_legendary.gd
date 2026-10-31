@@ -29,7 +29,7 @@ func click(button: Button) -> void:
         await process_frame
 
 func verify() -> void:
-    for extent in [Vector2i(1280,720), Vector2i(915,412), Vector2i(390,844)]:
+    for extent in [Vector2i(1920,1080), Vector2i(1600,900), Vector2i(1280,720), Vector2i(915,412), Vector2i(844,390), Vector2i(390,844)]:
         root.size = extent
         var game = load("res://scenes/main.tscn").instantiate()
         root.add_child(game)
@@ -41,6 +41,13 @@ func verify() -> void:
         game.run_time = game.SoloClock.LEGENDARY_FIRST
         game._open_legendary()
         await process_frame
+        # Legendary cards share the same diagonal silhouette as normal upgrades.
+        var first_footer: Label = game.clean_cut_skin.offer_parts[0]["state"]
+        var first_card: Button = game.offer_buttons[0]
+        var clearance: float = first_card.size.x - first_footer.position.x - first_footer.size.x
+        var label_width: float = first_footer.get_theme_font("font").get_string_size(first_footer.text,HORIZONTAL_ALIGNMENT_LEFT,-1,first_footer.get_theme_font_size("font_size")).x
+        check(clearance >= 54.0 and first_footer.position.x >= 16.0, "Legendary footer clears diagonal corner at %s" % extent)
+        check(label_width <= first_footer.size.x, "Legendary footer text is fully readable at %s" % extent)
         var offers: String = JSON.stringify(game.legendary_offers)
         await click(game.defer_button)
         check(game.mode == "playing", "Defer resumes gameplay")
@@ -63,7 +70,7 @@ func verify() -> void:
         game.queue_free()
         await process_frame
     if failures.is_empty():
-        print("PASS: Deferred legendary remains visible, clickable, unchanged and deadline-bound across three viewports")
+        print("PASS: Deferred legendary remains visible, clickable, unchanged and deadline-bound across six viewports")
         quit(0)
     else:
         for message in failures:

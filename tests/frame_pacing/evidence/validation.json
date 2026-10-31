@@ -1,0 +1,376 @@
+{
+  "godot_phases": [
+    {
+      "phase": "import",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "mobile-layout",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "card-keyboard",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "spotlight-secondary",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "spotlight-hud",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "spotlight-navigation",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "spotlight-theme",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "arcade-ui",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "enemy-navigation",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "seeded-rng",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hero-animation",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "recovery",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "survival-review-policy",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "camera-cover",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "continuous-run",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "run-acceptance",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "menu-flow",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "signature-flex",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hero-combat",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "run-clock",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "run-progression",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "profile-store",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "contracts",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "catalog",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "legendary",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "boss-lifecycle",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "enemy-windows",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "ranged-sources",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "bestiary",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "ruin-alley",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "passive-effects",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "approved-icon-batch",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "icon-registry",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "approved-art",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "combat-feedback",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "clean-cut-typography",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hero-clash-ui-candidate",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "weapon-vfx",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "legendary-combat",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "weapon-timing",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "player-projectiles",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "mobile-touch",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "flex-readability",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "playable",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "scene",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "approved-clean-cut-runtime",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "clean-cut-pointer-input",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "clean-cut-secondary-input",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "m0-ui-creator-feedback",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hero-clash-button-motion",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "clean-cut-deferred-legendary",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "candidate-bindings",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "candidate-navigation",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hero-clash-review",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "button-art-components",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "navigation-recovery",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "layout-recovery",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "mobile-fluency",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hud-v2",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "frame-pacing-probe",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "frame-pacing-geometry",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "frame-pacing-state",
+      "returncode": 0,
+      "error_output": false
+    }
+  ],
+  "fresh_data_per_test": true,
+  "node_tests": [
+    "test_web_platform.cjs",
+    "test_performance_web.cjs"
+  ],
+  "python_icon_tests": 11,
+  "geometry_comparisons": 388512,
+  "approved_art": {
+    "masters": 19,
+    "icons": 37,
+    "clean_cut": 84,
+    "font_licenses": "passed",
+    "button_and_hud_candidate_hashes": "passed, status unchanged"
+  },
+  "web_exports": {
+    "ordinary": "PASS; recorder excluded",
+    "performance_review": "PASS; opt-in recorder included"
+  },
+  "physical_device_acceptance": "PENDING: Pixel 8a Brave / Android Chrome and LDPlayer not accessible",
+  "source_world_sha256": "10571113e0cdf3c7d3c29056f173c061046011440963ef9e517c62a4a1b51c0d",
+  "repeated_affected_phases": [
+    {
+      "phase": "import",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "mobile-touch",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "approved-clean-cut-runtime",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "mobile-fluency",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "hud-v2",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "frame-pacing-probe",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "frame-pacing-geometry",
+      "returncode": 0,
+      "error_output": false
+    },
+    {
+      "phase": "frame-pacing-state",
+      "returncode": 0,
+      "error_output": false
+    }
+  ]
+}

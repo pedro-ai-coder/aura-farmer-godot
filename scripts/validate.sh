@@ -39,6 +39,7 @@ run_check() {
 
 bash -n scripts/build_web.sh
 node tests/test_web_platform.cjs
+node tests/test_performance_web.cjs
 python3 scripts/promote_approved_icons.py
 python3 scripts/verify_clean_cut_art.py
 python3 scripts/verify_typography.py
@@ -92,9 +93,8 @@ run_check scene --headless --path . --quit-after 10
 run_check approved-clean-cut-runtime --headless --path . --script res://tests/test_clean_cut_runtime.gd
 run_check clean-cut-pointer-input --headless --path . --script res://tests/test_clean_cut_pointer_input.gd
 run_check clean-cut-secondary-input --headless --path . --script res://tests/test_clean_cut_secondary_input.gd
-run_check m0-technical-ui --headless --path . --script res://tests/test_m0_interface_fixes.gd
-run_check m0-navigation-recovery --headless --path . --script res://tests/recovery_m01/test_navigation_stress.gd
-run_check m0-mobile-fluency --headless --path . --script res://tests/mobile_fluency/test_drag.gd
+run_check m0-ui-creator-feedback --headless --path . --script res://tests/test_m0_interface_fixes.gd
+run_check hero-clash-button-motion --headless --path . --script res://tests/test_hero_clash_button_motion.gd
 run_check clean-cut-deferred-legendary --headless --path . --script res://tests/test_clean_cut_deferred_legendary.gd
 run_check candidate-bindings --headless --path . --script res://tests/review_clean_cut_candidates.gd -- user://clean-cut-review --check
 run_check candidate-navigation --headless --path . --script res://tests/test_clean_cut_review.gd
@@ -103,7 +103,22 @@ echo "PASS: Godot import, GDD rule contracts, and main scene smoke test."
 
 run_check hero-clash-review --headless --path . --script res://tests/review_hero_clash/test_review.gd
 
-# Web fullscreen/refusal/retry and CSS/DPR lifecycle regression.
-node tests/test_web_platform.cjs
+python3 scripts/verify_button_candidates.py
+run_check button-art-components --headless --path . --script res://tests/button_art/test_components.gd
 
+run_check navigation-recovery --headless --path . --script res://tests/recovery_m01/test_navigation_stress.gd
+run_check layout-recovery --headless --path . --script res://tests/recovery_m01/test_layout.gd
+
+run_check mobile-fluency --headless --path . --script res://tests/mobile_fluency/test_drag.gd
+
+python3 scripts/verify_hud_candidates.py
+run_check hud-v2 --headless --path . --script res://tests/hud_v2/test_hud.gd
+run_check ui-cohesion --headless --path . --script res://tests/ui_cohesion/test_cohesion.gd
+run_check ui-final-polish --headless --path . --script res://tests/ui_final_polish/test_polish.gd
+run_check threat-indicator --headless --path . --script res://tests/threat_indicator/test_indicator.gd
+run_check m0-final-flows --headless --path . --script res://tests/m0_final/test_flow.gd
+
+run_check frame-pacing-probe --headless --path . --script res://tests/frame_pacing/test_probe.gd
+run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd
+run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd
 run_check reconciled-floor-geometry --headless --path . --script res://tests/main_reconciliation/test_geometry.gd

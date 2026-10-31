@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+<defs>
+<linearGradient id="paper" x2="0.1" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#e8dfc5"/></linearGradient>
+<linearGradient id="gold" x2="0.12" y2="1"><stop stop-color="#ffe467"/><stop offset="0.45" stop-color="#ffce21"/><stop offset="1" stop-color="#e9a60b"/></linearGradient>
+<linearGradient id="blue" x2="0.2" y2="1"><stop stop-color="#168fe4"/><stop offset="1" stop-color="#074d89"/></linearGradient>
+<linearGradient id="navy" x2="0.3" y2="1"><stop stop-color="#153c5c"/><stop offset="1" stop-color="#071c30"/></linearGradient>
+<radialGradient id="dial" cx="0.3" cy="0.15" r="0.9"><stop stop-color="#144d78"/><stop offset="0.58" stop-color="#0b2a45"/><stop offset="1" stop-color="#041529"/></radialGradient>
+<pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.85" fill="#0b2034" opacity="0.19"/></pattern>
+</defs>
+
+<circle cx="160" cy="163" r="151" fill="#04101f"/>
+<circle cx="160" cy="157" r="149" fill="url(#navy)" stroke="#0b2034" stroke-width="7"/>
+<circle cx="160" cy="157" r="139" fill="url(#blue)" stroke="#2b83c2" stroke-width="3"/>
+<circle cx="160" cy="157" r="128" fill="url(#dial)" stroke="#03192d" stroke-width="6"/>
+<circle cx="160" cy="157" r="120" fill="none" stroke="#226da3" stroke-width="2"/>
+<path d="M75 63A125 125 0 0 1 244 65" fill="none" stroke="#75c3f3" stroke-width="3" opacity="0.35"/>
+<path d="M59 248A136 136 0 0 0 267 239" fill="none" stroke="#021629" stroke-width="5"/>
+
+</svg>

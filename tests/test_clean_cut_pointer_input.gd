@@ -39,7 +39,7 @@ func click(button: Button) -> void:
     await process_frame
 
 func verify() -> void:
-    for extent in [Vector2i(1280,720),Vector2i(915,412)]:
+    for extent in [Vector2i(1920,1080),Vector2i(1600,900),Vector2i(1280,720),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
         root.size = extent
         var game = load("res://scenes/main.tscn").instantiate()
         root.add_child(game)

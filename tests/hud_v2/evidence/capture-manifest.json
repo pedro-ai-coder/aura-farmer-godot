@@ -1,0 +1,1201 @@
+{
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "renderer": "Compatibility / Mesa llvmpipe / native X11",
+  "baseline_commit": "499baf14c28b4b3124660f47217e37495ca0be52",
+  "capture_script": "tests/hud_v2/capture.gd",
+  "human_gameplay": false,
+  "browser": false,
+  "physical_device": false,
+  "review_composites": "Only resizing, cropping and review labels around actual outputs. Raw PNG SHA-256 recorded below; CI artifact retains PNG outputs.",
+  "reference_sha256": "e64d5d5f31884de71c58a6afaabeaf7b045e00421d87dd81ceff5aa8e4856e73",
+  "captures": [
+    {
+      "file": "before/boss-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "df26a39211033f4fb385558775fc56c5f5b601511e06b0cceaac63aa453c2f36",
+      "jpeg_sha256": "a46204398c552a3312675dc993341bf16453301dc45c0a0aa655f56e67b45cf1",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/boss-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "780dd3330dc359ac57a5893b2174347267d4d3c4c6c432e0002e3d2c6141ca31",
+      "jpeg_sha256": "1e69ac2bc05afecff95696227301adc50a5b3d5efe9d7604b80cafd167b741b2",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/boss-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "5b0e7f86f1faa6fe1f76d0ea9a22541224efa3b87fef9552ab6fad40a8ff0bbf",
+      "jpeg_sha256": "bee19775f72798d4a7e20befbb008cce0e6689deaf06f3af7ad8a1ded82ea7ec",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/full-build-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "a90187a7d189675b31b85fdfa5a413841912576808e04c41a1a46bf761ff96ca",
+      "jpeg_sha256": "acbec1dd1a271e72af5d868e220a8e3c91afde5ce46da03c432ac2b652a7b6ed",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/full-build-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "e1cd277e5ecbe7331ae42ee27f40d994860c1bb3e688656e2618079933113a4b",
+      "jpeg_sha256": "83dea2e525a6926f3332dcca661fe8e70654fc429d13a5518d3bb85355be98b4",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/full-build-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "bf2bb3d657aee6920a4a5bb4f0203a9d09d08aa7aff3540e75ad99a159cfd3d8",
+      "jpeg_sha256": "1e59c69d0d9e6db8ac8c1f41180616ccb97b86bd2b06c4f128c747a4f4783772",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/ready-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "9cf817f47b9f18ad407ee495d5e315e0fe6de843c9da60e17340d8d6ea53e8fb",
+      "jpeg_sha256": "067778281b4235ed042160ff0ec8fde9615d308ff67093f87f19c0e559407609",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/ready-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "fd7a19b85fcbc9e657ca43fc8c37f3a20115dcc7d37ef69d2f20c2b0ad768d03",
+      "jpeg_sha256": "96558219b3bc19c2c18a447e1ff8083a89b4b9fab6b200b7cc9d1c7627938daa",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/ready-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "57c8b48ee7ed1b9261c1ae6c72a225f816d656787019f2d142ecf76db546ee36",
+      "jpeg_sha256": "ccf6c519db4a57d802a24fd07de2f4c367f6fd13b69513133f36937f571baf19",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/start-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "40f203d59637a309d2c843eda0b05b0e771e61adfa1068590653e4fc490dcc9c",
+      "jpeg_sha256": "b3aba4ca63d0848f2e037a2593eb0343434d7d15597d7899529a740c47fb9e82",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/start-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "1dad65e782cbddf5db308d6a7d45d9b7287ac39e6feff5eff4ef79440c227154",
+      "jpeg_sha256": "91001e7c8591a47db8f490fa18669888d57a2323bc578a63639d5dbc4779ed31",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "before/start-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "b2b11c6f80ffcdda17c49138b797dd637ce4dd07084266463c326157211f5231",
+      "jpeg_sha256": "e0ec5cffb3063c910fd0cf3cce6a4b659c261a28ff50d740cb237a2780c06ddc",
+      "kind": "actual native Godot state fixture",
+      "baseline": true
+    },
+    {
+      "file": "after/active-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "26429f6ed6b4ab8d227ee69d1835d3dbb9b709ca7c6970cba90eb463b0694868",
+      "jpeg_sha256": "8bd17f86d08a86f80836064cc9c24d4d1784d0534cde1f85adf7f6a99936abdc",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/active-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "ef554654a7a2d647fccbfe514cecc6c866030ffcd61a18236b78e076f099f218",
+      "jpeg_sha256": "b5af33ff4bcaede0c8768daf0ae3e2b8a6fe4d3ee3c2b6f7e2474e8d24bd2657",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/active-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "f0a8e86ff4ff71a35ed239b8eb98341251a7f981897e7f28fe613bebc77d8f2c",
+      "jpeg_sha256": "29698159c0556bee2c4881b2d39d6a8b863f8edd6db59606aa2702951ae3c01c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/active-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "1e67a85c022bfadd4b92fa972b2fd5a6ea3a6330c8641d1c71245b940372f1c0",
+      "jpeg_sha256": "a352ead884d8ed1dc127c4aaad2a921c26f7ca8799b1ed7f00a09c1a1f97a786",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/active-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "b8a986dd43d1d5be3bcc8dfd1357fb640e4ef17108b25b3c0df8ce262d49579f",
+      "jpeg_sha256": "956c2d6ada2bce2f86436fce3c65fe77715e3bfeb473d0785ab593c45eeccec5",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/active-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "d35f1109c512f20c4609a7cd6bd17a6f22d43850247ff5070b9bd08a72709271",
+      "jpeg_sha256": "d65067996fb6858bffb2612b0ce2091a21dd8e701a38b26e38f7251025b4fb47",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/alpha-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "bb19d427a794503ce858fbbbe7058b7654c16e8605bb149292d7d67a4237873f",
+      "jpeg_sha256": "025217f145518a952b84b48e9856c7c8bc9e4daed53e60b38f64e744428d2145",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/alpha-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "85f62ea8f122197baa5e8e0e85b233000648243d226a5eec7ec0fceb29265ba1",
+      "jpeg_sha256": "30025f33506d377aae3c2d09a27751702d285e72d13c8dad909f3c83698eb2ff",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/alpha-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "e1bf3fe2b2ab80f32491434f58cc75849e4a1f20b206b47ab1f5368b75e8a59d",
+      "jpeg_sha256": "88c7d766563f23af7556e49fea8c530e69c16efd079eefc1acc707fef647c84b",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/alpha-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "75e8cd6110ab2900f082b328d07e4bfedd8ffdc519640e2ffb48b0972f020bd4",
+      "jpeg_sha256": "26d8ea8c33f5bf379f5fc604783a0c049d87f49a351b8bb9827d7ab8e0dadc06",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/alpha-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "1402a4b31ae9ccd1303cc2c8586c8af0109d74121b9eb955ee269fc7ff5700bc",
+      "jpeg_sha256": "ae9077968d8b92a98e1fbf893d2004cac39d05d50944a073db3fe412186a6cef",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/alpha-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "97acc40cb031d7ae343682a2f2a93ff8cd5da3a5bc0976bcb336d3016ae70733",
+      "jpeg_sha256": "8732d37af90f6aacf7c8442678ac2426bcb5ad41c4038fc6aef3e877c761830c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/boss-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "a8a5832105773cb9d89a0d21684dfcbf54f4273a40d6432a27469b50d6c51427",
+      "jpeg_sha256": "b5af4764d59a6329d888416f86af4350aed9265442843ccd42a1a020baad515e",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/boss-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "c9c844495799220dee49f75ddd9e297f96bdeffb655cdee17b4d25801190f6d3",
+      "jpeg_sha256": "703314f7f0478b2436e11ccab157be273655d167bcc665b20d5aaf7b42867402",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/boss-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "02aabdd743cfe0a1feab197ed69267f268819ba27c5c2cebecf3b77d2c3389ba",
+      "jpeg_sha256": "db1b9d3f502d7e47605e2ed8bad5705dcffd8fe63454ad4f97c94cf9e9123d5f",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/boss-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "e91438d40e200646a00e7f67f10266a6140dc8e8de9fed85c08f5d330add485e",
+      "jpeg_sha256": "9f075f178576dee7588c1884c3f16513dc88a9e8358e283fcd83cf32875197f0",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/boss-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "d5a8a497cb74b7d07f89e16f3726e7057b51a0583a9447846e33681a86b66c2d",
+      "jpeg_sha256": "fe2c4077246d9d527126650cc2526e8671896a039d60f1d584c90a0f7e742f52",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/boss-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "2e43ce314a849efb9e8ff3c89e616cef35a621b5bb998f7aac0d4b3ac8e5f6a7",
+      "jpeg_sha256": "ce2dffbbe0a5b40b421c768a85eba67bc5498a3090cd73ebaa6eebb2dea1cfa8",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/cool-kid-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "a25708c8736c785d6fff67a7ac58277b50edb51ce00c7fd688c937186cc997d8",
+      "jpeg_sha256": "346974aba0bd3e87835d1563e346b982f777cb3a2c0bd19b1276743eabcf688d",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/cool-kid-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "7e83cd412ade511d9d17157ae9c554f94e3272bc63c27a1ef204deed9bb38d99",
+      "jpeg_sha256": "1bfb416fdcc0184eab20cbc5ba84f45e192f2881d0fd359efd12448745227559",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/cool-kid-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "16e133a105ac1271dc55f5c210c794f2ec5898b0c1025c6aff71b3fe9111e3a7",
+      "jpeg_sha256": "b955a04d543227c590f76daa338c029e1df454c88ae9414f234ffce11ee91e0c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/cool-kid-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "7e9937f87106b28426341fb8bf699669c1109ccb96b5d275d9c70b0112222b90",
+      "jpeg_sha256": "6a296ded42c93907eca0148a51c72839203ac494af1289294ca8aaa295cf09c2",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/cool-kid-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "7cbd04b5d307f9e38094e04a7b414c3523b7e96096b51a69c210506811a05186",
+      "jpeg_sha256": "8c13c0d64747fdfc3a303a614cbf2aa9086af78f4396daa50eca635cf346bf4e",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/cool-kid-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "eb8277d18d0572f0e6098190917300f111dc38c60f8991302924a2db24c5e780",
+      "jpeg_sha256": "52c35dd94d2eae1f824753e9a91b39528da2318cbef037f56159b9f69edf11a4",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/full-build-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "8ec2696f19799ed9edcefa32476986df96c07769d15c9273f5243246a7c5d488",
+      "jpeg_sha256": "10b4a1d3ad411b8c296e2cc64d0a5c6a14992dfb5b72bf95ef63d2a0e810af3f",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/full-build-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "a80e7ad7a62a7e75e8271e32a7797fb3710c9a62d2467376ddb1a0771046c58f",
+      "jpeg_sha256": "88e547af653c1e26710e7d7eef72b6320020f78e13a48aaeca7f6f5eb25dcc99",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/full-build-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "3e382ba62d7f58d068bf9056dca7bad91f4c727cda5eb5ccaa88b7338044547d",
+      "jpeg_sha256": "b0cef0c2673c3bbd3f203e4f9b8c6041a71328ad58aaaf09da29b0d3db0ae735",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/full-build-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "fe8b51c09cc66a0251eb9c471a96c02d8b407eccd317fcd5a60942a527bee597",
+      "jpeg_sha256": "45f0a7df5169d158494779f3727d4502d33ccebde321030eaae18c05630ecbbb",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/full-build-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "6791dd823131d73671bff1f7ee696c5116b070a90dd6c514ff8320573ddf7174",
+      "jpeg_sha256": "ff496001588fee132a96a62464c1edda50a26a781696a27ed2a5eb9af15dabf0",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/full-build-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "566bceea0983904ce08e72034f2cdf7446835933becb373f6c31109d10e9f6d6",
+      "jpeg_sha256": "ed9dea0b72b0677cf28e2cda75a01de7a67acf8490a1a3d9a661bb090db5eb86",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/low-hp-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "705bd2dc4fb1e891b57cdab05a10151237c30dfb5cabfbf888d6b8727f06b0ec",
+      "jpeg_sha256": "642b0e472e9ce627f849f4db846a3117260ebf4652e5d1aedc3c799a7b9339f6",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/low-hp-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "3fed65d7182324fda6f4a0d6d2c93225246d031acf8cc5851e700696f3243719",
+      "jpeg_sha256": "0e5f96a9a17aebea9c2970f3d1c1acfcecaec8826d9da437ff92e5c72f8bb6b8",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/low-hp-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "7c82f8205c3eced393a76b5e003307d1a6d85f3d1976251130a74be5ecd80654",
+      "jpeg_sha256": "6593d398920c02c9b4122b278eb9919308013b5a57a1c23cfc462023a25cec72",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/low-hp-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "2a4068a1120bb3c16717463996a10b0e0ad50d044335b60132f9a0a32f82261c",
+      "jpeg_sha256": "a10a1b388eea081a5ad55b88f3c389c2ec9b081108aa15b7e476feb4e6daee95",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/low-hp-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "c38c0976efae7bcbc765bdbb296b3f0328a53cff53513d59db8a8cb9adbe158c",
+      "jpeg_sha256": "1130c2edb7a75c1228e2a71c844adc4d29021744d04592cdf2beb253022f8f9d",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/low-hp-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "7f5c6f2ae3694ffc72832c55eaf88ed12f71c344b75b7d44b4f8570378306582",
+      "jpeg_sha256": "4b67b1a7157f74300020fd3b8141bf8031f4370d899a45e017deb1ff099e288f",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/midgame-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "f81cd3d07848999345182d61dfefc5530c039a3f27608bf01693ff5fc547dfea",
+      "jpeg_sha256": "15ec520f96299eed6fc96c4a867c2631292f1bdff3a3c2e7a50c02d7dc33968f",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/midgame-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "f088abbfe55a419ed45e19466e366d9b96ba28536408b1e868718de3669d5ba7",
+      "jpeg_sha256": "582c2d0cf46bae641af761832d88f568641215ca8b185884fa1b8f41741ce475",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/midgame-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "706e8cad0af1eb3d3cea5a5f97431fbe4f7d1a4b23282ca8e544919f7d96b9d5",
+      "jpeg_sha256": "51e89b245e2712ee214e29c4bddde53cc27bfca1330ac26a52b54520e6a13ce9",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/midgame-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "9e063d9e19c77264a4ef20bb6182986590930d75240454950972d20d6cf2c78b",
+      "jpeg_sha256": "d6bb120698f276cd9d36518e803f82e9bf4ba93787baad70faa78febfc7af595",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/midgame-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "c2e879d2407e015ca8cff3bf128329ed47b19b164c7c3f9873a42873dda11ccb",
+      "jpeg_sha256": "9036c76adf6bc963b96df06dedfb36c85f118be0138fd4e328949ac213e8f062",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/midgame-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "dfccfb0f44a422b8e4b097f45f25e37db0d9432ebddc3b624f2e6afd737db9f1",
+      "jpeg_sha256": "89ca7f6fcb240351c7ec938bdc1eeb472ab568e79f4faa747fb0776a7263bc22",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/partial-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "f4a963b05a7b9920c01494584b054604b71885c9ca4acc9cae67d10abebd3867",
+      "jpeg_sha256": "4898daa72da6c84dc3e83f9e6c72f3d0b3afe471da9caadb6213dd2e9fe41744",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/partial-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "17eef87db1d4e565830b381fff1442ada7a137494669934476e164ccc4245b1a",
+      "jpeg_sha256": "d20bf533466be4306d1472c29a4177af2851183133e259e77e65ba2de67050df",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/partial-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "53a0371bb29ffcd1e6464a5bc84d7c93cdbf343b6755ed95ad475f758f7e88f2",
+      "jpeg_sha256": "75d55300f7755bcd981597c475fa04878cfe454cc27bf33b105b969fa531cc5e",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/partial-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "a3747092dbbca0a702b0eaf5b67dee43d2342a0152a0a3517b46b4393200a9b2",
+      "jpeg_sha256": "13011c671b2f7c7bcd9912d8163dc332e84d55697cfb514cc83ff90253d5217d",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/partial-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "3454b7e1959e8f2fddebbd00822acc95fac55b9fdb0fc8803653c8d01d004149",
+      "jpeg_sha256": "6ee80d4a33c9b38325e58da0d492c90fd3a35502c25bf3201ccea5adeff2aded",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/partial-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "be7c58a82e15fe7518dba93b772667bcb1f9d3de891aaf8e6da4c81a02341659",
+      "jpeg_sha256": "c803d31f2e10763b15071799f377514c93088381765c8e70407860385f5881d9",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-focus-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "2d1f6440853f8755f98db24871fa2ea89ba768adf5fd7e99fce2e5ff0b1f7af9",
+      "jpeg_sha256": "476ebd1bc236880963cf348c555b719ef13638e2d3e0f58bc12d58c801227cb9",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-focus-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "ec8aeb3411bb76a8077acdf280deb9286869231b9f3363483261229de14e419f",
+      "jpeg_sha256": "a59c278f2bfc75a758e117d00c53af617a430d9cdf296be1dd4fac3205aa505c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-focus-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "bd45d3aa2aa397d54756df032ffd5532ef0a53aedb5e562e421ce32c8a93bea2",
+      "jpeg_sha256": "ab5032eea42565388061f721b78c4ecebb31daf229ba4ca91e64e923f2c36a4e",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-focus-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "928ed032dc48b83638cdbf53069d85b95e0db86fd7500447df08465a03cdd4e2",
+      "jpeg_sha256": "e5d3552e43ae05e12744eb892013a8883b425474f5ebb121cbfd99c6080c60f5",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-focus-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "97ceacc288d9301a7cea6da4bd33d6fc08b0b440a4f9e77df536923f9593ef07",
+      "jpeg_sha256": "f2b44cd7b6bc38e0ae3805766e0e76e80953c755e83d11a22d003a0b26e9db25",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-focus-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "4a82b385080705ef4beb1c3bd117271089cfe79a18171e6934e2acb7c77a650b",
+      "jpeg_sha256": "64fc4d66935646f0edfba3284b59610e2557e5a4d94744ce75a83f4075b3cb62",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-pressed-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "2d1f6440853f8755f98db24871fa2ea89ba768adf5fd7e99fce2e5ff0b1f7af9",
+      "jpeg_sha256": "476ebd1bc236880963cf348c555b719ef13638e2d3e0f58bc12d58c801227cb9",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-pressed-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "ec8aeb3411bb76a8077acdf280deb9286869231b9f3363483261229de14e419f",
+      "jpeg_sha256": "a59c278f2bfc75a758e117d00c53af617a430d9cdf296be1dd4fac3205aa505c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-pressed-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "bd45d3aa2aa397d54756df032ffd5532ef0a53aedb5e562e421ce32c8a93bea2",
+      "jpeg_sha256": "ab5032eea42565388061f721b78c4ecebb31daf229ba4ca91e64e923f2c36a4e",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-pressed-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "928ed032dc48b83638cdbf53069d85b95e0db86fd7500447df08465a03cdd4e2",
+      "jpeg_sha256": "e5d3552e43ae05e12744eb892013a8883b425474f5ebb121cbfd99c6080c60f5",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-pressed-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "97ceacc288d9301a7cea6da4bd33d6fc08b0b440a4f9e77df536923f9593ef07",
+      "jpeg_sha256": "f2b44cd7b6bc38e0ae3805766e0e76e80953c755e83d11a22d003a0b26e9db25",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/pause-pressed-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "4a82b385080705ef4beb1c3bd117271089cfe79a18171e6934e2acb7c77a650b",
+      "jpeg_sha256": "64fc4d66935646f0edfba3284b59610e2557e5a4d94744ce75a83f4075b3cb62",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/paused-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "c013d78e15bdb83ad27230622962185997b0d510fdda86d121c34abed8af2de1",
+      "jpeg_sha256": "763f76e7425880a25c03d9191c35dccccf907e227616446a61be82e6c62b7bde",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/paused-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "fe3094b9964219321ad02767e39e7bf64f26a560e28cf0507abd3d42647bdd2c",
+      "jpeg_sha256": "f14651ada9299d6d366f5cf128f65a32995c763638aa1c47323447849568f2d3",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/paused-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "ba5063549b8703e80023114a32992c2c4615c6c85fcc2a69d416a53e130e0726",
+      "jpeg_sha256": "1567205add4e62ae059668d194ecee0fbdc1ca56e7789c5bbb1fce52675f96e4",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/paused-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "f07f14c69738773126fb7139d0f9cc815f18c0d64572ab20cc86a4cea3b12b65",
+      "jpeg_sha256": "6909c693490f3399c7da0e4657fff798af4e40605b4a63794419c426532349ec",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/paused-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "2a32a2f3f0db92a258c3c02ec6ef34d162e6ff64dc62a30655021ff665e6926a",
+      "jpeg_sha256": "dd2ea4a80ead054bf4f7b3d869bad61cd175cff05f0d95bf9914a7991740d024",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/paused-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "bc65ca76d5d558168abf8a5d1bbf6b7b1863d4be9a6fe4b3dbfd66bab371d17c",
+      "jpeg_sha256": "339106b822834a2c678c8c0acfb3875ed0b97bad1fe82e6a42d87cc8a66314d6",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/ready-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "1cc0a129741bf74a27bda51a3078942c38f9ecb3dea680ccfc18c8b0ef1df724",
+      "jpeg_sha256": "3549d545448a6fa6db9a09e5882111547b8f6ad6946768c64778696ede0b6746",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/ready-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "ecf9788b1c1a92518ae31affc540a5e8b7b114d735d7c0f261f30d7ec1f584de",
+      "jpeg_sha256": "5df330757b06b7d226a1c8fd3108f10cab4d4d70fb14cad1de0043186417e5ad",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/ready-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "a19965bd48be9074174fc254157137a8e556fdc200d83f18229c5ef8a2ddc250",
+      "jpeg_sha256": "7ed8aeda9943878905c8d88e711a7305a37846a5fadd8e85e8701e23cf2b730a",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/ready-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "ec0430c8b5426884b171b6b11763dabfa51fe02d6b3dc275a95916a174e557e5",
+      "jpeg_sha256": "4493a7421606ffe6c31dbbe51221049553f01d845fe721dc0d70fea3dafb6192",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/ready-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "3f7ad53925a04c25da6fc2e0cab32b922a2b55473f8ef225e654d0b1a510a26a",
+      "jpeg_sha256": "f4224f6616f5fa655004b01308b35904e4bf482fbb20d55681fbd650d668d9af",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/ready-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "4a90888cbee730a59d4d789c6e3b9a1cb8781b42595732f6524c242636d1c012",
+      "jpeg_sha256": "5b61b66783e65f1b57fe342adce5d9c947560a0594faab19acd4f1f48a31850c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/recovery-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "54144ef4b88fe2bb23a7c1bda921f26a690ebb445441a36e12361116e355820e",
+      "jpeg_sha256": "7052636ea8c380ddbe4e3b16b17822cef01347a6188e17eb2792887c7a16d0d5",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/recovery-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "455f42e295ba9f6c70e22acf05a406c2f9b7bbaf1050067124cb024d96f9d248",
+      "jpeg_sha256": "82910140d5ed3ef7f85d9e2534b2f3a26f363befef61c138c90efa10f1eb6bf5",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/recovery-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "b43b8fa3bd03c016839f52ba3191d4335d3f9c140a4a8e88c2db8ce130f4c525",
+      "jpeg_sha256": "25464df45a007b9c4d93b1791aa29a7bdd7221b25df408dc925ce3f629eecc03",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/recovery-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "d4e443a43e5c425c36fa91b26f27dd969c4cca7cc401d22a21ab8b273350d5de",
+      "jpeg_sha256": "cf03be49d9f4a0ed34c064e26e4a7044ea6810574aa20f38241fdc15e2f04fd2",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/recovery-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "0c930e58e06131fe54ad6bd5b5e608d2d208f4965b93b883785b935f0d903149",
+      "jpeg_sha256": "2fbc3f1035e28ec5a2e904fcd7431d73c68c3b55bc037ed446801aedae84fda2",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/recovery-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "c94d5cdeaf095b68e2f9041888c5e364c93a574be1cff564e39440cc45f26455",
+      "jpeg_sha256": "1708cda8ab0b711b5a6b793ee792cc1ff393e4f25c0d3fa2a638e9ea4fa454c8",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/safe-near-ui-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "8f19f4b50d6fee5532d45b42133db7552774df975856bd290543ec9468597af8",
+      "jpeg_sha256": "e23301594487ba3343b020fd90262175f8db62414c1f942b2cde0346a344f1f6",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/safe-near-ui-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "f050f87ad44da51142cd9cec0fd081c4fad3a9f982fac2bc18a08f4d0efe209a",
+      "jpeg_sha256": "5adf5114930a63afcfb20d4c033c183ce674ab6dd2d71b84e9cbea2a7a048340",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/safe-near-ui-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "87a1aac05a4f4ab6b0ec8fdedda6fd27e3155dbed181bceb3fe741f093096e75",
+      "jpeg_sha256": "3c586ff9dc2e0aaf124afe86220231aba65b441d8cb7ba20b55e70aa5fc86e65",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/safe-near-ui-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "2ecc7513700d6820b6b63623f6fd45cc9d15d9e90fd8e8ec57e377c0b8d2d5e1",
+      "jpeg_sha256": "fd353698d78978c1df78c37908b99df22d6ffa45f9330a773a24dce6f58ef851",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/safe-near-ui-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "93ce794f605c8cb07e33f154c851dfe689b1b9e59169c12945ce218547aabfb6",
+      "jpeg_sha256": "49f6992ef64d8394fa330a18f75abb37a3ece639011937cf9a7139b454aedf45",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/safe-near-ui-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "7e9005d7c1fadcaf664f787f7b11fde00e3610d04a1e59782eb99f1359a75a70",
+      "jpeg_sha256": "705b5c5ff6b3014eb90aa763712a7cfcda240a3e521227f2f260a21461c8873a",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/shield-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "fe8458b25b7a7f34e89139ec89d3f312eba04d4046739a9f341d52a3cd77644d",
+      "jpeg_sha256": "df20d16b31e4f6ff7ee640cef7ab5cdabd27299cbd3c170d8431dcaf9bd59f43",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/shield-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "34f296ec5e3b1b8a02d2d93c419b92bb5aba09672d14a8df62fbec473b8fd9c1",
+      "jpeg_sha256": "b48bdaedb760c2f1aa6a454f08d17b3a197f6a7628d1f885f6a2af0e37195b91",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/shield-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "4d4e39e67122e84617d0debb15667222455c64039badb322cf3fa4d0f2ec236c",
+      "jpeg_sha256": "b76d8b5f301bc0eca2c1b31568b3aede9aace37e623ead58f57206f60437e74d",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/shield-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "300afb9c5e7406ad0c8f67e8e005deb08dee33786d5466d1806550017e7776a3",
+      "jpeg_sha256": "d36795631a78f72597e11c54eba6f09a4d0542651a7008ece96efadb38580bb3",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/shield-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "182bb19492d7607ed28a473776caa8e272d147e57fa057a26647aa941511b973",
+      "jpeg_sha256": "428059f04b8d820827b7a4da4b514c3412f45143791acd96c0c0f849f3baf2b2",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/shield-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "019621d22bd1eb709ec6f9a59b3fcd7271b38e9332fc2ecc30e229c959bba015",
+      "jpeg_sha256": "0cd521ea784c2cadb0fb3b803cbbdfdcd82097ef0e79a7d8134c59e00ce9c11b",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/start-1280x720.jpg",
+      "pixels": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "2d1f6440853f8755f98db24871fa2ea89ba768adf5fd7e99fce2e5ff0b1f7af9",
+      "jpeg_sha256": "476ebd1bc236880963cf348c555b719ef13638e2d3e0f58bc12d58c801227cb9",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/start-1600x900.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "ec8aeb3411bb76a8077acdf280deb9286869231b9f3363483261229de14e419f",
+      "jpeg_sha256": "a59c278f2bfc75a758e117d00c53af617a430d9cdf296be1dd4fac3205aa505c",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/start-1920x1080.jpg",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "source_png_sha256": "bd45d3aa2aa397d54756df032ffd5532ef0a53aedb5e562e421ce32c8a93bea2",
+      "jpeg_sha256": "ab5032eea42565388061f721b78c4ecebb31daf229ba4ca91e64e923f2c36a4e",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/start-390x844.jpg",
+      "pixels": [
+        390,
+        843
+      ],
+      "source_png_sha256": "928ed032dc48b83638cdbf53069d85b95e0db86fd7500447df08465a03cdd4e2",
+      "jpeg_sha256": "e5d3552e43ae05e12744eb892013a8883b425474f5ebb121cbfd99c6080c60f5",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/start-844x390.jpg",
+      "pixels": [
+        843,
+        390
+      ],
+      "source_png_sha256": "97ceacc288d9301a7cea6da4bd33d6fc08b0b440a4f9e77df536923f9593ef07",
+      "jpeg_sha256": "f2b44cd7b6bc38e0ae3805766e0e76e80953c755e83d11a22d003a0b26e9db25",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    },
+    {
+      "file": "after/start-915x412.jpg",
+      "pixels": [
+        915,
+        411
+      ],
+      "source_png_sha256": "4a82b385080705ef4beb1c3bd117271089cfe79a18171e6934e2acb7c77a650b",
+      "jpeg_sha256": "64fc4d66935646f0edfba3284b59610e2557e5a4d94744ce75a83f4075b3cb62",
+      "kind": "actual native Godot state fixture",
+      "baseline": false
+    }
+  ]
+}

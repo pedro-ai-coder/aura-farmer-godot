@@ -1,0 +1,314 @@
+{
+  "version": 2,
+  "status": "CANDIDATE_PENDING_CREATOR_REVIEW",
+  "direction": "Creator-selected first Gameplay HUD V2 composition, 2026-10-29",
+  "provenance": "Original geometric SVG artwork authored in this repository; no extracted mockup pixels, new characters, fonts or icons.",
+  "generator": "assets/ui-hud-candidates/v2/source/build_assets.py",
+  "portrait_shader": {
+    "path": "assets/ui-hud-candidates/v2/portrait_crop.gdshader",
+    "sha256": "f3c7098f65080bdd5b7de3129f852e78217ff897f0dd3615f853310abf3fb21a",
+    "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL"
+  },
+  "resources": [
+    {
+      "id": "hud-v2/player-frame",
+      "source_path": "assets/ui-hud-candidates/v2/player-frame.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/player-frame.svg",
+      "component": "Player status / portrait window",
+      "dimensions": [
+        620,
+        170
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/player-frame.svg",
+      "sha256": "73c38ba27d5c0a1073048a4c41571c62c4636921d028d20799ed5d883acd0ad8",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "support/hp"
+    },
+    {
+      "id": "hud-v2/hp-fill",
+      "source_path": "assets/ui-hud-candidates/v2/hp-fill.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/hp-fill.svg",
+      "component": "Live red HP meter",
+      "dimensions": [
+        384,
+        38
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/hp-fill.svg",
+      "sha256": "9e25779a62b9c73e2f7a0903dfe75a4f313ebed81e01a1018b897bdf9b3c2203",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/shield-fill",
+      "source_path": "assets/ui-hud-candidates/v2/shield-fill.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/shield-fill.svg",
+      "component": "Live Shield meter",
+      "dimensions": [
+        384,
+        28
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/shield-fill.svg",
+      "sha256": "f4997529ca74b15cecd9cd5cd41248adfa8ed1b2187c2bcf4b5fe7c32b99477f",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/shield-mark",
+      "source_path": "assets/ui-hud-candidates/v2/shield-mark.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/shield-mark.svg",
+      "component": "Independent Shield semantic icon",
+      "dimensions": [
+        28,
+        30
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/shield-mark.svg",
+      "sha256": "8672084ff9dc39a22fe76d2edbea17991d47ffec90aa16579c3add47702dd7ec",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/wave-frame",
+      "source_path": "assets/ui-hud-candidates/v2/wave-frame.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/wave-frame.svg",
+      "component": "Angular Wave / encounter banner",
+      "dimensions": [
+        448,
+        86
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/wave-frame.svg",
+      "sha256": "8b480fdf499211e9f3d9b3d635a1eeb048622a18c5921c3f030f899c63c4e2bc",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "support/wave"
+    },
+    {
+      "id": "hud-v2/pause-normal",
+      "source_path": "assets/ui-hud-candidates/v2/pause-normal.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/pause-normal.svg",
+      "component": "Actual Pause Button / normal",
+      "dimensions": [
+        112,
+        106
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/pause-normal.svg",
+      "sha256": "a56891d7322d1e9c93d2c0e6532702c4b95f5c25b998e386007a00b0fbc2c349",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "menu/secondary"
+    },
+    {
+      "id": "hud-v2/pause-hover",
+      "source_path": "assets/ui-hud-candidates/v2/pause-hover.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/pause-hover.svg",
+      "component": "Actual Pause Button / hover",
+      "dimensions": [
+        112,
+        106
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/pause-hover.svg",
+      "sha256": "dbe578c06327dbda467caf3b6f92178932c9850ff45ee102239c6750ebafa3ce",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "menu/secondary"
+    },
+    {
+      "id": "hud-v2/pause-focus",
+      "source_path": "assets/ui-hud-candidates/v2/pause-focus.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/pause-focus.svg",
+      "component": "Actual Pause Button / focus",
+      "dimensions": [
+        112,
+        106
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/pause-focus.svg",
+      "sha256": "a57bf8645e672eac4f4f3640b9f6e05a299fe51dcf82c137587acdea2aeb3e2c",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "menu/secondary"
+    },
+    {
+      "id": "hud-v2/pause-pressed",
+      "source_path": "assets/ui-hud-candidates/v2/pause-pressed.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/pause-pressed.svg",
+      "component": "Actual Pause Button / pressed",
+      "dimensions": [
+        112,
+        106
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/pause-pressed.svg",
+      "sha256": "2790e7df3741fb51de51da8575f7303c00ab32d9289c026a842ed56854c7f931",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "menu/secondary"
+    },
+    {
+      "id": "hud-v2/pause-disabled",
+      "source_path": "assets/ui-hud-candidates/v2/pause-disabled.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/pause-disabled.svg",
+      "component": "Actual Pause Button / disabled",
+      "dimensions": [
+        112,
+        106
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/pause-disabled.svg",
+      "sha256": "a56891d7322d1e9c93d2c0e6532702c4b95f5c25b998e386007a00b0fbc2c349",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "menu/secondary"
+    },
+    {
+      "id": "hud-v2/xp-frame",
+      "source_path": "assets/ui-hud-candidates/v2/xp-frame.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/xp-frame.svg",
+      "component": "Grouped Level / XP",
+      "dimensions": [
+        430,
+        78
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/xp-frame.svg",
+      "sha256": "9ef7cf4e4c5299f5f07b30dd242bf9382ee6af75c0b79f8b69a14549e495890b",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "support/xp"
+    },
+    {
+      "id": "hud-v2/equipment-strip",
+      "source_path": "assets/ui-hud-candidates/v2/equipment-strip.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/equipment-strip.svg",
+      "component": "Single eight-slot weapon / passive support frame",
+      "dimensions": [
+        900,
+        126
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/equipment-strip.svg",
+      "sha256": "189c186d9ed4665c641c5b181dd0c45772139214f368d61ed1a595ba95aabae0",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "equipment/weapon-filled, equipment/passive-filled"
+    },
+    {
+      "id": "hud-v2/equipment-portrait",
+      "source_path": "assets/ui-hud-candidates/v2/equipment-portrait.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/equipment-portrait.svg",
+      "component": "Portrait 3 + 5 equipment fallback",
+      "dimensions": [
+        520,
+        208
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/equipment-portrait.svg",
+      "sha256": "6c4ed40f7c1fbe889f053fd718f7d5db0613f1e438f6792e5c981a1b54573664",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/slot-empty",
+      "source_path": "assets/ui-hud-candidates/v2/slot-empty.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/slot-empty.svg",
+      "component": "Equipment slot / empty",
+      "dimensions": [
+        96,
+        96
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/slot-empty.svg",
+      "sha256": "ddf097f83df46222edc673169be33ddee53adfb6ca2f1a40613e370532b8f1ce",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/slot-equipped",
+      "source_path": "assets/ui-hud-candidates/v2/slot-equipped.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/slot-equipped.svg",
+      "component": "Equipment slot / equipped",
+      "dimensions": [
+        96,
+        96
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/slot-equipped.svg",
+      "sha256": "f26b9bf990aa934129ed21ebd349f34cbf1da5b709ca84eec8cfc818e3b6beb3",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/slot-focus",
+      "source_path": "assets/ui-hud-candidates/v2/slot-focus.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/slot-focus.svg",
+      "component": "Equipment slot / focus",
+      "dimensions": [
+        96,
+        96
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/slot-focus.svg",
+      "sha256": "50c904500da7af83c5f4996dc3e3a88a4a6aa7f311c453b7c89432cb5818e94b",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/level-tab",
+      "source_path": "assets/ui-hud-candidates/v2/level-tab.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/level-tab.svg",
+      "component": "Equipment level badge",
+      "dimensions": [
+        78,
+        24
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/level-tab.svg",
+      "sha256": "567e3ac7ab0655c3ea94e66a828a5d2319c17403f65cfb1ecdbaea08b1bebf46",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/flex-body",
+      "source_path": "assets/ui-hud-candidates/v2/flex-body.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/flex-body.svg",
+      "component": "Static circular Flex material; dynamic Aura/READY remains runtime",
+      "dimensions": [
+        320,
+        320
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/flex-body.svg",
+      "sha256": "7c304eb8b4be5c33fa2e40ddbd09d79673b76a16558a173e82cdccf76b24901e",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": "flex/*"
+    },
+    {
+      "id": "hud-v2/ability-nameplate",
+      "source_path": "assets/ui-hud-candidates/v2/ability-nameplate.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/ability-nameplate.svg",
+      "component": "Separate hero-specific ability nameplate",
+      "dimensions": [
+        360,
+        54
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/ability-nameplate.svg",
+      "sha256": "766c81837d3a157fd1c4bfca517ac42b347e152c1495c96116228171f0e5921f",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    },
+    {
+      "id": "hud-v2/boss-frame",
+      "source_path": "assets/ui-hud-candidates/v2/boss-frame.svg",
+      "runtime_path": "res://assets/ui-hud-candidates/v2/boss-frame.svg",
+      "component": "Boss health / reserved encounter region",
+      "dimensions": [
+        520,
+        64
+      ],
+      "transparency": "RGBA; outside silhouette and authored apertures",
+      "editable_source": "assets/ui-hud-candidates/v2/boss-frame.svg",
+      "sha256": "c3faeb6afb9ce95d6a05ea51550c238b416165410647dffdc8ba78a8100f5d0f",
+      "approval_status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "supersedes_visual_usage_only": null
+    }
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "runtime_source": "541ec8988543152de169c438538a60ef63e87a81",
+  "authority": "Canonical main bc690618 GDD8.2; explicit source records remain authoritative",
+  "status": "PROPOSED_GROUPED_APPROVAL_LEDGER_ONLY_NOT_AN_APPROVAL",
+  "groups": {
+    "L": {
+      "label": "Current logo and typography",
+      "status": "PENDING_EXACT_CREATOR_APPROVAL",
+      "files": [
+        {
+          "path": "scripts/hero_clash_brand.gd",
+          "sha256": "ca5b27f63d2f8e17e9c5881e59d10f13ec9df85a475e3d0ed1dceca61ba111f0",
+          "role": "runtime"
+        },
+        {
+          "path": "scripts/clean_cut_typography.gd",
+          "sha256": "aad9bbca5600215facef1a726f697bad60cf1be02efc47bd1a4f6213dcba6fb0",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/fonts/hero-clash/ArchivoBlack.ttf",
+          "sha256": "dd9a89a019b4849f66ab75455fe7bdf931311042cbb0f0f97acc061539703180",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/fonts/hero-clash/Archivo.ttf",
+          "sha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/fonts/hero-clash/OFL-ArchivoBlack.txt",
+          "sha256": "3173acd82f8c6159b5b1037b539fcbd4edff68e65c2ea8b9412b5a5ca97b08ff",
+          "role": "license/provenance"
+        },
+        {
+          "path": "assets/fonts/hero-clash/OFL-Archivo.txt",
+          "sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b",
+          "role": "license/provenance"
+        },
+        {
+          "path": "assets/fonts/hero-clash/manifest.json",
+          "sha256": "f9483e5781138fec8fe3a34a5f3b3c6c04a8a7c7cacfff20a5616cb86c173b7f",
+          "role": "license/provenance"
+        }
+      ],
+      "bundle_sha256": "a11d7f6a9db2fa0e116ca56b0982165c4e65584be5779490e4979a11de4a8f73"
+    },
+    "B": {
+      "label": "Button artwork v1: four families, six states each",
+      "status": "PENDING_EXACT_CREATOR_APPROVAL",
+      "files": [
+        {
+          "path": "assets/ui-button-candidates/v1/manifest.json",
+          "sha256": "354ce12852d79d487be1530879d0892438aaedadcb378fbec8b0b8fdbff17e5d",
+          "role": "exact candidate manifest"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/destructive-disabled.svg",
+          "sha256": "958b08fb7cbf7f999f4273ec8ae72aa79f2073f5523435e6a65e9dbfa3348c39",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/destructive-disabled.png",
+          "sha256": "375d6c2d50406411165008735a063f4c6bf422bbaf408ffbae4551564a8b9b09",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/destructive-focus.svg",
+          "sha256": "3e002a516b6497988ed470cea2248c0dc1d461ce3a3b4181d9e76ef8958810d8",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/destructive-focus.png",
+          "sha256": "85035808a67efe2f4f81bbe3cf091f1de04673ab0a05ac2872854cf2ef03202f",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/destructive-hover.svg",
+          "sha256": "258d3abb56a01db61107458534c540fc57cb708e7f9864216c0b8dc9fb583ce0",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/destructive-hover.png",
+          "sha256": "552055df980be07c2c11b54c21651556d851a300564a708f85261198f6209375",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/destructive-normal.svg",
+          "sha256": "d78c99999b65c07ca781b4f4d750223aeeb07e41361c54c836bc8bd51a7293b6",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/destructive-normal.png",
+          "sha256": "cfd5413d1ee92ac077f14199fa4a93989f0677fde3231d69f4ca2b39b6aaf524",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/destructive-pressed.svg",
+          "sha256": "50d15311a57fc9f4463ab6da3c6568f61e9c11f44aa859dde5a742b377d116c1",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/destructive-pressed.png",
+          "sha256": "9eee1e66caaa55b566a555f3555eec512d9106c73fdc75e29971b42da31c8932",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/destructive-selected.svg",
+          "sha256": "97d9eae828292d2d7984ec15a4dbf01e5c2417a350637843dd240a1beda61eb1",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/destructive-selected.png",
+          "sha256": "d7cf83e176318c93a1f3f702a9e74c52aa3957f2df85106d9f1466f4c88bbfdd",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/primary-disabled.svg",
+          "sha256": "958b08fb7cbf7f999f4273ec8ae72aa79f2073f5523435e6a65e9dbfa3348c39",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/primary-disabled.png",
+          "sha256": "375d6c2d50406411165008735a063f4c6bf422bbaf408ffbae4551564a8b9b09",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/primary-focus.svg",
+          "sha256": "a3c0999245317cd9d0b0b00f350b407f320937b8fd50c2d229c3eadbeb2f159d",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/primary-focus.png",
+          "sha256": "6d878985164b8757aef9cf446fbfc63a16e997c6ff2e32fc6471266fbe507857",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/primary-hover.svg",
+          "sha256": "c0529d87b87a7d224fd10019980e66e167230e3df37400eac2b91b947d9189ae",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/primary-hover.png",
+          "sha256": "f072e400a5d7176a1cfb22d787686360df566f331c56a1f793ef668e831df414",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/primary-normal.svg",
+          "sha256": "f285a3a3164e898369ac3d7908fbd59663717dac08f7a4161009e46601226bb3",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/primary-normal.png",
+          "sha256": "1adb9c4512ecde1807f2926cbb1e5bea96e4cd43d9af17dced63aaa34ece5779",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/primary-pressed.svg",
+          "sha256": "849dee2f7490ecd0c164d20544627f6ff346e4a8d992748ff8092c347cb7e5c9",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/primary-pressed.png",
+          "sha256": "0a1c086754deca1521c9c3e23b574304ba9af62380212084fa96c0c6d68b518c",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/primary-selected.svg",
+          "sha256": "56a379281a9224e54ce761be869a928b453587071dd0c5bc01340717c8fa798b",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/primary-selected.png",
+          "sha256": "cd4b2832e425dedd7d46663535b0e179b37a593407b3b3a24091edeccb4cf4fb",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/secondary-disabled.svg",
+          "sha256": "958b08fb7cbf7f999f4273ec8ae72aa79f2073f5523435e6a65e9dbfa3348c39",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/secondary-disabled.png",
+          "sha256": "375d6c2d50406411165008735a063f4c6bf422bbaf408ffbae4551564a8b9b09",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/secondary-focus.svg",
+          "sha256": "1ca0fee65dcadfdb0f92d75f320b67232439a8d0ef977e3d6c9ef98230dcfd24",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/secondary-focus.png",
+          "sha256": "345f1994771ac532b5a3c4b59d08a7cf5c884301a15f5f2d18fafc3865d23b56",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/secondary-hover.svg",
+          "sha256": "f2a2f9cecd2a46d4df11d86391591eff11eb40993c5a60c297df07f2f78488f1",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/secondary-hover.png",
+          "sha256": "2fc992ab8981af54ab12386ab75d43ea0f28d0fb013d18a35fc5f327ded5aee6",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/secondary-normal.svg",
+          "sha256": "0f0267c98a3e0dc1c804a968f20e98fc69bd96bb548b6846aa81f2a2937fea0d",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/secondary-normal.png",
+          "sha256": "4d56b760e4d08644a25ebfbffeede25f0003c62b7c1d9297815abc656cde867b",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/secondary-pressed.svg",
+          "sha256": "7a930588874a32411da18c8aaa09e0941ba08d60dd3f70366af288734c168b58",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/secondary-pressed.png",
+          "sha256": "fb3a2b497f0c147ea1b3ecf8777b03e59c60bbaec104c61a20538f7ddab37ede",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/secondary-selected.svg",
+          "sha256": "497fbd708570be9e3333ece381829cdd7e8f44fb10947a578e38c42b830e1ef7",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/secondary-selected.png",
+          "sha256": "083ac63d3b9d02bd82085e2408f6f7c732e7a0d226291502296f021864fe2750",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/selection-disabled.svg",
+          "sha256": "5aff74c6e43ab856303530104e10a6827b2451de4572ddd1f60d2dc87752e895",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/selection-disabled.png",
+          "sha256": "53cfe2b35b6a856a36529bf7bd5e5329143613971dc2a67830a3ef2efc662447",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/selection-focus.svg",
+          "sha256": "93b5605e1e82997c4ccb8770fee26f7f3b4af43c66e3cedaaab5d51a5a34fa79",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/selection-focus.png",
+          "sha256": "65d5a4b9f7bdc41271fddf1c385cf8cd55afe515a6ffc9c356a40f3b1dfec148",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/selection-hover.svg",
+          "sha256": "0f685a235405def75ec6a9776c05116d1b1caee61f84be877b24394b55875206",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/selection-hover.png",
+          "sha256": "1f64ceaf0066b467d4927829f53335a419de1713fd9fc85a49f31a1f062637d0",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/selection-normal.svg",
+          "sha256": "f52cc0db650a722423da9b122c91a3e72add8c725b977893fb22c027c63b6a3d",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/selection-normal.png",
+          "sha256": "c30f6dbdb604493bb4fb3c49fa7234d421bc5c2733651bf14b724c9e7ea15c23",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/selection-pressed.svg",
+          "sha256": "a856a4e5080be79b6dcb4c046b0be471c7ad93f65880fdc5a0b963a6aeeb84f0",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/selection-pressed.png",
+          "sha256": "d812349053aa2432d80fbb3bd28b85926ac5adf5f3f9925c9fbafe2a061a908d",
+          "role": "runtime"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/source/selection-selected.svg",
+          "sha256": "7d6677f4a852689882dc0ad59f0af17c778f7f3e551d04b9f0d83321a411540c",
+          "role": "source"
+        },
+        {
+          "path": "assets/ui-button-candidates/v1/selection-selected.png",
+          "sha256": "984df1ba359c14b74f0a802cc87b6aad789acadeeb517d6e70ec1c832a3c5082",
+          "role": "runtime"
+        }
+      ],
+      "bundle_sha256": "ec26e85b1a6a6a573f263baf84796155cd61de10b8c3ee9f742dd5c5b2fb1a9c"
+    },
+    "H": {
+      "label": "HUD V2: 20 SVGs and existing portrait shader",
+      "status": "PENDING_EXACT_CREATOR_APPROVAL",
+      "files": [
+        {
+          "path": "assets/ui-hud-candidates/v2/manifest.json",
+          "sha256": "5325e799cbcecbd5ac1b46c801dcf4c4afd41d5d6754b043b4dc25acec12eee7",
+          "role": "exact candidate manifest"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/player-frame.svg",
+          "sha256": "73c38ba27d5c0a1073048a4c41571c62c4636921d028d20799ed5d883acd0ad8",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/hp-fill.svg",
+          "sha256": "9e25779a62b9c73e2f7a0903dfe75a4f313ebed81e01a1018b897bdf9b3c2203",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/shield-fill.svg",
+          "sha256": "f4997529ca74b15cecd9cd5cd41248adfa8ed1b2187c2bcf4b5fe7c32b99477f",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/shield-mark.svg",
+          "sha256": "8672084ff9dc39a22fe76d2edbea17991d47ffec90aa16579c3add47702dd7ec",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/wave-frame.svg",
+          "sha256": "8b480fdf499211e9f3d9b3d635a1eeb048622a18c5921c3f030f899c63c4e2bc",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/pause-normal.svg",
+          "sha256": "a56891d7322d1e9c93d2c0e6532702c4b95f5c25b998e386007a00b0fbc2c349",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/pause-hover.svg",
+          "sha256": "dbe578c06327dbda467caf3b6f92178932c9850ff45ee102239c6750ebafa3ce",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/pause-focus.svg",
+          "sha256": "a57bf8645e672eac4f4f3640b9f6e05a299fe51dcf82c137587acdea2aeb3e2c",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/pause-pressed.svg",
+          "sha256": "2790e7df3741fb51de51da8575f7303c00ab32d9289c026a842ed56854c7f931",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/pause-disabled.svg",
+          "sha256": "a56891d7322d1e9c93d2c0e6532702c4b95f5c25b998e386007a00b0fbc2c349",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/xp-frame.svg",
+          "sha256": "9ef7cf4e4c5299f5f07b30dd242bf9382ee6af75c0b79f8b69a14549e495890b",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/equipment-strip.svg",
+          "sha256": "189c186d9ed4665c641c5b181dd0c45772139214f368d61ed1a595ba95aabae0",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/equipment-portrait.svg",
+          "sha256": "6c4ed40f7c1fbe889f053fd718f7d5db0613f1e438f6792e5c981a1b54573664",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/slot-empty.svg",
+          "sha256": "ddf097f83df46222edc673169be33ddee53adfb6ca2f1a40613e370532b8f1ce",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/slot-equipped.svg",
+          "sha256": "f26b9bf990aa934129ed21ebd349f34cbf1da5b709ca84eec8cfc818e3b6beb3",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/slot-focus.svg",
+          "sha256": "50c904500da7af83c5f4996dc3e3a88a4a6aa7f311c453b7c89432cb5818e94b",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/level-tab.svg",
+          "sha256": "567e3ac7ab0655c3ea94e66a828a5d2319c17403f65cfb1ecdbaea08b1bebf46",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/flex-body.svg",
+          "sha256": "7c304eb8b4be5c33fa2e40ddbd09d79673b76a16558a173e82cdccf76b24901e",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/ability-nameplate.svg",
+          "sha256": "766c81837d3a157fd1c4bfca517ac42b347e152c1495c96116228171f0e5921f",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/boss-frame.svg",
+          "sha256": "c3faeb6afb9ce95d6a05ea51550c238b416165410647dffdc8ba78a8100f5d0f",
+          "role": "runtime editable SVG"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/portrait_crop.gdshader",
+          "sha256": "f3c7098f65080bdd5b7de3129f852e78217ff897f0dd3615f853310abf3fb21a",
+          "role": "existing runtime portrait shader"
+        },
+        {
+          "path": "assets/ui-hud-candidates/v2/source/build_assets.py",
+          "sha256": "0b8fc26c1f743f55cdeb3b1621d803fd330f7244072658bfb4ad11208d4e24ed",
+          "role": "authoring provenance"
+        }
+      ],
+      "bundle_sha256": "f367a1682cea7fe594a9bedae0340b8dbac853bcce99bd1c200930698a184846"
+    }
+  },
+  "footer_layout": {
+    "path": "scripts/clean_cut_skin.gd",
+    "sha256": "a8cea6f381a434f541839f28a5b531d0be0e4e8a9c2d46f90d42a1f04aa1b4e6",
+    "role": "PR93 44-unit footer inset, no artwork modification"
+  },
+  "preserved_approved_wordmark": {
+    "path": "assets/runtime-clean-cut/v2/support/wordmark.png",
+    "sha256": "49eb4d1054d6675a5dad42ec3fa0352d202564e3aa655487d69365b2b9e83255",
+    "role": "exact approved source retained"
+  },
+  "preserved_wordmark_svg": {
+    "path": "assets/art-production/character-hype-clean-cut/v2/shared/brand/aura-farmer-wordmark-candidate.svg",
+    "sha256": "92288381863fa4a29cd52975a9b8d86db8cd426eda9269e20cc5f3bb4c9308e0",
+    "role": "recorded original source retained"
+  },
+  "approved_groups": {
+    "original_masters": 19,
+    "item_icons": 37,
+    "clean_cut_resources": 84
+  },
+  "historical_and_review_only": [
+    "assets/art-production/**: not wholesale shipping approval; exact promoted approved hashes retain their approval",
+    "Historical diamond/rectangular/left-only joystick treatments are superseded by approved circular full-playfield control",
+    "tests/** and docs/recovery/evidence/** are non-runtime review fixtures/evidence"
+  ]
+}

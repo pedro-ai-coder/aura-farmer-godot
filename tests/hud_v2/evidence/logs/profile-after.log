@@ -1,0 +1,8 @@
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FRAME CACHE {"cold":{"max_us":412,"median_us":171,"p95_us":272},"warm":{"max_us":19,"median_us":2,"p95_us":3}}
+AI 20 {"max_us":643,"median_us":231,"p95_us":428}
+AI 100 {"max_us":3066,"median_us":1830,"p95_us":1957}
+HUD DRAG {"max_us":1813,"median_us":79,"p95_us":111} layouts=1

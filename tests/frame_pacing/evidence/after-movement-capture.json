@@ -1,0 +1,3363 @@
+{
+  "capture_pixels": [
+    844,
+    390
+  ],
+  "external_screen_capture": true,
+  "frames": [
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.000002,
+      "enemies": 0,
+      "file": "frame-0000.png",
+      "seconds": 0.025479,
+      "world_position": [
+        340.000366210938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.025517,
+      "enemies": 0,
+      "file": "frame-0001.png",
+      "seconds": 0.041547,
+      "world_position": [
+        344.593414306641,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016086,
+      "enemies": 0,
+      "file": "frame-0002.png",
+      "seconds": 0.057136,
+      "world_position": [
+        347.488891601562,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015628,
+      "enemies": 0,
+      "file": "frame-0003.png",
+      "seconds": 0.071734,
+      "world_position": [
+        350.301940917969,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014525,
+      "enemies": 0,
+      "file": "frame-0004.png",
+      "seconds": 0.089067,
+      "world_position": [
+        352.916442871094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.01733,
+      "enemies": 0,
+      "file": "frame-0005.png",
+      "seconds": 0.106229,
+      "world_position": [
+        356.035827636719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.01716,
+      "enemies": 0,
+      "file": "frame-0006.png",
+      "seconds": 0.122613,
+      "world_position": [
+        359.124633789062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016385,
+      "enemies": 0,
+      "file": "frame-0007.png",
+      "seconds": 0.141688,
+      "world_position": [
+        362.073944091797,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.019073,
+      "enemies": 0,
+      "file": "frame-0008.png",
+      "seconds": 0.157318,
+      "world_position": [
+        365.507080078125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015637,
+      "enemies": 0,
+      "file": "frame-0009.png",
+      "seconds": 0.17252,
+      "world_position": [
+        368.321746826172,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015195,
+      "enemies": 0,
+      "file": "frame-0010.png",
+      "seconds": 0.189121,
+      "world_position": [
+        371.056854248047,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016601,
+      "enemies": 0,
+      "file": "frame-0011.png",
+      "seconds": 0.210221,
+      "world_position": [
+        374.045043945312,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.0211,
+      "enemies": 0,
+      "file": "frame-0012.png",
+      "seconds": 0.224651,
+      "world_position": [
+        377.843048095703,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014431,
+      "enemies": 0,
+      "file": "frame-0013.png",
+      "seconds": 0.241127,
+      "world_position": [
+        380.440612792969,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016475,
+      "enemies": 0,
+      "file": "frame-0014.png",
+      "seconds": 0.257537,
+      "world_position": [
+        383.406127929688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016409,
+      "enemies": 0,
+      "file": "frame-0015.png",
+      "seconds": 0.275882,
+      "world_position": [
+        386.359741210938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.018345,
+      "enemies": 0,
+      "file": "frame-0016.png",
+      "seconds": 0.289405,
+      "world_position": [
+        389.661834716797,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013523,
+      "enemies": 0,
+      "file": "frame-0017.png",
+      "seconds": 0.308934,
+      "world_position": [
+        392.095977783203,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.019528,
+      "enemies": 0,
+      "file": "frame-0018.png",
+      "seconds": 0.323218,
+      "world_position": [
+        395.611022949219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014285,
+      "enemies": 0,
+      "file": "frame-0019.png",
+      "seconds": 0.346334,
+      "world_position": [
+        398.182312011719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.023116,
+      "enemies": 0,
+      "file": "frame-0020.png",
+      "seconds": 0.357076,
+      "world_position": [
+        402.343200683594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.010742,
+      "enemies": 0,
+      "file": "frame-0021.png",
+      "seconds": 0.376705,
+      "world_position": [
+        404.276763916016,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.019628,
+      "enemies": 0,
+      "file": "frame-0022.png",
+      "seconds": 0.390022,
+      "world_position": [
+        407.809814453125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013321,
+      "enemies": 0,
+      "file": "frame-0023.png",
+      "seconds": 0.411026,
+      "world_position": [
+        410.207580566406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.021001,
+      "enemies": 0,
+      "file": "frame-0024.png",
+      "seconds": 0.42384,
+      "world_position": [
+        413.987762451172,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.012813,
+      "enemies": 0,
+      "file": "frame-0025.png",
+      "seconds": 0.444279,
+      "world_position": [
+        416.294097900391,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.020457,
+      "enemies": 0,
+      "file": "frame-0026.png",
+      "seconds": 0.45736,
+      "world_position": [
+        419.976348876953,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013064,
+      "enemies": 0,
+      "file": "frame-0027.png",
+      "seconds": 0.479907,
+      "world_position": [
+        422.327880859375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.022548,
+      "enemies": 0,
+      "file": "frame-0028.png",
+      "seconds": 0.493194,
+      "world_position": [
+        426.386535644531,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013286,
+      "enemies": 0,
+      "file": "frame-0029.png",
+      "seconds": 0.510279,
+      "world_position": [
+        428.778015136719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.017084,
+      "enemies": 0,
+      "file": "frame-0030.png",
+      "seconds": 0.525985,
+      "world_position": [
+        431.853149414062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015707,
+      "enemies": 0,
+      "file": "frame-0031.png",
+      "seconds": 0.544,
+      "world_position": [
+        434.680419921875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.018015,
+      "enemies": 0,
+      "file": "frame-0032.png",
+      "seconds": 0.558805,
+      "world_position": [
+        437.923126220703,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014806,
+      "enemies": 0,
+      "file": "frame-0033.png",
+      "seconds": 0.57575,
+      "world_position": [
+        440.588195800781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016944,
+      "enemies": 0,
+      "file": "frame-0034.png",
+      "seconds": 0.59009,
+      "world_position": [
+        443.638122558594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014344,
+      "enemies": 0,
+      "file": "frame-0035.png",
+      "seconds": 0.608667,
+      "world_position": [
+        446.220031738281,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.018573,
+      "enemies": 0,
+      "file": "frame-0036.png",
+      "seconds": 0.623521,
+      "world_position": [
+        449.563171386719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014854,
+      "enemies": 0,
+      "file": "frame-0037.png",
+      "seconds": 0.642942,
+      "world_position": [
+        452.236877441406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.019421,
+      "enemies": 0,
+      "file": "frame-0038.png",
+      "seconds": 0.658747,
+      "world_position": [
+        455.732666015625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015805,
+      "enemies": 0,
+      "file": "frame-0039.png",
+      "seconds": 0.682946,
+      "world_position": [
+        458.577575683594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.024201,
+      "enemies": 0,
+      "file": "frame-0040.png",
+      "seconds": 0.692463,
+      "world_position": [
+        462.933746337891,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.009516,
+      "enemies": 0,
+      "file": "frame-0041.png",
+      "seconds": 0.707628,
+      "world_position": [
+        464.646636962891,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015165,
+      "enemies": 0,
+      "file": "frame-0042.png",
+      "seconds": 0.725858,
+      "world_position": [
+        467.376342773438,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.018254,
+      "enemies": 0,
+      "file": "frame-0043.png",
+      "seconds": 0.742713,
+      "world_position": [
+        470.662048339844,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.01683,
+      "enemies": 0,
+      "file": "frame-0044.png",
+      "seconds": 0.759129,
+      "world_position": [
+        473.691436767578,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016416,
+      "enemies": 0,
+      "file": "frame-0045.png",
+      "seconds": 0.775299,
+      "world_position": [
+        476.646331787109,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016169,
+      "enemies": 0,
+      "file": "frame-0046.png",
+      "seconds": 0.79206,
+      "world_position": [
+        479.556762695312,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016762,
+      "enemies": 0,
+      "file": "frame-0047.png",
+      "seconds": 0.806743,
+      "world_position": [
+        482.573913574219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014683,
+      "enemies": 0,
+      "file": "frame-0048.png",
+      "seconds": 0.823066,
+      "world_position": [
+        485.216857910156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016347,
+      "enemies": 0,
+      "file": "frame-0049.png",
+      "seconds": 0.843022,
+      "world_position": [
+        488.159332275391,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.019933,
+      "enemies": 0,
+      "file": "frame-0050.png",
+      "seconds": 0.857822,
+      "world_position": [
+        491.747283935547,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.0148,
+      "enemies": 0,
+      "file": "frame-0051.png",
+      "seconds": 0.879508,
+      "world_position": [
+        494.411285400391,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.021689,
+      "enemies": 0,
+      "file": "frame-0052.png",
+      "seconds": 0.889641,
+      "world_position": [
+        498.315307617188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.01013,
+      "enemies": 0,
+      "file": "frame-0053.png",
+      "seconds": 0.909497,
+      "world_position": [
+        500.138702392578,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.019856,
+      "enemies": 0,
+      "file": "frame-0054.png",
+      "seconds": 0.923987,
+      "world_position": [
+        503.712768554688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014493,
+      "enemies": 0,
+      "file": "frame-0055.png",
+      "seconds": 0.944662,
+      "world_position": [
+        506.321502685547,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.020672,
+      "enemies": 0,
+      "file": "frame-0056.png",
+      "seconds": 0.957692,
+      "world_position": [
+        510.042449951172,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013055,
+      "enemies": 0,
+      "file": "frame-0057.png",
+      "seconds": 0.975607,
+      "world_position": [
+        512.392333984375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.017892,
+      "enemies": 0,
+      "file": "frame-0058.png",
+      "seconds": 0.989933,
+      "world_position": [
+        515.612915039062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.014323,
+      "enemies": 0,
+      "file": "frame-0059.png",
+      "seconds": 1.010051,
+      "world_position": [
+        518.191040039062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.020121,
+      "enemies": 0,
+      "file": "frame-0060.png",
+      "seconds": 1.024026,
+      "world_position": [
+        521.812805175781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013976,
+      "enemies": 0,
+      "file": "frame-0061.png",
+      "seconds": 1.041387,
+      "world_position": [
+        524.328491210938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.017412,
+      "enemies": 0,
+      "file": "frame-0062.png",
+      "seconds": 1.060542,
+      "world_position": [
+        527.462646484375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.0191,
+      "enemies": 0,
+      "file": "frame-0063.png",
+      "seconds": 1.076709,
+      "world_position": [
+        530.900634765625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016169,
+      "enemies": 0,
+      "file": "frame-0064.png",
+      "seconds": 1.090069,
+      "world_position": [
+        533.81103515625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.013358,
+      "enemies": 0,
+      "file": "frame-0065.png",
+      "seconds": 1.105672,
+      "world_position": [
+        536.215454101562,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015604,
+      "enemies": 0,
+      "file": "frame-0066.png",
+      "seconds": 1.122971,
+      "world_position": [
+        539.024169921875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.017298,
+      "enemies": 0,
+      "file": "frame-0067.png",
+      "seconds": 1.141853,
+      "world_position": [
+        542.137817382812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.018904,
+      "enemies": 0,
+      "file": "frame-0068.png",
+      "seconds": 1.158356,
+      "world_position": [
+        545.54052734375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016483,
+      "enemies": 0,
+      "file": "frame-0069.png",
+      "seconds": 1.17394,
+      "world_position": [
+        548.507446289062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.015583,
+      "enemies": 0,
+      "file": "frame-0070.png",
+      "seconds": 1.190868,
+      "world_position": [
+        551.312377929688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.016929,
+      "enemies": 0,
+      "file": "frame-0071.png",
+      "seconds": 1.208646,
+      "world_position": [
+        554.359619140625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.0,
+        600.0
+      ],
+      "delta_s": 0.017786,
+      "enemies": 0,
+      "file": "frame-0072.png",
+      "seconds": 1.226061,
+      "world_position": [
+        557.561096191406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.110900878906,
+        600.0
+      ],
+      "delta_s": 0.017406,
+      "enemies": 0,
+      "file": "frame-0073.png",
+      "seconds": 1.243813,
+      "world_position": [
+        560.694152832031,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        560.725463867188,
+        600.0
+      ],
+      "delta_s": 0.017751,
+      "enemies": 0,
+      "file": "frame-0074.png",
+      "seconds": 1.258798,
+      "world_position": [
+        563.889343261719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        561.541198730469,
+        600.0
+      ],
+      "delta_s": 0.014986,
+      "enemies": 0,
+      "file": "frame-0075.png",
+      "seconds": 1.273348,
+      "world_position": [
+        566.586853027344,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        562.5791015625,
+        600.0
+      ],
+      "delta_s": 0.01455,
+      "enemies": 0,
+      "file": "frame-0076.png",
+      "seconds": 1.28997,
+      "world_position": [
+        569.205871582031,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        564.052001953125,
+        600.0
+      ],
+      "delta_s": 0.016621,
+      "enemies": 0,
+      "file": "frame-0077.png",
+      "seconds": 1.307502,
+      "world_position": [
+        572.197631835938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        565.869384765625,
+        600.0
+      ],
+      "delta_s": 0.017532,
+      "enemies": 0,
+      "file": "frame-0078.png",
+      "seconds": 1.323439,
+      "world_position": [
+        575.353393554688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        567.689331054688,
+        600.0
+      ],
+      "delta_s": 0.015938,
+      "enemies": 0,
+      "file": "frame-0079.png",
+      "seconds": 1.341756,
+      "world_position": [
+        578.222229003906,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        570.003967285156,
+        600.0
+      ],
+      "delta_s": 0.018316,
+      "enemies": 0,
+      "file": "frame-0080.png",
+      "seconds": 1.357494,
+      "world_position": [
+        581.519104003906,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        572.093322753906,
+        600.0
+      ],
+      "delta_s": 0.015738,
+      "enemies": 0,
+      "file": "frame-0081.png",
+      "seconds": 1.376574,
+      "world_position": [
+        584.351928710938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        574.827941894531,
+        600.0
+      ],
+      "delta_s": 0.019134,
+      "enemies": 0,
+      "file": "frame-0082.png",
+      "seconds": 1.391195,
+      "world_position": [
+        587.796020507812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        576.941467285156,
+        600.0
+      ],
+      "delta_s": 0.014568,
+      "enemies": 0,
+      "file": "frame-0083.png",
+      "seconds": 1.410578,
+      "world_position": [
+        590.418273925781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        579.93603515625,
+        600.0
+      ],
+      "delta_s": 0.019413,
+      "enemies": 0,
+      "file": "frame-0084.png",
+      "seconds": 1.424657,
+      "world_position": [
+        593.91259765625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        582.099670410156,
+        600.0
+      ],
+      "delta_s": 0.014051,
+      "enemies": 0,
+      "file": "frame-0085.png",
+      "seconds": 1.441905,
+      "world_position": [
+        596.441772460938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        584.863342285156,
+        600.0
+      ],
+      "delta_s": 0.017246,
+      "enemies": 0,
+      "file": "frame-0086.png",
+      "seconds": 1.459159,
+      "world_position": [
+        599.546081542969,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        587.682373046875,
+        600.0
+      ],
+      "delta_s": 0.017254,
+      "enemies": 0,
+      "file": "frame-0087.png",
+      "seconds": 1.476536,
+      "world_position": [
+        602.651794433594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        590.569274902344,
+        600.0
+      ],
+      "delta_s": 0.017378,
+      "enemies": 0,
+      "file": "frame-0088.png",
+      "seconds": 1.491411,
+      "world_position": [
+        605.779846191406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        593.04150390625,
+        600.0
+      ],
+      "delta_s": 0.014874,
+      "enemies": 0,
+      "file": "frame-0089.png",
+      "seconds": 1.509565,
+      "world_position": [
+        608.457153320312,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        596.143249511719,
+        600.0
+      ],
+      "delta_s": 0.018154,
+      "enemies": 0,
+      "file": "frame-0090.png",
+      "seconds": 1.52612,
+      "world_position": [
+        611.724853515625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        598.975219726562,
+        600.0
+      ],
+      "delta_s": 0.016555,
+      "enemies": 0,
+      "file": "frame-0091.png",
+      "seconds": 1.549096,
+      "world_position": [
+        614.704772949219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        603.053283691406,
+        600.0
+      ],
+      "delta_s": 0.022977,
+      "enemies": 0,
+      "file": "frame-0092.png",
+      "seconds": 1.557459,
+      "world_position": [
+        618.840637207031,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        604.440490722656,
+        600.0
+      ],
+      "delta_s": 0.008362,
+      "enemies": 0,
+      "file": "frame-0093.png",
+      "seconds": 1.577815,
+      "world_position": [
+        620.345825195312,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        608.045166015625,
+        600.0
+      ],
+      "delta_s": 0.020358,
+      "enemies": 0,
+      "file": "frame-0094.png",
+      "seconds": 1.590775,
+      "world_position": [
+        624.01025390625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        610.268981933594,
+        600.0
+      ],
+      "delta_s": 0.012958,
+      "enemies": 0,
+      "file": "frame-0095.png",
+      "seconds": 1.609249,
+      "world_position": [
+        626.342712402344,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        613.541198730469,
+        600.0
+      ],
+      "delta_s": 0.018474,
+      "enemies": 0,
+      "file": "frame-0096.png",
+      "seconds": 1.624138,
+      "world_position": [
+        629.668029785156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        616.142700195312,
+        600.0
+      ],
+      "delta_s": 0.014888,
+      "enemies": 0,
+      "file": "frame-0097.png",
+      "seconds": 1.641665,
+      "world_position": [
+        632.347839355469,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        619.25537109375,
+        600.0
+      ],
+      "delta_s": 0.017528,
+      "enemies": 0,
+      "file": "frame-0098.png",
+      "seconds": 1.656117,
+      "world_position": [
+        635.502868652344,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        621.791748046875,
+        600.0
+      ],
+      "delta_s": 0.014452,
+      "enemies": 0,
+      "file": "frame-0099.png",
+      "seconds": 1.675097,
+      "world_position": [
+        638.104248046875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        625.202209472656,
+        600.0
+      ],
+      "delta_s": 0.018979,
+      "enemies": 0,
+      "file": "frame-0100.png",
+      "seconds": 1.690912,
+      "world_position": [
+        641.520446777344,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        628.005798339844,
+        600.0
+      ],
+      "delta_s": 0.015816,
+      "enemies": 0,
+      "file": "frame-0101.png",
+      "seconds": 1.709171,
+      "world_position": [
+        644.367309570312,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        631.284912109375,
+        600.0
+      ],
+      "delta_s": 0.018259,
+      "enemies": 0,
+      "file": "frame-0102.png",
+      "seconds": 1.726043,
+      "world_position": [
+        647.653930664062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        634.297973632812,
+        600.0
+      ],
+      "delta_s": 0.016873,
+      "enemies": 0,
+      "file": "frame-0103.png",
+      "seconds": 1.742143,
+      "world_position": [
+        650.691101074219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        637.166320800781,
+        600.0
+      ],
+      "delta_s": 0.016098,
+      "enemies": 0,
+      "file": "frame-0104.png",
+      "seconds": 1.760054,
+      "world_position": [
+        653.588745117188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        640.388244628906,
+        600.0
+      ],
+      "delta_s": 0.017912,
+      "enemies": 0,
+      "file": "frame-0105.png",
+      "seconds": 1.775081,
+      "world_position": [
+        656.812927246094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        643.057067871094,
+        600.0
+      ],
+      "delta_s": 0.015026,
+      "enemies": 0,
+      "file": "frame-0106.png",
+      "seconds": 1.805722,
+      "world_position": [
+        659.517578125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        648.857666015625,
+        600.0
+      ],
+      "delta_s": 0.030645,
+      "enemies": 0,
+      "file": "frame-0107.png",
+      "seconds": 1.81685,
+      "world_position": [
+        665.03369140625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        650.771789550781,
+        600.0
+      ],
+      "delta_s": 0.011126,
+      "enemies": 0,
+      "file": "frame-0108.png",
+      "seconds": 1.827835,
+      "world_position": [
+        667.036376953125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        652.669128417969,
+        600.0
+      ],
+      "delta_s": 0.010983,
+      "enemies": 0,
+      "file": "frame-0109.png",
+      "seconds": 1.841481,
+      "world_position": [
+        669.013305664062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        655.067687988281,
+        600.0
+      ],
+      "delta_s": 0.013648,
+      "enemies": 0,
+      "file": "frame-0110.png",
+      "seconds": 1.856674,
+      "world_position": [
+        671.469970703125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        657.764892578125,
+        600.0
+      ],
+      "delta_s": 0.015192,
+      "enemies": 0,
+      "file": "frame-0111.png",
+      "seconds": 1.874354,
+      "world_position": [
+        674.204528808594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        660.944702148438,
+        600.0
+      ],
+      "delta_s": 0.01768,
+      "enemies": 0,
+      "file": "frame-0112.png",
+      "seconds": 1.894751,
+      "world_position": [
+        677.386901855469,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        664.655944824219,
+        600.0
+      ],
+      "delta_s": 0.020397,
+      "enemies": 0,
+      "file": "frame-0113.png",
+      "seconds": 1.909488,
+      "world_position": [
+        681.058349609375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        667.266967773438,
+        600.0
+      ],
+      "delta_s": 0.014737,
+      "enemies": 0,
+      "file": "frame-0114.png",
+      "seconds": 1.923283,
+      "world_position": [
+        683.710998535156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        669.705688476562,
+        600.0
+      ],
+      "delta_s": 0.013794,
+      "enemies": 0,
+      "file": "frame-0115.png",
+      "seconds": 1.943026,
+      "world_position": [
+        686.193908691406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        673.296630859375,
+        600.0
+      ],
+      "delta_s": 0.019744,
+      "enemies": 0,
+      "file": "frame-0116.png",
+      "seconds": 1.958185,
+      "world_position": [
+        689.747802734375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        675.994262695312,
+        600.0
+      ],
+      "delta_s": 0.015158,
+      "enemies": 0,
+      "file": "frame-0117.png",
+      "seconds": 1.98038,
+      "world_position": [
+        692.476257324219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        680.070129394531,
+        600.0
+      ],
+      "delta_s": 0.022195,
+      "enemies": 0,
+      "file": "frame-0118.png",
+      "seconds": 1.991096,
+      "world_position": [
+        696.471374511719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        681.938110351562,
+        600.0
+      ],
+      "delta_s": 0.010745,
+      "enemies": 0,
+      "file": "frame-0119.png",
+      "seconds": 2.009524,
+      "world_position": [
+        698.405456542969,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        685.262329101562,
+        600.0
+      ],
+      "delta_s": 0.0184,
+      "enemies": 0,
+      "file": "frame-0120.png",
+      "seconds": 2.025326,
+      "world_position": [
+        701.717468261719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        688.083312988281,
+        600.0
+      ],
+      "delta_s": 0.015802,
+      "enemies": 0,
+      "file": "frame-0121.png",
+      "seconds": 2.041042,
+      "world_position": [
+        704.561828613281,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        690.891052246094,
+        600.0
+      ],
+      "delta_s": 0.015715,
+      "enemies": 0,
+      "file": "frame-0122.png",
+      "seconds": 2.056956,
+      "world_position": [
+        707.390502929688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        693.739929199219,
+        600.0
+      ],
+      "delta_s": 0.015914,
+      "enemies": 0,
+      "file": "frame-0123.png",
+      "seconds": 2.074913,
+      "world_position": [
+        710.255004882812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        696.986206054688,
+        600.0
+      ],
+      "delta_s": 0.017959,
+      "enemies": 0,
+      "file": "frame-0124.png",
+      "seconds": 2.090043,
+      "world_position": [
+        713.487609863281,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        699.685546875,
+        600.0
+      ],
+      "delta_s": 0.01513,
+      "enemies": 0,
+      "file": "frame-0125.png",
+      "seconds": 2.107747,
+      "world_position": [
+        716.210998535156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        702.883544921875,
+        600.0
+      ],
+      "delta_s": 0.017702,
+      "enemies": 0,
+      "file": "frame-0126.png",
+      "seconds": 2.12345,
+      "world_position": [
+        719.397338867188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        705.694274902344,
+        600.0
+      ],
+      "delta_s": 0.015704,
+      "enemies": 0,
+      "file": "frame-0127.png",
+      "seconds": 2.139918,
+      "world_position": [
+        722.224060058594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        708.654357910156,
+        600.0
+      ],
+      "delta_s": 0.016469,
+      "enemies": 0,
+      "file": "frame-0128.png",
+      "seconds": 2.170525,
+      "world_position": [
+        725.1884765625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        714.466857910156,
+        600.0
+      ],
+      "delta_s": 0.030609,
+      "enemies": 0,
+      "file": "frame-0129.png",
+      "seconds": 2.180674,
+      "world_position": [
+        730.698120117188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        716.209106445312,
+        600.0
+      ],
+      "delta_s": 0.010146,
+      "enemies": 0,
+      "file": "frame-0130.png",
+      "seconds": 2.198417,
+      "world_position": [
+        732.5244140625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        719.380920410156,
+        600.0
+      ],
+      "delta_s": 0.017743,
+      "enemies": 0,
+      "file": "frame-0131.png",
+      "seconds": 2.212751,
+      "world_position": [
+        735.718139648438,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        721.907165527344,
+        600.0
+      ],
+      "delta_s": 0.014334,
+      "enemies": 0,
+      "file": "frame-0132.png",
+      "seconds": 2.22492,
+      "world_position": [
+        738.298278808594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        724.100708007812,
+        600.0
+      ],
+      "delta_s": 0.012517,
+      "enemies": 0,
+      "file": "frame-0133.png",
+      "seconds": 2.241869,
+      "world_position": [
+        740.551330566406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        727.074096679688,
+        600.0
+      ],
+      "delta_s": 0.016601,
+      "enemies": 0,
+      "file": "frame-0134.png",
+      "seconds": 2.255964,
+      "world_position": [
+        743.539489746094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        729.572326660156,
+        600.0
+      ],
+      "delta_s": 0.014095,
+      "enemies": 0,
+      "file": "frame-0135.png",
+      "seconds": 2.275146,
+      "world_position": [
+        746.076599121094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        733.055541992188,
+        600.0
+      ],
+      "delta_s": 0.019181,
+      "enemies": 0,
+      "file": "frame-0136.png",
+      "seconds": 2.296505,
+      "world_position": [
+        749.529174804688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        736.96337890625,
+        600.0
+      ],
+      "delta_s": 0.02136,
+      "enemies": 0,
+      "file": "frame-0137.png",
+      "seconds": 2.308888,
+      "world_position": [
+        753.373962402344,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        739.134338378906,
+        600.0
+      ],
+      "delta_s": 0.012383,
+      "enemies": 0,
+      "file": "frame-0138.png",
+      "seconds": 2.324168,
+      "world_position": [
+        755.602905273438,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        741.857482910156,
+        600.0
+      ],
+      "delta_s": 0.015279,
+      "enemies": 0,
+      "file": "frame-0139.png",
+      "seconds": 2.345552,
+      "world_position": [
+        758.353149414062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        745.774291992188,
+        600.0
+      ],
+      "delta_s": 0.021384,
+      "enemies": 0,
+      "file": "frame-0140.png",
+      "seconds": 2.356926,
+      "world_position": [
+        762.202270507812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        747.763916015625,
+        600.0
+      ],
+      "delta_s": 0.011392,
+      "enemies": 0,
+      "file": "frame-0141.png",
+      "seconds": 2.374295,
+      "world_position": [
+        764.252807617188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        750.887939453125,
+        600.0
+      ],
+      "delta_s": 0.017351,
+      "enemies": 0,
+      "file": "frame-0142.png",
+      "seconds": 2.392298,
+      "world_position": [
+        767.3759765625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        754.138488769531,
+        600.0
+      ],
+      "delta_s": 0.018004,
+      "enemies": 0,
+      "file": "frame-0143.png",
+      "seconds": 2.40999,
+      "world_position": [
+        770.61669921875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        757.391357421875,
+        600.0
+      ],
+      "delta_s": 0.018024,
+      "enemies": 0,
+      "file": "frame-0144.png",
+      "seconds": 2.426786,
+      "world_position": [
+        773.861022949219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        760.34130859375,
+        600.0
+      ],
+      "delta_s": 0.016464,
+      "enemies": 0,
+      "file": "frame-0145.png",
+      "seconds": 2.443047,
+      "world_position": [
+        776.824523925781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        763.2548828125,
+        600.0
+      ],
+      "delta_s": 0.016264,
+      "enemies": 0,
+      "file": "frame-0146.png",
+      "seconds": 2.456115,
+      "world_position": [
+        779.752014160156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        765.563415527344,
+        600.0
+      ],
+      "delta_s": 0.013065,
+      "enemies": 0,
+      "file": "frame-0147.png",
+      "seconds": 2.476799,
+      "world_position": [
+        782.103698730469,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        769.349670410156,
+        600.0
+      ],
+      "delta_s": 0.020684,
+      "enemies": 0,
+      "file": "frame-0148.png",
+      "seconds": 2.502638,
+      "world_position": [
+        785.826843261719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        774.160705566406,
+        600.0
+      ],
+      "delta_s": 0.025839,
+      "enemies": 0,
+      "file": "frame-0149.png",
+      "seconds": 2.512252,
+      "world_position": [
+        790.477844238281,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        775.815551757812,
+        600.0
+      ],
+      "delta_s": 0.009617,
+      "enemies": 0,
+      "file": "frame-0150.png",
+      "seconds": 2.526881,
+      "world_position": [
+        792.208923339844,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        778.404724121094,
+        600.0
+      ],
+      "delta_s": 0.014628,
+      "enemies": 0,
+      "file": "frame-0151.png",
+      "seconds": 2.545747,
+      "world_position": [
+        794.841979980469,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        781.814453125,
+        600.0
+      ],
+      "delta_s": 0.018865,
+      "enemies": 0,
+      "file": "frame-0152.png",
+      "seconds": 2.557857,
+      "world_position": [
+        798.237670898438,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        783.936401367188,
+        600.0
+      ],
+      "delta_s": 0.012111,
+      "enemies": 0,
+      "file": "frame-0153.png",
+      "seconds": 2.577315,
+      "world_position": [
+        800.417663574219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        787.469543457031,
+        600.0
+      ],
+      "delta_s": 0.019456,
+      "enemies": 0,
+      "file": "frame-0154.png",
+      "seconds": 2.588917,
+      "world_position": [
+        803.919738769531,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        789.50048828125,
+        600.0
+      ],
+      "delta_s": 0.011603,
+      "enemies": 0,
+      "file": "frame-0155.png",
+      "seconds": 2.6102,
+      "world_position": [
+        806.00830078125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        793.399780273438,
+        600.0
+      ],
+      "delta_s": 0.021284,
+      "enemies": 0,
+      "file": "frame-0156.png",
+      "seconds": 2.6235,
+      "world_position": [
+        809.839416503906,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        795.744689941406,
+        600.0
+      ],
+      "delta_s": 0.013297,
+      "enemies": 0,
+      "file": "frame-0157.png",
+      "seconds": 2.641027,
+      "world_position": [
+        812.232849121094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        798.902709960938,
+        600.0
+      ],
+      "delta_s": 0.017527,
+      "enemies": 0,
+      "file": "frame-0158.png",
+      "seconds": 2.656391,
+      "world_position": [
+        815.3876953125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        801.645141601562,
+        600.0
+      ],
+      "delta_s": 0.015368,
+      "enemies": 0,
+      "file": "frame-0159.png",
+      "seconds": 2.673802,
+      "world_position": [
+        818.153930664062,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        804.783386230469,
+        600.0
+      ],
+      "delta_s": 0.017408,
+      "enemies": 0,
+      "file": "frame-0160.png",
+      "seconds": 2.695063,
+      "world_position": [
+        821.287353515625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        808.677124023438,
+        600.0
+      ],
+      "delta_s": 0.02126,
+      "enemies": 0,
+      "file": "frame-0161.png",
+      "seconds": 2.707659,
+      "world_position": [
+        825.114135742188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        810.890747070312,
+        600.0
+      ],
+      "delta_s": 0.012596,
+      "enemies": 0,
+      "file": "frame-0162.png",
+      "seconds": 2.725464,
+      "world_position": [
+        827.381408691406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        814.103088378906,
+        600.0
+      ],
+      "delta_s": 0.017805,
+      "enemies": 0,
+      "file": "frame-0163.png",
+      "seconds": 2.744031,
+      "world_position": [
+        830.586303710938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        817.462341308594,
+        600.0
+      ],
+      "delta_s": 0.018566,
+      "enemies": 0,
+      "file": "frame-0164.png",
+      "seconds": 2.75753,
+      "world_position": [
+        833.928161621094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        819.848388671875,
+        600.0
+      ],
+      "delta_s": 0.013499,
+      "enemies": 0,
+      "file": "frame-0165.png",
+      "seconds": 2.774051,
+      "world_position": [
+        836.357971191406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        822.815612792969,
+        600.0
+      ],
+      "delta_s": 0.016522,
+      "enemies": 0,
+      "file": "frame-0166.png",
+      "seconds": 2.788624,
+      "world_position": [
+        839.331909179688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        825.411437988281,
+        600.0
+      ],
+      "delta_s": 0.014575,
+      "enemies": 0,
+      "file": "frame-0167.png",
+      "seconds": 2.806114,
+      "world_position": [
+        841.955383300781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        828.57080078125,
+        600.0
+      ],
+      "delta_s": 0.017488,
+      "enemies": 0,
+      "file": "frame-0168.png",
+      "seconds": 2.828322,
+      "world_position": [
+        845.103210449219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        832.65966796875,
+        600.0
+      ],
+      "delta_s": 0.02221,
+      "enemies": 0,
+      "file": "frame-0169.png",
+      "seconds": 2.839504,
+      "world_position": [
+        849.101013183594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        834.612182617188,
+        600.0
+      ],
+      "delta_s": 0.011183,
+      "enemies": 0,
+      "file": "frame-0170.png",
+      "seconds": 2.85665,
+      "world_position": [
+        851.113952636719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        837.698425292969,
+        600.0
+      ],
+      "delta_s": 0.017145,
+      "enemies": 0,
+      "file": "frame-0171.png",
+      "seconds": 2.874774,
+      "world_position": [
+        854.200073242188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        840.974182128906,
+        600.0
+      ],
+      "delta_s": 0.018122,
+      "enemies": 0,
+      "file": "frame-0172.png",
+      "seconds": 2.888931,
+      "world_position": [
+        857.462036132812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        843.487609863281,
+        600.0
+      ],
+      "delta_s": 0.01416,
+      "enemies": 0,
+      "file": "frame-0173.png",
+      "seconds": 2.911197,
+      "world_position": [
+        860.010864257812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        847.585083007812,
+        600.0
+      ],
+      "delta_s": 0.022262,
+      "enemies": 0,
+      "file": "frame-0174.png",
+      "seconds": 2.923325,
+      "world_position": [
+        864.018005371094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        849.711486816406,
+        600.0
+      ],
+      "delta_s": 0.012129,
+      "enemies": 0,
+      "file": "frame-0175.png",
+      "seconds": 2.941537,
+      "world_position": [
+        866.201232910156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        853.002624511719,
+        600.0
+      ],
+      "delta_s": 0.018211,
+      "enemies": 0,
+      "file": "frame-0176.png",
+      "seconds": 2.959923,
+      "world_position": [
+        869.479187011719,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        856.325805664062,
+        600.0
+      ],
+      "delta_s": 0.018387,
+      "enemies": 0,
+      "file": "frame-0177.png",
+      "seconds": 2.979991,
+      "world_position": [
+        872.788818359375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        859.975830078125,
+        600.0
+      ],
+      "delta_s": 0.020067,
+      "enemies": 0,
+      "file": "frame-0178.png",
+      "seconds": 2.991507,
+      "world_position": [
+        876.40087890625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        861.988159179688,
+        600.0
+      ],
+      "delta_s": 0.011517,
+      "enemies": 0,
+      "file": "frame-0179.png",
+      "seconds": 3.006982,
+      "world_position": [
+        878.473937988281,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        864.751098632812,
+        600.0
+      ],
+      "delta_s": 0.015475,
+      "enemies": 0,
+      "file": "frame-0180.png",
+      "seconds": 3.025083,
+      "world_position": [
+        881.259460449219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        868.02490234375,
+        600.0
+      ],
+      "delta_s": 0.018106,
+      "enemies": 0,
+      "file": "frame-0181.png",
+      "seconds": 3.04021,
+      "world_position": [
+        884.5185546875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        870.728149414062,
+        600.0
+      ],
+      "delta_s": 0.015156,
+      "enemies": 0,
+      "file": "frame-0182.png",
+      "seconds": 3.057044,
+      "world_position": [
+        887.246643066406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        873.399780273438,
+        600.0
+      ],
+      "delta_s": 0.016804,
+      "enemies": 0,
+      "file": "frame-0183.png",
+      "seconds": 3.073765,
+      "world_position": [
+        890.271362304688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        875.647399902344,
+        600.0
+      ],
+      "delta_s": 0.016717,
+      "enemies": 0,
+      "file": "frame-0184.png",
+      "seconds": 3.08957,
+      "world_position": [
+        893.280395507812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        877.453369140625,
+        600.0
+      ],
+      "delta_s": 0.015806,
+      "enemies": 0,
+      "file": "frame-0185.png",
+      "seconds": 3.108802,
+      "world_position": [
+        896.12548828125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        879.298461914062,
+        600.0
+      ],
+      "delta_s": 0.019231,
+      "enemies": 0,
+      "file": "frame-0186.png",
+      "seconds": 3.123241,
+      "world_position": [
+        899.587097167969,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        880.468383789062,
+        600.0
+      ],
+      "delta_s": 0.014439,
+      "enemies": 0,
+      "file": "frame-0187.png",
+      "seconds": 3.139652,
+      "world_position": [
+        902.186096191406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        881.608276367188,
+        600.0
+      ],
+      "delta_s": 0.016411,
+      "enemies": 0,
+      "file": "frame-0188.png",
+      "seconds": 3.155877,
+      "world_position": [
+        905.140075683594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        882.565551757812,
+        600.0
+      ],
+      "delta_s": 0.016225,
+      "enemies": 0,
+      "file": "frame-0189.png",
+      "seconds": 3.173772,
+      "world_position": [
+        908.060546875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        883.455993652344,
+        600.0
+      ],
+      "delta_s": 0.017895,
+      "enemies": 0,
+      "file": "frame-0190.png",
+      "seconds": 3.189353,
+      "world_position": [
+        911.281677246094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        884.111572265625,
+        600.0
+      ],
+      "delta_s": 0.015581,
+      "enemies": 0,
+      "file": "frame-0191.png",
+      "seconds": 3.207039,
+      "world_position": [
+        914.086242675781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        884.741882324219,
+        600.0
+      ],
+      "delta_s": 0.017686,
+      "enemies": 0,
+      "file": "frame-0192.png",
+      "seconds": 3.228702,
+      "world_position": [
+        917.269714355469,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        885.37646484375,
+        600.0
+      ],
+      "delta_s": 0.021663,
+      "enemies": 0,
+      "file": "frame-0193.png",
+      "seconds": 3.243446,
+      "world_position": [
+        921.169067382812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        885.736083984375,
+        600.0
+      ],
+      "delta_s": 0.014744,
+      "enemies": 0,
+      "file": "frame-0194.png",
+      "seconds": 3.257787,
+      "world_position": [
+        923.822998046875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        886.03857421875,
+        600.0
+      ],
+      "delta_s": 0.014341,
+      "enemies": 0,
+      "file": "frame-0195.png",
+      "seconds": 3.275199,
+      "world_position": [
+        926.404357910156,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        886.351989746094,
+        600.0
+      ],
+      "delta_s": 0.017412,
+      "enemies": 0,
+      "file": "frame-0196.png",
+      "seconds": 3.289037,
+      "world_position": [
+        929.538513183594,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        886.56494140625,
+        600.0
+      ],
+      "delta_s": 0.013837,
+      "enemies": 0,
+      "file": "frame-0197.png",
+      "seconds": 3.306823,
+      "world_position": [
+        932.029174804688,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        886.798767089844,
+        600.0
+      ],
+      "delta_s": 0.017787,
+      "enemies": 0,
+      "file": "frame-0198.png",
+      "seconds": 3.32413,
+      "world_position": [
+        935.230834960938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        886.989685058594,
+        600.0
+      ],
+      "delta_s": 0.017307,
+      "enemies": 0,
+      "file": "frame-0199.png",
+      "seconds": 3.339058,
+      "world_position": [
+        938.346069335938,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.130432128906,
+        600.0
+      ],
+      "delta_s": 0.015003,
+      "enemies": 0,
+      "file": "frame-0200.png",
+      "seconds": 3.363804,
+      "world_position": [
+        941.046630859375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.320556640625,
+        600.0
+      ],
+      "delta_s": 0.02467,
+      "enemies": 0,
+      "file": "frame-0201.png",
+      "seconds": 3.376735,
+      "world_position": [
+        945.487243652344,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.402954101562,
+        600.0
+      ],
+      "delta_s": 0.012932,
+      "enemies": 0,
+      "file": "frame-0202.png",
+      "seconds": 3.390479,
+      "world_position": [
+        947.815002441406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.479614257812,
+        600.0
+      ],
+      "delta_s": 0.013747,
+      "enemies": 0,
+      "file": "frame-0203.png",
+      "seconds": 3.411226,
+      "world_position": [
+        950.289489746094,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.577087402344,
+        600.0
+      ],
+      "delta_s": 0.020746,
+      "enemies": 0,
+      "file": "frame-0204.png",
+      "seconds": 3.423949,
+      "world_position": [
+        954.023742675781,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.627624511719,
+        600.0
+      ],
+      "delta_s": 0.012721,
+      "enemies": 0,
+      "file": "frame-0205.png",
+      "seconds": 3.440084,
+      "world_position": [
+        956.313537597656,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.683349609375,
+        600.0
+      ],
+      "delta_s": 0.016205,
+      "enemies": 0,
+      "file": "frame-0206.png",
+      "seconds": 3.457879,
+      "world_position": [
+        959.230407714844,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.734802246094,
+        600.0
+      ],
+      "delta_s": 0.017725,
+      "enemies": 0,
+      "file": "frame-0207.png",
+      "seconds": 3.476179,
+      "world_position": [
+        962.4208984375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.779174804688,
+        600.0
+      ],
+      "delta_s": 0.018301,
+      "enemies": 0,
+      "file": "frame-0208.png",
+      "seconds": 3.492147,
+      "world_position": [
+        965.715087890625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.811767578125,
+        600.0
+      ],
+      "delta_s": 0.015966,
+      "enemies": 0,
+      "file": "frame-0209.png",
+      "seconds": 3.50684,
+      "world_position": [
+        968.588989257812,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.837463378906,
+        600.0
+      ],
+      "delta_s": 0.014693,
+      "enemies": 0,
+      "file": "frame-0210.png",
+      "seconds": 3.524846,
+      "world_position": [
+        971.233703613281,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.8642578125,
+        600.0
+      ],
+      "delta_s": 0.018008,
+      "enemies": 0,
+      "file": "frame-0211.png",
+      "seconds": 3.541565,
+      "world_position": [
+        974.475158691406,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.885131835938,
+        600.0
+      ],
+      "delta_s": 0.016718,
+      "enemies": 0,
+      "file": "frame-0212.png",
+      "seconds": 3.55675,
+      "world_position": [
+        977.484375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.901306152344,
+        600.0
+      ],
+      "delta_s": 0.015185,
+      "enemies": 0,
+      "file": "frame-0213.png",
+      "seconds": 3.596086,
+      "world_position": [
+        980.217651367188,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.933410644531,
+        600.0
+      ],
+      "delta_s": 0.039337,
+      "enemies": 0,
+      "file": "frame-0214.png",
+      "seconds": 3.6098,
+      "world_position": [
+        987.29833984375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.941955566406,
+        600.0
+      ],
+      "delta_s": 0.013714,
+      "enemies": 0,
+      "file": "frame-0215.png",
+      "seconds": 3.619259,
+      "world_position": [
+        989.766845703125,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.947204589844,
+        600.0
+      ],
+      "delta_s": 0.009459,
+      "enemies": 0,
+      "file": "frame-0216.png",
+      "seconds": 3.631058,
+      "world_position": [
+        991.469482421875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.953063964844,
+        600.0
+      ],
+      "delta_s": 0.011799,
+      "enemies": 0,
+      "file": "frame-0217.png",
+      "seconds": 3.641141,
+      "world_position": [
+        993.593322753906,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.957580566406,
+        600.0
+      ],
+      "delta_s": 0.010081,
+      "enemies": 0,
+      "file": "frame-0218.png",
+      "seconds": 3.658509,
+      "world_position": [
+        995.407897949219,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.96435546875,
+        600.0
+      ],
+      "delta_s": 0.017395,
+      "enemies": 0,
+      "file": "frame-0219.png",
+      "seconds": 3.674787,
+      "world_position": [
+        998.539001464844,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.9697265625,
+        600.0
+      ],
+      "delta_s": 0.016253,
+      "enemies": 0,
+      "file": "frame-0220.png",
+      "seconds": 3.711514,
+      "world_position": [
+        1001.46453857422,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.97900390625,
+        600.0
+      ],
+      "delta_s": 0.036727,
+      "enemies": 0,
+      "file": "frame-0221.png",
+      "seconds": 3.722283,
+      "world_position": [
+        1008.07537841797,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.981140136719,
+        600.0
+      ],
+      "delta_s": 0.010768,
+      "enemies": 0,
+      "file": "frame-0222.png",
+      "seconds": 3.738495,
+      "world_position": [
+        1010.01361083984,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.983947753906,
+        600.0
+      ],
+      "delta_s": 0.016212,
+      "enemies": 0,
+      "file": "frame-0223.png",
+      "seconds": 3.753779,
+      "world_position": [
+        1012.93176269531,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.986206054688,
+        600.0
+      ],
+      "delta_s": 0.015285,
+      "enemies": 0,
+      "file": "frame-0224.png",
+      "seconds": 3.784502,
+      "world_position": [
+        1015.68304443359,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.989868164062,
+        600.0
+      ],
+      "delta_s": 0.030723,
+      "enemies": 0,
+      "file": "frame-0225.png",
+      "seconds": 3.798841,
+      "world_position": [
+        1021.21319580078,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.9912109375,
+        600.0
+      ],
+      "delta_s": 0.01434,
+      "enemies": 0,
+      "file": "frame-0226.png",
+      "seconds": 3.811093,
+      "world_position": [
+        1023.79437255859,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.992248535156,
+        600.0
+      ],
+      "delta_s": 0.012251,
+      "enemies": 0,
+      "file": "frame-0227.png",
+      "seconds": 3.826353,
+      "world_position": [
+        1025.99951171875,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.993347167969,
+        600.0
+      ],
+      "delta_s": 0.015259,
+      "enemies": 0,
+      "file": "frame-0228.png",
+      "seconds": 3.845332,
+      "world_position": [
+        1028.74609375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.994506835938,
+        600.0
+      ],
+      "delta_s": 0.018983,
+      "enemies": 0,
+      "file": "frame-0229.png",
+      "seconds": 3.863146,
+      "world_position": [
+        1032.1630859375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.995422363281,
+        600.0
+      ],
+      "delta_s": 0.01781,
+      "enemies": 0,
+      "file": "frame-0230.png",
+      "seconds": 3.879147,
+      "world_position": [
+        1035.36889648438,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.99609375,
+        600.0
+      ],
+      "delta_s": 0.016124,
+      "enemies": 0,
+      "file": "frame-0231.png",
+      "seconds": 3.887262,
+      "world_position": [
+        1038.27124023438,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.996398925781,
+        600.0
+      ],
+      "delta_s": 0.007993,
+      "enemies": 0,
+      "file": "frame-0232.png",
+      "seconds": 3.896645,
+      "world_position": [
+        1039.7099609375,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.996704101562,
+        600.0
+      ],
+      "delta_s": 0.009503,
+      "enemies": 0,
+      "file": "frame-0233.png",
+      "seconds": 3.914776,
+      "world_position": [
+        1041.42053222656,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.997253417969,
+        600.0
+      ],
+      "delta_s": 0.018012,
+      "enemies": 0,
+      "file": "frame-0234.png",
+      "seconds": 3.933813,
+      "world_position": [
+        1044.66271972656,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.997741699219,
+        600.0
+      ],
+      "delta_s": 0.019039,
+      "enemies": 0,
+      "file": "frame-0235.png",
+      "seconds": 3.953027,
+      "world_position": [
+        1048.08972167969,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.998107910156,
+        600.0
+      ],
+      "delta_s": 0.019212,
+      "enemies": 0,
+      "file": "frame-0236.png",
+      "seconds": 3.9712,
+      "world_position": [
+        1051.5478515625,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.998413085938,
+        600.0
+      ],
+      "delta_s": 0.018173,
+      "enemies": 0,
+      "file": "frame-0237.png",
+      "seconds": 3.99012,
+      "world_position": [
+        1054.81896972656,
+        600.0
+      ]
+    },
+    {
+      "camera": [
+        887.998657226562,
+        600.0
+      ],
+      "delta_s": 0.018919,
+      "enemies": 0,
+      "file": "frame-0238.png",
+      "seconds": 4.009114,
+      "world_position": [
+        1058.22436523438,
+        600.0
+      ]
+    }
+  ],
+  "limitations": "External X11 video capture adds observer overhead; 30fps movie sampling is not engine FPS. Not Android, browser or human playtesting.",
+  "not_benchmark": true,
+  "requested_window": [
+    844,
+    390
+  ],
+  "scenario": "movement",
+  "source": "Actual native Godot rendering, elapsed frame delta, scripted routed touch"
+}

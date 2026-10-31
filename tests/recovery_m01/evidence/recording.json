@@ -1,0 +1,27 @@
+{
+  "browser": false,
+  "fps": 15,
+  "frames": 1200,
+  "human": false,
+  "normal_health_unmodified": true,
+  "segments": [
+    {
+      "enemies": 4,
+      "hp": 58.0,
+      "kills": 45,
+      "level": 4,
+      "mode": "playing",
+      "segment": "normal",
+      "simulation_time": 59.7499999999979
+    },
+    {
+      "enemies": 4,
+      "hp": 84.0,
+      "kills": 0,
+      "level": 1,
+      "mode": "playing",
+      "segment": "navigation",
+      "simulation_time": 20.0000000000001
+    }
+  ]
+}

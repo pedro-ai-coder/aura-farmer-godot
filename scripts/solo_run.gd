@@ -52,6 +52,7 @@ const FIELD := Rect2(0.0, 0.0, 1448.0, 1086.0)
 const COVERS := [Vector2(600.0, 550.0), Vector2(940.0, 680.0)]
 const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
 const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
+var performance_probe
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -169,6 +170,10 @@ var clean_cut_skin: Control
 var touch_device := OS.has_feature("mobile")
 var web_metrics: Dictionary = {}
 var platform_poll := 0.0
+var _safe_spot_label_style: StyleBoxFlat=make_safe_spot_label_style()
+static func make_safe_spot_label_style() -> StyleBoxFlat:
+    var style:=StyleBoxFlat.new();style.bg_color=Color("102d43");style.set_corner_radius_all(5)
+    return style
 var safe_spot_charge := 0.0
 var safe_spot_ready_at := 0.0
 var safe_spot_uses := 0
@@ -275,6 +280,9 @@ func _ready() -> void:
     if _use_clean_cut_skin():
         clean_cut_skin = CleanCutSkinScript.new()
         clean_cut_skin.install(self, "")
+    if OS.has_feature("web") and OS.has_feature("performance_review"):
+        if bool(JavaScriptBridge.eval("!!window.__auraPerformance?.enabled",true)):
+            performance_probe=load("res://scripts/performance_probe.gd").new(self,"creator-device",bool(JavaScriptBridge.eval("!!window.__auraPerformance?.detailed",true)))
 
 func _use_clean_cut_skin() -> bool:
     # Native art review fixtures may explicitly opt out to compare their own skin.
@@ -503,12 +511,16 @@ func start_run(index: int) -> void:
     _update_camera(0.0, true)
 
 func _process(delta: float) -> void:
+    if performance_probe!=null:performance_probe.begin_frame(delta)
+    var perf_started: int=Time.get_ticks_usec() if performance_probe!=null else 0
     if mode == "playing":
         var remaining := clampf(delta, 0.0, 0.25)
         while remaining > 0.00000001 and mode == "playing":
             var dt := minf(remaining, 1.0 / 60.0)
+            if performance_probe!=null:performance_probe.substep()
             _advance(dt)
             remaining -= dt
+    if performance_probe!=null:performance_probe.add(&"simulation",Time.get_ticks_usec()-perf_started)
     if mode == "won": finish_visual_age += clampf(delta,0.0,0.1)
     for defeated: Dictionary in defeated_visuals.duplicate():
         if run_time-float(defeated["defeated_at"])+finish_visual_age >= 0.85: defeated_visuals.erase(defeated)
@@ -519,14 +531,21 @@ func _process(delta: float) -> void:
             effect["life"] = maxf(0.0, float(effect.get("until",run_time)) - run_time)
             if float(effect["life"]) <= 0.0:
                 attack_visuals.erase(effect)
+    if performance_probe!=null:perf_started=Time.get_ticks_usec()
     _update_platform(delta)
+    if performance_probe!=null:performance_probe.add(&"platform",Time.get_ticks_usec()-perf_started);perf_started=Time.get_ticks_usec()
     _update_camera(delta)
+    if performance_probe!=null:performance_probe.add(&"camera",Time.get_ticks_usec()-perf_started);perf_started=Time.get_ticks_usec()
     if presentation != null: presentation.pump()
+    if performance_probe!=null:performance_probe.add(&"presentation",Time.get_ticks_usec()-perf_started)
     status_timer -= delta
     if status_timer <= 0.0:
         status_timer = 0.10
+        if performance_probe!=null:perf_started=Time.get_ticks_usec()
         _update_text()
+        if performance_probe!=null:performance_probe.add(&"text",Time.get_ticks_usec()-perf_started)
     queue_redraw()
+    if performance_probe!=null:performance_probe.process_finished()
 
 func _update_camera(delta: float, snap: bool = false) -> void:
     var view := get_viewport_rect().size
@@ -553,7 +572,9 @@ func _advance(dt: float) -> void:
     else:
         aura = minf(100.0, aura + 0.5 * dt)
     if mode != "playing": return
+    var perf_move_player: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _move_player(dt)
+    if performance_probe!=null:performance_probe.add(&"player",Time.get_ticks_usec()-perf_move_player)
     if mode != "playing": return
     var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
@@ -565,20 +586,34 @@ func _advance(dt: float) -> void:
         _open_choice()
     if mode != "playing":
         return
+    var perf_tick_passives: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _tick_passives(dt)
+    if performance_probe!=null:performance_probe.add(&"passives",Time.get_ticks_usec()-perf_tick_passives)
     if mode != "playing": return
+    var perf_step_enemies: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _step_enemies(dt)
+    if performance_probe!=null:performance_probe.add(&"enemies",Time.get_ticks_usec()-perf_step_enemies)
     if mode != "playing": return
+    var perf_step_hostile_shots: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _step_hostile_shots(dt)
+    if performance_probe!=null:performance_probe.add(&"projectiles",Time.get_ticks_usec()-perf_step_hostile_shots)
     if mode != "playing": return
+    var perf_step_hazards: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _step_hazards()
+    if performance_probe!=null:performance_probe.add(&"hazards",Time.get_ticks_usec()-perf_step_hazards)
     if mode != "playing":
         return
+    var perf_fire_weapons: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _fire_weapons(dt)
+    if performance_probe!=null:performance_probe.add(&"weapons",Time.get_ticks_usec()-perf_fire_weapons)
     if mode != "playing": return
+    var perf_step_player_shots: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _step_player_shots(dt)
+    if performance_probe!=null:performance_probe.add(&"projectiles",Time.get_ticks_usec()-perf_step_player_shots)
     if mode != "playing": return
+    var perf_step_weapon_areas: int=Time.get_ticks_usec() if performance_probe!=null else 0
     _step_weapon_areas()
+    if performance_probe!=null:performance_probe.add(&"weapons",Time.get_ticks_usec()-perf_step_weapon_areas)
     if mode != "playing": return
     _collect_drops()
     if mode != "playing":
@@ -803,6 +838,7 @@ func _move_player(dt: float) -> void:
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
     var previous := player_pos
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
+    if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
     visual_moving = direction.length_squared() > 0.01
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
     if visual_moving:
@@ -1036,7 +1072,11 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
 func _step_enemies(dt: float) -> void:
     for enemy: Dictionary in enemies.duplicate():
         if mode != "playing": return
-        if not enemies.has(enemy) or run_time < float(enemy.get("born", 0.0)): continue
+        var perf_detail: bool=performance_probe!=null and performance_probe.detailed
+        var perf_membership: int=Time.get_ticks_usec() if perf_detail else 0
+        var still_live: bool=enemies.has(enemy)
+        if perf_detail:performance_probe.add(&"enemy_membership",Time.get_ticks_usec()-perf_membership)
+        if not still_live or run_time < float(enemy.get("born", 0.0)): continue
         for pending: Dictionary in hazard_zones:
             if pending.get("source", {}) == enemy and pending.get("tracking", false) and not pending.get("locked", false):
                 pending["pos"] = enemy["pos"]
@@ -1088,6 +1128,7 @@ func _step_enemies(dt: float) -> void:
             speed = 0.0
         if distance > float(enemy["radius"]) + 19.0:
             var destination: Vector2
+            var perf_navigation: int=Time.get_ticks_usec() if perf_detail else 0
             if enemy["phase"] == "charging":
                 # Committed charges retain their locked direction; steering
                 # must never turn a telegraphed charge around an obstacle.
@@ -1095,6 +1136,7 @@ func _step_enemies(dt: float) -> void:
             else:
                 var goal := player_pos if direction.dot(to_player) >= 0.0 else pos+direction*120.0
                 destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy)
+            if perf_detail:performance_probe.add(&"navigation",Time.get_ticks_usec()-perf_navigation)
             enemy["pos"] = destination
             if EnemyNavigationScript.diagnostics_enabled and enemy["phase"]!="charging" and speed>0.0:
                 EnemyNavigationScript.observe(enemy,player_pos,pos,direction*speed*dt,dt,run_time,wave)
@@ -1550,7 +1592,7 @@ func _tick_recovery(dt: float) -> void:
             safe_spot_uses += 1
             safe_spot_ready_at = run_time + 90.0
             safe_spot_charge = 0.0
-            _pickup_cue("snack", RecoveryRulesScript.SAFE_SPOT, "SAFE SPOT · HP RESTORED")
+            _pickup_cue("snack", RecoveryRulesScript.SAFE_SPOT, "HP RESTORED")
     else: safe_spot_charge = 0.0
 
 func _collect_drops() -> void:
@@ -1599,7 +1641,9 @@ func _gain_xp(amount: float) -> void:
             hp = minf(max_hp, hp + 2.0)
             pending_choices += 1
         elif run_time >= max_level_heal_at:
+            var before_recovery: float=hp
             _heal_player(max_hp * 0.05 * SoloPassiveRulesScript.support_scale(passives))
+            if hp>before_recovery:_pickup_cue("xp-recovery",player_pos+Vector2(-50,-70),"XP RECOVERY")
             max_level_heal_at = run_time + 20.0
 
 func _passive_level(id: String) -> int:
@@ -1982,6 +2026,7 @@ func _clear_touch() -> void:
     _release_touch_movement()
 
 func _release_touch_movement() -> void:
+    if performance_probe!=null:performance_probe.input_received(Vector2.ZERO)
     touch_active = false
     touch_index = -1
     touch_origin = Vector2.ZERO
@@ -2103,6 +2148,7 @@ func _input(event: InputEvent) -> void:
         elif touch_active and event.index == touch_index and mode == "playing":
             var drag_offset: Vector2 = event.position - touch_origin
             touch_direction = touch_joystick.direction_from_offset(drag_offset)
+            if performance_probe!=null:performance_probe.input_received(touch_direction)
             touch_joystick.show_at(touch_visual_origin,touch_joystick.visual_from_offset(drag_offset))
             get_viewport().set_input_as_handled()
 
@@ -2144,6 +2190,7 @@ func _draw_pickup(drop: Dictionary) -> void:
         draw_line(at + Vector2(9, -4), at + Vector2(9, -11), paper, 5.0)
 
 func _draw() -> void:
+    var perf_draw_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
     if mode in ["menu","heroes"] or hero.is_empty():
         if not art.draw_backdrop(self, "ruin-alley", FIELD):
             draw_rect(FIELD, Color(0.12, 0.15, 0.22))
@@ -2223,6 +2270,8 @@ func _draw() -> void:
     if run_time < float(hero_state.get("flex_caption_until",0.0)):
         draw_string(Typography.font("hud_secondary"),player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
 
+    if performance_probe!=null:performance_probe.add(&"draw",Time.get_ticks_usec()-perf_draw_start)
+
 func _draw_combat_feedback() -> void:
     var reduced: bool = profile["settings"]["reducedMotion"]
     for cue: Dictionary in combat_feedback:
@@ -2242,6 +2291,8 @@ func _draw_combat_feedback() -> void:
                 draw_line(point + ray * radius * 0.45, point + ray * radius, Color(color, life), 2.5)
 
 func _draw_depth_actors() -> void:
+    var perf_actor_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
+    var perf_cache_size: int=art.enemy_frame_cache.size()+art.hero_frame_cache.size() if performance_probe!=null else 0
     var actors: Array[Dictionary] = [{"kind":"hero", "pos":player_pos}]
     for cover: Vector2 in COVERS: actors.append({"kind":"cover", "pos":cover})
     for enemy: Dictionary in enemies: actors.append({"kind":"enemy", "pos":enemy["pos"], "enemy":enemy})
@@ -2252,6 +2303,10 @@ func _draw_depth_actors() -> void:
         elif actor["kind"] == "cover": art.draw_cover(self, actor["pos"])
         elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
         else: _draw_enemy_actor(actor["enemy"])
+
+    if performance_probe!=null:
+        performance_probe.add(&"actors",Time.get_ticks_usec()-perf_actor_start)
+        performance_probe.animation_created(art.enemy_frame_cache.size()+art.hero_frame_cache.size()-perf_cache_size)
 
 func _draw_enemy_actor(e: Dictionary) -> void:
     if run_time < float(e.get("born", 0.0)):
@@ -2292,23 +2347,49 @@ func _draw_hero_actor() -> void:
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
 
+func _safe_spot_context_label() -> String:
+    # Presentation only. All progress/cooldown comes from active gameplay time.
+    var nearby: float=RecoveryRulesScript.SAFE_RADIUS+34.0
+    if player_pos.distance_squared_to(RecoveryRulesScript.SAFE_SPOT)>nearby*nearby:return ""
+    var cooldown: float=maxf(0.0,safe_spot_ready_at-run_time)
+    if cooldown>0.0:return "RECOVERY %ds" % ceili(cooldown)
+    if safe_spot_charge>0.0:return "HEALING %d%%" % mini(100,floori(safe_spot_charge/2.0*100.0))
+    return "HEAL AVAILABLE" if hp<max_hp else ""
+
 func _draw_recovery() -> void:
     var point: Vector2 = RecoveryRulesScript.SAFE_SPOT
     var cooldown := maxf(0.0, safe_spot_ready_at - run_time)
-    var tint := Color("5cf0b4") if cooldown <= 0.0 else Color("8394aa")
-    draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.07))
-    draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,0.65), 2.0)
+    var tint := Color("29d3d2") if cooldown <= 0.0 else Color("8394aa")
+    var reduced: bool=bool(profile["settings"]["reducedMotion"])
+    var pulse: float=0.0 if reduced or cooldown>0.0 else sin(run_time*2.4)*0.06
+    draw_circle(point, RecoveryRulesScript.SAFE_RADIUS, Color(tint, 0.035))
+    draw_arc(point, RecoveryRulesScript.SAFE_RADIUS, 0.0, TAU, 48, Color(tint,(0.38 if cooldown<=0.0 else 0.22)+pulse), 2.0)
     draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),Color("24364a"))
     draw_rect(Rect2(point-Vector2(22,22),Vector2(44,44)),tint,false,3.0)
     draw_rect(Rect2(point-Vector2(5,16),Vector2(10,32)),tint)
     draw_rect(Rect2(point-Vector2(16,5),Vector2(32,10)),tint)
     var progress := safe_spot_charge / 2.0 if cooldown <= 0.0 else 1.0-cooldown/90.0
-    if progress > 0.0: draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e"),5.0)
-    draw_string_outline(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,2,Color("13233a"))
-    draw_string(Typography.font("hud_secondary"),point+Vector2(-41,53),"SAFE SPOT" if cooldown <= 0.0 else "%ds" % ceili(cooldown),HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff7da"))
+    var label_text: String=_safe_spot_context_label()
+    if progress > 0.0 and (cooldown<=0.0 or not label_text.is_empty()):
+        draw_arc(point,30.0,-PI/2.0,-PI/2.0+TAU*progress,48,Color("ffd06e") if cooldown<=0.0 else Color(tint,0.5),4.0)
+    if not label_text.is_empty():
+        var label_width: float=Typography.font("hud_secondary").get_string_size(label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x
+        var label_size:=Vector2(maxf(112,label_width+16),26)
+        var label_at: Vector2=point+Vector2(-label_size.x*0.5,35)
+        if clean_cut_skin!=null and clean_cut_skin.gameplay_hud!=null:
+            label_at=clean_cut_skin.gameplay_hud.safe_label_origin(point,label_size)
+        if label_at.is_finite():
+            draw_style_box(_safe_spot_label_style,Rect2(label_at,label_size))
+            draw_string(Typography.font("hud_secondary"),label_at+Vector2((label_size.x-label_width)*0.5,19),label_text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("fff9e9"))
     for feedback: Dictionary in pickup_feedback:
         var age := 0.9 - (float(feedback["until"]) - run_time)
         var offset := Vector2(0,-35.0-(0.0 if profile["settings"]["reducedMotion"] else age*20.0))
         var at: Vector2 = Vector2(feedback["pos"]) + offset
+        if feedback["kind"]=="snack" and Vector2(feedback["pos"])==point:
+            var fade:=clampf(1.0-age/0.9,0.0,1.0)
+            draw_arc(point,34.0+(0.0 if reduced else age*16.0),0.0,TAU,32,Color(0.47,0.91,0.36,fade*0.7),3.0)
         draw_string_outline(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,2,Color("253449"))
         draw_string(Typography.font("hud_secondary"),at,feedback["text"],HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color("f7edcd"))
+
+func _exit_tree() -> void:
+    if performance_probe!=null:performance_probe.close()

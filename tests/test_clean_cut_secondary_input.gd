@@ -5,7 +5,7 @@ class ReviewRun extends "res://scripts/solo_run.gd":
     func _save_profile() -> void:pass
 
 func verify() -> void:
-    for extent in [Vector2i(1280,720),Vector2i(915,412),Vector2i(390,844)]:
+    for extent in [Vector2i(1920,1080),Vector2i(1600,900),Vector2i(1280,720),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
         root.size=extent
         var game=ReviewRun.new()
         root.add_child(game)
@@ -44,7 +44,9 @@ func verify() -> void:
         expect(game.rng.state==rng, "UI refresh consumes no gameplay RNG")
         game.presentation.refresh(true)
         skin.refresh()
-        expect(game.pause_button.get_theme_stylebox("normal") is StyleBoxTexture, "Native refresh cannot restore legacy skin")
+        # HUD V2 intentionally replaces the generic secondary face with its own
+        # authored angular Pause. Keep the same anti-regression contract.
+        expect(game.pause_button.get_theme_stylebox("normal")==skin.gameplay_hud.pause_style("normal"), "Native refresh cannot restore a legacy face over the cached HUD V2 Pause artwork")
         expect(game.flex_button.get_theme_stylebox("normal")==style, "Flex keeps cached empty style after native refresh")
         expect(game.flex_button.text.is_empty(), "Legacy Flex text cannot overlay artwork")
         expect(not skin.xp.get_rect().intersects(skin.xp_track.get_rect()), "XP caption does not intersect progress bar")
@@ -59,7 +61,7 @@ func verify() -> void:
         game.queue_free()
         await process_frame
     if failures.is_empty():
-        print("PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at three viewports")
+        print("PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at six viewports")
         quit(0)
     else:
         for failure in failures:push_error(failure)

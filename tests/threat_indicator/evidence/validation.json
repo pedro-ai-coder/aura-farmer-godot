@@ -1,0 +1,2150 @@
+{
+  "baseline": {
+    "commit": "05bcef23ae0f040795cacd88e42542b55bc6488e",
+    "tree": "f0563ca6dfe764b4090b9beb4f00dc0a2f3b939b",
+    "production_deployment": "dpl_BVt9GgzKfedAsRsS3FpomqoP3Vky",
+    "build_metadata_verified": true,
+    "baseline_ci": "https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/41138163613",
+    "physical_evidence": "Creator reports Google Pixel 8a smooth through all five waves and final boss on this build; no measured FPS and no blanket Android approval."
+  },
+  "rendering": "Actual Godot 4.7.2 Compatibility/X11/Mesa llvmpipe, synthetic safe insets for compact views",
+  "native_cases": [
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (729.5999, 288.0001), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1046.739, 622.6583)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "visible"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-9.146938, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(446.5068, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "slight"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-66.31503, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(400.0578, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (82.02117, 309.6), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "clipped"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00003, 21.99996), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(485.6262, 406.5333)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 148.0), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "occluded"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 345.1189), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "offscreen"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        },
+        {
+          "bounds": "[P: (-184.3362, 432.0), S: (112.6682, 112.6682)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(304.5126, 749.5286)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 345.1189), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "multiple"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        },
+        {
+          "bounds": "[P: (-184.3362, 432.0), S: (112.6682, 112.6682)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(304.5126, 749.5286)"
+        },
+        {
+          "bounds": "[P: (-234.3363, 288.0), S: (165.1613, 149.471)]",
+          "id": 3,
+          "kind": "boss",
+          "position": "(285.0341, 660.9323)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 346.8208), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "priority"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (729.5999, 288.0001), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1046.739, 622.6583)"
+        },
+        {
+          "bounds": "[P: (830.2372, 274.5449), S: (165.1613, 149.471)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(1150.0, 650.0)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 346.8208), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "big-hater"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00003, 21.99996), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(485.6262, 406.5333)"
+        },
+        {
+          "bounds": "[P: (1.070938, -0.993561), S: (199.8452, 166.8129)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(490.0573, 441.5573)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 177.8194), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "telegraph"
+    },
+    {
+      "bosses": [],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 177.8194), S: (188.0, 30.0)]",
+      "flex_time": 6.0,
+      "joystick_active": true,
+      "joystick_owner": 0,
+      "readback": "(1920, 1080)",
+      "requested": "(1920, 1080)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "mobile-input"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (729.5999, 288.0001), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1046.739, 622.6583)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "visible"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-9.146938, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(446.5068, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "slight"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-66.31503, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(400.0578, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (82.02117, 309.6), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "clipped"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00003, 21.99996), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(485.6262, 406.5333)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 148.0), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "occluded"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 345.1189), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "offscreen"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        },
+        {
+          "bounds": "[P: (-184.3362, 432.0), S: (112.6682, 112.6682)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(304.5126, 749.5286)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 345.1189), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "multiple"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        },
+        {
+          "bounds": "[P: (-184.3362, 432.0), S: (112.6682, 112.6682)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(304.5126, 749.5286)"
+        },
+        {
+          "bounds": "[P: (-234.3363, 288.0), S: (165.1613, 149.471)]",
+          "id": 3,
+          "kind": "boss",
+          "position": "(285.0341, 660.9323)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 346.8208), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "priority"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (729.5999, 288.0001), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1046.739, 622.6583)"
+        },
+        {
+          "bounds": "[P: (830.2372, 274.5449), S: (165.1613, 149.471)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(1150.0, 650.0)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 346.8208), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "big-hater"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00003, 21.99996), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(485.6262, 406.5333)"
+        },
+        {
+          "bounds": "[P: (1.070938, -0.993561), S: (199.8452, 166.8129)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(490.0573, 441.5573)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 177.8194), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "telegraph"
+    },
+    {
+      "bosses": [],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 177.8194), S: (188.0, 30.0)]",
+      "flex_time": 6.0,
+      "joystick_active": true,
+      "joystick_owner": 0,
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "mobile-input"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (729.5999, 288.0001), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1046.739, 622.6583)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "visible"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-9.146938, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(446.5068, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "slight"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-66.31503, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(400.0578, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (82.02117, 309.6), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "clipped"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00003, 21.99996), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(485.6262, 406.5333)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 148.0), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "occluded"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 345.1189), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "offscreen"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        },
+        {
+          "bounds": "[P: (-184.3362, 432.0), S: (112.6682, 112.6682)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(304.5126, 749.5286)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 345.1189), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "multiple"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-178.3362, 309.6), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(309.0406, 640.2083)"
+        },
+        {
+          "bounds": "[P: (-184.3362, 432.0), S: (112.6682, 112.6682)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(304.5126, 749.5286)"
+        },
+        {
+          "bounds": "[P: (-234.3363, 288.0), S: (165.1613, 149.471)]",
+          "id": 3,
+          "kind": "boss",
+          "position": "(285.0341, 660.9323)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 346.8208), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "priority"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (729.5999, 288.0001), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1046.739, 622.6583)"
+        },
+        {
+          "bounds": "[P: (830.2372, 274.5449), S: (165.1613, 149.471)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(1150.0, 650.0)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 346.8208), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "big-hater"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00003, 21.99996), S: (114.3362, 101.1436)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(485.6262, 406.5333)"
+        },
+        {
+          "bounds": "[P: (1.070938, -0.993561), S: (199.8452, 166.8129)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(490.0573, 441.5573)"
+        }
+      ],
+      "camera": "(928.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 177.8194), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "telegraph"
+    },
+    {
+      "bosses": [],
+      "camera": "(928.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 177.8194), S: (188.0, 30.0)]",
+      "flex_time": 6.0,
+      "joystick_active": true,
+      "joystick_owner": 0,
+      "readback": "(1280, 720)",
+      "requested": "(1280, 720)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "state": "mobile-input"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (665.0, 208.9398), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1008.092, 630.1582)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "visible"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-8.000221, 224.6103), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(382.9002, 644.7155)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "slight"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-58.00126, 224.6103), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(336.4511, 644.7155)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (76.00089, 224.6103), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "clipped"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (38.99996, 22.00002), S: (100.0021, 88.46343)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(426.5616, 456.4984)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (60.99996, 122.4635), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "occluded"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-164.0021, 224.6103), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(237.9804, 644.7155)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 251.3461), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "offscreen"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-164.0021, 224.6103), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(237.9804, 644.7155)"
+        },
+        {
+          "bounds": "[P: (-170.0021, 313.4097), S: (98.5432, 98.54318)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(232.7537, 737.0771)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 251.3461), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "multiple"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-164.0021, 224.6103), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(237.9804, 644.7155)"
+        },
+        {
+          "bounds": "[P: (-170.0021, 313.4097), S: (98.5432, 98.54318)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(232.7537, 737.0771)"
+        },
+        {
+          "bounds": "[P: (-220.0022, 208.9398), S: (144.4554, 130.7321)]",
+          "id": 3,
+          "kind": "boss",
+          "position": "(207.4521, 668.4323)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 254.6222), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "priority"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (665.0, 208.9398), S: (100.0021, 88.46344)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1008.092, 630.1582)"
+        },
+        {
+          "bounds": "[P: (794.6229, 189.098), S: (144.4554, 130.7321)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(1150.0, 650.0)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 254.6222), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "big-hater"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (38.99996, 22.00002), S: (100.0021, 88.46343)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(426.5616, 456.4984)"
+        },
+        {
+          "bounds": "[P: (3.193253, 1.387619), S: (174.791, 145.9)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(428.547, 491.0565)"
+        }
+      ],
+      "camera": "(881.3334, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 159.2876), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "telegraph"
+    },
+    {
+      "bosses": [],
+      "camera": "(881.3334, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 159.2876), S: (188.0, 30.0)]",
+      "flex_time": 6.0,
+      "joystick_active": true,
+      "joystick_owner": 0,
+      "readback": "(915, 411)",
+      "requested": "(915, 412)",
+      "rng": "451",
+      "safe_view": "(1166.667, 522.3495)",
+      "state": "mobile-input"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (610.8591, 197.3333), S: (93.31287, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1013.931, 629.3894)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "visible"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-7.465019, 212.1334), S: (93.31288, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(398.3552, 644.1237)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "slight"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-54.12145, 212.1334), S: (93.31288, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(351.9061, 644.1237)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (73.19143, 212.1334), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "clipped"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00001, 22.00004), S: (93.31289, 82.54601)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(444.6137, 454.8353)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 128.0), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "occluded"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-157.3129, 212.1334), S: (93.31288, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(249.1733, 644.1237)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 236.0748), S: (188.0, 29.99998)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "offscreen"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-157.3129, 212.1334), S: (93.31288, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(249.1733, 644.1237)"
+        },
+        {
+          "bounds": "[P: (-163.3128, 296.0001), S: (91.95154, 91.95154)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(243.5471, 737.4879)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 236.0748), S: (188.0, 29.99998)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "multiple"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-157.3129, 212.1334), S: (93.31288, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(249.1733, 644.1237)"
+        },
+        {
+          "bounds": "[P: (-163.3128, 296.0001), S: (91.95154, 91.95154)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(243.5471, 737.4879)"
+        },
+        {
+          "bounds": "[P: (-213.3129, 197.3334), S: (134.7926, 121.9873)]",
+          "id": 3,
+          "kind": "boss",
+          "position": "(214.9158, 667.6634)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 238.8987), S: (188.0, 29.99998)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "priority"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (610.8591, 197.3333), S: (93.31287, 82.54599)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1013.931, 629.3894)"
+        },
+        {
+          "bounds": "[P: (725.9458, 179.5911), S: (134.7926, 121.9873)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(1150.0, 650.0)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 238.8987), S: (188.0, 29.99998)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "big-hater"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.00001, 22.00004), S: (93.31289, 82.54601)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(444.6137, 454.8353)"
+        },
+        {
+          "bounds": "[P: (4.183769, 2.498871), S: (163.0991, 136.1405)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(445.2006, 489.1271)"
+        }
+      ],
+      "camera": "(888.0, 600.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 150.6394), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "telegraph"
+    },
+    {
+      "bosses": [],
+      "camera": "(888.0, 600.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 150.6394), S: (188.0, 30.0)]",
+      "flex_time": 6.0,
+      "joystick_active": true,
+      "joystick_owner": 0,
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "state": "mobile-input"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (266.0001, 439.3365), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1082.621, 515.5583)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "visible"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-7.698792, 472.2867), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(818.4108, 547.3662)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "",
+      "cue_rect": "[P: (0.0, 0.0), S: (1.0, 23.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "slight"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-55.81586, 472.2867), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(771.9617, 547.3662)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (74.41842, 472.2867), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "clipped"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.0, 22.00001), S: (96.23428, 85.13033)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(863.4907, 112.6895)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (150.3333, 288.0), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "occluded"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-160.2343, 472.2867), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(671.1631, 547.3662)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 472.2867), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "offscreen"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-160.2343, 472.2867), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(671.1631, 547.3662)"
+        },
+        {
+          "bounds": "[P: (-166.2342, 659.0047), S: (94.83031, 94.83032)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(665.7183, 737.4816)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "REPLY GUY",
+      "cue_rect": "[P: (30.0, 472.2867), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "multiple"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (-160.2343, 472.2867), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(671.1631, 547.3662)"
+        },
+        {
+          "bounds": "[P: (-166.2342, 659.0047), S: (94.83031, 94.83032)]",
+          "id": 2,
+          "kind": "mod-supremo",
+          "position": "(665.7183, 737.4816)"
+        },
+        {
+          "bounds": "[P: (-216.2343, 439.3365), S: (139.0126, 125.8065)]",
+          "id": 3,
+          "kind": "boss",
+          "position": "(638.5981, 553.8323)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (30.0, 439.3365), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "priority"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (266.0001, 439.3365), S: (96.23428, 85.13031)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(1082.621, 515.5583)"
+        },
+        {
+          "bounds": "[P: (313.5329, 538.9578), S: (139.0127, 125.8065)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(1150.0, 650.0)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "",
+      "cue_rect": "[P: (30.0, 439.3365), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "big-hater"
+    },
+    {
+      "bosses": [
+        {
+          "bounds": "[P: (39.0, 22.00001), S: (96.23428, 85.13033)]",
+          "id": 1,
+          "kind": "reply-guy",
+          "position": "(863.4907, 112.6895)"
+        },
+        {
+          "bounds": "[P: (3.751228, 2.01355), S: (168.2053, 140.4028)]",
+          "id": 2,
+          "kind": "boss",
+          "position": "(864.7123, 147.1021)"
+        }
+      ],
+      "camera": "(1000.0, 543.0)",
+      "cue": "BIG HATER",
+      "cue_rect": "[P: (150.3333, 288.0), S: (188.0, 30.0)]",
+      "flex_time": 0.0,
+      "joystick_active": false,
+      "joystick_owner": -1,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "telegraph"
+    },
+    {
+      "bosses": [],
+      "camera": "(1000.0, 543.0)",
+      "cue": "",
+      "cue_rect": "[P: (150.3333, 288.0), S: (188.0, 30.0)]",
+      "flex_time": 6.0,
+      "joystick_active": true,
+      "joystick_owner": 0,
+      "readback": "(390, 843)",
+      "requested": "(390, 844)",
+      "rng": "451",
+      "safe_view": "(466.6667, 1098.341)",
+      "state": "mobile-input"
+    }
+  ],
+  "raw_capture_hashes": [
+    {
+      "file": "visible-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "471413715e77248570f91ac746fcb63befe116c9f257fc14062781ebd3a80587"
+    },
+    {
+      "file": "slight-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "37af33bf245ed40b948c289248a9a6c2bb844354c359a5cbd65b035fa909653d"
+    },
+    {
+      "file": "clipped-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "dfdbd62ae36998c7315c040209aacd6e7c935e771998b36f5185523a5d1a5d09"
+    },
+    {
+      "file": "occluded-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "049047c35c9d67d942cd7726b6768c864416c10503da231e57d1a42e14d9a16e"
+    },
+    {
+      "file": "offscreen-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "d7476b05f61ba0d78fad21b70f42e1d55865748891b852d56d1ffd0a5ea88139"
+    },
+    {
+      "file": "multiple-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "d7476b05f61ba0d78fad21b70f42e1d55865748891b852d56d1ffd0a5ea88139"
+    },
+    {
+      "file": "priority-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "6c43c0226488536b87aa41e30a5118cb81692735ee5d1e23f6100fe7e7f5dbf3"
+    },
+    {
+      "file": "big-hater-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "bd1172de4b0dcc73523826d2f0899ea5dbb3f5b4f08428c6cc55a68c7e9e2683"
+    },
+    {
+      "file": "telegraph-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "3903391af717e68b0e9215025dc35cb8a0d5a762dfb38a88a97f4e4e05d292e3"
+    },
+    {
+      "file": "mobile-input-1920x1080.png",
+      "requested": [
+        1920,
+        1080
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "sha256": "a5e26d8f69db0ebd6cb4dcf1e5ab5c1649a9014e9904fceb980865ff22963b58"
+    },
+    {
+      "file": "visible-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "e7d78e2e8f374d7d99c2718d0a11e7a161939631ff17de1135a0cd3be61a4fa7"
+    },
+    {
+      "file": "slight-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "b9165ea9b08a1f657e16c353f3ba594d791ce899bdbd31f2159e33dd7fd70c3f"
+    },
+    {
+      "file": "clipped-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "48b85cbea3e81c59f751ea0cbb24a5fc0050c3b3232ed5b2e1736fa51271856a"
+    },
+    {
+      "file": "occluded-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "cfe63d9d7665e4f569f41e4d4bdcf8b033b7761122651b7cfc55eb476e456c37"
+    },
+    {
+      "file": "offscreen-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "852292975fbd19a1f921272eb8da5dcfa4fd2340ad85ebdd44e3c2d21ee16fce"
+    },
+    {
+      "file": "multiple-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "852292975fbd19a1f921272eb8da5dcfa4fd2340ad85ebdd44e3c2d21ee16fce"
+    },
+    {
+      "file": "priority-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "e19ceff7c6a71baa893890e213a0b79fa7db0cb2e8b92c87759fd2a0afee055a"
+    },
+    {
+      "file": "big-hater-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "119ed98fa709f6e939070b722b5cb9247c15b3a523d08cb11535ec3bf14fa264"
+    },
+    {
+      "file": "telegraph-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "255eeff16d0f98226b08260b9dccb43bc0988290497625c1280687f3b29976a5"
+    },
+    {
+      "file": "mobile-input-1600x900.png",
+      "requested": [
+        1600,
+        900
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "sha256": "ba157a30d731fd9b5127f3c46d8c6c3f27f559c2c8979f4e808db4e7632f93ee"
+    },
+    {
+      "file": "visible-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "e26c0f5f20cf9f518e1ce3c018fcc65a4be114c47d99bd5640767eb4fdeb2766"
+    },
+    {
+      "file": "slight-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "ff0b649e929997839b1cc4c52ebe984d81e29494792b5f37e4b8303913cecf4d"
+    },
+    {
+      "file": "clipped-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "04eaafe9ae49744f5ce1349ad8656485113e8e8f0c40e334cac439bc645dc0cc"
+    },
+    {
+      "file": "occluded-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "7f432eb517fae18cdf75e7ac93529970ca90278acbe91a5a5015046b16b174a2"
+    },
+    {
+      "file": "offscreen-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "444afa5027cdabb322e690e5aad01d19cd0243899508d7571c6fe4d8dd409f5f"
+    },
+    {
+      "file": "multiple-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "444afa5027cdabb322e690e5aad01d19cd0243899508d7571c6fe4d8dd409f5f"
+    },
+    {
+      "file": "priority-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "f4608ccc5472b209f6199a13ed2630c2295a4374299d3b75d4917e32e1cebeb1"
+    },
+    {
+      "file": "big-hater-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "6aa5b642b490836a48cc4bc977429ec266f5f5ac560ad5ba6ce6aae81f781f5d"
+    },
+    {
+      "file": "telegraph-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "7561fa3e717ff64ff28352278987fd85b19f634360a6fe2762033d735a042717"
+    },
+    {
+      "file": "mobile-input-1280x720.png",
+      "requested": [
+        1280,
+        720
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "sha256": "7b166b6b8ae3ea967293a59cc466252fa0042641684b87c7c4960d61a4a0c999"
+    },
+    {
+      "file": "visible-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "e3b5020fd3341a4327128417ab38fea66b1487012eef81a9136f9e8cbd21dcb6"
+    },
+    {
+      "file": "slight-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "0f88e7b6be521a2e038a6b15453282ad03b6f3ab62b8442c9d367ca8756b80a2"
+    },
+    {
+      "file": "clipped-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "496c723073e5b7d99c27cc2123277ee537cb2309e42bc53fb837eca187b09dc4"
+    },
+    {
+      "file": "occluded-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "82eecd212920b860f472f081a99f1743aa5480439e41c598e0079b918b26a3b1"
+    },
+    {
+      "file": "offscreen-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "6b89c1438c2a2fc5ee7cb22d208b7e3d49e14aba1828e6dff1dd707fc6585042"
+    },
+    {
+      "file": "multiple-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "6b89c1438c2a2fc5ee7cb22d208b7e3d49e14aba1828e6dff1dd707fc6585042"
+    },
+    {
+      "file": "priority-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "cf365f895972dfef7d4efcede14b0b026b710bac5e9f69f0b9dc81af534c4b89"
+    },
+    {
+      "file": "big-hater-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "bd35ac3e3e6054a7af657ecef00b1d7cb9f2137a2eac52d2bc3ce424982c1bca"
+    },
+    {
+      "file": "telegraph-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "350ee846187f9cb4428b1b558a1cfda10cb558241fa25f1570714f7706a40409"
+    },
+    {
+      "file": "mobile-input-915x412.png",
+      "requested": [
+        915,
+        412
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "sha256": "4efd625851749d8f1acc91383206e16d96c03f3b7c25c37ef20b51b2c214988e"
+    },
+    {
+      "file": "visible-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "37acaea05a8bc72c0212650ceb6b6025d8bd34cce1de8bb607b75687790c9e09"
+    },
+    {
+      "file": "slight-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "5148d92bec7f179567b775c125a020b07d528ac69aee3d186a4d460afc64ddb9"
+    },
+    {
+      "file": "clipped-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "6cd8fe817f61267b33c9ba4aa94c91fec044478380331ff4015e9bdbf0d1e828"
+    },
+    {
+      "file": "occluded-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "e38b383b2c2c5446aad4b1cbfcdfae1d45506d48bef7120d0172c86e88d4a877"
+    },
+    {
+      "file": "offscreen-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "b79a80b708f48dc66d09d46a6567207efad50ddec3da930fd1fb1c8e3454fb4e"
+    },
+    {
+      "file": "multiple-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "b79a80b708f48dc66d09d46a6567207efad50ddec3da930fd1fb1c8e3454fb4e"
+    },
+    {
+      "file": "priority-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "47f79797981fd5cf89a36d437cd938a429b7373fc1fca6a232f3c2cf0e6a7f49"
+    },
+    {
+      "file": "big-hater-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "c8b4c427b34ec02b3c4acae33a296cb766c9071f01710b9f5123b7527fabacbc"
+    },
+    {
+      "file": "telegraph-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "337bcd119bc48c39d149e6c1449afd996273aa8cb1bcc036b66ba44b81c3b57a"
+    },
+    {
+      "file": "mobile-input-844x390.png",
+      "requested": [
+        844,
+        390
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "sha256": "d50f86a261dec7d7fba19b1d037fe8bdc77ce127dc2911a2431c9d5b0b331d2a"
+    },
+    {
+      "file": "visible-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "b43dcefa91c03d2a78d4f2b74ef0803c14e74c444c17d777080aaa20b3353206"
+    },
+    {
+      "file": "slight-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "23ad4cd5ad54fe7ded4c8d303306c84937d27787ba662b8d1bb602eac1160530"
+    },
+    {
+      "file": "clipped-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "f527a9f7c9a160e9ce0487a724bd48e87b1c96bb3fb7aa7595e1e1054bcb4920"
+    },
+    {
+      "file": "occluded-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "35ce5d63a44105e89db7f7572639213451b9b83a3dcc082553f8d465cd2b4516"
+    },
+    {
+      "file": "offscreen-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "9ee5790f9cae75bf817d3700f9d478f631acc20220f43a1b33aabd9d9591a694"
+    },
+    {
+      "file": "multiple-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "9ee5790f9cae75bf817d3700f9d478f631acc20220f43a1b33aabd9d9591a694"
+    },
+    {
+      "file": "priority-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "676c8cf6ea05ff94aeb355b36802f7fdb0d53f719f708afc08b25d0baef7a672"
+    },
+    {
+      "file": "big-hater-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "89b8f0a506ac5ad847687b797caeb2a781a5d9142bd91fea81bd61f3378fb279"
+    },
+    {
+      "file": "telegraph-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "ed614a5ccb57339882ddd7176b7057c53c138b8d5f3fbda1c653b3d56eddb683"
+    },
+    {
+      "file": "mobile-input-390x844.png",
+      "requested": [
+        390,
+        844
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "sha256": "eb4ff75a9b106f356b63c968fa46e0f7b504f1c318ee19eb2e9e5ccd298c0c06"
+    }
+  ],
+  "matched_before_after": [
+    "visible",
+    "slight",
+    "occluded",
+    "offscreen"
+  ],
+  "recording": "Actual offline Godot Movie Maker 1280x720, fixed 30 fps, 392 frames / 13.0667 s, controlled canonical actor trajectories. Not delivered rendering FPS, human play or physical-device QA. H264 encode only; no generated imagery.",
+  "runtime_source_sha256": "e01d533e287ac619140c4a39feaee6e874ac12147204ee3c998936ff93f32b1a",
+  "baseline_overlay_sha256": "af9a36d90349373156e83dbc11108f05ac2111b2fd885fe96df4d9ce62f54515",
+  "assets_and_gameplay_unchanged": true,
+  "limitations": [
+    "Headless CPU cost is not mobile FPS.",
+    "Contact sheets resize/letterbox actual frames for overview; full-size offscreen frames retain native readback.",
+    "Raw PNGs are reproducible with the committed fixture; 60 native states are represented by six overview sheets plus full-size selected states.",
+    "Review browser/physical Pixel 8a regression on the recovery build remains pending.",
+    "Main reconciliation and M0 artistic acceptance remain separate owner decisions."
+  ]
+}

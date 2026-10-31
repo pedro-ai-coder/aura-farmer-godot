@@ -1,0 +1,110 @@
+[
+  {
+    "confirmation_parent": "@Control@212",
+    "current_hero": "cool-kid",
+    "flex": "[P: (1114.0, 554.0), S: (144.0, 144.0)]",
+    "hp": "[P: (82.0, 79.0), S: (280.0, 29.0)]",
+    "logical_view": "(1280.0, 720.0)",
+    "pixels": [
+      1600,
+      900
+    ],
+    "portrait_visible": true,
+    "selected_hero": "cool-kid",
+    "shield": 0.0,
+    "shield_fill": "[P: (21.0, 112.0), S: (0.0, 11.0)]",
+    "shield_text": "[P: (23.0, 108.0), S: (340.0, 19.0)]",
+    "shield_track": "[P: (18.0, 109.0), S: (350.0, 17.0)]",
+    "state": "hero-menu"
+  },
+  {
+    "confirmation_parent": "@Control@212",
+    "current_hero": "cool-kid",
+    "flex": "[P: (1114.0, 554.0), S: (144.0, 144.0)]",
+    "hp": "[P: (82.0, 79.0), S: (280.0, 29.0)]",
+    "logical_view": "(1280.0, 720.0)",
+    "pixels": [
+      1600,
+      900
+    ],
+    "portrait_visible": true,
+    "selected_hero": "cool-kid",
+    "shield": 0.0,
+    "shield_fill": "[P: (21.0, 112.0), S: (0.0, 11.0)]",
+    "shield_text": "[P: (23.0, 108.0), S: (340.0, 19.0)]",
+    "shield_track": "[P: (18.0, 109.0), S: (350.0, 17.0)]",
+    "state": "hero-selection"
+  },
+  {
+    "confirmation_parent": "@Control@212",
+    "current_hero": "cool-kid",
+    "flex": "[P: (1034.0, 642.0), S: (226.0, 64.0)]",
+    "hp": "[P: (82.0, 79.0), S: (280.0, 29.0)]",
+    "logical_view": "(1280.0, 720.0)",
+    "pixels": [
+      1600,
+      900
+    ],
+    "portrait_visible": false,
+    "selected_hero": "cool-kid",
+    "shield": 0.0,
+    "shield_fill": "[P: (21.0, 112.0), S: (0.0, 11.0)]",
+    "shield_text": "[P: (23.0, 108.0), S: (340.0, 19.0)]",
+    "shield_track": "[P: (18.0, 109.0), S: (350.0, 17.0)]",
+    "state": "choice-selected"
+  },
+  {
+    "confirmation_parent": "@Control@212",
+    "current_hero": "cool-kid",
+    "flex": "[P: (1034.0, 642.0), S: (226.0, 64.0)]",
+    "hp": "[P: (82.0, 79.0), S: (280.0, 29.0)]",
+    "logical_view": "(1280.0, 720.0)",
+    "pixels": [
+      1600,
+      900
+    ],
+    "portrait_visible": false,
+    "selected_hero": "cool-kid",
+    "shield": 0.0,
+    "shield_fill": "[P: (21.0, 112.0), S: (0.0, 11.0)]",
+    "shield_text": "[P: (23.0, 108.0), S: (340.0, 19.0)]",
+    "shield_track": "[P: (18.0, 109.0), S: (350.0, 17.0)]",
+    "state": "legendary-selected"
+  },
+  {
+    "confirmation_parent": "@Control@365",
+    "current_hero": "cool-kid",
+    "flex": "[P: (1114.0, 554.0), S: (144.0, 144.0)]",
+    "hp": "[P: (82.0, 79.0), S: (280.0, 29.0)]",
+    "logical_view": "(1280.0, 720.0)",
+    "pixels": [
+      1600,
+      900
+    ],
+    "portrait_visible": false,
+    "selected_hero": "cool-kid",
+    "shield": 0.0,
+    "shield_fill": "[P: (21.0, 112.0), S: (0.0, 11.0)]",
+    "shield_text": "[P: (23.0, 108.0), S: (340.0, 19.0)]",
+    "shield_track": "[P: (18.0, 109.0), S: (350.0, 17.0)]",
+    "state": "paused"
+  },
+  {
+    "confirmation_parent": "@Control@365",
+    "current_hero": "cool-kid",
+    "flex": "[P: (1034.0, 642.0), S: (226.0, 64.0)]",
+    "hp": "[P: (82.0, 79.0), S: (280.0, 29.0)]",
+    "logical_view": "(1280.0, 720.0)",
+    "pixels": [
+      1600,
+      900
+    ],
+    "portrait_visible": false,
+    "selected_hero": "cool-kid",
+    "shield": 0.0,
+    "shield_fill": "[P: (21.0, 112.0), S: (0.0, 11.0)]",
+    "shield_text": "[P: (23.0, 108.0), S: (340.0, 19.0)]",
+    "shield_track": "[P: (18.0, 109.0), S: (350.0, 17.0)]",
+    "state": "confirm-exit"
+  }
+]

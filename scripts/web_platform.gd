@@ -3,6 +3,8 @@ extends RefCounted
 
 static func install() -> void:
     if OS.has_feature("web"):
+        if OS.has_feature("performance_review"):
+            JavaScriptBridge.eval(FileAccess.get_file_as_string("res://web/performance.js"),true)
         JavaScriptBridge.eval(FileAccess.get_file_as_string("res://web/platform.js"),true)
 
 static func metrics(mode: String = "") -> Dictionary:
