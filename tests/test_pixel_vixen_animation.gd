@@ -39,7 +39,22 @@ func _verify() -> void:
                 input["defeat"] = 0.2
         var pose: Dictionary = VixenPose.pose(input)
         expect(str(pose.get("sheet","")) == "pixel-vixen", situation + " comes from real candidate atlas")
-        expect(int(pose["frame"]) >= 0 and int(pose["frame"]) < 20, situation + " uses a valid atlas cell")
+        expect(int(pose["frame"]) >= 0 and int(pose["frame"]) < 49, situation + " uses a valid V2 atlas cell")
+        expect(int(pose["legacy_frame"]) >= 0 and int(pose["legacy_frame"]) < 20, situation + " remains valid for legacy fallback")
+        var original: Dictionary = preload("res://scripts/hero_animation.gd").pose("sigma",input)
+        expect(str(pose["state"]) == str(original["state"]), situation + " shares canonical Sigma pose timing")
+    var main := load("res://scenes/main.tscn").instantiate()
+    root.add_child(main)
+    main.hero_appearance = "female"
+    main.start_run(0)
+    expect(main.mode == "playing" and main.hero["id"] == "sigma", "Pixel Vixen plays the exact Sigma gameplay kit")
+    expect(main.hero_pose()["sheet"] == "pixel-vixen", "Live gameplay renders the female appearance")
+    expect(main.hero["starter"] == "no-cap" and main.hero["flex"] == "Deadpan Verdict", "No Cap and Deadpan Verdict stay canonical")
+    main.queue_free()
+    if ResourceLoader.exists(Visuals.VIXEN_V2_ATLAS_PATH):
+        expect(ResourceLoader.exists(Visuals.VIXEN_V2_PORTRAIT_PATH), "V2 atlas and portrait must be paired")
+        var atlas: Texture2D = load(Visuals.VIXEN_V2_ATLAS_PATH)
+        expect(atlas.get_width() == 896 and atlas.get_height() == 672, "V2 atlas must have 49 128x96 cells")
     if failures.is_empty():
         print("PASS: Pixel Vixen atlas import, cosmetic gate, pure poses, and original Sigma art isolation")
         quit(0)
