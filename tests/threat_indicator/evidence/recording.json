@@ -1,0 +1,3167 @@
+{
+  "changes": [
+    {
+      "case": "visible",
+      "frame": 0,
+      "id": -1,
+      "phase": 0,
+      "seconds": 0.0,
+      "text": ""
+    },
+    {
+      "case": "HUD occlusion",
+      "frame": 135,
+      "id": 1,
+      "phase": 1,
+      "seconds": 4.5,
+      "text": "REPLY GUY"
+    },
+    {
+      "case": "offscreen departure",
+      "frame": 210,
+      "id": 1,
+      "phase": 2,
+      "seconds": 7.0,
+      "text": "REPLY GUY"
+    },
+    {
+      "case": "Big Hater priority",
+      "frame": 276,
+      "id": 3,
+      "phase": 2,
+      "seconds": 9.2,
+      "text": "BIG HATER"
+    },
+    {
+      "case": "stable return",
+      "frame": 342,
+      "id": -1,
+      "phase": 0,
+      "seconds": 11.4,
+      "text": ""
+    }
+  ],
+  "description": "Actual Godot fixed-30-fps offline recording, controlled trajectories; not human gameplay or device FPS",
+  "frames": [
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 0,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 1,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 2,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 3,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 4,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 5,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 6,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 7,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 8,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 9,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 10,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 11,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 12,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 13,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 14,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 15,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 16,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 17,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 18,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 19,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 20,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 21,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 22,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 23,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 24,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 25,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 26,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 27,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 28,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 29,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 30,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 31,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 32,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 33,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 34,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 35,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 36,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 37,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 38,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 39,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 40,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 41,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 42,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 43,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 44,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 45,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 46,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 47,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 48,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 49,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 50,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 51,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 52,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 53,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 54,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 55,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 56,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 57,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 58,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "visible",
+      "frame": 59,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 60,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 61,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 62,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 63,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 64,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 65,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 66,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 67,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 68,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 69,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 70,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 71,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 72,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 73,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 74,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 75,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 76,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 77,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 78,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 79,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 80,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 81,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 82,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 83,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 84,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 85,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 86,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 87,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 88,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 89,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 90,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 91,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 92,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 93,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 94,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 95,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 96,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 97,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 98,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 99,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 100,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 101,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 102,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 103,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 104,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 105,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 106,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 107,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 108,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 109,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 110,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 111,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 112,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 113,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 114,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 115,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 116,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 117,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 118,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "slight boundary motion",
+      "frame": 119,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 120,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 121,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 122,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 123,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 124,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 125,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 126,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 127,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 128,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 129,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 130,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 131,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 132,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 133,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "case": "HUD occlusion",
+      "frame": 134,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 135,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 136,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 137,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 138,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 139,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 140,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 141,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 142,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 143,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 144,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 145,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 146,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 147,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 148,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 149,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 150,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 151,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 152,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 153,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 154,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 155,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 156,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 157,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 158,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 159,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 160,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 161,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 162,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 163,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 164,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 165,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 166,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 167,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 168,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 169,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 170,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 171,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 172,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 173,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 174,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 175,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 176,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 177,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 178,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "HUD occlusion",
+      "frame": 179,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 148.0), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 180,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (32.96292, 143.1324), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 181,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (26.92575, 151.1213), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 182,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (20.88865, 159.1102), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 183,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (14.85154, 167.0991), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 184,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.814365, 175.088), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 185,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 183.0769), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 186,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 191.0657), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 187,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 199.0546), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 188,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 207.0435), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 189,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 215.0324), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 190,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 223.0213), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 191,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 231.0102), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 192,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 238.9991), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 193,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 246.9881), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 194,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (74.77945, 141.8334), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 195,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (68.74234, 149.8222), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 196,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (62.7052, 157.8111), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 197,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (56.66808, 165.8), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 198,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (50.63097, 173.7889), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 199,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (44.59386, 181.7778), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 200,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (38.55676, 189.7667), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 201,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (32.51965, 197.7556), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 202,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (26.48251, 205.7444), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 203,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (20.4454, 213.7334), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 204,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (14.40829, 221.7222), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 205,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.371178, 229.7111), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 206,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 237.7), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 207,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 245.6889), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 208,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 253.6778), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 209,
+      "id": 1,
+      "phase": 1,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 310.2797), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 210,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 316.326), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 211,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 322.2733), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 212,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 328.1239), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 213,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 333.8802), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 214,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 339.5445), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 215,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 216,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 217,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 218,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 219,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 220,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 221,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 222,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 223,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 224,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 225,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 226,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 227,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 228,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 229,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 230,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 231,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 232,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 233,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 234,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 235,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 236,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 237,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 238,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "offscreen departure",
+      "frame": 239,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 240,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 241,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 242,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 243,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 244,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 245,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 246,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 247,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 248,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 249,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 250,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 251,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 252,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 253,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 254,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 255,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 256,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 257,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 258,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 259,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 260,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 261,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 262,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 263,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 264,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 265,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 266,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 267,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 268,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "two event bosses",
+      "frame": 269,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 270,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 271,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 272,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 273,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 274,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 345.1189), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 275,
+      "id": 1,
+      "phase": 2,
+      "text": "REPLY GUY"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 276,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 277,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 278,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 279,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 280,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 281,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 282,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 283,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 284,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 285,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 286,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 287,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 288,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 289,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 290,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 291,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 292,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 293,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 294,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 295,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 296,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 297,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 298,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 299,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 300,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 301,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 302,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 303,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 304,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 305,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 306,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 307,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 308,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 309,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 310,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 311,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 312,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 313,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 314,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 315,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 316,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 317,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 318,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 319,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 320,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 321,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 322,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 323,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 324,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 325,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 326,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 327,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 328,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "Big Hater priority",
+      "frame": 329,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 346.8208), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 330,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 347.0075), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 331,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 347.2369), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 332,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 347.5256), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 333,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 347.8997), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 334,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 348.404), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 335,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 349.1205), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 336,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 350.2192), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 337,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 352.1169), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 338,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 356.1827), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 339,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (8.0, 371.0855), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 340,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 341,
+      "id": 3,
+      "phase": 2,
+      "text": "BIG HATER"
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 342,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 343,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 344,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 345,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 346,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 347,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 348,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 349,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 350,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 351,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 352,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 353,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 354,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 355,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 356,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 357,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 358,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 359,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 360,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 361,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 362,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 363,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 364,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 365,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 366,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 367,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 368,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 369,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 370,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 371,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 372,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 373,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 374,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 375,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 376,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 377,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 378,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 379,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 380,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 381,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 382,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 383,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 384,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 385,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 386,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 387,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 388,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    },
+    {
+      "anchor": "[P: (1062.0, 423.4149), S: (210.0, 30.0)]",
+      "case": "stable return",
+      "frame": 389,
+      "id": -1,
+      "phase": 0,
+      "text": ""
+    }
+  ]
+}

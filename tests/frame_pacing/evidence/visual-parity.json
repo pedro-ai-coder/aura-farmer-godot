@@ -1,0 +1,62 @@
+[
+  {
+    "requested_viewport": "1280x720",
+    "actual_capture_pixels": [
+      1280,
+      720
+    ],
+    "before_sha256": "729cec8fef47791e9a407177b012878e9c9c0e7262be0804d1f15b6b6b79005a",
+    "after_sha256": "729cec8fef47791e9a407177b012878e9c9c0e7262be0804d1f15b6b6b79005a",
+    "identical_pixels": true
+  },
+  {
+    "requested_viewport": "1600x900",
+    "actual_capture_pixels": [
+      1600,
+      900
+    ],
+    "before_sha256": "42eb311e5343e4ed3007801a4e49e534a9a987f73e462cab803358cdc45a9327",
+    "after_sha256": "42eb311e5343e4ed3007801a4e49e534a9a987f73e462cab803358cdc45a9327",
+    "identical_pixels": true
+  },
+  {
+    "requested_viewport": "1920x1080",
+    "actual_capture_pixels": [
+      1920,
+      1080
+    ],
+    "before_sha256": "8bee24263c3f7cdf1b4b85f15d6918a3e450dc0317e6c4e5aa34019a22b468a0",
+    "after_sha256": "8bee24263c3f7cdf1b4b85f15d6918a3e450dc0317e6c4e5aa34019a22b468a0",
+    "identical_pixels": true
+  },
+  {
+    "requested_viewport": "390x844",
+    "actual_capture_pixels": [
+      390,
+      843
+    ],
+    "before_sha256": "17791e8e5bfbe2ac34d42946e5109f24b4fd8f1960a33b190d02ae172f69210d",
+    "after_sha256": "17791e8e5bfbe2ac34d42946e5109f24b4fd8f1960a33b190d02ae172f69210d",
+    "identical_pixels": true
+  },
+  {
+    "requested_viewport": "844x390",
+    "actual_capture_pixels": [
+      843,
+      390
+    ],
+    "before_sha256": "3e0df84dc622fd520a3076ffbd69fcfea5401f2fee33c1e97aaf5cb9cdba63ba",
+    "after_sha256": "3e0df84dc622fd520a3076ffbd69fcfea5401f2fee33c1e97aaf5cb9cdba63ba",
+    "identical_pixels": true
+  },
+  {
+    "requested_viewport": "915x412",
+    "actual_capture_pixels": [
+      915,
+      411
+    ],
+    "before_sha256": "cc05aef26bf4f2517c00ecb500d62cac0f580cfb322a87a8c4c447fbb2c6aba3",
+    "after_sha256": "cc05aef26bf4f2517c00ecb500d62cac0f580cfb322a87a8c4c447fbb2c6aba3",
+    "identical_pixels": true
+  }
+]

@@ -51,6 +51,22 @@ func verify() -> void:
         skin.refresh()
         expect(is_zero_approx(skin.shield_fill.size.x),"Zero shield is a visibly empty bar")
 
+        game.aura=100.0
+        game.flex_lock=0.0
+        game.flex_time=0.0
+        game._update_text()
+        skin.refresh()
+        expect(skin.aura_arc.visual_state=="ready" and skin.aura_arc.ready_introduction>0.0,"Fully charged Flex enters an animated READY state")
+        expect(game.flex_button.disabled==false,"Animation never activates Flex or disables the actual action")
+        skin.aura_arc.set_pressed(true)
+        expect(skin.aura_arc.push_target==1.0,"Real circular dial has tactile pressed response")
+        skin.aura_arc.set_pressed(false)
+        expect(skin.aura_arc.push_target==0.0,"Releasing Flex restores its shape")
+        game.profile["settings"]["reducedMotion"]=true
+        skin.refresh()
+        expect(skin.aura_arc.reduced_motion,"Reduced Motion stops continuous READY pulsing")
+        game.profile["settings"]["reducedMotion"]=false
+
         var old_runs: int=int(game.profile["runs"])
         var old_clock: float=game.run_time
         await click(game.pause_button)
@@ -71,7 +87,7 @@ func verify() -> void:
         await process_frame
 
     if failures.is_empty():
-        print("PASS: Real Quit/STAY/Confirm clicks, hero identity, separate Shield on desktop/mobile")
+        print("PASS: Real Quit/STAY/Confirm clicks, hero identity, separate Shield and animated READY Flex on desktop/mobile")
         quit(0)
     else:
         for failure in failures:

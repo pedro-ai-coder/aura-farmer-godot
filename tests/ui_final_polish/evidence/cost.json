@@ -1,0 +1,36 @@
+{
+  "environment": "Godot 4.7.2 headless CPU, 1280x720 logical, warmed caches; no rendering FPS, browser, emulator or physical-device claim",
+  "results": [
+    {
+      "actor_sample": {
+        "median_ms": 0.851,
+        "p95_ms": 1.1,
+        "p99_ms": 1.177
+      },
+      "actors": 100,
+      "between_actor_samples": {
+        "median_ms": 0.04,
+        "p95_ms": 0.052,
+        "p99_ms": 0.062
+      },
+      "hazards": 0,
+      "workload": "100 actors, no hazards"
+    },
+    {
+      "actor_sample": {
+        "median_ms": 0.985,
+        "p95_ms": 1.214,
+        "p99_ms": 1.328
+      },
+      "actors": 100,
+      "between_actor_samples": {
+        "median_ms": 0.123,
+        "p95_ms": 0.214,
+        "p99_ms": 0.299
+      },
+      "hazards": 3,
+      "workload": "100 actors, three boss hazards"
+    }
+  ],
+  "samples_per_path": 120
+}

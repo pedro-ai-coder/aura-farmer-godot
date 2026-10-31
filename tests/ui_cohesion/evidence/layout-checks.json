@@ -1,0 +1,173 @@
+{
+  "failures": [],
+  "layout_cases": [
+    {
+      "content_height": 570.0,
+      "mode": "build",
+      "pixels": "(1920, 1080)",
+      "scroll_height": 570.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "options",
+      "pixels": "(1920, 1080)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "won",
+      "pixels": "(1920, 1080)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "lost",
+      "pixels": "(1920, 1080)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 570.0,
+      "mode": "build",
+      "pixels": "(1600, 900)",
+      "scroll_height": 570.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "options",
+      "pixels": "(1600, 900)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "won",
+      "pixels": "(1600, 900)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "lost",
+      "pixels": "(1600, 900)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 570.0,
+      "mode": "build",
+      "pixels": "(1280, 720)",
+      "scroll_height": 570.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "options",
+      "pixels": "(1280, 720)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "won",
+      "pixels": "(1280, 720)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "lost",
+      "pixels": "(1280, 720)",
+      "scroll_height": 328.0,
+      "view": "(1280.0, 720.0)"
+    },
+    {
+      "content_height": 606.0,
+      "mode": "build",
+      "pixels": "(915, 412)",
+      "scroll_height": 399.0,
+      "view": "(1220.0, 549.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "options",
+      "pixels": "(915, 412)",
+      "scroll_height": 328.0,
+      "view": "(1220.0, 549.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "won",
+      "pixels": "(915, 412)",
+      "scroll_height": 328.0,
+      "view": "(1220.0, 549.0)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "lost",
+      "pixels": "(915, 412)",
+      "scroll_height": 328.0,
+      "view": "(1220.0, 549.0)"
+    },
+    {
+      "content_height": 606.0,
+      "mode": "build",
+      "pixels": "(844, 390)",
+      "scroll_height": 343.333343505859,
+      "view": "(1071.682, 493.3333)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "options",
+      "pixels": "(844, 390)",
+      "scroll_height": 321.333343505859,
+      "view": "(1071.682, 493.3333)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "won",
+      "pixels": "(844, 390)",
+      "scroll_height": 321.333343505859,
+      "view": "(1071.682, 493.3333)"
+    },
+    {
+      "content_height": 322.0,
+      "mode": "lost",
+      "pixels": "(844, 390)",
+      "scroll_height": 321.333343505859,
+      "view": "(1071.682, 493.3333)"
+    },
+    {
+      "content_height": 1410.0,
+      "mode": "build",
+      "pixels": "(390, 844)",
+      "scroll_height": 975.0,
+      "view": "(520.0, 1125.0)"
+    },
+    {
+      "content_height": 400.0,
+      "mode": "options",
+      "pixels": "(390, 844)",
+      "scroll_height": 328.0,
+      "view": "(520.0, 1125.0)"
+    },
+    {
+      "content_height": 400.0,
+      "mode": "won",
+      "pixels": "(390, 844)",
+      "scroll_height": 328.0,
+      "view": "(520.0, 1125.0)"
+    },
+    {
+      "content_height": 400.0,
+      "mode": "lost",
+      "pixels": "(390, 844)",
+      "scroll_height": 328.0,
+      "view": "(520.0, 1125.0)"
+    }
+  ]
+}

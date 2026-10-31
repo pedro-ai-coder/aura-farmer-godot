@@ -1,0 +1,33 @@
+{
+  "desktop_reserved_rect_area": {
+    "before": 275406,
+    "after": 213496,
+    "relative_reduction_percent": 22.479539298344985
+  },
+  "mobile_controls_compared": 10,
+  "mobile_rectangles_identical": true,
+  "mobile_font_sizes_identical": true,
+  "targeted_checks": [
+    {
+      "test": "hud",
+      "pass": true
+    },
+    {
+      "test": "recovery",
+      "pass": true
+    },
+    {
+      "test": "touch",
+      "pass": true
+    },
+    {
+      "test": "fast-path",
+      "pass": true
+    },
+    {
+      "test": "state",
+      "pass": true
+    }
+  ],
+  "native_captures": "controlled Godot runtime; not physical-device or human testing"
+}

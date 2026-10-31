@@ -1,0 +1,106 @@
+{
+  "baseline_branch": "fix/m0-navigation-ui-recovery",
+  "baseline_commit": "f94282f01b366e2c8f585435df917c1f32a18e15",
+  "main_commit_verified": "bc690618ac1183e078c2ba84cf49af9839d2d794",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "renderer": "Compatibility / X11 Mesa llvmpipe software",
+  "layout_viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1600,
+      900
+    ],
+    [
+      1280,
+      720
+    ],
+    [
+      915,
+      412
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "native_capture_viewports": [
+    [
+      1600,
+      900
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "readback_note": "844x390 native window reads back as 843x390",
+  "comparison_states_identical": true,
+  "limitations": "Controlled native Godot fixtures, not human, browser or physical-Android performance measurements. Original five creator screenshots were not attached to this message; baseline captures use the verified deployed source.",
+  "approval": "Creator review pending; no merge or production deployment authorized.",
+  "final_ci_and_web_export": "See PR checks for the exact final commit.",
+  "images": [
+    {
+      "file": "build-before-after.jpg",
+      "pixels": [
+        3200,
+        944
+      ],
+      "sha256": "e62366a00cbaa36a8296e84e8686c3ee14a75fca46ef96180a2367f8405efbda"
+    },
+    {
+      "file": "defeat.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "d12afdea32fe53bf6b8d82222a4acd948047d33b1768ec100486c4b529d15a67"
+    },
+    {
+      "file": "hud-boss.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "e3cb39a3fc13908247e5ddc9fd4a10375973e5f518c9c1572e37549664da0ca9"
+    },
+    {
+      "file": "hud-normal.jpg",
+      "pixels": [
+        1600,
+        900
+      ],
+      "sha256": "056a6b76e09e1981fcc832dc9950893e4fec8df2381cc975c0d5245d17a2c6e4"
+    },
+    {
+      "file": "mobile-before-after.jpg",
+      "pixels": [
+        1686,
+        434
+      ],
+      "sha256": "b59fc9dc2f5080dba5891d6fae94805329bc073a5c6950a72297e5b25fc04fb5"
+    },
+    {
+      "file": "settings-before-after.jpg",
+      "pixels": [
+        3200,
+        944
+      ],
+      "sha256": "94b7de0c77ef3a5a0ccb19f8c66304676f9818d00ed7cc61d26b6b06f49bada8"
+    },
+    {
+      "file": "victory-before-after.jpg",
+      "pixels": [
+        3200,
+        944
+      ],
+      "sha256": "8cd3b34aa40989edce478005b17e04958cf8ab258f25a3f5ca971d1b3ac8ac79"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "baseline": "7b5ca519df06cc7e33e01720e1e2b361acfa1112",
+  "baseline_tree": "4b71b3b5f58b399d9604fb6e7e30246efbca2441",
+  "renderer": "Actual native Godot 4.7.2 Compatibility / X11 / Mesa llvmpipe",
+  "creator_screenshots": "Four referenced screenshots were not attached; branch HEAD and PR #89 merged tree establish source baseline. Before states captured from this baseline.",
+  "before": [
+    {
+      "boss_bounds": "[P: (50.07744, 29.01288), S: (199.8452, 166.8129)]",
+      "boss_world_pos": "(325.8751, 408.9375)",
+      "flex_hit": "[P: (1090.0, 530.0), S: (184.0, 184.0)]",
+      "hazard_direction": "(0.947712, 0.319128)",
+      "hazard_shape": "line",
+      "hazard_world_pos": "(325.8751, 408.9375)",
+      "hud_intersections": [
+        "TopLeftHeroStatus"
+      ],
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "state": "near-hud",
+      "viewport_clipped": false
+    },
+    {
+      "boss_bounds": "[P: (-77.92259, -105.9871), S: (199.8452, 166.8129)]",
+      "boss_world_pos": "(221.8751, 299.25)",
+      "flex_hit": "[P: (1090.0, 530.0), S: (184.0, 184.0)]",
+      "hazard_direction": "(0.899606, 0.436702)",
+      "hazard_shape": "line",
+      "hazard_world_pos": "(221.8751, 299.25)",
+      "hud_intersections": [
+        "TopLeftHeroStatus"
+      ],
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "state": "clipped",
+      "viewport_clipped": true
+    },
+    {
+      "flex_hit": "[P: (2124.0, 1138.0), S: (226.0, 64.0)]",
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (280.0, 126.0), S: (720.0, 468.0)]",
+      "state": "options"
+    },
+    {
+      "flex_hit": "[P: (1090.0, 530.0), S: (184.0, 184.0)]",
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (280.0, 126.0), S: (720.0, 468.0)]",
+      "state": "ready"
+    }
+  ],
+  "after_retained_report": [
+    {
+      "boss_bounds": "[P: (50.07744, 29.01288), S: (199.8452, 166.8129)]",
+      "boss_world_pos": "(325.8751, 408.9375)",
+      "flex_hit": "[P: (1082.0, 522.0), S: (184.0, 184.0)]",
+      "hazard_direction": "(0.947712, 0.319128)",
+      "hazard_shape": "line",
+      "hazard_world_pos": "(325.8751, 408.9375)",
+      "hud_intersections": [
+        "TopLeftHeroStatus"
+      ],
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "state": "near-hud",
+      "viewport_clipped": false
+    },
+    {
+      "boss_bounds": "[P: (-77.92259, -105.9871), S: (199.8452, 166.8129)]",
+      "boss_world_pos": "(221.8751, 299.25)",
+      "flex_hit": "[P: (1082.0, 522.0), S: (184.0, 184.0)]",
+      "hazard_direction": "(0.899606, 0.436702)",
+      "hazard_shape": "line",
+      "hazard_world_pos": "(221.8751, 299.25)",
+      "hud_intersections": [
+        "TopLeftHeroStatus"
+      ],
+      "readback": "(1600, 900)",
+      "requested": "(1600, 900)",
+      "rng": "451",
+      "safe_view": "(1280.0, 720.0)",
+      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "state": "clipped",
+      "viewport_clipped": true
+    },
+    {
+      "boss_bounds": "[P: (582.8937, 135.8667), S: (163.0991, 136.1405)]",
+      "boss_world_pos": "(857.3385, 564.9022)",
+      "flex_hit": "[P: (925.673, 326.0), S: (164.0, 164.0)]",
+      "hazard_direction": "(-0.986776, -0.162088)",
+      "hazard_shape": "line",
+      "hazard_world_pos": "(857.3385, 564.9022)",
+      "hud_intersections": [
+        "TopCenterBossStatus"
+      ],
+      "readback": "(843, 390)",
+      "requested": "(844, 390)",
+      "rng": "451",
+      "safe_view": "(1071.682, 493.3333)",
+      "settings_panel": "[P: (0.0, 0.0), S: (0.0, 0.0)]",
+      "state": "mobile",
+      "viewport_clipped": false
+    }
+  ],
+  "matched_clipped_fixture_fields": [
+    "boss_bounds",
+    "boss_world_pos",
+    "hazard_shape",
+    "hazard_world_pos",
+    "hazard_direction",
+    "rng"
+  ],
+  "evidence": "Six JPEGs composed only from actual native captures. Comparisons preserve scale; crops explicitly labeled. No generated art.",
+  "source_sha256": {
+    "scripts/hero_clash_hud.gd": "54af194fdc3c6dfed4076e4023095b52f76caf83e3ebd0d965f0b04e9bcfffd9",
+    "scripts/hero_clash_threat_overlay.gd": "acf63b0d1277fa902caf023608fe5f730d8be4525eef3072256f85b97f273da1",
+    "scripts/hero_clash_flex_dial.gd": "7241bbb8a2eba108cf268cfca811f10e73a47b1c8bfb90235a05eeef36ebc5da",
+    "scripts/clean_cut_skin.gd": "23f08a44b951f264a30f7856039846701c6e9d347674bb96c812c78ffdbfd279",
+    "scripts/clean_cut_secondary.gd": "16073e511832018892fc8fc8ba159ba633191831219dc3cff058d84b8ef26925",
+    "web/platform.js": "b86f92e7dc44737385457aa4003342f1d30f1187f3b329b703da82076efd1772",
+    "scripts/build_web.sh": "9f0ba4a5999a0c06b9881b5f1fe93bb2ebeef8cf4b9078be724027d139d1f92d",
+    "tests/ui_final_polish/capture.gd": "a66b804365b9d12ecc5fd65bb4cbabf26558d8914878716b22b9300b6f005e51"
+  },
+  "images": {
+    "boss-hp.jpg": {
+      "size": [
+        1600,
+        900
+      ],
+      "sha256": "b0e1f44cc19d92a37122b0fe9a4ba4644b5363e958e35cd95d32f4d9c9262e2e"
+    },
+    "build-alignment.jpg": {
+      "size": [
+        916,
+        236
+      ],
+      "sha256": "f5ff100cf9a80aca6885d0dcec1df52f984a5e5ce3bd0fd13740562de25b02d3"
+    },
+    "combat-before-after.jpg": {
+      "size": [
+        3200,
+        1876
+      ],
+      "sha256": "6ba464e6a918f73ea9e6435ebdac442338ec234d624b94641ca7290850b121f0"
+    },
+    "flex-charge-ready.jpg": {
+      "size": [
+        650,
+        353
+      ],
+      "sha256": "e7899704b4f4a78252e191f248f81239a02422ad7aa0c6b565a9bc0d82a89452"
+    },
+    "mobile-landscape.jpg": {
+      "size": [
+        843,
+        390
+      ],
+      "sha256": "0d95f540e24fb3bfab8474d0394dc19bb3f83e9b6d1b402a5f6f7f8c07d10318"
+    },
+    "settings-before-after.jpg": {
+      "size": [
+        3200,
+        938
+      ],
+      "sha256": "7f327d7c0d8b7cf1def248c4a0479a741e04bff1db83e774717b9bbfdc668a1a"
+    }
+  },
+  "limits": [
+    "Synthetic safe insets are not notch/device testing. Mobile requested 844x390; native readback 843x390.",
+    "No browser gameplay, LDPlayer or physical Pixel 8a/Brave measurements. CPU microbench is not rendered FPS.",
+    "World-edge clipping remains a camera/world fact, signaled honestly; camera, enemies, hazards and simulation were not moved.",
+    "Artwork reuse changes presentation only; approved masters, HUD/button source hashes and approval status are unchanged.",
+    "CI/Web final results and preview URL are recorded on the PR after publication; no merge or production deployment authorized."
+  ],
+  "ci_correction": "Initial full CI 41118155474 caught inherited panel padding enlarging contextual Labels by 16 units. Contrast/cue surfaces now have zero content margins, and deferred-layout assertions plus the unchanged recovery_m01 suite pass. Only affected native captures were refreshed; the mandatory CI/export must rerun on the correction."
+}

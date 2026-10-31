@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "boss_bounds": "[P: (146.8322, 44.00647), S: (165.1613, 149.471)]",
+      "safe_view": "(1253.333, 706.6667)",
+      "sampling": "20 Hz actor checks; live hostile boundaries; no HUD reconstruction",
+      "settings_height": 430.000030517578,
+      "viewport": "(1920, 1080)"
+    },
+    {
+      "boss_bounds": "[P: (146.8322, 44.00644), S: (165.1613, 149.471)]",
+      "safe_view": "(1248.0, 704.0)",
+      "sampling": "20 Hz actor checks; live hostile boundaries; no HUD reconstruction",
+      "settings_height": 430.0,
+      "viewport": "(1600, 900)"
+    },
+    {
+      "boss_bounds": "[P: (146.8322, 44.00644), S: (165.1613, 149.471)]",
+      "safe_view": "(1240.0, 700.0)",
+      "sampling": "20 Hz actor checks; live hostile boundaries; no HUD reconstruction",
+      "settings_height": 430.0,
+      "viewport": "(1280, 720)"
+    },
+    {
+      "boss_bounds": "[P: (107.1334, 42.43469), S: (144.4554, 130.7321)]",
+      "safe_view": "(1166.667, 522.3495)",
+      "sampling": "20 Hz actor checks; live hostile boundaries; no HUD reconstruction",
+      "settings_height": 430.0,
+      "viewport": "(915, 412)"
+    },
+    {
+      "boss_bounds": "[P: (111.9407, 51.03459), S: (134.7926, 121.9873)]",
+      "safe_view": "(1071.682, 493.3333)",
+      "sampling": "20 Hz actor checks; live hostile boundaries; no HUD reconstruction",
+      "settings_height": 430.0,
+      "viewport": "(844, 390)"
+    },
+    {
+      "boss_bounds": "[P: (104.8413, 47.27875), S: (139.0126, 125.8064)]",
+      "safe_view": "(466.6667, 1098.341)",
+      "sampling": "20 Hz actor checks; live hostile boundaries; no HUD reconstruction",
+      "settings_height": 506.0,
+      "viewport": "(390, 844)"
+    }
+  ],
+  "failures": []
+}
