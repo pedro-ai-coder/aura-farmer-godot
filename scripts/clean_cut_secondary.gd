@@ -189,10 +189,10 @@ func layout() -> void:
     elif mode in ["won","lost"]:
         caption.text=ui.secondary.result_caption.text
         result.text=ui.secondary.result_stats.text
-        result_hero.text=game.hero["name"]
+        result_hero.text=game.HeroAppearanceScript.display_name(str(game.hero["id"]),game.hero_appearance,str(game.hero["name"]))
         var values: Array=["%02d:%02d" % [int(game.run_time)/60,int(game.run_time)%60],"%d / 5" % game.wave,str(game.level),str(game.kills),"%d / 3" % game.weapons.size(),"%d / 5" % game.passives.size(),"%.0f" % game.run_metrics["damage"],"%.0f" % game.run_metrics["healing"],"%.0f" % game.run_metrics["protection"],str(int(game.run_metrics["flexes"]))]
         for i in range(values.size()):result_values[i].text=values[i]
-        result_portrait.texture=game.art.texture(game.hero["id"])
+        result_portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance)
         results_layout()
 
 func screen_header(title: String, subtitle: String) -> void:
