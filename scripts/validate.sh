@@ -127,3 +127,7 @@ python3 -m unittest discover -s tests -p test_pixel_vixen_pack.py
 python3 scripts/verify_pixel_vixen.py
 run_check hero-appearance-selection --headless --path . --script res://tests/test_hero_appearance_selection.gd
 run_check pixel-vixen-appearance --headless --path . --script res://tests/test_pixel_vixen_animation.gd
+
+python3 scripts/verify_female_variants.py
+python3 -m unittest discover -s tests -p test_female_variants_pack.py
+run_check female-roster --headless --path . --script res://tests/test_female_roster.gd

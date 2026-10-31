@@ -5,7 +5,7 @@ const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const HeroAppearanceScript = preload("res://scripts/hero_appearance.gd")
-const PixelVixenAnimationScript = preload("res://scripts/pixel_vixen_animation.gd")
+const FemaleHeroAnimationScript = preload("res://scripts/female_hero_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const CleanCutSkinScript = preload("res://scripts/clean_cut_skin.gd")
@@ -434,6 +434,9 @@ func start_run(index: int) -> void:
     # No female gameplay atlas is approved yet. Never present an original sprite
     # as a female variant or start an unrenderable run via keyboard/Retry.
     if not HeroAppearanceScript.can_start(hero_appearance, str(HEROES[index]["id"])):
+        return
+    # Cache candidate frame textures before simulation starts, never per frame.
+    if not art.prepare_appearance(str(HEROES[index]["id"]),hero_appearance):
         return
     hero_index = index
     selected_card_index = -1
@@ -1907,7 +1910,7 @@ func _import_profile_text(raw: String) -> bool:
     if not legacy.has("godotBeforeImport"):
         legacy["godotBeforeImport"] = previous
     imported["legacy"] = legacy
-    profile = imported
+    _restore_profile(imported)
     _save_profile()
     _apply_preferences()
     _return_to_menu()
@@ -1978,8 +1981,13 @@ func _finish(won: bool) -> void:
     _show_ui()
 
 func _load_profile() -> void:
-    profile = ProfileStoreScript.load_profile()
+    _restore_profile(ProfileStoreScript.load_profile())
+
+func _restore_profile(restored: Dictionary) -> void:
+    # Startup and import apply the same existing canonical ID/appearance fields.
+    profile = restored
     hero_appearance = HeroAppearanceScript.normalize(profile.get("appearance"))
+    hero_index = 0
     for index in range(HEROES.size()):
         if HEROES[index]["id"] == profile["selected"]:
             hero_index = index
@@ -2007,6 +2015,12 @@ func _return_to_menu() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
     if not event.pressed or event.echo:
         return
+    if event.keycode in [KEY_ENTER,KEY_KP_ENTER] and mode in ["menu","heroes"]:
+        var focused := get_viewport().gui_get_focus_owner()
+        if focused is Button and focused.is_visible_in_tree() and not focused.disabled:
+            # BaseButton accepts on release. Do not start the previous hero
+            # from this key-down fallback while a real control owns accept.
+            return
     if event.keycode == KEY_M and mode == "playing":
         manual_aim = not manual_aim
         aim_point = get_global_mouse_position()
@@ -2354,8 +2368,8 @@ func _draw_enemy_actor(e: Dictionary) -> void:
 
 func hero_pose() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
-    if hero_appearance == "female" and str(hero["id"]) == "sigma":
-        return PixelVixenAnimationScript.pose(state)
+    if hero_appearance == "female":
+        return FemaleHeroAnimationScript.pose(str(hero["id"]),state)
     return HeroAnimationScript.pose(str(hero["id"]), state)
 
 func _draw_hero_actor() -> void:

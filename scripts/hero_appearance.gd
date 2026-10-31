@@ -13,6 +13,22 @@ const FEMALE_NAMES := {
     "alpha": "BLOCK QUEEN"
 }
 
+# These are presentation asset keys, never new gameplay/profile hero IDs.
+const FEMALE_ASSETS := {"sigma":"pixel-vixen", "cool-kid":"byte-baddie", "alpha":"block-queen"}
+
+static func asset_slug(hero_id: String) -> String:
+    return str(FEMALE_ASSETS.get(hero_id, ""))
+
+static func asset_path(hero_id: String, usage: String) -> String:
+    var slug := asset_slug(hero_id)
+    var suffix: String = {"selection":"portrait", "hud":"hud", "atlas":"atlas"}.get(usage, "")
+    if slug.is_empty() or suffix.is_empty(): return ""
+    return "res://assets/art-candidates/%s/v2/%s-%s-v2.png" % [slug,slug,suffix]
+
+static func manifest_path(hero_id: String) -> String:
+    var slug := asset_slug(hero_id)
+    return "" if slug.is_empty() else "res://assets/art-candidates/%s/v2/manifest.json" % slug
+
 static func is_valid(value: Variant) -> bool:
     return value is String and value in [ORIGINAL, FEMALE]
 
@@ -27,13 +43,9 @@ static func display_name(hero_id: String, appearance: String, original_name: Str
 static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
     if appearance == ORIGINAL:
         return true
-    # Female Sigma is playable only when every V2 runtime asset is really included
-    # in the exported build. The older 36x40 V1 preview is never a fallback.
-    const VIXEN_DIR := "res://assets/art-candidates/pixel-vixen/v2/"
-    return (
-        appearance == FEMALE
-        and hero_id == "sigma"
-        and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-atlas-v2.png")
-        and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-portrait-v2.png")
-        and ResourceLoader.exists(VIXEN_DIR + "pixel-vixen-hud-v2.png")
-    )
+    if appearance != FEMALE or not FEMALE_ASSETS.has(hero_id): return false
+    if not FileAccess.file_exists(manifest_path(hero_id)): return false
+    if hero_id != "sigma" and not FileAccess.file_exists(manifest_path(hero_id).get_base_dir()+"/frames.json"): return false
+    for usage in ["atlas", "selection", "hud"]:
+        if not ResourceLoader.exists(asset_path(hero_id,usage)): return false
+    return true

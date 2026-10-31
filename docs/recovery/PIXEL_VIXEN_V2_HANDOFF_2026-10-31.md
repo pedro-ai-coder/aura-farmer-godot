@@ -1,5 +1,7 @@
 # Pixel Vixen V2 source import and runtime verification — 31 October 2026
 
+> Historical Pixel-only checkpoint. The later [complete female roster review](../art/female-roster/README.md) supersedes statements below about Byte Baddie/Block Queen being unavailable; it preserves the Pixel Vixen source assets.
+
 **The missing-source blocker is resolved.** The creator attached `pixel_vixen_v2_for_work(1).zip`. Its three original PNGs have been imported into the existing [PR #97](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/97) branch, `feat/m0-pixel-vixen-playable-candidate`. The existing PNG hash pins and dimensions have not been changed to accept different artwork; only incorrect uniform-grid layout metadata was corrected after inspecting the actual atlas. The ZIP's additional manifest does not replace the repository's provenance or approval record.
 
 These assets remain **UNAPPROVED_CREATOR_REVIEW_CANDIDATE / PREVIEW_ONLY**. This import is not artistic approval, merge authorization or authorization for production deployment. Byte Baddie and Block Queen remain unavailable pending their own artwork and the creator's staged review.

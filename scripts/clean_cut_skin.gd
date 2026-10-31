@@ -428,7 +428,7 @@ func home_layout() -> void:
     poster_hero.visible=(not narrow or mobile_portrait) and poster_hero.texture!=null
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
-    home_caption.text=("PIXEL VIXEN — PLAYABLE ART CANDIDATE.\nOTHER FEMALE HEROES COMING NEXT." if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "FEMALE ART IN PRODUCTION.\nCHOOSE ORIGINAL TO PLAY.") if game.hero_appearance=="female" else "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
+    home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
     place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
@@ -454,7 +454,10 @@ func heroes_layout() -> void:
         var active: bool=game.hero_appearance==("original" if i==0 else "female")
         button_skin(toggle,"menu/primary" if active else "menu/secondary",active)
         place(toggle,Rect2(24.0+float(i)*(toggle_width+12.0),110.0,toggle_width,44.0))
-    appearance_notice.text=("PIXEL VIXEN V2 READY · OTHER FEMALE HEROES PENDING" if game.HeroAppearanceScript.can_start("female","sigma") else "PIXEL VIXEN V2 ASSETS MISSING · NOT PLAYABLE YET") if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
+    var ready_count := 0
+    for data: Dictionary in game.HEROES:
+        if game.HeroAppearanceScript.can_start("female",str(data["id"])): ready_count+=1
+    appearance_notice.text=("FEMALE APPEARANCES READY · 3 / 3" if ready_count==3 else "FEMALE ART PENDING · %d / 3 READY" % ready_count) if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
     place(appearance_notice,Rect2(24,158,view.x-48,24))
     var columns:=1 if view.x<700 else 3
     var gap:=20.0;var width: float=(view.x-64-gap*(columns-1))/columns
