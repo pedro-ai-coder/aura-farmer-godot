@@ -41,6 +41,13 @@ func verify() -> void:
         game.run_time = game.SoloClock.LEGENDARY_FIRST
         game._open_legendary()
         await process_frame
+        # Legendary cards share the same diagonal silhouette as normal upgrades.
+        var first_footer: Label = game.clean_cut_skin.offer_parts[0]["state"]
+        var first_card: Button = game.offer_buttons[0]
+        var clearance: float = first_card.size.x - first_footer.position.x - first_footer.size.x
+        var label_width: float = first_footer.get_theme_font("font").get_string_size(first_footer.text,HORIZONTAL_ALIGNMENT_LEFT,-1,first_footer.get_theme_font_size("font_size")).x
+        check(clearance >= 54.0 and first_footer.position.x >= 16.0, "Legendary footer clears diagonal corner at %s" % extent)
+        check(label_width <= first_footer.size.x, "Legendary footer text is fully readable at %s" % extent)
         var offers: String = JSON.stringify(game.legendary_offers)
         await click(game.defer_button)
         check(game.mode == "playing", "Defer resumes gameplay")
