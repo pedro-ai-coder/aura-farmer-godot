@@ -8,6 +8,12 @@ func settle(game) -> void:
     await process_frame;await process_frame
     game.clean_cut_skin.layout_key="";game.clean_cut_skin.refresh()
 
+func settle_threat(hud) -> void:
+    # Force bypasses sampling cadence, not the new visibility dwell.
+    hud.update_threat_readability(true)
+    await create_timer(0.22).timeout
+    hud.update_threat_readability(true)
+
 func verify() -> void:
     var game:=ReviewRun.new();root.add_child(game);game.set_process(false);game.clean_cut_skin.set_process(false)
     game.profile["settings"]["reducedMotion"]=true
@@ -34,7 +40,7 @@ func verify() -> void:
         var point:=Vector2(status.get_center().x,status.end.y+55)
         game._spawn_enemy("boss",{"pos":transform.affine_inverse()*point})
         game.enemies[-1]["hp"]=17001
-        game._update_text();skin.refresh();hud.update_threat_readability(true)
+        game._update_text();skin.refresh();await settle_threat(hud)
         var boss: Dictionary=game.enemies[-1]
         var bounds: Rect2=overlay.enemy_bounds(boss,transform)
         expect(Rect2(Vector2.ZERO,skin.view).encloses(bounds),"Controlled actor overlaps HUD without viewport clipping")
@@ -50,7 +56,7 @@ func verify() -> void:
         game._schedule_hazard(boss["pos"],600,1.2,0.1,60,"line",facing,boss)
         var simulation: String=var_to_str([game.enemies,game.hazard_zones,game.rng.state,game.player_pos,game.camera.position,game.camera.zoom,game.run_time,game.hp])
         hud.update_threat_readability(true)
-        expect(overlay.clipped_boss and overlay.cue.visible and overlay.cue.text.ends_with("EDGE"),"Near-edge clipping has an honest contextual cue "+str(extent))
+        expect(overlay.clipped_boss and overlay.cue.visible and overlay.cue.text=="BIG HATER","Near-edge clipping retains canonical identity without technical suffix "+str(extent))
         expect(overlay.cue.get_line_count()==1 and overlay.cue.get_theme_font("font").get_string_size(overlay.cue.text,HORIZONTAL_ALIGNMENT_LEFT,-1,overlay.cue.get_theme_font_size("font_size")).x<=overlay.cue.size.x+1,"Context cue remains a single complete line")
         expect(not overlay.traces.is_empty(),"Actual hostile boundaries are re-exposed above HUD decoration")
         for trace in overlay.traces:
