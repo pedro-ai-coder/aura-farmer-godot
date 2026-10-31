@@ -75,9 +75,15 @@ var hero_frame_cache: Dictionary = {}
 var vixen_portrait: AtlasTexture
 var vixen_candidate_atlas_v2: Texture2D
 var vixen_candidate_portrait_v2: Texture2D
+var vixen_v2_checked := false
+var vixen_v2_available := false
 
 func has_vixen_v2() -> bool:
-    return ResourceLoader.exists(VIXEN_V2_ATLAS_PATH) and ResourceLoader.exists(VIXEN_V2_PORTRAIT_PATH)
+    # Never poll resource metadata on every animated gameplay draw.
+    if not vixen_v2_checked:
+        vixen_v2_checked = true
+        vixen_v2_available = ResourceLoader.exists(VIXEN_V2_ATLAS_PATH) and ResourceLoader.exists(VIXEN_V2_PORTRAIT_PATH)
+    return vixen_v2_available
 
 func _vixen_atlas() -> Texture2D:
     if vixen_candidate_atlas_v2 == null and has_vixen_v2():
