@@ -300,7 +300,7 @@ func sync_data() -> void:
     data_key=key;data_count+=1
     update_status_feedback()
     skin.hero_name.text=game.HeroAppearanceScript.display_name(str(game.hero["id"]),game.hero_appearance,str(game.hero["name"]));skin.fit_line(skin.hero_name,20 if compact else 22)
-    skin.portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance)
+    skin.portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance,"hud")
     var vixen_portrait: bool=game.hero_appearance=="female" and game.hero["id"]=="sigma"
     skin.portrait.material=null if vixen_portrait else portrait_material
     skin.portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED if vixen_portrait else TextureRect.STRETCH_SCALE
