@@ -43,7 +43,7 @@ func _verify() -> void:
         expect(int(pose["legacy_frame"]) >= 0 and int(pose["legacy_frame"]) < 20, situation + " remains valid for legacy fallback")
         var original: Dictionary = preload("res://scripts/hero_animation.gd").pose("sigma",input)
         expect(str(pose["state"]) == str(original["state"]), situation + " shares canonical Sigma pose timing")
-    var main := load("res://scenes/main.tscn").instantiate()
+    var main = load("res://scenes/main.tscn").instantiate()
     root.add_child(main)
     main.hero_appearance = "female"
     main.start_run(0)
