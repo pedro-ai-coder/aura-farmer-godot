@@ -454,7 +454,7 @@ func heroes_layout() -> void:
         var active: bool=game.hero_appearance==("original" if i==0 else "female")
         button_skin(toggle,"menu/primary" if active else "menu/secondary",active)
         place(toggle,Rect2(24.0+float(i)*(toggle_width+12.0),110.0,toggle_width,44.0))
-    appearance_notice.text="PIXEL VIXEN: PLAYABLE ART CANDIDATE · OTHER FEMALE HEROES PENDING" if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
+    appearance_notice.text=("PIXEL VIXEN V2 READY · OTHER FEMALE HEROES PENDING" if game.HeroAppearanceScript.can_start("female","sigma") else "PIXEL VIXEN V2 ASSETS MISSING · NOT PLAYABLE YET") if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
     place(appearance_notice,Rect2(24,158,view.x-48,24))
     var columns:=1 if view.x<700 else 3
     var gap:=20.0;var width: float=(view.x-64-gap*(columns-1))/columns
