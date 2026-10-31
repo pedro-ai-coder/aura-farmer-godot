@@ -24,12 +24,6 @@
     480,
     320
   ],
-  "columns": 7,
-  "rows": 7,
-  "cell_size": [
-    128,
-    96
-  ],
   "frame_count": 49,
   "states": {
     "idle": [
@@ -63,9 +57,21 @@
   },
   "constraints": [
     "Visual only: canonical sigma gameplay, No Cap, Deadpan Verdict, hitboxes and RNG remain unchanged",
-    "The source atlas uses seven columns and rows; movement direction is mirrored/approximated, not an approved eight-direction master",
+    "Source poses are irregularly spaced; 49 logical runtime slots map to explicit source regions without changing Sigma state timing. Direction is mirrored/approximated, not an approved eight-direction master.",
     "The selection and HUD illustrations are cropped/masked from the creator's Pixel Vixen reference, and await creator source approval",
     "V1 fallback is prohibited; all three V2 PNGs are required for a playable female run",
     "Do not merge or deploy this candidate without creator approval and successful mandatory CI"
-  ]
+  ],
+  "source_layout": "Irregular source regions registered in scripts/pixel_vixen_frames.gd",
+  "source_pose_count": 51,
+  "source_poses_per_row": [
+    7,
+    7,
+    7,
+    8,
+    6,
+    8,
+    8
+  ],
+  "runtime_slots_per_state": 7
 }

@@ -1,12 +1,12 @@
 # Pixel Vixen V2 source import and runtime verification — 31 October 2026
 
-**The missing-source blocker is resolved.** The creator attached `pixel_vixen_v2_for_work(1).zip`. Its three original PNGs have been imported into the existing [PR #97](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/97) branch, `feat/m0-pixel-vixen-playable-candidate`. The existing manifest has not been changed to accept different artwork. The ZIP's additional manifest does not replace the repository's provenance or approval record.
+**The missing-source blocker is resolved.** The creator attached `pixel_vixen_v2_for_work(1).zip`. Its three original PNGs have been imported into the existing [PR #97](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/97) branch, `feat/m0-pixel-vixen-playable-candidate`. The existing PNG hash pins and dimensions have not been changed to accept different artwork; only incorrect uniform-grid layout metadata was corrected after inspecting the actual atlas. The ZIP's additional manifest does not replace the repository's provenance or approval record.
 
 These assets remain **UNAPPROVED_CREATOR_REVIEW_CANDIDATE / PREVIEW_ONLY**. This import is not artistic approval, merge authorization or authorization for production deployment. Byte Baddie and Block Queen remain unavailable pending their own artwork and the creator's staged review.
 
 ## Exact source verification
 
-All three files match the existing [V2 manifest](../../assets/art-candidates/pixel-vixen/v2/manifest.json), byte for byte:
+All three files match the original hash pins in the [V2 manifest](../../assets/art-candidates/pixel-vixen/v2/manifest.json), byte for byte:
 
 | File | Dimensions | SHA-256 |
 | --- | --- | --- |
@@ -30,7 +30,11 @@ Selected captures are stored as lossless WebP; decoded RGB pixels were verified 
 - [Mobile landscape Flex](evidence/pixel-vixen-v2/flex-844x390.webp)
 - [Portrait selection](evidence/pixel-vixen-v2/selection-390x844.webp)
 
-These are staged native runtime fixtures, not browser, physical-device, performance or human-playtest measurements. The atlas's mirrored/approximated directional coverage remains as documented in the unchanged manifest; 49 cells do not establish final animation-quality approval.
+These are staged native runtime fixtures, not browser, physical-device, performance or human-playtest measurements. The atlas's mirrored/approximated directional coverage remains as documented in the manifest; neither 51 source poses nor 49 logical slots establish final animation-quality approval.
+
+## Atlas registration correction
+
+Visual inspection caught detached boots from the previous row while moving. The supplied atlas actually contains **51 unevenly spaced source poses**, distributed 7/7/7/8/6/8/8, rather than the assumed uniform 128×96 grid. Explicit source rectangles in `scripts/pixel_vixen_frames.gd` now register those poses into the existing 49 logical playback slots. No PNG was edited, no gameplay timing was retuned and no V1 fallback was introduced. The shared Sigma state machine still determines state and timing; short/extra source rows are mapped within that visual adapter. A regression checks that the running pose includes its actual head and excludes the previous idle pose’s boots. Native captures were repeated after this correction.
 
 ## Canonical behavior and export guards
 
@@ -41,3 +45,5 @@ The mandatory real-asset suites `test_hero_appearance_selection.gd` and `test_pi
 The official Web build still fails closed on missing or mismatched V2 sources. Its exported PCK must contain all three imported V2 textures and this candidate manifest, and must exclude the superseded V1 directory. Historical V1 source bytes remain in Git but are not a runtime/export fallback. Build success and runtime captures do not supersede the creator's approval gate.
 
 The earlier failed runs on `e774da79` and `4b437b6` genuinely lacked the PNGs. They are historical failures, not waived passes. Review the new exact-build preview before approving Pixel Vixen or beginning the next female artwork batch. Do not merge or deploy this candidate to production automatically.
+
+The final exact-preview verification is recorded on PR #97. The cloud browser reached the preview but explicitly reported missing WebGL2; interactive Web/device gameplay remains unverified in this session.

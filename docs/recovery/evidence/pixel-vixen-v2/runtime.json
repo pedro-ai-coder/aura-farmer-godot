@@ -26,6 +26,7 @@
         1080
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "",
       "starter": "no-cap"
     },
     {
@@ -62,6 +63,7 @@
         1080
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (22.0, 0.0), S: (112.0, 112.0)]",
       "starter": "no-cap"
     },
     {
@@ -98,6 +100,7 @@
         1080
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (148.0, 118.0), S: (106.0, 89.0)]",
       "starter": "no-cap"
     },
     {
@@ -134,6 +137,7 @@
         1080
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (224.0, 482.0), S: (109.0, 105.0)]",
       "starter": "no-cap"
     },
     {
@@ -170,6 +174,7 @@
         1080
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (7.0, 589.0), S: (88.0, 78.0)]",
       "starter": "no-cap"
     },
     {
@@ -198,6 +203,7 @@
         900
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "",
       "starter": "no-cap"
     },
     {
@@ -234,6 +240,7 @@
         900
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (22.0, 0.0), S: (112.0, 112.0)]",
       "starter": "no-cap"
     },
     {
@@ -270,6 +277,7 @@
         900
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (148.0, 118.0), S: (106.0, 89.0)]",
       "starter": "no-cap"
     },
     {
@@ -306,6 +314,7 @@
         900
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (224.0, 482.0), S: (109.0, 105.0)]",
       "starter": "no-cap"
     },
     {
@@ -342,6 +351,7 @@
         900
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (7.0, 589.0), S: (88.0, 78.0)]",
       "starter": "no-cap"
     },
     {
@@ -370,6 +380,7 @@
         720
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "",
       "starter": "no-cap"
     },
     {
@@ -406,6 +417,7 @@
         720
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (22.0, 0.0), S: (112.0, 112.0)]",
       "starter": "no-cap"
     },
     {
@@ -442,6 +454,7 @@
         720
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (148.0, 118.0), S: (106.0, 89.0)]",
       "starter": "no-cap"
     },
     {
@@ -478,6 +491,7 @@
         720
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (224.0, 482.0), S: (109.0, 105.0)]",
       "starter": "no-cap"
     },
     {
@@ -514,6 +528,7 @@
         720
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (7.0, 589.0), S: (88.0, 78.0)]",
       "starter": "no-cap"
     },
     {
@@ -542,6 +557,7 @@
         412
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "",
       "starter": "no-cap"
     },
     {
@@ -578,6 +594,7 @@
         412
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (22.0, 0.0), S: (112.0, 112.0)]",
       "starter": "no-cap"
     },
     {
@@ -614,6 +631,7 @@
         412
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (148.0, 118.0), S: (106.0, 89.0)]",
       "starter": "no-cap"
     },
     {
@@ -650,6 +668,7 @@
         412
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (224.0, 482.0), S: (109.0, 105.0)]",
       "starter": "no-cap"
     },
     {
@@ -686,6 +705,7 @@
         412
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (7.0, 589.0), S: (88.0, 78.0)]",
       "starter": "no-cap"
     },
     {
@@ -714,6 +734,7 @@
         390
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "",
       "starter": "no-cap"
     },
     {
@@ -750,6 +771,7 @@
         390
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (22.0, 0.0), S: (112.0, 112.0)]",
       "starter": "no-cap"
     },
     {
@@ -786,6 +808,7 @@
         390
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (148.0, 118.0), S: (106.0, 89.0)]",
       "starter": "no-cap"
     },
     {
@@ -822,6 +845,7 @@
         390
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (224.0, 482.0), S: (109.0, 105.0)]",
       "starter": "no-cap"
     },
     {
@@ -858,6 +882,7 @@
         390
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (7.0, 589.0), S: (88.0, 78.0)]",
       "starter": "no-cap"
     },
     {
@@ -886,6 +911,7 @@
         844
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "",
       "starter": "no-cap"
     },
     {
@@ -922,6 +948,7 @@
         844
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (22.0, 0.0), S: (112.0, 112.0)]",
       "starter": "no-cap"
     },
     {
@@ -958,6 +985,7 @@
         844
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (148.0, 118.0), S: (106.0, 89.0)]",
       "starter": "no-cap"
     },
     {
@@ -994,6 +1022,7 @@
         844
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (224.0, 482.0), S: (109.0, 105.0)]",
       "starter": "no-cap"
     },
     {
@@ -1030,6 +1059,7 @@
         844
       ],
       "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "source_rect": "[P: (7.0, 589.0), S: (88.0, 78.0)]",
       "starter": "no-cap"
     }
   ],
@@ -1041,29 +1071,30 @@
   "committed_images": [
     {
       "file": "selection-1600x900.webp",
-      "sha256": "e929d34e86dcdcd1b429cf4c2ad5ce3896d4d6889dbb8636d21e537fc04095a2",
+      "sha256": "13e5fe440fd1774fb46e22d749a663f4a8ddc9a65d9ef14ac20b8857cfb07754",
       "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
     },
     {
       "file": "idle-1600x900.webp",
-      "sha256": "70a73910cc0aea2dd983097daf32e13318daea1efeda1a125e87c9d54a46f6a6",
+      "sha256": "9edd49f0842f37bf1177b45759b36332a17da93649e69e4ca4afde2e1667d532",
       "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
     },
     {
       "file": "moving-844x390.webp",
-      "sha256": "f35902b267f9fd4c5f68d021377ca7f1649393b05612cc46be3739d203027af7",
+      "sha256": "b558d0601a997edae5716ce2c23843a43499e675d942878d58c476f0ac4226d9",
       "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
     },
     {
       "file": "flex-844x390.webp",
-      "sha256": "20b634f7ae0b2f61003fb305995652e877610c71a3ebcfd7547662e8f7c16922",
+      "sha256": "d51d31a05f75be85e6a592a63435e027951030add33a23d1d68748e9fad819a2",
       "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
     },
     {
       "file": "selection-390x844.webp",
-      "sha256": "1e0b43f741e8c55b0de6e1f8ce0b248a6dcc9a3bdc12b0be966fa15a48179c4c",
+      "sha256": "dd8629a91374c7fb5119692730a87d87c6ed4cb5229a0f42319301b52f834a2b",
       "encoding": "lossless WebP of unresampled native PNG; RGB pixels verified identical"
     }
   ],
-  "source_manifest": "assets/art-candidates/pixel-vixen/v2/manifest.json"
+  "source_manifest": "assets/art-candidates/pixel-vixen/v2/manifest.json",
+  "source_registration": "scripts/pixel_vixen_frames.gd; 51 irregular source poses mapped to 49 logical slots"
 }

@@ -3,6 +3,7 @@ extends SceneTree
 const Appearance = preload("res://scripts/hero_appearance.gd")
 const VixenPose = preload("res://scripts/pixel_vixen_animation.gd")
 const Visuals = preload("res://scripts/approved_visuals.gd")
+const Frames = preload("res://scripts/pixel_vixen_frames.gd")
 var failures: Array[String] = []
 
 func expect(ok: bool, message: String) -> void:
@@ -33,6 +34,11 @@ func _verify() -> void:
         var expected_key: String = key+"_sha256" if key!="hud_portrait" else "hud_sha256"
         expect(FileAccess.get_sha256(directory+str(manifest[key])) == str(manifest[expected_key]), "V2 source hash is pinned for "+key)
     var visuals := Visuals.new()
+    for slot in range(49):
+        expect(Rect2(0,0,896,672).encloses(Frames.source_rect(slot)), "Registered V2 pose stays inside exact source PNG")
+    var run_source: Rect2 = Frames.source_rect(7)
+    expect(run_source.has_point(Vector2(80,130)), "Running source includes Pixel Vixen's actual running head")
+    expect(not run_source.has_point(Vector2(70,101)), "Running source excludes the previous idle pose's boots (uniform-grid regression)")
     var portrait: Texture2D = visuals.cosmetic_portrait("sigma", "female")
     expect(portrait != null and portrait.get_width() == 520 and portrait.get_height() == 460, "Hero Selection uses full illustrated Pixel Vixen portrait, not a sprite crop")
     var hud_portrait: Texture2D=visuals.cosmetic_portrait("sigma","female","hud")

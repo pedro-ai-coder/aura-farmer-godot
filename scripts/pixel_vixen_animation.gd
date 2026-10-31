@@ -4,8 +4,9 @@ const SigmaAnimation = preload("res://scripts/hero_animation.gd")
 
 ## Pixel Vixen uses Sigma's canonical attack and Flex state machine.
 ## Only the sprite index changes; all gameplay timing and RNG stay untouched.
-## V2: seven columns x seven rows (idle, run A, run B, attack,
-## hurt, Flex, defeat). All indices are zero-based and deterministic.
+## Seven logical slots per state (idle, run A, run B, attack, hurt, Flex,
+## defeat). pixel_vixen_frames.gd registers the irregular source poses.
+## All indices are zero-based and deterministic; no state timing changes.
 static func pose(state: Dictionary) -> Dictionary:
     var sigma_pose: Dictionary = SigmaAnimation.pose("sigma",state)
     var phase: String = str(sigma_pose["state"])

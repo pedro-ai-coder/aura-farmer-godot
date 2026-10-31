@@ -33,6 +33,7 @@ func capture(game: Node2D, state: String, extent: Vector2i) -> void:
         "appearance": game.hero_appearance,
         "canonical_hero": kit["id"], "starter": kit["starter"],
         "flex": kit["flex"], "pose": {} if game.hero.is_empty() else game.hero_pose(),
+        "source_rect": str(game.art.VixenFrames.source_rect(int(game.hero_pose()["frame"]))) if not game.hero.is_empty() else "",
         "selection_texture": game.clean_cut_skin.hero_parts[0]["portrait"].texture.resource_path,
         "hud_texture": "" if game.clean_cut_skin.portrait.texture == null else game.clean_cut_skin.portrait.texture.resource_path,
         "atlas_texture": game.art._vixen_atlas().resource_path,
