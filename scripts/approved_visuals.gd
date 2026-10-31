@@ -5,11 +5,10 @@ extends RefCounted
 ## Art is SHA-verified at Web build time. Never modify gameplay or RNG here.
 
 const ROOT := "res://assets/approved/"
-## Explicitly unapproved candidate, isolated from immutable approved Phaser sources.
-const VIXEN_CANDIDATE_ATLAS := preload("res://assets/art-candidates/pixel-vixen/v1/atlas.png")
-const VIXEN_FRAME_SIZE := Vector2(36.0,40.0)
+## V2 candidate resources remain isolated from immutable approved hero art.
 const VIXEN_V2_ATLAS_PATH := "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png"
 const VIXEN_V2_PORTRAIT_PATH := "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png"
+const VIXEN_V2_HUD_PATH := "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png"
 const VIXEN_V2_FRAME_SIZE := Vector2(128.0,96.0)
 const HERO_FRAMES: Dictionary = {"sigma":[[10,5,155,174],[197,6,151,172],[380,7,159,172],[554,6,169,172],[740,5,153,175],[935,4,131,176],[1103,4,143,177],[1287,4,142,177],[19,183,140,180],[210,183,127,180],[386,182,132,181],[562,181,143,182],[758,184,148,178],[943,184,141,178],[1120,184,137,176],[1303,184,127,178],[15,365,164,176],[195,365,161,177],[369,365,164,177],[543,365,159,173],[744,366,133,183],[934,367,137,182],[1120,370,136,175],[1305,367,123,178],[24,544,130,178],[218,545,109,179],[400,545,99,172],[561,544,123,178],[751,550,133,176],[934,550,133,177],[1111,547,135,180],[1303,548,127,178],[18,725,118,176],[168,728,118,172],[314,735,142,164],[454,741,179,162],[638,737,117,166],[775,752,129,152],[915,762,185,142],[1106,771,166,126],[1278,808,164,79],[29,904,142,172],[228,905,138,173],[428,905,155,172],[637,919,159,158],[832,905,190,172],[1078,909,130,168],[1282,905,121,172]],"cool-kid":[[13,8,180,181],[207,7,173,184],[394,8,155,179],[564,10,157,177],[744,7,177,180],[944,7,140,180],[1106,7,150,185],[1272,7,158,187],[13,194,162,192],[212,193,146,197],[385,199,149,191],[560,194,156,196],[751,197,167,193],[938,196,144,192],[1107,198,152,185],[1290,196,150,187],[14,395,172,204],[207,395,156,206],[395,397,156,202],[566,396,152,201],[738,396,167,203],[918,400,159,201],[1093,397,160,196],[1272,398,148,202],[7,610,172,208],[184,612,166,206],[369,612,141,209],[515,612,216,200],[704,637,200,181],[911,612,169,203],[1077,612,181,206],[1262,624,170,194],[10,948,204,112],[216,838,155,217],[387,849,165,206],[559,855,179,198],[735,886,201,164],[938,866,164,181],[1110,843,177,212],[1286,842,152,213]],"alpha":[[17,15,168,158],[212,14,156,158],[403,14,163,158],[588,14,149,159],[754,14,160,155],[934,13,166,163],[1119,13,147,161],[1282,14,157,158],[10,189,177,162],[209,190,166,160],[399,188,167,161],[583,188,165,160],[769,190,164,156],[957,185,148,166],[1129,191,137,159],[1289,193,148,160],[13,365,171,164],[211,366,164,163],[399,367,154,162],[577,365,156,164],[758,366,152,164],[937,365,154,164],[1122,363,146,166],[1287,364,146,165],[15,543,162,161],[209,544,162,164],[394,543,166,163],[578,545,158,162],[765,540,153,167],[945,540,159,166],[1127,546,126,161],[1274,545,162,155],[7,717,151,166],[166,712,164,171],[334,728,196,149],[513,712,199,167],[708,728,200,154],[917,707,162,175],[1091,732,164,148],[1265,746,175,134],[11,979,218,87],[226,886,144,184],[383,905,170,161],[567,892,157,174],[736,922,180,147],[922,930,179,140],[1119,918,155,151],[1291,893,147,173]]}
 const REAR_FRAMES: Dictionary = {"alpha":[[44,27,287,321],[418,26,276,305],[763,28,290,320],[1139,29,278,315],[44,374,276,325],[415,373,269,326],[767,371,273,328],[1138,372,270,326],[38,726,290,323],[412,725,261,286],[763,725,290,320],[1127,725,284,313]],"cool-kid":[[67,41,496,644],[614,37,446,644],[1114,38,517,648],[1685,38,467,644]]}
@@ -72,37 +71,38 @@ func _frame(canvas: CanvasItem, atlas: Texture2D, info: Array, destination: Vect
 
 const HERO_MATTES := {"cool-kid":{27:[0,12],28:[28,0],29:[0,4],30:[4,0]},"alpha":{34:[0,8],35:[20,5],36:[5,0]}}
 var hero_frame_cache: Dictionary = {}
-var vixen_portrait: AtlasTexture
 var vixen_candidate_atlas_v2: Texture2D
 var vixen_candidate_portrait_v2: Texture2D
+var vixen_candidate_hud_v2: Texture2D
 var vixen_v2_checked := false
 var vixen_v2_available := false
 
 func has_vixen_v2() -> bool:
-    # Never poll resource metadata on every animated gameplay draw.
+    # Fail closed when any required art resource is missing from the Web export.
+    # Do not silently substitute the outdated V1 sprites or portrait.
     if not vixen_v2_checked:
         vixen_v2_checked = true
-        vixen_v2_available = ResourceLoader.exists(VIXEN_V2_ATLAS_PATH) and ResourceLoader.exists(VIXEN_V2_PORTRAIT_PATH)
+        vixen_v2_available = ResourceLoader.exists(VIXEN_V2_ATLAS_PATH)             and ResourceLoader.exists(VIXEN_V2_PORTRAIT_PATH)             and ResourceLoader.exists(VIXEN_V2_HUD_PATH)
     return vixen_v2_available
 
 func _vixen_atlas() -> Texture2D:
-    if vixen_candidate_atlas_v2 == null and has_vixen_v2():
+    if not has_vixen_v2():
+        return null
+    if vixen_candidate_atlas_v2 == null:
         vixen_candidate_atlas_v2 = load(VIXEN_V2_ATLAS_PATH)
-    return vixen_candidate_atlas_v2 if vixen_candidate_atlas_v2 != null else VIXEN_CANDIDATE_ATLAS
+    return vixen_candidate_atlas_v2
 
-func cosmetic_portrait(hero_id: String, appearance: String) -> Texture2D:
+func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "selection") -> Texture2D:
     if appearance == "female":
-        if hero_id != "sigma":
+        if hero_id != "sigma" or not has_vixen_v2():
             return null
-        if has_vixen_v2():
-            if vixen_candidate_portrait_v2 == null:
-                vixen_candidate_portrait_v2 = load(VIXEN_V2_PORTRAIT_PATH)
-            return vixen_candidate_portrait_v2
-        if vixen_portrait == null:
-            vixen_portrait = AtlasTexture.new()
-            vixen_portrait.atlas = VIXEN_CANDIDATE_ATLAS
-            vixen_portrait.region = Rect2(Vector2.ZERO,VIXEN_FRAME_SIZE)
-        return vixen_portrait
+        if usage == "hud":
+            if vixen_candidate_hud_v2 == null:
+                vixen_candidate_hud_v2 = load(VIXEN_V2_HUD_PATH)
+            return vixen_candidate_hud_v2
+        if vixen_candidate_portrait_v2 == null:
+            vixen_candidate_portrait_v2 = load(VIXEN_V2_PORTRAIT_PATH)
+        return vixen_candidate_portrait_v2
     return texture(hero_id)
 
 func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:
@@ -110,13 +110,15 @@ func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dic
     if sheet == "pixel-vixen":
         if hero_id != "sigma":
             return false
-        var has_v2: bool = has_vixen_v2()
-        var frame_size: Vector2 = VIXEN_V2_FRAME_SIZE if has_v2 else VIXEN_FRAME_SIZE
-        var index: int = clampi(int(pose["frame"] if has_v2 else pose.get("legacy_frame",0)),0,48 if has_v2 else 19)
+        var atlas: Texture2D = _vixen_atlas()
+        if atlas == null:
+            return false
+        var frame_size: Vector2 = VIXEN_V2_FRAME_SIZE
+        var index: int = clampi(int(pose["frame"]),0,48)
         var source := Rect2(Vector2(float(index%7)*frame_size.x,float(int(index/7))*frame_size.y),frame_size)
-        var factor: float = float(pose.get("scale",64.0/96.0) if has_v2 else pose.get("legacy_scale",1.6))
+        var factor: float = float(pose.get("scale",64.0/96.0))
         canvas.draw_set_transform(pos,0.0,Vector2(-1.0,1.0) if pose["flip"] else Vector2.ONE)
-        canvas.draw_texture_rect_region(_vixen_atlas(),Rect2(-frame_size*Vector2(0.5,0.9)*factor,frame_size*factor),source)
+        canvas.draw_texture_rect_region(atlas,Rect2(-frame_size*Vector2(0.5,0.9)*factor,frame_size*factor),source)
         canvas.draw_set_transform(Vector2.ZERO)
         return true
     var atlas := texture(hero_id+"-atlas" if sheet == "atlas" else hero_id+"-"+sheet)
