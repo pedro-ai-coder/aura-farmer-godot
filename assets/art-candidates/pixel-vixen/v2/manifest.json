@@ -4,19 +4,25 @@
   "display_name": "PIXEL VIXEN",
   "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
   "runtime_authorization": "PREVIEW_ONLY",
-  "source_filename": "sprite_atlas_da_pixel_vixen.png",
-  "source_sha256": "5a8b3fb18bf3289e2a2067e2b3cd61eb50dd9e819021f9e11967c22312252bdc",
+  "source_atlas": "sprite_atlas_da_pixel_vixen.png",
+  "source_portrait": "image(20261031-163730).png (creator-provided concept reference)",
   "atlas": "pixel-vixen-atlas-v2.png",
-  "atlas_sha256": "803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d",
   "portrait": "pixel-vixen-portrait-v2.png",
-  "portrait_sha256": "ff46030fbd846e3ef94767b4031db1339e78dd2e1b3ab54df6c0700a64e4a10f",
+  "hud_portrait": "pixel-vixen-hud-v2.png",
+  "atlas_sha256": "803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d",
+  "portrait_sha256": "13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9",
+  "hud_sha256": "337047c012d476f230091f7cf9fff0373b819f4020eba121dd6cc1524d0f0776",
   "atlas_dimensions": [
     896,
     672
   ],
   "portrait_dimensions": [
-    256,
-    256
+    520,
+    460
+  ],
+  "hud_dimensions": [
+    480,
+    320
   ],
   "columns": 7,
   "rows": 7,
@@ -55,13 +61,11 @@
       48
     ]
   },
-  "hero_identity_same_as": "sigma",
   "constraints": [
-    "Cosmetic presentation only: No Cap, Deadpan Verdict, stats, targeting, hitboxes and progression remain canonical Sigma",
-    "Source is generated artwork in seven columns and rows, not an authored canonical eight-direction master",
-    "Directional movement uses mirrored and front/side candidate poses",
-    "Female art remains candidate until creator reviews exact bytes",
-    "No gameplay balance or RNG changes"
-  ],
-  "source_packaging": "Binary atlas and portrait are currently delivered with the creator review bundle; add the two exact hashed files to this directory before claiming V2 runtime integration."
+    "Visual only: canonical sigma gameplay, No Cap, Deadpan Verdict, hitboxes and RNG remain unchanged",
+    "The source atlas uses seven columns and rows; movement direction is mirrored/approximated, not an approved eight-direction master",
+    "The selection and HUD illustrations are cropped/masked from the creator's Pixel Vixen reference, and await creator source approval",
+    "V1 fallback is prohibited; all three V2 PNGs are required for a playable female run",
+    "Do not merge or deploy this candidate without creator approval and successful mandatory CI"
+  ]
 }
