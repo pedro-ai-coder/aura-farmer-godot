@@ -12,11 +12,32 @@ func _initialize() -> void:
     call_deferred("_verify")
 
 func _verify() -> void:
-    var asset := "res://assets/art-candidates/pixel-vixen/v1/atlas.png"
-    expect(ResourceLoader.exists(asset), "Review candidate atlas imports as a real Web/Godot texture")
+    var directory := "res://assets/art-candidates/pixel-vixen/v2/"
+    var assets := {
+        "pixel-vixen-atlas-v2.png": [896,672],
+        "pixel-vixen-portrait-v2.png": [520,460],
+        "pixel-vixen-hud-v2.png": [480,320]
+    }
+    for filename in assets:
+        var path: String = directory+filename
+        expect(ResourceLoader.exists(path), "Required Pixel Vixen V2 resource is missing from GitHub/Web export: " + filename)
+        if ResourceLoader.exists(path):
+            var tex: Texture2D=load(path)
+            expect(tex.get_width()==assets[filename][0] and tex.get_height()==assets[filename][1], "Expected exact V2 geometry: "+filename)
+    if failures.size()>0:
+        for failure in failures: push_error(failure)
+        quit(1)
+        return
+    var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(directory+"manifest.json"))
+    for key in ["atlas","portrait","hud_portrait"]:
+        var expected_key: String = key+"_sha256" if key!="hud_portrait" else "hud_sha256"
+        expect(FileAccess.get_sha256(directory+str(manifest[key])) == str(manifest[expected_key]), "V2 source hash is pinned for "+key)
     var visuals := Visuals.new()
     var portrait: Texture2D = visuals.cosmetic_portrait("sigma", "female")
-    expect(portrait != null and portrait.get_width() == 36 and portrait.get_height() == 40, "Pixel Vixen real frame supplies a 36x40 portrait")
+    expect(portrait != null and portrait.get_width() == 520 and portrait.get_height() == 460, "Hero Selection uses full illustrated Pixel Vixen portrait, not a sprite crop")
+    var hud_portrait: Texture2D=visuals.cosmetic_portrait("sigma","female","hud")
+    expect(hud_portrait != null and hud_portrait.get_width() == 480 and hud_portrait.get_height() == 320, "HUD uses separate illustrated Pixel Vixen portrait")
+    expect(visuals.has_vixen_v2(), "Missing V2 art must never silently fall back to V1")
     expect(visuals.cosmetic_portrait("cool-kid", "female") == null, "Byte Baddie cannot masquerade as a male placeholder")
     expect(visuals.cosmetic_portrait("alpha", "female") == null, "Block Queen cannot masquerade as a male placeholder")
     expect(visuals.cosmetic_portrait("sigma", "original") == visuals.texture("sigma"), "Original Sigma portrait bytes are unchanged")
