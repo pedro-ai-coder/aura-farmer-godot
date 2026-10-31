@@ -22,7 +22,7 @@ func verify() -> void:
         expect(name.split("\n").size() <= 2,"Equipment name uses at most two lines: "+id)
         for line in name.split("\n"):
             expect(Type.font("equipment_label").get_string_size(line,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x <= 72,"Equipment name fits its slot: "+id)
-    for extent in [Vector2i(1280,720),Vector2i(915,412),Vector2i(390,844)]:
+    for extent in [Vector2i(1920,1080),Vector2i(1600,900),Vector2i(1280,720),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
         root.size=extent
         game.presentation._window_changed(true)
         game.start_run(0)
@@ -40,6 +40,19 @@ func verify() -> void:
         for parts in skin.offer_parts.slice(0,3):
             expect(parts["body"].size.y>=80,"Upgrade description retains readable space")
             expect(parts["name"].get_meta("typography_role")=="card_title","Card title uses semantic token")
+        # Both selected and unselected text must clear the physical card silhouette,
+        # not just the rectangular label bounds.
+        for selected_index in [-1,0,1,2]:
+            game.selected_card_index=selected_index;skin.refresh()
+            await process_frame
+            for i in range(3):
+                var footer: Label=skin.offer_parts[i]["state"]
+                var card: Button=game.offer_buttons[i]
+                var right_clearance: float=card.size.x-footer.position.x-footer.size.x
+                var rendered_width: float=footer.get_theme_font("font").get_string_size(footer.text,HORIZONTAL_ALIGNMENT_LEFT,-1,footer.get_theme_font_size("font_size")).x
+                expect(footer.position.x>=16 and right_clearance>=54,"Upgrade footer clears lower-right diagonal at "+str(extent)+": "+footer.text)
+                expect(rendered_width<=footer.size.x,"Complete upgrade footer text fits at "+str(extent)+": "+footer.text)
+                expect(footer.text==("SELECTED · CONFIRM BELOW" if selected_index==i else "TAP TO SELECT"),"Upgrade footer retains complete selection wording")
         game.mode="lost";game._show_ui();game._update_text();skin.refresh()
         await process_frame
         for value: Label in skin.auxiliary.result_values:
@@ -50,7 +63,7 @@ func verify() -> void:
     for i in range(10):skin.refresh()
     expect(before==game.rng.state,"Typography does not consume gameplay RNG")
     game.queue_free()
-    if failures.is_empty():print("PASS: packaged typography, glyph coverage, equipment fit, HUD and three-viewports hierarchy");quit(0)
+    if failures.is_empty():print("PASS: packaged typography, glyph coverage, equipment fit, HUD and six-viewports hierarchy");quit(0)
     else:
         for failure in failures:push_error(failure)
         quit(1)

@@ -559,7 +559,9 @@ func cards_layout() -> void:
         place(parts["comparison"],Rect2(16,measured["comparison"],width-32,measured["comparison_height"]))
         parts["state"].text="SELECTED · CONFIRM BELOW" if selected else "TAP TO SELECT"
         Type.apply(parts["state"],"micro_label",view.x<700,Style.SKY if selected else Style.INK)
-        place(parts["state"],Rect2(16,height-30,width-32,24))
+        # Keep the complete footer label inside the authored lower-right diagonal cut.
+        # The 44 U inset is presentation-only; the button and content layout do not change.
+        place(parts["state"],Rect2(16,height-30,width-32-44,24))
         parts["state"].horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
     game.confirm_button.show();game.confirm_button.text="CONFIRM LEGENDARY" if legendary else "CONFIRM"
     game.confirm_button.disabled=game.selected_card_index<0

@@ -5,7 +5,7 @@ class ReviewRun extends "res://scripts/solo_run.gd":
     func _save_profile() -> void:pass
 
 func verify() -> void:
-    for extent in [Vector2i(1280,720),Vector2i(915,412),Vector2i(390,844)]:
+    for extent in [Vector2i(1920,1080),Vector2i(1600,900),Vector2i(1280,720),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
         root.size=extent
         var game=ReviewRun.new()
         root.add_child(game)
@@ -61,7 +61,7 @@ func verify() -> void:
         game.queue_free()
         await process_frame
     if failures.is_empty():
-        print("PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at three viewports")
+        print("PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at six viewports")
         quit(0)
     else:
         for failure in failures:push_error(failure)
