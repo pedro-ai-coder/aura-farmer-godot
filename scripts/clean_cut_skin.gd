@@ -422,13 +422,13 @@ func home_layout() -> void:
     var logo_height: float=154.0 if narrow or view.y<540.0 else 190.0
     place(candidate_brand,Rect2(28,24,logo_width,logo_height))
     # Selected hero must be the visible hero on the menu, not a fixed Sigma.
-    poster_hero.texture=game.art.texture(str(game.HEROES[game.hero_index]["id"]))
+    poster_hero.texture=game.art.cosmetic_portrait(str(game.HEROES[game.hero_index]["id"]), game.hero_appearance)
     var mobile_portrait: bool=narrow and view.y>=780.0
     place(poster_hero,Rect2(view.x-188.0,view.y*0.30,164,176) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
-    poster_hero.visible=(not narrow or mobile_portrait) and game.hero_appearance=="original"
+    poster_hero.visible=(not narrow or mobile_portrait) and poster_hero.texture!=null
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
-    home_caption.text="FEMALE ART IN PRODUCTION.\nCHOOSE ORIGINAL TO PLAY." if game.hero_appearance=="female" else "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
+    home_caption.text=("PIXEL VIXEN — PLAYABLE ART CANDIDATE.\nOTHER FEMALE HEROES COMING NEXT." if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "FEMALE ART IN PRODUCTION.\nCHOOSE ORIGINAL TO PLAY.") if game.hero_appearance=="female" else "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
     place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
@@ -454,7 +454,7 @@ func heroes_layout() -> void:
         var active: bool=game.hero_appearance==("original" if i==0 else "female")
         button_skin(toggle,"menu/primary" if active else "menu/secondary",active)
         place(toggle,Rect2(24.0+float(i)*(toggle_width+12.0),110.0,toggle_width,44.0))
-    appearance_notice.text="FEMALE ART IN PRODUCTION — ORIGINAL KITS UNCHANGED" if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
+    appearance_notice.text="PIXEL VIXEN: PLAYABLE ART CANDIDATE · OTHER FEMALE HEROES PENDING" if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
     place(appearance_notice,Rect2(24,158,view.x-48,24))
     var columns:=1 if view.x<700 else 3
     var gap:=20.0;var width: float=(view.x-64-gap*(columns-1))/columns
@@ -478,9 +478,10 @@ func heroes_layout() -> void:
         place(button,Rect2((i%columns)*(width+gap),int(i/columns)*(height+gap),width,height))
         var data: Dictionary=game.HEROES[i];var parts: Dictionary=hero_parts[i]
         var female: bool=game.hero_appearance=="female"
-        parts["portrait"].texture=null if female else game.art.texture(str(data["id"]))
-        parts["portrait"].visible=not female
-        parts["art_status"].visible=female
+        var candidate_ready: bool=female and game.HeroAppearanceScript.can_start("female",str(data["id"]))
+        parts["portrait"].texture=game.art.cosmetic_portrait(str(data["id"]),game.hero_appearance)
+        parts["portrait"].visible=parts["portrait"].texture!=null
+        parts["art_status"].visible=female and not candidate_ready
         parts["art_status"].text="ART IN PRODUCTION\nNOT YET PLAYABLE"
         parts["name"].text=game.HeroAppearanceScript.display_name(str(data["id"]),game.hero_appearance,str(data["name"]))
         parts["role"].text=data["role"].to_upper()+(" · SELECTED" if selected else "")
@@ -497,8 +498,8 @@ func heroes_layout() -> void:
         place(parts["help"],Rect2(24,help_top,width-48,height-help_top-20.0))
     ui.home.return_button.show();ui.home.start_button.show()
     place(ui.home.return_button,Rect2(24,view.y-78,150,64));place(ui.home.start_button,Rect2(view.x-300,view.y-78,276,64))
-    ui.home.start_button.text="START RUN" if game.HeroAppearanceScript.can_start(game.hero_appearance) else "ART PENDING"
-    ui.home.start_button.disabled=not game.HeroAppearanceScript.can_start(game.hero_appearance)
+    ui.home.start_button.text="START RUN" if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "ART PENDING"
+    ui.home.start_button.disabled=not game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"]))
     button_skin(ui.home.return_button,"menu/secondary");button_skin(ui.home.start_button,"menu/primary")
 func text_height(node: Label, width: float) -> float:
     var font: Font=node.get_theme_font("font")
