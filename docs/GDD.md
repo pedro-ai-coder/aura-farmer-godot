@@ -65,6 +65,8 @@ At M2 or later the owner may choose native Android/iOS/Windows/macOS/Linux appli
 | **Concept-only prototype** | Experiment in isolated work only; not enabled in M0/M1 default gameplay. |
 | **Unapproved / TBD** | Do not infer defaults or ship new behavior, artworks, services or balance values. |
 
+**Creator decision — male and female playable-hero choice (31 October 2026):** The game's intended Hero Selection experience must offer **both male and female hero options**. Players choose a distinct hero, not a global binary gender setting or an automatic gender-swap skin for an existing hero. The current three playable starters remain unchanged. The first three female designs are **art candidates awaiting individual creator review**; no female hero ID, kit, starter, stats, Flex, unlock, release milestone or runtime availability is approved by this decision alone. The initial M0/M1 playable roster remains as currently specified until a separately approved content contract, integration and validation authorize additional playable characters. Do not claim a female candidate is selectable in the live game before that work exists.
+
 **Initial roster:** Sigma (Ranged), Cool Kid (Melee) and Alpha Chad (Tank); nine playable weapons, three per class; **23 of 28 passives currently offered**, explicitly excluding `get-ratiod`, `ego-check`, `uno-reverse`, `brainrot-rain` and `take-l` from the initial 23. All four approved legendary passives remain in the offer pool. Items with approved future-only illustrations do **not** thereby become playable.
 
 **Full design catalogue, later scope:** nine heroes (three per class); nine weapons; 28 passives (10 Common, 8 Rare, 6 Epic, 4 Legendary); support/DPS build specializations; co-op/arena rules retained for future design reference but **not M0/M1 implementation deliverables**. `Wild` is future-only and not an active mode.
@@ -141,7 +143,7 @@ At **100 Aura**, the hero's manual Flex is **READY**. A successful activation co
 
 ### 5.6 Approved character catalogue and first-run starters
 
-The complete **design roster is nine characters, three per class** (Ranged, Melee, Tank), but **M0/M1 provide only Sigma, Cool Kid and Alpha Chad as playable heroes**. Preserve all eight historical hero IDs and add the ninth (`beta`) only under a separately approved content rollout; do not silently migrate unlock identities. There are no separate Alpha/Sigma resource currencies. `P` and `S` are distinct: **S = 100** for every baseline hero, and DPS/Support are build specializations, not hero classes.
+The current **canonical design catalogue comprises nine named heroes, three per class** (Ranged, Melee, Tank), while **M0/M1 provide only Sigma, Cool Kid and Alpha Chad as playable heroes**. The separately approved male/female Hero Selection direction is a **future expansion requirement**, not an automatic change to these nine hero identities or the active milestone scope. Preserve all eight historical hero IDs and add the ninth (`beta`) only under a separately approved content rollout; do not silently migrate unlock identities. There are no separate Alpha/Sigma resource currencies. `P` and `S` are distinct: **S = 100** for every baseline hero, and DPS/Support are build specializations, not hero classes.
 
 | Stable ID / hero | Class | Base max HP / speed U/s / P / mitigation | Approved starter weapon | Passive innate trait |
 | --- | --- | --- | --- | --- |
@@ -156,6 +158,22 @@ The complete **design roster is nine characters, three per class** (Ranged, Mele
 | `beta` — Beta Bro (future) | Tank | **120 / 180 / 85 / 10%** | Chad Hands; foam gloves and protective backpack | **Homie First:** every 12 s grants 6% recipient max-HP shield for 4 s to lowest-health ally within 180 U, self in solo |
 
 **Future-only proposed unlock examples (not enabled in M0/M1):** end wave 2 → Nerd; defeat first major event boss → Rizzler; end wave 4 → Ohio; collect 500 cumulative XP → Fanum; complete a run → Six Seven; 1,000 cumulative effective protection/healing → Beta. These are proposals pending progression and solo-fairness review, not current production entitlements.
+
+### 5.6.1 Male/female hero selection — approved direction and female art candidates
+
+**Creator decision (31 October 2026):** The final expanded character-selection experience must let any player choose a **male or female hero** from a roster of distinct, individually designed characters. This is a character-roster choice, **not** a required gender toggle, a cosmetic conversion of the existing male heroes, or a modification to their approved identities. Hero roles and abilities are determined by each hero's separately approved kit, not by gender.
+
+The creator selected the **female-hero visual concept direction** for further mockup production. The current three working art labels are:
+
+| Female art candidate (working name, not canonical ID) | Proposed visual archetype | Current approval and runtime status |
+| --- | --- | --- |
+| **Pixel Vixen** | Expressive blue/gold streetwear, **Ranged** concept | Mockup candidate only; art, stable ID, starter, trait, Flex and balance await review |
+| **Byte Baddie** | Energetic magenta/black streetwear, **Melee** concept | Mockup candidate only; art, stable ID, starter, trait, Flex and balance await review |
+| **Block Queen** | Strong gold/teal defensive streetwear, **Tank/Support** concept | Mockup candidate only; art, stable ID, starter, trait, Flex and balance await review |
+
+**Immediate authorized work:** produce polished **mockups only**: a three-hero concept presentation, individual portrait/selection-card explorations, and a six-card roster-selection visual comparison with the existing approved Sigma, Cool Kid and Alpha Chad identities. All must follow Character Hype Broadcast — Clean Cut and preserve immutable original art. Referenced weapon props may be visual-only placeholders; never present invented mechanics as approved content. Do not create production sprites/animation packages, enable extra playable heroes, alter run rules or assign release dates in this mockup iteration.
+
+**Before any playable rollout:** obtain separate creator approval for the exact new hero artworks; stable IDs, class, canonical starter weapon, passive trait, Flex name and behavior, balance, roster/unlock availability and milestone scope; then integrate and test the real Godot Hero Selection, compatible saves and complete gameplay flows. No generated mockup, art approval, documentation-only PR or placeholder card demonstrates live playability. The existing nine-hero GDD catalogue and M0/M1 three-hero roster remain unchanged until a later explicit content decision.
 
 ### 5.7 Hero-specific Flex — approved current PvE contract
 
@@ -486,6 +504,8 @@ This typography requirement authorizes **no gameplay, balance, backend, engine o
 - **Reference layout:** 1600×900 art comps and responsive actual Godot Controls for desktop/mobile Web. Preserve usability at **1920×1080, 1600×900, 1280×720, 915×412, 844×390 and 390×844** where applicable. Use a consistent spacing rhythm, safe areas and functional focus/hover/pressed/selected/disabled states; do not simply stretch a background/reference image.
 - **Visual priorities:** threat readability > actual gameplay affordances > decorative overlays. Build detail may expand into separate inspection screen; permanent desktop HUD should generally remain compact (earlier **≤15% playfield** guidance is a quality target, not permission to hide essential information). Do not make giant Safe Spot signals, repeating equipment labels or oversized HP/XP plates cover enemy threats.
 
+**Future hero-selection art direction:** plan a scalable, equally polished roster layout accommodating both male and female hero options after individually approved expansion. For the current M0/M1 build, do not show female mockup candidates as playable. Use existing approved male hero masters unchanged and label all female concepts as pending review. Avoid introducing a global gender toggle or unapproved gameplay through interface artwork.
+
 ### 8.3 Required polished M0 player journey
 
 Every reachable M0 screen must form one **coherent finished game**: **Main Menu → Hero Selection → Ruin Alley gameplay/HUD → three-card upgrade / six-card legendary / legal replacement → pause/build/settings/exit confirmation → true boss and berserk → victory/defeat → retry or menu**. Include in-world hero, enemy, weapon, projectile, pickup, impact, damage, shield, Flex and wave/encounter VFX, correct animation feedback and accessible mobile-Web presentation.
@@ -618,6 +638,8 @@ The earlier **GDD V2.0 has been archived verbatim** in [`docs/GDD_V2_ARCHIVE.md`
 3. Technical architecture, CI, provider configuration, budget approval and deployment runbooks may live in dedicated TDD and operations documents, which **implement but never overrule** this GDD.
 4. Preserve original Phaser and approved source masters, player IDs, seeded deterministic events and versioned save compatibility. No historical-backfill edits may silently change behavior.
 5. Review all documentation-only PRs under the same owner-approved M0/M1 PR policy: applicable checks pass; owner reviews; merging does not itself authorize public alpha opening.
+
+**31 October 2026 creator addendum:** approved the male/female hero-choice direction for the expanded roster and authorized mockups of three female hero candidates only. This is a design-direction documentation update; current playable scope, canonical hero IDs, game rules and existing approval-hash records remain unchanged. Future playable integration requires a separate content decision and validation.
 
 **V3.0 consolidation scope:** document and milestone reconciliation **only**. No changes to Godot/Phaser runtime, art bytes, balance, backend infrastructure or production release are made by authoring this GDD.
 
