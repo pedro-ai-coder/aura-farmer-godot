@@ -155,6 +155,8 @@ The complete **design roster is nine characters, three per class** (Ranged, Mele
 | `fanum` — Fanum Lord (future) | Tank | **125 / 170 / 90 / 10%** | Personal Space; TAX snack bag and round green silhouette | **Tax Collector:** +50% pickup radius; every ten XP pickups gives own 5% max-HP shield for 3 s; 8 s cooldown; no additional XP |
 | `beta` — Beta Bro (future) | Tank | **120 / 180 / 85 / 10%** | Chad Hands; foam gloves and protective backpack | **Homie First:** every 12 s grants 6% recipient max-HP shield for 4 s to lowest-health ally within 180 U, self in solo |
 
+**Creator-directed cosmetic appearances (31 October 2026):** the three starter kits also offer female presentation choices: `sigma` → **Pixel Vixen**, `cool-kid` → **Byte Baddie**, `alpha` → **Block Queen**. These are appearances of the existing heroes, not additional playable hero IDs or kits. Original stats, classes, starter weapons, Flex, collision, RNG, progression and save IDs remain unchanged. Hero Selection offers Original/Female with the same three kit cards. New Byte Baddie/Block Queen artwork is a candidate for protected preview and creator review; this instruction authorizes neither merge nor production deployment.
+
 **Future-only proposed unlock examples (not enabled in M0/M1):** end wave 2 → Nerd; defeat first major event boss → Rizzler; end wave 4 → Ohio; collect 500 cumulative XP → Fanum; complete a run → Six Seven; 1,000 cumulative effective protection/healing → Beta. These are proposals pending progression and solo-fairness review, not current production entitlements.
 
 ### 5.7 Hero-specific Flex — approved current PvE contract

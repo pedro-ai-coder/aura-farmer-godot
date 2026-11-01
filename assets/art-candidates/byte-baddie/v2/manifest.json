@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "hero_id": "cool-kid",
+  "appearance": "female",
+  "display_name": "BYTE BADDIE",
+  "asset_slug": "byte-baddie",
+  "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+  "runtime_authorization": "PREVIEW_ONLY",
+  "generation": "Built-in imagegen, original candidate art from creator reference crops; no third-party game art",
+  "reference_pack_sha256": "5abb21a50a9d4d14e4eebf229b3f27effa912de6389a23beb70fbaca0c37f68f",
+  "reference_files": {
+    "byte-baddie-full-reference.png": "7acceae18971c47560e392bc89d42d2092bf9a434d7b4800fdb14281075cd3f5",
+    "byte-baddie-hud-reference.png": "18a0fa95e619b72f62c9b5edf856d728a659e3e6cb1c07ec07b19e1a6251def4"
+  },
+  "frame_count": 24,
+  "source_layout": "4 columns / 6 rows; explicit source regions and cached source-pixel masks, no uniform-grid sampling",
+  "states": {
+    "idle": [
+      0,
+      3
+    ],
+    "run": [
+      4,
+      7
+    ],
+    "attack": [
+      8,
+      11
+    ],
+    "hurt": [
+      12,
+      15
+    ],
+    "flex": [
+      16,
+      19
+    ],
+    "defeat": [
+      20,
+      23
+    ]
+  },
+  "world_scale": 0.26337448559670784,
+  "constraints": [
+    "Cosmetic only; canonical hero ID, starter, Flex, stats, collisions, RNG, progression and v2 saves remain unchanged",
+    "Only creator review preview is authorized; no merge or production deployment",
+    "Single three-quarter movement view is mirrored, comparable to the Pixel Vixen candidate; not an eight-direction master",
+    "Masks extract source pixels and exclude adjacent poses; cached once before a run, never rebuilt per rendered frame",
+    "Selection and HUD are distinct high-resolution illustrations, not gameplay sprite enlargements"
+  ],
+  "atlas": "byte-baddie-atlas-v2.png",
+  "atlas_sha256": "aabe8d8893ac68938ebfddaffb5bc47b2ddfebb86eb3de42f227b8d8041897e6",
+  "atlas_dimensions": [
+    1024,
+    1536
+  ],
+  "portrait": "byte-baddie-portrait-v2.png",
+  "portrait_sha256": "cd9e7e486cb7d2cf0c3d89067b285fe1845758370e45ac324314db0477a0673d",
+  "portrait_dimensions": [
+    1254,
+    1254
+  ],
+  "hud_portrait": "byte-baddie-hud-v2.png",
+  "hud_sha256": "af67fac76f9bfff350eaed423223be416dfbfedfe272dcdd72e916e91d9ee8b7",
+  "hud_dimensions": [
+    1536,
+    1024
+  ],
+  "frame_geometry": "frames.json",
+  "frame_geometry_sha256": "192c57ed18c4c2216908105b1adb757df0041fde2a0443b7f3af042b9592a07d"
+}

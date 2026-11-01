@@ -1,0 +1,4299 @@
+{
+  "captures": [
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "female-selection-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "mode": "heroes",
+      "pose": {},
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-idle-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-moving-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 10,
+        "legacy_frame": 10,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-attack-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 21,
+        "legacy_frame": 13,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "attack"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-hurt-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 28,
+        "legacy_frame": 2,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "hurt"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-flex-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-defeat-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-victory-1920x1080.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-idle-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-moving-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "byte-baddie",
+        "state": "run"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-attack-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "byte-baddie",
+        "state": "attack"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-hurt-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "byte-baddie",
+        "state": "hurt"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-flex-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 18,
+        "sheet": "byte-baddie",
+        "state": "flex-loop"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-defeat-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "byte-baddie",
+        "state": "defeat"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-victory-1920x1080.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-idle-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-moving-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "block-queen",
+        "state": "run"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-attack-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "block-queen",
+        "state": "attack"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-hurt-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "block-queen",
+        "state": "hurt"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-flex-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 19,
+        "sheet": "block-queen",
+        "state": "flex-in"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-defeat-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "block-queen",
+        "state": "defeat"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-victory-1920x1080.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1920,
+        1080
+      ],
+      "requested_window": [
+        1920,
+        1080
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "female-selection-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "mode": "heroes",
+      "pose": {},
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-idle-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-moving-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 10,
+        "legacy_frame": 10,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-attack-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 21,
+        "legacy_frame": 13,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "attack"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-hurt-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 28,
+        "legacy_frame": 2,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "hurt"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-flex-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-defeat-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-victory-1600x900.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-idle-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-moving-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "byte-baddie",
+        "state": "run"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-attack-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "byte-baddie",
+        "state": "attack"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-hurt-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "byte-baddie",
+        "state": "hurt"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-flex-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 18,
+        "sheet": "byte-baddie",
+        "state": "flex-loop"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-defeat-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "byte-baddie",
+        "state": "defeat"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-victory-1600x900.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-idle-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-moving-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "block-queen",
+        "state": "run"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-attack-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "block-queen",
+        "state": "attack"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-hurt-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "block-queen",
+        "state": "hurt"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-flex-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 19,
+        "sheet": "block-queen",
+        "state": "flex-in"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-defeat-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "block-queen",
+        "state": "defeat"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-victory-1600x900.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1600,
+        900
+      ],
+      "requested_window": [
+        1600,
+        900
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "female-selection-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "mode": "heroes",
+      "pose": {},
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-idle-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-moving-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 10,
+        "legacy_frame": 10,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-attack-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 21,
+        "legacy_frame": 13,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "attack"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-hurt-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 28,
+        "legacy_frame": 2,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "hurt"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-flex-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-defeat-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-victory-1280x720.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-idle-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-moving-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "byte-baddie",
+        "state": "run"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-attack-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "byte-baddie",
+        "state": "attack"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-hurt-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "byte-baddie",
+        "state": "hurt"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-flex-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 18,
+        "sheet": "byte-baddie",
+        "state": "flex-loop"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-defeat-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "byte-baddie",
+        "state": "defeat"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-victory-1280x720.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-idle-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-moving-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "block-queen",
+        "state": "run"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-attack-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "block-queen",
+        "state": "attack"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-hurt-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "block-queen",
+        "state": "hurt"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-flex-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 19,
+        "sheet": "block-queen",
+        "state": "flex-in"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-defeat-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "block-queen",
+        "state": "defeat"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-victory-1280x720.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        1280,
+        720
+      ],
+      "requested_window": [
+        1280,
+        720
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "female-selection-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "mode": "heroes",
+      "pose": {},
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-idle-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-moving-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 10,
+        "legacy_frame": 10,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-attack-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 21,
+        "legacy_frame": 13,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "attack"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-hurt-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 28,
+        "legacy_frame": 2,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "hurt"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-flex-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-defeat-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-victory-915x412.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-idle-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-moving-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "byte-baddie",
+        "state": "run"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-attack-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "byte-baddie",
+        "state": "attack"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-hurt-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "byte-baddie",
+        "state": "hurt"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-flex-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 18,
+        "sheet": "byte-baddie",
+        "state": "flex-loop"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-defeat-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "byte-baddie",
+        "state": "defeat"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-victory-915x412.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-idle-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-moving-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "block-queen",
+        "state": "run"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-attack-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "block-queen",
+        "state": "attack"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-hurt-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "block-queen",
+        "state": "hurt"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-flex-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 19,
+        "sheet": "block-queen",
+        "state": "flex-in"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-defeat-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "block-queen",
+        "state": "defeat"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-victory-915x412.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        915,
+        411
+      ],
+      "requested_window": [
+        915,
+        412
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "female-selection-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "mode": "heroes",
+      "pose": {},
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-idle-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-moving-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 10,
+        "legacy_frame": 10,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-attack-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 21,
+        "legacy_frame": 13,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "attack"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-hurt-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 28,
+        "legacy_frame": 2,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "hurt"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-flex-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-defeat-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-victory-844x390.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-idle-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-moving-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "byte-baddie",
+        "state": "run"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-attack-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "byte-baddie",
+        "state": "attack"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-hurt-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "byte-baddie",
+        "state": "hurt"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-flex-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 18,
+        "sheet": "byte-baddie",
+        "state": "flex-loop"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-defeat-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "byte-baddie",
+        "state": "defeat"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-victory-844x390.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-idle-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-moving-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "block-queen",
+        "state": "run"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-attack-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "block-queen",
+        "state": "attack"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-hurt-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "block-queen",
+        "state": "hurt"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-flex-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 19,
+        "sheet": "block-queen",
+        "state": "flex-in"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-defeat-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "block-queen",
+        "state": "defeat"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-victory-844x390.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        843,
+        390
+      ],
+      "requested_window": [
+        844,
+        390
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "female-selection-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "",
+      "mode": "heroes",
+      "pose": {},
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-idle-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-moving-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 10,
+        "legacy_frame": 10,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "run"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-attack-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 21,
+        "legacy_frame": 13,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "attack"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-hurt-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 28,
+        "legacy_frame": 2,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "hurt"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-flex-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 37,
+        "legacy_frame": 16,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "flex-loop"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-defeat-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 42,
+        "legacy_frame": 18,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "defeat"
+      },
+      "position": [
+        796.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png",
+      "canonical_hp": 100.0,
+      "canonical_id": "sigma",
+      "canonical_speed": 180.0,
+      "file": "pixel-vixen-victory-390x844.png",
+      "flex": "Deadpan Verdict",
+      "hud_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "legacy_frame": 0,
+        "legacy_scale": 1.6,
+        "scale": 0.666666666666667,
+        "sheet": "pixel-vixen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "starter": "no-cap"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-idle-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-moving-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "byte-baddie",
+        "state": "run"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-attack-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "byte-baddie",
+        "state": "attack"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-hurt-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "byte-baddie",
+        "state": "hurt"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-flex-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 18,
+        "sheet": "byte-baddie",
+        "state": "flex-loop"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-defeat-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "byte-baddie",
+        "state": "defeat"
+      },
+      "position": [
+        800.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png",
+      "canonical_hp": 110.0,
+      "canonical_id": "cool-kid",
+      "canonical_speed": 190.0,
+      "file": "byte-baddie-victory-390x844.png",
+      "flex": "CTRL + CHAOS",
+      "hud_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "byte-baddie",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png",
+      "starter": "keyboard-warrior"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-idle-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-moving-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 7,
+        "sheet": "block-queen",
+        "state": "run"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-attack-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 8,
+        "sheet": "block-queen",
+        "state": "attack"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-hurt-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 12,
+        "sheet": "block-queen",
+        "state": "hurt"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-flex-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "playing",
+      "pose": {
+        "flip": false,
+        "frame": 19,
+        "sheet": "block-queen",
+        "state": "flex-in"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-defeat-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "lost",
+      "pose": {
+        "flip": false,
+        "frame": 20,
+        "sheet": "block-queen",
+        "state": "defeat"
+      },
+      "position": [
+        788.00048828125,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    },
+    {
+      "appearance": "female",
+      "atlas_texture": "res://assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png",
+      "canonical_hp": 140.0,
+      "canonical_id": "alpha",
+      "canonical_speed": 160.0,
+      "file": "block-queen-victory-390x844.png",
+      "flex": "Giga Chad Rampage",
+      "hud_texture": "res://assets/art-candidates/block-queen/v2/block-queen-hud-v2.png",
+      "mode": "won",
+      "pose": {
+        "flip": false,
+        "frame": 0,
+        "sheet": "block-queen",
+        "state": "idle"
+      },
+      "position": [
+        724.0,
+        540.0
+      ],
+      "readback": [
+        390,
+        843
+      ],
+      "requested_window": [
+        390,
+        844
+      ],
+      "selection_texture": "res://assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png",
+      "starter": "cope-shield"
+    }
+  ],
+  "display": "X11",
+  "engine": "4.7.2-stable (official)",
+  "evidence_type": "staged_native_fixtures_not_browser_device_or_human_playthrough",
+  "failures": [],
+  "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+  "committed_images": [
+    {
+      "file": "atlas-gallery-1920x1080.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "eb9b60816f0e969153420e5a3f31593416550df3296d5f19060067b92fe40a32",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "female-selection-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "e363b2617c39272fba729bf7c4575bd590aa67266429470ca568198f41a97056",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "female-selection-390x844.webp",
+      "dimensions": [
+        390,
+        843
+      ],
+      "sha256": "0f5521edb649903cd166bf8b3099f6b8d639defc5260da4365f013abccd34163",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "byte-baddie-idle-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "eb3583103f9afe5d3971628aa9ca5641ca98936da5339cf5c8ede63c5624984e",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "block-queen-idle-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "0033b755bf761e3de44c822fe15d02c66b1406c48b515b1f489f3e1081502b66",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "byte-baddie-flex-844x390.webp",
+      "dimensions": [
+        843,
+        390
+      ],
+      "sha256": "c0baf1f5b3cca1f72ed94e0213ff1f19faedc90c35394348dd29b92a95c7c6c9",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "block-queen-moving-844x390.webp",
+      "dimensions": [
+        843,
+        390
+      ],
+      "sha256": "89c6e853bade97538ba5c4362b91aef9c0a3b30f4aeaab40b390119a08364d39",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "block-queen-defeat-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "95de9136526264868211a8d95a548dfe8e626df345a5412b39ad53829bf7f6d1",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    },
+    {
+      "file": "byte-baddie-victory-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "13614c36d833ad5e0220bad9aca6dfe1243f6e86b65f80eb614b8c16854ee36a",
+      "encoding": "lossless WebP; decoded RGB identical to unresampled Godot PNG"
+    }
+  ],
+  "other_captures": "Reproduce with tests/female_roster/capture.gd; selected native images committed here.",
+  "runtime_sources_sha256": {
+    "scripts/solo_run.gd": "6e93867c973ccd62e56d3a0ef990d004105419b817fc40c259fb278b5ca0f79e",
+    "scripts/hero_appearance.gd": "9f391f6854418d8f07e99a2f6c4a36b65bfea2fac9d6d606c54964b08c04fe74",
+    "scripts/approved_visuals.gd": "9f17e196b6be02e517a66685cb002c8d4e6f0111aa7322929242d3e3a448cbc9",
+    "scripts/female_appearance_art.gd": "01e37a687aae190b32618a6e55b1c21af2711c60906a9a81661e565de08c2908",
+    "scripts/female_hero_animation.gd": "1a639329e99fb9dc218b9f48ca532da7634f936f47b733303382cbba4a76f8d7",
+    "scripts/hero_clash_hud.gd": "3fdc4acbe8f06c4a8d2e49357ae8f1e90a6c81c769f7a78b35d91a923a4354d4",
+    "scripts/clean_cut_skin.gd": "3ff47448c09edb77d01aabf88a01b2d08ef98caa4332eb443adb72795fdc27a1",
+    "assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png": "803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d",
+    "assets/art-candidates/pixel-vixen/v2/pixel-vixen-hud-v2.png": "337047c012d476f230091f7cf9fff0373b819f4020eba121dd6cc1524d0f0776",
+    "assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png": "13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9",
+    "assets/art-candidates/byte-baddie/v2/byte-baddie-atlas-v2.png": "aabe8d8893ac68938ebfddaffb5bc47b2ddfebb86eb3de42f227b8d8041897e6",
+    "assets/art-candidates/byte-baddie/v2/byte-baddie-hud-v2.png": "af67fac76f9bfff350eaed423223be416dfbfedfe272dcdd72e916e91d9ee8b7",
+    "assets/art-candidates/byte-baddie/v2/byte-baddie-portrait-v2.png": "cd9e7e486cb7d2cf0c3d89067b285fe1845758370e45ac324314db0477a0673d",
+    "assets/art-candidates/block-queen/v2/block-queen-atlas-v2.png": "0f8f5f4efb9d6bb03660eafebf28eaaf6b50980314ea30804bfd453f6f39eb04",
+    "assets/art-candidates/block-queen/v2/block-queen-hud-v2.png": "0b218b66cb5a4b3a495d67f0e9aed956070eb474138ab35ae7bcfd0fea2870b9",
+    "assets/art-candidates/block-queen/v2/block-queen-portrait-v2.png": "b8647d200a0dde5d2ad7cebd54028865100d390d1a1ffdc3ac49919a77b45495"
+  }
+}
