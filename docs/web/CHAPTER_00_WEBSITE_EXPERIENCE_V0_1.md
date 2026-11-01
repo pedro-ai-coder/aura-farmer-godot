@@ -106,26 +106,26 @@ All values are **descriptive** only; do not invent distinct female stats, unlock
 
 | URL route (illustrative) | MVP content | Later content / gate |
 | --- | --- | --- |
-| \`/\` | Hero, Chapter 00 story, CTA | Dynamic current-season feature after approvals |
-| \`/story\` | Season 01 Chapter 00 reading page | New public chapter releases with spoiler tags |
-| \`/heroes\` | Three kits / six appearances, canonical skill labels | More hero content only when GDD rollout approves it |
-| \`/world/ruin-alley\` | Approved setting, safe non-spoiler context | Expanded lore/media after owner review |
-| \`/archive\` | Published in-world transmissions, chronology | Future chapters and past seasons |
-| \`/play\` | Real availability explanation and only authorized URL | Public game + Discord links after M1 gates |
-| \`/legal\` | Required disclosures and accurate policies | Platform-specific requirements as launch evolves |
+| `/` | Hero, Chapter 00 story, CTA | Dynamic current-season feature after approvals |
+| `/story` | Season 01 Chapter 00 reading page | New public chapter releases with spoiler tags |
+| `/heroes` | Three kits / six appearances, canonical skill labels | More hero content only when GDD rollout approves it |
+| `/world/ruin-alley` | Approved setting, safe non-spoiler context | Expanded lore/media after owner review |
+| `/archive` | Published in-world transmissions, chronology | Future chapters and past seasons |
+| `/play` | Real availability explanation and only authorized URL | Public game + Discord links after M1 gates |
+| `/legal` | Required disclosures and accurate policies | Platform-specific requirements as launch evolves |
 
 Routes are **proposals**, not live assets or a confirmed domain.
 
 ### Content structure for scalable chapters
 
 Store content as versioned records with fields such as:
-- \`id\`, \`season_id\`, \`chapter_id\`, \`slug\`, \`title\`, \`summary\`
-- \`publication_status\`: draft/review/approved/published
-- \`spoiler_level\`: none / chapter1 / future / finale
-- \`canonical_basis\`: GDD approved vs editorial proposal
-- \`blocks\`: heading, paragraph, quote, illustration reference, visual interruption
-- \`art_asset_ref\`: approved hash/source where required
-- \`published_at\` only after actual publication, with clear archival dates
+- `id`, `season_id`, `chapter_id`, `slug`, `title`, `summary`
+- `publication_status`: draft/review/approved/published
+- `spoiler_level`: none / chapter1 / future / finale
+- `canonical_basis`: GDD approved vs editorial proposal
+- `blocks`: heading, paragraph, quote, illustration reference, visual interruption
+- `art_asset_ref`: approved hash/source where required
+- `published_at` only after actual publication, with clear archival dates
 
 **Do not** treat this content schema as a mandate for a CMS, database or user account. A static JSON/Markdown content collection is enough initially.
 
@@ -159,7 +159,7 @@ Store content as versioned records with fields such as:
 ### Integration
 - Website deployed to separate **protected preview** before any public publication.
 - Any game link points to an actual approved accessible Web build; restricted M0 URL never leaked publicly.
-- Avoid migrating the game's origin/localStorage key; existing \`aura-farmer:profile:v2\` and export/import behavior remain untouched unless a separate approved migration guarantees user data preservation.
+- Avoid migrating the game's origin/localStorage key; existing `aura-farmer:profile:v2` and export/import behavior remain untouched unless a separate approved migration guarantees user data preservation.
 - New public gameplay exposure remains gated by M1 checks and explicit owner authorization.
 
 ## 8. Implementation decisions pending
