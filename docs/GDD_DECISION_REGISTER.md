@@ -18,6 +18,7 @@
 | D-08 | Engine | **Godot 4 / GDScript** is the active game codebase; Phaser remains the reference and must not be altered. | Historical Phaser/TypeScript refactor plan. |
 | D-09 | Asset status | Recognize all previously approved original masters, icon PNGs and Clean Cut UI resources identified below. | Older claims that these files remain missing or unapproved. |
 | D-10 | GDD restructuring | Prepare a **consolidated GDD V3.0**, eliminating historical operational contradictions while **archiving V2.0 verbatim**. V3 becomes canonical only when its own PR is approved and merged. | Any implied automatic document rewrite. |
+| D-11 (1 Nov 2026) | Public game name | Creator approves **CLUTCHPUNKS** as the public-facing game/universe name. The historical Aura Farmer repository/save namespace remains unchanged until a separately authorized, compatibility-safe migration. | Prior **Aura Farmer** public naming proposal only; no automatic logo, backend or technical rename. |
 
 ## Milestone boundaries
 
@@ -66,3 +67,14 @@ The exact source hashes and approved versions in those ledgers control promotion
 6. Precise future art substitutions/revocations and final rendered M0 creator sign-off. The proposed V3 document is pending its own PR acceptance and merge.
 
 **Precedence:** owner decisions dated 25 October 2026 supersede contradictory historical *delivery or acceptance* text. All other gameplay rules in the canonical GDD continue unchanged.
+
+
+## 1 November 2026 — brand approval and narrative concept intake
+
+**Creator-approved:** The player-facing game/universe name is **CLUTCHPUNKS**.
+
+**Creator-supported narrative direction, still requiring content review:** Season 01 title **THE FEED IS BROKEN**, Chapter 00 website prologue **THE INCIDENT**, and existing Ruin Alley as the first playable story chapter. The detailed world rules, hero dialogue, future Chapter 02–05 maps and bosses, Crown Court reveal wording, final tagline and logo sources remain **creative proposals**, not approved game content.
+
+**Documentation candidates:** [World Bible](narrative/CLUTCHPUNKS_WORLD_BIBLE_V0_1.md), [Season 01 Bible](narrative/SEASON_01_THE_FEED_IS_BROKEN_V0_1.md), [Brand](brand/CLUTCHPUNKS_BRAND_DIRECTION_V0_1.md), [Website](web/CHAPTER_00_WEBSITE_EXPERIENCE_V0_1.md), [Implementation Plan](roadmap/CLUTCHPUNKS_NARRATIVE_IMPLEMENTATION_PLAN_V0_1.md).
+
+**No implicit authorization:** Renaming save keys/repositories/domains, replacing the exact approved wordmark, publishing a website, launching M1, enabling new maps, modifying GDD combat or introducing a new backend. Approval of the name is not a claim of trademark/domain clearance.
