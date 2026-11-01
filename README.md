@@ -6,6 +6,7 @@ Godot 4.7.2 / GDScript solo game using the Compatibility renderer. Approved mile
 
 ## Narrative and brand planning
 
+- [Creative Direction Package V1 — CEO review, three logo routes and production roadmap](docs/creative/v1/README.md) — candidate artwork and editorial direction; no runtime promotion.
 - [World & Narrative Bible v0.1](docs/narrative/CLUTCHPUNKS_WORLD_BIBLE_V0_1.md)
 - [Season 01 — The Feed Is Broken v0.1](docs/narrative/SEASON_01_THE_FEED_IS_BROKEN_V0_1.md)
 - [Brand & Logo Direction v0.1](docs/brand/CLUTCHPUNKS_BRAND_DIRECTION_V0_1.md)

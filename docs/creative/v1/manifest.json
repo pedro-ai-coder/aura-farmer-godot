@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "date": "2026-11-01",
+  "foundation_sha": "f7d1794fa64253422806ebbb1351342bba88b93f",
+  "generator": "Built-in image_gen",
+  "approval": "Direction selection and exact-source approval pending",
+  "assets": [
+    {
+      "path": "visuals/route-a.png",
+      "sha256": "944d93236de69d270fb78a5f20b53ff86b59235999c6d5be3c8ab8f6fee6bbed",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 1305086,
+      "prompt": "visuals/promptA.txt",
+      "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+      "production_master": false
+    },
+    {
+      "path": "visuals/route-b.png",
+      "sha256": "faba3abe1f0fddefe753c6ee64b993683e5a0548f5b8e59a0b1dd0ee041e0a83",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 1392358,
+      "prompt": "visuals/promptB.txt",
+      "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+      "production_master": false
+    },
+    {
+      "path": "visuals/route-c.png",
+      "sha256": "35e2217443a2a08ef381fdb4296a5f023ee8aba621af5e09ea16901c6eb5e047",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 1260154,
+      "prompt": "visuals/promptC.txt",
+      "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+      "production_master": false
+    },
+    {
+      "path": "visuals/route-a-applications.png",
+      "sha256": "a86c472da6f5bc7353ac46c02b0dce5a12e241e8f8118380b3210889b352a506",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 1758508,
+      "prompt": "visuals/promptApplications.txt",
+      "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+      "production_master": false
+    }
+  ],
+  "reference_assets": [
+    {
+      "path": "assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png",
+      "sha256": "13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9",
+      "use": "Application-board visual reference only; generated rendition is not approved source"
+    }
+  ]
+}
