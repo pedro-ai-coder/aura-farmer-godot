@@ -1,0 +1,147 @@
+extends SceneTree
+const Run=preload("res://tests/weapon_presence/review_run.gd")
+const Feedback=preload("res://scripts/passive_feedback.gd")
+var failures: Array[String]=[]
+func expect(ok: bool,message: String) -> void:
+    if not ok:failures.append(message)
+func _initialize() -> void:call_deferred("verify")
+func setup(game, index: int=1) -> void:
+    game.start_run(index);game.set_process(false);game.clean_cut_skin.set_process(false)
+    game.enemies.clear();game.spawn_timer=INF;game.weapons.clear()
+func equip(game,id: String,lv: int=1) -> void:
+    game.passives.append({"id":id,"level":lv,"rarity":game.SoloOfferRulesScript.PASSIVE_DATA[id].rarity})
+func any_notice(observer, text: String) -> bool:
+    for item: Dictionary in observer.pending+[observer.current]:
+        if str(item).contains(text):return true
+    return false
+func verify() -> void:
+    var game:=Run.new();root.add_child(game);setup(game)
+    var observer=game.passive_feedback
+    expect(Feedback.COVERAGE.size()==23,"Exactly 23 active passive feedback contracts")
+    for id in game.PASSIVES:
+        expect(Feedback.COVERAGE.has(id),"Coverage "+id)
+        equip(game,id)
+        expect(not Feedback.describe(game,id,1).is_empty(),"Actual-level description "+id)
+        expect(game.presentation.item_icons.texture("passive",id)!=null,"Approved icon "+id)
+        game.passives.clear()
+    for id in ["get-ratiod","ego-check","uno-reverse","brainrot-rain","take-l"]:
+        expect(not Feedback.COVERAGE.has(id) and id not in game.PASSIVES,"Future-only excluded "+id)
+    # No acknowledgment until a legal selection is actually committed.
+    setup(game)
+    var card: Dictionary={"type":"passive","id":"main-character","rarity":"common","level":1,"label":"Main Character Energy"}
+    game.mode="choice";game.selection.assign([card]);game.pending_choices=1;game._show_ui()
+    game.pick_upgrade(0)
+    expect(observer.committed==0 and observer.pending.is_empty(),"Hover/select is not acquisition")
+    game._confirm_selection()
+    expect(observer.committed==1 and any_notice(observer,"ACQUIRED"),"Confirm acknowledges actual new passive")
+    expect(game.passives.size()==1,"Confirmed inventory")
+    game._apply_card(card)
+    expect(observer.committed==1,"Rejected duplicate has no false acquisition")
+    game._apply_card({"type":"upgrade_passive","id":"main-character","rarity":"common","level":2})
+    expect(observer.committed==2 and any_notice(observer,"LEVEL UP"),"Actual level upgrade")
+    # Weapon promotion can reduce a level; report the real result.
+    game.weapons.append({"id":"keyboard-warrior","rarity":"common","level":4,"timer":0.0})
+    game._apply_card({"type":"promote_weapon","id":"keyboard-warrior","rarity":"rare","level":3})
+    expect(game.weapons[0].level==3 and any_notice(observer,"PROMOTED · RARE · LV 3"),"Promotion describes real capped weapon level")
+    setup(game)
+    for id in ["main-character","thick-skin","caught-4k","big-meme","certified-w"]:equip(game,id)
+    var replacement: Dictionary={"type":"passive","id":"built-different","rarity":"common","level":1}
+    game._apply_card(replacement)
+    expect(game.mode=="replace" and observer.committed==0,"Full inventory awaits replacement confirmation")
+    game._cancel_replacement()
+    expect(observer.committed==0,"Cancelled replacement remains silent")
+    game._apply_card(replacement)
+    game._apply_card(game.replace_card,"main-character")
+    expect(observer.committed==1 and any_notice(observer,"Replaces Main Character Energy"),"Mutable replacement card copied before clear")
+    expect(is_equal_approx(game.max_hp,118.8),"Built Different exact max HP")
+    setup(game);game.hp=game.max_hp-2
+    game._apply_card({"type":"heal","id":"heal-0"})
+    expect(any_notice(observer,"+2 HP restored"),"Fallback heal reports effective capped HP")
+    observer.reset();game._apply_card({"type":"heal","id":"heal-0"})
+    expect(any_notice(observer,"no healing applied"),"Full HP does not show fake healing")
+    setup(game);equip(game,"let-him-cook");equip(game,"six-to-seven")
+    for i in range(6):game._primary_activation(game.player_pos)
+    expect(game.cook_stacks==5,"Cook actual max stacks")
+    expect(Feedback.slot_state(game,"let-him-cook").short=="5/5","Cook badge reads actual stacks")
+    expect(Feedback.slot_state(game,"six-to-seven").short=="6/7","Sixth hit warning")
+    game._primary_activation(game.player_pos)
+    expect(game.passive_timers.six_counter==0 and observer.rings.size()==1,"Seventh real primary hit produces one cosmetic ring")
+    expect(Feedback.slot_state(game,"six-to-seven").detail=="Burst recovery","Counter lockout read from authoritative timer")
+    var ring_until: float=observer.rings[0].until
+    observer.synchronize(game);var before_pause:=var_to_bytes([observer.current,observer.current_until,observer.rings,observer.statuses])
+    game._toggle_pause();game._process(0.25);game._process(0.25)
+    expect(before_pause==var_to_bytes([observer.current,observer.current_until,observer.rings,observer.statuses]),"Pause freezes all feedback deadlines/queues")
+    game._toggle_pause();game.run_time=3.01;observer.synchronize(game)
+    expect(Feedback.slot_state(game,"let-him-cook").is_empty() and any_notice(observer,"Stacks expired"),"Cook actually expires, stale canonical count does not linger visually")
+    expect(observer.rings.is_empty(),"Short cosmetic lifetime expires on active clock")
+    setup(game,0);equip(game,"w-wifi",1);equip(game,"aura-viral",2)
+    game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(100,0)});game.run_time=12
+    game._tick_passives(0)
+    expect(Feedback.slot_state(game,"w-wifi").detail.contains("+8%"),"Wi-Fi actual frequency inside zone")
+    game.player_pos+=Vector2(170,0)
+    expect(Feedback.slot_state(game,"w-wifi").short=="OUT","Outside zone never claims active bonus")
+    game.player_pos-=Vector2(170,0);game.aura=100;game._use_flex()
+    expect(game.flex_time>0 and Feedback.slot_state(game,"aura-viral").detail.contains("+18%"),"Flex-triggered real Viral state")
+    expect(Feedback.slot_state(game,"w-wifi").detail.contains("+18%"),"Overlapping frequency displays strongest, never +26%")
+    game.run_time=17.01
+    expect(Feedback.slot_state(game,"aura-viral").is_empty(),"Exact Viral expiry")
+    setup(game,0);equip(game,"no-cap-streak");game.directional_hits=4
+    game.weapons.append({"id":"brainrot-feed","rarity":"common","level":1,"timer":0.0})
+    game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(100,0)})
+    game._fire_weapons(0)
+    expect(any_notice(observer,"+10% damage") and not any_notice(observer,"pierce"),"Blast streak does not claim unused projectile pierce")
+    setup(game,0);equip(game,"absolute-cinema");game.aura=100;game._use_flex()
+    expect(observer.pending.is_empty(),"Invalid Sigma Flex cannot trigger legendary message")
+    game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(100,0)});game._use_flex()
+    expect(any_notice(observer,"+20% additive"),"Cinema actual successful Flex acknowledged")
+    setup(game);equip(game,"w-squad");game.aura=100;game._use_flex()
+    expect(Feedback.slot_state(game,"w-squad").short=="6s","W Squad real six-second state")
+    setup(game);equip(game,"homie-check");game.hp=50
+    for i in range(8):game._primary_activation(game.player_pos)
+    expect(is_equal_approx(game.hp,53.3) and any_notice(observer,"+3.3 HP"),"Homie effective healing from actual eighth hit")
+    var count: int=game.passive_timers.homie_count;game._primary_activation(game.player_pos)
+    expect(game.passive_timers.homie_count==count,"No counter increments during real Homie lockout")
+    setup(game,2);equip(game,"so-back");equip(game,"too-sigma")
+    game._deal_damage_to_player(125)
+    expect(any_notice(observer,"Too Sigma") and any_notice(observer,"We Are So Back"),"Nonfatal thresholds acknowledge actual emergency shields")
+    var protection_before: float=game.run_metrics.protection;game._deal_damage_to_player(4)
+    expect(game.run_metrics.protection>protection_before and any_notice(observer,"damage absorbed"),"Absorption uses exact mitigated amount")
+    var hp_before: float=game.hp;game.run_time=1;game._tick_passives(0)
+    expect(game.hp>hp_before and any_notice(observer,"HP restored"),"So Back real healing tick")
+    setup(game,2);equip(game,"big-chad")
+    game._grant_weapon_shield("other",game.max_hp*.4,6)
+    game._grant_weapon_shield("big-chad",20,4)
+    expect(not any_notice(observer,"Big Chad"),"Zero grant at shared shield cap is silent")
+    setup(game,2);equip(game,"too-sigma");game._deal_damage_to_player(10000)
+    expect(game.mode=="lost" and observer.pending.is_empty(),"No immunity/revive feedback on fatal damage")
+    setup(game);equip(game,"no-u");game.run_time=15
+    game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(60,0)})
+    game._spawn_enemy("boss",{"pos":game.player_pos+Vector2(160,0)})
+    for enemy: Dictionary in game.enemies:enemy.hp=1000;enemy.max=1000
+    game._tick_passives(0)
+    expect(observer.rings.size()==1 and observer.rings[0].radius==200,"No U cosmetic uses real activation/radius")
+    expect(game.enemies[0].weaken_until==19 and game.enemies[1].weaken_until==17,"No U does not homogenize normal/boss expiry")
+    observer.synchronize(game)
+    game._return_to_menu()
+    expect(observer.statuses.is_empty() and observer.pending.is_empty() and observer.current.is_empty() and observer.rings.is_empty(),"Quit clears every new visual record")
+    setup(game);game._apply_card({"type":"passive","id":"w-squad","rarity":"legendary","level":1})
+    expect(any_notice(observer,"legendary") and observer.committed==1,"Legendary acquisition only after actual commit")
+    game._finish(true)
+    expect(observer.pending.is_empty() and observer.current.is_empty(),"Victory clears cosmetic state")
+    setup(game);expect(observer.committed==0 and observer.statuses.is_empty(),"Retry/new run clears cosmetic state")
+    game.profile["settings"]["reducedMotion"]=true
+    observer.notify(game,"main-character","Test","Actual event","upgrade");observer.synchronize(game)
+    game.clean_cut_skin._process(0)
+    var view=game.clean_cut_skin.passive_feedback_view
+    expect(view.mouse_filter==Control.MOUSE_FILTER_IGNORE and view.focus_mode==Control.FOCUS_NONE,"Feedback cannot steal pointer, touch or keyboard focus")
+    expect(view.plate.visible and view.plate.position.x==game.clean_cut_skin.gameplay_hud.modules.TopLeftHeroStatus.position.x+8,"Reduced Motion uses static presentation")
+    setup(game);equip(game,"six-to-seven");observer.synchronize(game);game.clean_cut_skin._process(0)
+    setup(game);game.clean_cut_skin._process(0);game.clean_cut_skin._process(0)
+    for bar in view.progress:expect(not bar.visible,"Inactive slot progress never reappears from a cached prior run")
+    for i in range(30):observer.notify(game,"main-character","Test","Confirmed","upgrade")
+    expect(observer.pending.size()<=Feedback.MAX_PENDING,"Notification memory bounded")
+    game.queue_free()
+    if failures.is_empty():print("PASS: 23 passive contracts, real commits, cap-aware promotion/replacement, timers, stacks, effective healing/shields, four legendaries, pause/lifecycle/input/Reduced Motion");quit()
+    else:
+        for failure in failures:push_error(failure)
+        quit(1)

@@ -1,0 +1,576 @@
+{
+  "baseline_commit": "59b2595885cb11342607fbcbbec24855de525935",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "renderer": "Compatibility / native X11 Mesa llvmpipe",
+  "source_sha256": {
+    "scripts/solo_run.gd": "a0f0e466341ab32694d56d2236c71a1ad395fc781c95086b2cc645215e433a61",
+    "scripts/passive_feedback.gd": "64d2386f39601dd7554501d77494b20655b29da78b8d03920fbd195e29b67b51",
+    "scripts/passive_feedback_view.gd": "05e05915ab7bb30bf11427a9a65315dabe7884e0ed023389c30f848737237639",
+    "scripts/clean_cut_skin.gd": "8c9719d11eee976f242f191b02d6c134010453fa169d7d38a431fa0116139bdd",
+    "scripts/clean_cut_secondary.gd": "82fd79eb5e33f8f8e81b5e6f2045bd18ee45ea5e4af76cf781dd8d2ccc9c19f9"
+  },
+  "new_art_resources": 0,
+  "review_status": "CREATOR_REVIEW_REQUIRED",
+  "capture_method": "DisplayServer.screen_get_image(0), exact client region; native scripted canonical simulation, not human/browser/physical-device evidence",
+  "image_encoding": "WebP quality 94 for standalone native frames; 92 for labeled sheets. Frames are not retouched. Sheet labels/crops are outside gameplay evidence.",
+  "frames": [
+    {
+      "path": "tests/passive_feedback/evidence/after-acquired-1600x900.webp",
+      "source_capture": "after-all-acquired-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "20476af225ff2d5955f666a6636427acea340a64cd329b17e1c14b6b9e1c2c36",
+      "webp_sha256": "666c1cd18612f0ba5538fcf9bc5bf3475ea44facf570e16a241e3ea0e149b1e6"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-level-1600x900.webp",
+      "source_capture": "after-all-level-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "0baa872eb55cd57867246e843627a3833cde3bda16bb60c360fb8c1c44e1cf01",
+      "webp_sha256": "ee1153c1bbcb0b594feff117412d44056f07966db98a7d5bc39d4b87e8a8fb0a"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-timed-active-1600x900.webp",
+      "source_capture": "after-all-timed-active-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "e3439f5e84672bfbbaa7dfd406445216788adfeda1b4b149b9462a62e03c4f5d",
+      "webp_sha256": "396d3707245fbf89e2b7518d919d87427eededbd4c72cc490d401aab4a486698"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-stack-six-1600x900.webp",
+      "source_capture": "after-all-stack-six-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "9f2f3cb25ccea8620158a5b70ab483823244e4633919678b142826fc70b43922",
+      "webp_sha256": "63b9ccd85ca86f70153098e97f06f1230318b675ffbfef4becd72e1c9e88de6e"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-healing-1600x900.webp",
+      "source_capture": "after-all-healing-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "75ae3bcd96b0234930093fb2b4ad35923c8a7de10f95998d3e7ce912f4287fb0",
+      "webp_sha256": "de714205baa3ebd71b869d099321a04892e6ea82decdf864808baca3d5473fd4"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-shield-1600x900.webp",
+      "source_capture": "after-all-shield-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "ecad321cb436f9e9a6b473a64315b41cb37a34e2148a79d8ca7116b559758421",
+      "webp_sha256": "53ae84ab21c17997bdb8ef39cceef5394db519d2f17f02830c5ab4489636953b"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-legendary-1600x900.webp",
+      "source_capture": "after-all-legendary-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "45e4658ae7ad3ec00685a337d594e3e859dd0694a5b0bc0cd3efcdfe8080bfe1",
+      "webp_sha256": "f30b2a955a45abaccc0f02d0f3290cedce1374536b45f7e60303c3263ad1c80b"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-dense-1600x900.webp",
+      "source_capture": "after-all-dense-1600x900-010.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "bc1a31aea85da313a20e640d95a87bd53f8425381fa5f44d4e730dedc032f391",
+      "webp_sha256": "a6d6b95a459f201d658478545e7e0807caa46c912988a04e7cb1d8e4262ea52e"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/before-acquired-1600x900.webp",
+      "source_capture": "before-all-acquired-1600x900-017.png",
+      "native_dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "a332047a6dfa9a57644122ec257db53e66dcafb54947bb0d3ec479d1f7d17ec3",
+      "webp_sha256": "a21609c120e42c01be7e29f26f6d573ffbc192c40050c31619ac58090a637075"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-acquired-844x390.webp",
+      "source_capture": "after-all-acquired-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "b76ed32fd2482f5830b9c32dfbf262f738fe3394964b6c6e30871a4ae9524ee8",
+      "webp_sha256": "03e9f4981ae3958208834e5ae0b5760382b43b3ef02cd37e51def025a2198661"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-level-844x390.webp",
+      "source_capture": "after-all-level-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "d8287a31ed21134983fd1b2072e8e7b2b17a680fb72198a88a8cdf7e3e444815",
+      "webp_sha256": "d6bcea0e895cc6884dcc6550eedb29111f3284eeea3e498165fee985b4031ab5"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-timed-active-844x390.webp",
+      "source_capture": "after-all-timed-active-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "0ee1caa2a7b2f922fdb7f7771dac8e542d595ec190954a0ba1e2f9ce8ade0ae3",
+      "webp_sha256": "25a3da0e01d56621b0b127cd7327a438b8de1a6463aeb7cf910a4696a38d0040"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-stack-six-844x390.webp",
+      "source_capture": "after-all-stack-six-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "6f3af2f91c2d2d49b3547f7a66784971a9631b3039e32a1f284584a4b78fa8c7",
+      "webp_sha256": "8238a14c99c920e40bf52f0a89307a84c320cd76cb5ec701540f0147024cc674"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-healing-844x390.webp",
+      "source_capture": "after-all-healing-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "9286984f816fb5b68c60133211e0a525007e9ecd1cd4f629235715e7f59515f6",
+      "webp_sha256": "69808ddd33865476a23264987328d6d1128b1b1ec72b6f200eac518a244caa28"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-shield-844x390.webp",
+      "source_capture": "after-all-shield-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "255c99ef97fd9f5af3771a4edc69b96dae74e84c704bded6a0b038f544898f93",
+      "webp_sha256": "c0fada8c927ccf12c5dd2234c17fa663a8b6e28d391d46e7d24b73fa4ba82eaf"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-legendary-844x390.webp",
+      "source_capture": "after-all-legendary-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "e7642e21a9d0ac8c77723ebba064d5440c5f233d08eb5ed3237ef6fadaff78ec",
+      "webp_sha256": "da34a8dbeaa66219cd2a0c4f417b9e956b43e6de2a24609ffa3b6dbeeba8b65e"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/after-dense-844x390.webp",
+      "source_capture": "after-all-dense-844x390-010.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "c2fedc98c14cb61ee92953e73471001a30c81d573932f88d88e149224203df85",
+      "webp_sha256": "e33b7a81b5722f6d43880c0762e8ff195c002aa5590f769685296855938580d7"
+    },
+    {
+      "path": "tests/passive_feedback/evidence/before-acquired-844x390.webp",
+      "source_capture": "before-all-acquired-844x390-017.png",
+      "native_dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "6b7bb6faf7a6167cdc6314ad5380f5c9f179ce15b1d2247c624d6a3042f59bef",
+      "webp_sha256": "8ba34129eafc30d1196ade4b28097f69515e145211ee255d0bdc0d5a7a165057"
+    }
+  ],
+  "sheets": {
+    "before-after-desktop": {
+      "path": "tests/passive_feedback/evidence/before-after-desktop.webp",
+      "sha256": "fd043fccc5f2e0cd7bbb16f37c35cff3192f05a199e43582040029bc78e2c4a8",
+      "panels": [
+        {
+          "capture": "before-all-acquired-1600x900-017.png",
+          "label": "BEFORE \u2014 production HUD / feedback adapter disabled",
+          "source_sha256": "a332047a6dfa9a57644122ec257db53e66dcafb54947bb0d3ec479d1f7d17ec3"
+        },
+        {
+          "capture": "after-all-acquired-1600x900-017.png",
+          "label": "AFTER \u2014 confirmed acquisition, actual value",
+          "source_sha256": "20476af225ff2d5955f666a6636427acea340a64cd329b17e1c14b6b9e1c2c36"
+        }
+      ]
+    },
+    "desktop-feedback": {
+      "path": "tests/passive_feedback/evidence/desktop-feedback.webp",
+      "sha256": "b86a7e2ffca586757f80d5bad2e1728fc18cc24606c8822bbf6c5156a59f1147",
+      "panels": [
+        {
+          "capture": "after-all-acquired-1600x900-017.png",
+          "label": "Passive acquired \u2014 native 1600\u00d7900",
+          "source_sha256": "20476af225ff2d5955f666a6636427acea340a64cd329b17e1c14b6b9e1c2c36"
+        },
+        {
+          "capture": "after-all-level-1600x900-017.png",
+          "label": "Existing item level up \u2014 native 1600\u00d7900",
+          "source_sha256": "0baa872eb55cd57867246e843627a3833cde3bda16bb60c360fb8c1c44e1cf01"
+        },
+        {
+          "capture": "after-all-timed-active-1600x900-017.png",
+          "label": "Timed buffs active \u2014 native 1600\u00d7900",
+          "source_sha256": "e3439f5e84672bfbbaa7dfd406445216788adfeda1b4b149b9462a62e03c4f5d"
+        },
+        {
+          "capture": "after-all-stack-six-1600x900-017.png",
+          "label": "Actual sixth-hit warning \u2014 native 1600\u00d7900",
+          "source_sha256": "9f2f3cb25ccea8620158a5b70ab483823244e4633919678b142826fc70b43922"
+        },
+        {
+          "capture": "after-all-healing-1600x900-017.png",
+          "label": "Effective HP restored \u2014 native 1600\u00d7900",
+          "source_sha256": "75ae3bcd96b0234930093fb2b4ad35923c8a7de10f95998d3e7ce912f4287fb0"
+        },
+        {
+          "capture": "after-all-shield-1600x900-017.png",
+          "label": "Actual shield grant \u2014 native 1600\u00d7900",
+          "source_sha256": "ecad321cb436f9e9a6b473a64315b41cb37a34e2148a79d8ca7116b559758421"
+        },
+        {
+          "capture": "after-all-legendary-1600x900-017.png",
+          "label": "Confirmed Legendary acquisition \u2014 native 1600\u00d7900",
+          "source_sha256": "45e4658ae7ad3ec00685a337d594e3e859dd0694a5b0bc0cd3efcdfe8080bfe1"
+        },
+        {
+          "capture": "after-all-dense-1600x900-010.png",
+          "label": "Dense stress fixture (high HP) + real effects \u2014 native 1600\u00d7900",
+          "source_sha256": "bc1a31aea85da313a20e640d95a87bd53f8425381fa5f44d4e730dedc032f391"
+        }
+      ]
+    },
+    "before-after-mobile": {
+      "path": "tests/passive_feedback/evidence/before-after-mobile.webp",
+      "sha256": "90eee66ec02246204f19a896a1bc76e701eff140f66c53652c581e0f59d13429",
+      "panels": [
+        {
+          "capture": "before-all-acquired-844x390-017.png",
+          "label": "BEFORE \u2014 production HUD / feedback adapter disabled",
+          "source_sha256": "6b7bb6faf7a6167cdc6314ad5380f5c9f179ce15b1d2247c624d6a3042f59bef"
+        },
+        {
+          "capture": "after-all-acquired-844x390-017.png",
+          "label": "AFTER \u2014 confirmed acquisition, actual value",
+          "source_sha256": "b76ed32fd2482f5830b9c32dfbf262f738fe3394964b6c6e30871a4ae9524ee8"
+        }
+      ]
+    },
+    "mobile-feedback": {
+      "path": "tests/passive_feedback/evidence/mobile-feedback.webp",
+      "sha256": "b7c436ebf4d41af6216deff24a2cdc7457dc4793fa78b28a4a9be52423b17f85",
+      "panels": [
+        {
+          "capture": "after-all-acquired-844x390-017.png",
+          "label": "Passive acquired \u2014 native 844\u00d7390",
+          "source_sha256": "b76ed32fd2482f5830b9c32dfbf262f738fe3394964b6c6e30871a4ae9524ee8"
+        },
+        {
+          "capture": "after-all-level-844x390-017.png",
+          "label": "Existing item level up \u2014 native 844\u00d7390",
+          "source_sha256": "d8287a31ed21134983fd1b2072e8e7b2b17a680fb72198a88a8cdf7e3e444815"
+        },
+        {
+          "capture": "after-all-timed-active-844x390-017.png",
+          "label": "Timed buffs active \u2014 native 844\u00d7390",
+          "source_sha256": "0ee1caa2a7b2f922fdb7f7771dac8e542d595ec190954a0ba1e2f9ce8ade0ae3"
+        },
+        {
+          "capture": "after-all-stack-six-844x390-017.png",
+          "label": "Actual sixth-hit warning \u2014 native 844\u00d7390",
+          "source_sha256": "6f3af2f91c2d2d49b3547f7a66784971a9631b3039e32a1f284584a4b78fa8c7"
+        },
+        {
+          "capture": "after-all-healing-844x390-017.png",
+          "label": "Effective HP restored \u2014 native 844\u00d7390",
+          "source_sha256": "9286984f816fb5b68c60133211e0a525007e9ecd1cd4f629235715e7f59515f6"
+        },
+        {
+          "capture": "after-all-shield-844x390-017.png",
+          "label": "Actual shield grant \u2014 native 844\u00d7390",
+          "source_sha256": "255c99ef97fd9f5af3771a4edc69b96dae74e84c704bded6a0b038f544898f93"
+        },
+        {
+          "capture": "after-all-legendary-844x390-017.png",
+          "label": "Confirmed Legendary acquisition \u2014 native 844\u00d7390",
+          "source_sha256": "e7642e21a9d0ac8c77723ebba064d5440c5f233d08eb5ed3237ef6fadaff78ec"
+        },
+        {
+          "capture": "after-all-dense-844x390-010.png",
+          "label": "Dense stress fixture (high HP) + real effects \u2014 native 844\u00d7390",
+          "source_sha256": "c2fedc98c14cb61ee92953e73471001a30c81d573932f88d88e149224203df85"
+        }
+      ]
+    },
+    "timers-stacks": {
+      "path": "tests/passive_feedback/evidence/timers-stacks.webp",
+      "sha256": "3bfa1d31f86c7d94c0e4921fbbc75cb1b71d2b7900279d6bf2f1f19dd0b761ab",
+      "panels": [
+        {
+          "capture": "after-all-timed-active-844x390-017.png",
+          "label": "Active deadlines and positional zone",
+          "source_sha256": "0ee1caa2a7b2f922fdb7f7771dac8e542d595ec190954a0ba1e2f9ce8ade0ae3"
+        },
+        {
+          "capture": "after-all-timed-expired-844x390-189.png",
+          "label": "Actual expiry \u2014 slot levels return",
+          "source_sha256": "ddfd152ca7ff3d7e02033d2693bf29f2c15c27e9bd58badc4acd1f2f368ace87"
+        },
+        {
+          "capture": "after-all-stack-low-844x390-017.png",
+          "label": "Early real primary-hit stacks",
+          "source_sha256": "c8fada47cf09e9b29ff2d5cb7a425b860899153aada5596f109f92b40be39d38"
+        },
+        {
+          "capture": "after-all-stack-six-844x390-017.png",
+          "label": "6 / 7 \u2014 next primary hit bursts",
+          "source_sha256": "6f3af2f91c2d2d49b3547f7a66784971a9631b3039e32a1f284584a4b78fa8c7"
+        },
+        {
+          "capture": "after-all-stack-burst-844x390-010.png",
+          "label": "Actual seventh hit / two-second recovery",
+          "source_sha256": "49b196a3eb64e4dcd233613ae084beb32f2821e45da4810d1d5bcb77174c8a13"
+        },
+        {
+          "capture": "after-all-healing-844x390-017.png",
+          "label": "Actual eighth hit healing, after support/caps",
+          "source_sha256": "9286984f816fb5b68c60133211e0a525007e9ecd1cd4f629235715e7f59515f6"
+        }
+      ]
+    },
+    "legendary-effects": {
+      "path": "tests/passive_feedback/evidence/legendary-effects.webp",
+      "sha256": "30ce286c47d45d4467c7755cd50ed83a7426dae9eeee3e5e7fa0fbca3178b77c",
+      "panels": [
+        {
+          "capture": "after-all-cinema-flex-844x390-017.png",
+          "label": "Absolute Cinema \u2014 successful Flex",
+          "source_sha256": "4c3aa27e42f9bb25f5407700ee6d4cd0b4d813d4eb2a17d6d378891cf99c9229"
+        },
+        {
+          "capture": "after-all-wsquad-flex-844x390-017.png",
+          "label": "W Squad \u2014 real six-second window",
+          "source_sha256": "6b4191b444e916ab007e7a5ec322a2187be1d0a26590f54c3fe207fb3b96ec79"
+        },
+        {
+          "capture": "after-all-too-sigma-844x390-017.png",
+          "label": "Too Sigma \u2014 nonfatal threshold shield",
+          "source_sha256": "9f554289278aa796ca130fb0f63a1d64dba7eb550c2e542513446b270ee47ca6"
+        },
+        {
+          "capture": "after-all-no-u-844x390-003.png",
+          "label": "No U \u2014 actual 200 U pulse activation",
+          "source_sha256": "3777ac41c893cb24512003f9a790e3577634f930d437912ff4f56fafd30fda0e"
+        }
+      ]
+    },
+    "dense-reduced": {
+      "path": "tests/passive_feedback/evidence/dense-reduced.webp",
+      "sha256": "5de7786e79d4dcb2e5d08e896dd3ab9045a3a79a92c076d2511519dac6aa2d99",
+      "panels": [
+        {
+          "capture": "after-all-dense-844x390-010.png",
+          "label": "Dense high-HP test fixture \u2014 real danger remains on top",
+          "source_sha256": "c2fedc98c14cb61ee92953e73471001a30c81d573932f88d88e149224203df85"
+        },
+        {
+          "capture": "after-all-absorption-844x390-050.png",
+          "label": "Actual mitigated shield absorption",
+          "source_sha256": "3ffc89bf909caaee89efcd4f0b8df3ba006d562a2125e6fffff8677d34a998f4"
+        },
+        {
+          "capture": "after-motion-stack-burst-844x390-010.png",
+          "label": "Motion \u2014 brief localized ring / restrained entrance",
+          "source_sha256": "9b7569bfa80a398c353817bbc64e7f48ab07083c08b8e4b84569ff2b5dbbc1d6"
+        },
+        {
+          "capture": "after-reduced-stack-burst-844x390-010.png",
+          "label": "Reduced Motion \u2014 same event, static treatment",
+          "source_sha256": "61258ea10a3da8c0f87bf3d4ff3824b645fac7c9114c8a408083c807cf2fdec3"
+        }
+      ]
+    },
+    "build-inspection": {
+      "path": "tests/passive_feedback/evidence/build-inspection.webp",
+      "sha256": "abdf4dbb5be0ca9af93d863f00979ca0121c5b61365ffdcd56dabe5f2699a0e2",
+      "panels": [
+        {
+          "capture": "after-all-build-1600x900-017.png",
+          "label": "Desktop \u2014 real equipped levels and compact values",
+          "source_sha256": "35b105987799f3cb940c0c9bbf1a2cb19b0473253a0864d3655e07556218791d"
+        },
+        {
+          "capture": "after-all-build-844x390-017.png",
+          "label": "Mobile \u2014 existing scrollable inspection",
+          "source_sha256": "1554652c8cb8f5e1c8076ceae7d2882cd2e9b65880b121959f34187eeee1bd31"
+        }
+      ]
+    }
+  },
+  "reused_approved_icons": [
+    {
+      "id": "absolute-cinema",
+      "path": "res://assets/runtime-icons/passives/absolute-cinema/f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842.png",
+      "sha256": "f72bb950d20e5d673c2c0d3b86ce1f244c2127a625582cbffc53a60600b95842"
+    },
+    {
+      "id": "aura-viral",
+      "path": "res://assets/runtime-icons/passives/aura-viral/825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89.png",
+      "sha256": "825c3962a624209937dee9d2299cdbf4618ff1009cf4d0e46bc8e0e7a10a2d89"
+    },
+    {
+      "id": "big-chad",
+      "path": "res://assets/runtime-icons/passives/big-chad/ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9.png",
+      "sha256": "ab6b052f52e5893673481fc6b680dc7bd48ad0ef2747dc2b134f0089c13789f9"
+    },
+    {
+      "id": "big-meme",
+      "path": "res://assets/runtime-icons/passives/big-meme/4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755.png",
+      "sha256": "4eb0df69bfe1cc95860fba3f947e711865e86cf01fd10b7a44b2b4b027adb755"
+    },
+    {
+      "id": "brainrot-rain",
+      "path": "res://assets/runtime-icons/passives/brainrot-rain/774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3.png",
+      "sha256": "774d2f5c39526e968c57480c388fd0d8f4fbd91d76a09d91f945d8b66749a0a3"
+    },
+    {
+      "id": "built-different",
+      "path": "res://assets/runtime-icons/passives/built-different/7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b.png",
+      "sha256": "7014b105250052dc810d13dc113a30fd9c5db8f0a3789512f9557019bce9875b"
+    },
+    {
+      "id": "caught-4k",
+      "path": "res://assets/runtime-icons/passives/caught-4k/d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845.png",
+      "sha256": "d5703ddec94bdd13355f7486ebb06467b9b5b404c0d068e618441af49483c845"
+    },
+    {
+      "id": "certified-w",
+      "path": "res://assets/runtime-icons/passives/certified-w/13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735.png",
+      "sha256": "13fa2c2a3463b60968b83901c1c9e04bbc0a64886bc90c42f429ef3bada2a735"
+    },
+    {
+      "id": "cope-harder",
+      "path": "res://assets/runtime-icons/passives/cope-harder/60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167.png",
+      "sha256": "60c35a5ef14232607d007ef9facb8d2988376bb97ddc85151cfa7e8477237167"
+    },
+    {
+      "id": "ego-check",
+      "path": "res://assets/runtime-icons/passives/ego-check/5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba.png",
+      "sha256": "5f0c6cb86f2b92b6ef64f9a0e743d72c9b42cf774f3ddc24ca334f61abd00eba"
+    },
+    {
+      "id": "get-ratiod",
+      "path": "res://assets/runtime-icons/passives/get-ratiod/dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec.png",
+      "sha256": "dc71c5118537d8bba52b68ca6f6d428acc6cd7a3b1d75cf916f2fea7cbd5f3ec"
+    },
+    {
+      "id": "hands-on-sight",
+      "path": "res://assets/runtime-icons/passives/hands-on-sight/0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd.png",
+      "sha256": "0e7257e458fc2654cb6aca40c7b6650356e01238ffdc682fb72d5c3d970c77fd"
+    },
+    {
+      "id": "homie-check",
+      "path": "res://assets/runtime-icons/passives/homie-check/3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1.png",
+      "sha256": "3ba98e6b4165efa1147ba45835229f214b6790e6b42acf74203bf1a88bbcccc1"
+    },
+    {
+      "id": "its-over",
+      "path": "res://assets/runtime-icons/passives/its-over/afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0.png",
+      "sha256": "afc514a7cded5580e4993bd93fe5173aa94962c1bd4951130b58a0cd5215c4a0"
+    },
+    {
+      "id": "let-him-cook",
+      "path": "res://assets/runtime-icons/passives/let-him-cook/74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843.png",
+      "sha256": "74f0e4ef3cb64fd503a9cd7fe544828e061429c745bd50ce43edd37d8f0ce843"
+    },
+    {
+      "id": "main-character",
+      "path": "res://assets/runtime-icons/passives/main-character/fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362.png",
+      "sha256": "fba7de037c5e90b146cc0736d02335f902620886132c1d658a2fbd3d29581362"
+    },
+    {
+      "id": "no-cap-streak",
+      "path": "res://assets/runtime-icons/passives/no-cap-streak/bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2.png",
+      "sha256": "bcf52b247f7e89dd3a3d09bc33cc8703dfa9477ba92e870dc806aea1c41d18b2"
+    },
+    {
+      "id": "no-u",
+      "path": "res://assets/runtime-icons/passives/no-u/08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a.png",
+      "sha256": "08e9daf06bd4a5de59111fc59e12943ddc0a3ce29af0b7236e74bbf26c8f0c8a"
+    },
+    {
+      "id": "six-to-seven",
+      "path": "res://assets/runtime-icons/passives/six-to-seven/233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb.png",
+      "sha256": "233ead25635e6a6e3044242035fc07a5507689c13c79e07cd76ea3006e946afb"
+    },
+    {
+      "id": "so-back",
+      "path": "res://assets/runtime-icons/passives/so-back/a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c.png",
+      "sha256": "a804cd0590d89d7828d6029fba4105a8f4d51f121e87928d3be19cfe8ed2134c"
+    },
+    {
+      "id": "take-l",
+      "path": "res://assets/runtime-icons/passives/take-l/c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7.png",
+      "sha256": "c3426189f6b3f9cbeadf68ba9b61ed9989dd9af98e160b45741943f6f12c99b7"
+    },
+    {
+      "id": "terminally-online",
+      "path": "res://assets/runtime-icons/passives/terminally-online/a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961.png",
+      "sha256": "a60fe0a71e9a6afb19b6f9fcbbabcfa9adea6698b0c1755419fb9ced9f99d961"
+    },
+    {
+      "id": "thick-skin",
+      "path": "res://assets/runtime-icons/passives/thick-skin/b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92.png",
+      "sha256": "b00baa75d140eff6185cd9ceb90bef5a431fd27da02d1e7a06ffed683b22cf92"
+    },
+    {
+      "id": "timeline",
+      "path": "res://assets/runtime-icons/passives/timeline/4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215.png",
+      "sha256": "4b6200864a17e6c77a2f55a9069db190deda46a65ea38d3fae2010d3cb774215"
+    },
+    {
+      "id": "too-sigma",
+      "path": "res://assets/runtime-icons/passives/too-sigma/5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011.png",
+      "sha256": "5c72ffefd0ec512796676248a9620fc42505a0b72e8da30e119deb897329e011"
+    },
+    {
+      "id": "uno-reverse",
+      "path": "res://assets/runtime-icons/passives/uno-reverse/d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6.png",
+      "sha256": "d2a4e14ba78e5ea6988e6fd6d2e8075455eef9ea96c8f7d3c3c1a7da2e12f4d6"
+    },
+    {
+      "id": "w-squad",
+      "path": "res://assets/runtime-icons/passives/w-squad/e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853.png",
+      "sha256": "e82fe5d2c219d27223a7da2a3f5271f8368905e59ab82ad462d344cd7790e853"
+    },
+    {
+      "id": "w-wifi",
+      "path": "res://assets/runtime-icons/passives/w-wifi/4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc.png",
+      "sha256": "4b69cedf30a0111df3cdf2aefae093427bb3fc497622b91884607a14cbc6f0bc"
+    }
+  ],
+  "video": {
+    "path": "tests/passive_feedback/evidence/before-after.mp4",
+    "sha256": "e24b9c5c4ee00367c549717505efd1955a05a599860b896cc2b3adecf421061e",
+    "format": "2560\u00d7756 with separate caption band; 1280\u00d7720 native frames per side, offline fixed 30 FPS; not delivered FPS",
+    "baseline_mode": "same source with read-only adapter disabled, #99 weapon presentation retained"
+  }
+}

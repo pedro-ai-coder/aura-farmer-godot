@@ -247,12 +247,17 @@ func build_layout() -> void:
         if item.is_empty():
             parts["label"].text="EMPTY WEAPON SLOT" if weapon else "EMPTY PASSIVE SLOT"
             parts["meta"].text="%d / %d" % [index+1,3 if weapon else 5]
-        else:description=str(ui.catalog[item["id"]].get("description",""))
+        else:
+            description=str(ui.catalog[item["id"]].get("description",""))
+            if not weapon:description=game.PassiveFeedbackScript.inspection(str(item.id),int(item.level))
         extra["details"].text=description
         extra["details"].add_theme_font_size_override("font_size",15 if view.y>=580 else 16)
         skin.place(extra["details"],Rect2(12,90,tile_width-24,row_height-96))
-        parts["panel"].tooltip_text=description
+        parts["panel"].tooltip_text=game.PassiveFeedbackScript.describe(game,str(item.id),int(item.level)) if not item.is_empty() and not weapon else description
         extra["status"].text="EQUIPPED" if not item.is_empty() else "OPEN SLOT"
+        if not item.is_empty() and not weapon:
+            var live: Dictionary=game.PassiveFeedbackScript.slot_state(game,str(item.id))
+            if not live.is_empty():extra["status"].text=str(live.short)
         skin.Type.apply(extra["status"],"micro_label",false,skin.Style.BLUE)
         extra["status"].add_theme_font_size_override("font_size",14)
         extra["status"].autowrap_mode=TextServer.AUTOWRAP_OFF

@@ -18,6 +18,7 @@ const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const FloatingJoystickScript = preload("res://scripts/floating_joystick.gd")
 const WeaponVisualsScript = preload("res://scripts/weapon_visuals.gd")
 const WeaponPresentationScript = preload("res://scripts/weapon_presentation.gd")
+const PassiveFeedbackScript = preload("res://scripts/passive_feedback.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
 const SoloWorldRulesScript = preload("res://scripts/solo_world_rules.gd")
@@ -58,6 +59,7 @@ const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
 const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
 var performance_probe
 var weapon_presentation=WeaponPresentationScript.new()
+var passive_feedback=PassiveFeedbackScript.new()
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -441,6 +443,7 @@ func start_run(index: int) -> void:
     # Cache candidate frame textures before simulation starts, never per frame.
     if not art.prepare_appearance(str(HEROES[index]["id"]),hero_appearance):
         return
+    if passive_feedback!=null:passive_feedback.reset()
     hero_index = index
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
@@ -535,6 +538,7 @@ func _process(delta: float) -> void:
             _advance(dt)
             remaining -= dt
     if performance_probe!=null:performance_probe.add(&"simulation",Time.get_ticks_usec()-perf_started)
+    if passive_feedback!=null:passive_feedback.synchronize(self)
     if weapon_presentation!=null:weapon_presentation.synchronize(weapon_areas,player_shots,run_time)
     if mode == "won": finish_visual_age += clampf(delta,0.0,0.1)
     for defeated: Dictionary in defeated_visuals.duplicate():
@@ -661,6 +665,7 @@ func _tick_passives(dt: float) -> void:
         passive_timers["wifi_next"] = run_time + 12.0
         passive_timers["wifi_until"] = run_time + 4.0
         passive_timers["wifi_center"] = player_pos
+        if passive_feedback!=null:passive_feedback.notify(self,"w-wifi","W Wi-Fi","Zone active · 4s · stay inside for frequency")
     if _passive_level("big-chad") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("big_chad_next", 10.0)):
         passive_timers["big_chad_next"] = run_time + 10.0
         var amount: float = max_hp * (0.05 + 0.02 * float(_passive_level("big-chad") - 1))
@@ -673,13 +678,18 @@ func _tick_passives(dt: float) -> void:
                 var is_boss: bool = bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"])
                 e["weaken"] = 0.10 if is_boss else 0.20
                 e["weaken_until"] = run_time + (2.0 if is_boss else 4.0)
+        if passive_feedback!=null:
+            passive_feedback.notify(self,"no-u","No U","Pulse activated · 200 U")
+            passive_feedback.ring(self,player_pos,200.0,"no-u")
     if int(passive_timers.get("so_back_remaining", 0)) > 0 and run_time >= float(passive_timers.get("so_back_next", 1e9)):
         passive_timers["so_back_remaining"] = int(passive_timers["so_back_remaining"]) - 1
         passive_timers["so_back_next"] = run_time + 1.0
         var heal_total: float = 0.10 + 0.05 * float(_passive_level("so-back") - 1)
-        _heal_player(max_hp * heal_total * 0.20 * SoloPassiveRulesScript.support_scale(passives))
+        _heal_player(max_hp * heal_total * 0.20 * SoloPassiveRulesScript.support_scale(passives),"so-back")
 
 func _primary_activation(target: Vector2) -> void:
+    var feedback_cook: int=cook_stacks if run_time<cook_expires else 0
+    var feedback_six: int=int(passive_timers.get("six_counter",0))
     primary_hits += 1
     for timestamp: float in primary_aura_times.duplicate():
         if run_time - timestamp >= 1.0: primary_aura_times.erase(timestamp)
@@ -695,7 +705,7 @@ func _primary_activation(target: Vector2) -> void:
             homie_count = 0
             passive_timers["homie_ready"] = run_time + 6.0
             var healed: float = max_hp * (0.02 + 0.01 * float(_passive_level("homie-check")))
-            _heal_player(healed * SoloPassiveRulesScript.support_scale(passives))
+            _heal_player(healed * SoloPassiveRulesScript.support_scale(passives),"homie-check")
         passive_timers["homie_count"] = homie_count
     if _passive_level("six-to-seven") > 0 and run_time >= float(passive_timers.get("six_ready", 0.0)):
         var sixth_count: int = int(passive_timers.get("six_counter", 0)) + 1
@@ -707,6 +717,7 @@ func _primary_activation(target: Vector2) -> void:
                 if Vector2(e["pos"]).distance_to(target) <= 90.0:
                     _hit_enemy(e, amount)
         passive_timers["six_counter"] = sixth_count
+    if passive_feedback!=null:passive_feedback.primary(self,target,feedback_cook,feedback_six)
 
 func _base_power() -> float:
     return float(hero["power"]) * (1.0 + 0.01 * float(level - 1))
@@ -957,6 +968,7 @@ func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: boo
             hero_state["flex_absorbed"] = float(hero_state.get("flex_absorbed",0.0))+consumed
             run_metrics["flex_absorbed"] = float(run_metrics["flex_absorbed"])+consumed
     hp = maxf(0.0, hp - incoming + absorbed)
+    if passive_feedback!=null:passive_feedback.absorbed(self,absorbed)
     if hero["id"] == "alpha" and not source.is_empty() and not hazard and run_time >= float(hero_state["certified_ready"]):
         hero_state["certified"] = true
         hero_state["certified_ready"] = run_time + 4.0
@@ -1307,6 +1319,7 @@ func _fire_weapons(dt: float) -> void:
             streak = _passive_level("no-cap-streak") > 0 and directional_hits % 5 == 0
         if streak:
             power *= 1.10
+            if passive_feedback!=null:passive_feedback.notify(self,"no-cap-streak","No Cap Streak","Fifth activation · +10% damage")
         if shape == "pulse" or shape == "blast" or shape == "cone":
             var center: Vector2 = player_pos if shape != "blast" else closest["pos"]
             var radius: float = (reach if shape != "blast" else 100.0) * SoloPassiveRulesScript.area_scale(passives)
@@ -1485,6 +1498,7 @@ func _grant_weapon_shield(source: String, raw_amount: float, duration: float) ->
     var amount := minf(maxf(0.0, max_hp * 0.40 - other), raw_amount * SoloPassiveRulesScript.support_scale(passives, true))
     weapon_shields[source] = {"remaining": amount, "until": run_time + duration}
     shield = other + amount
+    if passive_feedback!=null:passive_feedback.shield_granted(self,source,amount,duration)
 
 func _expire_weapon_shields() -> void:
     for source: String in weapon_shields.keys():
@@ -1642,10 +1656,11 @@ func _collect_drops() -> void:
             _gain_xp(float(drop["xp"]))
         if mode != "playing": break
 
-func _heal_player(amount: float) -> void:
+func _heal_player(amount: float, feedback_source: String="") -> void:
     var effective := minf(maxf(0.0, amount), maxf(0.0, max_hp - hp))
     hp += effective
     run_metrics["healing"] = float(run_metrics["healing"]) + effective
+    if passive_feedback!=null:passive_feedback.healed(self,feedback_source,effective)
 
 func _recompute_max_hp() -> void:
     max_hp = (float(hero["hp"]) + 2.0 * float(level - 1)) * (1.0 + 0.08 * float(_passive_level("built-different")))
@@ -1770,6 +1785,9 @@ func _clear_removed_passive(id: String) -> void:
         weapon_shields.erase(id)
 
 func _apply_card(card: Dictionary, replace_id: String = "") -> void:
+    # Snapshot before replace_card.clear(); acknowledge only a successful commit.
+    var feedback_card: Dictionary=card.duplicate(true) if passive_feedback!=null else {}
+    var feedback_before: Dictionary={"hp":hp,"max_hp":max_hp}
     var kind: String = card.get("type", "")
     var rarity: String = card.get("rarity", "")
     var previous_ids: Array[String] = []
@@ -1825,6 +1843,7 @@ func _apply_card(card: Dictionary, replace_id: String = "") -> void:
     replace_card.clear()
     replace_options.clear()
     mode = "playing"
+    if passive_feedback!=null:passive_feedback.committed_card(self,feedback_card,feedback_before,replace_id)
     _show_ui()
     if pending_choices > 0: _open_choice()
 
@@ -1957,6 +1976,7 @@ func _use_flex() -> void:
         passive_timers["viral_until"] = run_time + 5.0
     if _passive_level("w-squad") > 0:
         passive_timers["w_squad_until"] = run_time + 6.0
+    if passive_feedback!=null:passive_feedback.flex_started(self)
     if hero["id"] == "alpha":
         _grant_weapon_shield("giga-rampage", max_hp * 0.25, 6.0)
         _signature_strike(150.0,360.0,0.40*_base_power())
@@ -1982,6 +2002,7 @@ func _finish(won: bool) -> void:
     hero_state["flex_caption_until"] = 0.0
     for key in ["flex_beats","flex_success","flex_slams","verdict_count","flex_absorbed","flex_finisher"]: hero_state.erase(key)
     mode = "won" if won else "lost"
+    if passive_feedback!=null:passive_feedback.reset()
     _clear_touch()
     var result := {
         "id": run_id, "hero": str(hero["id"]), "won": won,
@@ -2020,6 +2041,7 @@ func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
+    if passive_feedback!=null:passive_feedback.reset()
     mode = "menu"
     _clear_touch()
     _show_ui()
@@ -2225,6 +2247,7 @@ func _draw() -> void:
     draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
     _draw_recovery()
+    if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
     if weapon_presentation==null:_draw_danger_geometry()

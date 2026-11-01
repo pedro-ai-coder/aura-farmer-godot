@@ -11,6 +11,7 @@ const ButtonFeedback=preload("res://scripts/hero_clash_button_feedback.gd")
 const SceneAccent=preload("res://scripts/hero_clash_scene_accent.gd")
 var game
 var gameplay_hud
+var passive_feedback_view
 var ui
 var art
 class PosterSurface extends Control:
@@ -288,6 +289,8 @@ func install(owner_game, source_root: String) -> void:
         equipment.append(parts)
         for node in parts.values():hud_nodes.append(node)
     gameplay_hud=GameplayHud.new(self)
+    passive_feedback_view=load("res://scripts/passive_feedback_view.gd").new()
+    add_child(passive_feedback_view);passive_feedback_view.install(self)
     watermark=label(self,13,Style.CORAL);watermark.text=""
     auxiliary=load("res://scripts/clean_cut_secondary.gd").new()
     add_child(auxiliary)
@@ -300,6 +303,7 @@ func _process(delta: float) -> void:
     refresh()
     gameplay_hud.tick_feedback()
     gameplay_hud.update_threat_readability()
+    passive_feedback_view.refresh()
     if game == null or not offers_scroll.visible: return
     for i in range(offer_parts.size()):
         var icon: TextureRect = offer_parts[i]["icon"]
