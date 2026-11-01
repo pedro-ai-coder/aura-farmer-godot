@@ -1,0 +1,45 @@
+{
+  "hero_id": "sigma",
+  "appearance": "female",
+  "display_name": "PIXEL VIXEN",
+  "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+  "atlas": "atlas.png",
+  "sha256": "4711cea382d8efdd503f0dcfce2896831a8aa8242b7c61bc992b4f12be811175",
+  "atlas_width": 252,
+  "atlas_height": 120,
+  "columns": 7,
+  "rows": 3,
+  "frame_width": 36,
+  "frame_height": 40,
+  "frame_count": 20,
+  "frame_groups": {
+    "idle": [
+      0,
+      6
+    ],
+    "run": [
+      7,
+      12
+    ],
+    "attack": [
+      13,
+      15
+    ],
+    "flex": [
+      16,
+      17
+    ],
+    "defeat": [
+      18,
+      19
+    ]
+  },
+  "original_source": "Creator Pixel Vixen visual guide plus candidate sprite explorations from this conversation",
+  "constraints": [
+    "Visual-only; Sigma stats, No Cap and Deadpan Verdict unchanged",
+    "No new hero ID",
+    "Do not promote to approved assets directory",
+    "Sprites are derived from a generated review composition, not a production hand-cleaned multi-direction master",
+    "Limited directional coverage and only two defeat poses; creator review is mandatory before final art acceptance"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "hero_id": "alpha",
+  "appearance": "female",
+  "display_name": "BLOCK QUEEN",
+  "asset_slug": "block-queen",
+  "status": "UNAPPROVED_CREATOR_REVIEW_CANDIDATE",
+  "runtime_authorization": "PREVIEW_ONLY",
+  "generation": "Built-in imagegen, original candidate art from creator reference crops; no third-party game art",
+  "reference_pack_sha256": "5abb21a50a9d4d14e4eebf229b3f27effa912de6389a23beb70fbaca0c37f68f",
+  "reference_files": {
+    "block-queen-full-reference.png": "f42497ba914cd55e10ffc673e2d3d649c5ec26f4cc10eb001c0c6d81a83401d2",
+    "block-queen-hud-reference.png": "2f9a7cf597d565225049d69769e7eff0001082736f46bb477773314c4711c816"
+  },
+  "frame_count": 24,
+  "source_layout": "4 columns / 6 rows; explicit source regions and cached source-pixel masks, no uniform-grid sampling",
+  "states": {
+    "idle": [
+      0,
+      3
+    ],
+    "run": [
+      4,
+      7
+    ],
+    "attack": [
+      8,
+      11
+    ],
+    "hurt": [
+      12,
+      15
+    ],
+    "flex": [
+      16,
+      19
+    ],
+    "defeat": [
+      20,
+      23
+    ]
+  },
+  "world_scale": 0.2585858585858586,
+  "constraints": [
+    "Cosmetic only; canonical hero ID, starter, Flex, stats, collisions, RNG, progression and v2 saves remain unchanged",
+    "Only creator review preview is authorized; no merge or production deployment",
+    "Single three-quarter movement view is mirrored, comparable to the Pixel Vixen candidate; not an eight-direction master",
+    "Masks extract source pixels and exclude adjacent poses; cached once before a run, never rebuilt per rendered frame",
+    "Selection and HUD are distinct high-resolution illustrations, not gameplay sprite enlargements"
+  ],
+  "atlas": "block-queen-atlas-v2.png",
+  "atlas_sha256": "0f8f5f4efb9d6bb03660eafebf28eaaf6b50980314ea30804bfd453f6f39eb04",
+  "atlas_dimensions": [
+    1024,
+    1536
+  ],
+  "portrait": "block-queen-portrait-v2.png",
+  "portrait_sha256": "b8647d200a0dde5d2ad7cebd54028865100d390d1a1ffdc3ac49919a77b45495",
+  "portrait_dimensions": [
+    1254,
+    1254
+  ],
+  "hud_portrait": "block-queen-hud-v2.png",
+  "hud_sha256": "0b218b66cb5a4b3a495d67f0e9aed956070eb474138ab35ae7bcfd0fea2870b9",
+  "hud_dimensions": [
+    1536,
+    1024
+  ],
+  "frame_geometry": "frames.json",
+  "frame_geometry_sha256": "f6c1ab276d85a0273346f718810c18e230b6e68dcb2d09e8cde408a2d0664b50"
+}
