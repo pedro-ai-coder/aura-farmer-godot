@@ -1,0 +1,427 @@
+{
+  "method": "Six alternating before/after blocks per viewport; 45 warm-up + 120 measured rendered frames per block, fixed 1/60 simulation input. Same five legal passives and high-health dense fixture. Before disables the read-only adapter; #99 presentation remains active in both.",
+  "environment": "Godot 4.7.2 Compatibility; native X11, Mesa llvmpipe software renderer. Not a browser, emulator or physical Android measurement.",
+  "source_sha256": {
+    "scripts/solo_run.gd": "a0f0e466341ab32694d56d2236c71a1ad395fc781c95086b2cc645215e433a61",
+    "scripts/passive_feedback.gd": "64d2386f39601dd7554501d77494b20655b29da78b8d03920fbd195e29b67b51",
+    "scripts/passive_feedback_view.gd": "05e05915ab7bb30bf11427a9a65315dabe7884e0ed023389c30f848737237639",
+    "scripts/clean_cut_skin.gd": "8c9719d11eee976f242f191b02d6c134010453fa169d7d38a431fa0116139bdd",
+    "scripts/clean_cut_secondary.gd": "82fd79eb5e33f8f8e81b5e6f2045bd18ee45ea5e4af76cf781dd8d2ccc9c19f9"
+  },
+  "limitations": [
+    "Shared virtual machine/software renderer has substantial timing tails; no causal FPS improvement or physical Pixel 8a acceptance is claimed.",
+    "Draw-call counter is unavailable (zero-only backend values), reported null.",
+    "Movie Maker is offline fixed-rate footage and is not used for frame-pacing measurements.",
+    "Creator Pixel 8a / Brave regression review remains required."
+  ],
+  "results": {
+    "1600x900": {
+      "before": {
+        "simulation_us": {
+          "samples": 360,
+          "median": 1758.5,
+          "p95": 4073.0,
+          "p99": 6772.0,
+          "mean": 2497.597222222222,
+          "max": 142907.0
+        },
+        "process_us": {
+          "samples": 360,
+          "median": 1970.0,
+          "p95": 4636.0,
+          "p99": 9214.0,
+          "mean": 2816.7027777777776,
+          "max": 143298.0
+        },
+        "draw_us": {
+          "samples": 360,
+          "median": 3472.5,
+          "p95": 7656.0,
+          "p99": 12900.0,
+          "mean": 4404.358333333334,
+          "max": 164834.0
+        },
+        "render_gpu_ms": {
+          "samples": 354,
+          "median": 27.162500381469698,
+          "p95": 46.3079986572266,
+          "p99": 85.318000793457,
+          "mean": 31.32208191607631,
+          "max": 432.292999267578
+        },
+        "render_interval_ms": {
+          "samples": 357,
+          "median": 43.367,
+          "p95": 72.256,
+          "p99": 231.095,
+          "mean": 50.063708683473386,
+          "max": 489.86
+        },
+        "enemies": {
+          "samples": 360,
+          "median": 82.0,
+          "p95": 84.0,
+          "p99": 84.0,
+          "mean": 82.68333333333334,
+          "max": 84.0
+        },
+        "areas": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 2.0,
+          "p99": 2.0,
+          "mean": 0.5333333333333333,
+          "max": 2.0
+        },
+        "player_projectiles": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "hostile_projectiles": {
+          "samples": 360,
+          "median": 12.0,
+          "p95": 24.0,
+          "p99": 24.0,
+          "mean": 15.858333333333333,
+          "max": 24.0
+        },
+        "new_animation_textures": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 1.0,
+          "mean": 0.030555555555555555,
+          "max": 1.0
+        },
+        "particle_nodes": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "skin_process_us": {
+          "samples": 360,
+          "median": 914.5,
+          "p95": 3544.0,
+          "p99": 6221.0,
+          "mean": 1338.8194444444443,
+          "max": 19013.0
+        },
+        "draw_calls": null,
+        "feedback_queue_peak": 0,
+        "feedback_ring_peak": 0
+      },
+      "after": {
+        "simulation_us": {
+          "samples": 360,
+          "median": 1734.0,
+          "p95": 3909.0,
+          "p99": 9544.0,
+          "mean": 2209.8944444444446,
+          "max": 40229.0
+        },
+        "process_us": {
+          "samples": 360,
+          "median": 1978.0,
+          "p95": 5592.0,
+          "p99": 13886.0,
+          "mean": 2566.7638888888887,
+          "max": 40358.0
+        },
+        "draw_us": {
+          "samples": 360,
+          "median": 3378.0,
+          "p95": 6100.0,
+          "p99": 15241.0,
+          "mean": 4246.45,
+          "max": 155119.0
+        },
+        "render_gpu_ms": {
+          "samples": 360,
+          "median": 27.918999671936,
+          "p95": 44.3219985961914,
+          "p99": 107.495002746582,
+          "mean": 32.02499997350905,
+          "max": 402.696990966797
+        },
+        "render_interval_ms": {
+          "samples": 357,
+          "median": 44.616,
+          "p95": 83.265,
+          "p99": 191.572,
+          "mean": 51.1703025210084,
+          "max": 430.33
+        },
+        "enemies": {
+          "samples": 360,
+          "median": 82.0,
+          "p95": 84.0,
+          "p99": 84.0,
+          "mean": 82.68333333333334,
+          "max": 84.0
+        },
+        "areas": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 2.0,
+          "p99": 2.0,
+          "mean": 0.5333333333333333,
+          "max": 2.0
+        },
+        "player_projectiles": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "hostile_projectiles": {
+          "samples": 360,
+          "median": 12.0,
+          "p95": 24.0,
+          "p99": 24.0,
+          "mean": 15.858333333333333,
+          "max": 24.0
+        },
+        "new_animation_textures": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "particle_nodes": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "skin_process_us": {
+          "samples": 360,
+          "median": 910.0,
+          "p95": 4559.0,
+          "p99": 11857.0,
+          "mean": 1579.861111111111,
+          "max": 31023.0
+        },
+        "draw_calls": null,
+        "feedback_queue_peak": 2,
+        "feedback_ring_peak": 1
+      }
+    },
+    "844x390": {
+      "before": {
+        "simulation_us": {
+          "samples": 360,
+          "median": 1574.5,
+          "p95": 3665.0,
+          "p99": 10806.0,
+          "mean": 1978.0166666666667,
+          "max": 16552.0
+        },
+        "process_us": {
+          "samples": 360,
+          "median": 1751.0,
+          "p95": 4058.0,
+          "p99": 11025.0,
+          "mean": 2234.2166666666667,
+          "max": 17334.0
+        },
+        "draw_us": {
+          "samples": 360,
+          "median": 3255.0,
+          "p95": 6658.0,
+          "p99": 16151.0,
+          "mean": 4954.977777777778,
+          "max": 406475.0
+        },
+        "render_gpu_ms": {
+          "samples": 354,
+          "median": 15.1059999465942,
+          "p95": 31.3099994659424,
+          "p99": 52.2649993896484,
+          "mean": 18.89335318743172,
+          "max": 405.920013427734
+        },
+        "render_interval_ms": {
+          "samples": 357,
+          "median": 29.695,
+          "p95": 58.958,
+          "p99": 201.956,
+          "mean": 36.012050420168066,
+          "max": 478.345
+        },
+        "enemies": {
+          "samples": 360,
+          "median": 82.0,
+          "p95": 84.0,
+          "p99": 84.0,
+          "mean": 82.68333333333334,
+          "max": 84.0
+        },
+        "areas": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 2.0,
+          "p99": 2.0,
+          "mean": 0.5333333333333333,
+          "max": 2.0
+        },
+        "player_projectiles": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "hostile_projectiles": {
+          "samples": 360,
+          "median": 12.0,
+          "p95": 24.0,
+          "p99": 24.0,
+          "mean": 15.858333333333333,
+          "max": 24.0
+        },
+        "new_animation_textures": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 1.0,
+          "mean": 0.041666666666666664,
+          "max": 2.0
+        },
+        "particle_nodes": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "skin_process_us": {
+          "samples": 360,
+          "median": 836.0,
+          "p95": 3878.0,
+          "p99": 8343.0,
+          "mean": 1344.4722222222222,
+          "max": 13115.0
+        },
+        "draw_calls": null,
+        "feedback_queue_peak": 0,
+        "feedback_ring_peak": 0
+      },
+      "after": {
+        "simulation_us": {
+          "samples": 360,
+          "median": 1466.0,
+          "p95": 5509.0,
+          "p99": 12268.0,
+          "mean": 2070.2083333333335,
+          "max": 15217.0
+        },
+        "process_us": {
+          "samples": 360,
+          "median": 1670.0,
+          "p95": 6571.0,
+          "p99": 13108.0,
+          "mean": 2354.2722222222224,
+          "max": 16655.0
+        },
+        "draw_us": {
+          "samples": 360,
+          "median": 2890.0,
+          "p95": 12419.0,
+          "p99": 17530.0,
+          "mean": 3854.4333333333334,
+          "max": 21531.0
+        },
+        "render_gpu_ms": {
+          "samples": 360,
+          "median": 13.33449983596805,
+          "p95": 34.6160011291504,
+          "p99": 52.382999420166,
+          "mean": 16.00498055881924,
+          "max": 83.2060012817383
+        },
+        "render_interval_ms": {
+          "samples": 357,
+          "median": 24.479,
+          "p95": 73.669,
+          "p99": 107.941,
+          "mean": 29.91847899159664,
+          "max": 141.6
+        },
+        "enemies": {
+          "samples": 360,
+          "median": 82.0,
+          "p95": 84.0,
+          "p99": 84.0,
+          "mean": 82.68333333333334,
+          "max": 84.0
+        },
+        "areas": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 2.0,
+          "p99": 2.0,
+          "mean": 0.5333333333333333,
+          "max": 2.0
+        },
+        "player_projectiles": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "hostile_projectiles": {
+          "samples": 360,
+          "median": 12.0,
+          "p95": 24.0,
+          "p99": 24.0,
+          "mean": 15.858333333333333,
+          "max": 24.0
+        },
+        "new_animation_textures": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "particle_nodes": {
+          "samples": 360,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "skin_process_us": {
+          "samples": 360,
+          "median": 855.5,
+          "p95": 4052.0,
+          "p99": 9022.0,
+          "mean": 1389.8638888888888,
+          "max": 15407.0
+        },
+        "draw_calls": null,
+        "feedback_queue_peak": 2,
+        "feedback_ring_peak": 1
+      }
+    }
+  }
+}

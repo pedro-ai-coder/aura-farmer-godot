@@ -133,6 +133,7 @@ python3 scripts/verify_pixel_vixen.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_female_variants.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pickup_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_weapon_presence.py "build/web/$EXPORT_BASENAME.pck"
+python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
 PERFORMANCE_CHECK=()
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"

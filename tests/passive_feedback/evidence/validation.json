@@ -1,0 +1,501 @@
+{
+  "local_checks": 95,
+  "godot_phases": 77,
+  "all_local_checks_passed": true,
+  "commands": [
+    {
+      "phase": "preflight-0",
+      "passed": true,
+      "seconds": 0.005
+    },
+    {
+      "phase": "preflight-1",
+      "passed": true,
+      "seconds": 0.167
+    },
+    {
+      "phase": "preflight-2",
+      "passed": true,
+      "seconds": 0.127
+    },
+    {
+      "phase": "preflight-3",
+      "passed": true,
+      "seconds": 0.059
+    },
+    {
+      "phase": "preflight-4",
+      "passed": true,
+      "seconds": 0.092
+    },
+    {
+      "phase": "preflight-5",
+      "passed": true,
+      "seconds": 0.06
+    },
+    {
+      "phase": "preflight-6",
+      "passed": true,
+      "seconds": 0.149
+    },
+    {
+      "phase": "import",
+      "passed": true,
+      "seconds": 7.079
+    },
+    {
+      "phase": "mobile-layout",
+      "passed": true,
+      "seconds": 10.882
+    },
+    {
+      "phase": "card-keyboard",
+      "passed": true,
+      "seconds": 12.284
+    },
+    {
+      "phase": "spotlight-secondary",
+      "passed": true,
+      "seconds": 4.652
+    },
+    {
+      "phase": "spotlight-hud",
+      "passed": true,
+      "seconds": 4.037
+    },
+    {
+      "phase": "spotlight-navigation",
+      "passed": true,
+      "seconds": 6.622
+    },
+    {
+      "phase": "spotlight-theme",
+      "passed": true,
+      "seconds": 4.306
+    },
+    {
+      "phase": "arcade-ui",
+      "passed": true,
+      "seconds": 5.259
+    },
+    {
+      "phase": "enemy-navigation",
+      "passed": true,
+      "seconds": 4.087
+    },
+    {
+      "phase": "seeded-rng",
+      "passed": true,
+      "seconds": 3.211
+    },
+    {
+      "phase": "hero-animation",
+      "passed": true,
+      "seconds": 3.559
+    },
+    {
+      "phase": "recovery",
+      "passed": true,
+      "seconds": 3.789
+    },
+    {
+      "phase": "survival-review-policy",
+      "passed": true,
+      "seconds": 4.722
+    },
+    {
+      "phase": "camera-cover",
+      "passed": true,
+      "seconds": 3.234
+    },
+    {
+      "phase": "continuous-run",
+      "passed": true,
+      "seconds": 40.315
+    },
+    {
+      "phase": "run-acceptance",
+      "passed": true,
+      "seconds": 6.995
+    },
+    {
+      "phase": "menu-flow",
+      "passed": true,
+      "seconds": 4.235
+    },
+    {
+      "phase": "signature-flex",
+      "passed": true,
+      "seconds": 3.697
+    },
+    {
+      "phase": "hero-combat",
+      "passed": true,
+      "seconds": 3.706
+    },
+    {
+      "phase": "run-clock",
+      "passed": true,
+      "seconds": 4.34
+    },
+    {
+      "phase": "run-progression",
+      "passed": true,
+      "seconds": 3.962
+    },
+    {
+      "phase": "profile-store",
+      "passed": true,
+      "seconds": 3.449
+    },
+    {
+      "phase": "contracts",
+      "passed": true,
+      "seconds": 1.411
+    },
+    {
+      "phase": "catalog",
+      "passed": true,
+      "seconds": 5.379
+    },
+    {
+      "phase": "legendary",
+      "passed": true,
+      "seconds": 4.693
+    },
+    {
+      "phase": "boss-lifecycle",
+      "passed": true,
+      "seconds": 3.192
+    },
+    {
+      "phase": "enemy-windows",
+      "passed": true,
+      "seconds": 4.154
+    },
+    {
+      "phase": "ranged-sources",
+      "passed": true,
+      "seconds": 3.613
+    },
+    {
+      "phase": "bestiary",
+      "passed": true,
+      "seconds": 5.034
+    },
+    {
+      "phase": "ruin-alley",
+      "passed": true,
+      "seconds": 2.978
+    },
+    {
+      "phase": "passive-effects",
+      "passed": true,
+      "seconds": 3.984
+    },
+    {
+      "phase": "approved-icon-batch",
+      "passed": true,
+      "seconds": 6.223
+    },
+    {
+      "phase": "icon-registry",
+      "passed": true,
+      "seconds": 5.471
+    },
+    {
+      "phase": "approved-art",
+      "passed": true,
+      "seconds": 10.375
+    },
+    {
+      "phase": "combat-feedback",
+      "passed": true,
+      "seconds": 3.898
+    },
+    {
+      "phase": "clean-cut-typography",
+      "passed": true,
+      "seconds": 4.932
+    },
+    {
+      "phase": "hero-clash-ui-candidate",
+      "passed": true,
+      "seconds": 3.958
+    },
+    {
+      "phase": "weapon-vfx",
+      "passed": true,
+      "seconds": 3.487
+    },
+    {
+      "phase": "legendary-combat",
+      "passed": true,
+      "seconds": 4.033
+    },
+    {
+      "phase": "weapon-timing",
+      "passed": true,
+      "seconds": 4.901
+    },
+    {
+      "phase": "player-projectiles",
+      "passed": true,
+      "seconds": 4.734
+    },
+    {
+      "phase": "mobile-touch",
+      "passed": true,
+      "seconds": 7.685
+    },
+    {
+      "phase": "flex-readability",
+      "passed": true,
+      "seconds": 3.319
+    },
+    {
+      "phase": "playable",
+      "passed": true,
+      "seconds": 3.252
+    },
+    {
+      "phase": "scene",
+      "passed": true,
+      "seconds": 4.341
+    },
+    {
+      "phase": "approved-clean-cut-runtime",
+      "passed": true,
+      "seconds": 4.539
+    },
+    {
+      "phase": "clean-cut-pointer-input",
+      "passed": true,
+      "seconds": 9.671
+    },
+    {
+      "phase": "clean-cut-secondary-input",
+      "passed": true,
+      "seconds": 13.13
+    },
+    {
+      "phase": "m0-ui-creator-feedback",
+      "passed": true,
+      "seconds": 6.065
+    },
+    {
+      "phase": "hero-clash-button-motion",
+      "passed": true,
+      "seconds": 5.98
+    },
+    {
+      "phase": "clean-cut-deferred-legendary",
+      "passed": true,
+      "seconds": 8.796
+    },
+    {
+      "phase": "candidate-bindings",
+      "passed": true,
+      "seconds": 5.542
+    },
+    {
+      "phase": "candidate-navigation",
+      "passed": true,
+      "seconds": 5.004
+    },
+    {
+      "phase": "hero-clash-review",
+      "passed": true,
+      "seconds": 6.008
+    },
+    {
+      "phase": "preflight-61",
+      "passed": true,
+      "seconds": 0.038
+    },
+    {
+      "phase": "button-art-components",
+      "passed": true,
+      "seconds": 9.434
+    },
+    {
+      "phase": "navigation-recovery",
+      "passed": true,
+      "seconds": 4.054
+    },
+    {
+      "phase": "layout-recovery",
+      "passed": true,
+      "seconds": 17.005
+    },
+    {
+      "phase": "mobile-fluency",
+      "passed": true,
+      "seconds": 3.688
+    },
+    {
+      "phase": "preflight-66",
+      "passed": true,
+      "seconds": 0.056
+    },
+    {
+      "phase": "hud-v2",
+      "passed": true,
+      "seconds": 9.183
+    },
+    {
+      "phase": "ui-cohesion",
+      "passed": true,
+      "seconds": 8.328
+    },
+    {
+      "phase": "ui-final-polish",
+      "passed": true,
+      "seconds": 7.059
+    },
+    {
+      "phase": "threat-indicator",
+      "passed": true,
+      "seconds": 5.338
+    },
+    {
+      "phase": "m0-final-flows",
+      "passed": true,
+      "seconds": 17.089
+    },
+    {
+      "phase": "frame-pacing-probe",
+      "passed": true,
+      "seconds": 4.203
+    },
+    {
+      "phase": "frame-pacing-geometry",
+      "passed": true,
+      "seconds": 9.307
+    },
+    {
+      "phase": "frame-pacing-state",
+      "passed": true,
+      "seconds": 6.015
+    },
+    {
+      "phase": "reconciled-floor-geometry",
+      "passed": true,
+      "seconds": 6.317
+    },
+    {
+      "phase": "appearance-result-identity",
+      "passed": true,
+      "seconds": 3.867
+    },
+    {
+      "phase": "preflight-77",
+      "passed": true,
+      "seconds": 0.094
+    },
+    {
+      "phase": "preflight-78",
+      "passed": true,
+      "seconds": 0.071
+    },
+    {
+      "phase": "hero-appearance-selection",
+      "passed": true,
+      "seconds": 12.181
+    },
+    {
+      "phase": "pixel-vixen-appearance",
+      "passed": true,
+      "seconds": 3.369
+    },
+    {
+      "phase": "preflight-81",
+      "passed": true,
+      "seconds": 0.095
+    },
+    {
+      "phase": "preflight-82",
+      "passed": true,
+      "seconds": 0.116
+    },
+    {
+      "phase": "female-roster",
+      "passed": true,
+      "seconds": 24.497
+    },
+    {
+      "phase": "preflight-84",
+      "passed": true,
+      "seconds": 0.111
+    },
+    {
+      "phase": "preflight-85",
+      "passed": true,
+      "seconds": 0.104
+    },
+    {
+      "phase": "pickup-refresh",
+      "passed": true,
+      "seconds": 4.489
+    },
+    {
+      "phase": "preflight-87",
+      "passed": true,
+      "seconds": 0.044
+    },
+    {
+      "phase": "preflight-88",
+      "passed": true,
+      "seconds": 0.131
+    },
+    {
+      "phase": "weapon-presence-events",
+      "passed": true,
+      "seconds": 5.334
+    },
+    {
+      "phase": "weapon-presence-parity",
+      "passed": true,
+      "seconds": 10.136
+    },
+    {
+      "phase": "passive-feedback-events",
+      "passed": true,
+      "seconds": 4.95
+    },
+    {
+      "phase": "passive-feedback-parity",
+      "passed": true,
+      "seconds": 28.572
+    },
+    {
+      "phase": "passive-feedback-layout",
+      "passed": true,
+      "seconds": 10.068
+    },
+    {
+      "phase": "preflight-94",
+      "passed": true,
+      "seconds": 0.049
+    }
+  ],
+  "full_state_frame_comparisons": 5376,
+  "appearances": 6,
+  "active_passives": 23,
+  "excluded_future_passives": 5,
+  "new_passive_trace_sha256": {
+    "0/female": "d25f68df17e0e6787c9f1d55a39a13aaf8292e3fd0d6dd16c498dcf68971a09b",
+    "0/original": "96c56f889179a3326d771d9f2c99051cbde702ef7de12057ede8bdeb8079e201",
+    "1/female": "0f129a6469a635eccf05c9f985d6bcac7ac247a70c9e90135e231c3b708d7484",
+    "1/original": "db7400623c4c7ddc61de01534b14480b0481a507f1fb2eb221b2228ec7eede96",
+    "2/female": "5921f050eca0e71897d71787282c48dccbcf0e77f0028e8fb8909af9c96b4502",
+    "2/original": "d5244db085c7e8eef58cf5e81d9924387d95e7e21e744e9e438437841395f2c5"
+  },
+  "unchanged_pre_optimization_state_trace_sha256": {
+    "dense": "645b257d9495b673079e415e60ae4bd7649ee960f65d0061505749e873ea3107",
+    "flex": "63ae00700184c8a1dc5e13a4fb2d6e9f5a25c2156bbd6d672c2ac623b5117311",
+    "normal": "b36b9dfab8baef81659ba3040bf90e26ac910b8bd68f1226997116eb54ad03a6"
+  },
+  "existing_weapon_presentation_frame_comparisons": 3456,
+  "authoritative_ci": "Final GitHub PR check links recorded in PR; local commands use the same phase arguments with Python subprocess timeouts in this restricted workspace."
+}
