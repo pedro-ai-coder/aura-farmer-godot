@@ -61,9 +61,9 @@ The game provides **three canonical gameplay kits with six selectable presentati
 
 | Canonical kit ID | Selectable appearances | Class and starter | Flex | Narrative role |
 | --- | --- | --- | --- | --- |
-| \`sigma\` | The Sigma / Pixel Vixen | Ranged; No Cap | Deadpan Verdict | The operator who sees the pattern under the noise |
-| \`cool-kid\` | Cool Kid / Byte Baddie | Melee; Keyboard Warrior | CTRL + CHAOS | The improviser who refuses to obey the script |
-| \`alpha\` | Alpha Chad / Block Queen | Tank; Cope Shield | Giga Chad Rampage | The defender who stands between others and the swarm |
+| `sigma` | The Sigma / Pixel Vixen | Ranged; No Cap | Deadpan Verdict | The operator who sees the pattern under the noise |
+| `cool-kid` | Cool Kid / Byte Baddie | Melee; Keyboard Warrior | CTRL + CHAOS | The improviser who refuses to obey the script |
+| `alpha` | Alpha Chad / Block Queen | Tank; Cope Shield | Giga Chad Rampage | The defender who stands between others and the swarm |
 
 **Hard rule:** The female presentations are not additional hero kits, unlocks or lore-mandated independent teammates. Do not write a canonical six-person ensemble, sibling/backstory relationship, parallel universe or twin encounter into the actual game without a separate creator decision. A shared story beat must work with either appearance of a chosen kit. Voice/flavor variants may be pitched but must not promise separate mechanics or change canon silently.
 
