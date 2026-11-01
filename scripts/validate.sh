@@ -135,3 +135,8 @@ run_check female-roster --headless --path . --script res://tests/test_female_ros
 python3 scripts/verify_pickup_candidates.py
 python3 -m unittest discover -s tests -p test_pickup_pack.py
 run_check pickup-refresh --headless --path . --script res://tests/pickup_refresh/test_pickups.gd
+
+python3 scripts/verify_weapon_presence.py
+python3 -m unittest discover -s tests -p test_weapon_presence_pack.py
+run_check weapon-presence-events --headless --path . --script res://tests/weapon_presence/test_contract.gd
+run_check weapon-presence-parity --headless --path . --script res://tests/weapon_presence/test_parity.gd

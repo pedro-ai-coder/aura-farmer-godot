@@ -186,7 +186,7 @@ static func enemy_visual_kind(enemy: Dictionary, animation_time: float) -> Strin
         return "boss-berserk"
     return kind
 
-func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0, reduced_motion: bool = false) -> bool:
+func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0, reduced_motion: bool = false, draw_offset: Vector2 = Vector2.ZERO) -> bool:
     var kind := enemy_visual_kind(enemy,animation_time)
     if kind == "terminal":
         var atlas := texture("enemies")
@@ -206,7 +206,7 @@ func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0
     var data: Dictionary = enemy_frame_cache[cache_key]
     var scale: float = float(enemy.get("radius",15.0))*(2.6 if kind in ["boss","boss-berserk","reply-guy","mod-supremo","ohio-express","doomscroll-prime"] else 3.1) / maxf(1.0, float(data["height"]))
     var pivot: Vector2 = data["pivot"]
-    var position: Vector2 = enemy["pos"]
+    var position: Vector2 = Vector2(enemy["pos"])+draw_offset
     var face_left: bool = cos(float(enemy.get("angle",0.0))) < -0.05
     if phase in ["warning","charge-warning","charging"]: face_left = Vector2(enemy.get("locked_direction",Vector2.RIGHT)).x < -0.05
     var attack: Dictionary = enemy.get("attack_pose",{})
