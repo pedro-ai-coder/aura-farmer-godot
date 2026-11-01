@@ -480,6 +480,18 @@ The approved **23 October 2026** control supersedes all left-only, left-48%-view
 | **Passive icons** | **28 approved PNGs**, **23** active identities and **five future-only illustrations** | Same approved icon ledger and runtime manifest | Future-only illustration must not add a gameplay offer |
 | **Clean Cut UI components** | **84 exact promoted source resources** for approved corrected five-screen compositions | [creator five-screen approval](art/CREATOR_CLEAN_CUT_V2_APPROVAL_2026-10-24.md), [runtime manifest](../assets/runtime-clean-cut/v2/manifest.json), [integration PR #71](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/71) | Live, independently interactive UI components with real dynamic labels; no single baked screen used as gameplay control |
 | **Historical composition reference** | **22** older V5 scene references | [V5 handoff](art/HERO_SPOTLIGHT_V5.md) | Composition/layout guidance only when consistent with later corrected Clean Cut and current mechanics; no automatic standalone-asset approval |
+| **M0 world pickups — creator-approved 1 Nov 2026** | **XP Orb** (`aura`), **Street Snack** (`snack`), **Aura Magnet** (`magnet`); exact original 128×128 PNG assets and editable SVGs | [`assets/art-candidates/pickups/v1/manifest.json`](../assets/art-candidates/pickups/v1/manifest.json), PR #98; immutable asset hashes pinned below | Approved for restricted M0 production playtest; three visual assets only, no gameplay/RNG/balance/pickup-contract changes |
+
+
+**1 November 2026 — creator acceptance of exact pickup artwork:** the creator explicitly approved the three pickup visuals presented in PR #98 and authorized their merge to `main` and production deployment for the restricted M0 playtest. The exact approved runtime PNG SHA-256 values are:
+
+| Canonical pickup | Runtime asset | Approved PNG SHA-256 |
+| --- | --- | --- |
+| **XP Orb** (existing `aura` kind) | `assets/art-candidates/pickups/v1/xp-orb.png` | `51dab0070b5663bddb0ddf80c130edcde428718720d737cf8c9a1f443220f74c` |
+| **Street Snack** (`snack`) | `assets/art-candidates/pickups/v1/street-snack.png` | `97c96fb8938bde3e4c0c688f9e5bf9552b85c1d0cf270d0f04d8a3458611cd74` |
+| **Aura Magnet** (`magnet`) | `assets/art-candidates/pickups/v1/aura-magnet.png` | `860fd35d103d12a486ec2924b38047ef18b0cac80e4e727902487afb81fd708a` |
+
+This dated creator approval supersedes the earlier *pending review* classification **for these exact bytes** in the original candidate manifest; the historical candidate/provenance metadata is preserved for traceability and its existing hash/packaging validator remains intact. It is not approval for future replacements, extra effects, new currency or XP/drop/heal/magnet rule changes. Internal `aura` kind remains unchanged; the player-facing collectible name is **XP Orb**, not XP Crystal. The special phase XP Orb remains a distinct rendering with identical XP rewards.
 
 **Changed/revoked approvals:** when the owner rejects or supersedes a previously approved **specific image**, record the **exact source/version/hash and replacement status** in the art register. Do not treat every Clean Cut reference or previously merged asset as permanently **final** merely because it once passed an approval gate. Equally, do not falsely revoke **unidentified** byte-approved art by implication. An adjusted PNG/SVG, alternate pose, new projectile, custom title or newly illustrated screen must have its own explicit approval where identity-bearing.
 
