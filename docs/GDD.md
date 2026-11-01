@@ -643,5 +643,13 @@ The earlier **GDD V2.0 has been archived verbatim** in [`docs/GDD_V2_ARCHIVE.md`
 
 **31 October 2026 creator addendum:** the immediate requested enhancement is **three playable female cosmetic appearances of the existing starters**, guided by the Pixel Vixen, Byte Baddie and Block Queen mockups. This authorizes production and testing of the cosmetic variant implementation but **does not** authorize any new combat kit, balance rule, unreviewed art promotion, automatic merge or production deployment. Keep existing hero IDs and original artwork approvals, and require real Web gameplay plus explicit creator visual acceptance.
 
+**1 November 2026 creator acceptance — female art and restricted production playtest:** The creator approves the exact three female cosmetic presentations tested at feature commit `0efb02ea3ffe943f0c3d5a475709b258cacb6266` in PR #97, including the separate character atlases, selection illustrations and HUD portraits documented in the per-variant V2 manifests below. This grants integration into `main` and deployment of the validated female appearance feature for the currently authorized restricted playtest; it does **not** create new hero kits, change the canonical balance or authorize public alpha. Approval is of these **exact asset bytes only**; future replacements and gameplay changes require a new creator decision. The native sprite presentation uses mirrored three-quarter views, not new eight-direction master assets.
+
+| Approved female appearance (canonical hero) | V2 asset manifest | Gameplay atlas SHA-256 | Selection portrait SHA-256 | HUD portrait SHA-256 |
+| --- | --- | --- | --- | --- |
+| Pixel Vixen (`sigma`) | `assets/art-candidates/pixel-vixen/v2/manifest.json` | `803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d` | `13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9` | `337047c012d476f230091f7cf9fff0373b819f4020eba121dd6cc1524d0f0776` |
+| Byte Baddie (`cool-kid`) | `assets/art-candidates/byte-baddie/v2/manifest.json` | `aabe8d8893ac68938ebfddaffb5bc47b2ddfebb86eb3de42f227b8d8041897e6` | `cd9e7e486cb7d2cf0c3d89067b285fe1845758370e45ac324314db0477a0673d` | `af67fac76f9bfff350eaed423223be416dfbfedfe272dcdd72e916e91d9ee8b7` |
+| Block Queen (`alpha`) | `assets/art-candidates/block-queen/v2/manifest.json` | `0f8f5f4efb9d6bb03660eafebf28eaaf6b50980314ea30804bfd453f6f39eb04` | `b8647d200a0dde5d2ad7cebd54028865100d390d1a1ffdc3ac49919a77b45495` | `0b218b66cb5a4b3a495d67f0e9aed956070eb474138ab35ae7bcfd0fea2870b9` |
+
 **V3.0 consolidation scope:** document and milestone reconciliation **only**. No changes to Godot/Phaser runtime, art bytes, balance, backend infrastructure or production release are made by authoring this GDD.
 
