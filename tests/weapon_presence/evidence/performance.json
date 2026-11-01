@@ -1,0 +1,100 @@
+{
+  "scope": "Four alternating native llvmpipe blocks, fixed 1/60 simulation; 45 warm-up + 120 retained frames each. Software-renderer costs only, not Android frame pacing.",
+  "window": [
+    844,
+    390
+  ],
+  "enemies_max": 71,
+  "new_contacts_peak": 31,
+  "new_gestures_peak": 3,
+  "draw_calls": "Not exposed by this Compatibility backend",
+  "metrics": {
+    "before": {
+      "draw_us": {
+        "samples": 240,
+        "median": 1632.0,
+        "p95": 2897.0,
+        "p99": 5022.0
+      },
+      "simulation_us": {
+        "samples": 240,
+        "median": 1047.5,
+        "p95": 1930.0,
+        "p99": 2374.0
+      },
+      "render_gpu_ms": {
+        "samples": 234,
+        "median": 6.961499929428101,
+        "p95": 11.8219995498657,
+        "p99": 15.8540000915527
+      },
+      "render_cpu_ms": {
+        "samples": 234,
+        "median": 5.1949999332428,
+        "p95": 9.04300022125244,
+        "p99": 13.0150003433228
+      }
+    },
+    "after": {
+      "draw_us": {
+        "samples": 240,
+        "median": 1706.5,
+        "p95": 2288.0,
+        "p99": 3483.0
+      },
+      "simulation_us": {
+        "samples": 240,
+        "median": 1037.5,
+        "p95": 1461.0,
+        "p99": 2272.0
+      },
+      "render_gpu_ms": {
+        "samples": 240,
+        "median": 6.9365000724792445,
+        "p95": 10.8190002441406,
+        "p99": 12.7489995956421
+      },
+      "render_cpu_ms": {
+        "samples": 240,
+        "median": 5.698499917984011,
+        "p95": 9.07400035858154,
+        "p99": 11.0719995498657
+      }
+    }
+  },
+  "raw": "performance-raw.json.gz",
+  "environment": {
+    "browser_metrics": {},
+    "cpu": "unavailable in executor sandbox",
+    "display_server": "X11",
+    "engine": "4.7.2-stable (official)",
+    "frame_cap": 0,
+    "framebuffer_readback_pixels": [
+      843,
+      390
+    ],
+    "gpu_source": "RenderingServer viewport timer when nonzero; null otherwise",
+    "input_timing_origin": "engine receipt of owner drag/release, not hardware/OS end-to-end latency",
+    "label": "after",
+    "logical_view": [
+      1125.0,
+      520.0
+    ],
+    "mode_at_export": "playing",
+    "os": "Linux",
+    "rendered_frames_observable": true,
+    "reported_adapter": "llvmpipe (LLVM 20.1.2, 256 bits)",
+    "seed": 485,
+    "software_renderer_requested": "1",
+    "timing_detail": "phase totals; per-actor timers disabled",
+    "timing_source": "engine frame_post_draw completion; not physical display scanout",
+    "viewport_texture_reported_pixels": [
+      632,
+      293
+    ],
+    "window_pixels": [
+      844,
+      390
+    ]
+  }
+}

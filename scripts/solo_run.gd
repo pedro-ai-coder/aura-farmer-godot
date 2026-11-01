@@ -17,6 +17,7 @@ const ProfileStoreScript = preload("res://scripts/profile_store.gd")
 const ApprovedVisualsScript = preload("res://scripts/approved_visuals.gd")
 const FloatingJoystickScript = preload("res://scripts/floating_joystick.gd")
 const WeaponVisualsScript = preload("res://scripts/weapon_visuals.gd")
+const WeaponPresentationScript = preload("res://scripts/weapon_presentation.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
 const SoloWorldRulesScript = preload("res://scripts/solo_world_rules.gd")
@@ -56,6 +57,7 @@ const COVERS := [Vector2(600.0, 550.0), Vector2(940.0, 680.0)]
 const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
 const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
 var performance_probe
+var weapon_presentation=WeaponPresentationScript.new()
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -469,6 +471,7 @@ func start_run(index: int) -> void:
     hurt_timer = 0.0
     attack_flash = 0.0
     attack_visuals.clear()
+    if weapon_presentation!=null:weapon_presentation.reset()
     combat_feedback.clear()
     _clear_touch()
     run_time = 0.0
@@ -532,6 +535,7 @@ func _process(delta: float) -> void:
             _advance(dt)
             remaining -= dt
     if performance_probe!=null:performance_probe.add(&"simulation",Time.get_ticks_usec()-perf_started)
+    if weapon_presentation!=null:weapon_presentation.synchronize(weapon_areas,player_shots,run_time)
     if mode == "won": finish_visual_age += clampf(delta,0.0,0.1)
     for defeated: Dictionary in defeated_visuals.duplicate():
         if run_time-float(defeated["defeated_at"])+finish_visual_age >= 0.85: defeated_visuals.erase(defeated)
@@ -1367,6 +1371,7 @@ func _queue_player_shot(id: String, heading: Vector2, damage: float, reach: floa
         "damage": damage, "pierce": pierce, "hit": [], "activated": false,
         "primary": primary, "activation": {}, "at": run_time + delay
     })
+    if weapon_presentation!=null:weapon_presentation.queued(player_shots.back(),run_time,weapons,true)
 
 func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: float, arc: float, damage: float, delay: float, activation: Dictionary, options: Dictionary = {}) -> void:
     var area: Dictionary = {
@@ -1376,6 +1381,7 @@ func _queue_weapon_area(id: String, center: Vector2, facing: Vector2, radius: fl
     }
     area.merge(options, true)
     weapon_areas.append(area)
+    if weapon_presentation!=null:weapon_presentation.queued(area,run_time,weapons,false)
 
 func _weapon_area_reaches(area: Dictionary, enemy: Dictionary) -> bool:
     if run_time < float(enemy.get("born",0.0)) or area["hit_memory"].has(int(enemy["id"])):
@@ -1441,7 +1447,10 @@ func _step_weapon_areas() -> void:
             var activation: Dictionary = area["activation"]
             var primary: bool = area["primary"]
             memory.append(int(enemy["id"]))
+            var visual_hp: float=enemy["hp"]
+            var visual_shield: float=enemy.get("shield",0.0)
             _weapon_hit(enemy, float(area["damage"]), primary, activation)
+            if weapon_presentation!=null:weapon_presentation.contact(str(area["id"]),enemy,impact,facing,visual_hp,visual_shield,run_time,1.25 if bool(activation.get("slam",false)) else 1.0)
             if primary and not bool(activation["hit"]) and mode == "playing":
                 activation["hit"] = true
                 _primary_activation(impact)
@@ -1510,7 +1519,10 @@ func _step_player_shots(dt: float) -> void:
             shot["hit"].append(int(enemy["id"]))
             var impact: Vector2 = enemy["pos"]
             var primary: bool = shot.get("primary", true)
+            var visual_hp: float=enemy["hp"]
+            var visual_shield: float=enemy.get("shield",0.0)
             _weapon_hit(enemy, float(shot["damage"]), primary, shot["activation"])
+            if weapon_presentation!=null:weapon_presentation.contact(str(shot["id"]),enemy,impact,shot["direction"],visual_hp,visual_shield,run_time)
             if primary and not bool(shot["activated"]) and mode == "playing":
                 shot["activated"] = true
                 _primary_activation(impact)
@@ -2215,39 +2227,27 @@ func _draw() -> void:
     _draw_recovery()
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
-    for zone: Dictionary in hazard_zones:
-        var warning: bool = run_time < float(zone["at"])
-        var tint := Color(1.0, 0.61, 0.22, 0.8) if warning else Color(0.98, 0.29, 0.31, 0.8)
-        var center: Vector2 = zone["pos"]
-        var facing: Vector2 = zone["dir"]
-        if zone["shape"] == "ring":
-            var radius := 80.0 if warning else 80.0 + 200.0 * clampf((run_time - float(zone["at"])) / 1.5, 0.0, 1.0)
-            draw_arc(center, radius, facing.angle() + deg_to_rad(35.0), facing.angle() + TAU - deg_to_rad(35.0), 48, tint, 4.0 if warning else 6.0)
-        elif zone["shape"] == "tether":
-            draw_line(center, player_pos, tint, 3.0)
-        elif zone["shape"] == "line":
-            draw_line(center, center + facing * float(zone["radius"]), Color(tint, 0.18), 60.0)
-            draw_line(center, center + facing * float(zone["radius"]), tint, 3.0)
-        elif zone["shape"] == "cone":
-            draw_arc(center, float(zone["radius"]), facing.angle() - PI / 3.0, facing.angle() + PI / 3.0, 32, tint, 4.0)
-        else:
-            draw_arc(center, float(zone["radius"]), 0.0, TAU, 48, tint, 4.0 if warning else 6.0)
-    for area: Dictionary in weapon_areas:
-        if area.get("shape", "sector") == "line":
-            draw_line(area["center"], Vector2(area["center"]) + Vector2(area["facing"]) * float(area["radius"]), Color(0.97, 0.77, 0.37, 0.65), 3.0)
-        elif area["id"] == "brainrot-feed":
-            draw_arc(area["center"], float(area["radius"]), 0.0, TAU, 40, Color(0.97, 0.77, 0.37, 0.75), 3.0)
-        elif area["id"] == "ban-hammer":
-            var heading: float = Vector2(area["facing"]).angle()
-            var half_arc: float = deg_to_rad(float(area["arc"]) * 0.5)
-            draw_arc(area["center"], float(area["radius"]), heading - half_arc, heading + half_arc, 24, Color(0.97, 0.77, 0.37, 0.65), 3.0)
-    for shot: Dictionary in player_shots:
-        if run_time < float(shot.get("at", 0.0)):
-            continue
-        WeaponVisualsScript.draw_attack(self, {
-            "id": shot["id"], "origin": Vector2(shot["pos"]) - Vector2(shot["direction"]) * 24.0,
-            "target": shot["pos"], "life": 0.18
-        })
+    if weapon_presentation==null:_draw_danger_geometry()
+    if weapon_presentation==null:
+        for area: Dictionary in weapon_areas:
+            if area.get("shape", "sector") == "line":
+                draw_line(area["center"], Vector2(area["center"]) + Vector2(area["facing"]) * float(area["radius"]), Color(0.97, 0.77, 0.37, 0.65), 3.0)
+            elif area["id"] == "brainrot-feed":
+                draw_arc(area["center"], float(area["radius"]), 0.0, TAU, 40, Color(0.97, 0.77, 0.37, 0.75), 3.0)
+            elif area["id"] == "ban-hammer":
+                var heading: float = Vector2(area["facing"]).angle()
+                var half_arc: float = deg_to_rad(float(area["arc"]) * 0.5)
+                draw_arc(area["center"], float(area["radius"]), heading - half_arc, heading + half_arc, 24, Color(0.97, 0.77, 0.37, 0.65), 3.0)
+        for shot: Dictionary in player_shots:
+            if run_time < float(shot.get("at", 0.0)):
+                continue
+            WeaponVisualsScript.draw_attack(self, {
+                "id": shot["id"], "origin": Vector2(shot["pos"]) - Vector2(shot["direction"]) * 24.0,
+                "target": shot["pos"], "life": 0.18
+            })
+    else:
+        weapon_presentation.draw_ground(self,weapon_areas,run_time,bool(profile["settings"]["reducedMotion"]))
+        weapon_presentation.draw_projectiles(self,player_shots,run_time,bool(profile["settings"]["reducedMotion"]))
     if flex_time > 0.0:
         draw_arc(player_pos, 26.0, 0.0, TAU, 36, Color(1.0, 0.89, 0.36), 5.0)
     var outline: Dictionary = hero_state.get("flex_outline",{})
@@ -2265,9 +2265,11 @@ func _draw() -> void:
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
-    for effect: Dictionary in attack_visuals:
-        WeaponVisualsScript.draw_attack(self, effect)
+    if weapon_presentation==null:
+        for effect: Dictionary in attack_visuals:WeaponVisualsScript.draw_attack(self,effect)
+    else:weapon_presentation.draw_impacts(self,run_time,bool(profile["settings"]["reducedMotion"]))
     _draw_combat_feedback()
+    if weapon_presentation!=null:_draw_danger_geometry()
     for shot: Dictionary in hostile_shots:
         var shot_pos: Vector2 = shot["pos"]
         var shot_dir: Vector2 = shot["dir"]
@@ -2278,9 +2280,29 @@ func _draw() -> void:
 
     if performance_probe!=null:performance_probe.add(&"draw",Time.get_ticks_usec()-perf_draw_start)
 
+func _draw_danger_geometry() -> void:
+    for zone: Dictionary in hazard_zones:
+        var warning: bool = run_time < float(zone["at"])
+        var tint := Color(1.0, 0.61, 0.22, 0.8) if warning else Color(0.98, 0.29, 0.31, 0.8)
+        var center: Vector2 = zone["pos"]
+        var facing: Vector2 = zone["dir"]
+        if zone["shape"] == "ring":
+            var radius := 80.0 if warning else 80.0 + 200.0 * clampf((run_time - float(zone["at"])) / 1.5, 0.0, 1.0)
+            draw_arc(center, radius, facing.angle() + deg_to_rad(35.0), facing.angle() + TAU - deg_to_rad(35.0), 48, tint, 4.0 if warning else 6.0)
+        elif zone["shape"] == "tether":
+            draw_line(center, player_pos, tint, 3.0)
+        elif zone["shape"] == "line":
+            draw_line(center, center + facing * float(zone["radius"]), Color(tint, 0.18), 60.0)
+            draw_line(center, center + facing * float(zone["radius"]), tint, 3.0)
+        elif zone["shape"] == "cone":
+            draw_arc(center, float(zone["radius"]), facing.angle() - PI / 3.0, facing.angle() + PI / 3.0, 32, tint, 4.0)
+        else:
+            draw_arc(center, float(zone["radius"]), 0.0, TAU, 48, tint, 4.0 if warning else 6.0)
+
 func _draw_combat_feedback() -> void:
     var reduced: bool = profile["settings"]["reducedMotion"]
     for cue: Dictionary in combat_feedback:
+        if weapon_presentation!=null and cue["kind"]=="hit" and weapon_presentation.replaces(cue,run_time):continue
         var age := run_time - float(cue["at"])
         var life := clampf((float(cue["until"]) - run_time) / (float(cue["until"]) - float(cue["at"])), 0.0, 1.0)
         var point: Vector2 = cue["pos"]
@@ -2332,7 +2354,8 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
     _draw_contact_shadow(e["pos"], radius)
-    if not art.draw_enemy(self, e, run_time, -1.0, profile["settings"]["reducedMotion"]):
+    var reaction: Vector2=Vector2.ZERO if weapon_presentation==null else weapon_presentation.reaction(e,run_time,bool(profile["settings"]["reducedMotion"]))
+    if not art.draw_enemy(self, e, run_time, -1.0, profile["settings"]["reducedMotion"],reaction):
         draw_circle(e["pos"], radius, color)
     var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
     var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
@@ -2341,17 +2364,20 @@ func _draw_enemy_actor(e: Dictionary) -> void:
 
 func hero_pose() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
+    if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
     if hero_appearance == "female":
         return FemaleHeroAnimationScript.pose(str(hero["id"]),state)
     return HeroAnimationScript.pose(str(hero["id"]), state)
 
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
-    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), hero_pose()):
+    var pose:=hero_pose()
+    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
         draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
         draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
+    if weapon_presentation!=null:weapon_presentation.draw_actor(self,player_pos,str(hero["id"]),hero_appearance,pose,run_time,bool(profile["settings"]["reducedMotion"]),weapon_shields)
     # Hero art uses a foot pivot: keep the health bar above the head.
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))

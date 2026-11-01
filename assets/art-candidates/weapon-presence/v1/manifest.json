@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATE_PENDING_CREATOR_REVIEW",
+  "runtime_authorization": "REVIEW_BRANCH_ONLY",
+  "baseline": "bd66c202595eabcdf7f8f23b28887f19b28d840b",
+  "provenance": "Original code-native vector projectile and three-cell impact sheet by Codex, 2026-11-01. No third-party art or fonts. Five approved weapon PNGs supply transient props/projectiles; three authored character weapon silhouettes and analytic pulse boundaries are preserved. All nine approved icon references are hash-verified. No character or pickup source replacement.",
+  "resources": [
+    {
+      "path": "assets/art-candidates/weapon-presence/v1/ratio-bolt.png",
+      "sha256": "465cb371a41bfbbe7ae7fff0f6624ac54986ecb837601c8bbc90396a12b011a2",
+      "dimensions": [
+        128,
+        48
+      ],
+      "source_path": "assets/art-candidates/weapon-presence/v1/source/ratio-bolt.svg",
+      "source_sha256": "1bc698a340f1370525af15498eb74993ddb6ebd725e2cba08ab6e32bea2d4186",
+      "status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "usage": "Directional Ratio Blaster visual; no gameplay authority"
+    },
+    {
+      "path": "assets/art-candidates/weapon-presence/v1/impact-sheet.png",
+      "sha256": "7c8d3221d5a73c91ce022da5f011cfbeaa28a50a4bba4bc514e07a69866993c2",
+      "dimensions": [
+        192,
+        64
+      ],
+      "source_path": "assets/art-candidates/weapon-presence/v1/source/impact-sheet.svg",
+      "source_sha256": "05d9dcc733f86237b88049a8f2924d8f7ea8fa0b8bed8f80af704f359575a7d6",
+      "status": "CANDIDATE_PENDING_EXACT_BYTE_CREATOR_APPROVAL",
+      "usage": "Actual resolved weapon contact only; three 64x64 atlas cells",
+      "regions": [
+        {
+          "name": "gold-contact",
+          "rect": [
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "name": "cyan-contact",
+          "rect": [
+            64,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "name": "violet-contact",
+          "rect": [
+            128,
+            0,
+            64,
+            64
+          ]
+        }
+      ]
+    }
+  ],
+  "reused_approved_icons": [
+    {
+      "id": "ban-hammer",
+      "path": "assets/runtime-icons/weapons/ban-hammer/086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49.png",
+      "sha256": "086c4640501549e1fa73cbd2463d57b5feb6b02f8ae821b2634ad7ba37a17c49",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Unmodified approved hammer, attached at its handle with real windup."
+    },
+    {
+      "id": "brainrot-feed",
+      "path": "assets/runtime-icons/weapons/brainrot-feed/4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b.png",
+      "sha256": "4e5bd2ac7793b760e9b2cea03ae301affa7e463a877ddeafe383f320bcc1731b",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Unmodified approved phone used as held prop and actual queued-area marker."
+    },
+    {
+      "id": "chad-hands",
+      "path": "assets/runtime-icons/weapons/chad-hands/08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab.png",
+      "sha256": "08f7ace71a60b33f81320ce9dcaad6be48985b57fbd61717322cec7e0c2437ab",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Approved icon reference and existing HUD use; gameplay reuses authored fists/gauntlets."
+    },
+    {
+      "id": "cope-shield",
+      "path": "assets/runtime-icons/weapons/cope-shield/37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662.png",
+      "sha256": "37a5f0adcb9d18726974c893822bf5fd74f275f01872b908c2c5b2d9a8be0662",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Approved icon reference and existing HUD use; gameplay reuses original/female authored shields."
+    },
+    {
+      "id": "keyboard-warrior",
+      "path": "assets/runtime-icons/weapons/keyboard-warrior/66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1.png",
+      "sha256": "66327595d20404f1d6eae7aefb7b6ab934e79a91336dea4581fdb5fc0b3ad3a1",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Approved icon reference and existing HUD use; gameplay reuses the authored keyboard in both character masters, avoiding duplicates."
+    },
+    {
+      "id": "no-cap",
+      "path": "assets/runtime-icons/weapons/no-cap/b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5.png",
+      "sha256": "b33607b9617a5af4f7ee95e6df031c88317c4075779e5e3412b871c062ecb1e5",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Unmodified approved cap rendered on the actual projectile. Existing HUD/offer icon retained."
+    },
+    {
+      "id": "personal-space",
+      "path": "assets/runtime-icons/weapons/personal-space/1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6.png",
+      "sha256": "1c0a93b8e910a177dcc63d907d33b6349b1bb6d5df074f659e0c0732c2d855f6",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Approved icon reference and existing HUD use; gameplay renders its real radial geometry and a contained inner band."
+    },
+    {
+      "id": "ratio-blaster",
+      "path": "assets/runtime-icons/weapons/ratio-blaster/687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png",
+      "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Unmodified approved handheld prop (original Sigma); female master already contains a blaster. Existing HUD/offer icon retained."
+    },
+    {
+      "id": "touch-grass",
+      "path": "assets/runtime-icons/weapons/touch-grass/3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca.png",
+      "sha256": "3b8635df874e611debfffcae0b1d409da7a97708a9d710bd69588fb298102eca",
+      "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
+      "usage": "Unmodified approved v2 whip attached at its stem."
+    }
+  ],
+  "attachment_source": "scripts/weapon_attachments.gd",
+  "attachment_sha256": "5cd478848ea31ccf732123ce5d44e12f7d4d7fb47962055cbef5fcd6e712ed9c",
+  "prop_grips_source": "scripts/weapon_presentation.gd::PROP_GRIPS",
+  "pools": {
+    "gestures": 24,
+    "impacts": 48
+  },
+  "timing": "Only queued authoritative shots/areas and resolved HP or shield changes; no hit simulation or RNG in presentation.",
+  "new_rgba_texture_bytes": 73728
+}

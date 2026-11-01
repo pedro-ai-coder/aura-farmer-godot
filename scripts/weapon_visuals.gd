@@ -1,7 +1,9 @@
 class_name WeaponVisuals
 extends RefCounted
 
-## Presentation-only Option A weapon motifs ported from Phaser combat-vfx.ts.
+## Legacy presentation-only Option A motifs, retained for baseline review and
+## contract compatibility. Live combat uses weapon_presentation.gd and the exact
+## approved prop textures; this procedural renderer is the before comparison.
 ## Every effect marks an actual completed Godot weapon activation; it is not a
 ## projectile, an additional area, a hitbox or an independent damage source.
 const MOTIFS: Dictionary = {
