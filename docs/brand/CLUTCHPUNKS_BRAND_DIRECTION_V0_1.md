@@ -68,11 +68,11 @@ These are **art briefs**, not approved raster/vector assets. All use original ha
 
 | Element | Direction | Guardrail |
 | --- | --- | --- |
-| Main background | Deep ink navy \`#13233A\`, asymmetric broadcast cutouts | Do not reproduce generic navy dashboard panels |
-| Wordmark fill | Warm paper cream \`#F7EDCD\`, ink outline \`#253449\` | Contrast-tested, legible at small widths |
-| Distinctive highlight | Aura gold \`#F8C45F\` | Use selectively; keep actual gameplay Aura semantics distinct |
-| Hostile interruption | Coral \`#E57461\` | Never communicate danger only by color |
-| Tech/signal edges | Sky blue \`#4EA3FF\`, occasional violet | No overwhelming neon overdraw |
+| Main background | Deep ink navy `#13233A`, asymmetric broadcast cutouts | Do not reproduce generic navy dashboard panels |
+| Wordmark fill | Warm paper cream `#F7EDCD`, ink outline `#253449` | Contrast-tested, legible at small widths |
+| Distinctive highlight | Aura gold `#F8C45F` | Use selectively; keep actual gameplay Aura semantics distinct |
+| Hostile interruption | Coral `#E57461` | Never communicate danger only by color |
+| Tech/signal edges | Sky blue `#4EA3FF`, occasional violet | No overwhelming neon overdraw |
 | Hero individuality | Keep approved Sigma gold/hood, Cool Kid blue-beanie and Alpha heavy-tank identities | Do not invent new accessories or new playable kits |
 | Type treatment | Expressive, compact, comic-poster main headings; restrained functional body type | No illegible all-caps body or unauthorized fonts |
 | Motion | One deliberate cut/glitch beat, then stillness | Reduced-motion must see equivalent information immediately |
