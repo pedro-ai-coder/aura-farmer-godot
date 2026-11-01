@@ -1,0 +1,22 @@
+{
+  "after": {
+    "median_us": 534,
+    "p95_us": 2901,
+    "p99_us": 6217,
+    "samples": 180
+  },
+  "before": {
+    "median_us": 2320,
+    "p95_us": 7464,
+    "p99_us": 16830,
+    "samples": 180
+  },
+  "engine": "4.7.2-stable (official)",
+  "new_particles": 0,
+  "new_per_frame_resources": 0,
+  "ordering": "six alternating A/B blocks, 15 warm-up + 60 retained draw samples each",
+  "pickups": 243,
+  "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+  "rgba_texture_bytes": 196608,
+  "scope": "CPU pickup drawing command submission only; no FPS, GPU or physical-device claim"
+}

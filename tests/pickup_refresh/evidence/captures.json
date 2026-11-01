@@ -1,0 +1,97 @@
+{
+  "baseline": "47f5f55331a4808c72200a7f25e0eae950cb7246",
+  "capture": "Actual Godot 4.7.2 Compatibility/X11 client area, llvmpipe; matched frozen fixtures; not a human run or physical-device test",
+  "images": [
+    {
+      "file": "after-arena-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "d08fce24d06b034c525981a1fb8546251e683b6b6e64d50db46476c66777a522",
+      "webp_sha256": "30b77eab60bc2ef289fbe12a9bd0245ff6717fa105324737d61e7196d6a29216",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "after-arena-844x390.webp",
+      "dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "d12a3854065d6cefe58c94012baad1e3df72e9f7ce414fe08cd1cf53aafa0439",
+      "webp_sha256": "24dbe8f65a34ed09af05d6575c310d76f6e766d691111ba119ccff051ae8598b",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "after-dense-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "1186d3ae9fe9838eb5b68009bfd556280b602ff3fdf5789e3398a672741a4963",
+      "webp_sha256": "3915e5b228aba11b177b0941b240ec9174f2992e87fdfa129fada377b24a8983",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "after-dense-844x390.webp",
+      "dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "a6f0263d5c44259403ae510ebeb4ab12890b56a98dd5250e511ff96c014da812",
+      "webp_sha256": "d1741b9f3430e25af1558ea364d23a444f559e15587fa9c17e2e24cf4b099943",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "before-arena-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "dcbefc13a75c37a5aac5b9fd01c5d9ea0e963760bbeb7c31f9589b3f8f2e0539",
+      "webp_sha256": "6d663221111d424f5ddc77dc68331e70775eefb5ab1b809e47b5684b44cedf5c",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "before-arena-844x390.webp",
+      "dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "1e2590c9f2520125bb65b0edbfa8182a8cb10ec4360104fdd8b612aa3e06c055",
+      "webp_sha256": "12351c82f83536c188ca9ca4e67ca86f0c081a48adb4e31e08777f964b4cb759",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "before-dense-1600x900.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "source_png_sha256": "791c77ae56effbc9192a41373129785c141a5011da5493244c62181fdad86a8a",
+      "webp_sha256": "a1a46850c2e0b467f71fdd87b0f4dbfa01db1781f8aa9ccfdae98dd615726e08",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "before-dense-844x390.webp",
+      "dimensions": [
+        844,
+        390
+      ],
+      "source_png_sha256": "5fe1bd5884db02887541e7a034221e9ac2f19dfb8c5beb998b8258728baf9d7c",
+      "webp_sha256": "68a3b464295dc401a6ff23b8ffc63e446903a0a757ff3f9c42f06472da4831ba",
+      "lossless_rgb_verified": true
+    },
+    {
+      "file": "pickup-sheet.webp",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "source_png_sha256": "3d8abae9185aad4bd3e98c3064ecdce2bcd9a219e039eb2985f45c359fc65ceb",
+      "webp_sha256": "0e4758bc88f76617aac8a33b42254425bb7590dbcff0f97b81bc4bdd93bb66f1",
+      "lossless_rgb_verified": true
+    }
+  ],
+  "matching_fixture_and_rng_verified": true
+}

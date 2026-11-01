@@ -1,0 +1,48 @@
+[
+  {
+    "capture": "actual X11 client rectangle, no resampling",
+    "enemies": 9,
+    "fixture_sha256": "160a3d59bf79b43a55a07fd9c9e69b5c7be345c5a40e1ed0371762a0d7f043c9",
+    "framebuffer_readback": [
+      843,
+      390
+    ],
+    "human_or_device_test": false,
+    "image": "after-arena-844x390.png",
+    "pickups": 31,
+    "readback": [
+      844,
+      390
+    ],
+    "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+    "requested": [
+      844,
+      390
+    ],
+    "rng_state": 451,
+    "shots": 4
+  },
+  {
+    "capture": "actual X11 client rectangle, no resampling",
+    "enemies": 75,
+    "fixture_sha256": "a50f87f5e835a1dca841aeb7603130ed394af265b1df5fdecb46b2440d66b010",
+    "framebuffer_readback": [
+      843,
+      390
+    ],
+    "human_or_device_test": false,
+    "image": "after-dense-844x390.png",
+    "pickups": 156,
+    "readback": [
+      844,
+      390
+    ],
+    "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+    "requested": [
+      844,
+      390
+    ],
+    "rng_state": 451,
+    "shots": 4
+  }
+]

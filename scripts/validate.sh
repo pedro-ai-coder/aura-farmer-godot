@@ -131,3 +131,7 @@ run_check pixel-vixen-appearance --headless --path . --script res://tests/test_p
 python3 scripts/verify_female_variants.py
 python3 -m unittest discover -s tests -p test_female_variants_pack.py
 run_check female-roster --headless --path . --script res://tests/test_female_roster.gd
+
+python3 scripts/verify_pickup_candidates.py
+python3 -m unittest discover -s tests -p test_pickup_pack.py
+run_check pickup-refresh --headless --path . --script res://tests/pickup_refresh/test_pickups.gd

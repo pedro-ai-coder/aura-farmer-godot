@@ -89,7 +89,7 @@ The following sections are **binding numeric gameplay specifications**, consolid
 
 | System | Source of progression | Result | Persisted between runs? |
 | --- | --- | --- | --- |
-| **Run XP and level** | Collect existing enemy/event XP crystals | Offers and small baseline stat increases | No |
+| **Run XP and level** | Collect existing enemy/event XP Orbs | Offers and small baseline stat increases | No |
 | **Wave / encounter progression** | **Five 120-second** active-simulation intervals | Threat composition, difficulty, events and available rarities | No |
 | **Aura / Flex** | Combat participation, survival and event rewards | One hero-specific manually activated Flex | No |
 | **External account/rank progression** | Run results and future objectives | Future unlocks/rewards | Only when separately implemented |
@@ -129,7 +129,7 @@ Aura never purchases levels; activating Flex does not spend XP. Wave changes do 
 | **5 — Final Ratio** | **8:00–10:00** | **23–25** | Peak pressure; **Doomscroll Prime at 8:15**; deferred legendary reprise at **8:00**, expiration **9:55** |
 | **Big Hater** | **10:00 onward** | **25 target, not requirement** | Warning **9:30**; final boss at **10:00**, recoverable berserk **120 s into its combat** (nominally **12:00**); final-effort prompt after **240 s combat** (nominally **14:00**) |
 
-The target levels are **tuning targets, not automatic level grants**. Cumulative solo XP targets for levels **5/10/15/20/25** are **230 / 915 / 2,275 / 4,560 / 8,020**. Revalidate ordinary runs with the shorter schedule before proposing XP, boss or spawn balance changes. On the four phase transitions (2/4/6/8 minutes), grant exactly one shared XP crystal of **80/120/160/200 XP** respectively, multiplied by the applicable team XP factor; its collection is credited once, not an extra off-system upgrade.
+The target levels are **tuning targets, not automatic level grants**. Cumulative solo XP targets for levels **5/10/15/20/25** are **230 / 915 / 2,275 / 4,560 / 8,020**. Revalidate ordinary runs with the shorter schedule before proposing XP, boss or spawn balance changes. On the four phase transitions (2/4/6/8 minutes), grant exactly one shared XP Orb of **80/120/160/200 XP** respectively, multiplied by the applicable team XP factor; its collection is credited once, not an extra off-system upgrade.
 
 **Difficulty scaling by wave** (HP / damage / spawn-density relative to wave 1): `1.00/1.00/1.00`, `1.30/1.15/1.20`, `1.65/1.30/1.40`, `2.05/1.50/1.65`, `2.50/1.75/1.90`. Enemy movement speed does **not** scale by wave. Within a wave, spawn rate increases linearly by up to **10%**. Solo baseline spawn is **0.8 enemies/s**; current cap is **100 simultaneously active normal-wave enemies solo** and **160 at five-player scale**, interpolated by party size. At cap, postpone spawning—never invisibly kill enemies or discard created XP. A **300-enemy / 150-projectile** fixture is historical **stress-test work**, not the ordinary approved 100-enemy solo spawn cap.
 
@@ -401,7 +401,7 @@ Events do not pause the wave or create off-system free cards. If an event boss s
 
 ### 5.14 Big Hater — final boss and recoverable Berserk
 
-**Encounter entry:** boss telegraph at **9:30**, Big Hater at **10:00** on a readable bounded arena. Remaining ordinary mobs leave without XP. Existing uncollected XP crystals are collected without inventing new XP. Big Hater starts at the **approved initial solo tuning value of 30,000 max HP**, with no additional wave-5 HP multiplier. **Its actual viability with ten minutes of normal build progression is not yet balance-proven** and must be reviewed without silent HP/XP/damage tuning.
+**Encounter entry:** boss telegraph at **9:30**, Big Hater at **10:00** on a readable bounded arena. Remaining ordinary mobs leave without XP. Existing uncollected XP Orbs are collected without inventing new XP. Big Hater starts at the **approved initial solo tuning value of 30,000 max HP**, with no additional wave-5 HP multiplier. **Its actual viability with ten minutes of normal build progression is not yet balance-proven** and must be reviewed without silent HP/XP/damage tuning.
 
 **Base combat:** boss contact deals **12 damage once each 1 s**, never stacking contact and a main slam on the same frame. Primary attack slots last **6 s** and repeat in this order: **Hate Slam → Ratio Beam → Comment Ring → Adds**. Preparation and execution fit the slot; incompatible main attacks do not overlap.
 
@@ -433,7 +433,7 @@ Berserk is **not a scripted wipe at 12:00**. With 30,000 HP, the initial regener
 | ID / name | Drop chance, when eligible | Pickup / activation | Exact effect |
 | --- | --- | --- | --- |
 | **P1 — Street Snack** | **5%** normal enemy kill; **20%** elite kill | **56 U pickup radius** | Restore **18% of player max HP**, capped at max HP; never overheal |
-| **P2 — Aura Magnet** | **2%** normal enemy kill; **8%** elite kill | **72 U pickup radius** | Collect **every currently available XP crystal**, each at most once; create **no extra XP or duplicate rewards** and do **not** generate Aura from the pickup's name |
+| **P2 — Aura Magnet** | **2%** normal enemy kill; **8%** elite kill | **72 U pickup radius** | Collect **every currently available XP Orb**, each at most once; create **no extra XP or duplicate rewards** and do **not** generate Aura from the pickup's name |
 | **P3 — Safe Spot** | Authored map station, not a kill drop | At **(1100, 565)** in **Ruin Alley**, **68 U** activation radius | Require **2 uninterrupted active seconds** inside zone **while below max HP**; heal **25% of max HP**; enter **90 s of active-gameplay cooldown** |
 
 **P3 charge reset:** leaving the area or no longer meeting the health/activation conditions resets the current charge; pause freezes its active-simulation time. Restore the original world-space marker and clear charge, ready, healing and cooldown feedback. The Safe Spot does not create an additional upgrade, currency or hidden fourth recovery rule.

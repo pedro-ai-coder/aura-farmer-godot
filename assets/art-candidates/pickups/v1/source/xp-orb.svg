@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <radialGradient id="energy" cx=".38" cy=".3" r=".72">
+      <stop offset="0" stop-color="#d9fff1"/>
+      <stop offset=".35" stop-color="#5df3df"/>
+      <stop offset=".72" stop-color="#22c7d8"/>
+      <stop offset="1" stop-color="#207bc2"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="53" fill="#48dbe1" opacity=".09"/>
+  <circle cx="64" cy="64" r="48" fill="#40d9dc" opacity=".18"/>
+  <circle cx="64" cy="65" r="42" fill="#123047" stroke="#13233a" stroke-width="5"/>
+  <circle cx="64" cy="62" r="36" fill="url(#energy)" stroke="#74eee4" stroke-width="3"/>
+  <path d="M39 73a29 29 0 0 0 48 4" fill="none" stroke="#0e74a4" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+  <path d="M42 48a27 27 0 0 1 25-12" fill="none" stroke="#fff9e9" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="42" cy="53" r="3" fill="#fff9e9"/>
+  <path d="M83 86l4-3" fill="none" stroke="#b4fff0" stroke-width="3" stroke-linecap="round"/>
+</svg>

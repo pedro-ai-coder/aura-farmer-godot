@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "status": "CANDIDATE_PENDING_CREATOR_REVIEW",
+  "runtime_authorization": "REVIEW_BRANCH_ONLY",
+  "author": "Original Aura Farmer vector construction by Codex, 2026-11-01",
+  "provenance": "Refinement of the repository Clean Cut pickup concepts; no third-party images, fonts or linked resources. Existing approved files remain intact.",
+  "rendering": "Godot 4.7.2 Image.load_svg_from_string, transparent 128x128 RGBA PNG; linear texture filtering; no SVG fonts or filters.",
+  "resources": [
+    {
+      "kind": "aura",
+      "display_name": "XP Orb",
+      "runtime_path": "assets/art-candidates/pickups/v1/xp-orb.png",
+      "source_path": "assets/art-candidates/pickups/v1/source/xp-orb.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "sha256": "51dab0070b5663bddb0ddf80c130edcde428718720d737cf8c9a1f443220f74c",
+      "source_sha256": "9d47e45bd310f4c2e614725bdcd8b7629bf993717787cb4a6491ab384c9be206",
+      "world_extent": 32,
+      "approval_status": "CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "kind": "snack",
+      "display_name": "Street Snack",
+      "runtime_path": "assets/art-candidates/pickups/v1/street-snack.png",
+      "source_path": "assets/art-candidates/pickups/v1/source/street-snack.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "sha256": "97c96fb8938bde3e4c0c688f9e5bf9552b85c1d0cf270d0f04d8a3458611cd74",
+      "source_sha256": "9237499ac72bbd4bd10b4c1489bf5350adc03c4443a9a5e1874eb02cca8184f6",
+      "world_extent": 40,
+      "approval_status": "CANDIDATE_PENDING_CREATOR_REVIEW"
+    },
+    {
+      "kind": "magnet",
+      "display_name": "Aura Magnet",
+      "runtime_path": "assets/art-candidates/pickups/v1/aura-magnet.png",
+      "source_path": "assets/art-candidates/pickups/v1/source/aura-magnet.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "sha256": "860fd35d103d12a486ec2924b38047ef18b0cac80e4e727902487afb81fd708a",
+      "source_sha256": "6103c0f00a56b555c26b87fabab4f81c2925b2aba57b407fe918ab303cda2c09",
+      "world_extent": 40,
+      "approval_status": "CANDIDATE_PENDING_CREATOR_REVIEW"
+    }
+  ],
+  "phase_xp": "Same aura orb, 34U texture extent and existing 19U gold ring; unchanged gameplay payload and reward.",
+  "approved_source_files_preserved": [
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/shared/pickups/xp-crystal.svg",
+      "sha256": "472fd817868efd93c4f00299ed6eccc2a68b3c0383ee8d817e058eb61423e700"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/shared/pickups/street-snack.svg",
+      "sha256": "db7e9a6388ab88685f559d7d2c189d9aee0275e27be6d4796d81247a6850c552"
+    },
+    {
+      "path": "assets/art-production/character-hype-clean-cut/v2/gameplay-hud-polish-v1/shared/pickups/aura-magnet.svg",
+      "sha256": "a2e906a68c6f0a7962b7ffa9b5431cba209b4792b7f58d6ae545ac01e1b0658d"
+    }
+  ]
+}
