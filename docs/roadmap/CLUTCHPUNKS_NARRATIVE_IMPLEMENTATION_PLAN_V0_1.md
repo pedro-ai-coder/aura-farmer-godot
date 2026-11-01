@@ -83,7 +83,7 @@
 - Avoid publishing spoilers in metadata, open graph cards, sitemap, JSON payloads or filenames linked publicly.
 - Source artwork through manifest/approved hashes, not improvised art copies.
 - Verify the public play CTA **against real deployed access** at release time. The current M0 game remains invitation-only; a public website **must not** accidentally expose it.
-- Keep Web game origin and \`aura-farmer:profile:v2\` data stable. Domain changes need a separate migration design and save tests.
+- Keep Web game origin and `aura-farmer:profile:v2` data stable. Domain changes need a separate migration design and save tests.
 
 **Acceptance:** Story is understandable without animation/sound, looks unmistakably CLUTCHPUNKS, works on mobile, and cannot impersonate a public game release while M0 remains closed.
 
