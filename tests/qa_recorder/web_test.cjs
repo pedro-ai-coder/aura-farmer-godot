@@ -19,6 +19,33 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
    await page.mouse.click(...point);
   }
   if(await page.evaluate(()=>window.__qaReviewState.recording))throw Error('Recording enabled by default');
+  // Real mouse interaction with fixed header/footer, at both desktop and 844x390.
+  await click('scenario');
+  await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===true);
+  await page.waitForFunction(()=>window.__qaReviewState?.controls.qa_close);
+  const rects=await page.evaluate(()=>({
+   view:window.__qaReviewState.view,
+   close:window.__qaReviewState.controls.qa_close,
+   cancel:window.__qaReviewState.controls.qa_cancel,
+   launch:window.__qaReviewState.controls.qa_launch
+  }));
+  for(const name of ['close','cancel','launch']){
+   const [x,y,w,h]=rects[name];
+   if(x<0 || y<0 || w<=0 || h<=0 || x+w>rects.view[0] || y+h>rects.view[1])
+    throw Error('Scenario '+name+' button outside viewport '+width+'x'+height);
+  }
+  await page.screenshot({path:path.join(out,`scenario-dialog-${width}.png`)});
+  await click('qa_close');
+  await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===false);
+  await click('scenario');
+  await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===true);
+  await page.mouse.wheel(0,1500);
+  await click('qa_cancel');
+  await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===false);
+  await click('scenario');
+  await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===true);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===false);
   await page.screenshot({path:path.join(out,`off-${width}.png`)});
   await click('start');
   await page.waitForFunction(()=>window.__qaReviewState.recording);
@@ -41,5 +68,5 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   fs.writeFileSync(path.join(out,`browser-${width}.json`),JSON.stringify({viewport:[width,height],profileUnchanged:true,errors,renderer:'Chromium WebGL2 software; not physical-device performance'},null,2));
   await context.close();
  }
- await browser.close();console.log('PASS: actual WebGL gameplay, explicit recording, pause, marker, local ZIP download and profile isolation at both viewports');
+ await browser.close();console.log('PASS: real WebGL dialog close/header/footer/Escape, visible actions, recording, pause, ZIP download and profile isolation at both viewports');
 })().catch(e=>{console.error(e);process.exit(1)});
