@@ -26,6 +26,16 @@ func _ready() -> void:
         qa_ui=load("res://qa/toolbar.gd").new();add_child(qa_ui);qa_ui.install(self)
         qa_settings=load("res://qa/settings_ui.gd").new();add_child(qa_settings);qa_settings.install(self)
         qa_diagnostics=load("res://qa/diagnostics.gd").new();add_child(qa_diagnostics);qa_diagnostics.install(self)
+func _input(event: InputEvent) -> void:
+    # CanvasLayer draw order does not make a Control modal to Node._input.
+    # Let QA controls receive GUI input without the canonical run consuming it.
+    if qa_settings!=null and qa_settings.visible:return
+    super._input(event)
+func _unhandled_key_input(event: InputEvent) -> void:
+    if qa_settings!=null and qa_settings.visible:
+        get_viewport().set_input_as_handled()
+        return
+    super._unhandled_key_input(event)
 func _process(delta: float) -> void:
     if not recorder.enabled:
         super._process(delta);return

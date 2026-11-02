@@ -3,6 +3,10 @@ extends CanvasLayer
 const RULES = preload("res://qa/scenarios.gd")
 
 var game
+var input_events := 0
+var close_count := 0
+var last_close := ""
+var previous_focus: Control
 var shade: ColorRect
 var card: PanelContainer
 var scroll: ScrollContainer
@@ -71,7 +75,7 @@ func install(owner_game) -> void:
     close_button=Button.new()
     close_button.text="CLOSE"
     close_button.custom_minimum_size=Vector2(90,42)
-    close_button.pressed.connect(close)
+    close_button.pressed.connect(close.bind("header"))
     header.add_child(close_button)
 
     scroll=ScrollContainer.new()
@@ -123,7 +127,7 @@ func install(owner_game) -> void:
     footer_close_button.text="CANCEL"
     footer_close_button.custom_minimum_size.y=46
     footer_close_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-    footer_close_button.pressed.connect(close)
+    footer_close_button.pressed.connect(close.bind("cancel"))
     footer.add_child(footer_close_button)
     launch_button=Button.new()
     launch_button.text="START SCENARIO"
@@ -138,12 +142,13 @@ func install(owner_game) -> void:
 
 func _input(event: InputEvent) -> void:
     if not visible:return
+    input_events+=1
     if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_ESCAPE:
-        close()
+        close("escape")
         get_viewport().set_input_as_handled()
 
 func _process(_delta: float) -> void:
-    if visible:_layout()
+    if visible and shade.size!=game.get_viewport_rect().size:_layout()
 
 func _layout() -> void:
     if game==null:return
@@ -167,12 +172,23 @@ func open() -> void:
     enabled_box.button_pressed=false
     _changed(false)
     message.text="QA must be explicitly enabled. Synthetic sessions never count as normal runs."
+    previous_focus=get_viewport().gui_get_focus_owner()
     visible=true
     scroll.scroll_vertical=0
     _layout()
+    close_button.grab_focus()
 
-func close() -> void:
+func close(reason: String="programmatic") -> void:
+    if not visible:return
+    close_count+=1
+    last_close=reason
+    # Release focus before hiding; no hidden LineEdit should retain keyboard input.
+    var focused:=get_viewport().gui_get_focus_owner()
+    if focused!=null and is_ancestor_of(focused):focused.release_focus()
+    for selector in [scenario_select,hero_select,appearance_select,build_select]:
+        selector.get_popup().hide()
     visible=false
+    if is_instance_valid(previous_focus) and previous_focus.is_visible_in_tree():previous_focus.grab_focus()
     if game!=null:game.qa_ui.refresh()
 
 func _launch() -> void:
@@ -193,4 +209,4 @@ func _launch() -> void:
     if not successful:
         message.text="Scenario refused: invalid configuration, recording state or asset."
         return
-    close()
+    close("launch")
