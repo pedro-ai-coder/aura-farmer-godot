@@ -18,13 +18,13 @@ var message: Label
 var launch_button: Button
 const RULES = preload("res://qa/scenarios.gd")
 
-func _option(parent: VBoxContainer, label_text: String, options: Array[String]) -> OptionButton:
+func _option(parent: VBoxContainer, label_text: String, options: Array) -> OptionButton:
     var label:=Label.new()
     label.text=label_text
     parent.add_child(label)
     var field:=OptionButton.new()
     field.custom_minimum_size.y=36
-    for value: String in options:field.add_item(value)
+    for value in options:field.add_item(str(value))
     parent.add_child(field)
     return field
 
