@@ -1,0 +1,48 @@
+name: QA Web evidence
+on:
+  pull_request:
+    branches: [main, qa/real-gameplay-recorder]
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions:
+  contents: read
+concurrency:
+  group: qa-web-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  web-recorder:
+    if: ${{ github.head_ref == 'qa/real-gameplay-recorder' || github.head_ref == 'qa/scenario-mode' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: chickensoft-games/setup-godot@f166999204a4f2722c6fe042fbaa3b3ea0d9c789
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+          cache: true
+      - name: Build isolated review Web artifact
+        env:
+          QA_REVIEW: '1'
+          GODOT_SKIP_TEMPLATE_DOWNLOAD: '1'
+          VERCEL_GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+        run: bash scripts/build_web.sh
+      - name: Validate ordinary export excludes all QA code
+        run: |
+          godot --headless --path . --export-release Web build/ordinary.html
+          python3 scripts/verify_qa_export.py build/ordinary.pck
+      - name: Run real browser download checks
+        run: |
+          npm install --prefix "$RUNNER_TEMP/qa-browser" --no-save playwright@1.62.1
+          "$RUNNER_TEMP/qa-browser/node_modules/.bin/playwright" install --with-deps chromium
+          python3 -m http.server 8080 --directory build/web > "$RUNNER_TEMP/qa-http.log" 2>&1 &
+          NODE_PATH="$RUNNER_TEMP/qa-browser/node_modules" node tests/qa_recorder/web_test.cjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: qa-web-evidence
+          path: tests/qa_recorder/evidence/web/
+          if-no-files-found: warn
+          retention-days: 21

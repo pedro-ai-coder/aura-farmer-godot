@@ -59,3 +59,12 @@ func refresh() -> void:
     status.position=Vector2(8,game.get_viewport_rect().size.y-22)
     var seconds: float=recorder.now_ms()/1000.0 if recorder.enabled else recorder.stopped_ms/1000.0
     status.text="QA %s | %06.1fs | MARK %d%s" % ["REC" if recorder.enabled else "FULL — EXPORT" if recorder.full else "OFF",seconds,recorder.marker," | "+message if panel.visible and not message.is_empty() else ""]
+
+    if OS.has_feature("web"):
+        # Read-only diagnostics for repeatable browser QA; no command/state injector.
+        var controls: Dictionary={}
+        if panel.visible:
+            for entry in [["start",start_button],["mark",marker_button],["export",export_button],["clear",discard_button]]:
+                var rect: Rect2=entry[1].get_global_rect()
+                controls[entry[0]]=[rect.position.x,rect.position.y,rect.size.x,rect.size.y]
+        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"mode":game.mode,"recording":recorder.enabled,"controls":controls,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"label":status.text}),true)

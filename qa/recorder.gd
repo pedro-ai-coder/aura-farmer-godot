@@ -41,11 +41,12 @@ func start(game, build: Dictionary) -> void:
     origin_us=Time.get_ticks_usec();last_frame_us=0;next_sample_us=origin_us
     last_mode=game.mode;mode_since_us=origin_us;last_wave=-1;last_event=-1;last_boss=false
     metadata={"schema":1,"build_sha":str(build.get("commit","unknown")),"engine":Engine.get_version_info().string,"sample_hz":2,"max_trace_bytes":MAX_BYTES,"max_records":MAX_RECORDS,"platform":"web" if OS.has_feature("web") else "native","display":DisplayServer.get_name(),"time_origin":"monotonic recorder start; no wall-clock identity","started_mid_run":game.mode not in ["menu","heroes"],"viewport":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y]}
+    metadata.merge(game.qa_context())
     event(game,"recording_started")
     if not game.hero.is_empty() and game.mode not in ["menu","heroes"]: run_started(game)
 func event(game, kind: String, data: Dictionary = {}) -> void:
     if not enabled:return
-    var row := {"event":kind,"wall_ms":now_ms(),"active_s":game.run_time,"run":run_number,"wave":game.wave,"data":data}
+    var row := {"event":kind,"wall_ms":now_ms(),"active_s":game.run_time,"run":run_number,"wave":game.wave,"data":data,"session_type":metadata.get("session_type","normal_run"),"scenario_id":metadata.get("scenario_id","")}
     var line := JSON.stringify(row)
     var size := line.to_utf8_buffer().size()+1
     if lines.size()>=MAX_RECORDS or bytes_used+size>MAX_BYTES:
@@ -60,6 +61,7 @@ func observe_mode(game) -> void:
 func run_started(game) -> void:
     if not enabled:return
     observe_mode(game);run_number+=1;last_wave=-1;last_event=-1;last_boss=false
+    metadata["hero_id"]=game.hero.id;metadata["appearance"]=game.hero_appearance;metadata["rng_seed"]=game.rng.seed
     event(game,"run_started",{"hero":game.hero.id,"appearance":game.hero_appearance,"seed":game.rng.seed,"rng_state":game.rng.state,"weapons":equipment(game.weapons),"passives":equipment(game.passives)})
 func stop(game, reason: String="creator") -> void:
     if not enabled:return
@@ -125,7 +127,7 @@ func sample(game) -> void:
 func summary() -> Dictionary:
     var durations := modes.duplicate()
     if enabled:durations[last_mode]=float(durations.get(last_mode,0))+(Time.get_ticks_usec()-mode_since_us)/1000.0
-    return {"elapsed_ms":now_ms() if enabled else stopped_ms,"recording":enabled,"truncated":full,"records":lines.size(),"trace_bytes":bytes_used,"runs":run_number,"mode_wall_ms":durations,"waves":waves.values(),"damage_dealt_by_enemy_type":damage_by_type,"damage_taken_by_source":taken_by_source,"frame_intervals":{"meaning":"monotonic process-callback intervals, includes observer and rendering/scheduling; not GPU render time or physical-device certification","count":frames,"mean_ms":frame_sum_ms/maxi(1,frames),"max_ms":frame_max_ms,"bucket_upper_ms":FRAME_BOUNDS,"counts":histogram},"frame_intervals_by_mode":frame_modes,"observer_frame_us":observer_us,"game_process_us":simulation_us}
+    return {"session_type":metadata.get("session_type","normal_run"),"scenario_id":metadata.get("scenario_id",""),"sim_start_time":metadata.get("sim_start_time",0.0),"scenario_config":metadata.get("scenario_config",{}),"elapsed_ms":now_ms() if enabled else stopped_ms,"recording":enabled,"truncated":full,"records":lines.size(),"trace_bytes":bytes_used,"runs":run_number,"mode_wall_ms":durations,"waves":waves.values(),"damage_dealt_by_enemy_type":damage_by_type,"damage_taken_by_source":taken_by_source,"frame_intervals":{"meaning":"monotonic process-callback intervals, includes observer and rendering/scheduling; not GPU render time or physical-device certification","count":frames,"mean_ms":frame_sum_ms/maxi(1,frames),"max_ms":frame_max_ms,"bucket_upper_ms":FRAME_BOUNDS,"counts":histogram},"frame_intervals_by_mode":frame_modes,"observer_frame_us":observer_us,"game_process_us":simulation_us}
 func export_zip(path: String, guide: String) -> Error:
     if lines.is_empty():return ERR_UNAVAILABLE
     var zip := ZIPPacker.new()

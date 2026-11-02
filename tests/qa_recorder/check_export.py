@@ -8,7 +8,7 @@ with zipfile.ZipFile(path) as archive:
     rows=[json.loads(line) for line in archive.read('session-trace.jsonl').splitlines()]
     assert rows and all(a['wall_ms']<=b['wall_ms'] for a,b in zip(rows,rows[1:]))
     assert {'spawn','kill','damage_taken','xp','upgrade_committed','run_started','run_finished'} <= {row['event'] for row in rows}
-    assert all(set(row)=={'event','wall_ms','active_s','run','wave','data'} for row in rows)
+    assert all(set(row)=={'event','wall_ms','active_s','run','wave','data','session_type','scenario_id'} for row in rows)
     assert summary['records']==len(rows) and not summary['recording']
     assert summary['trace_bytes']==len(archive.read('session-trace.jsonl'))
     # The recorder accepts whitelisted scalars, never an entire game/profile.

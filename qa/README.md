@@ -22,8 +22,9 @@ identity, URL, credentials, player profile or save contents are recorded.
    validation; desktop emulation is not equivalent.
 
 Retry starts another numbered run in the same session, preserving earlier records.
-The ordinary game may save its normal progression; the recorder never reads or
-writes that profile. A temporary, separately named ZIP is removed after a Web
+This dedicated review build starts with an in-memory default profile. It never
+loads or writes production saves, unlocks, results or statistics. The original
+production scene is unchanged. A temporary, separately named ZIP is removed after a Web
 export request. Native review exports remain at the displayed local path.
 
 ## Files and fields (schema 1)
@@ -31,7 +32,7 @@ export request. Native review exports remain at the displayed local path.
   local build), actual engine, renderer surface type, viewport, 2 Hz target and
   memory limits. No calendar timestamps or personal/session identifiers.
 - `session-trace.jsonl`: each line has `event`, monotonic `wall_ms` since Start QA,
-  authoritative `active_s`, local sequential `run`, `wave`, and event `data`.
+  authoritative `active_s`, local sequential `run`, `wave`, `session_type`, `scenario_id`, and event `data`.
   Pauses, choices and background-tab suspension advance wall time, not game time.
   Match video time as `video_marker_time + (wall_ms-marker.wall_ms)/1000`;
   realign at later markers if the external recording drops frames.

@@ -4,6 +4,13 @@ const Recorder = preload("res://qa/recorder.gd")
 var recorder = Recorder.new()
 var qa_ui
 var qa_ui_enabled := true
+func _load_profile() -> void:
+    _restore_profile(ProfileStoreScript.defaults())
+func _save_profile() -> void:
+    # Authorized review builds never touch canonical persistent profile keys/files.
+    pass
+func qa_context() -> Dictionary:
+    return {"session_type":"normal_run","scenario_id":"","sim_start_time":0.0,"scenario_config":{}}
 func _ready() -> void:
     super._ready()
     if qa_ui_enabled:
