@@ -102,7 +102,7 @@ func _process(_delta: float) -> void:
 
 func _layout() -> void:
     if game==null:return
-    var size:=game.get_viewport_rect().size
+    var size: Vector2=game.get_viewport_rect().size
     shade.position=Vector2.ZERO
     shade.size=size
     var width:=minf(size.x-22,680.0)
