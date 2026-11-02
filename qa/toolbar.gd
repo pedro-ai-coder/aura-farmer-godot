@@ -6,6 +6,7 @@ var status: Label
 var start_button: Button
 var export_button: Button
 var marker_button: Button
+var scenario_button: Button
 var discard_button: Button
 var refresh_in := 0.0
 var message := ""
@@ -16,6 +17,7 @@ func install(owner_game) -> void:
     game=owner_game;layer=100
     panel=HBoxContainer.new();panel.position=Vector2(8,8);add_child(panel)
     start_button=button("Start QA",start)
+    scenario_button=button("QA Scenario",open_scenario)
     marker_button=button("Sync mark",mark)
     export_button=button("Stop + export",export_session)
     discard_button=button("Clear",clear_session)
@@ -30,6 +32,8 @@ func start() -> void:
     game.recorder.start(game,game.qa_build());game.recorder.mark(game)
     message="";refresh()
 func mark() -> void:game.recorder.mark(game);refresh()
+func open_scenario() -> void:
+    if game.qa_settings!=null:game.qa_settings.open()
 func clear_session() -> void:
     # Only after export/stop. Explicit action; never deletes a downloaded file.
     if game.recorder.enabled:return
@@ -55,6 +59,7 @@ func refresh() -> void:
     start_button.disabled=recorder.enabled or not recorder.lines.is_empty()
     export_button.disabled=recorder.lines.is_empty()
     marker_button.disabled=not recorder.enabled
+    scenario_button.disabled=recorder.enabled or not recorder.lines.is_empty()
     discard_button.disabled=recorder.enabled or recorder.lines.is_empty()
     status.position=Vector2(8,game.get_viewport_rect().size.y-22)
     var seconds: float=recorder.now_ms()/1000.0 if recorder.enabled else recorder.stopped_ms/1000.0
