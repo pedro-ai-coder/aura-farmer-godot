@@ -76,14 +76,19 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   await page.keyboard.press('Control+0');await page.waitForTimeout(400);
   // Start the canonical Wave 5 synthetic fixture through the real form.
   await open();await click('qa_enable');await click('qa_select');
-  await page.waitForTimeout(150); // PopupMenu must finish opening before keyboard navigation.
-  await page.keyboard.press('Home');
-  // Godot focuses the first popup row on the first Down key: four keys select index 3.
-  for(let i=0;i<4;i++)await page.keyboard.press('ArrowDown');
+  await page.waitForFunction(()=>window.__qaReviewState?.qa_popup_visible===true,{timeout:5000});
+  // Navigate the real Godot PopupMenu until its authoritative focused index is 3.
+  // Fixed arrow counts are not reliable across its initial keyboard-focus states.
+  let focused=-1;
+  for(let i=0;i<8;i++){
+   focused=await page.evaluate(()=>window.__qaReviewState.qa_popup_focused);
+   if(focused===3)break;
+   await page.keyboard.press('ArrowDown');
+   await page.waitForTimeout(360);
+  }
+  if(focused!==3)throw Error('Wave 5 popup never focused index 3; last index '+focused);
   await page.keyboard.press('Enter');
-  await page.waitForTimeout(200);
-  const selected=await page.evaluate(()=>window.__qaReviewState.qa_selected_index);
-  if(selected!==3)throw Error('Wave 5 selection failed before launch: selected index '+selected);
+  await page.waitForFunction(()=>window.__qaReviewState?.qa_selected_index===3&&!window.__qaReviewState?.qa_popup_visible,{timeout:5000});
   await click('qa_launch');
   await page.waitForTimeout(500);
   const launchState=await page.evaluate(()=>window.__qaReviewState);
