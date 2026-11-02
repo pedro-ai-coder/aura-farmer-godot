@@ -78,6 +78,14 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   await open();await click('qa_enable');await click('qa_select');
   await page.keyboard.press('Home');for(let i=0;i<3;i++)await page.keyboard.press('ArrowDown');
   await page.keyboard.press('Enter');await click('qa_launch');
+  await page.waitForTimeout(500);
+  const launchState=await page.evaluate(()=>window.__qaReviewState);
+  console.log('QA_LAUNCH_DIAGNOSTICS',JSON.stringify({
+    mode:launchState.mode,selected:launchState.qa_select_text,selected_index:launchState.qa_selected_index,
+    enabled:launchState.qa_enabled,message:launchState.qa_launch_message,
+    scenario_open:launchState.scenario_open,synthetic:launchState.synthetic,
+    scenario_id:launchState.scenario_id,modal:launchState.modal
+  }));
   await page.waitForFunction(()=>window.__qaReviewState.mode==='playing'&&window.__qaReviewState.synthetic&&window.__qaReviewState.scenario_id==='wave5'&&!window.__qaReviewState.scenario_open);
   await shot('wave5');
   // Fresh normal session to prove closed/hidden modal does not trap gameplay or recorder input.
