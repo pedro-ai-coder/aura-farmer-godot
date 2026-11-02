@@ -43,9 +43,11 @@ both presence in review and absence in ordinary exports.
   its frame timing must not be interpreted as rendered FPS.
 - `evidence/performance.json`: three alternating paired native headless repetitions,
   180 steps at 60 Hz, forced 2 Hz sampling; ordinary and 90-enemy controlled scenes.
-  Median repetition mean CPU cost: 44.86 → 45.59 µs ordinary; 639.85 → 685.73 µs
-  dense. Dense p95: 1,101 → 1,134 µs. Includes callback hooks and polling; excludes
-  renderer/browser/GPU. No physical Pixel 8a performance claim.
+  Latest median repetition mean CPU cost: 43.21 → 50.26 µs ordinary;
+  890.48 → 687.78 µs dense. Dense p95: 1,780 → 1,226 µs. The apparent dense
+  improvement is VM/run-order noise, **not an optimization claim**. An earlier
+  pairing measured 639.85 → 685.73 µs dense. Includes callback hooks and polling;
+  excludes renderer/browser/GPU. No physical Pixel 8a performance claim.
 - `evidence/ui.log`: control-signal opt-in/mark/export/clear, pause/input preservation
   and bounds at 1600×900 / 844×390, tested headlessly; no visual acceptance claimed.
 - The protected Web export completed and passed the QA resource pack check. Its

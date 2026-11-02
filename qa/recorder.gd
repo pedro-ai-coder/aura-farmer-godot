@@ -85,7 +85,9 @@ func frame(game, cost_us: int) -> void:
         var bucket := 0
         while bucket<FRAME_BOUNDS.size() and ms>FRAME_BOUNDS[bucket]:bucket+=1
         histogram[bucket]+=1
-        var mode_frames: Dictionary=frame_modes.get(game.mode,{"count":0,"sum_ms":0.0,"max_ms":0.0,"histogram":[0,0,0,0,0,0,0,0,0]})
+        if not frame_modes.has(game.mode):
+            frame_modes[game.mode]={"count":0,"sum_ms":0.0,"max_ms":0.0,"histogram":[0,0,0,0,0,0,0,0,0]}
+        var mode_frames: Dictionary=frame_modes[game.mode]
         mode_frames.count+=1;mode_frames.sum_ms+=ms;mode_frames.max_ms=maxf(mode_frames.max_ms,ms)
         mode_frames.histogram[bucket]+=1;frame_modes[game.mode]=mode_frames
     last_frame_us=entered
