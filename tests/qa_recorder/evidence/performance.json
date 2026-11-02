@@ -1,0 +1,138 @@
+{
+  "engine": "4.7.2-stable (official)",
+  "method": "Paired, alternating off/on, three repetitions, 180 canonical 60 Hz steps, forced 2Hz observer sampling. Normal health. CPU simulation + instrumentation only; headless, not rendered FPS.",
+  "results": [
+    {
+      "dense": false,
+      "end_time": 2.99999999999999,
+      "mean_us": 44.8611111111111,
+      "mode": "playing",
+      "p50_us": 29.0,
+      "p95_us": 124.0,
+      "recording": false,
+      "records": 0,
+      "repetition": 0
+    },
+    {
+      "dense": true,
+      "end_time": 2.99999999999999,
+      "mean_us": 639.85,
+      "mode": "playing",
+      "p50_us": 683.0,
+      "p95_us": 1137.0,
+      "recording": false,
+      "records": 0,
+      "repetition": 0
+    },
+    {
+      "dense": false,
+      "end_time": 2.99999999999999,
+      "mean_us": 56.7722222222222,
+      "mode": "playing",
+      "p50_us": 35.0,
+      "p95_us": 179.0,
+      "recording": true,
+      "records": 12,
+      "repetition": 0
+    },
+    {
+      "dense": true,
+      "end_time": 2.99999999999999,
+      "mean_us": 699.983333333333,
+      "mode": "playing",
+      "p50_us": 745.0,
+      "p95_us": 1287.0,
+      "recording": true,
+      "records": 104,
+      "repetition": 0
+    },
+    {
+      "dense": false,
+      "end_time": 2.99999999999999,
+      "mean_us": 45.5888888888889,
+      "mode": "playing",
+      "p50_us": 32.0,
+      "p95_us": 132.0,
+      "recording": true,
+      "records": 12,
+      "repetition": 1
+    },
+    {
+      "dense": true,
+      "end_time": 2.99999999999999,
+      "mean_us": 652.383333333333,
+      "mode": "playing",
+      "p50_us": 702.0,
+      "p95_us": 1082.0,
+      "recording": true,
+      "records": 104,
+      "repetition": 1
+    },
+    {
+      "dense": false,
+      "end_time": 2.99999999999999,
+      "mean_us": 54.7944444444444,
+      "mode": "playing",
+      "p50_us": 32.0,
+      "p95_us": 128.0,
+      "recording": false,
+      "records": 0,
+      "repetition": 1
+    },
+    {
+      "dense": true,
+      "end_time": 2.99999999999999,
+      "mean_us": 688.361111111111,
+      "mode": "playing",
+      "p50_us": 715.0,
+      "p95_us": 1101.0,
+      "recording": false,
+      "records": 0,
+      "repetition": 1
+    },
+    {
+      "dense": false,
+      "end_time": 2.99999999999999,
+      "mean_us": 38.1277777777778,
+      "mode": "playing",
+      "p50_us": 29.0,
+      "p95_us": 91.0,
+      "recording": false,
+      "records": 0,
+      "repetition": 2
+    },
+    {
+      "dense": true,
+      "end_time": 2.99999999999999,
+      "mean_us": 624.322222222222,
+      "mode": "playing",
+      "p50_us": 695.0,
+      "p95_us": 1033.0,
+      "recording": false,
+      "records": 0,
+      "repetition": 2
+    },
+    {
+      "dense": false,
+      "end_time": 2.99999999999999,
+      "mean_us": 42.7888888888889,
+      "mode": "playing",
+      "p50_us": 32.0,
+      "p95_us": 108.0,
+      "recording": true,
+      "records": 12,
+      "repetition": 2
+    },
+    {
+      "dense": true,
+      "end_time": 2.99999999999999,
+      "mean_us": 685.727777777778,
+      "mode": "playing",
+      "p50_us": 713.0,
+      "p95_us": 1134.0,
+      "recording": true,
+      "records": 104,
+      "repetition": 2
+    }
+  ]
+}

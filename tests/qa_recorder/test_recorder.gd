@@ -60,9 +60,11 @@ func verify() -> void:
     expect(count(b.recorder,"run_finished")==2,"Victory and retry observed")
     expect(b.recorder.run_number==2,"Retry starts second numbered run")
     b.recorder.mark(b);b.recorder.stop(b)
+    DirAccess.make_dir_recursive_absolute("res://tests/qa_recorder/evidence")
     var path:="res://tests/qa_recorder/evidence/contract-session.zip"
     expect(b.recorder.export_zip(path,FileAccess.get_file_as_string("res://qa/README.md"))==OK,"Four-file ZIP export")
-    var zip:=ZIPReader.new();expect(zip.open(path)==OK,"ZIP opens")
+    var zip:=ZIPReader.new()
+    if zip.open(path)!=OK:push_error("ZIP export could not be opened");quit(1);return
     expect(zip.get_files().size()==4,"Exactly four files")
     expect(JSON.parse_string(zip.read_file("session-summary.json").get_string_from_utf8()).runs==2,"Summary parses")
     zip.close()

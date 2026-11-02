@@ -27,5 +27,6 @@ func measure() -> void:
                     game._process(1.0/60.0)
                     times.append(Time.get_ticks_usec()-started)
                 result.append({"recording":on,"dense":dense,"repetition":repetition,"mean_us":times.reduce(func(a,b):return a+b,0.0)/times.size(),"p50_us":percentile(times,0.50),"p95_us":percentile(times,0.95),"mode":game.mode,"end_time":game.run_time,"records":game.recorder.lines.size() if on else 0})
+    DirAccess.make_dir_recursive_absolute("res://tests/qa_recorder/evidence")
     FileAccess.open("res://tests/qa_recorder/evidence/performance.json",FileAccess.WRITE).store_string(JSON.stringify({"method":"Paired, alternating off/on, three repetitions, 180 canonical 60 Hz steps, forced 2Hz observer sampling. Normal health. CPU simulation + instrumentation only; headless, not rendered FPS.","engine":Engine.get_version_info().string,"results":result},"  "))
     game.queue_free();print("PASS: paired observer performance measurements exported");quit()

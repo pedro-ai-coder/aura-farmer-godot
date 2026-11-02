@@ -1,0 +1,5 @@
+WARNING: Couldn't get executable path from /proc/self/exe, using argv[0]
+     at: get_executable_path (drivers/unix/os_unix.cpp:1157)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: UI controls, native export, pause/input behavior and bounds at 1600x900 / 844x390 (headless layout, not visual approval)

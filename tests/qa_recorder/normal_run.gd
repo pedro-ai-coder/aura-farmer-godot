@@ -183,6 +183,7 @@ func _run() -> void:
             else: break
         print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"controller":"strategic" if strategic else ("aim-flex" if args.has("--aim-flex") else "avoidance"),"goal_frames":goal_frames if strategic else {},"damage_sources":game.damage_sources,"last_hit":game.last_hit,"waves":game.wave_observations,"events":game.event_observations,"boss_snapshot":game.boss_snapshot,"xp_collected":game.total_xp,"xp_on_ground":game.pickups.reduce(func(total,drop):return total+float(drop.get("xp",0)),0.0),"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
     game.recorder.stop(game)
+    DirAccess.make_dir_recursive_absolute("res://tests/qa_recorder/evidence")
     var error: Error=game.recorder.export_zip("res://tests/qa_recorder/evidence/sample-session.zip",FileAccess.get_file_as_string("res://qa/README.md"))
     if error!=OK:push_error("QA sample export failed");quit(1);return
     game.queue_free()
