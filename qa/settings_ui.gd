@@ -136,6 +136,14 @@ func install(owner_game) -> void:
     launch_button.pressed.connect(_launch)
     footer.add_child(launch_button)
 
+    # Keep Tab/Shift+Tab inside this modal, including after the last footer action.
+    var focus_order: Array[Control]=[close_button,enabled_box,scenario_select,hero_select,
+        appearance_select,build_select,seed_input.get_line_edit(),record_box,
+        threats_box,hitboxes_box,buffs_box,performance_box,footer_close_button,launch_button]
+    for index in range(focus_order.size()):
+        var field: Control=focus_order[index]
+        field.focus_next=field.get_path_to(focus_order[(index+1)%focus_order.size()])
+        field.focus_previous=field.get_path_to(focus_order[(index-1+focus_order.size())%focus_order.size()])
     visible=false
     _changed(false)
     _layout()
