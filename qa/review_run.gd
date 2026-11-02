@@ -37,6 +37,7 @@ func _show_ui() -> void:
     recorder.observe_mode(self)
 func start_run(index: int) -> void:
     if not _qa_starting_scenario:
+        if _qa_synthetic and recorder.enabled:recorder.stop(self,"synthetic_run_ended")
         _qa_synthetic=false
         _qa_scenario.clear()
         qa_overlay_flags.clear()
