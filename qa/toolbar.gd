@@ -69,7 +69,12 @@ func refresh() -> void:
         # Read-only diagnostics for repeatable browser QA; no command/state injector.
         var controls: Dictionary={}
         if panel.visible:
-            for entry in [["start",start_button],["mark",marker_button],["export",export_button],["clear",discard_button]]:
+            for entry in [["start",start_button],["scenario",scenario_button],["mark",marker_button],["export",export_button],["clear",discard_button]]:
                 var rect: Rect2=entry[1].get_global_rect()
                 controls[entry[0]]=[rect.position.x,rect.position.y,rect.size.x,rect.size.y]
-        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"mode":game.mode,"recording":recorder.enabled,"controls":controls,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"label":status.text}),true)
+        var scenario_open: bool=game.qa_settings!=null and game.qa_settings.visible
+        if scenario_open:
+            for entry in [["qa_close",game.qa_settings.close_button],["qa_cancel",game.qa_settings.footer_close_button],["qa_launch",game.qa_settings.launch_button]]:
+                var rect: Rect2=entry[1].get_global_rect()
+                controls[entry[0]]=[rect.position.x,rect.position.y,rect.size.x,rect.size.y]
+        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"mode":game.mode,"recording":recorder.enabled,"controls":controls,"scenario_open":scenario_open,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"label":status.text}),true)
