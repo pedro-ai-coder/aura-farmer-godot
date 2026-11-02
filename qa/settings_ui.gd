@@ -7,6 +7,7 @@ var input_events := 0
 var close_count := 0
 var last_close := ""
 var previous_focus: Control
+var game_ui_was_visible := true
 var shade: ColorRect
 var card: PanelContainer
 var scroll: ScrollContainer
@@ -181,6 +182,12 @@ func open() -> void:
     _changed(false)
     message.text="QA must be explicitly enabled. Synthetic sessions never count as normal runs."
     previous_focus=get_viewport().gui_get_focus_owner()
+    # The canonical presentation refreshes its own focus ring every 100 ms.
+    # A higher CanvasLayer alone does not remove its buttons from that ring.
+    # Hide the underlying UI for the modal lifetime so it cannot steal focus
+    # or cancel a pointer press before release. No simulation/save state changes.
+    game_ui_was_visible=game.layer.visible
+    game.layer.hide()
     visible=true
     scroll.scroll_vertical=0
     _layout()
@@ -196,6 +203,7 @@ func close(reason: String="programmatic") -> void:
     for selector in [scenario_select,hero_select,appearance_select,build_select]:
         selector.get_popup().hide()
     visible=false
+    game.layer.visible=game_ui_was_visible
     if is_instance_valid(previous_focus) and previous_focus.is_visible_in_tree():previous_focus.grab_focus()
     if game!=null:game.qa_ui.refresh()
 

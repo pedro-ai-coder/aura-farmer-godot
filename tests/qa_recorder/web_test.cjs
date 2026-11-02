@@ -28,7 +28,7 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
    const point=await page.evaluate(n=>{const s=window.__qaReviewState,r=s.controls[n],c=document.getElementById('canvas').getBoundingClientRect();if(!r)throw Error('Missing control '+n);return [c.x+(r[0]+r[2]/2)*c.width/s.view[0],c.y+(r[1]+r[3]/2)*c.height/s.view[1]]},name);
    return point;
   }
-  async function click(name){await page.mouse.click(...await point(name));}
+  async function click(name){await page.mouse.click(...await point(name),{delay:350});}
   async function closed(){
    await page.waitForFunction(()=>{const s=window.__qaReviewState;return !s.scenario_open&&!s.modal.card_visible&&!s.modal.shade_visible&&!s.modal.focus_in_modal});
    if(await page.evaluate(()=>window.__qaReviewState.mode)!=='menu')throw Error('Modal changed normal game mode');
@@ -61,6 +61,8 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   }
   await click('qa_seed');
   await page.waitForFunction(()=>window.__qaReviewState.modal.seed_focused);
+  await page.waitForTimeout(650);
+  if(!await page.evaluate(()=>window.__qaReviewState.modal.seed_focused))throw Error('Normal UI stole seed focus');
   await page.keyboard.press('Enter');await page.waitForTimeout(350);
   if(await page.evaluate(()=>window.__qaReviewState.mode)!=='menu')throw Error('Seed Enter started hidden gameplay');
   await shot('seed-enter');await page.keyboard.press('Escape');await closed();await shot('escape-closed');
