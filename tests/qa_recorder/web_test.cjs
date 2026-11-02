@@ -6,7 +6,7 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
 (async()=>{
  fs.mkdirSync(out,{recursive:true});
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- for(const [width,height] of [[1600,900],[844,390]]){
+ for(const [width,height] of [[1600,900],[1050,810],[844,390]]){
   const context=await browser.newContext({viewport:{width,height},acceptDownloads:true,recordVideo:{dir:out,size:{width,height}}});
   const page=await context.newPage();const errors=[];
   page.on('pageerror',e=>errors.push(e.message));
@@ -39,6 +39,7 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===false);
   await click('scenario');
   await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===true);
+  await page.mouse.move(width/2,height/2);
   await page.mouse.wheel(0,1500);
   await click('qa_cancel');
   await page.waitForFunction(()=>window.__qaReviewState?.scenario_open===false);
@@ -68,5 +69,5 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   fs.writeFileSync(path.join(out,`browser-${width}.json`),JSON.stringify({viewport:[width,height],profileUnchanged:true,errors,renderer:'Chromium WebGL2 software; not physical-device performance'},null,2));
   await context.close();
  }
- await browser.close();console.log('PASS: real WebGL dialog close/header/footer/Escape, visible actions, recording, pause, ZIP download and profile isolation at both viewports');
+ await browser.close();console.log('PASS: real WebGL dialog close/header/footer/Escape, visible actions, recording, pause, ZIP download and profile isolation at desktop, creator screenshot size and mobile landscape viewports');
 })().catch(e=>{console.error(e);process.exit(1)});
