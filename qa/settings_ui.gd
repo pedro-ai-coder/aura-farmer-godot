@@ -1,8 +1,11 @@
 extends CanvasLayer
-## Creator-facing scenario controls. Available only in isolated QA review exports.
+## Review-only QA scenario picker. Header and actions never scroll out of view.
+const RULES = preload("res://qa/scenarios.gd")
+
 var game
 var shade: ColorRect
 var card: PanelContainer
+var scroll: ScrollContainer
 var scenario_select: OptionButton
 var hero_select: OptionButton
 var appearance_select: OptionButton
@@ -16,7 +19,8 @@ var buffs_box: CheckBox
 var performance_box: CheckBox
 var message: Label
 var launch_button: Button
-const RULES = preload("res://qa/scenarios.gd")
+var close_button: Button
+var footer_close_button: Button
 
 func _option(parent: VBoxContainer, label_text: String, options: Array) -> OptionButton:
     var label:=Label.new()
@@ -24,6 +28,7 @@ func _option(parent: VBoxContainer, label_text: String, options: Array) -> Optio
     parent.add_child(label)
     var field:=OptionButton.new()
     field.custom_minimum_size.y=36
+    field.size_flags_horizontal=Control.SIZE_EXPAND_FILL
     for value in options:field.add_item(str(value))
     parent.add_child(field)
     return field
@@ -42,19 +47,44 @@ func install(owner_game) -> void:
     shade.color=Color(0.04,0.08,0.13,0.94)
     shade.mouse_filter=Control.MOUSE_FILTER_STOP
     add_child(shade)
+
     card=PanelContainer.new()
+    card.mouse_filter=Control.MOUSE_FILTER_STOP
     add_child(card)
-    var scroll:=ScrollContainer.new()
-    scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
-    card.add_child(scroll)
-    var column:=VBoxContainer.new()
-    column.add_theme_constant_override("separation",7)
-    column.custom_minimum_size=Vector2(560,670)
-    scroll.add_child(column)
+    var margin:=MarginContainer.new()
+    for side in ["left","right","top","bottom"]:
+        margin.add_theme_constant_override("margin_"+side,12)
+    card.add_child(margin)
+    var outer:=VBoxContainer.new()
+    outer.add_theme_constant_override("separation",8)
+    margin.add_child(outer)
+
+    # Fixed header: CLOSE is available even on short landscape viewports.
+    var header:=HBoxContainer.new()
+    outer.add_child(header)
     var headline:=Label.new()
     headline.text="CLUTCHPUNKS / QA SCENARIO MODE"
-    headline.add_theme_font_size_override("font_size",22)
-    column.add_child(headline)
+    headline.add_theme_font_size_override("font_size",20)
+    headline.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    headline.clip_text=true
+    header.add_child(headline)
+    close_button=Button.new()
+    close_button.text="CLOSE"
+    close_button.custom_minimum_size=Vector2(90,42)
+    close_button.pressed.connect(close)
+    header.add_child(close_button)
+
+    scroll=ScrollContainer.new()
+    scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+    scroll.vertical_scroll_mode=ScrollContainer.SCROLL_MODE_AUTO
+    scroll.size_flags_vertical=Control.SIZE_EXPAND_FILL
+    scroll.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    outer.add_child(scroll)
+    var column:=VBoxContainer.new()
+    column.add_theme_constant_override("separation",7)
+    column.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    scroll.add_child(column)
+
     enabled_box=_check(column,"QA Mode Enabled (review build only)")
     enabled_box.toggled.connect(_changed)
     var names: Array[String]=[]
@@ -84,18 +114,33 @@ func install(owner_game) -> void:
     message.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
     message.text="Only canonical QA fixtures; synthetic state never counts as normal gameplay."
     column.add_child(message)
+
+    # Fixed footer: action buttons never depend on the scroll position.
+    var footer:=HBoxContainer.new()
+    footer.add_theme_constant_override("separation",8)
+    outer.add_child(footer)
+    footer_close_button=Button.new()
+    footer_close_button.text="CANCEL"
+    footer_close_button.custom_minimum_size.y=46
+    footer_close_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    footer_close_button.pressed.connect(close)
+    footer.add_child(footer_close_button)
     launch_button=Button.new()
-    launch_button.text="START SYNTHETIC SCENARIO"
-    launch_button.custom_minimum_size.y=48
+    launch_button.text="START SCENARIO"
+    launch_button.custom_minimum_size.y=46
+    launch_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
     launch_button.pressed.connect(_launch)
-    column.add_child(launch_button)
-    var cancel:=Button.new()
-    cancel.text="CLOSE"
-    cancel.custom_minimum_size.y=44
-    cancel.pressed.connect(close)
-    column.add_child(cancel)
+    footer.add_child(launch_button)
+
     visible=false
+    _changed(false)
     _layout()
+
+func _input(event: InputEvent) -> void:
+    if not visible:return
+    if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_ESCAPE:
+        close()
+        get_viewport().set_input_as_handled()
 
 func _process(_delta: float) -> void:
     if visible:_layout()
@@ -105,13 +150,13 @@ func _layout() -> void:
     var size: Vector2=game.get_viewport_rect().size
     shade.position=Vector2.ZERO
     shade.size=size
-    var width:=minf(size.x-22,680.0)
-    var height:=minf(size.y-16,580.0)
+    var width:=maxf(0.0,minf(size.x-20.0,720.0))
+    var height:=maxf(0.0,minf(size.y-16.0,650.0))
     card.position=Vector2((size.x-width)/2.0,(size.y-height)/2.0)
     card.size=Vector2(width,height)
 
 func _changed(_value: bool) -> void:
-    launch_button.disabled=not enabled_box.button_pressed
+    if launch_button!=null:launch_button.disabled=not enabled_box.button_pressed
 
 func open() -> void:
     if game==null or not game.mode in ["menu","heroes","paused"]:return
@@ -123,10 +168,12 @@ func open() -> void:
     _changed(false)
     message.text="QA must be explicitly enabled. Synthetic sessions never count as normal runs."
     visible=true
+    scroll.scroll_vertical=0
     _layout()
 
 func close() -> void:
     visible=false
+    if game!=null:game.qa_ui.refresh()
 
 func _launch() -> void:
     if not enabled_box.button_pressed:return
