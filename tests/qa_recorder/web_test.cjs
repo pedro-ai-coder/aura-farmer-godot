@@ -76,8 +76,15 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   await page.keyboard.press('Control+0');await page.waitForTimeout(400);
   // Start the canonical Wave 5 synthetic fixture through the real form.
   await open();await click('qa_enable');await click('qa_select');
-  await page.keyboard.press('Home');for(let i=0;i<3;i++)await page.keyboard.press('ArrowDown');
-  await page.keyboard.press('Enter');await click('qa_launch');
+  await page.waitForTimeout(150); // PopupMenu must finish opening before keyboard navigation.
+  await page.keyboard.press('Home');
+  // Godot focuses the first popup row on the first Down key: four keys select index 3.
+  for(let i=0;i<4;i++)await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(200);
+  const selected=await page.evaluate(()=>window.__qaReviewState.qa_selected_index);
+  if(selected!==3)throw Error('Wave 5 selection failed before launch: selected index '+selected);
+  await click('qa_launch');
   await page.waitForTimeout(500);
   const launchState=await page.evaluate(()=>window.__qaReviewState);
   console.log('QA_LAUNCH_DIAGNOSTICS',JSON.stringify({
