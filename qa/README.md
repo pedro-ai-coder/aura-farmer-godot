@@ -72,3 +72,48 @@ Trace storage stops at 8 MiB or 32,768 records and shows `FULL — EXPORT`. No r
 buffer silently drops the beginning. Summary marks truncation and stop reason;
 playing continues normally. Export may briefly allocate another bounded copy;
 export is available only outside active gameplay. No recording survives reload.
+
+## Deterministic QA Scenario Mode (review exports only)
+
+The **QA Scenario** button appears next to **Start QA** in authorized review builds.
+It is absent from normal production Web/Android/iOS exports.
+
+1. First export and clear any existing recording; the scenario launcher does not
+   silently replace a current human gameplay recording.
+2. Click **QA Scenario** while in the menu/hero selection or paused.
+3. Explicitly check **QA Mode Enabled**. Select Wave 1, 3, 4, 5 or Big Hater;
+   choose Sigma, Cool Kid or Alpha Chad; original/female appearance; Balanced,
+   Damage or Survival legal equipment; and a reproducible numeric RNG seed.
+4. Optionally check **Record telemetry** and select diagnostic overlays.
+   They are all off by default. Click **START SYNTHETIC SCENARIO**.
+5. The game displays **QA / SYNTHETIC SCENARIO** throughout the run. This is
+   a **controlled synthetic starting fixture**, not a run you organically
+   reached. It does not fabricate historical kills, event victories, XP grants
+   or surviving waves. Stage-consistent levels/XP/equipment and the canonical
+   boss entry are prepared explicitly; existing cooldowns and enemy schedules
+   then execute normally.
+6. Pause and **Stop + export** to download a four-file ZIP with
+   `session_type=qa_scenario`, seed, exact selected build, source SHA,
+   scenario ID and simulation start time. Keep external video markers as in
+   the normal recorder flow. Normal recordings remain `normal_run`.
+
+Five canonical time fixtures: Wave 1 0:00, Wave 3 4:00, Wave 4 6:00
+(Legendary window), Wave 5 8:00 (preselected legal Legendary), and
+Big Hater 10:00 (real boss enemy with canonical HP/attack logic).
+
+**Important limits:** This is a deterministic *starting-state* reproducer,
+not a replay of a historical progression path. Wave 3/4/5 and boss fixtures
+do not assert that a real player could reach their synthetic builds or
+health under ordinary survival conditions. They must not be pooled into
+normal-health difficulty/balance statistics. Event bosses from completed
+prior wave windows are not manufactured. Noncanonical stress configurations
+are deliberately outside this initial QA scope.
+
+Overlays: living nearby enemies and composition, actual world collision
+radii/covers, active passive timers and stats, and engine FPS/render counters.
+They are read-only, and all have separate toggles. Performance values are
+not physical-device proof.
+
+The synthetic mode is *not* a cheat code. QA code only exists in the
+`qa_review` scene and dedicated review Web export; production pack checks
+fail closed if any `qa/` resources leak.
