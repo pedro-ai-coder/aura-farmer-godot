@@ -5,7 +5,7 @@ set -euo pipefail
 if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == perf/m0-mobile-* ]]; then
     PERFORMANCE_REVIEW="${PERFORMANCE_REVIEW:-1}"
 fi
-if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == "qa/real-gameplay-recorder" ]]; then
+if [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "qa/real-gameplay-recorder" || "${VERCEL_GIT_COMMIT_REF:-}" == "qa/scenario-mode" ) ]]; then
     QA_REVIEW=1
 fi
 if [[ "${VERCEL_ENV:-}" == "production" && "${QA_REVIEW:-0}" == "1" ]]; then
