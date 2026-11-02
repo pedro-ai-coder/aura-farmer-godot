@@ -34,7 +34,7 @@ func refresh() -> void:
     if game==null:return
     caption.visible=game._qa_synthetic
     detail.visible=game._qa_synthetic and not game.qa_overlay_flags.is_empty()
-    var view:=game.get_viewport_rect().size
+    var view: Vector2=game.get_viewport_rect().size
     caption.position=Vector2(12,maxf(30,view.y-57))
     detail.position=Vector2(maxf(8,view.x-220),54)
     if not detail.visible:return
