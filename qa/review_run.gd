@@ -4,17 +4,28 @@ const Recorder = preload("res://qa/recorder.gd")
 var recorder = Recorder.new()
 var qa_ui
 var qa_ui_enabled := true
+var _qa_starting_scenario := false
+var _qa_synthetic := false
+var _qa_scenario: Dictionary = {}
+var qa_overlay_flags: Dictionary = {}
+var qa_settings
+var qa_diagnostics
 func _load_profile() -> void:
     _restore_profile(ProfileStoreScript.defaults())
 func _save_profile() -> void:
     # Authorized review builds never touch canonical persistent profile keys/files.
     pass
 func qa_context() -> Dictionary:
-    return {"session_type":"normal_run","scenario_id":"","sim_start_time":0.0,"scenario_config":{}}
+    return {"session_type":"qa_scenario" if _qa_synthetic else "normal_run",
+        "scenario_id":str(_qa_scenario.get("scenario_id","")),
+        "sim_start_time":float(_qa_scenario.get("time",0.0)),
+        "scenario_config":_qa_scenario.duplicate(true) if _qa_synthetic else {}}
 func _ready() -> void:
     super._ready()
     if qa_ui_enabled:
         qa_ui=load("res://qa/toolbar.gd").new();add_child(qa_ui);qa_ui.install(self)
+        qa_settings=load("res://qa/settings_ui.gd").new();add_child(qa_settings);qa_settings.install(self)
+        qa_diagnostics=load("res://qa/diagnostics.gd").new();add_child(qa_diagnostics);qa_diagnostics.install(self)
 func _process(delta: float) -> void:
     if not recorder.enabled:
         super._process(delta);return
@@ -25,6 +36,10 @@ func _show_ui() -> void:
     super._show_ui()
     recorder.observe_mode(self)
 func start_run(index: int) -> void:
+    if not _qa_starting_scenario:
+        _qa_synthetic=false
+        _qa_scenario.clear()
+        qa_overlay_flags.clear()
     var previous := run_id
     super.start_run(index)
     if run_id!=previous:recorder.run_started(self)
@@ -88,3 +103,20 @@ func qa_build() -> Dictionary:
         var result=JSON.parse_string(FileAccess.get_file_as_string("res://qa/build.json"))
         if result is Dictionary:return result
     return {"commit":"unknown-local-build"}
+
+## Development/review export only, never loaded by ordinary game scene.
+func start_qa_scenario(scenario_id: String, hero_id: String, appearance: String,
+        build_style: String, seed: int, overlays: Dictionary, record_session: bool) -> bool:
+    if recorder.enabled or not recorder.lines.is_empty() or mode not in ["menu","heroes","paused"]:
+        return false
+    var rules=load("res://qa/scenarios.gd")
+    if not rules.apply(self,scenario_id,hero_id,appearance,build_style,seed):
+        return false
+    qa_overlay_flags=overlays.duplicate(true)
+    if record_session:
+        recorder.start(self,qa_build())
+        recorder.run_started(self)
+        recorder.event(self,"scenario_initialized",_qa_scenario.duplicate(true))
+        recorder.mark(self)
+    if qa_diagnostics!=null:qa_diagnostics.refresh()
+    return true
