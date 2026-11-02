@@ -33,3 +33,5 @@ assets/approved/*.png
 
 # QA screenshots are deliberately not imported into runtime resources.
 docs/art/evidence/**/*.import
+
+qa/build.json
