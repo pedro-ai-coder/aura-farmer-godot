@@ -59,3 +59,14 @@ both presence in review and absence in ordinary exports.
 
 Do not merge or deploy to production. This instrument collects evidence for the
 pacing audit; it does not approve any pacing configuration.
+
+## Scenario regression (issue #104)
+
+```sh
+godot --headless --path . --script res://tests/qa_recorder/test_scenarios.gd
+```
+
+Covers five synthetic starting timestamps, 3 canonical kits, both cosmetic
+appearances and three build styles (90 deterministic start/restart comparisons);
+class/rarity/slot legality, boss state, tagged telemetry, profile isolation and
+normal-run reset. This is instrumentation QA, not approval of balance changes.
