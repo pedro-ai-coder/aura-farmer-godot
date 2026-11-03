@@ -5,6 +5,12 @@ set -euo pipefail
 if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == perf/m0-mobile-* ]]; then
     PERFORMANCE_REVIEW="${PERFORMANCE_REVIEW:-1}"
 fi
+if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == "qa/real-gameplay-recorder" ]]; then
+    QA_REVIEW=1
+fi
+if [[ "${VERCEL_ENV:-}" == "production" && "${QA_REVIEW:-0}" == "1" ]]; then
+    echo "ERROR: QA recorder cannot be exported for production." >&2; exit 2
+fi
 # Reproducible Godot Web export for Vercel's standard Linux build image.
 # Uses only official Godot 4.7.2 binaries, verified against published SHA-256.
 VERSION="4.7.2"
@@ -101,9 +107,13 @@ run_godot() {
         exit 5
     fi
 }
+if [[ "${QA_REVIEW:-0}" == "1" ]]; then
+    printf '{"commit":"%s"}\n' "$BUILD_SHA" > qa/build.json
+fi
 run_godot import --headless --path . --import
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
+if [[ "${QA_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web QA Review"; fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
@@ -137,5 +147,8 @@ python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
 PERFORMANCE_CHECK=()
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+QA_CHECK=()
+if [[ "${QA_REVIEW:-0}" == "1" ]]; then QA_CHECK+=(--review); fi
+python3 scripts/verify_qa_export.py "build/web/$EXPORT_BASENAME.pck" "${QA_CHECK[@]}"
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web
