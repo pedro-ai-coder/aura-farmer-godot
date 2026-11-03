@@ -38,6 +38,8 @@ run_check() {
 }
 
 bash -n scripts/build_web.sh
+# Asset package must be self-contained before any gameplay or export validation.
+python3 scripts/sync_approved_assets.py
 node tests/test_web_platform.cjs
 node tests/test_performance_web.cjs
 python3 scripts/promote_approved_icons.py
