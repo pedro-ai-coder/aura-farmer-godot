@@ -1,6 +1,8 @@
 extends "res://scripts/solo_run.gd"
 ## Review-only subclass. Every rule delegates to the unchanged canonical run.
 const Recorder = preload("res://qa/recorder.gd")
+const QAExpandedWorld=preload("res://qa/expanded_world.gd")
+const QAExpressiveWeapons=preload("res://qa/expressive_weapon_presentation.gd")
 var recorder = Recorder.new()
 var qa_ui
 var qa_ui_enabled := true
@@ -10,6 +12,8 @@ var _qa_scenario: Dictionary = {}
 var qa_overlay_flags: Dictionary = {}
 var qa_settings
 var qa_diagnostics
+var qa_floor_outline
+var _qa_experiment_enabled := false
 func _load_profile() -> void:
     _restore_profile(ProfileStoreScript.defaults())
 func _save_profile() -> void:
@@ -26,6 +30,10 @@ func _ready() -> void:
         qa_ui=load("res://qa/toolbar.gd").new();add_child(qa_ui);qa_ui.install(self)
         qa_settings=load("res://qa/settings_ui.gd").new();add_child(qa_settings);qa_settings.install(self)
         qa_diagnostics=load("res://qa/diagnostics.gd").new();add_child(qa_diagnostics);qa_diagnostics.install(self)
+        qa_floor_outline=load("res://qa/experimental_floor_outline.gd").new()
+        qa_floor_outline.game=self
+        qa_floor_outline.visible=false
+        add_child(qa_floor_outline)
 func _input(event: InputEvent) -> void:
     # CanvasLayer draw order does not make a Control modal to Node._input.
     # Let QA controls receive GUI input without the canonical run consuming it.
@@ -47,6 +55,10 @@ func _show_ui() -> void:
     recorder.observe_mode(self)
 func start_run(index: int) -> void:
     if not _qa_starting_scenario:
+        # An ordinary run always restores the canonical geometry and visuals.
+        _qa_experiment_enabled=false
+        world_rules_script=SoloWorldRulesScript
+        weapon_presentation=WeaponPresentationScript.new()
         if _qa_synthetic and recorder.enabled:recorder.stop(self,"synthetic_run_ended")
         _qa_synthetic=false
         _qa_scenario.clear()
@@ -117,13 +129,29 @@ func qa_build() -> Dictionary:
 
 ## Development/review export only, never loaded by ordinary game scene.
 func start_qa_scenario(scenario_id: String, hero_id: String, appearance: String,
-        build_style: String, seed: int, overlays: Dictionary, record_session: bool) -> bool:
+        build_style: String, seed: int, overlays: Dictionary, record_session: bool,
+        experimental: bool=false) -> bool:
     if recorder.enabled or not recorder.lines.is_empty() or mode not in ["menu","heroes","paused"]:
         return false
+    if experimental and scenario_id!="wave5":return false
+    # Never carry candidate physics or cosmetics into a baseline fixture.
+    _qa_experiment_enabled=false
+    world_rules_script=SoloWorldRulesScript
+    weapon_presentation=WeaponPresentationScript.new()
     var rules=load("res://qa/scenarios.gd")
     if not rules.apply(self,scenario_id,hero_id,appearance,build_style,seed):
         return false
     qa_overlay_flags=overlays.duplicate(true)
+    if experimental:
+        _qa_experiment_enabled=true
+        world_rules_script=QAExpandedWorld
+        weapon_presentation=QAExpressiveWeapons.new()
+        _qa_scenario["experiment_id"]="wave5-expanded-floor-expressive-feedback-v1"
+        _qa_scenario["arena_polygon_area_factor"]=1.25
+        _qa_scenario["visual_only_attack_pose_seconds"]=0.34
+        _qa_scenario["visual_only_impact_seconds"]=0.32
+    else:
+        _qa_scenario["experiment_id"]="canonical_baseline"
     if record_session:
         recorder.start(self,qa_build())
         recorder.run_started(self)
