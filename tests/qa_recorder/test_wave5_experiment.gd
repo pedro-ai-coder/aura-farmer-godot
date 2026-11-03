@@ -40,7 +40,7 @@ func verify() -> void:
     check(game.weapon_presentation.get_script()==Expressive,"Expressive cosmetics actually selected")
     check(game._qa_scenario.get("experiment_id")=="wave5-expanded-floor-expressive-feedback-v1","Explicit synthetic experiment label")
     check(var_to_bytes([game.rng.state,game.hero,game.weapons,game.passives,game.level,game.run_time,game.hp,game.wave])==original_state,"Same initial seed, build, HP and canonical wave rules")
-    var sample: Array=Expanded.floor_outline()
+    var sample: PackedVector2Array=Expanded.floor_outline()
     check(sample.size()==Canonical.FLOOR.size(),"Same floor polygon vertex order")
     for point: Vector2 in sample:
         check(point.x>0 and point.y>0 and point.x<game.FIELD.size.x and point.y<game.FIELD.size.y,
