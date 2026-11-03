@@ -55,13 +55,17 @@ func verify() -> void:
     expect(not game.start_qa_scenario("unknown","sigma","original","Balanced",451,{},false),"Unknown scenario refused")
     expect(not game.start_qa_scenario("wave3","sigma","original","Balanced",-1,{},false),"Invalid seed refused")
     expect(game.start_qa_scenario("wave5","sigma","female","Balanced",912,{"threats":true},true),"Synthetic recorder launch")
+    expect(game.recorder.run_number==1,"One synthetic scenario counts as exactly one run")
     expect(game.recorder.metadata.get("session_type")=="qa_scenario","Recorder labels synthetic session")
     expect(game.recorder.metadata.get("scenario_id")=="wave5","Scenario ID in metadata")
     expect(game.recorder.metadata.get("sim_start_time")==480.0,"Simulation timestamp in metadata")
     expect(game.recorder.metadata.get("scenario_config",{}).has("equipment"),"Exact starting equipment in metadata")
+    var synthetic_start_events:=0
     for line: String in game.recorder.lines:
         var row: Dictionary=JSON.parse_string(line)
+        if row.get("event")=="run_started":synthetic_start_events+=1
         expect(row.get("session_type")=="qa_scenario","Every synthetic trace row labeled")
+    expect(synthetic_start_events==1,"Exactly one run_started event for a single scenario")
     expect(not game.start_qa_scenario("wave3","sigma","original","Balanced",912,{},false),"Recorded scenario cannot be silently replaced")
     game.recorder.stop(game)
     game._return_to_menu()

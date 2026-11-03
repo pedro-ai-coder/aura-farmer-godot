@@ -125,8 +125,9 @@ func start_qa_scenario(scenario_id: String, hero_id: String, appearance: String,
         return false
     qa_overlay_flags=overlays.duplicate(true)
     if record_session:
+        # Recorder.start already emits run_started for an active synthetic game.
+        # Do not double-count this single scenario as two separate runs.
         recorder.start(self,qa_build())
-        recorder.run_started(self)
         recorder.event(self,"scenario_initialized",_qa_scenario.duplicate(true))
         recorder.mark(self)
     if qa_diagnostics!=null:qa_diagnostics.refresh()
