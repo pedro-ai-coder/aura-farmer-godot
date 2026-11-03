@@ -15,9 +15,16 @@ func queued(model: Dictionary, clock: float, weapons: Array, shot: bool) -> void
 
 func contact(id: String, enemy: Dictionary, point: Vector2, direction: Vector2,
         hp_before: float, shield_before: float, clock: float, weight: float=1.0) -> void:
+    var before: int=impact_cursor
     super.contact(id,enemy,point,direction,hp_before,shield_before,clock,weight)
+    if impact_cursor==before:return # No actual authoritative HP/shield change.
     var event: Dictionary=impacts[(impact_cursor-1+MAX_IMPACTS)%MAX_IMPACTS]
     event["until"]=clock+IMPACT_LIFE
+
+func replaces(cue: Dictionary, clock: float) -> bool:
+    var point: Vector2=cue["pos"]
+    var slot: int=replaced_cues.get(Vector3(point.x,point.y,float(cue["at"])),-1)
+    return slot>=0 and clock<float(impacts[slot]["until"])
 
 func decorate_pose(state: Dictionary, clock: float) -> void:
     if bool(state.get("lost",false)) or float(state.get("hurt",0.0))>0.0 or float(state.get("flex",0.0))>0.0:
