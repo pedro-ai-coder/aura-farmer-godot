@@ -2,11 +2,19 @@
 
 # Approved Cartoon Arcade assets for the Godot visual migration
 
+> **Proposed build-independence migration (unmerged PR):** The 19 original PNG
+> assets are being vendored into the Godot runtime repository, preserving each
+> exact Git blob SHA, SHA-256 and source provenance. Normal Godot and Vercel
+> builds now run a **local-only verification**, never download from Phaser.
+> Historical descriptions of public-source downloads below refer to the
+> previous workflow and are superseded by this migration only if approved
+> and merged. No artwork, visual identity or gameplay approval is changed.
+
 The source of truth for visuals and gameplay remains `docs/GDD.md` (especially Annex A).
 
 Source: `pedro-ai-coder/aura-farmer` at the immutable commit `fdbc67b9d79b1d2bfbbcaad40305da1677bc626f`. **No artwork is generated or redesigned.**
 
-`assets/approved-assets.json` lists the exact source path, intended local destination, byte length, source Git blob ID and the original approved manifest SHA-256 when available. The build script `scripts/sync_approved_assets.py` downloads originals directly from the public repository, verifies their Git blob bytes and their SHA-256 where recorded, and refuses mismatches. These approved image binaries are intentionally not duplicated in Git history; Vercel embeds them in each exported Godot Web build.
+`assets/approved-assets.json` lists the exact source path, intended local destination, byte length, source Git blob ID and the original approved manifest SHA-256 when available. Historically, the build script downloaded the originals from a publicly accessible Phaser repository. That path is unsafe when the source is archived or made private. The proposed build instead verifies the exact vendored PNGs locally, and fails closed if any file is missing or changed. Vercel embeds only these repository-contained files in the Godot Web export.
 
 The first production art pass includes Ruin Alley, the approved menu image, three approved hero portraits, three approved enemies including Big Hater, three runtime character atlases, rear locomotion frames and Cool Kid's Flex animation.
 
