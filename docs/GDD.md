@@ -1,7 +1,7 @@
-# Aura Farmer — Game Design Document V3.0
+# CLUTCHPUNKS (formerly Aura Farmer) — Game Design Document V3.0
 
 **Status:** Consolidated draft, pending owner review and merge.  
-**Decision cutoff:** 25 October 2026.  
+**Decision cutoff:** 1 November 2026 (new public game name; original gameplay decisions preserved).  
 **Engine:** Godot 4.7.2, GDScript, Compatibility renderer.  
 **Current production visual direction:** Character Hype Broadcast — Clean Cut.  
 **Authoritative source after merge:** `docs/GDD.md` in `pedro-ai-coder/aura-farmer-godot`.  
@@ -12,13 +12,24 @@
 
 ## 1. Product identity and design goals
 
-Aura Farmer is an original, expressive 2D cartoon action-survival/roguelite with internet-meme humor, automatic weapon attacks, meaningful limited equipment builds, a hero-specific manual **Flex** driven by one Aura resource, readable enemy patterns, event bosses, and a final encounter with **Big Hater**.
+**CLUTCHPUNKS** (previously developed under the **Aura Farmer** name) is an original, expressive 2D cartoon action-survival/roguelite with internet-meme humor, automatic weapon attacks, meaningful limited equipment builds, a hero-specific manual **Flex** driven by one Aura resource, readable enemy patterns, event bosses, and a final encounter with **Big Hater**.
 
 The core visual identity uses the original **Option A — Cartoon Arcade** hero, enemy and environment identities, expressed through the current **Character Hype Broadcast — Clean Cut** UI composition and interaction language. Inspiration from games such as Brotato and Swarm concerns readable mechanics and presentation principles, **not copied characters, artwork, map geometry or numbers**.
 
 **Experience pillars:** meaningful build choices; distinct recognizable heroes; active movement and enemy counterplay; high-impact but readable Flex; humor conveyed by original silhouettes and attacks; visual polish rather than generic dashboard UI; clear XP/Aura progression; reliable control on the supported platform.
 
 **Immediate mode:** solo PvE in Ruin Alley. Future content such as co-op, ranked, arena, additional heroes/maps, monetization and optional roguelite prototypes remains outside M0/M1 unless separately approved.
+
+### 1.1 Public title and narrative-development boundary (creator decision, 1 November 2026)
+
+**Public-facing game/universe name: CLUTCHPUNKS — creator-approved.** `Aura Farmer` remains a historical development identifier. This naming decision does **not** authorize renaming repository URLs, internal hero/item IDs, save namespaces (including `aura-farmer:profile:v2`), build artifacts, export identifiers or live deployment origins; preserving existing save and browser-origin compatibility remains mandatory. Public-facing wordmark artwork, logos, typography replacements and exact assets require their **own file-specific approval**, regardless of the approved name.
+
+**Season 01 — THE FEED IS BROKEN** is the current narrative direction for planned chapter storytelling. The proposed **Chapter 00 — The Incident** is a standalone narrative website prologue; **Chapter 01 — Going Live** corresponds to the current playable **Ruin Alley** solo run. Proposed Chapters 02–05 (Echo District, Shadow Zone, Signal Core and The Last Broadcast) and later Season 02/03 concepts remain **story proposals, not approved playable levels, maps, release promises or mechanics**. Do not reinterpret the five existing two-minute waves as five world maps.
+
+**Narrative-source references (candidate, subordinate to this GDD):** [World & Narrative Bible v0.1](narrative/CLUTCHPUNKS_WORLD_BIBLE_V0_1.md), [Season 01 Story Bible v0.1](narrative/SEASON_01_THE_FEED_IS_BROKEN_V0_1.md), [Brand Direction v0.1](brand/CLUTCHPUNKS_BRAND_DIRECTION_V0_1.md), [Chapter 00 Website Brief v0.1](web/CHAPTER_00_WEBSITE_EXPERIENCE_V0_1.md) and [Narrative Implementation Plan v0.1](roadmap/CLUTCHPUNKS_NARRATIVE_IMPLEMENTATION_PLAN_V0_1.md). All newly proposed lore, dialogue, future bosses, regions, creative treatments, future chapter names and season chronology in these companion documents **require explicit creator approval before canon or runtime integration**.
+
+**Website/release distinction:** A narrative marketing website may be proposed for a separate review and release decision; its existence does **not** authorize M0 public gameplay, modify M1 Web/Discord/backend/feedback gates, introduce an account/CMS/service, or alter any current combat, progression or art asset contracts. Public marketing links must not expose restricted M0 builds.
+
 
 ## 2. Approved milestone sequence and release scope
 
@@ -662,6 +673,8 @@ The earlier **GDD V2.0 has been archived verbatim** in [`docs/GDD_V2_ARCHIVE.md`
 | Pixel Vixen (`sigma`) | `assets/art-candidates/pixel-vixen/v2/manifest.json` | `803bfb3370b4e9d8eda4a1c63dfa141539012eb340c3ef9a0bf478a89075cf0d` | `13fd0af8fb873a70dd69b14cb6e1914606f4dcd7ff7601fd4169d422cfc6c9b9` | `337047c012d476f230091f7cf9fff0373b819f4020eba121dd6cc1524d0f0776` |
 | Byte Baddie (`cool-kid`) | `assets/art-candidates/byte-baddie/v2/manifest.json` | `aabe8d8893ac68938ebfddaffb5bc47b2ddfebb86eb3de42f227b8d8041897e6` | `cd9e7e486cb7d2cf0c3d89067b285fe1845758370e45ac324314db0477a0673d` | `af67fac76f9bfff350eaed423223be416dfbfedfe272dcdd72e916e91d9ee8b7` |
 | Block Queen (`alpha`) | `assets/art-candidates/block-queen/v2/manifest.json` | `0f8f5f4efb9d6bb03660eafebf28eaaf6b50980314ea30804bfd453f6f39eb04` | `b8647d200a0dde5d2ad7cebd54028865100d390d1a1ffdc3ac49919a77b45495` | `0b218b66cb5a4b3a495d67f0e9aed956070eb474138ab35ae7bcfd0fea2870b9` |
+
+**1 November 2026 creator naming decision:** The game and intended public-facing umbrella identity are now **CLUTCHPUNKS**. The tentative narrative umbrella is **Season 01 — THE FEED IS BROKEN**, with a Chapter 00 website prologue and Ruin Alley as Chapter 01. The name is approved; this does **not** approve a replacement logo/wordmark, a live rename of save keys or infrastructure, an unreviewed lore draft, new playable levels, future season promises, public marketing publication or automatic merge. All linked brand/narrative/website/roadmap v0.1 documents are **proposals for creator review**. Existing GDD gameplay and release gates remain authoritative.
 
 **V3.0 consolidation scope:** document and milestone reconciliation **only**. No changes to Godot/Phaser runtime, art bytes, balance, backend infrastructure or production release are made by authoring this GDD.
 

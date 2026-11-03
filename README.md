@@ -1,6 +1,18 @@
-# Aura Farmer — Godot
+# CLUTCHPUNKS — Godot (formerly Aura Farmer)
+
+**Public game title (creator-approved 1 November 2026): CLUTCHPUNKS.** The repository, internal identifiers and save namespaces retain historical Aura Farmer names for compatibility; no runtime/logo/infrastructure migration is authorized by this documentation change.
 
 Godot 4.7.2 / GDScript solo game using the Compatibility renderer. Approved milestones: **M0** fully visually polished **closed Web playtest with no backend** for a very restricted group; **M1** public alpha on **Web and Discord Activity**, with an operational **backend** and **in-game feedback requests for testers**; **M2+** consideration of native multiplatform expansion. The canonical [GDD](docs/GDD.md) and its [Owner Decision Register](docs/GDD_DECISION_REGISTER.md) govern current scope. Phaser remains reference-only.
+
+## Narrative and brand planning
+
+- [World & Narrative Bible v0.1](docs/narrative/CLUTCHPUNKS_WORLD_BIBLE_V0_1.md)
+- [Season 01 — The Feed Is Broken v0.1](docs/narrative/SEASON_01_THE_FEED_IS_BROKEN_V0_1.md)
+- [Brand & Logo Direction v0.1](docs/brand/CLUTCHPUNKS_BRAND_DIRECTION_V0_1.md)
+- [Chapter 00 — The Incident Website Brief v0.1](docs/web/CHAPTER_00_WEBSITE_EXPERIENCE_V0_1.md)
+- [Narrative & Website Implementation Plan v0.1](docs/roadmap/CLUTCHPUNKS_NARRATIVE_IMPLEMENTATION_PLAN_V0_1.md)
+
+**Only the new public name is approved.** The proposed chapter beats, future zones/bosses, website design, tagline and new wordmark assets are review candidates. Ruin Alley remains the sole current playable map; no new gameplay/backend/release/website deployment is approved by these docs.
 
 ## Current approved visual identity (24–25 October 2026)
 
