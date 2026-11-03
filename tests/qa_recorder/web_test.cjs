@@ -6,20 +6,121 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
 (async()=>{
  fs.mkdirSync(out,{recursive:true});
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
- for(const [width,height] of [[1600,900],[844,390]]){
-  const context=await browser.newContext({viewport:{width,height},acceptDownloads:true,recordVideo:{dir:out,size:{width,height}}});
+ for(const [width,height,dpr] of [[1600,900,1],[1050,810,1],[844,390,1],[1280,720,1],[1050,810,1.25],[844,390,2]]){
+  const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:dpr,acceptDownloads:true,recordVideo:{dir:out,size:{width,height}}});
   const page=await context.newPage();const errors=[];
+  // Video annotation only; passive listeners never inject game input or take focus.
+  await page.addInitScript(()=>addEventListener('DOMContentLoaded',()=>{
+   const label=document.createElement('div');label.id='qa-evidence-action';
+   label.style.cssText='position:fixed;left:8px;bottom:26px;z-index:99999;pointer-events:none;background:#111d;color:white;padding:5px;font:13px monospace';
+   document.body.appendChild(label);
+   addEventListener('pointerdown',e=>{label.textContent=`POINTER ${Math.round(e.clientX)},${Math.round(e.clientY)}`},{capture:true,passive:true});
+   addEventListener('keydown',e=>{label.textContent=`KEY ${e.key}`},{capture:true,passive:true});
+   addEventListener('wheel',()=>{label.textContent='SCROLL'},{capture:true,passive:true});
+  }));
   page.on('pageerror',e=>errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error' && /SCRIPT ERROR|Parse Error/.test(m.text()))errors.push(m.text());});
   await page.goto(process.env.QA_URL||'http://127.0.0.1:8080',{waitUntil:'networkidle',timeout:120000});
   await page.waitForFunction(()=>window.__qaReviewState?.controls.start,{timeout:90000});
+  const tag=`${width}-${height}-dpr${dpr}`;
   const before=await page.evaluate(()=>localStorage.getItem('aura-farmer:profile:v2'));
-  async function click(name){
+  async function point(name){
    const point=await page.evaluate(n=>{const s=window.__qaReviewState,r=s.controls[n],c=document.getElementById('canvas').getBoundingClientRect();if(!r)throw Error('Missing control '+n);return [c.x+(r[0]+r[2]/2)*c.width/s.view[0],c.y+(r[1]+r[3]/2)*c.height/s.view[1]]},name);
-   await page.mouse.click(...point);
+   return point;
   }
+  async function click(name){await page.mouse.click(...await point(name),{delay:350});}
+  async function closed(){
+   await page.waitForFunction(()=>{const s=window.__qaReviewState;return !s.scenario_open&&!s.modal.card_visible&&!s.modal.shade_visible&&!s.modal.focus_in_modal});
+   if(await page.evaluate(()=>window.__qaReviewState.mode)!=='menu')throw Error('Modal changed normal game mode');
+  }
+  async function shot(label){await page.screenshot({path:path.join(out,`${label}-${tag}.png`)});}
+  async function scrollBottom(){await page.mouse.move(...await point('qa_scroll'));await page.mouse.wheel(0,2000);await page.waitForTimeout(400);}
+  async function open(){await click('scenario');await page.waitForFunction(()=>window.__qaReviewState?.scenario_open);await page.waitForTimeout(300);}
   if(await page.evaluate(()=>window.__qaReviewState.recording))throw Error('Recording enabled by default');
-  await page.screenshot({path:path.join(out,`off-${width}.png`)});
+  // Observation helpers only: every mutation below uses real pointer/keyboard input.
+  let fullscreen=false;
+  if(width===1050&&dpr===1){
+   await page.locator('#aura-fullscreen').click();
+   await page.waitForTimeout(500);
+   fullscreen=await page.evaluate(()=>!!document.fullscreenElement);
+  }
+  await open();await shot('opened');
+  const rects=await page.evaluate(()=>window.__qaReviewState);
+  for(const name of ['qa_close','qa_cancel','qa_launch']){
+   const [x,y,w,h]=rects.controls[name];
+   if(x<0||y<0||w<=0||h<=0||x+w>rects.view[0]||y+h>rects.view[1])throw Error('Unreachable '+name);
+  }
+  await scrollBottom();await shot('scrolled');await click('qa_cancel');await closed();await shot('cancel-closed');
+  await open();await scrollBottom();await click('qa_close');await closed();await shot('header-closed');
+  await open();
+  // Scroll the seed into the clipping rectangle, then focus it with a real click.
+  for(let i=0;i<20;i++){
+   const delta=await page.evaluate(()=>{const c=window.__qaReviewState.controls,r=c.qa_seed,v=c.qa_scroll;return r[1]<v[1]? -100:r[1]+r[3]>v[1]+v[3]?100:0});
+   if(!delta)break;
+   await page.mouse.move(...await point('qa_scroll'));await page.mouse.wheel(0,delta);await page.waitForTimeout(300);
+  }
+  await click('qa_seed');
+  await page.waitForFunction(()=>window.__qaReviewState.modal.seed_focused);
+  await page.waitForTimeout(650);
+  if(!await page.evaluate(()=>window.__qaReviewState.modal.seed_focused))throw Error('Normal UI stole seed focus');
+  await page.keyboard.press('Enter');await page.waitForTimeout(350);
+  if(await page.evaluate(()=>window.__qaReviewState.mode)!=='menu')throw Error('Seed Enter started hidden gameplay');
+  await shot('seed-enter');await page.keyboard.press('Escape');await closed();await shot('escape-closed');
+  for(let i=0;i<2;i++){await open();await page.keyboard.press('Escape');await closed();}
+  if(fullscreen){await page.evaluate(()=>document.exitFullscreen());await page.waitForTimeout(500);await open();await click('qa_close');await closed();}
+  // Browser zoom shortcuts are attempted and reported; headless Chromium may ignore them.
+  const zoomBefore=await page.evaluate(()=>devicePixelRatio);
+  await page.keyboard.press('Control+-');await page.waitForTimeout(400);
+  const zoomAfter=await page.evaluate(()=>devicePixelRatio);
+  await open();await click('qa_cancel');await closed();
+  await page.keyboard.press('Control+0');await page.waitForTimeout(400);
+  // Regression: closing the scenario modal must restore real gameplay input
+  // in the SAME browser document. No reload between close and movement.
+  await click('start');
+  await page.waitForFunction(()=>window.__qaReviewState.recording);
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(()=>window.__qaReviewState.mode==='playing',{timeout:15000});
+  const playerBefore=await page.evaluate(()=>window.__qaReviewState.player_pos);
+  await page.keyboard.down('d');
+  await page.waitForTimeout(700);
+  await page.keyboard.up('d');
+  await page.waitForTimeout(350);
+  const playerAfter=await page.evaluate(()=>window.__qaReviewState.player_pos);
+  const movementAfterClose=Math.hypot(playerAfter[0]-playerBefore[0],playerAfter[1]-playerBefore[1]);
+  if(!Number.isFinite(movementAfterClose)||movementAfterClose<8)
+   throw Error('Gameplay movement blocked after closing QA scenario modal without reload: '+movementAfterClose);
+  await shot('movement-after-dialog-no-reload');
+  // Only now reset for the separate synthetic Wave 5 fixture.
+  await page.reload({waitUntil:'networkidle'});
+  await page.waitForFunction(()=>window.__qaReviewState?.controls.start);
+  // Start the canonical Wave 5 synthetic fixture through the real form.
+  await open();await click('qa_enable');await click('qa_select');
+  await page.waitForFunction(()=>window.__qaReviewState?.qa_popup_visible===true,{timeout:5000});
+  // Navigate the real Godot PopupMenu until its authoritative focused index is 3.
+  // Fixed arrow counts are not reliable across its initial keyboard-focus states.
+  let focused=-1;
+  for(let i=0;i<8;i++){
+   focused=await page.evaluate(()=>window.__qaReviewState.qa_popup_focused);
+   if(focused===3)break;
+   await page.keyboard.press('ArrowDown');
+   await page.waitForTimeout(360);
+  }
+  if(focused!==3)throw Error('Wave 5 popup never focused index 3; last index '+focused);
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(()=>window.__qaReviewState?.qa_selected_index===3&&!window.__qaReviewState?.qa_popup_visible,{timeout:5000});
+  await click('qa_launch');
+  await page.waitForTimeout(500);
+  const launchState=await page.evaluate(()=>window.__qaReviewState);
+  console.log('QA_LAUNCH_DIAGNOSTICS',JSON.stringify({
+    mode:launchState.mode,selected:launchState.qa_select_text,selected_index:launchState.qa_selected_index,
+    enabled:launchState.qa_enabled,message:launchState.qa_launch_message,
+    scenario_open:launchState.scenario_open,synthetic:launchState.synthetic,
+    scenario_id:launchState.scenario_id,modal:launchState.modal
+  }));
+  await page.waitForFunction(()=>window.__qaReviewState.mode==='playing'&&window.__qaReviewState.synthetic&&window.__qaReviewState.scenario_id==='wave5'&&!window.__qaReviewState.scenario_open);
+  await shot('wave5');
+  // Fresh normal session to prove closed/hidden modal does not trap gameplay or recorder input.
+  await page.reload({waitUntil:'networkidle'});await page.waitForFunction(()=>window.__qaReviewState?.controls.start);
   await click('start');
   await page.waitForFunction(()=>window.__qaReviewState.recording);
   await page.keyboard.press('Enter');
@@ -30,16 +131,16 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   await page.waitForFunction(()=>window.__qaReviewState.mode==='paused');
   await click('mark');
   await page.waitForTimeout(1200);
-  await page.screenshot({path:path.join(out,`paused-${width}.png`)});
+  await page.screenshot({path:path.join(out,`paused-${tag}.png`)});
   const downloadPromise=page.waitForEvent('download',{timeout:15000});
   await click('export');const download=await downloadPromise;
-  await download.saveAs(path.join(out,`session-${width}.zip`));
+  await download.saveAs(path.join(out,`session-${tag}.zip`));
   await page.waitForFunction(()=>!window.__qaReviewState.recording);
   const after=await page.evaluate(()=>localStorage.getItem('aura-farmer:profile:v2'));
   if(before!==after)throw Error('QA wrote canonical profile');
   if(errors.length)throw Error(errors.join('\n'));
-  fs.writeFileSync(path.join(out,`browser-${width}.json`),JSON.stringify({viewport:[width,height],profileUnchanged:true,errors,renderer:'Chromium WebGL2 software; not physical-device performance'},null,2));
+  fs.writeFileSync(path.join(out,`browser-${tag}.json`),JSON.stringify({viewport:[width,height],deviceScaleFactor:dpr,fullscreen,zoomBefore,zoomAfter,zoomShortcutSupported:zoomBefore!==zoomAfter,profileUnchanged:true,movementAfterCloseWithoutReload:movementAfterClose,modal:await page.evaluate(()=>window.__qaReviewState.modal),errors,renderer:'Chromium WebGL2 software; not physical-device performance'},null,2));
   await context.close();
  }
- await browser.close();console.log('PASS: actual WebGL gameplay, explicit recording, pause, marker, local ZIP download and profile isolation at both viewports');
+ await browser.close();console.log('PASS: real WebGL dialog close/header/footer/Escape, visible actions, recording, pause, ZIP download and profile isolation at desktop, creator screenshot size and mobile landscape viewports');
 })().catch(e=>{console.error(e);process.exit(1)});

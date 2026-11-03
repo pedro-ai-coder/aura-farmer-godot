@@ -6,16 +6,20 @@ var status: Label
 var start_button: Button
 var export_button: Button
 var marker_button: Button
+var scenario_button: Button
 var discard_button: Button
 var refresh_in := 0.0
 var message := ""
+var build_label := ""
 func button(text: String, action: Callable) -> Button:
     var item:=Button.new();item.text=text;item.custom_minimum_size=Vector2(0,44)
     item.focus_mode=Control.FOCUS_NONE;item.pressed.connect(action);panel.add_child(item);return item
 func install(owner_game) -> void:
     game=owner_game;layer=100
+    build_label=str(game.qa_build().get("commit","unknown-local-build")).left(12)
     panel=HBoxContainer.new();panel.position=Vector2(8,8);add_child(panel)
     start_button=button("Start QA",start)
+    scenario_button=button("QA Scenario",open_scenario)
     marker_button=button("Sync mark",mark)
     export_button=button("Stop + export",export_session)
     discard_button=button("Clear",clear_session)
@@ -30,6 +34,8 @@ func start() -> void:
     game.recorder.start(game,game.qa_build());game.recorder.mark(game)
     message="";refresh()
 func mark() -> void:game.recorder.mark(game);refresh()
+func open_scenario() -> void:
+    if game.qa_settings!=null:game.qa_settings.open()
 func clear_session() -> void:
     # Only after export/stop. Explicit action; never deletes a downloaded file.
     if game.recorder.enabled:return
@@ -55,16 +61,36 @@ func refresh() -> void:
     start_button.disabled=recorder.enabled or not recorder.lines.is_empty()
     export_button.disabled=recorder.lines.is_empty()
     marker_button.disabled=not recorder.enabled
+    scenario_button.disabled=recorder.enabled or not recorder.lines.is_empty()
     discard_button.disabled=recorder.enabled or recorder.lines.is_empty()
     status.position=Vector2(8,game.get_viewport_rect().size.y-22)
     var seconds: float=recorder.now_ms()/1000.0 if recorder.enabled else recorder.stopped_ms/1000.0
-    status.text="QA %s | %06.1fs | MARK %d%s" % ["REC" if recorder.enabled else "FULL — EXPORT" if recorder.full else "OFF",seconds,recorder.marker," | "+message if panel.visible and not message.is_empty() else ""]
+    status.text="QA %s | %06.1fs | MARK %d%s" % ["REC" if recorder.enabled else "FULL — EXPORT" if recorder.full else "OFF",seconds,recorder.marker," | "+message if panel.visible and not message.is_empty() else ""]+" | BUILD "+build_label
 
     if OS.has_feature("web"):
         # Read-only diagnostics for repeatable browser QA; no command/state injector.
         var controls: Dictionary={}
         if panel.visible:
-            for entry in [["start",start_button],["mark",marker_button],["export",export_button],["clear",discard_button]]:
+            for entry in [["start",start_button],["scenario",scenario_button],["mark",marker_button],["export",export_button],["clear",discard_button]]:
                 var rect: Rect2=entry[1].get_global_rect()
                 controls[entry[0]]=[rect.position.x,rect.position.y,rect.size.x,rect.size.y]
-        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"mode":game.mode,"recording":recorder.enabled,"controls":controls,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"label":status.text}),true)
+        var scenario_open: bool=game.qa_settings!=null and game.qa_settings.visible
+        var popup_visible:=false
+        var popup_focused: int=-1
+        if scenario_open:
+            var option_popup: PopupMenu=game.qa_settings.scenario_select.get_popup()
+            popup_visible=option_popup.visible
+            if popup_visible:popup_focused=option_popup.get_focused_item()
+        if scenario_open:
+            for entry in [["qa_close",game.qa_settings.close_button],["qa_cancel",game.qa_settings.footer_close_button],["qa_launch",game.qa_settings.launch_button],["qa_enable",game.qa_settings.enabled_box],["qa_seed",game.qa_settings.seed_input],["qa_select",game.qa_settings.scenario_select],["qa_scroll",game.qa_settings.scroll]]:
+                var rect: Rect2=entry[1].get_global_rect()
+                controls[entry[0]]=[rect.position.x,rect.position.y,rect.size.x,rect.size.y]
+        var modal: Dictionary={}
+        if game.qa_settings!=null:
+            var q=game.qa_settings
+            var focus=get_viewport().gui_get_focus_owner()
+            modal={"card_visible":q.card.is_visible_in_tree(),"shade_visible":q.shade.is_visible_in_tree(),
+                "input_events":q.input_events,"close_count":q.close_count,"last_close":q.last_close,
+                "scroll":q.scroll.scroll_vertical,"focus_in_modal":focus!=null and q.is_ancestor_of(focus),
+                "seed_focused":focus==q.seed_input.get_line_edit()}
+        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"build":build_label,"modal":modal,"synthetic":game._qa_synthetic,"scenario_id":game._qa_scenario.get("scenario_id",""),"mode":game.mode,"recording":recorder.enabled,"controls":controls,"scenario_open":scenario_open,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"player_pos":[game.player_pos.x,game.player_pos.y],"label":status.text,"qa_popup_visible":popup_visible,"qa_popup_focused":popup_focused,"qa_enabled":game.qa_settings.enabled_box.button_pressed,"qa_selected_index":game.qa_settings.scenario_select.selected,"qa_select_text":game.qa_settings.scenario_select.get_item_text(game.qa_settings.scenario_select.selected),"qa_launch_message":game.qa_settings.message.text}),true)
