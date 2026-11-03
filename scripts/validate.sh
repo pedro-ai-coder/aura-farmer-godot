@@ -48,6 +48,7 @@ run_check import --headless --path . --import
 run_check qa-recorder --headless --path . --script res://tests/qa_recorder/test_recorder.gd
 run_check qa-recorder-ui --headless --path . --script res://tests/qa_recorder/test_ui.gd
 run_check qa-scenarios --headless --path . --script res://tests/qa_recorder/test_scenarios.gd
+run_check qa-wave5-experiment --headless --path . --script res://tests/qa_recorder/test_wave5_experiment.gd
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
 run_check card-keyboard --headless --path . --script res://tests/test_card_keyboard.gd
 run_check spotlight-secondary --headless --path . --script res://tests/test_spotlight_secondary.gd
