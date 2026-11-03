@@ -74,6 +74,25 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   const zoomAfter=await page.evaluate(()=>devicePixelRatio);
   await open();await click('qa_cancel');await closed();
   await page.keyboard.press('Control+0');await page.waitForTimeout(400);
+  // Regression: closing the scenario modal must restore real gameplay input
+  // in the SAME browser document. No reload between close and movement.
+  await click('start');
+  await page.waitForFunction(()=>window.__qaReviewState.recording);
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(()=>window.__qaReviewState.mode==='playing',{timeout:15000});
+  const playerBefore=await page.evaluate(()=>window.__qaReviewState.player_pos);
+  await page.keyboard.down('d');
+  await page.waitForTimeout(700);
+  await page.keyboard.up('d');
+  await page.waitForTimeout(350);
+  const playerAfter=await page.evaluate(()=>window.__qaReviewState.player_pos);
+  const movementAfterClose=Math.hypot(playerAfter[0]-playerBefore[0],playerAfter[1]-playerBefore[1]);
+  if(!Number.isFinite(movementAfterClose)||movementAfterClose<8)
+   throw Error('Gameplay movement blocked after closing QA scenario modal without reload: '+movementAfterClose);
+  await shot('movement-after-dialog-no-reload');
+  // Only now reset for the separate synthetic Wave 5 fixture.
+  await page.reload({waitUntil:'networkidle'});
+  await page.waitForFunction(()=>window.__qaReviewState?.controls.start);
   // Start the canonical Wave 5 synthetic fixture through the real form.
   await open();await click('qa_enable');await click('qa_select');
   await page.waitForFunction(()=>window.__qaReviewState?.qa_popup_visible===true,{timeout:5000});
@@ -120,7 +139,7 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   const after=await page.evaluate(()=>localStorage.getItem('aura-farmer:profile:v2'));
   if(before!==after)throw Error('QA wrote canonical profile');
   if(errors.length)throw Error(errors.join('\n'));
-  fs.writeFileSync(path.join(out,`browser-${tag}.json`),JSON.stringify({viewport:[width,height],deviceScaleFactor:dpr,fullscreen,zoomBefore,zoomAfter,zoomShortcutSupported:zoomBefore!==zoomAfter,profileUnchanged:true,modal:await page.evaluate(()=>window.__qaReviewState.modal),errors,renderer:'Chromium WebGL2 software; not physical-device performance'},null,2));
+  fs.writeFileSync(path.join(out,`browser-${tag}.json`),JSON.stringify({viewport:[width,height],deviceScaleFactor:dpr,fullscreen,zoomBefore,zoomAfter,zoomShortcutSupported:zoomBefore!==zoomAfter,profileUnchanged:true,movementAfterCloseWithoutReload:movementAfterClose,modal:await page.evaluate(()=>window.__qaReviewState.modal),errors,renderer:'Chromium WebGL2 software; not physical-device performance'},null,2));
   await context.close();
  }
  await browser.close();console.log('PASS: real WebGL dialog close/header/footer/Escape, visible actions, recording, pause, ZIP download and profile isolation at desktop, creator screenshot size and mobile landscape viewports');
