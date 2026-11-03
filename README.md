@@ -12,14 +12,14 @@ The GDD remains authoritative for all gameplay labels, rules and timing. In part
 
 ## Current state
 
-The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. The Cartoon Arcade UI preserves approved menu art and catalog symbols. Menus include explicit hero Play, options/save navigation, card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved art is fetched from pinned, hash-verified Phaser assets.
+The three approved starters, nine weapons/legendary variants, active solo passive subset, 3+5 inventory limits, offers, XP/Aura/Flex, five-wave timeline, events and Big Hater logic are implemented with deterministic regression coverage. The Cartoon Arcade UI preserves approved menu art and catalog symbols. Menus include explicit hero Play, options/save navigation, card/replacement confirmation, pause/build inspection, exit confirmation, result retry, preferences and profile transfer. Approved original art is vendored inside this Godot repository with immutable provenance and byte-for-byte hash verification; normal builds do not access the Phaser repository.
 
 This is **not M0 visual-polish approval, an M0 restricted-test release, or M1 public alpha release**. Normal-play balance, browser/Discord interaction, audio/animation polish and performance still require honest evidence. The historic 85/100 PoC score and native-device parity are not automatic M0/M1 PR blockers; the **fully polished visual build is nevertheless mandatory for M0 readiness**. A scoped PR needs passing applicable mandatory checks and owner approval. Read `docs/MIGRATION_PROGRESS.md` and `docs/NATIVE_READINESS.md` for evidence and limits.
 
 ## Run and validate
 
 1. Install the exact Godot 4.7.2 editor.
-2. Run `python3 scripts/sync_approved_assets.py` to fetch the approved artwork.
+2. Run `python3 scripts/sync_approved_assets.py` to **verify the local, versioned approved artwork**. There is no network download. For first-time migration of missing files, use `--import-from /path/to/pinned-source-checkout` exactly once and commit the verified images.
 3. Import `project.godot`, then run the main scene.
 4. Run `bash scripts/validate.sh` for import, gameplay, save, input, art and scene regressions. The validation workflow requires GNU `timeout` and Node.js 18+ for browser lifecycle adapter regressions.
 
