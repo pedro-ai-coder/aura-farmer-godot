@@ -3,7 +3,7 @@ name: Godot CI
 # PR-only validation; deliberately no push, schedule or deployment triggers.
 on:
   pull_request:
-    branches: [main, qa/real-gameplay-recorder, fix/m0-hud-hero-quit-feedback, art/m0-final-button-components, fix/m0-navigation-ui-recovery, perf/m0-mobile-frame-pacing]
+    branches: [main, qa/real-gameplay-recorder, qa/scenario-mode, fix/m0-hud-hero-quit-feedback, art/m0-final-button-components, fix/m0-navigation-ui-recovery, perf/m0-mobile-frame-pacing]
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:

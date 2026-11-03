@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 func refresh() -> void:
     if game==null:return
     caption.visible=game._qa_synthetic
+    caption.text="QA EXPERIMENT / +25% FLOOR / LONGER VISUALS" if game._qa_experiment_enabled else "QA / SYNTHETIC SCENARIO — NOT A NORMAL RUN"
     detail.visible=game._qa_synthetic and not game.qa_overlay_flags.is_empty()
     var view: Vector2=game.get_viewport_rect().size
     caption.position=Vector2(12,maxf(30,view.y-57))

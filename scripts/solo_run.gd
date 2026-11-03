@@ -59,6 +59,8 @@ const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
 const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
 var performance_probe
 var weapon_presentation=WeaponPresentationScript.new()
+# Default is the canonical geometry. QA review fixtures can inject a separate rules script.
+var world_rules_script=SoloWorldRulesScript
 var passive_feedback=PassiveFeedbackScript.new()
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
@@ -647,7 +649,7 @@ func _spawn_phase_crystal() -> void:
     var point := player_pos
     for step in range(16):
         var candidate := player_pos + movement_direction.normalized().rotated(step * TAU / 16.0) * 96.0
-        if SoloWorldRulesScript.walkable(candidate) and SoloWorldRulesScript.clear_line(player_pos, candidate):
+        if world_rules_script.walkable(candidate) and world_rules_script.clear_line(player_pos, candidate):
             point = candidate
             break
     pickups.append({"pos": point, "xp": float(40 * wave), "kind": "aura", "phase": wave})
@@ -727,7 +729,7 @@ func _nearest_target(reach: float = INF) -> Dictionary:
     var nearest := reach
     for enemy: Dictionary in enemies:
         var distance := player_pos.distance_to(enemy["pos"])
-        if run_time < float(enemy.get("born", 0.0)) or float(enemy["hp"]) <= 0.0 or distance > nearest or not SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]): continue
+        if run_time < float(enemy.get("born", 0.0)) or float(enemy["hp"]) <= 0.0 or distance > nearest or not world_rules_script.clear_line(player_pos, enemy["pos"]): continue
         if closest.is_empty() or distance < nearest or int(enemy["id"]) < int(closest["id"]):
             closest = enemy
             nearest = distance
@@ -769,7 +771,7 @@ func _signature_strike(radius: float, arc: float, power: float, limit: int = 214
         var offset: Vector2 = enemy["pos"]-player_pos
         if run_time < float(enemy.get("born",0.0)) or float(enemy["hp"]) <= 0.0: continue
         if offset.length() > radius or absf(facing.angle_to(offset)) > deg_to_rad(arc*0.5): continue
-        if not SoloWorldRulesScript.clear_line(player_pos,enemy["pos"]): continue
+        if not world_rules_script.clear_line(player_pos,enemy["pos"]): continue
         targets.append(enemy)
     targets.sort_custom(func(a: Dictionary,b: Dictionary) -> bool:
         var da := player_pos.distance_squared_to(a["pos"])
@@ -786,7 +788,7 @@ func _signature_strike(radius: float, arc: float, power: float, limit: int = 214
         if push and enemies.has(enemy):
             if enemy["kind"] == "boss": _stagger_enemy(enemy,10.0)
             elif not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
-                enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"],(Vector2(enemy["pos"])-player_pos).normalized()*40.0,float(enemy["radius"]))
+                enemy["pos"] = world_rules_script.move(enemy["pos"],(Vector2(enemy["pos"])-player_pos).normalized()*40.0,float(enemy["radius"]))
     if mode != "playing": return hit
     hero_state["flex_outline"] = {"until":run_time+0.22,"origin":player_pos,"facing":facing,"radius":radius,"arc":arc}
     return hit
@@ -863,7 +865,7 @@ func _move_player(dt: float) -> void:
     var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
     var previous := player_pos
-    player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
+    player_pos = world_rules_script.move(player_pos, direction * speed * dt, 16.0)
     if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
     visual_moving = direction.length_squared() > 0.01
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
@@ -915,7 +917,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var pos: Vector2 = special.get("pos", Vector2.ZERO)
     if not special.has("pos"):
         var spawn_radius: float=float(stats["radius"])*(1.2 if bool(special.get("elite",false)) and not bool(stats["boss"]) and kind!="terminal" else 1.0)
-        var candidate = SoloWorldRulesScript.spawn_point(player_pos, rng,spawn_radius)
+        var candidate = world_rules_script.spawn_point(player_pos, rng,spawn_radius)
         if candidate == null:
             return
         pos = candidate
@@ -998,7 +1000,7 @@ func _step_hostile_shots(dt: float) -> void:
         var ending: Vector2 = start + shot["dir"] * distance
         shot["pos"] = ending
         shot["remaining"] = float(shot["remaining"]) - distance
-        if not SoloWorldRulesScript.clear_line(start, ending) or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
+        if not world_rules_script.clear_line(start, ending) or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
             hostile_shots.erase(shot)
             continue
         if ending.distance_to(player_pos) < 16.0 + float(shot["radius"]):
@@ -1048,7 +1050,7 @@ func _step_hazards() -> void:
             continue
         if run_time < float(hazard["at"]) or run_time < float(hazard["next_tick"]) or bool(hazard.get("hit", false)):
             continue
-        if _hazard_contains(hazard, player_pos) and SoloWorldRulesScript.clear_line(hazard["pos"], player_pos):
+        if _hazard_contains(hazard, player_pos) and world_rules_script.clear_line(hazard["pos"], player_pos):
             var source: Dictionary = hazard.get("source", {})
             _deal_damage_to_player(float(hazard["damage"]), source, false, float(hazard["end"]) - float(hazard["at"]) > 1.6 and hazard["shape"] != "tether")
             hazard["hit"] = true
@@ -1091,7 +1093,7 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
         enemy["next_aux"] = run_time + 10.0
     elif kind == "doomscroll-prime" and run_time >= terminals_interrupt_until:
         _schedule_hazard(player_pos, 100.0, 1.0, 3.0, 12.0, "circle", facing, enemy)
-        var second = SoloWorldRulesScript.spawn_point(player_pos, rng)
+        var second = world_rules_script.spawn_point(player_pos, rng)
         if second != null:
             _schedule_hazard(second, 100.0, 1.0, 3.0, 12.0, "circle", facing, enemy)
         enemy["next_aux"] = run_time + 7.0
@@ -1159,7 +1161,7 @@ func _step_enemies(dt: float) -> void:
             if enemy["phase"] == "charging":
                 # Committed charges retain their locked direction; steering
                 # must never turn a telegraphed charge around an obstacle.
-                destination = SoloWorldRulesScript.move(pos,direction*speed*dt,float(enemy["radius"]))
+                destination = world_rules_script.move(pos,direction*speed*dt,float(enemy["radius"]))
             else:
                 var goal := player_pos if direction.dot(to_player) >= 0.0 else pos+direction*120.0
                 destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy)
@@ -1191,7 +1193,7 @@ func _step_enemies(dt: float) -> void:
             enemy["phase"] = ""
             enemy["next_attack"] = run_time + (6.0 if kind == "ping-sniper" else 3.0)
         elif (kind == "hater" or kind == "ping-sniper") and enemy["phase"] == "" and run_time >= float(enemy["next_attack"]):
-            if kind == "hater" and not SoloWorldRulesScript.clear_line(pos, player_pos):
+            if kind == "hater" and not world_rules_script.clear_line(pos, player_pos):
                 enemy["next_attack"] = run_time + 0.1
                 continue
             enemy["phase"] = "warning"
@@ -1408,7 +1410,7 @@ func _weapon_area_reaches(area: Dictionary, enemy: Dictionary) -> bool:
             return false
     elif relative.length() > radius + float(enemy["radius"]):
         return false
-    return absf(facing.angle_to(relative)) <= deg_to_rad(float(area["arc"])*0.5) and SoloWorldRulesScript.clear_line(area["center"],enemy["pos"])
+    return absf(facing.angle_to(relative)) <= deg_to_rad(float(area["arc"])*0.5) and world_rules_script.clear_line(area["center"],enemy["pos"])
 
 func _qualify_chad_activation(area: Dictionary) -> void:
     var activation: Dictionary = area["activation"]
@@ -1479,7 +1481,7 @@ func _step_weapon_areas() -> void:
                 elif area["id"] == "ban-hammer":
                     _stagger_enemy(enemy, 15.0)
                     if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
-                        enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
+                        enemy["pos"] = world_rules_script.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
             if primary and area["id"] == "cope-shield" and not shield_awarded:
                 shield_awarded = true
                 _grant_weapon_shield("cope-shield", max_hp * 0.04 * float(area.get("weapon_power", 1.0)), 2.0)
@@ -1519,7 +1521,7 @@ func _step_player_shots(dt: float) -> void:
         var travel: float = float(shot["speed"]) * dt
         shot["pos"] = previous + Vector2(shot["direction"]) * travel
         shot["remaining"] = float(shot["remaining"]) - travel
-        if float(shot["remaining"]) <= 0.0 or not SoloWorldRulesScript.clear_line(previous, shot["pos"]):
+        if float(shot["remaining"]) <= 0.0 or not world_rules_script.clear_line(previous, shot["pos"]):
             player_shots.erase(shot)
             continue
         for enemy: Dictionary in enemies.duplicate():

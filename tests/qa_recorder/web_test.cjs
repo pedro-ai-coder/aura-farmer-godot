@@ -89,6 +89,24 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
   if(focused!==3)throw Error('Wave 5 popup never focused index 3; last index '+focused);
   await page.keyboard.press('Enter');
   await page.waitForFunction(()=>window.__qaReviewState?.qa_selected_index===3&&!window.__qaReviewState?.qa_popup_visible,{timeout:5000});
+  // One desktop and one mobile-landscape run exercise the opt-in candidate.
+  // Other viewports retain the unmodified baseline for regression comparison.
+  const experimental=(width===1050&&dpr===1)||(width===844&&dpr===1);
+  if(experimental){
+   await page.waitForFunction(()=>window.__qaReviewState?.qa_experiment_control_enabled,{timeout:5000});
+   for(let i=0;i<18;i++){
+    const delta=await page.evaluate(()=>{
+     const c=window.__qaReviewState.controls,r=c.qa_experiment,v=c.qa_scroll;
+     return r[1]<v[1]?-90:r[1]+r[3]>v[1]+v[3]?90:0;
+    });
+    if(!delta)break;
+    await page.mouse.move(...await point('qa_scroll'));
+    await page.mouse.wheel(0,delta);
+    await page.waitForTimeout(300);
+   }
+   await click('qa_experiment');
+   await page.waitForFunction(()=>window.__qaReviewState?.qa_experiment_checked===true,{timeout:5000});
+  }
   await click('qa_launch');
   await page.waitForTimeout(500);
   const launchState=await page.evaluate(()=>window.__qaReviewState);
@@ -99,7 +117,11 @@ const out=process.env.QA_EVIDENCE||'tests/qa_recorder/evidence/web';
     scenario_id:launchState.scenario_id,modal:launchState.modal
   }));
   await page.waitForFunction(()=>window.__qaReviewState.mode==='playing'&&window.__qaReviewState.synthetic&&window.__qaReviewState.scenario_id==='wave5'&&!window.__qaReviewState.scenario_open);
-  await shot('wave5');
+  const launched=await page.evaluate(()=>window.__qaReviewState);
+  if(launched.qa_experiment_enabled!==experimental)throw Error('Wrong QA A/B flag after real pointer launch');
+  if(experimental&&launched.qa_experiment_id!=='wave5-expanded-floor-expressive-feedback-v1')
+   throw Error('Missing exact experimental provenance after launching Wave 5');
+  await shot(experimental?'wave5-experimental':'wave5-baseline');
   // Fresh normal session to prove closed/hidden modal does not trap gameplay or recorder input.
   await page.reload({waitUntil:'networkidle'});await page.waitForFunction(()=>window.__qaReviewState?.controls.start);
   await click('start');

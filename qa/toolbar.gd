@@ -82,7 +82,7 @@ func refresh() -> void:
             popup_visible=option_popup.visible
             if popup_visible:popup_focused=option_popup.get_focused_item()
         if scenario_open:
-            for entry in [["qa_close",game.qa_settings.close_button],["qa_cancel",game.qa_settings.footer_close_button],["qa_launch",game.qa_settings.launch_button],["qa_enable",game.qa_settings.enabled_box],["qa_seed",game.qa_settings.seed_input],["qa_select",game.qa_settings.scenario_select],["qa_scroll",game.qa_settings.scroll]]:
+            for entry in [["qa_close",game.qa_settings.close_button],["qa_cancel",game.qa_settings.footer_close_button],["qa_launch",game.qa_settings.launch_button],["qa_enable",game.qa_settings.enabled_box],["qa_seed",game.qa_settings.seed_input],["qa_select",game.qa_settings.scenario_select],["qa_scroll",game.qa_settings.scroll],["qa_experiment",game.qa_settings.experiment_box]]:
                 var rect: Rect2=entry[1].get_global_rect()
                 controls[entry[0]]=[rect.position.x,rect.position.y,rect.size.x,rect.size.y]
         var modal: Dictionary={}
@@ -93,4 +93,7 @@ func refresh() -> void:
                 "input_events":q.input_events,"close_count":q.close_count,"last_close":q.last_close,
                 "scroll":q.scroll.scroll_vertical,"focus_in_modal":focus!=null and q.is_ancestor_of(focus),
                 "seed_focused":focus==q.seed_input.get_line_edit()}
-        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"build":build_label,"modal":modal,"synthetic":game._qa_synthetic,"scenario_id":game._qa_scenario.get("scenario_id",""),"mode":game.mode,"recording":recorder.enabled,"controls":controls,"scenario_open":scenario_open,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"label":status.text,"qa_popup_visible":popup_visible,"qa_popup_focused":popup_focused,"qa_enabled":game.qa_settings.enabled_box.button_pressed,"qa_selected_index":game.qa_settings.scenario_select.selected,"qa_select_text":game.qa_settings.scenario_select.get_item_text(game.qa_settings.scenario_select.selected),"qa_launch_message":game.qa_settings.message.text}),true)
+        JavaScriptBridge.eval("window.__qaReviewState="+JSON.stringify({"build":build_label,"modal":modal,"synthetic":game._qa_synthetic,"scenario_id":game._qa_scenario.get("scenario_id",""),"mode":game.mode,"recording":recorder.enabled,"controls":controls,"scenario_open":scenario_open,"view":[game.get_viewport_rect().size.x,game.get_viewport_rect().size.y],"active_s":game.run_time,"label":status.text,"qa_popup_visible":popup_visible,"qa_popup_focused":popup_focused,"qa_experiment_enabled":game._qa_experiment_enabled,
+            "qa_experiment_checked":game.qa_settings.experiment_box.button_pressed,
+            "qa_experiment_control_enabled":not game.qa_settings.experiment_box.disabled,
+            "qa_experiment_id":game._qa_scenario.get("experiment_id",""),"qa_enabled":game.qa_settings.enabled_box.button_pressed,"qa_selected_index":game.qa_settings.scenario_select.selected,"qa_select_text":game.qa_settings.scenario_select.get_item_text(game.qa_settings.scenario_select.selected),"qa_launch_message":game.qa_settings.message.text}),true)

@@ -1,7 +1,7 @@
 name: QA Web evidence
 on:
   pull_request:
-    branches: [main, qa/real-gameplay-recorder]
+    branches: [main, qa/real-gameplay-recorder, qa/scenario-mode]
     types: [opened, synchronize, reopened, ready_for_review]
 permissions:
   contents: read
@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   web-recorder:
-    if: ${{ github.head_ref == 'qa/real-gameplay-recorder' || github.head_ref == 'qa/scenario-mode' }}
+    if: ${{ github.head_ref == 'qa/real-gameplay-recorder' || github.head_ref == 'qa/scenario-mode' || github.head_ref == 'qa/wave5-space-visual-experiment' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

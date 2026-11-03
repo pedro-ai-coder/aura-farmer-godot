@@ -18,6 +18,7 @@ var build_select: OptionButton
 var seed_input: SpinBox
 var enabled_box: CheckBox
 var record_box: CheckBox
+var experiment_box: CheckBox
 var threats_box: CheckBox
 var hitboxes_box: CheckBox
 var buffs_box: CheckBox
@@ -95,9 +96,13 @@ func install(owner_game) -> void:
     var names: Array[String]=[]
     for entry: Dictionary in RULES.PRESETS:names.append(str(entry["name"]))
     scenario_select=_option(column,"Starting wave / encounter",names)
+    scenario_select.item_selected.connect(_on_scenario_selected)
     hero_select=_option(column,"Canonical hero kit",["Sigma","Cool Kid","Alpha Chad"])
     appearance_select=_option(column,"Cosmetic appearance",["Original","Female"])
     build_select=_option(column,"Equipment preset",RULES.BUILD_NAMES)
+    experiment_box=_check(column,"EXPERIMENTAL WAVE 5: +25% arena polygon and longer attack visuals")
+    experiment_box.tooltip_text="QA-only comparison candidate; no change to damage, enemy schedule, boss or approved artwork."
+    _on_scenario_selected(0)
     var seed_label:=Label.new()
     seed_label.text="Deterministic RNG seed"
     column.add_child(seed_label)
@@ -169,6 +174,11 @@ func _layout() -> void:
     card.position=Vector2((size.x-width)/2.0,(size.y-height)/2.0)
     card.size=Vector2(width,height)
 
+func _on_scenario_selected(index: int) -> void:
+    if experiment_box==null:return
+    experiment_box.disabled=index!=3
+    if index!=3:experiment_box.button_pressed=false
+
 func _changed(_value: bool) -> void:
     if launch_button!=null:launch_button.disabled=not enabled_box.button_pressed
 
@@ -179,6 +189,8 @@ func open() -> void:
         game.qa_ui.refresh()
         return
     enabled_box.button_pressed=false
+    experiment_box.button_pressed=false
+    _on_scenario_selected(scenario_select.selected)
     _changed(false)
     message.text="QA must be explicitly enabled. Synthetic sessions never count as normal runs."
     previous_focus=get_viewport().gui_get_focus_owner()
@@ -221,7 +233,7 @@ func _launch() -> void:
     var successful: bool=game.start_qa_scenario(str(selected["id"]),ids[index],
         "female" if appearance_select.selected==1 else "original",
         RULES.BUILD_NAMES[clampi(build_select.selected,0,RULES.BUILD_NAMES.size()-1)],
-        int(seed_input.value),flags,record_box.button_pressed)
+        int(seed_input.value),flags,record_box.button_pressed,experiment_box.button_pressed)
     if not successful:
         message.text="Scenario refused: invalid configuration, recording state or asset."
         return

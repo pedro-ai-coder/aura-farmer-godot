@@ -117,3 +117,31 @@ not physical-device proof.
 The synthetic mode is *not* a cheat code. QA code only exists in the
 `qa_review` scene and dedicated review Web export; production pack checks
 fail closed if any `qa/` resources leak.
+
+## Wave 5 visual/space A/B candidate (EXPERIMENTAL, not canon)
+
+For an apples-to-apples review, select **Wave 5 / 8:00**, Sigma, Balanced,
+seed 451, and enable telemetry. Run it once with the **EXPERIMENTAL WAVE 5**
+checkbox **OFF** (canonical baseline), export the ZIP, then repeat with it
+**ON** (candidate), export another ZIP. Record both sessions externally.
+
+The checkbox is unavailable for other waves. In the candidate, the approved
+Ruin Alley backdrop and two solid covers remain at the same locations. The
+*actual legal floor polygon* is uniformly expanded by sqrt(1.25) about the
+arena center, giving approximately 25% more traversable space (the exact
+walkable area depends on collider clearance and the unchanged covers).
+The green outline marks the candidate boundary and the amber outline marks
+the canonical boundary. The floor extension is a **QA geometry proposal**,
+not new final-map art. Do not judge graphic polish from this overlay.
+
+The existing three-frame attack poses are displayed for longer, cosmetic
+contacts fade over 0.32s instead of 0.18s, and gesture visibility persists
+longer. Damage, weapon cadence, projectiles, hitboxes, enemy HP, waves,
+bosses, awards and the weapon rarity system remain canonical.
+The recorder's scenario configuration contains `experiment_id` and
+`arena_polygon_area_factor`, so the samples cannot be mistaken for normal
+runs or aggregated with canonical baseline metrics.
+
+The candidate is OFF by default and is limited to QA review exports; ordinary
+play restores exact canonical geometry and presentation on every new run.
+Changes require explicit creator approval before GDD or production adoption.
