@@ -181,7 +181,7 @@ static func enemy_pose_frame(enemy: Dictionary, time: float, death_age: float = 
     return int(float(enemy.get("anim_walk",0.0)))%4 if enemy.get("anim_moving",false) else 0
 
 static func enemy_visual_kind(enemy: Dictionary, animation_time: float) -> String:
-    var kind: String=enemy.get("kind","npc")
+    var kind: String=enemy.get("visual_kind",enemy.get("kind","npc"))
     if kind=="boss" and animation_time>=preload("res://scripts/solo_clock.gd").BERSERK_AT:
         return "boss-berserk"
     return kind

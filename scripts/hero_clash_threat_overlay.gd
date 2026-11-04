@@ -105,12 +105,12 @@ func _sample(now_ms: int,force: bool) -> void:
     for enemy: Dictionary in game.enemies:
         # Ordinary actors do not need contextual nameplates. Their live attack
         # boundaries still use update_traces(), including while cues are hidden.
-        if not game.SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]:continue
+        if not game.enemy_definition(enemy["kind"])["boss"]:continue
         if game.run_time<float(enemy.get("born",0)) or float(enemy["hp"])<=0:continue
         var id: int=int(enemy["id"])
         if not states.has(id) or states[id].kind!=enemy["kind"]:
             var created:=BossVisibility.new();created.id=id;created.kind=enemy["kind"]
-            created.name=str(game.SoloEnemyRulesScript.DATA[enemy["kind"]]["name"]).to_upper()
+            created.name=str(game.enemy_definition(enemy["kind"])["name"]).to_upper()
             created.rank=0 if enemy["kind"]=="boss" else 1;states[id]=created
         var state: BossVisibility=states[id];state.seen=sampling_count
         state.bounds=enemy_bounds(enemy,transform)
@@ -204,7 +204,7 @@ func enemy_bounds(enemy: Dictionary, transform: Transform2D) -> Rect2:
     var image: Texture2D=game.art.enemy_frame(kind,frame)
     if image==null:return Rect2()
     var data: Dictionary=game.art.enemy_frame_cache[kind+":"+str(frame)]
-    var scale: float=float(enemy["radius"])*(2.6 if game.SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"] else 3.1)/maxf(1,float(data["height"]))
+    var scale: float=float(enemy["radius"])*(2.6 if game.enemy_definition(enemy["kind"])["boss"] else 3.1)/maxf(1,float(data["height"]))
     var left: bool=cos(float(enemy.get("angle",0)))< -0.05
     if enemy["phase"] in ["warning","charge-warning","charging"]:left=Vector2(enemy["locked_direction"]).x< -0.05
     var attack: Dictionary=enemy.get("attack_pose",{})

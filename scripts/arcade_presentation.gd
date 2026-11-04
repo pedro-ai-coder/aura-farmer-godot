@@ -348,10 +348,11 @@ func refresh(force: bool = false) -> void:
     else:
         for i in range(3): game.menu_buttons[i].hide(); game.hero_portraits[i].hide()
         var headings := {"choice":"LEVEL UP!","legendary":"GO LEGENDARY","replace":"MAKE ROOM","build":"YOUR BUILD","paused":"TAKE A BREATHER","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"BIG HATER DOWN!","lost":"ONE MORE RUN?"}
-        title.text = "LEVEL UP!  /  %d" % game.level if game.mode == "choice" else headings.get(game.mode,"")
+        title.text = "LEVEL UP!  /  %d" % game.level if game.mode == "choice" else game.presentation_copy("title_"+game.mode, headings.get(game.mode,""))
         if portrait and game.mode == "paused": title.text = "PAUSED"
         _place(title,Rect2(modal_panel.position+Vector2(24,18),Vector2(modal_panel.size.x-48,48)))
         subtitle.text = {"choice":"Choose one. Confirm to keep farming.","legendary":"ONE PER RUN  /  Three weapons. Three buffs.","replace":"The old item is removed. Its effects do not carry over.","build":"THREE WEAPONS / FIVE PASSIVES. Your actual equipped items.","paused":"Simulation paused.","options":"Make it yours. Everything is saved on this device.","confirm_exit":"This unfinished run will not count towards your profile.","profile_import":"Paste a Phaser v1 or v2 profile. Your current profile is backed up.","profile_export":"Copy this JSON to transfer your progress to another browser.","won":"Victory recorded. Your next run starts fresh.","lost":"Progress recorded. Take what you learned into the next run."}.get(game.mode,"")
+        subtitle.text = game.presentation_copy("subtitle_"+game.mode, subtitle.text)
         if game.mode == "replace":
             var incoming: Dictionary = catalog.get(game.replace_card.get("id",""),{})
             subtitle.text = "%s · %s replaces one equipped item. Removed effects do not carry over." % [incoming.get("name","New item"),str(game.replace_card.get("rarity","")).to_upper()]

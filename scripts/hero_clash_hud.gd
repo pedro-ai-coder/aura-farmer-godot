@@ -73,7 +73,7 @@ func _init(owner_skin) -> void:
     boss_fill=Meter.new();skin.add_child(boss_fill);boss_fill.install(texture("hp-fill"))
     skin.move_child(boss_fill,skin.boss_text.get_index())
     skin.hud_nodes.append_array([strip,weapon_group,passive_group,ability_plate,shield_mark,boss_fill])
-    boss_portrait=skin.image(skin);boss_portrait.texture=game.art.enemy_frame("boss",0)
+    boss_portrait=skin.image(skin);boss_portrait.texture=game.art.enemy_frame(game.presentation_copy("boss_art", "boss"),0)
     boss_hp=skin.label(skin);wave_clock=skin.label(skin)
     skin.hud_nodes.append_array([boss_portrait,boss_hp,wave_clock])
     max_level_plate=skin.image(skin);max_level_plate.texture=texture("wave-frame")
@@ -156,7 +156,7 @@ func layout() -> void:
     game.flex_button.show();game.flex_button.text=""
     for state in ["normal","hover","focus","pressed","disabled"]:
         game.flex_button.add_theme_stylebox_override(state,skin.empty_style)
-    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,game.touch_device,game.level>=25,not game.SoloClock.warning(game.run_time).is_empty()])
+    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,game.touch_device,game.level>=25,not game.encounter_warning().is_empty()])
     if geometry_key!=next_geometry:
         geometry_key=next_geometry;geometry_count+=1
         layout_geometry()
@@ -287,14 +287,14 @@ func layout_geometry() -> void:
     reserved.assign([status.get_rect(),wave_module.get_rect(),pause_module.get_rect(),strip_module.get_rect(),xp_module.get_rect(),Rect2(flex_module.position+game.flex_button.position,game.flex_button.size)])
     # The nameplate extends left of the circular target but never intercepts input.
     reserved.append(Rect2(flex_module.position+Vector2(caption_left,0),Vector2(caption_width,34)))
-    if game.boss_spawned or not game.SoloClock.warning(game.run_time).is_empty():reserved.append(boss_rect)
+    if game.boss_spawned or not game.encounter_warning().is_empty():reserved.append(boss_rect)
 
 func sync_data() -> void:
     var inventory: String=""
     for item: Dictionary in game.weapons+game.passives:inventory+=str([item["id"],item["level"],item["rarity"]])
     var boss: Dictionary={}
     for enemy: Dictionary in game.enemies:
-        if enemy["kind"]=="boss":boss=enemy;break
+        if enemy["kind"]==game.encounter_kind():boss=enemy;break
     var key: String=str([skin.ui.revision,game.hero.get("id"),game.hero_appearance,game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("hp",0),boss.get("max",0),inventory])
     if data_key==key:return
     data_key=key;data_count+=1
@@ -315,9 +315,9 @@ func sync_data() -> void:
     skin.xp.text="MAX LV 25" if game.level>=25 else "LV %d  ·  XP %d" % [game.level,int(game.xp)]
     skin.fit_line(skin.xp,18)
     skin.xp_fill.update_meter(xp_rect,game.xp/(30+8*game.level+game.level*game.level))
-    skin.wave.text="WAVE %d / %d" % [game.wave,int(game.SoloClock.BOSS_AT/game.SoloClock.WAVE_SECONDS)]
+    skin.wave.text="WAVE %d / %d" % [game.wave,game.wave_count()]
     wave_clock.text="%02d:%02d" % [int(game.run_time)/60,int(game.run_time)%60]
-    skin.warning.text=game.SoloClock.warning(game.run_time)
+    skin.warning.text=game.encounter_warning()
     has_boss=not boss.is_empty()
     for node in [skin.boss_plate,skin.boss_text,boss_hp,boss_fill,boss_portrait]:node.visible=has_boss
     skin.warning.visible=not skin.warning.text.is_empty()
@@ -328,7 +328,7 @@ func sync_data() -> void:
         skin.warning.add_theme_color_override("font_outline_color",INK)
     if not boss.is_empty():
         skin.warning.add_theme_color_override("font_color",GOLD if game.run_time>=game.SoloClock.BERSERK_AT else PAPER)
-        skin.boss_text.text="BIG HATER"
+        skin.boss_text.text=game.presentation_copy("boss_name", "BIG HATER")
         boss_hp.text="%d / %d HP" % [ceili(boss["hp"]),ceili(boss["max"])]
         boss_fill.update_meter(Rect2(76,53,boss_rect.size.x-108,9),float(boss["hp"])/maxf(1.0,float(boss["max"])))
     var active_flex: bool=game.flex_time>0.0

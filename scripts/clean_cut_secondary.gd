@@ -152,7 +152,7 @@ func layout() -> void:
     skin.Type.apply(caption,"body_m",false,skin.Style.INK)
     caption.text=ui.subtitle.text
     var titles := {"paused":"TAKE A BREATHER","build":"YOUR BUILD","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"VICTORY!","lost":"RUN OVER"}
-    skin.headline(titles.get(mode,""))
+    skin.headline(game.presentation_copy("title_"+mode, titles.get(mode,"")))
     skin.place(caption,Rect2(28,94,view.x-56,68))
     var half: float=(view.x-64)/2
     var footer: float=view.y-78
@@ -344,8 +344,8 @@ func results_layout() -> void:
     if game.mode=="won":
         var living_boss:=false
         for enemy in game.enemies:
-            if enemy["kind"]=="boss" and enemy["hp"]>0:living_boss=true
-        caption.text="BIG HATER DEFEATED" if game.boss_spawned and not living_boss else "RUN COMPLETE"
+            if enemy["kind"]==game.encounter_kind() and enemy["hp"]>0:living_boss=true
+        caption.text=game.presentation_copy("result_caption", "BIG HATER DEFEATED" if game.boss_spawned and not living_boss else "RUN COMPLETE")
     skin.place(caption,Rect2(30,94,view.x-60,36))
     var body_top:=142.0
     result_portrait.show()
