@@ -432,7 +432,7 @@ func home_layout() -> void:
     poster_hero.visible=(not narrow or mobile_portrait) and poster_hero.texture!=null
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
-    home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
+    home_caption.text=game.presentation_copy("home", "THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY.")
     place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)

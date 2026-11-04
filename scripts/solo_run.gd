@@ -188,7 +188,38 @@ var safe_spot_uses := 0
 var recovery_counts: Dictionary = {}
 var pickup_feedback: Array[Dictionary] = []
 
+# Overridable content seams. Defaults preserve the operational V3 run.
+func wave_count() -> int:
+    return 5
+
+func encounter_at() -> float:
+    return SoloClock.BOSS_AT
+
+func encounter_kind() -> String:
+    return "boss"
+
+func encounter_warning() -> String:
+    return SoloClock.warning(run_time)
+
+func encounter_events() -> Array:
+    return SoloEnemyRulesScript.EVENT_SCHEDULE
+
+func enemy_definition(kind: String) -> Dictionary:
+    return SoloEnemyRulesScript.DATA.get(kind, {})
+
+func record_result(result: Dictionary) -> void:
+    profile = ProfileStoreScript.record(profile, result, mode)
+    _save_profile()
+
+func presentation_copy(key: String, fallback: String) -> String:
+    return fallback
+
 func _ready() -> void:
+    if get_script().resource_path == "res://scripts/solo_run.gd" and OS.has_feature("web"):
+        if bool(JavaScriptBridge.eval("new URLSearchParams(location.search).get('level_zero') === '1'", true)):
+            set_process(false)
+            get_tree().change_scene_to_file.call_deferred("res://scenes/level_zero.tscn")
+            return
     rng.seed = 451
     _load_profile()
     WebPlatformScript.install()
@@ -595,7 +626,7 @@ func _advance(dt: float) -> void:
     _move_player(dt)
     if performance_probe!=null:performance_probe.add(&"player",Time.get_ticks_usec()-perf_move_player)
     if mode != "playing": return
-    var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
+    var new_wave := mini(wave_count(), 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
         wave += 1
         _spawn_phase_crystal()
@@ -675,7 +706,7 @@ func _tick_passives(dt: float) -> void:
         _damage_nearby(200.0, 0.30 * _base_power())
         for e: Dictionary in enemies:
             if player_pos.distance_to(e["pos"]) <= 200.0:
-                var is_boss: bool = bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"])
+                var is_boss: bool = bool(enemy_definition(e["kind"])["boss"])
                 e["weaken"] = 0.10 if is_boss else 0.20
                 e["weaken_until"] = run_time + (2.0 if is_boss else 4.0)
         if passive_feedback!=null:
@@ -785,7 +816,7 @@ func _signature_strike(radius: float, arc: float, power: float, limit: int = 214
         hit = hit or float(enemy["hp"])+float(enemy.get("shield",0.0)) < before
         if push and enemies.has(enemy):
             if enemy["kind"] == "boss": _stagger_enemy(enemy,10.0)
-            elif not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+            elif not bool(enemy_definition(enemy["kind"])["boss"]):
                 enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"],(Vector2(enemy["pos"])-player_pos).normalized()*40.0,float(enemy["radius"]))
     if mode != "playing": return hit
     hero_state["flex_outline"] = {"until":run_time+0.22,"origin":player_pos,"facing":facing,"radius":radius,"arc":arc}
@@ -877,11 +908,11 @@ func _move_player(dt: float) -> void:
     _update_target_lock()
 
 func _spawn_logic(dt: float) -> void:
-    if not boss_spawned and event_index < SoloEnemyRulesScript.EVENT_SCHEDULE.size() and run_time >= float(SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]["at"]):
-        var event: Dictionary = SoloEnemyRulesScript.EVENT_SCHEDULE[event_index]
+    if not boss_spawned and event_index < encounter_events().size() and run_time >= float(encounter_events()[event_index]["at"]):
+        var event: Dictionary = encounter_events()[event_index]
         _spawn_enemy(str(event["kind"]), {"telegraph": true})
         event_index += 1
-    if not boss_spawned and run_time >= SoloClock.BOSS_AT:
+    if not boss_spawned and run_time >= encounter_at():
         boss_spawned = true
         for drop: Dictionary in pickups:
             if drop["kind"] == "aura": _gain_xp(float(drop["xp"]))
@@ -891,7 +922,7 @@ func _spawn_logic(dt: float) -> void:
         weapon_areas.clear()
         hostile_shots.clear()
         hazard_zones.clear()
-        _spawn_enemy("boss", {"pos":Vector2(724.0, 445.0), "telegraph": true})
+        _spawn_enemy(encounter_kind(), {"pos":Vector2(724.0, 445.0), "telegraph": true})
     spawn_timer -= dt
     if spawn_timer > 0.0 or enemies.size() >= 100:
         return
@@ -908,10 +939,10 @@ func _spawn_logic(dt: float) -> void:
         _spawn_enemy(selected, {"telegraph": true, "elite": elite})
 
 func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
-    if not SoloEnemyRulesScript.DATA.has(kind):
+    if enemy_definition(kind).is_empty():
         push_error("Unknown GDD enemy ID: " + kind)
         return
-    var stats: Dictionary = SoloEnemyRulesScript.DATA[kind]
+    var stats: Dictionary = enemy_definition(kind)
     var pos: Vector2 = special.get("pos", Vector2.ZERO)
     if not special.has("pos"):
         var spawn_radius: float=float(stats["radius"])*(1.2 if bool(special.get("elite",false)) and not bool(stats["boss"]) and kind!="terminal" else 1.0)
@@ -943,7 +974,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
 func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: bool = false, hazard: bool = false) -> void:
     if mode != "playing" or hp <= 0.0 or amount <= 0.0: return
     if contact and run_time - float(hero_state["last_contact"]) < 0.25: return
-    var source_boss: bool = not source.is_empty() and bool(SoloEnemyRulesScript.DATA[source["kind"]]["boss"])
+    var source_boss: bool = not source.is_empty() and bool(enemy_definition(source["kind"])["boss"])
     if contact: hero_state["last_contact"] = run_time
     hurt_timer = 0.18
     var old_hp := hp
@@ -1150,7 +1181,7 @@ func _step_enemies(dt: float) -> void:
                 enemy["phase"] = ""
                 speed = float(enemy["speed"])
         if float(enemy.get("slow_until", 0.0)) > run_time:
-            speed *= 1.0 - minf(0.40, float(enemy.get("slow", 0.0))) * (0.5 if bool(SoloEnemyRulesScript.DATA[kind]["boss"]) else 1.0)
+            speed *= 1.0 - minf(0.40, float(enemy.get("slow", 0.0))) * (0.5 if bool(enemy_definition(kind)["boss"]) else 1.0)
         if run_time >= float(enemy.get("recover_from", INF)) and run_time < float(enemy.get("recover_until", 0.0)):
             speed = 0.0
         if distance > float(enemy["radius"]) + 19.0:
@@ -1223,7 +1254,7 @@ func _step_enemies(dt: float) -> void:
             _cue_enemy_pose(enemy,run_time,0.2,direction)
             var count := 0
             for ally: Dictionary in enemies:
-                if ally != enemy and not bool(SoloEnemyRulesScript.DATA[ally["kind"]]["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 160.0:
+                if ally != enemy and not bool(enemy_definition(ally["kind"])["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 160.0:
                     ally["shield"] = float(ally["max"]) * 0.15
                     ally["shield_until"] = run_time + 4.0
                     count += 1
@@ -1233,7 +1264,7 @@ func _step_enemies(dt: float) -> void:
             _cue_enemy_pose(enemy,run_time,0.2,direction)
             var healed := 0
             for ally: Dictionary in enemies:
-                if ally != enemy and ally["kind"] != "comment-mod" and not bool(SoloEnemyRulesScript.DATA[ally["kind"]]["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 180.0:
+                if ally != enemy and ally["kind"] != "comment-mod" and not bool(enemy_definition(ally["kind"])["boss"]) and Vector2(ally["pos"]).distance_to(pos) <= 180.0:
                     ally["hp"] = minf(float(ally["max"]), float(ally["hp"]) + 0.08 * float(ally["max"]))
                     healed += 1
                     if healed == 3: break
@@ -1472,13 +1503,13 @@ func _step_weapon_areas() -> void:
                     var enhanced: bool = area.get("enhanced_grass", false)
                     enemy["slow"] = maxf(float(enemy.get("slow", 0.0)) if float(enemy.get("slow_until", 0.0)) > run_time else 0.0, 0.25 if enhanced else 0.15)
                     enemy["slow_until"] = run_time + (2.0 if enhanced else 1.5)
-                elif area["id"] == "personal-space" and not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+                elif area["id"] == "personal-space" and not bool(enemy_definition(enemy["kind"])["boss"]):
                     if float(enemy.get("weaken_until", 0.0)) <= run_time or float(enemy.get("weaken", 0.0)) <= 0.08:
                         enemy["weaken"] = 0.08
                         enemy["weaken_until"] = run_time + 2.0
                 elif area["id"] == "ban-hammer":
                     _stagger_enemy(enemy, 15.0)
-                    if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
+                    if not bool(enemy_definition(enemy["kind"])["boss"]):
                         enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
             if primary and area["id"] == "cope-shield" and not shield_awarded:
                 shield_awarded = true
@@ -1586,7 +1617,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
         if defeated_visuals.size() > 64: defeated_visuals.pop_front()
         enemies.erase(enemy)
         kills += 1
-        if enemy["kind"] == "boss":
+        if enemy["kind"] == encounter_kind():
             _finish(true)
             return
         if enemy["kind"] == "terminal":
@@ -1981,7 +2012,7 @@ func _use_flex() -> void:
         _grant_weapon_shield("giga-rampage", max_hp * 0.25, 6.0)
         _signature_strike(150.0,360.0,0.40*_base_power())
         for enemy: Dictionary in enemies:
-            if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
+            if not bool(enemy_definition(enemy["kind"])["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
                 enemy["taunt_until"] = run_time + 2.0
 
 func _toggle_pause() -> void:
@@ -2010,8 +2041,7 @@ func _finish(won: bool) -> void:
         "xp": total_xp, "damage": run_metrics["damage"], "healing": run_metrics["healing"],
         "protection": run_metrics["protection"], "flexes": run_metrics["flexes"]
     }
-    profile = ProfileStoreScript.record(profile, result, mode)
-    _save_profile()
+    record_result(result)
     _show_ui()
 
 func _load_profile() -> void:
@@ -2380,7 +2410,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     var reaction: Vector2=Vector2.ZERO if weapon_presentation==null else weapon_presentation.reaction(e,run_time,bool(profile["settings"]["reducedMotion"]))
     if not art.draw_enemy(self, e, run_time, -1.0, profile["settings"]["reducedMotion"],reaction):
         draw_circle(e["pos"], radius, color)
-    var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
+    var sprite_height := maxf(52.0, radius * (2.6 if bool(enemy_definition(e["kind"])["boss"]) else 3.1))
     var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
