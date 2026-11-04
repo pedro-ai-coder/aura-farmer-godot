@@ -50,6 +50,11 @@ func presentation_copy(key: String, fallback: String) -> String:
         "subtitle_options":"Review preferences apply to this session only."
     }.get(key, fallback)
 
+func presentation_focus_root() -> Node:
+    # Intro controls own the modal focus ring, including held pointer presses.
+    if mode == "intro" and is_instance_valid(intro_layer): return intro_layer
+    return super.presentation_focus_root()
+
 func _ready() -> void:
     super._ready()
     var badge_layer := CanvasLayer.new()

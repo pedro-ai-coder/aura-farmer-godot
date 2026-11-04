@@ -612,7 +612,7 @@ func hud_rectangles() -> Array[Rect2]:
 
 func _focus_ring() -> void:
     var buttons: Array[Control] = []
-    _visible_buttons(game.clean_cut_skin if game.clean_cut_skin != null else self,buttons)
+    _visible_buttons(game.presentation_focus_root(),buttons)
     for i in range(buttons.size()):
         buttons[i].focus_next = buttons[(i+1)%buttons.size()].get_path()
         buttons[i].focus_previous = buttons[(i+buttons.size()-1)%buttons.size()].get_path()
