@@ -2259,14 +2259,27 @@ func _draw_contact_shadow(at: Vector2, radius: float) -> void:
 func _draw_pickup(drop: Dictionary) -> void:
     PickupVisuals.draw(self,drop,run_time,bool(profile["settings"]["reducedMotion"]))
 
+# Presentation-only seams. Normal Ruin Alley behavior remains the default.
+func _draw_stage_backdrop() -> bool:
+    return art.draw_backdrop(self, "ruin-alley", FIELD)
+
+func _draw_stage_details() -> void:
+    pass
+
+func _draw_stage_enemy_visual(enemy: Dictionary, reaction: Vector2) -> bool:
+    return art.draw_enemy(self, enemy, run_time, -1.0, profile["settings"]["reducedMotion"], reaction)
+
+func _draw_stage_defeated_visual(enemy: Dictionary, death_age: float) -> void:
+    art.draw_enemy(self, enemy, run_time, death_age, profile["settings"]["reducedMotion"])
+
 func _draw() -> void:
     var perf_draw_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
     if mode in ["menu","heroes"] or hero.is_empty():
-        if not art.draw_backdrop(self, "ruin-alley", FIELD):
+        if not _draw_stage_backdrop():
             draw_rect(FIELD, Color(0.12, 0.15, 0.22))
         draw_rect(FIELD, Color(0.025, 0.035, 0.06, 0.67))
         return
-    var approved_map: bool = art.draw_backdrop(self, "ruin-alley", FIELD)
+    var approved_map: bool = _draw_stage_backdrop()
     if not approved_map:
         draw_rect(FIELD, Color(0.12, 0.15, 0.22))
     if not approved_map:
@@ -2276,6 +2289,7 @@ func _draw() -> void:
             draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
     draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    _draw_stage_details()
     _draw_recovery()
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
@@ -2382,7 +2396,7 @@ func _draw_depth_actors() -> void:
     for actor: Dictionary in actors:
         if actor["kind"] == "hero": _draw_hero_actor()
         elif actor["kind"] == "cover": art.draw_cover(self, actor["pos"])
-        elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
+        elif actor["kind"] == "defeated": _draw_stage_defeated_visual(actor["enemy"],run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age)
         else: _draw_enemy_actor(actor["enemy"])
 
     if performance_probe!=null:
@@ -2408,7 +2422,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
     _draw_contact_shadow(e["pos"], radius)
     var reaction: Vector2=Vector2.ZERO if weapon_presentation==null else weapon_presentation.reaction(e,run_time,bool(profile["settings"]["reducedMotion"]))
-    if not art.draw_enemy(self, e, run_time, -1.0, profile["settings"]["reducedMotion"],reaction):
+    if not _draw_stage_enemy_visual(e,reaction):
         draw_circle(e["pos"], radius, color)
     var sprite_height := maxf(52.0, radius * (2.6 if bool(enemy_definition(e["kind"])["boss"]) else 3.1))
     var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)

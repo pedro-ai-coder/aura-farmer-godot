@@ -1,6 +1,8 @@
 extends "res://scripts/solo_run.gd"
 ## Content adapter: shared movement, combat, XP, Aura, offers and RNG.
 const Candidate = preload("res://scripts/level_zero/candidate_v1.gd")
+const VisualAssets = preload("res://scripts/level_zero/visual_assets_v1.gd")
+var visual_assets = VisualAssets.new()
 var intro_layer: CanvasLayer
 var review_badge: Label
 var normal_button: Button
@@ -156,3 +158,23 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
     enemy["recover_until"] = run_time + float(attack["delay"]) + float(attack["active"])
     enemy["prototype_next"] = run_time + Candidate.ATTACK_INTERVAL
     enemy["attack_slot"] = int(enemy["attack_slot"]) + 1
+
+# Only EXPERIMENTAL Level Zero may consume staged candidate visuals.
+# These overrides never adjust actor positions, collisions, the world or RNG.
+func _draw_stage_backdrop() -> bool:
+    return visual_assets.draw_background(self, FIELD) or super._draw_stage_backdrop()
+
+func _draw_stage_details() -> void:
+    visual_assets.draw_foreground(self, FIELD)
+
+func _draw_stage_enemy_visual(enemy: Dictionary, reaction: Vector2) -> bool:
+    if str(enemy.get("kind", "")) == Candidate.BOSS_ID:
+        if visual_assets.draw_imitation(self, enemy, reaction):
+            return true
+    return super._draw_stage_enemy_visual(enemy, reaction)
+
+func _draw_stage_defeated_visual(enemy: Dictionary, death_age: float) -> void:
+    if str(enemy.get("kind", "")) == Candidate.BOSS_ID:
+        if visual_assets.draw_imitation(self, enemy, Vector2.ZERO, maxf(0.0, 1.0 - death_age / 0.8)):
+            return
+    super._draw_stage_defeated_visual(enemy, death_age)
