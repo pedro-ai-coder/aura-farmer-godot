@@ -18,6 +18,7 @@ func check() -> void:
     var normal = load("res://scenes/main.tscn").instantiate()
     root.add_child(normal)
     normal.set_process(false)
+    require(normal.presentation_boss_portrait() == null, "Normal game uses approved atlas portrait")
     require(normal.wave_count() == 5 and normal.encounter_kind() == "boss", "Ruin Alley schedule unchanged")
     normal.queue_free()
     var level = load("res://scenes/level_zero.tscn").instantiate()
@@ -25,6 +26,7 @@ func check() -> void:
     level.set_process(false)
     require(level.wave_count() == 3 and level.encounter_kind() == level.Candidate.BOSS_ID, "Level Zero encounter unchanged")
     require(level.visual_assets != null, "Experimental-only bridge installed")
+    require(level.presentation_boss_portrait() == level.visual_assets.boss_texture, "Level Zero HUD reuses the exact same experimental boss texture")
     level.queue_free()
     if problems.is_empty():
         print("LEVEL_ZERO_VISUAL_BRIDGE: PASS (no art/render review)")

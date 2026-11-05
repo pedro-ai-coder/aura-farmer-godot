@@ -60,7 +60,8 @@
       "art/level-zero-visual-binding-no-deploy": false,
       "review/level-zero-print-factory-codex-private": false,
       "fix/level-zero-print-factory-floor-boundaries-20261105": false,
-      "fix/level-zero-factory-obstacle-clearance-20261105": false
+      "fix/level-zero-factory-obstacle-clearance-20261105": false,
+      "fix/level-zero-boss-hud-readability-20261105": false
     }
   }
 }

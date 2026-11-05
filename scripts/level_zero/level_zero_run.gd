@@ -75,8 +75,15 @@ func presentation_copy(key: String, fallback: String) -> String:
         "result_caption":"Prototype defeated. Big Hater is still out there.",
         "subtitle_won":"Big Hater is still out there. Season 1 is not available here yet.",
         "subtitle_lost":"Your next attempt starts fresh. No rewards or progress saved.",
-        "subtitle_options":"Review preferences apply to this session only."
+        "subtitle_options":"Review preferences apply to this session only.",
+        # The FLEX name/readiness already appears on the dial; avoid native
+        # hover tooltips covering the bottom equipment bar in the Web demo.
+        "flex_tooltip":""
     }.get(key, fallback)
+
+func presentation_boss_portrait() -> Texture2D:
+    # Candidate art remains private to Level Zero, and is never promoted to canon.
+    return visual_assets.boss_texture
 
 func presentation_focus_root() -> Node:
     # Intro controls own the modal focus ring, including held pointer presses.
