@@ -104,6 +104,10 @@ run_godot() {
     fi
 }
 run_godot import --headless --path . --import
+# Minimal executable level-zero contracts before the expensive Web export.
+run_godot level_zero_contract --headless --path . --script res://tests/test_level_zero.gd
+run_godot level_zero_input --headless --path . --script res://tests/test_level_zero_input.gd
+run_godot level_zero_visuals --headless --path . --script res://tests/test_level_zero_art_live.gd
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
