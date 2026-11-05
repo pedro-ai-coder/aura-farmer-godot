@@ -108,6 +108,7 @@ run_godot import --headless --path . --import
 run_godot level_zero_contract --headless --path . --script res://tests/test_level_zero.gd
 run_godot level_zero_input --headless --path . --script res://tests/test_level_zero_input.gd
 run_godot level_zero_visuals --headless --path . --script res://tests/test_level_zero_art_live.gd
+run_godot level_zero_factory_bounds --headless --path . --script res://tests/test_level_zero_factory_bounds.gd
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
