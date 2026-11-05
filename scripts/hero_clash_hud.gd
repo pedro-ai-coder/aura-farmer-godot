@@ -73,7 +73,9 @@ func _init(owner_skin) -> void:
     boss_fill=Meter.new();skin.add_child(boss_fill);boss_fill.install(texture("hp-fill"))
     skin.move_child(boss_fill,skin.boss_text.get_index())
     skin.hud_nodes.append_array([strip,weapon_group,passive_group,ability_plate,shield_mark,boss_fill])
-    boss_portrait=skin.image(skin);boss_portrait.texture=game.art.enemy_frame(game.presentation_copy("boss_art", "boss"),0)
+    boss_portrait=skin.image(skin)
+    var candidate_boss_portrait: Texture2D = game.presentation_boss_portrait()
+    boss_portrait.texture = candidate_boss_portrait if candidate_boss_portrait != null else game.art.enemy_frame(game.presentation_copy("boss_art", "boss"),0)
     boss_hp=skin.label(skin);wave_clock=skin.label(skin)
     skin.hud_nodes.append_array([boss_portrait,boss_hp,wave_clock])
     max_level_plate=skin.image(skin);max_level_plate.texture=texture("wave-frame")
@@ -119,7 +121,7 @@ func _init(owner_skin) -> void:
     skin.wave_frame.texture=texture("wave-frame")
     ability_plate.texture=texture("ability-nameplate")
     game.pause_button.tooltip_text="Pause [P / Esc]"
-    game.flex_button.tooltip_text="Flex [Space] — 100 Aura required"
+    game.flex_button.tooltip_text=game.presentation_copy("flex_tooltip","Flex [Space] — 100 Aura required")
     threat_overlay=ThreatOverlay.new();skin.add_child(threat_overlay);threat_overlay.install(self)
     # Hostile outlines pass above decoration and below the essential values.
     for node in [skin.hero_name,skin.hp,skin.shield_label,skin.wave,wave_clock,skin.xp,skin.flex_title,skin.flex_status,skin.flex_caption,skin.boss_text,boss_hp,skin.warning]:node.z_index=2
@@ -346,7 +348,7 @@ func sync_data() -> void:
     skin.flex_caption.text=str(game.hero["flex"]).to_upper();skin.fit_line(skin.flex_caption,16 if compact or desktop else 18)
     var caption_alpha: float=0.72 if desktop and current=="charging" else 1.0
     ability_plate.modulate=Color(1,1,1,caption_alpha);skin.flex_caption.modulate=ability_plate.modulate
-    game.flex_button.tooltip_text=str(game.hero["flex"])+" [Space] — 100 Aura required"
+    game.flex_button.tooltip_text=game.presentation_copy("flex_tooltip",str(game.hero["flex"])+" [Space] — 100 Aura required")
     game.legendary_button.visible=game.run_time>=game.SoloClock.LEGENDARY_FIRST and game.run_time<game.SoloClock.LEGENDARY_DEADLINE and not game.legendary_spent and not game.legendary_offers.is_empty()
     if game.legendary_button.visible:game.legendary_button.text="LEGENDARY [L]";skin.button_skin(game.legendary_button,"menu/primary")
     for i in range(8):

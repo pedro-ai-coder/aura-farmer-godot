@@ -86,7 +86,7 @@ func _draw() -> void:
     var info_y := 144.0 if size.x < 700 else 86.0
     var status := Rect2(16,info_y,minf(350,size.x-32),30)
     draw_style_box(Style.box(Style.BLUE,Style.DEEP,6,0),status)
-    _text(status.position+Vector2(8,21),"SHIELD %d  /  %s  /  %s" % [ceili(game.shield),"BOSS" if game.boss_spawned else "WAVE %d/5" % game.wave,clock],16)
+    _text(status.position+Vector2(8,21),"SHIELD %d  /  %s  /  %s" % [ceili(game.shield),"BOSS" if game.boss_spawned else "WAVE %d/%d" % [game.wave,game.wave_count()],clock],16)
     if not game.boss_spawned and game.run_time >= game.SoloClock.BOSS_WARNING:
         var warning := Rect2(16,info_y+40,minf(350,size.x-32),32)
         draw_style_box(Style.box(Style.DEEP,Style.GOLD,8,0),warning)

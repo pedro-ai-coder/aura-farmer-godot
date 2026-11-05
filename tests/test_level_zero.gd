@@ -24,6 +24,8 @@ func verify() -> void:
             check(game.hero_index==kit and game.hero.get("id")==game.HEROES[kit]["id"], "Requested kit really starts: %s/%d" % [appearance,kit])
             game._begin_encounter()
             check(game.mode=="playing" and game.weapons.size()==1 and game.passives.is_empty(), "Actual starter loadout")
+            game.clean_cut_skin.refresh()
+            check(game.flex_button.tooltip_text.is_empty(), "Level Zero FLEX does not cover the equipment strip with a native tooltip")
             check(game.weapons[0]["id"]==game.HEROES[kit]["starter"], "Requested kit starter weapon")
             check(game.rng.seed==451+17*kit, "Canonical seed")
             await process_frame
@@ -58,6 +60,8 @@ func verify() -> void:
     check(boss["hp"]==1200 and game.enemies.size()==1, "No regeneration or adds")
     game._hit_enemy(boss,1200)
     check(game.mode=="won", "Actual boss death wins")
+    game.clean_cut_skin.refresh()
+    check(game.clean_cut_skin.auxiliary.result_values[1].text=="3 / 3", "Level Zero results use 3/3 instead of normal 3/5")
     check(game.profile.get("runs")==original_profile.get("runs"), "No normal profile result")
     game.start_run(0)
     game._begin_encounter()

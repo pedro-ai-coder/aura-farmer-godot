@@ -214,6 +214,10 @@ func record_result(result: Dictionary) -> void:
 func presentation_copy(key: String, fallback: String) -> String:
     return fallback
 
+func presentation_boss_portrait() -> Texture2D:
+    # Normal Ruin Alley keeps the approved enemy atlas without a candidate override.
+    return null
+
 func presentation_focus_root() -> Node:
     return clean_cut_skin if clean_cut_skin != null else presentation
 
