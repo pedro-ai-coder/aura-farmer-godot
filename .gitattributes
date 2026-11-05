@@ -1,4 +1,7 @@
 * text=auto
+# Runtime validates these files byte-for-byte against the existing manifests.
+assets/art-candidates/byte-baddie/v2/frames.json text eol=lf
+assets/art-candidates/block-queen/v2/frames.json text eol=lf
 *.png binary
 *.jpg binary
 *.jpeg binary

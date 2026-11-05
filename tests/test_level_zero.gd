@@ -18,11 +18,15 @@ func verify() -> void:
     for appearance in ["original", "female"]:
         game.hero_appearance = appearance
         for kit in range(3):
+            game._return_to_menu()
             game.start_run(kit)
             check(game.mode=="intro" and game.run_time==0, "All kits/appearances enter paused story")
+            check(game.hero_index==kit and game.hero.get("id")==game.HEROES[kit]["id"], "Requested kit really starts: %s/%d" % [appearance,kit])
             game._begin_encounter()
             check(game.mode=="playing" and game.weapons.size()==1 and game.passives.is_empty(), "Actual starter loadout")
+            check(game.weapons[0]["id"]==game.HEROES[kit]["starter"], "Requested kit starter weapon")
             check(game.rng.seed==451+17*kit, "Canonical seed")
+            await process_frame
     check(game.wave_count()==3 and game.encounter_events().is_empty(), "Isolated schedule")
     game.run_time=119.99
     game._advance(0.02)

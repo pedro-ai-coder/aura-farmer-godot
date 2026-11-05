@@ -57,7 +57,8 @@
   ],
   "git": {
     "deploymentEnabled": {
-      "art/level-zero-visual-binding-no-deploy": false
+      "art/level-zero-visual-binding-no-deploy": false,
+      "review/level-zero-print-factory-codex-private": false
     }
   }
 }

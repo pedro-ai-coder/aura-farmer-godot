@@ -47,6 +47,8 @@ python3 scripts/verify_clean_cut_art.py
 python3 scripts/verify_typography.py
 python3 -m unittest discover -s tests -p test_icon_pipeline.py
 run_check import --headless --path . --import
+run_check level-zero --headless --path . --script res://tests/test_level_zero.gd
+run_check level-zero-input --headless --path . --script res://tests/test_level_zero_input.gd
 run_check mobile-layout --headless --path . --script res://tests/test_mobile_layout.gd
 run_check card-keyboard --headless --path . --script res://tests/test_card_keyboard.gd
 run_check spotlight-secondary --headless --path . --script res://tests/test_spotlight_secondary.gd

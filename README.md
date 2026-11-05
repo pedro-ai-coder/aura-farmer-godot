@@ -18,6 +18,9 @@ This is **not M0 visual-polish approval, an M0 restricted-test release, or M1 pu
 
 ## Run and validate
 
+For the experimental Level Zero candidate, use the focused Windows/Linux
+[local launch and verification guide](docs/experiments/LEVEL_ZERO_LOCAL.md).
+
 1. Install the exact Godot 4.7.2 editor.
 2. Run `python3 scripts/sync_approved_assets.py` to **verify the local, versioned approved artwork**. There is no network download. For first-time migration of missing files, use `--import-from /path/to/pinned-source-checkout` exactly once and commit the verified images.
 3. Import `project.godot`, then run the main scene.
