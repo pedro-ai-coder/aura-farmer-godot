@@ -5,11 +5,13 @@ extends RefCounted
 ## Keep Ruin Alley cover behavior, enemy sampling rectangle and seed semantics.
 const Base = preload("res://scripts/solo_world_rules.gd")
 const PLAYER_SPAWN := Vector2(724.0, 670.0)
-const IMITATION_SPAWN := Vector2(724.0, 600.0)
+const IMITATION_SPAWN := Vector2(820.0, 730.0)
 const FLOOR := [
-    Vector2(170,460), Vector2(330,420), Vector2(470,455),
-    Vector2(580,490), Vector2(810,495), Vector2(970,465),
-    Vector2(1220,435), Vector2(1370,475), Vector2(1370,760),
+    # Feet need extra visual clearance: hero sprites extend above their collider.
+    # Previous polygon allowed the upper body into painted press/poster stacks.
+    Vector2(170,530), Vector2(330,500), Vector2(470,520),
+    Vector2(580,565), Vector2(810,570), Vector2(970,535),
+    Vector2(1220,505), Vector2(1370,535), Vector2(1370,760),
     Vector2(1240,910), Vector2(1050,1035), Vector2(410,1035),
     Vector2(235,900), Vector2(115,760), Vector2(115,560)
 ]
@@ -38,10 +40,19 @@ static func walkable(point: Vector2, radius: float = 16.0) -> bool:
 
 static func move(point: Vector2, delta: Vector2, radius: float = 16.0) -> Vector2:
     # Keep canonical axis-separated sliding; only swap the floor polygon.
-    var horizontal := point + Vector2(delta.x, 0.0)
-    var after_x := horizontal if delta.x != 0.0 and walkable(horizontal, radius) else point
-    var vertical := after_x + Vector2(0.0, delta.y)
-    return vertical if delta.y != 0.0 and walkable(vertical, radius) else after_x
+    # Sweep in small steps so one fast movement cannot jump across a cover
+    # or narrow non-walkable region. No additional RNG is consumed.
+    var steps := maxi(1, ceili(delta.length() / 12.0))
+    var per_step := delta / float(steps)
+    var current := point
+    for step in range(steps):
+        var horizontal := current + Vector2(per_step.x, 0.0)
+        if per_step.x != 0.0 and walkable(horizontal, radius):
+            current = horizontal
+        var vertical := current + Vector2(0.0, per_step.y)
+        if per_step.y != 0.0 and walkable(vertical, radius):
+            current = vertical
+    return current
 
 static func clear_line(start: Vector2, ending: Vector2) -> bool:
     # Preserve V3 cover line-of-sight while this optional floor remains in review.
