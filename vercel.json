@@ -54,5 +54,10 @@
         }
       ]
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "art/level-zero-visual-binding-no-deploy": false
+    }
+  }
 }

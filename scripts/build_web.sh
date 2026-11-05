@@ -20,6 +20,8 @@ python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_female_variants.py
 python3 scripts/verify_pickup_candidates.py
 python3 scripts/verify_weapon_presence.py
+python3 scripts/reconstitute_level_zero_art.py
+python3 scripts/verify_level_zero_visual_pack.py
 BUILD_SHA="${VERCEL_GIT_COMMIT_SHA:-}"
 if [[ -z "$BUILD_SHA" ]]; then BUILD_SHA="$(git rev-parse HEAD)"; fi
 if [[ ! "$BUILD_SHA" =~ ^[a-fA-F0-9]{7,40}$ ]]; then
