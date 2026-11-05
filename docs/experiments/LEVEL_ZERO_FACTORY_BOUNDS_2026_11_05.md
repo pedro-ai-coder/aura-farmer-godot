@@ -37,3 +37,11 @@ in use even when the Level Zero art renderer had changed the background.
 
 ## Rollback
 Revert this focused branch/commit. No save schema or geometry migration.
+
+### Enemy steering parity
+
+Existing enemy cover navigation invokes the approved `SoloWorldRules.move`
+inside `EnemyNavigationScript`. The dedicated Level Zero navigation hook now
+rejects candidate steps that would enter the print press or leave the new
+floor, then tries deterministic stage-bound axis sliding. The default
+Ruin Alley navigation remains the original method unchanged.

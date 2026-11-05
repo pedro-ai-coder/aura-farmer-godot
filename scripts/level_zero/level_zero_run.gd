@@ -10,6 +10,17 @@ var normal_button: Button
 
 
 # Experimental scene geometry is independent of the approved Ruin Alley floor.
+func _navigate_enemy(position: Vector2, target: Vector2, distance: float, radius: float, state: Dictionary) -> Vector2:
+    # Reuse V3 cover steering, but reject any step landing beyond the
+    # candidate factory-floor edge. Only the Level Zero adapter changes this.
+    var steered: Vector2 = super._navigate_enemy(position, target, distance, radius, state)
+    if PrintFactoryWorld.walkable(steered, radius):
+        return steered
+    var heading := target - position
+    if heading.length_squared() < 0.000001:
+        return position
+    return PrintFactoryWorld.move(position, heading.normalized() * minf(distance, heading.length()), radius)
+
 func _world_walkable(point: Vector2, radius: float = 16.0) -> bool:
     return PrintFactoryWorld.walkable(point, radius)
 

@@ -34,6 +34,8 @@ func verify() -> void:
     level.start_run(0)
     check(level.player_pos == Factory.PLAYER_SPAWN, "Factory start is deterministic")
     level._begin_encounter()
+    var heading_to_press := level._navigate_enemy(Factory.IMITATION_SPAWN, Vector2(724,330), 300.0, 36.0, {})
+    check(Factory.walkable(heading_to_press, 36.0), "Enemy steering cannot escape the factory floor")
     level._spawn_enemy(level.Candidate.BOSS_ID, {"pos": wall})
     check(level.enemies.back()["pos"] == Factory.IMITATION_SPAWN, "Boss spawn is stage-specific")
     level.queue_free()

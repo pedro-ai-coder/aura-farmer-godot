@@ -884,6 +884,9 @@ func flex_status() -> String:
 
 # Adapter hooks: default to canonical Ruin Alley geometry byte-for-byte.
 # The experimental Level Zero scene overrides these only for its print-factory floor.
+func _navigate_enemy(position: Vector2, target: Vector2, distance: float, radius: float, state: Dictionary) -> Vector2:
+    return EnemyNavigationScript.move(position, target, distance, radius, state)
+
 func _world_walkable(point: Vector2, radius: float = 16.0) -> bool:
     return SoloWorldRulesScript.walkable(point, radius)
 
@@ -1211,7 +1214,7 @@ func _step_enemies(dt: float) -> void:
                 destination = _world_move(pos,direction*speed*dt,float(enemy["radius"]))
             else:
                 var goal := player_pos if direction.dot(to_player) >= 0.0 else pos+direction*120.0
-                destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy)
+                destination = _navigate_enemy(pos,goal,speed*dt,float(enemy["radius"]),enemy)
             if perf_detail:performance_probe.add(&"navigation",Time.get_ticks_usec()-perf_navigation)
             enemy["pos"] = destination
             if EnemyNavigationScript.diagnostics_enabled and enemy["phase"]!="charging" and speed>0.0:
