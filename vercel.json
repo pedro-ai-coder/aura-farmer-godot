@@ -54,5 +54,10 @@
         }
       ]
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "qa/level-zero-webgl2-preflight-no-deploy": false
+    }
+  }
 }
