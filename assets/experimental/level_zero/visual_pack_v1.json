@@ -1,0 +1,42 @@
+{
+  "schema_version": "level-zero-visual-pack-v1",
+  "status": "EXPERIMENTAL_CANDIDATE",
+  "source_commit": "128948546f5b49f126e707445f5334ebaeea5ae7",
+  "background": {
+    "path": "res://assets/experimental/level_zero/print_press_arena_candidate.png",
+    "status": "CANDIDATE",
+    "source_sha256": "0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23",
+    "verified_export_sha256": "0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23",
+    "dimensions_px": [
+      1672,
+      941
+    ]
+  },
+  "foreground": {
+    "path": "res://assets/experimental/level_zero/torn_poster_foreground_candidate.png",
+    "status": "CANDIDATE",
+    "source_sha256": "ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d",
+    "verified_export_sha256": "ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d",
+    "dimensions_px": [
+      1672,
+      941
+    ],
+    "render_under_actors": true
+  },
+  "boss": {
+    "path": "res://assets/experimental/level_zero/big_hater_imitation_candidate.png",
+    "status": "CANDIDATE",
+    "source_sha256": "7510fb0805f8ec9afa2ce1148a6ca50e2bb996bbc721bc6a6c4a90d68ae67fcb",
+    "verified_export_sha256": "7510fb0805f8ec9afa2ce1148a6ca50e2bb996bbc721bc6a6c4a90d68ae67fcb",
+    "dimensions_px": [
+      1312,
+      1199
+    ],
+    "standalone_candidate": true,
+    "foot_pivot_px": [
+      590,
+      1146
+    ],
+    "world_height": 93.6
+  }
+}

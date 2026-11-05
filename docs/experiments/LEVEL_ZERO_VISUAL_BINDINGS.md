@@ -119,3 +119,21 @@ creator conversation, not committed to this text-only PR. A real runtime build
 still requires staging the originals in `assets/experimental/level_zero/`.
 If absent, the renderer explicitly retains placeholders. Keep Art Pipeline
 provenance independent from runtime use.
+
+## Original PNGs added for the private Web preview (2026-11-05)
+
+- Art Pipeline source commit: `128948546f5b49f126e707445f5334ebaeea5ae7` (draft; exact source candidate bytes, not approval).
+- Runtime stores exact original boss and foreground PNGs, plus a byte-preserving
+  three-part base64 representation of the original arena PNG. The arena is
+  restored by `scripts/reconstitute_level_zero_art.py` **before** Godot import
+  and all three exact SHA-256 hashes/dimensions are validated. The original
+  image content is not reduced in resolution or reinterpreted.
+- The `visual_pack_v1.json` manifest is included in Web export presets. This
+  enables the existing Level Zero-only rendering bridge; normal Ruin Alley
+  remains visually and mechanically unchanged.
+- The source uses experimental *static* Hater Imitation artwork. Its foot pivot
+  `[590, 1146]` and world height `93.6` are review assumptions, **not
+  canonical gameplay values**. No actor hitbox or damage logic is changed.
+- The foreground is layered below actors and hazard indicators, so it cannot
+  intercept touches. Visual review across viewports remains mandatory.
+- No merge, final art approval, or production deployment is implied.
