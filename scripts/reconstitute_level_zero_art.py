@@ -24,7 +24,7 @@ def assert_original(name: str, raw: bytes) -> None:
     expected_sha, size = HASHES[name]
     if hashlib.sha256(raw).hexdigest() != expected_sha:
         raise ValueError(name + ": original SHA256 mismatch")
-    if len(raw) < 26 or raw[:8] != b"\\x89PNG\\r\\n\\x1a\\n" or raw[12:16] != b"IHDR":
+    if len(raw) < 26 or raw[:8] != b"\x89PNG\r\n\x1a\n" or raw[12:16] != b"IHDR":
         raise ValueError(name + ": original PNG header mismatch")
     dims = struct.unpack(">II", raw[16:24])
     if dims != size:
