@@ -23,7 +23,7 @@ exact final image bytes. The three original candidate sources are tracked as met
 | Source | Recorded SHA-256 | Dimensions | Runtime treatment |
 | --- | --- | --- | --- |
 | `print_press_arena_candidate.png` | `0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23` | 1672×941 | Optional ground backdrop after byte verification |
-| `torn_poster_foreground_candidate.png` | `ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d` | 1672×941 | Source for a separately masked, transparent foreground (NOT the raw concept board) |
+| `torn_poster_foreground_candidate.png` | `ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d` | 1672×941 | Source for a original alpha-transparent foreground displayed only below actors (NOT the raw concept board) |
 | `big_hater_imitation_candidate.png` | `7510fb0805f8ec9afa2ce1148a6ca50e2bb996bbc721bc6a6c4a90d68ae67fcb` | 1312×1199 | Concept only: needs independent transparent sprite, documented foot pivot/scale |
 
 New derived PNGs receive **new export hashes** and cannot claim the source concept hash as
@@ -52,8 +52,8 @@ Do not commit a synthetic replacement. Example shape:
 ```
 
 The foreground and boss use the same path/status/hash/dimensions contract, plus:
-`combat_safe_mask_reviewed: true` for an actual transparent foreground export;
-`independent_sprite_master: true`, `foot_pivot_px: [x,y]`, and a verified
+`render_under_actors: true` for an actual transparent foreground export;
+`standalone_candidate: true`, `foot_pivot_px: [x,y]`, and a verified
 `world_height` for the transparent boss sprite. **These review values are not
 supplied or invented by this PR.**
 
@@ -97,3 +97,25 @@ Absent art is allowed, and explicitly means **placeholder visual state**.
 6. Record source SHA, manifest, GDD V3 baseline, test commands/platform and results.
 
 **No Web preview, merge, canon change, artist approval or release is authorized.**
+
+## Original recovery archive verified (2026-11-05)
+
+The creator supplied `clutchpunks-level-zero-art-recovery(2)(1).zip`. Its three
+original PNGs match the Art Pipeline provenance hashes, as checked from exact
+bytes. The original foreground PNG is already alpha-transparent, and the
+original character PNG is an isolated alpha-transparent single character.
+Therefore this draft accepts the **original bytes under their original names**
+and does not falsely label derived exports as already artistically approved.
+
+Experimental review pivot for the Hater Imitation: `[590, 1146]` source
+pixels, derived by inspection of the feet in the original 1312×1199 image.
+Experimental display height: `93.6` world units, calculated from the existing
+prototype enemy radius 36 × current renderer's 2.6 boss visual scale.
+These are **visual-only review values** requiring creator inspection, not
+GDD/gameplay balance values.
+
+The exact original PNGs are attached to a **local review-package ZIP** in the
+creator conversation, not committed to this text-only PR. A real runtime build
+still requires staging the originals in `assets/experimental/level_zero/`.
+If absent, the renderer explicitly retains placeholders. Keep Art Pipeline
+provenance independent from runtime use.

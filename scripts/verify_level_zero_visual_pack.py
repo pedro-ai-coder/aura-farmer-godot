@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "assets/experimental/level_zero/visual_pack_v1.json"
 RECORDS = {
     "background": ("print_press_arena_candidate.png", "0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23"),
-    "foreground": ("torn_poster_foreground_masked.png", "ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d"),
-    "boss": ("hater_imitation_sprite.png", "7510fb0805f8ec9afa2ce1148a6ca50e2bb996bbc721bc6a6c4a90d68ae67fcb"),
+    "foreground": ("torn_poster_foreground_candidate.png", "ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d"),
+    "boss": ("big_hater_imitation_candidate.png", "7510fb0805f8ec9afa2ce1148a6ca50e2bb996bbc721bc6a6c4a90d68ae67fcb"),
 }
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
@@ -59,11 +59,16 @@ def check_pack(pack_path=PACK):
             errors.append(f"{role}: wrong dimensions")
         if role == "background" and (width, height) != (1672, 941):
             errors.append("background: original source dimensions changed")
-        if role == "foreground" and item.get("combat_safe_mask_reviewed") is not True:
-            errors.append("foreground: transparent combat-safe layer not reviewed")
+        if role == "foreground":
+            if item.get("render_under_actors") is not True:
+                errors.append("foreground: must be an underlay behind actors and hazards")
+            if len(raw) < 26 or raw[25] != 6:
+                errors.append("foreground: candidate must be an RGBA PNG")
         if role == "boss":
-            if item.get("independent_sprite_master") is not True:
-                errors.append("boss: concept board is not a standalone sprite")
+            if item.get("standalone_candidate") is not True:
+                errors.append("boss: candidate must be a standalone RGBA sprite")
+            if len(raw) < 26 or raw[25] != 6:
+                errors.append("boss: candidate must be an RGBA PNG")
             pivot = item.get("foot_pivot_px")
             height_world = item.get("world_height")
             if (not isinstance(pivot, list) or len(pivot) != 2 or

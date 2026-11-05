@@ -58,7 +58,7 @@ func _ready() -> void:
     badge_layer.layer = 90
     add_child(badge_layer)
     review_badge = Label.new()
-    review_badge.text = "LEVEL ZERO · EXPERIMENTAL v0.1 · PLACEHOLDER ART"
+    review_badge.text = "LEVEL ZERO · EXPERIMENTAL v0.1 · CANDIDATE ART / NOT APPROVED" if visual_assets.ground_texture != null and visual_assets.boss_texture != null else "LEVEL ZERO · EXPERIMENTAL v0.1 · PLACEHOLDER ART"
     review_badge.add_theme_font_size_override("font_size", 12)
     review_badge.add_theme_color_override("font_outline_color", Color.BLACK)
     review_badge.add_theme_constant_override("outline_size", 5)

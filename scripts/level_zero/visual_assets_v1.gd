@@ -3,8 +3,8 @@ extends RefCounted
 ## The exact PNGs are not part of this code-only PR. Absent/invalid packs use V3 art.
 const PACK_PATH := "res://assets/experimental/level_zero/visual_pack_v1.json"
 const BACKGROUND := "res://assets/experimental/level_zero/print_press_arena_candidate.png"
-const FOREGROUND := "res://assets/experimental/level_zero/torn_poster_foreground_masked.png"
-const IMITATION := "res://assets/experimental/level_zero/hater_imitation_sprite.png"
+const FOREGROUND := "res://assets/experimental/level_zero/torn_poster_foreground_candidate.png"
+const IMITATION := "res://assets/experimental/level_zero/big_hater_imitation_candidate.png"
 const SOURCE_HASHES := {
     "background": "0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23",
     "foreground": "ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d",
@@ -27,11 +27,11 @@ func _init() -> void:
         return
     ground_texture = _texture_if_staged(pack.get("background", {}), BACKGROUND, SOURCE_HASHES["background"])
     var foreground_entry: Variant = pack.get("foreground", {})
-    # Never draw an opaque concept board over gameplay or hazard telegraphs.
-    if foreground_entry is Dictionary and foreground_entry.get("combat_safe_mask_reviewed", false) == true:
+    # Only alpha PNG underlay below actors and combat telegraphs; never draw over gameplay.
+    if foreground_entry is Dictionary and foreground_entry.get("render_under_actors", false) == true:
         foreground_texture = _texture_if_staged(foreground_entry, FOREGROUND, SOURCE_HASHES["foreground"])
     var boss_entry: Variant = pack.get("boss", {})
-    if boss_entry is Dictionary and boss_entry.get("independent_sprite_master", false) == true:
+    if boss_entry is Dictionary and boss_entry.get("standalone_candidate", false) == true:
         var pivot = boss_entry.get("foot_pivot_px", [])
         var height = boss_entry.get("world_height", 0.0)
         if pivot is Array and pivot.size() == 2 and (height is float or height is int) and height > 0.0:
