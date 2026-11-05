@@ -7,6 +7,7 @@ var visual_assets = VisualAssets.new()
 var intro_layer: CanvasLayer
 var review_badge: Label
 var normal_button: Button
+var bounds_debug := false
 
 
 # Experimental scene geometry is independent of the approved Ruin Alley floor.
@@ -92,6 +93,11 @@ func presentation_focus_root() -> Node:
 
 func _ready() -> void:
     super._ready()
+    # Deliberately opt-in for private geometry review, never normal gameplay.
+    if OS.has_feature("web"):
+        bounds_debug = bool(JavaScriptBridge.eval("new URLSearchParams(location.search).get('lz_bounds_debug') === '1'", true))
+    else:
+        bounds_debug = OS.get_cmdline_user_args().has("--lz-bounds-debug")
     var badge_layer := CanvasLayer.new()
     badge_layer.layer = 90
     add_child(badge_layer)
@@ -213,6 +219,15 @@ func _draw_stage_backdrop() -> bool:
 
 func _draw_stage_details() -> void:
     visual_assets.draw_foreground(self, FIELD)
+    if bounds_debug:
+        # Source-aligned outline and translucent fill help review the exact
+        # collision footprint without changing movement or imported art.
+        draw_colored_polygon(PrintFactoryWorld.polygon, Color(0.06, 0.85, 0.45, 0.11))
+        var closed: PackedVector2Array = PrintFactoryWorld.polygon.duplicate()
+        closed.append(closed[0])
+        draw_polyline(closed, Color(0.98, 0.35, 0.20, 0.86), 3.0, true)
+        for point: Vector2 in PrintFactoryWorld.polygon:
+            draw_circle(point, 4.0, Color(1.0, 0.75, 0.20))
 
 func _draw_stage_enemy_visual(enemy: Dictionary, reaction: Vector2) -> bool:
     if str(enemy.get("kind", "")) == Candidate.BOSS_ID:
