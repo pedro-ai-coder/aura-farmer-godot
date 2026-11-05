@@ -214,6 +214,9 @@ func record_result(result: Dictionary) -> void:
 func presentation_copy(key: String, fallback: String) -> String:
     return fallback
 
+func presentation_focus_root() -> Node:
+    return clean_cut_skin if clean_cut_skin != null else presentation
+
 func _ready() -> void:
     if get_script().resource_path == "res://scripts/solo_run.gd" and OS.has_feature("web"):
         if bool(JavaScriptBridge.eval("new URLSearchParams(location.search).get('level_zero') === '1'", true)):
