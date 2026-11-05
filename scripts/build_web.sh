@@ -106,6 +106,8 @@ EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
+python3 scripts/inject_level_zero_preflight.py build/web/index.html
+cp web/level_zero_preflight.js build/web/
 cp web/platform.js web/aura.webmanifest build/web/
 # Reuse the exact approved button face and already licensed display font for
 # the trusted browser fullscreen action embedded in the Godot settings panel.
@@ -119,7 +121,7 @@ cp assets/fonts/hero-clash/OFL-Archivo.txt build/web/fullscreen-font-license.txt
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then cp web/performance.js build/web/; fi
 printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
 
-for file in platform.js aura.webmanifest fullscreen-button.png fullscreen-button-hover.png fullscreen-button-focus.png fullscreen-button-pressed.png fullscreen-archivo.ttf fullscreen-font-license.txt index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
+for file in platform.js aura.webmanifest fullscreen-button.png fullscreen-button-hover.png fullscreen-button-focus.png fullscreen-button-pressed.png fullscreen-archivo.ttf fullscreen-font-license.txt index.html level_zero_preflight.js "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
     if [[ ! -s "build/web/$file" ]]; then
         echo "ERROR: Web export missing or empty: build/web/$file" >&2
         exit 5
