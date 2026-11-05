@@ -26,12 +26,12 @@ func _init() -> void:
     if pack.get("schema_version", "") != "level-zero-visual-pack-v1" or pack.get("status", "") != "EXPERIMENTAL_CANDIDATE":
         return
     ground_texture = _texture_if_staged(pack.get("background", {}), BACKGROUND, SOURCE_HASHES["background"])
-    var foreground_entry: Dictionary = pack.get("foreground", {})
+    var foreground_entry: Variant = pack.get("foreground", {})
     # Never draw an opaque concept board over gameplay or hazard telegraphs.
-    if foreground_entry.get("combat_safe_mask_reviewed", false) == true:
+    if foreground_entry is Dictionary and foreground_entry.get("combat_safe_mask_reviewed", false) == true:
         foreground_texture = _texture_if_staged(foreground_entry, FOREGROUND, SOURCE_HASHES["foreground"])
-    var boss_entry: Dictionary = pack.get("boss", {})
-    if boss_entry.get("independent_sprite_master", false) == true:
+    var boss_entry: Variant = pack.get("boss", {})
+    if boss_entry is Dictionary and boss_entry.get("independent_sprite_master", false) == true:
         var pivot = boss_entry.get("foot_pivot_px", [])
         var height = boss_entry.get("world_height", 0.0)
         if pivot is Array and pivot.size() == 2 and (height is float or height is int) and height > 0.0:
