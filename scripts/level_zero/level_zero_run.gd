@@ -2,10 +2,25 @@ extends "res://scripts/solo_run.gd"
 ## Content adapter: shared movement, combat, XP, Aura, offers and RNG.
 const Candidate = preload("res://scripts/level_zero/candidate_v1.gd")
 const VisualAssets = preload("res://scripts/level_zero/visual_assets_v1.gd")
+const PrintFactoryWorld = preload("res://scripts/level_zero/world_rules_v1.gd")
 var visual_assets = VisualAssets.new()
 var intro_layer: CanvasLayer
 var review_badge: Label
 var normal_button: Button
+
+
+# Experimental scene geometry is independent of the approved Ruin Alley floor.
+func _world_walkable(point: Vector2, radius: float = 16.0) -> bool:
+    return PrintFactoryWorld.walkable(point, radius)
+
+func _world_move(point: Vector2, delta: Vector2, radius: float = 16.0) -> Vector2:
+    return PrintFactoryWorld.move(point, delta, radius)
+
+func _world_spawn_point(player: Vector2, rng_source, radius: float = 24.0):
+    return PrintFactoryWorld.spawn_point(player, rng_source, radius)
+
+func _world_clear_line(start: Vector2, ending: Vector2) -> bool:
+    return PrintFactoryWorld.clear_line(start, ending)
 
 func wave_count() -> int:
     return Candidate.WAVE_COUNT
@@ -95,6 +110,9 @@ func _open_normal() -> void:
 func start_run(index: int) -> void:
     super.start_run(index)
     if mode != "playing": return
+    # Player foot point must begin on the new candidate factory floor.
+    player_pos = PrintFactoryWorld.PLAYER_SPAWN
+    _update_camera(0.0, true)
     mode = "intro"
     _show_ui()
     intro_layer = CanvasLayer.new()
@@ -142,7 +160,12 @@ func _begin_encounter() -> void:
     _show_ui()
 
 func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
-    super._spawn_enemy(kind, special)
+    # Shared boss script requests the Ruin Alley coordinate; stage only the
+    # experimental imitation at the new walkable factory-floor position.
+    var position_override := special.duplicate(true)
+    if kind == Candidate.BOSS_ID:
+        position_override["pos"] = PrintFactoryWorld.IMITATION_SPAWN
+    super._spawn_enemy(kind, position_override)
     if kind == Candidate.BOSS_ID and not enemies.is_empty():
         var enemy: Dictionary = enemies.back()
         enemy["visual_kind"] = Candidate.VISUAL_KIND
@@ -165,7 +188,8 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
     enemy["attack_slot"] = int(enemy["attack_slot"]) + 1
 
 # Only EXPERIMENTAL Level Zero may consume staged candidate visuals.
-# These overrides never adjust actor positions, collisions, the world or RNG.
+# The art overrides remain presentation-only. Experimental floor geometry above
+# is a separate candidate collision adapter; only Level Zero uses it.
 func _draw_stage_backdrop() -> bool:
     return visual_assets.draw_background(self, FIELD) or super._draw_stage_backdrop()
 
