@@ -1,20 +1,43 @@
 extends RefCounted
 ## Level Zero EXPERIMENTAL visual-space collision adapter, candidate only.
 ## Print factory artwork original: 1672x941 cropped with cover into 1448x1086.
-## Bounds hand-fitted to the visible walkable ground. Do not reuse as GDD V3 canon.
+## Foot clearance traced in original source-pixel coordinates, then projected by the same cover crop as the backdrop. NOT canonical GDD V3 geometry.
 ## Keep Ruin Alley cover behavior, enemy sampling rectangle and seed semantics.
 const Base = preload("res://scripts/solo_world_rules.gd")
+const VisualAssets = preload("res://scripts/level_zero/visual_assets_v1.gd")
 const PLAYER_SPAWN := Vector2(724.0, 670.0)
 const IMITATION_SPAWN := Vector2(820.0, 730.0)
-const FLOOR := [
-    # Feet need extra visual clearance: hero sprites extend above their collider.
-    # Previous polygon allowed the upper body into painted press/poster stacks.
-    Vector2(170,530), Vector2(330,500), Vector2(470,520),
-    Vector2(580,565), Vector2(810,570), Vector2(970,535),
-    Vector2(1220,505), Vector2(1370,535), Vector2(1370,760),
-    Vector2(1240,910), Vector2(1050,1035), Vector2(410,1035),
-    Vector2(235,900), Vector2(115,760), Vector2(115,560)
+const SOURCE_SIZE := Vector2(1672.0, 941.0)
+# Trace image-space foot clearance instead of approximating it in world space.
+# Source is the byte-verified candidate PNG; this is not a canonical collision map.
+const SOURCE_FLOOR := [
+    Vector2(218,500), Vector2(245,430), Vector2(300,385),
+    Vector2(390,371), Vector2(460,380), Vector2(540,385),
+    Vector2(620,418), Vector2(827,420), Vector2(900,370),
+    Vector2(1020,366), Vector2(1190,367), Vector2(1248,381),
+    Vector2(1340,425), Vector2(1452,480), Vector2(1453,775),
+    Vector2(1380,895), Vector2(1245,916), Vector2(450,916),
+    Vector2(280,895), Vector2(209,780)
 ]
+
+static func source_crop() -> Rect2:
+    # Share the exact center-cover projection used by the drawn factory texture.
+    return VisualAssets.cover_rect(SOURCE_SIZE, Rect2(Vector2.ZERO, Base.SIZE))
+
+static func source_to_world(source: Vector2) -> Vector2:
+    var crop := source_crop()
+    return Vector2(
+        (source.x - crop.position.x) * Base.SIZE.x / crop.size.x,
+        (source.y - crop.position.y) * Base.SIZE.y / crop.size.y
+    )
+
+static func _make_world_floor() -> Array[Vector2]:
+    var result: Array[Vector2] = []
+    for point: Vector2 in SOURCE_FLOOR:
+        result.append(source_to_world(point))
+    return result
+
+static var FLOOR: Array[Vector2] = _make_world_floor()
 static var polygon: PackedVector2Array = PackedVector2Array(FLOOR)
 
 static func in_floor(point: Vector2, radius: float = 16.0) -> bool:
