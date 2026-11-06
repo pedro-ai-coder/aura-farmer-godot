@@ -14,3 +14,10 @@ The complete canonical `docs/GDD.md` is the sole product, gameplay and visual sp
 - Do not add paid CI, paid services, automatic releases, new artwork or credentials.
 - Reuse only inventoried and approved assets; no new characters in this foundation.
 - Runtime validation cannot be claimed unless Godot was actually executed.
+
+## Context Routing
+
+Before interacting with this project, read the [context routing index](.context-routing/index.md)
+and follow the routes relevant to your task.
+Use the task and folder descriptions to select relevant routes; open only those
+context files and dependencies needed for the task.
