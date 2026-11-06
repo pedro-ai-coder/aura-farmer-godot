@@ -10,6 +10,13 @@ else
   exit 2
 fi
 
+godot_version="$("$GODOT_BIN" --version)"
+if [[ ! "$godot_version" =~ ^4\.7\.2\.stable(\.|$) ]]; then
+  echo "ERROR: Godot 4.7.2 stable required; got $godot_version ($GODOT_BIN)." >&2
+  exit 2
+fi
+echo "Godot version: $godot_version"
+
 cd "$(dirname "$0")/.."
 
 # Godot can return 0 while outputting script/resource errors.
