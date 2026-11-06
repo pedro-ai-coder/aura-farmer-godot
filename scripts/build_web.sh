@@ -16,6 +16,14 @@ ENGINE_SHA="cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
 TEMPLATE_SHA="f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
+if [[ "${LEVEL_ZERO_DEMO:-0}" == "1" && -n "${VERCEL_ENV:-}" ]]; then
+    echo "ERROR: The Level Zero demo export is for private local review."
+    exit 2
+fi
+if [[ "${LEVEL_ZERO_DEMO:-0}" == "1" && "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then
+    echo "ERROR: Select only one alternate Web preset."
+    exit 2
+fi
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_female_variants.py
 python3 scripts/verify_pickup_candidates.py
@@ -104,6 +112,7 @@ run_godot() {
 run_godot import --headless --path . --import
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
+if [[ "${LEVEL_ZERO_DEMO:-0}" == "1" ]]; then EXPORT_PRESET="Web Level Zero Demo"; fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/

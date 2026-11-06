@@ -35,7 +35,7 @@ def validate() -> list[dict]:
         if row.get("approval_status") != "CREATOR_APPROVED" or "2026-10-24" not in row.get("approval_reference", ""):
             raise ValueError(f"No explicit creator approval recorded: {key}")
         expected.add(destination.resolve())
-        records.append({"id": key, "path": str(destination.relative_to(ROOT)), "sha256": sha})
+        records.append({"id": key, "path": destination.relative_to(ROOT).as_posix(), "sha256": sha})
     runtime_root = ROOT / "assets/runtime-clean-cut/v2"
     actual = {f.resolve() for f in runtime_root.rglob("*") if f.is_file() and f.name != "manifest.json" and not f.name.endswith(".import")}
     if actual != expected:

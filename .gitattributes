@@ -11,3 +11,9 @@ assets/art-candidates/block-queen/v2/frames.json text eol=lf
 *.mp3 binary
 *.zip binary
 *.pck binary
+assets/art-candidates/pickups/v1/source/*.svg text eol=lf
+assets/art-candidates/weapon-presence/v1/source/*.svg text eol=lf
+scripts/weapon_attachments.gd text eol=lf
+assets/ui-button-candidates/v1/source/*.svg text eol=lf
+assets/ui-hud-candidates/v2/*.svg text eol=lf
+assets/ui-hud-candidates/v2/portrait_crop.gdshader text eol=lf
