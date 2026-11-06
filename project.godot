@@ -4,7 +4,9 @@ config_version=5
 
 [application]
 config/name="Aura Farmer"
+config/name.level_zero_demo="CLUTCHPUNKS Level Zero Demo"
 run/main_scene="res://scenes/main.tscn"
+run/main_scene.level_zero_demo="res://scenes/level_zero.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/description="Godot project bootstrap — GDD-authoritative cross-platform game."
 
