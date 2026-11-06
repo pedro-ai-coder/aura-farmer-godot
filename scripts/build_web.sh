@@ -54,7 +54,7 @@ fetch_official() {
 }
 if [[ -n "${GODOT_BIN:-}" && -x "$GODOT_BIN" ]]; then
     GODOT="$GODOT_BIN"
-elif command -v godot >/dev/null 2>&1 && godot --version | grep -q '^4\.7\.2'; then
+elif command -v godot >/dev/null 2>&1 && godot --version | grep -Eq '^4\.7\.2\.stable(\.|$)'; then
     GODOT="$(command -v godot)"
 else
     fetch_official "$ENGINE_FILENAME" "$ENGINE_SHA"
@@ -67,9 +67,15 @@ else
     chmod +x "$GODOT"
 fi
 
+godot_version="$("$GODOT" --version)"
+if [[ ! "$godot_version" =~ ^4\.7\.2\.stable(\.|$) ]]; then
+    echo "ERROR: Godot 4.7.2 stable required; got $godot_version ($GODOT)." >&2
+    exit 2
+fi
+
 if [[ "${GODOT_SKIP_TEMPLATE_DOWNLOAD:-0}" != "1" ]]; then
     fetch_official "$TEMPLATE_FILENAME" "$TEMPLATE_SHA"
-    VERSION_DIR="$HOME/.local/share/godot/export_templates/${VERSION}.stable"
+    VERSION_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/godot/export_templates/${VERSION}.stable"
     mkdir -p "$VERSION_DIR"
     # Extract ONLY Web templates; archive includes all desktop/mobile platforms (~1.2 GB).
     mapfile -t WEB_ENTRIES < <(unzip -Z1 "$WORKDIR/$TEMPLATE_FILENAME" | grep -E '^templates/web.*\.zip$')
