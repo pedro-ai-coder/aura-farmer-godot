@@ -164,14 +164,14 @@ func draw_ground(canvas: CanvasItem, pending: Array, clock: float, reduced: bool
         elif area["id"]=="chad-hands" and bool(area["activation"].get("slam",false)) and bool(area.get("second",false)) and not warning:
             canvas.draw_arc(center,radius*0.8,0,TAU,32,Color(GOLD,0.55*fade),3.0)
 
-func draw_actor(canvas: CanvasItem, point: Vector2, hero_id: String, appearance: String, pose: Dictionary, clock: float, reduced: bool, shield_sources: Dictionary) -> void:
+func draw_actor(canvas: CanvasItem, point: Vector2, hero_id: String, appearance: String, pose: Dictionary, clock: float, reduced: bool, shield_sources: Dictionary, body_offset: Vector2 = Vector2.ZERO) -> void:
     if pose["state"] in ["hurt","defeat"]:return
     var event:=current(clock)
     if not event.is_empty() and not str(pose["state"]).begins_with("flex"):
         var id: String=event["id"];var model: Dictionary=event["model"]
         var beat:=stage(event,clock);var at: float=model["at"];var age:=clock-at
         var flip: bool=pose["flip"]
-        var grip:=point+Attach.grip(hero_id,appearance,beat,flip)
+        var grip:=point+body_offset+Attach.grip(hero_id,appearance,beat,flip)
         var facing: Vector2=model.get("direction",model.get("facing",Vector2.RIGHT))
         var sign_x:=-1.0 if flip else 1.0
         var aim:=atan2(facing.y,absf(facing.x))

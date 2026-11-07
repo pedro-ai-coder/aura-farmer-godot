@@ -4,6 +4,7 @@ const Typography = preload("res://scripts/clean_cut_typography.gd")
 const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
+const MotionLanguageScript = preload("res://scripts/motion_language.gd")
 const HeroAppearanceScript = preload("res://scripts/hero_appearance.gd")
 const FemaleHeroAnimationScript = preload("res://scripts/female_hero_animation.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
@@ -2395,12 +2396,13 @@ func hero_pose() -> Dictionary:
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
     var pose:=hero_pose()
-    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose):
+    var motion: Dictionary = MotionLanguageScript.hero_motion(str(hero["id"]),pose,run_time,visual_walk,bool(profile["settings"]["reducedMotion"]))
+    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose, motion):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
         draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
         draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
-    if weapon_presentation!=null:weapon_presentation.draw_actor(self,player_pos,str(hero["id"]),hero_appearance,pose,run_time,bool(profile["settings"]["reducedMotion"]),weapon_shields)
+    if weapon_presentation!=null:weapon_presentation.draw_actor(self,player_pos,str(hero["id"]),hero_appearance,pose,run_time,bool(profile["settings"]["reducedMotion"]),weapon_shields,Vector2(motion["offset"]))
     # Hero art uses a foot pivot: keep the health bar above the head.
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))
