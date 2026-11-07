@@ -57,6 +57,7 @@ run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
+run_check motion-language --headless --path . --script res://tests/test_motion_language.gd
 run_check recovery --headless --path . --script res://tests/test_recovery.gd
 run_check survival-review-policy --headless --path . --script res://tests/test_survival_review_policy.gd
 run_check camera-cover --headless --path . --script res://tests/test_camera_cover.gd
