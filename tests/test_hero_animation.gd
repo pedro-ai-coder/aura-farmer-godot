@@ -40,9 +40,16 @@ func _verify() -> void:
     game.touch_direction = Vector2.LEFT
     game._move_player(0.1)
     check(game.visual_walk == 0,"Wall-blocked movement cannot advance walk clock")
+    check(not game.visual_moving,"Wall-blocked input cannot render a false run pose")
     game.touch_direction = Vector2.RIGHT
     game._move_player(0.1)
     check(game.visual_walk > 0,"Actual travel advances walk")
+    check(game.visual_moving and game.visual_move_start_at == game.run_time,
+        "The first real step records the motion launch without changing game speed")
+    game.touch_direction = Vector2.ZERO
+    game._move_player(0.1)
+    check(not game.visual_moving and game.visual_move_stop_at == game.run_time,
+        "Releasing movement starts a presentation-only planting transition")
     game.attack_flash = 0.2
     game.attack_visuals.append({"life":0.5})
     var before: float = game.visual_walk
@@ -59,6 +66,8 @@ func _verify() -> void:
     check(game.defeated_visuals.size() == 1 and not game.enemies.has(victim),"Defeated snapshot renders without remaining in combat")
     game.start_run(0)
     check(game.defeated_visuals.is_empty(),"Restart clears death presentation")
+    check(game.visual_move_start_at == -1000.0 and game.visual_move_stop_at == -1000.0,
+        "Restart resets animation-only transition clocks")
     game.queue_free()
     if failures.is_empty():
         print("PASS: Authored hero poses, fixed sheet scales, Flex timing, defeat, travel clock and pause")

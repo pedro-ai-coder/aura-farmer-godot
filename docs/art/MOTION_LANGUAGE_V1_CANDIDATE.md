@@ -30,3 +30,11 @@ Warning, charge-warning, charging, terminals, defeat and the reduced-motion acce
 **Unverified:** No Godot, browser or FPS test was executed while authoring the change. The test and visual review remain required.
 
 **Rollback:** Revert the focused PR; no asset, save-schema or gameplay-contract migration is needed.
+
+## Iteration 2 — Ranged kit pilot (PROPOSED)
+
+The first V1 transform was too subtle to serve as visual acceptance. The same PR now iterates the **Sigma / Pixel Vixen** shared ranged kit first, not all characters simultaneously. With existing approved art, the pilot introduces travel-driven 12-step-per-second source-frame cycling, noticeable forward launch, running lean, direction-change banking, planted-stop settling, and stronger attack/idle body language. The female appearance gets a deliberately softer motion amplitude for its separate authored sprites.
+
+The sprite transform and attached weapon grip share the same offset, rotation and scale to avoid floating equipment. Only actually travelled distance enters the run animation; pressing into a wall no longer shows run frames. The other kits and enemy motion remain on their V1 treatment until the ranged pilot is accepted.
+
+**Acceptance still pending:** authored frame-by-frame polish and real native/browser comparison. No new source artwork or approved animation masters were generated. This code pass alone must not be advertised as matching the quality of the reference games, and must pass actual Godot 4.7.2 tests before review.

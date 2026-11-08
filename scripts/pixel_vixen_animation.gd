@@ -36,7 +36,8 @@ static func pose(state: Dictionary) -> Dictionary:
             frame = 21 + attack_step
             legacy = 13 + mini(2,int(elapsed*3.0/0.22))
         "run":
-            var run_step: int = posmod(int(float(state.get("walk",0.0))*9.0),7)
+            # Preserve the seven registered source poses; quicker playback is cosmetic.
+            var run_step: int = posmod(int(float(state.get("walk",0.0))*12.0),7)
             var heading: float = float(state.get("heading",0.0))
             frame = (14 if cos(heading) < 0.0 else 7) + run_step
             legacy = 7 + run_step%6

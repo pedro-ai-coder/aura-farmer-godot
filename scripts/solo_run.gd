@@ -71,6 +71,11 @@ var visual_heading := 0.0
 var visual_direction_known := false
 var visual_moving := false
 var visual_facing := 0.0
+# Presentation-only transition clocks: no new simulated movement or saved fields.
+var visual_move_start_at := -1000.0
+var visual_move_stop_at := -1000.0
+var visual_turn_at := -1000.0
+var visual_turn_sign := 0.0
 var mode := "menu"
 var hero: Dictionary = {}
 var player_pos := Vector2(724.0, 540.0)
@@ -464,6 +469,10 @@ func start_run(index: int) -> void:
     visual_direction_known = false
     visual_moving = false
     visual_facing = 0.0
+    visual_move_start_at = -1000.0
+    visual_move_stop_at = -1000.0
+    visual_turn_at = -1000.0
+    visual_turn_sign = 0.0
     hp = hero["hp"]
     max_hp = hp
     shield = 0.0
@@ -866,14 +875,23 @@ func _move_player(dt: float) -> void:
     var previous := player_pos
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
     if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
-    visual_moving = direction.length_squared() > 0.01
+    var was_visually_moving: bool = visual_moving
+    # The actual travel distance decides whether the sprite may play a run.
+    # Holding the joystick into a wall must not produce a running animation.
+    visual_moving = player_pos.distance_squared_to(previous) > 0.000001
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
     if visual_moving:
+        if not was_visually_moving: visual_move_start_at = run_time
         var heading := roundf(direction.angle()/(PI/4))*(PI/4)
         if not visual_direction_known or absf(angle_difference(visual_heading,direction.angle())) > PI/8+0.105:
+            if was_visually_moving and visual_direction_known:
+                visual_turn_sign = signf(angle_difference(visual_heading,heading))
+                visual_turn_at = run_time
             visual_heading = heading
         visual_direction_known = true
-    else: visual_direction_known = false
+    else:
+        if was_visually_moving: visual_move_stop_at = run_time
+        visual_direction_known = false
     _update_movement_trait(player_pos.distance_squared_to(previous) > 0.000001)
     _update_target_lock()
 
@@ -2396,13 +2414,18 @@ func hero_pose() -> Dictionary:
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
     var pose:=hero_pose()
-    var motion: Dictionary = MotionLanguageScript.hero_motion(str(hero["id"]),pose,run_time,visual_walk,bool(profile["settings"]["reducedMotion"]))
+    var transitions: Dictionary = {
+        "start_age":run_time-visual_move_start_at, "stop_age":run_time-visual_move_stop_at,
+        "turn_age":run_time-visual_turn_at, "turn_sign":visual_turn_sign,
+        "heading":visual_heading, "appearance":hero_appearance
+    }
+    var motion: Dictionary = MotionLanguageScript.hero_motion(str(hero["id"]),pose,run_time,visual_walk,bool(profile["settings"]["reducedMotion"]),transitions)
     if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose, motion):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
         draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))
         draw_circle(player_pos + Vector2(5, -4), 2.1, Color(0.08, 0.08, 0.10))
-    if weapon_presentation!=null:weapon_presentation.draw_actor(self,player_pos,str(hero["id"]),hero_appearance,pose,run_time,bool(profile["settings"]["reducedMotion"]),weapon_shields,Vector2(motion["offset"]))
+    if weapon_presentation!=null:weapon_presentation.draw_actor(self,player_pos,str(hero["id"]),hero_appearance,pose,run_time,bool(profile["settings"]["reducedMotion"]),weapon_shields,Vector2(motion["offset"]),Vector2(motion["scale"]),float(motion["rotation"]))
     # Hero art uses a foot pivot: keep the health bar above the head.
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46, 5)), Color(0.16, 0.13, 0.14))
     draw_rect(Rect2(player_pos + Vector2(-23, -79), Vector2(46.0 * hp / max_hp, 5)), Color(0.27, 0.94, 0.50))

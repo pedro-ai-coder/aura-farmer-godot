@@ -47,7 +47,9 @@ static func pose(id: String, state: Dictionary) -> Dictionary:
     elif moving:
         label = "run"
         var direction := posmod(int(round(heading/(PI/4))),8)
-        var step := int(walk*9)%4
+        # More complete steps per second using only the four authored frames.
+        # Travel remains the original foot-distance clock and GDD speed is fixed.
+        var step := int(walk*(12.0 if id == "sigma" else 9.0))%4
         if alpha and direction >= 5:
             sheet = "rear-v2"
             frame = int([8,4,0][direction-5])+step
