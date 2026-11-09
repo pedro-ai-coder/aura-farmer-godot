@@ -17,13 +17,13 @@ These pictures are **not the same scale**, so do not judge animation smoothness 
 
 ## 2. Where is the actual motion preview?
 
-The user-facing **PixelVixen_Review_Pack_2026-11-09.zip** from the CLUTCHPUNKS ChatGPT conversation contains:
+The user-facing **PixelVixen_Review_Pack_2026-11-09.zip** from the CLUTCHPUNKS ChatGPT conversation has **27 independently verified entries**, ZIP SHA-256 **`e0e9b14bb0c94baa397acf78a4d765fc2f0e5792fb12cc3b40adb378d01a0100`** and includes:
 
 | File | Opens without Godot? | Purpose |
 | --- | --- | --- |
 | `PixelVixen_Animation_Review.mp4` | **Yes**, ordinary video player | 12-second labelled playback of idle, run, attack, hurt, provisional Flex and defeat; not interactive gameplay |
 | `PixelVixen_Animation_Review.gif` | **Yes**, browser/image viewer | Same sprite animation loops without installing tools |
-| `PixelVixen_Interactive_Offline.html` | **Yes in desktop browser after extracting ZIP**, but may be blocked by ChatGPT's embedded viewer | Actual keyboard-controlled art sandbox: WASD/arrows move, Space attack, H hurt, F provisional Flex, K defeat, R reset |
+| `PixelVixen_Interactive_Offline_Touch.html` | **Locally after extracting ZIP**, subject to device HTML execution policy | Keyboard-controlled art sandbox plus on-screen buttons for touch/mouse: move, attack, hurt, provisional Flex, defeat and reset. Self-contained PNG; not in-game. |
 | `PixelVixen_Before_After_Trials.png` | **Yes**, image viewer | Earlier overly pixelated technical trial vs current clean-cut trial; **not** V2 Godot capture |
 | `PixelVixen_Atlas.png` | Yes, image viewer | Full new 672×672 RGBA atlas |
 | `PixelVixen_QA_Sheet.png` | Yes, image viewer | Labels for 7 rows of animation |
@@ -35,7 +35,7 @@ The user-facing **PixelVixen_Review_Pack_2026-11-09.zip** from the CLUTCHPUNKS C
 1. Download `PixelVixen_Review_Pack_2026-11-09.zip` from the ChatGPT delivery message.
 2. Extract the ZIP first; do not open its HTML from the archive preview.
 3. Open `PixelVixen_Animation_Review.mp4` or the GIF to inspect motion reliably on mobile/desktop.
-4. For keyboard interaction, open `PixelVixen_Interactive_Offline.html` in Chrome, Edge, Firefox or Safari on a desktop. The embedded PNG is self-contained; no external assets or localhost server required.
+4. For interaction, open `PixelVixen_Interactive_Offline_Touch.html` in a normal browser after extracting the archive. Use touch controls or WASD/arrows, Space/H/F/K/R on desktop. The embedded PNG is self-contained; no external assets or localhost server required. This browser flow has **not** been re-executed successfully in this runtime; a headless Chromium attempt hit local sandbox/DBus restrictions.
 5. If HTML is blocked by a corporate/security policy or the ChatGPT viewer, use the MP4; this does **not** establish compatibility with the four actual game browsers.
 
 ## 3. What has actually changed in PR #123?
@@ -58,7 +58,7 @@ The user-facing **PixelVixen_Review_Pack_2026-11-09.zip** from the CLUTCHPUNKS C
 | Defeat, 7 slots | Offline preview available; matte cleanup needed | NOT RUN | PENDING |
 | Rear-view entry cinematic | Three isolated proposal poses, no integrated animation | NOT RUN | NOT READY |
 
-**No full run, no Godot/Web export and no Level Zero browser QA have been executed for this new atlas.** Reported prior Chromium art-only state checks are not normal Godot gameplay evidence. Do not merge or call this asset final until the actual binary is imported, tested at game scale and independently approved.
+**No full run, no Godot/Web export and no Level Zero browser QA have been executed for this new atlas.** The new offline MP4/GIF were rendered directly from the supplied sprite atlas and the ZIP's byte-level integrity was checked locally; this does not prove browser interaction. Reported prior Chromium art-only state checks are not normal Godot gameplay evidence. Do not merge or call this asset final until the actual binary is imported, tested at game scale and independently approved.
 
 ## 5. What I need to see before the implementation is ready
 
