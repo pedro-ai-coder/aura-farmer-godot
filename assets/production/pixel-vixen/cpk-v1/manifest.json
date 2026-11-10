@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "cpk.pixel-vixen.godot-cpk-v1",
+  "status": "CREATOR_APPROVED_SOURCE_IMPORTED_GODOT_NATIVE_TESTS_PENDING",
+  "display_name": "Pixel Vixen",
+  "gameplay_kit": "sigma",
+  "appearance": "female",
+  "source_repository": "pedro-ai-coder/clutchpunks-art-pipeline",
+  "source_import_commit": "b34939c4c2af8f14d7207e54a86d157fe77e7ce6",
+  "source_path": "source/characters/pixel-vixen/creator-approved/pixel-vixen-approved-source.png",
+  "source_sha256": "5a16816eb51b6ca1d5e3f7f4036064243bd7152d561fdf866c5bd543ca29b490",
+  "atlas_path": "assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png",
+  "atlas_sha256": "4058de734cd81eb29656267bede422756555dbf02d0680f20a91d609f9f05c63",
+  "atlas_git_blob_sha": "0f96095995c2c760a70192eb499fb18e3494a609",
+  "atlas_pixels": [
+    672,
+    672
+  ],
+  "cell_pixels": [
+    96,
+    96
+  ],
+  "frames": 49,
+  "rows": {
+    "idle": [
+      0,
+      6
+    ],
+    "run_front": [
+      7,
+      13
+    ],
+    "run_side": [
+      14,
+      20
+    ],
+    "attack": [
+      21,
+      27
+    ],
+    "hurt": [
+      28,
+      34
+    ],
+    "flex": [
+      35,
+      41
+    ],
+    "defeat": [
+      42,
+      48
+    ]
+  },
+  "owner_approved_original_source": true,
+  "per_export_art_review": "PENDING",
+  "godot_native_run": "NOT_YET_EXECUTED",
+  "release_authorized": false,
+  "compatibility": {
+    "kit_id_unchanged": true,
+    "rng_unchanged": true,
+    "weapon_unchanged": true,
+    "flex_rules_unchanged": true,
+    "persistence_ids_unchanged": true,
+    "older_v2_sources_preserved": true
+  }
+}
