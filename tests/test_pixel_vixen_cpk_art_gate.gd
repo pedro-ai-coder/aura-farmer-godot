@@ -4,7 +4,7 @@ extends SceneTree
 ## This test intentionally FAILS while the source PNG is absent from the PR.
 ## It is not a simulation of real gameplay or creator art approval.
 const Visuals = preload("res://scripts/approved_visuals.gd")
-const Animation = preload("res://scripts/pixel_vixen_animation.gd")
+const VixenPose = preload("res://scripts/pixel_vixen_animation.gd")
 const Sigma = preload("res://scripts/hero_animation.gd")
 
 func _initialize() -> void:
@@ -40,7 +40,7 @@ func _verify() -> void:
             "hurt": s["hurt"] = 0.15
             "flex": s["flex"] = 5.0
             "defeat": s["lost"] = true
-        var pose: Dictionary = Animation.pose(s)
+        var pose: Dictionary = VixenPose.pose(s)
         if str(pose["sheet"]) != "pixel-vixen" or int(pose["frame"]) < 0 or int(pose["frame"]) >= 49:
             push_error("Pixel Vixen animation state changed canonical frame mapping: " + event)
             quit(1)
