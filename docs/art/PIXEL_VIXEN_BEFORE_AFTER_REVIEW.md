@@ -1,72 +1,52 @@
-# Pixel Vixen — Before / After and Animation Review
+# Pixel Vixen — Creator-Approved CPK Art, Actually Imported
 
-**Review date:** 2026-11-09  
-**Scope:** Real visual comparison for Draft PR #123, **not a verified game build**.  
-**Product:** CLUTCHPUNKS / original clean-cut cartoon visual identity approved under `CPK-VISUAL-2026-11-09-02`.  
-**Main remains unchanged:** the Godot 4.7.2 `sigma` gameplay kit and existing female V2 appearance are the currently available actual game assets.
+**Status:** APPROVED ORIGINAL IMPORTED / DERIVATIVE ATLAS COMMITTED / NATIVE GODOT QA PENDING  
+**Scope:** The `Pixel Vixen` female appearance of the existing `sigma` kit only.  
+**Art provenance:** original `sprite_atlas_da_pixel_vixen_em_ação.png` selected and approved by creator in CLUTCHPUNKS conversation; **not** the later, rejected `folha_de_sprites_da_pixel_vixen.png`.
 
-## 1. Compare the artwork side by side
+## Before / after — view images directly in this PR
 
-| **BEFORE — current V2 art in Godot main** | **AFTER — experimental clean-cut artwork** |
+| BEFORE — original V2 currently on main | AFTER — approved CPK derivative committed in this PR |
 | --- | --- |
-| ![Existing Pixel Vixen V2 spritesheet in game repository](https://github.com/pedro-ai-coder/aura-farmer-godot/raw/e43236014044533bad41c944222736cce441cf5f/assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png) | ![Extracted Pixel Vixen clean-cut sprite, 72 px review thumbnail](reviews/pixel-vixen-cpk-v1/new-clean-cut-72.png) |
-| [Open V2 atlas source](https://github.com/pedro-ai-coder/aura-farmer-godot/blob/e43236014044533bad41c944222736cce441cf5f/assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png), 896×672, 49 logical slots and irregular 51 source poses | **72×72 thumbnail committed to this PR.** New 672×672, 49-pose production-trial atlas is in the attached **creator-facing local ZIP only**, **not in this PR**. |
-| Dark hair, blue/yellow clothing, generic crown mark. Original V2 is still what current gameplay uses. | Pink/cyan hair, original CPK mark, cartoon clean-cut. Automated matte edges, Flex and motion consistency **need creator art review**. |
+| ![Legacy V2 Pixel Vixen animation atlas](https://github.com/pedro-ai-coder/aura-farmer-godot/raw/e43236014044533bad41c944222736cce441cf5f/assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png) | ![Imported approved CPK Pixel Vixen 49-frame atlas](../../assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png) |
+| Old dark-haired / blue-and-yellow version, with rejected generic crown symbol. | Pink/cyan-haired **creator-approved** cartoon design, clean-cut colored 49-frame sheet, transparent red-background cleanup. |
+| [Open V2 exact source](https://github.com/pedro-ai-coder/aura-farmer-godot/blob/e43236014044533bad41c944222736cce441cf5f/assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png) | [Open new real PNG in this PR](../../assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png) |
 
-These pictures are **not the same scale**, so do not judge animation smoothness or attack timing from the static table. Open the new animation preview in the downloadable package; the thumbnail only confirms **which specific new design** the PR is discussing.
+## Real, verified asset files
 
-## 2. Where is the actual motion preview?
+- **Approved original master, actually preserved in art repository:** [Pixel Vixen original full PNG](https://github.com/pedro-ai-coder/clutchpunks-art-pipeline/blob/b34939c4c2af8f14d7207e54a86d157fe77e7ce6/source/characters/pixel-vixen/creator-approved/pixel-vixen-approved-source.png). Source **1254×1254 RGBA**, **2,652,554 bytes**, SHA-256 `5a16816eb51b6ca1d5e3f7f4036064243bd7152d561fdf866c5bd543ca29b490`; exact Git blob `fbb9bd898dbcdd8566ffc465eb0a8888982b00d5`.
+- **Production PNG imported in this Godot PR:** [Pixel Vixen CPK v1 atlas](../../assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png), **672×672 PNG** with 49 cells of **96×96**, indexed 64 colors with transparency; **96,526 bytes**, SHA-256 `4058de734cd81eb29656267bede422756555dbf02d0680f20a91d609f9f05c63`; exact Git blob `0f96095995c2c760a70192eb499fb18e3494a609`.
+- **Game manifest:** [manifest.json](../../assets/production/pixel-vixen/cpk-v1/manifest.json).
+- **Art export source and manifest:** `pedro-ai-coder/clutchpunks-art-pipeline` PR on `art/pixel-vixen-approved-source-and-godot-export-2026-11-10`.
+- The new renderer is `scripts/approved_visuals.gd`; it compares **the actual PNG SHA-256**, then draws the new atlas in the existing Pixel Vixen animation path.
+- The existing V2 atlas and existing Sigma gameplay mechanics remain in the tree as historical/fallback material. When the new file is present and verified, the new art is selected.
 
-The user-facing **PixelVixen_Review_Pack_2026-11-09.zip** from the CLUTCHPUNKS ChatGPT conversation has **27 independently verified entries**, ZIP SHA-256 **`e0e9b14bb0c94baa397acf78a4d765fc2f0e5792fb12cc3b40adb378d01a0100`** and includes:
+## Animation contract — no new gameplay kits
 
-| File | Opens without Godot? | Purpose |
+| Existing presentation state | New atlas cells | Source |
 | --- | --- | --- |
-| `PixelVixen_Animation_Review.mp4` | **Yes**, ordinary video player | 12-second labelled playback of idle, run, attack, hurt, provisional Flex and defeat; not interactive gameplay |
-| `PixelVixen_Animation_Review.gif` | **Yes**, browser/image viewer | Same sprite animation loops without installing tools |
-| `PixelVixen_Interactive_Offline_Touch.html` | **Locally after extracting ZIP**, subject to device HTML execution policy | Keyboard-controlled art sandbox plus on-screen buttons for touch/mouse: move, attack, hurt, provisional Flex, defeat and reset. Self-contained PNG; not in-game. |
-| `PixelVixen_Before_After_Trials.png` | **Yes**, image viewer | Earlier overly pixelated technical trial vs current clean-cut trial; **not** V2 Godot capture |
-| `PixelVixen_Atlas.png` | Yes, image viewer | Full new 672×672 RGBA atlas |
-| `PixelVixen_QA_Sheet.png` | Yes, image viewer | Labels for 7 rows of animation |
+| Idle | 0–6 | Original approved row 1 |
+| Move forward | 7–13 | Original approved row 2 |
+| Move sideways | 14–20 | Original approved row 3 |
+| Primary ranged attack | 21–27 | Original approved row 4 |
+| Hurt | 28–34 | Original approved row 5 |
+| Flex visual accompaniment | 35–41 | Original approved row 6 |
+| Defeat | 42–48 | Original approved row 7 |
 
-**File availability boundary:** these files are provided in the ChatGPT conversation as an owner-facing local review ZIP; they have **not** been uploaded to GitHub. GitHub cannot link to sandbox attachments. **Do not pretend this PR contains the video, GIF, the original art board or full atlas.** The small PNG shown above **is** genuinely committed to this branch.
+**Technical limits:** the source is a 7×7 drawing, not a perfect eight-direction game rig; current horizontal mirroring and 7-slot state timing are inherited from the existing Pixel Vixen animation controller. Visual Flex frames **do not** modify the canonical `Deadpan Verdict` effect. Final intro/rear-camera animation remains a separate task.
 
-### Quick instructions
+## How to verify on the PR
 
-1. Download `PixelVixen_Review_Pack_2026-11-09.zip` from the ChatGPT delivery message.
-2. Extract the ZIP first; do not open its HTML from the archive preview.
-3. Open `PixelVixen_Animation_Review.mp4` or the GIF to inspect motion reliably on mobile/desktop.
-4. For interaction, open `PixelVixen_Interactive_Offline_Touch.html` in a normal browser after extracting the archive. Use touch controls or WASD/arrows, Space/H/F/K/R on desktop. The embedded PNG is self-contained; no external assets or localhost server required. This browser flow has **not** been re-executed successfully in this runtime; a headless Chromium attempt hit local sandbox/DBus restrictions.
-5. If HTML is blocked by a corporate/security policy or the ChatGPT viewer, use the MP4; this does **not** establish compatibility with the four actual game browsers.
+1. In **Files changed**, confirm `assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png` is a **real binary file** rather than a text link.
+2. Compare the old and new PNGs above; focus on recognizable silhouette, less visual noise, transparent edges and clean-cut cartoon readability.
+3. In CI, run `bash scripts/validate.sh`; the new `pixel-vixen-approved-cpk-atlas` phase runs `res://tests/test_pixel_vixen_cpk_art_gate.gd` and checks source SHA, 49 slots, Sigma pose parity and imported texture.
+4. In a native Godot real run, select the female `sigma` appearance, observe idle/run/attack/hurt/Flex/defeat, verify XP/weapon and summary still work, and compare scale with other heroes.
+5. Do not infer actual Godot visual/gameplay success from the static PNG or local HTML. **Native QA and four-browser verification have not yet been reported as completed.**
 
-## 3. What has actually changed in PR #123?
+## Approval boundaries and rollback
 
-**Changed in this draft PR:** `scripts/approved_visuals.gd` has an opt-in loader for the new **exact SHA-pinned** 49-frame image and a new `tests/test_pixel_vixen_cpk_art_gate.gd` that deliberately **blocks** if the PNG is missing or mismatched. Current `sigma` kit logic, Flex mechanics, content IDs and saves stay unchanged.
+**APPROVED:** original exact creator-selected Pixel Vixen drawing.  
+**IMPLEMENTED IN FEATURE BRANCH:** indexed/transparent technical derivative atlas, renderer selection, SHA-pinned manifest and integration gate.  
+**NOT YET VERIFIED:** Godot native import/run, silhouette at normal Level Zero scale, complete real victory and loss, site export and final public release.
 
-**Not changed:** `main`; the current V2 PNG; combat scripts; Level Zero game scenes; six-hero kit mapping; public site assets.
-
-**Critical blocker:** `assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png` is still **missing from GitHub**, despite existing in the local review pack with SHA-256 `65a724ba088ee15d765bdc8c22b96f28fb50a007d7621eafa7a25f0682a64b24`. The new renderer intentionally displays **V2** until exact bytes are available.
-
-## 4. Animation coverage and acceptance status
-
-| State | New technical preview | Godot native | Creator final approval |
-| --- | --- | --- | --- |
-| Idle, 7 slots | Offline preview available | NOT RUN | PENDING |
-| Move front / side, 14 slots | Offline preview available | NOT RUN | PENDING |
-| Attack, 7 slots | Offline preview available | NOT RUN | PENDING |
-| Hurt, 7 slots | Offline preview available | NOT RUN | PENDING |
-| Flex, 7 slots | **PLACEHOLDER visual poses**, not dedicated Flex | NOT RUN | **NOT READY** |
-| Defeat, 7 slots | Offline preview available; matte cleanup needed | NOT RUN | PENDING |
-| Rear-view entry cinematic | Three isolated proposal poses, no integrated animation | NOT RUN | NOT READY |
-
-**No full run, no Godot/Web export and no Level Zero browser QA have been executed for this new atlas.** The new offline MP4/GIF were rendered directly from the supplied sprite atlas and the ZIP's byte-level integrity was checked locally; this does not prove browser interaction. Reported prior Chromium art-only state checks are not normal Godot gameplay evidence. Do not merge or call this asset final until the actual binary is imported, tested at game scale and independently approved.
-
-## 5. What I need to see before the implementation is ready
-
-- [ ] Exact new atlas source binary committed and SHA-256 verified in both art and game feature branches.
-- [ ] Authored proper Flex animation and polished alpha/foot pivots without stray fragments.
-- [ ] Native Godot import and unit/animation tests with exact engine version and SHA.
-- [ ] Real Godot run: auto-attacks, XP/upgrade/Flex, damage, death and restart for Pixel Vixen.
-- [ ] Actual 48/64/96px capture compared with all three kit families and new Level Zero environment.
-- [ ] Creator approval of final sprite motion; merge and public release remain separate creator decisions.
-
-**Rollback:** remove the version-gated rendering change; current V2 resources stay intact.
+The gameplay kit remains `sigma`, with its existing No Cap, Deadpan Verdict, RNG, progression, save keys and balance unchanged. No production branch merge or deployment is implied. Roll back the renderer change and asset file if tests show regressions; original and V2 art sources remain intact.
