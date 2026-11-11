@@ -1,0 +1,1594 @@
+{
+  "schema_version": 1,
+  "pack_version": "cpk-v1.0.0",
+  "asset_id": "cool-kid-cpk-v1",
+  "kit_id": "cool-kid",
+  "source": {
+    "repository": "pedro-ai-coder/clutchpunks-art-pipeline",
+    "path": "source/characters/cool-kid/cpk-v1/cool-kid-cpk-approved-source.png",
+    "sha256": "c50232da6978c9751768319f1f59454cff548173cc0bd5b15f7a1d206f649ddf",
+    "git_blob": "08810472f1a95cddc745869fa57684e6e6b6fe3f",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "approval": "CPK-ART-COOL-KID-2026-11-10-01",
+    "status": "APPROVED_EXACT_VISUAL_SOURCE"
+  },
+  "production_status": "NORMALIZED_DERIVATIVE_PENDING_CREATOR_RUNTIME_REVIEW",
+  "license_reference": "Source creator approval; no new third-party content",
+  "generator": "tools/prepare_cool_kid_cpk_v1.py",
+  "toolchain": {
+    "Pillow": "13.0.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "segmentation": {
+    "method": "49 connected components alpha > 32, area > 1500; no equal-cell crop",
+    "alpha": "(alpha-32)*255/223 within selected component; other pixels zero",
+    "scale": 0.5
+  },
+  "atlas": {
+    "path": "cool-kid-cpk-v1-atlas.png",
+    "sha256": "0a190b57982dfd8556da6b8e05cf38aae4f83e392461ef8a6c2bb42c2340925d",
+    "dimensions": [
+      1008,
+      1008
+    ],
+    "cell": [
+      144,
+      144
+    ],
+    "origin": [
+      72,
+      120
+    ]
+  },
+  "portrait": {
+    "path": "cool-kid-cpk-v1-portrait.png",
+    "sha256": "895a652d8b4ef53875b80582468be8d219cd5342d2a1bbf2d29838cee89f3d4c"
+  },
+  "authored_sequences": {
+    "idle": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "run_side": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "melee": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "hurt_recovery": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "flex": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "defeat": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "rise_intro": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48
+    ]
+  },
+  "limitations": [
+    "No authored rear/front directional run: side run is explicitly used for all headings, mirrored horizontally.",
+    "Rise/intro is extracted but not activated: the existing runtime has no intro state.",
+    "Uniform scale preserves authored squash/stance variation; no frame is rescaled independently.",
+    "Runtime derivative requires creator visual review; exact source approval is not derivative sign-off."
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "source_bounds_xywh": [
+        41,
+        8,
+        130,
+        168
+      ],
+      "source_origin": [
+        94,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        34,
+        113,
+        122
+      ],
+      "sha256": "895a652d8b4ef53875b80582468be8d219cd5342d2a1bbf2d29838cee89f3d4c"
+    },
+    {
+      "index": 1,
+      "source_bounds_xywh": [
+        227,
+        7,
+        131,
+        169
+      ],
+      "source_origin": [
+        280,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        33,
+        113,
+        122
+      ],
+      "sha256": "58704a58cea4214569efc7a2ae1f2ad2aae1a048d2c2b08438b1cdeff77e1afb"
+    },
+    {
+      "index": 2,
+      "source_bounds_xywh": [
+        409,
+        8,
+        129,
+        168
+      ],
+      "source_origin": [
+        459,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        45,
+        34,
+        114,
+        123
+      ],
+      "sha256": "52e4e7c326a13955973edd82a080f8a7387a75a98aa0bc0c73d49777321fb309"
+    },
+    {
+      "index": 3,
+      "source_bounds_xywh": [
+        576,
+        5,
+        132,
+        171
+      ],
+      "source_origin": [
+        635,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        40,
+        33,
+        111,
+        122
+      ],
+      "sha256": "639e105716c6903bbb94e995f9e2a13a0dbc2657f4a62278a3f89543d42c7dbb"
+    },
+    {
+      "index": 4,
+      "source_bounds_xywh": [
+        748,
+        8,
+        131,
+        168
+      ],
+      "source_origin": [
+        809,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        39,
+        34,
+        109,
+        122
+      ],
+      "sha256": "ac1e44e01251ca30a82910b34bc89582c17a144e7771b4d1c0047855f9ca3e1a"
+    },
+    {
+      "index": 5,
+      "source_bounds_xywh": [
+        931,
+        8,
+        126,
+        168
+      ],
+      "source_origin": [
+        987,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        42,
+        34,
+        110,
+        123
+      ],
+      "sha256": "514ca753980a79b19a1288d00249a7d868d6abc658ea54c9c9fe4146626388e1"
+    },
+    {
+      "index": 6,
+      "source_bounds_xywh": [
+        1115,
+        9,
+        126,
+        167
+      ],
+      "source_origin": [
+        1168,
+        176
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        0,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        34,
+        111,
+        122
+      ],
+      "sha256": "43db79a91800bbdad120fd046fda82fa1994fbb837b12a84bf4decb41da68a61"
+    },
+    {
+      "index": 7,
+      "source_bounds_xywh": [
+        27,
+        197,
+        140,
+        154
+      ],
+      "source_origin": [
+        84,
+        351
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        41,
+        40,
+        116,
+        123
+      ],
+      "sha256": "484df1b2ed29560ac66cbfd7a1c67f288e5d10b3bbbcc307f3a581f6c1c4ad02"
+    },
+    {
+      "index": 8,
+      "source_bounds_xywh": [
+        203,
+        196,
+        146,
+        156
+      ],
+      "source_origin": [
+        266,
+        352
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        40,
+        116,
+        122
+      ],
+      "sha256": "1ad3173d7cb4f0ce1ee9c305840057aa81f33a8234b9b9f70d034ad9f3771e7d"
+    },
+    {
+      "index": 9,
+      "source_bounds_xywh": [
+        383,
+        199,
+        148,
+        145
+      ],
+      "source_origin": [
+        457,
+        344
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        32,
+        45,
+        111,
+        122
+      ],
+      "sha256": "11fa34cbd826fdbfe9b09fc885e6d3693da7a3671e8ee9252758a1c30ec20f0e"
+    },
+    {
+      "index": 10,
+      "source_bounds_xywh": [
+        567,
+        202,
+        138,
+        148
+      ],
+      "source_origin": [
+        632,
+        350
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        37,
+        44,
+        111,
+        123
+      ],
+      "sha256": "49e59775884276a256c22a649e74bd6057d73aa901688f9102cfb97db12998ee"
+    },
+    {
+      "index": 11,
+      "source_bounds_xywh": [
+        748,
+        201,
+        128,
+        148
+      ],
+      "source_origin": [
+        804,
+        349
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        42,
+        44,
+        110,
+        123
+      ],
+      "sha256": "1a8684c8aa6fd495df46ea7c41e52adc06367ff3c34e801213b9e46fcbef8baf"
+    },
+    {
+      "index": 12,
+      "source_bounds_xywh": [
+        935,
+        202,
+        120,
+        147
+      ],
+      "source_origin": [
+        984,
+        349
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        45,
+        44,
+        110,
+        122
+      ],
+      "sha256": "c1cbd86a621e17101b775aafac73096d6815751c2124f4760844a4dd4b9158a0"
+    },
+    {
+      "index": 13,
+      "source_bounds_xywh": [
+        1110,
+        200,
+        123,
+        149
+      ],
+      "source_origin": [
+        1165,
+        349
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        144,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        42,
+        43,
+        108,
+        122
+      ],
+      "sha256": "588db10bb5152b8e0c6e40a5d862266028ce3e541387efab1e6876207dbfbf0d"
+    },
+    {
+      "index": 14,
+      "source_bounds_xywh": [
+        25,
+        373,
+        124,
+        163
+      ],
+      "source_origin": [
+        87,
+        536
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        36,
+        106,
+        122
+      ],
+      "sha256": "a5eccc60331a187589250b5541424851fd4ea17f2a9058fc2a47a111bc99b64d"
+    },
+    {
+      "index": 15,
+      "source_bounds_xywh": [
+        202,
+        367,
+        120,
+        169
+      ],
+      "source_origin": [
+        262,
+        536
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        39,
+        33,
+        104,
+        123
+      ],
+      "sha256": "d69f95e6e9c78fb64ea62f147b49d0c10c3313f73fcb2ddff8ed4938cc8cb144"
+    },
+    {
+      "index": 16,
+      "source_bounds_xywh": [
+        379,
+        353,
+        120,
+        183
+      ],
+      "source_origin": [
+        439,
+        536
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        39,
+        26,
+        104,
+        122
+      ],
+      "sha256": "a6cdd11e55bf78563f3708362e3f1d40171df582a52dfd2e17e7afc8e34c7d09"
+    },
+    {
+      "index": 17,
+      "source_bounds_xywh": [
+        544,
+        364,
+        140,
+        171
+      ],
+      "source_origin": [
+        614,
+        535
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        35,
+        32,
+        109,
+        123
+      ],
+      "sha256": "5b34c8280e397172cb7400d4e653da46eb17e87b2bcb0e95999b2e0f85286f5a"
+    },
+    {
+      "index": 18,
+      "source_bounds_xywh": [
+        713,
+        387,
+        199,
+        148
+      ],
+      "source_origin": [
+        788,
+        535
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        32,
+        44,
+        136,
+        123
+      ],
+      "sha256": "fa1d5dbb2510ca74782afc4ad8adfae188cf33a7bfafd2f63d8922a9eb85021c"
+    },
+    {
+      "index": 19,
+      "source_bounds_xywh": [
+        897,
+        400,
+        175,
+        136
+      ],
+      "source_origin": [
+        973,
+        536
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        32,
+        50,
+        124,
+        122
+      ],
+      "sha256": "5fde858df66ec28e1d22953bbba0c1d9ba3d5d5c2ed023f044b529ba38135e58"
+    },
+    {
+      "index": 20,
+      "source_bounds_xywh": [
+        1085,
+        397,
+        158,
+        139
+      ],
+      "source_origin": [
+        1154,
+        536
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        288,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        35,
+        48,
+        119,
+        122
+      ],
+      "sha256": "c478d863bdc33e0998c57d96b351d0474959b05f75bbae27a7d1fdb29c89b971"
+    },
+    {
+      "index": 21,
+      "source_bounds_xywh": [
+        35,
+        544,
+        111,
+        165
+      ],
+      "source_origin": [
+        91,
+        709
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        42,
+        35,
+        102,
+        122
+      ],
+      "sha256": "90bc9a66a284820e989a1ff5044a879625839c778232da4eec085ea1f637642c"
+    },
+    {
+      "index": 22,
+      "source_bounds_xywh": [
+        205,
+        546,
+        135,
+        163
+      ],
+      "source_origin": [
+        273,
+        709
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        36,
+        36,
+        108,
+        123
+      ],
+      "sha256": "0e802ad199020ac16e9d5a54c426d85c1a45f63e42121acfd522cc111c1b57e2"
+    },
+    {
+      "index": 23,
+      "source_bounds_xywh": [
+        382,
+        566,
+        125,
+        143
+      ],
+      "source_origin": [
+        445,
+        709
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        47,
+        105,
+        122
+      ],
+      "sha256": "974d341e82838d30258ea198025dc9895f5e819b26e48b386ca9581a800f7940"
+    },
+    {
+      "index": 24,
+      "source_bounds_xywh": [
+        560,
+        601,
+        122,
+        108
+      ],
+      "source_origin": [
+        623,
+        709
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        64,
+        104,
+        122
+      ],
+      "sha256": "ecea1d506b3e8e65f6a53999fc3fb2f90a7673e948b46e0eff8b19c4e0c930a7"
+    },
+    {
+      "index": 25,
+      "source_bounds_xywh": [
+        736,
+        592,
+        128,
+        116
+      ],
+      "source_origin": [
+        801,
+        708
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        37,
+        60,
+        106,
+        122
+      ],
+      "sha256": "9adb599d9caa1e92278f37c2e8393195ea3ad99399e41afd6a98ad6c3957d7be"
+    },
+    {
+      "index": 26,
+      "source_bounds_xywh": [
+        917,
+        573,
+        126,
+        136
+      ],
+      "source_origin": [
+        980,
+        709
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        50,
+        106,
+        122
+      ],
+      "sha256": "305bcf77730302d7e75669a54c766f854c5edd473a289bdc250ba81de499b3ae"
+    },
+    {
+      "index": 27,
+      "source_bounds_xywh": [
+        1098,
+        567,
+        127,
+        142
+      ],
+      "source_origin": [
+        1161,
+        709
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        432,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        47,
+        106,
+        122
+      ],
+      "sha256": "5f891d390375fd07048a620f83185e0a6387bc635f84b79e7025824ea2a0177b"
+    },
+    {
+      "index": 28,
+      "source_bounds_xywh": [
+        38,
+        731,
+        107,
+        163
+      ],
+      "source_origin": [
+        92,
+        894
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        36,
+        101,
+        122
+      ],
+      "sha256": "2e9e5a5f6eb5a67e3ebdf6af4f731472c8f22becd85effb820a6f566860f9a3f"
+    },
+    {
+      "index": 29,
+      "source_bounds_xywh": [
+        206,
+        731,
+        121,
+        164
+      ],
+      "source_origin": [
+        274,
+        895
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        35,
+        36,
+        101,
+        122
+      ],
+      "sha256": "8b917bfb18ed90d2e810603600ea870fc550d99008eed4e208150de8d55c40d5"
+    },
+    {
+      "index": 30,
+      "source_bounds_xywh": [
+        371,
+        730,
+        140,
+        163
+      ],
+      "source_origin": [
+        450,
+        893
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        30,
+        37,
+        105,
+        122
+      ],
+      "sha256": "66f1e79640dda4a1093a69def32fc057afec796a7d38aa15e8be4fa91ff90581"
+    },
+    {
+      "index": 31,
+      "source_bounds_xywh": [
+        546,
+        731,
+        156,
+        165
+      ],
+      "source_origin": [
+        633,
+        896
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        26,
+        35,
+        108,
+        122
+      ],
+      "sha256": "9f94c70c9fa954e69c69220fef61ea7853ec4be6bfea9857ca6640cd19b217a8"
+    },
+    {
+      "index": 32,
+      "source_bounds_xywh": [
+        732,
+        716,
+        140,
+        180
+      ],
+      "source_origin": [
+        811,
+        896
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        30,
+        28,
+        105,
+        122
+      ],
+      "sha256": "08e6e50eacba94991d91579f81696f9e491042cfe15452fd28c5a35632e25149"
+    },
+    {
+      "index": 33,
+      "source_bounds_xywh": [
+        929,
+        733,
+        116,
+        163
+      ],
+      "source_origin": [
+        992,
+        896
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        38,
+        36,
+        101,
+        122
+      ],
+      "sha256": "95268e3ab277eb62394f40300e3bbcdc0316543ee9d1979b051eff339fb79dc2"
+    },
+    {
+      "index": 34,
+      "source_bounds_xywh": [
+        1110,
+        730,
+        111,
+        166
+      ],
+      "source_origin": [
+        1166,
+        896
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        576,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        41,
+        35,
+        102,
+        122
+      ],
+      "sha256": "47813c577cc67751789367a08d90113a77e04c2556573d764ac48ad6616ff607"
+    },
+    {
+      "index": 35,
+      "source_bounds_xywh": [
+        35,
+        905,
+        106,
+        166
+      ],
+      "source_origin": [
+        88,
+        1071
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        35,
+        101,
+        122
+      ],
+      "sha256": "14dad7cc63735d98ebf678332fa13b4c66f0bfcaa0169a724e8fcca40309f159"
+    },
+    {
+      "index": 36,
+      "source_bounds_xywh": [
+        196,
+        910,
+        128,
+        161
+      ],
+      "source_origin": [
+        267,
+        1071
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        34,
+        37,
+        103,
+        123
+      ],
+      "sha256": "9bb1b52e41a3513b2286ad3b55eaf189574db530deee73c793a2037d8712c909"
+    },
+    {
+      "index": 37,
+      "source_bounds_xywh": [
+        376,
+        943,
+        132,
+        129
+      ],
+      "source_origin": [
+        442,
+        1072
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        37,
+        53,
+        107,
+        122
+      ],
+      "sha256": "3967db5958d3fcc6839a8741af94e8f03e30afc9248b3ece36bb208711568f25"
+    },
+    {
+      "index": 38,
+      "source_bounds_xywh": [
+        540,
+        960,
+        145,
+        111
+      ],
+      "source_origin": [
+        612,
+        1071
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        33,
+        62,
+        111,
+        122
+      ],
+      "sha256": "55b5264e142e3880b93a147ef4b051a283496459a5af758ff608e4c6df9e170a"
+    },
+    {
+      "index": 39,
+      "source_bounds_xywh": [
+        719,
+        984,
+        155,
+        89
+      ],
+      "source_origin": [
+        796,
+        1073
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        31,
+        73,
+        113,
+        122
+      ],
+      "sha256": "328db46cb55c4533d2f5a1be1121ca2257b74a970a0b31bf4ec5612750d0f55c"
+    },
+    {
+      "index": 40,
+      "source_bounds_xywh": [
+        899,
+        1001,
+        163,
+        69
+      ],
+      "source_origin": [
+        981,
+        1070
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        29,
+        83,
+        115,
+        122
+      ],
+      "sha256": "7ec9dd5e6387cc7eaa0ea693c1556fbe84b3a3c044f4be34abcee786bcff763e"
+    },
+    {
+      "index": 41,
+      "source_bounds_xywh": [
+        1076,
+        1015,
+        168,
+        55
+      ],
+      "source_origin": [
+        1160,
+        1070
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        720,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        27,
+        90,
+        116,
+        122
+      ],
+      "sha256": "ceeeaf801c0491cd4c8825a7290ae40c96afd47ded6f7852242bae6da4c6a918"
+    },
+    {
+      "index": 42,
+      "source_bounds_xywh": [
+        24,
+        1128,
+        126,
+        120
+      ],
+      "source_origin": [
+        91,
+        1248
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        0,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        37,
+        58,
+        104,
+        122
+      ],
+      "sha256": "8156b5de037b202aafcc2d746689d8cae1f441d062a43cb5999d4d074de36266"
+    },
+    {
+      "index": 43,
+      "source_bounds_xywh": [
+        202,
+        1115,
+        127,
+        132
+      ],
+      "source_origin": [
+        267,
+        1247
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        144,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        37,
+        52,
+        105,
+        122
+      ],
+      "sha256": "d6b575047de7a91d9f8881cf89b0070805869f06ab261aaa62b69dcd7c4cc92f"
+    },
+    {
+      "index": 44,
+      "source_bounds_xywh": [
+        383,
+        1098,
+        121,
+        149
+      ],
+      "source_origin": [
+        442,
+        1247
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        288,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        40,
+        43,
+        105,
+        123
+      ],
+      "sha256": "54ecb742c896c3c258a546f2c76b3509edd628f07a5553160c55258218030543"
+    },
+    {
+      "index": 45,
+      "source_bounds_xywh": [
+        572,
+        1087,
+        113,
+        160
+      ],
+      "source_origin": [
+        627,
+        1247
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        432,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        38,
+        103,
+        122
+      ],
+      "sha256": "3759fc656d6110128a86f32b45561e58c9882096d8cf55df7b5897d241189087"
+    },
+    {
+      "index": 46,
+      "source_bounds_xywh": [
+        754,
+        1089,
+        115,
+        158
+      ],
+      "source_origin": [
+        807,
+        1247
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        576,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        43,
+        39,
+        105,
+        123
+      ],
+      "sha256": "11d9200e9865f729c33448d0c350e706a43aa6ea81ad5567a26fd31b4c4769b4"
+    },
+    {
+      "index": 47,
+      "source_bounds_xywh": [
+        936,
+        1089,
+        118,
+        159
+      ],
+      "source_origin": [
+        988,
+        1248
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        720,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        44,
+        38,
+        107,
+        122
+      ],
+      "sha256": "f673cd353529dba083e2c3e7d9bf44e20aec573c00ccbab141ed34ab45b841aa"
+    },
+    {
+      "index": 48,
+      "source_bounds_xywh": [
+        1119,
+        1090,
+        120,
+        158
+      ],
+      "source_origin": [
+        1177,
+        1248
+      ],
+      "origin": [
+        72,
+        120
+      ],
+      "cell": [
+        864,
+        864,
+        144,
+        144
+      ],
+      "alpha_bounds": [
+        41,
+        38,
+        106,
+        122
+      ],
+      "sha256": "b5a980fb0a032630f73934b0f2270990b3dffa782fd10b629b443ecd65501843"
+    }
+  ]
+}

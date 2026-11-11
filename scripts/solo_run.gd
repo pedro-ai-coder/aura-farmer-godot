@@ -2390,6 +2390,8 @@ func hero_pose() -> Dictionary:
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
     if hero_appearance == "female":
         return FemaleHeroAnimationScript.pose(str(hero["id"]),state)
+    if str(hero["id"]) == "cool-kid" and art.cool_kid_cpk_atlas != null:
+        return art.CoolKidCPK.pose(state)
     return HeroAnimationScript.pose(str(hero["id"]), state)
 
 func _draw_hero_actor() -> void:

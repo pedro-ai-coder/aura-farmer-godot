@@ -5,6 +5,11 @@ extends RefCounted
 ## Art is SHA-verified at Web build time. Never modify gameplay or RNG here.
 
 const ROOT := "res://assets/approved/"
+const CoolKidCPK = preload("res://scripts/cool_kid_cpk_animation.gd")
+const COOL_KID_CPK_ATLAS_PATH := "res://assets/production/cool-kid/cpk-v1/cool-kid-cpk-v1-atlas.png"
+const COOL_KID_CPK_ATLAS_SHA256 := "0a190b57982dfd8556da6b8e05cf38aae4f83e392461ef8a6c2bb42c2340925d"
+const COOL_KID_CPK_PORTRAIT_PATH := "res://assets/production/cool-kid/cpk-v1/cool-kid-cpk-v1-portrait.png"
+var cool_kid_cpk_atlas: Texture2D = null
 ## V2 candidate resources remain isolated from immutable approved hero art.
 const VIXEN_V2_ATLAS_PATH := "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-atlas-v2.png"
 const VIXEN_V2_PORTRAIT_PATH := "res://assets/art-candidates/pixel-vixen/v2/pixel-vixen-portrait-v2.png"
@@ -41,6 +46,12 @@ func _init() -> void:
             var resource = load(path)
             if resource is Texture2D:
                 textures[asset_name] = resource
+    if ResourceLoader.exists(COOL_KID_CPK_ATLAS_PATH):
+        if FileAccess.get_sha256(COOL_KID_CPK_ATLAS_PATH) == COOL_KID_CPK_ATLAS_SHA256:
+            cool_kid_cpk_atlas = load(COOL_KID_CPK_ATLAS_PATH) as Texture2D
+            textures["cool-kid"] = load(COOL_KID_CPK_PORTRAIT_PATH) as Texture2D
+        else:
+            push_error("Cool Kid CPK atlas checksum mismatch; retaining legacy approved art.")
     if ResourceLoader.exists(PIXEL_VIXEN_CPK_ATLAS_PATH):
         if FileAccess.get_sha256(PIXEL_VIXEN_CPK_ATLAS_PATH) == PIXEL_VIXEN_CPK_ATLAS_SHA256:
             pixel_vixen_cpk_atlas = load(PIXEL_VIXEN_CPK_ATLAS_PATH) as Texture2D
@@ -100,6 +111,16 @@ func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "sel
 
 func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:
     var sheet: String = pose["sheet"]
+    if sheet == CoolKidCPK.SHEET:
+        if hero_id != "cool-kid" or cool_kid_cpk_atlas == null:
+            return false
+        var factor: float = CoolKidCPK.DISPLAY_SCALE
+        canvas.draw_set_transform(pos,0.0,Vector2(-1,1) if bool(pose["flip"]) else Vector2.ONE)
+        canvas.draw_texture_rect_region(cool_kid_cpk_atlas,
+            Rect2(-CoolKidCPK.ORIGIN*factor,Vector2.ONE*CoolKidCPK.CELL*factor),
+            CoolKidCPK.source_rect(int(pose["frame"])))
+        canvas.draw_set_transform(Vector2.ZERO)
+        return true
     if sheet == "pixel-vixen":
         if hero_id != "sigma":
             return false

@@ -40,6 +40,7 @@ run_check() {
 bash -n scripts/build_web.sh
 # Asset package must be self-contained before any gameplay or export validation.
 python3 scripts/sync_approved_assets.py
+python3 scripts/verify_cool_kid_cpk.py
 node tests/test_web_platform.cjs
 node tests/test_performance_web.cjs
 python3 scripts/promote_approved_icons.py
@@ -57,6 +58,7 @@ run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
+run_check cool-kid-cpk-art --headless --path . --script res://tests/test_cool_kid_cpk_art.gd
 run_check recovery --headless --path . --script res://tests/test_recovery.gd
 run_check survival-review-policy --headless --path . --script res://tests/test_survival_review_policy.gd
 run_check camera-cover --headless --path . --script res://tests/test_camera_cover.gd
