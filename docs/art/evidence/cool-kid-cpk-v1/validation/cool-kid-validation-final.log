@@ -1,0 +1,374 @@
+PASS: 19 approved assets are local and checksum verified; zero network requests
+PASS: Cool Kid exact lineage, hashes, RGBA geometry and 49 padded foot pivots
+PASS: Trusted capture/touchend, actual fullscreen/exit/retry, iOS standalone help, modal ownership, CSS/DPR raster budget and cached metrics
+PASS: Opt-in browser recorder, bounded samples, visibility/pause, timing origin, framebuffer metadata and diagnostic-only raster choices
+PASS: 37 exact creator-approved runtime icons; candidate isolation preserved
+PASS: 84 immutable creator-approved Clean Cut visual resources match SHA-256 sources
+PASS: four approved Barlow fonts and two separately licensed Hero Clash candidate fonts
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.155s
+
+OK
+Validating Godot phase: import
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Unable to open Android 'build-tools' directory.
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Inicialização do projeto (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Verificando a estrutura do arquivo...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Carregando nomes de classes globais...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verificando extensões GD...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Criando scripts de carregamento automático...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Inicializando plug-ins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Iniciando a verificação de arquivos...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registrando classes globais... (2 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | ApprovedVisuals[39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Ações de verificação... (12 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Barlow-Bold.ttf[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | Barlow-Medium.ttf[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | Barlow-SemiBold.ttf[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | BarlowCondensed-Bold.ttf[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | Inter-Black.ttf[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | Inter-Body.ttf[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | Inter-Display.ttf[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | Inter-Numbers.ttf[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | Archivo.ttf[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | ArchivoBlack.ttf[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | Oxanium.ttf[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | Rubik.ttf[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started A (Re)Importar Recursos (12 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparando arquivos para reimportação...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executando operações de pré-reimportação...[39m[0m
+[   0% ] [90m[1mreimport[22m | Barlow-Bold.ttf[39m[0m
+[   7% ] [90m[1mreimport[22m | Barlow-Medium.ttf[39m[0m
+[  15% ] [90m[1mreimport[22m | Barlow-SemiBold.ttf[39m[0m
+[  23% ] [90m[1mreimport[22m | BarlowCondensed-Bold.ttf[39m[0m
+[  30% ] [90m[1mreimport[22m | Inter-Black.ttf[39m[0m
+[  38% ] [90m[1mreimport[22m | Inter-Body.ttf[39m[0m
+[  46% ] [90m[1mreimport[22m | Inter-Display.ttf[39m[0m
+[  53% ] [90m[1mreimport[22m | Inter-Numbers.ttf[39m[0m
+[  61% ] [90m[1mreimport[22m | Archivo.ttf[39m[0m
+[  69% ] [90m[1mreimport[22m | ArchivoBlack.ttf[39m[0m
+[  76% ] [90m[1mreimport[22m | Oxanium.ttf[39m[0m
+[  84% ] [90m[1mreimport[22m | Rubik.ttf[39m[0m
+[  92% ] [90m[1mreimport[22m | Finalizando importação de Asset...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started A (Re)Importar Recursos (12 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executando operações pós-reimportação...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Carregando editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Carregando layout do editor...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Carregando docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Validating Godot phase: mobile-layout
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport UI bounds, touch targets, safe areas, selection, stable camera and focus pause
+Validating Godot phase: card-keyboard
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six-viewport focused card keyboard selection and explicit confirmation
+Validating Godot phase: spotlight-secondary
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Compact pause/build/settings/quit/results and responsive replay
+Validating Godot phase: spotlight-hud
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Simulation-bound wave/boss HUD feedback and danger priority
+Validating Godot phase: spotlight-navigation
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport home, selection, current signatures, focus and real start
+Validating Godot phase: spotlight-theme
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Archivo typography, approved palette, candidate artwork-backed button states, category cards and compact selection
+Validating Godot phase: arcade-ui
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Arcade home/options, explicit hero play, import feedback, readable cards and six-choice footer
+Validating Godot phase: enemy-navigation
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PURSUIT {"end":[465.180877685547,614.268737792969],"kind":"reply-goblin","max_blocked_seconds":0.0,"reached":true,"start":[643.0,550.0],"target":[433.701690673828,618.883056640625]}
+PURSUIT {"end":[468.304931640625,614.496643066406],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[646.0,550.0],"target":[433.701690673828,618.883056640625]}
+PURSUIT {"end":[813.87109375,745.112121582031],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[992.0,680.0],"target":[773.70166015625,748.883056640625]}
+PURSUIT {"end":[731.693969726563,614.496520996094],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[554.0,550.0],"target":[766.298278808594,618.883056640625]}
+PURSUIT {"end":[1066.12902832031,614.887878417969],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[888.0,680.0],"target":[1106.29833984375,611.116943359375]}
+PURSUIT {"end":[313.457855224609,746.08349609375],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[831.0,950.0],"target":[280.0,740.0]}
+PURSUIT {"end":[339.486389160156,742.849975585938],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[830.0,935.0],"target":[300.0,735.0]}
+PASS: Actual enemy pursuit around both covers and concave floor corners preserves geometry
+Validating Godot phase: seeded-rng
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Seeded integer JavaScript parity, shared draw state, offers and enemy selection
+Validating Godot phase: hero-animation
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Authored hero poses, fixed sheet scales, Flex timing, defeat, travel clock and pause
+Validating Godot phase: cool-kid-cpk-art
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: CPK import/alpha/padding, timing, state precedence, eight headings, restart, Byte Baddie and 720 exact gameplay/RNG parity steps
+Validating Godot phase: recovery
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Exact Phaser seeded drops, caps, collection, Safe Spot lifecycle and boss recovery
+Validating Godot phase: survival-review-policy
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Strategic review controller routes actual recovery, respects station/Flex gates and leaves simulation unchanged
+Validating Godot phase: camera-cover
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport camera bounds, time-based follow and exact static-cover sprite/geometry
+Validating Godot phase: continuous-run
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CONTINUOUS RUN: sigma, time=659.766666666395, level=25, XP=9598.0, kills=729, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: cool-kid, time=660.399999999728, level=25, XP=9148.0, kills=725, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: alpha, time=753.599999999643, level=25, XP=8626.0, kills=724, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS CPU ELAPSED: 17834 ms; not rendered FPS
+PASS: Continuous seeded three-hero progression, legal offers, combat drops, boss result and clean restart
+Validating Godot phase: run-acceptance
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+HEADLESS CPU SAMPLE: 300 enemies / 150 initial projectiles, 60 simulation iterations, 1261.62 ms; not rendered FPS or device acceptance
+PASS: Controlled three-hero wave/boss/victory timeline, portal/elite/drop contracts and headless stress fixture
+Validating Godot phase: menu-flow
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Explicit choice confirmation, modal input/exit isolation, save transfer/preferences and result retry
+Validating Godot phase: signature-flex
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Signature timing, caps, mitigation, attribution, retarget, proc isolation and lifecycle
+Validating Godot phase: hero-combat
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Stable targeting/manual aim, three hero traits, signature contact mitigation, Alpha slam timing and Beta facing armor
+Validating Godot phase: run-clock
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Exact canonical wave, event, Hater, boss, berserk and legendary boundaries
+Validating Godot phase: run-progression
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Wave pause, level-cap recovery, rolling Aura, passive replacement/periodicity, frequency stacking and terminal isolation
+Validating Godot phase: profile-store
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Phaser v2/v1 and Godot migration, corrupt data, unique completed results, bounded history, atomic storage and restart
+Validating Godot phase: contracts
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: foundational GDD contract checks
+Validating Godot phase: catalog
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: GDD rarity, role, level cap, nonduplicate card and three-hero catalog tests
+Validating Godot phase: legendary
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 6:00/8:00 same six cards, legal role, defer, one-per-run and expiry
+Validating Godot phase: boss-lifecycle
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Stagger, berserk regeneration/exposure, threshold latching, capped adds, independent event timers and expanding safe-gap ring
+Validating Godot phase: enemy-windows
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Boss commitment/recovery, event recovery and breakable three-tick Leech tether
+Validating Godot phase: ranged-sources
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Committed ranged aim, swept cover collision, canonical charge warning and persistent source attribution
+Validating Godot phase: bestiary
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 17 enemy IDs, wave pools, event/boss timing, telegraphed ranged attacks
+Validating Godot phase: ruin-alley
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Ruin Alley polygon, cover collision, line of sight and seeded floor spawns
+Validating Godot phase: passive-effects
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: GDD passive modifiers, Aura hit caps, low-health shields and Sigma Flex
+Validating Godot phase: approved-icon-batch
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: All 37 approved PNG pixel identities, Touch Grass v2, legal offers, future-only scope and unchanged simulation
+Validating Godot phase: icon-registry
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ICON MAPPINGS PENDING: 
+PASS: Approval registry, cached identity, fallback, live card/build resize and unchanged simulation
+Validating Godot phase: approved-art
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: All 19 approved art assets and 17 enemy animations loaded as Godot textures
+Validating Godot phase: combat-feedback
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: combat feedback lifecycle, bounded effects, fractional HP and phase-crystal magnet
+Validating Godot phase: clean-cut-typography
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: packaged typography, glyph coverage, equipment fit, HUD and six-viewports hierarchy
+Validating Godot phase: hero-clash-ui-candidate
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Hero Clash UI candidate brand, circular Aura Flex, clear equipment and reward controls
+Validating Godot phase: weapon-vfx
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Nine Phaser Option A weapon motifs, travelling No Cap and contact starter cues
+Validating Godot phase: legendary-combat
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Legendary projectile delays, secondary damage/proc isolation, shared hit memory and third-hit transformations
+Validating Godot phase: weapon-timing
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Fixed blast position, windup, paired hits and shared primary activation
+Validating Godot phase: player-projectiles
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Player projectile travel, collision, hit memory, restart and cover
+Validating Godot phase: mobile-touch
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle
+Validating Godot phase: flex-readability
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Flex clarity, readiness, active/recovery display and touch-safe layout across desktop/mobile
+Validating Godot phase: playable
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Godot solo hero, combat, progression, Flex and boss smoke tests
+Validating Godot phase: scene
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Validating Godot phase: approved-clean-cut-runtime
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Production Clean Cut 84 approved assets, live five-flow controls and unchanged RNG across three viewports
+Validating Godot phase: clean-cut-pointer-input
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Real viewport mouse clicks activate PLAY/HERO SELECTION/SETTINGS and BACK at desktop and compact viewports
+Validating Godot phase: clean-cut-secondary-input
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Clean Cut secondary held-pointer journeys, cache invalidation, XP separation and RNG at six viewports
+Validating Godot phase: m0-ui-creator-feedback
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Real Quit/STAY/Confirm clicks, hero identity, separate Shield and animated READY Flex on desktop/mobile
+Validating Godot phase: hero-clash-button-motion
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Hero Clash tactile buttons, selected/reveal states, reduced motion and real pointer journeys
+Validating Godot phase: clean-cut-deferred-legendary
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Deferred legendary remains visible, clickable, unchanged and deadline-bound across six viewports
+Validating Godot phase: candidate-bindings
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Five-screen live candidate composition, actual offers/hero/Flex and unchanged simulation; not production approval
+Validating Godot phase: candidate-navigation
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Candidate real hero/start, three-card confirmation, six-card defer/cache/pick and pause/resume at three viewports
+PASS: Godot import, GDD rule contracts, and main scene smoke test.
+Validating Godot phase: hero-clash-review
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Hero Clash review checks: 0 failures
+PASS: 24 original button states, exact SVG/PNG hashes, unapproved candidate status
+Validating Godot phase: button-art-components
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PLAY TARGET (1920, 1080) logical=(360.0, 64.0) physical=(540.0, 96.0) label_px=33.0
+PLAY TARGET (1600, 900) logical=(360.0, 64.0) physical=(450.0, 80.0) label_px=27.5
+PLAY TARGET (1280, 720) logical=(360.0, 64.0) physical=(360.0, 64.0) label_px=22.0
+PLAY TARGET (915, 412) logical=(360.0, 64.0) physical=(270.0, 47.91257) label_px=16.4699449539185
+PLAY TARGET (844, 390) logical=(360.0, 64.0) physical=(269.76, 48.0) label_px=16.5
+PLAY TARGET (390, 844) logical=(360.0, 64.0) physical=(270.0, 47.95733) label_px=14.2373331189156
+PASS: 24 cached artwork states, six-resolution real pointer/confirmation, unchanged hit geometry
+Validating Godot phase: navigation-recovery
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+NAV BENCH: 100 actors, 3600 frames / five moving-goal segments, 1148997 us; CPU fixture, not FPS
+NAV ROUTES: 220/220 reached; total us=1583139
+PASS: Cover tangents, radii, moving goals, concave approaches, dense-wave legality and RNG
+Validating Godot phase: layout-recovery
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Actual Controls, six viewport bounds/peer overlaps, boss HUD, dynamic text, full build and modal rows
+Validating Godot phase: mobile-fluency
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport real touch drag/release, stable HUD layout, unchanged RNG and CSS/DPR target parity
+PASS: 20 original editable HUD SVGs, exact hashes and pending approval
+Validating Godot phase: hud-v2
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: HUD V2 all heroes/six viewports, live damage/heal/shield/XP, 3+5 icons, state lifecycle, geometry cache and real Pause/Quit
+Validating Godot phase: ui-cohesion
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: UI cohesion six-view matrix, 24-to-25 transition, capped XP healing/cooldown, live equipment/results, keyboard/pointer and isolated settings persistence
+Validating Godot phase: ui-final-polish
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six-viewport static HUD identity, threat cues, unchanged simulation, Flex states/safe insets and compact Settings
+Validating Godot phase: threat-indicator
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Threat visibility thresholds/dwell, offscreen direction, deterministic priority, six safe viewports, unchanged HUD/simulation and lifecycle
+Validating Godot phase: m0-final-flows
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport actual pointer card selection/scrolling, all selected footers, deferred Legendary, five-slot replacement, outcomes/retry and isolated native save reload
+Validating Godot phase: frame-pacing-probe
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Bounded probe, chronological ring, missing data, quantiles, input timing and RNG isolation
+Validating Godot phase: frame-pacing-geometry
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 388512 differential floor/cover/axis collision comparisons against f6034fc
+Validating Godot phase: frame-pacing-state
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Irregular-frame state/RNG/event/camera hashes equal the pre-optimization baseline
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] measure (res://tests/frame_pacing/state_trace.gd:55)
+ERROR: Godot frame-pacing-state process failed.

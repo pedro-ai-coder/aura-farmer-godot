@@ -1,0 +1,61 @@
+Validating Godot phase: reconciled-floor-geometry
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 388512 differential floor/cover/axis collision comparisons against main bc690618
+Validating Godot phase: appearance-result-identity
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Original/Pixel Vixen result identity routing, both outcomes and unchanged canonical result IDs (test-only texture marker)
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.032s
+
+OK
+PASS: Three exact Pixel Vixen V2 PNGs, geometry and pending-art status
+Validating Godot phase: hero-appearance-selection
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: six-viewport cosmetic choice, canonical kit parity, safe art gate and backwards-compatible preference
+Validating Godot phase: pixel-vixen-appearance
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Pixel Vixen atlas import, cosmetic gate, pure poses, and original Sigma art isolation
+Validating Godot phase: pixel-vixen-approved-cpk-atlas
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: exact atlas import, state mapping and unchanged Sigma kit animation sequencing.
+NOTE: not a gameplay/browser/visual art approval test.
+PASS: Byte Baddie/Block Queen exact RGBA art, six animated states, geometry and preview-only canonical mappings
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.071s
+
+OK
+Validating Godot phase: female-roster
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Original kit and art stay playable
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_female_roster.gd:159)
+ERROR: Original kit and art stay playable
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_female_roster.gd:159)
+ERROR: Original kit and art stay playable
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_female_roster.gd:159)
+ERROR: Original kit and art stay playable
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_female_roster.gd:159)
+ERROR: Original kit and art stay playable
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_female_roster.gd:159)
+ERROR: Original kit and art stay playable
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] verify (res://tests/test_female_roster.gd:159)
+ERROR: Godot female-roster process failed.

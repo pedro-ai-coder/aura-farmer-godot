@@ -1,0 +1,6 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Irregular-frame state/RNG/event/camera hashes equal the pre-optimization baseline
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] measure (res://tests/frame_pacing/state_trace.gd:55)

@@ -1,0 +1,412 @@
+{
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "runtime_commit": "fb5f09a9dd4cbf12a2b5293ee9b5cf1acf2132f7",
+  "baseline_commit": "a7695eb86a659fc8b9e065960aee0951ddfdb900",
+  "phases": [
+    {
+      "phase": "import",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "mobile-layout",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "card-keyboard",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "spotlight-secondary",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "spotlight-hud",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "spotlight-navigation",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "spotlight-theme",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "arcade-ui",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "enemy-navigation",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "seeded-rng",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "hero-animation",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "cool-kid-cpk-art",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "recovery",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "survival-review-policy",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "camera-cover",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "continuous-run",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "run-acceptance",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "menu-flow",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "signature-flex",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "hero-combat",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "run-clock",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "run-progression",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "profile-store",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "contracts",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "catalog",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "legendary",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "boss-lifecycle",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "enemy-windows",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "ranged-sources",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "bestiary",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "ruin-alley",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "passive-effects",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "approved-icon-batch",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "icon-registry",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "approved-art",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "combat-feedback",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "clean-cut-typography",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "hero-clash-ui-candidate",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "weapon-vfx",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "legendary-combat",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "weapon-timing",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "player-projectiles",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "mobile-touch",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "flex-readability",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "playable",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "scene",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "approved-clean-cut-runtime",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "clean-cut-pointer-input",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "clean-cut-secondary-input",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "m0-ui-creator-feedback",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "hero-clash-button-motion",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "clean-cut-deferred-legendary",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "candidate-bindings",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "candidate-navigation",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "hero-clash-review",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "button-art-components",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "navigation-recovery",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "layout-recovery",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "mobile-fluency",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "hud-v2",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "ui-cohesion",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "ui-final-polish",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "threat-indicator",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "m0-final-flows",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "frame-pacing-probe",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "frame-pacing-geometry",
+      "result": "PASS",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "frame-pacing-state",
+      "result": "FAIL",
+      "log": "cool-kid-validation-final.log"
+    },
+    {
+      "phase": "reconciled-floor-geometry",
+      "result": "PASS",
+      "log": "cpk-remaining-validation.log"
+    },
+    {
+      "phase": "appearance-result-identity",
+      "result": "PASS",
+      "log": "cpk-remaining-validation.log"
+    },
+    {
+      "phase": "hero-appearance-selection",
+      "result": "PASS",
+      "log": "cpk-remaining-validation.log"
+    },
+    {
+      "phase": "pixel-vixen-appearance",
+      "result": "PASS",
+      "log": "cpk-remaining-validation.log"
+    },
+    {
+      "phase": "pixel-vixen-approved-cpk-atlas",
+      "result": "PASS",
+      "log": "cpk-remaining-validation.log"
+    },
+    {
+      "phase": "female-roster",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    },
+    {
+      "phase": "pickup-refresh",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    },
+    {
+      "phase": "weapon-presence-events",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    },
+    {
+      "phase": "weapon-presence-parity",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    },
+    {
+      "phase": "passive-feedback-events",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    },
+    {
+      "phase": "passive-feedback-parity",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    },
+    {
+      "phase": "passive-feedback-layout",
+      "result": "PASS",
+      "log": "cpk-final-validation-tail.log"
+    }
+  ],
+  "not_executed": [],
+  "known_baseline_failure": "frame-pacing-state fails on unchanged main as well; cause not determined",
+  "full_suite_started_at_commit": "5901d8c02ab077e62347d08a9ff56134352c9d9a",
+  "targeted_and_final_gameplay_commit": "fb5f09a9dd4cbf12a2b5293ee9b5cf1acf2132f7",
+  "notes": [
+    "Full validate.sh stops at frame-pacing-state. Remaining identical commands were run in two continuation wrappers.",
+    "The female-roster expectation was updated for the new original CPK sheet; its final rerun passes.",
+    "The final dedicated test includes rejection of corrupted imported pixels and passes.",
+    "Windows checkout line endings were normalized locally to repository bytes to restore pre-existing asset hash checks."
+  ]
+}

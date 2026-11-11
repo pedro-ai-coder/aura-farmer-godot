@@ -1,0 +1,13 @@
+e7a4fc25bc7354b074040d2444312ef4e4ceb4bd
+100644 b7a0d7168b7e4985282d16f9eddff8cb93ee8dca 1	scripts/approved_visuals.gd
+100644 8cadd15ac67476a69edf9ba8fea0dd3cd56e2594 2	scripts/approved_visuals.gd
+100644 86eb4e41427cc798d3331e27f11d948f8b503318 3	scripts/approved_visuals.gd
+100644 f9365e5d41fc5846b67d9bf4906ce5f64d4661ff 1	scripts/validate.sh
+100644 c3fc278c704c0b6d231f984b2f5c227b4072b7f6 2	scripts/validate.sh
+100644 9466b8558c22815b20948e6a26987e96c4ef06a5 3	scripts/validate.sh
+
+Auto-merging scripts/approved_visuals.gd
+CONFLICT (content): Merge conflict in scripts/approved_visuals.gd
+Auto-merging scripts/solo_run.gd
+Auto-merging scripts/validate.sh
+CONFLICT (content): Merge conflict in scripts/validate.sh

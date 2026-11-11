@@ -1,0 +1,41 @@
+Validating Godot phase: female-roster
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: complete female roster; six-viewport real keyboard/touch start, correct art/HUD/poses, cached frames, exact canonical simulation/RNG, results, Retry/restart/save and fail-closed behavior
+PASS: three exact-byte pickup candidates, canonical mappings and transparency
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.088s
+
+OK
+Validating Godot phase: pickup-refresh
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: pickup sprite mappings/cache/transparency, Reduced Motion, XP Orb label, exact radii/XP/healing, phase rewards, magnet deduplication and unchanged RNG
+PASS: two exact RGBA VFX candidates, editable sources, nine unchanged approved weapon PNGs, six-appearance attachment provenance
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.459s
+
+OK
+Validating Godot phase: weapon-presence-events
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: nine weapon resources, six attachment profiles, authoritative launch/paired/delayed/miss/blocked impacts, bounded pools, pause/retry, Reduced Motion and RNG
+Validating Godot phase: weapon-presence-parity
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 3456 exact per-frame simulation comparisons, nine weapons x both appearances x common L4/legendary, unchanged targets/damage/events/cadence/collisions/RNG
+Validating Godot phase: passive-feedback-events
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 23 passive contracts, real commits, cap-aware promotion/replacement, timers, stacks, effective healing/shields, four legendaries, pause/lifecycle/input/Reduced Motion
+Validating Godot phase: passive-feedback-parity
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 5376 full state/RNG/profile frame comparisons, all 23 passives, six appearances, irregular frames, real Flex/primary/heal/shield, pause. SHA256 {"0/female":"d25f68df17e0e6787c9f1d55a39a13aaf8292e3fd0d6dd16c498dcf68971a09b","0/original":"96c56f889179a3326d771d9f2c99051cbde702ef7de12057ede8bdeb8079e201","1/female":"0f129a6469a635eccf05c9f985d6bcac7ac247a70c9e90135e231c3b708d7484","1/original":"db7400623c4c7ddc61de01534b14480b0481a507f1fb2eb221b2228ec7eede96","2/female":"5921f050eca0e71897d71787282c48dccbcf0e77f0028e8fb8909af9c96b4502","2/original":"d5244db085c7e8eef58cf5e81d9924387d95e7e21e744e9e438437841395f2c5"}
+Validating Godot phase: passive-feedback-layout
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 23 full names and notifications, inspection descriptions, input-free HUD placement across all six GDD viewports
+PASS: approved passive art unchanged, bounded read-only feedback resources
