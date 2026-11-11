@@ -42,11 +42,11 @@ def validate_pack(pack, manifest):
     required = [str(DIRECTORY / "manifest.json").replace('\\','/')]
     for role in ["atlas","portrait"]:
         path = (DIRECTORY / manifest[role]["path"]).as_posix()
-        required += [path,path+".import"]
+        required += [path+".import"]
         if not any(p.startswith(".godot/imported/"+manifest[role]["path"]+"-") and p.endswith(".ctex") for p in paths):
             raise ValueError("Missing imported CPK texture: " + role)
     if not all(path in paths for path in required):
-        raise ValueError("Missing exported raw hash input or provenance manifest")
+        raise ValueError("Missing exported import descriptor or provenance manifest")
 
 
 if __name__ == "__main__":

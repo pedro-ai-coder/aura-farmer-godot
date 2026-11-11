@@ -15,7 +15,7 @@ var start_tick := 0
 func snapshot() -> Dictionary:
     return {"seconds":game.run_time,"mode":game.mode,"hp":game.hp,"xp":game.total_xp,
         "level":game.level,"kills":game.kills,"choices":choices,"metrics":game.run_metrics.duplicate(true),
-        "pose":game.hero_pose(),"rng":game.rng.state}
+        "pose":game.hero_pose() if not game.hero.is_empty() else {},"rng":game.rng.state}
 
 func capture(label: String) -> void:
     if captured.has(label): return

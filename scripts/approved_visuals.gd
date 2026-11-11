@@ -8,6 +8,7 @@ const ROOT := "res://assets/approved/"
 const CoolKidCPK = preload("res://scripts/cool_kid_cpk_animation.gd")
 const COOL_KID_CPK_ATLAS_PATH := "res://assets/production/cool-kid/cpk-v1/cool-kid-cpk-v1-atlas.png"
 const COOL_KID_CPK_ATLAS_SHA256 := "0a190b57982dfd8556da6b8e05cf38aae4f83e392461ef8a6c2bb42c2340925d"
+const COOL_KID_CPK_RGBA_SHA256 := "53c297c181a6092508bb18e609d1781e5df3b5ddb76624383c21b4c23de3d012"
 const COOL_KID_CPK_PORTRAIT_PATH := "res://assets/production/cool-kid/cpk-v1/cool-kid-cpk-v1-portrait.png"
 var cool_kid_cpk_atlas: Texture2D = null
 ## V2 candidate resources remain isolated from immutable approved hero art.
@@ -47,8 +48,13 @@ func _init() -> void:
             if resource is Texture2D:
                 textures[asset_name] = resource
     if ResourceLoader.exists(COOL_KID_CPK_ATLAS_PATH):
-        if FileAccess.get_sha256(COOL_KID_CPK_ATLAS_PATH) == COOL_KID_CPK_ATLAS_SHA256:
-            cool_kid_cpk_atlas = load(COOL_KID_CPK_ATLAS_PATH) as Texture2D
+        # Exported packs contain the imported texture, not the original PNG.
+        # Verify decoded RGBA bytes in both environments, and source bytes when
+        # present. Pinning both prevents a silent fallback in exported builds.
+        var candidate := load(COOL_KID_CPK_ATLAS_PATH) as Texture2D
+        var source_ok := not FileAccess.file_exists(COOL_KID_CPK_ATLAS_PATH) or FileAccess.get_sha256(COOL_KID_CPK_ATLAS_PATH) == COOL_KID_CPK_ATLAS_SHA256
+        if source_ok and _cool_kid_texture_valid(candidate):
+            cool_kid_cpk_atlas = candidate
             textures["cool-kid"] = load(COOL_KID_CPK_PORTRAIT_PATH) as Texture2D
         else:
             push_error("Cool Kid CPK atlas checksum mismatch; retaining legacy approved art.")
@@ -66,6 +72,17 @@ func _init() -> void:
             push_error("Invalid approved enemy atlas frame data")
     else:
         push_error("Missing approved enemy atlas frame data")
+
+static func _cool_kid_texture_valid(candidate: Texture2D) -> bool:
+    if candidate == null or candidate.get_size() != Vector2(1008,1008): return false
+    var pixels := candidate.get_image()
+    if pixels == null: return false
+    if pixels.is_compressed() and pixels.decompress() != OK: return false
+    pixels.convert(Image.FORMAT_RGBA8)
+    var hash := HashingContext.new()
+    hash.start(HashingContext.HASH_SHA256)
+    hash.update(pixels.get_data())
+    return hash.finish().hex_encode() == COOL_KID_CPK_RGBA_SHA256
 
 func texture(name: String) -> Texture2D:
     return textures.get(name) as Texture2D
