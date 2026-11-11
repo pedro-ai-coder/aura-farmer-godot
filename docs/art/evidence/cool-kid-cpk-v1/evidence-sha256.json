@@ -13,13 +13,13 @@
   "gameplay/08-result.jpg": "2f77950535e16a0792de6237c83413498dc7b117fd378a17cdef6acf5d4f97ff",
   "gameplay/09-restart.jpg": "673d6bfea1893a038e69635601b07bebd106275ca508ff4c788f1b09b9c86ec8",
   "gameplay/gameplay.json": "6f0708d995951609397dd931ed6b9b7370343b9cd0b60a251fef95ecbccbc0e6",
-  "validation/cool-kid-validation-final.log": "c8ea7210eebaa6f947904b03182dd1388570818e03d527b427a4109d59cc4500",
-  "validation/cpk-baseline-state.log": "c782824bc01e8790020e1385fae9c29ffe1d4f5d89bf633758091b2360a971e1",
-  "validation/cpk-final-validation-tail.log": "08f00fed2da55a7a316ebe5b4a9c64ca1ae73d59d01ebfd424e4420b6719ed36",
+  "validation/cool-kid-validation-final.log": "79a6995dddee79c8cc07ff0339fc15630e5e75c5c496c26089c7e8b45bd08b6d",
+  "validation/cpk-baseline-state.log": "71f677d5402e62f2b32088f2569e4d3527d33d98282e34ffb83442d6677690cb",
+  "validation/cpk-final-validation-tail.log": "59a6658eb33ff7a00bdbf758146697a11e3c49cbe552c1117ce2940c8352c980",
   "validation/cpk-gameplay-reviewed-error.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "validation/cpk-gameplay-reviewed.log": "e78c1df81253767c59d7f3356df2b32bec85c38074aef717bbd51ec10d1e11f8",
+  "validation/cpk-gameplay-reviewed.log": "c0aeb9a07252021d24c82fe6a5504c9b28866fb9f841961bd7e1a29ba75c8002",
   "validation/cpk-motion-compatibility.txt": "ead7c8f26815c4f79e5c6af43895282daf255803847278a8b69855e76ec7cf8c",
-  "validation/cpk-pack-reviewed.log": "85dd91d5368002091742649a0d289e6f12d2dbaf0d21b70ca54dbf7296435ab5",
-  "validation/cpk-remaining-validation.log": "4936a99023ad43b155ecc1a937351246c5b808d2d093a26d1eb6e9aac0be1108",
-  "validation/cpk-test-final.log": "19eea3fd595c6db70634da054015d39c89e0332f97e335b529b6c983df1d2697"
+  "validation/cpk-pack-reviewed.log": "4b8b6b23b2af2a41c166b073c6546c962e9187eefd44bad314e8959c1e6861e8",
+  "validation/cpk-remaining-validation.log": "efdcc99ea9bcbaf63bfa6eed1637f64273287fc814afe3bf510a36aaf6523a79",
+  "validation/cpk-test-final.log": "772d1c055b9ea29fa9064b7a64010beea1bd4717c287e77d2f0729a6b735436a"
 }
