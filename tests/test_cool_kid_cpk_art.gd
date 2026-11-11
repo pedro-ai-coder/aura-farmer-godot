@@ -17,7 +17,7 @@ func verify() -> void:
     var visuals := Visuals.new()
     check(visuals.cool_kid_cpk_atlas != null,"Verified atlas loads")
     check(visuals.cool_kid_cpk_atlas.get_size() == Vector2(1008,1008),"Imported geometry")
-    var altered := visuals.cool_kid_cpk_atlas.get_image()
+    var altered: Image = visuals.cool_kid_cpk_atlas.get_image().duplicate()
     altered.set_pixel(72,60,Color.MAGENTA)
     check(not Visuals._cool_kid_texture_valid(ImageTexture.create_from_image(altered)),"Changed imported pixels fail integrity gate")
     var image := visuals.cool_kid_cpk_atlas.get_image()

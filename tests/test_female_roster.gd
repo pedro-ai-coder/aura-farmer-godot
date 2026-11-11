@@ -93,7 +93,8 @@ func verify() -> void:
         for index in range(3):
             game.start_run(index)
             var id: String=game.hero["id"]
-            expect(game.hero==game.HEROES[index] and game.hero_pose()["sheet"]=="atlas","Original kit and art stay playable")
+            var original_sheet := "cool-kid-cpk" if id == "cool-kid" else "atlas"
+            expect(game.hero==game.HEROES[index] and game.hero_pose()["sheet"]==original_sheet,"Original kit and its approved art stay playable")
             expect(game.art.cosmetic_portrait(id,"original")==game.art.texture(id),"Original portrait identity is preserved")
             game._return_to_menu()
         game.queue_free();await process_frame;await process_frame
