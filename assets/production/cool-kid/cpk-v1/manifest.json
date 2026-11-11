@@ -47,7 +47,14 @@
   },
   "portrait": {
     "path": "cool-kid-cpk-v1-portrait.png",
-    "sha256": "895a652d8b4ef53875b80582468be8d219cd5342d2a1bbf2d29838cee89f3d4c"
+    "sha256": "d32264f32a775562fafa28f2194d7e9120d744aae318470773d7384e798e5bcf",
+    "dimensions": [
+      146,
+      184
+    ],
+    "source_pose": 0,
+    "source_scale": 1.0,
+    "padding": 8
   },
   "authored_sequences": {
     "idle": [
@@ -1591,5 +1598,71 @@
       ],
       "sha256": "b5a980fb0a032630f73934b0f2270990b3dffa782fd10b629b443ecd65501843"
     }
-  ]
+  ],
+  "art_package_commit": "fb3809f76cea94ececc18bfbfe0b03ff68417cbc",
+  "runtime_mapping": {
+    "script": "scripts/cool_kid_cpk_animation.gd",
+    "idle": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "run": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "attack": [
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "hurt": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "flex_entry": [
+      28,
+      29,
+      30
+    ],
+    "flex_loop": [
+      31,
+      32
+    ],
+    "flex_exit": [
+      33,
+      34
+    ],
+    "defeat": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "intro": "NOT_ACTIVATED_NO_EXISTING_STATE",
+    "run_cycle_seconds": 0.4444444444444444,
+    "attack_window_seconds": 0.22,
+    "impact_descriptor_remaining": 0.145,
+    "hurt_window_seconds": 0.18,
+    "defeat_settle_seconds": 0.375,
+    "display_scale": 0.75
+  }
 }

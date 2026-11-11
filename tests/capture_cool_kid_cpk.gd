@@ -51,6 +51,7 @@ func verify() -> void:
             break
         if game.mode == "choice":
             await capture("05-xp-upgrade")
+            if not game.offer_buttons[0].is_visible_in_tree() or game.offer_buttons[0].disabled: continue
             await click(game.offer_buttons[0])
             await click(game.confirm_button)
             choices += 1
@@ -74,7 +75,7 @@ func verify() -> void:
             game.touch_direction = (target-game.player_pos).normalized() if game.player_pos.distance_to(target) > 8.0 else Vector2.ZERO
             if captured.has("07-flex") and game.run_time > 100.0:
                 game.touch_direction = Vector2.ZERO
-            if game.aura >= 100.0 and game.flex_lock <= 0.0:
+            if game.aura >= 100.0 and game.flex_lock <= 0.0 and game.flex_button.is_visible_in_tree() and not game.flex_button.disabled:
                 await click(game.flex_button)
             var pose: Dictionary = game.hero_pose()
             if pose["state"] == "run": await capture("03-movement")

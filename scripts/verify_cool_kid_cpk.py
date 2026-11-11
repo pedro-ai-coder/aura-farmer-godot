@@ -20,7 +20,7 @@ def validate(root=ROOT):
         raise ValueError("Unexpected derivative revision")
     if manifest["kit_id"] != "cool-kid" or len(manifest["frames"]) != 49:
         raise ValueError("Kit/frame contract changed")
-    for role, dimensions in [("atlas",(1008,1008)),("portrait",(144,144))]:
+    for role, dimensions in [("atlas",(1008,1008)),("portrait",(146,184))]:
         record = manifest[role]
         data = (folder / record["path"]).read_bytes()
         if hashlib.sha256(data).hexdigest() != record["sha256"]:
