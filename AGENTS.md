@@ -17,7 +17,8 @@ The complete canonical `docs/GDD.md` is the sole product, gameplay and visual sp
 
 ## Context Routing
 
-Before interacting with this project, read the [context routing index](.context-routing/index.md)
-and follow the routes relevant to your task.
-Use the task and folder descriptions to select relevant routes; open only those
-context files and dependencies needed for the task.
+For tasks requiring folder-level or cross-cutting context, consult the
+[context routing index](.context-routing/index.md) and follow only relevant routes.
+If the catalog has no matching route, use this guidance and the smallest necessary
+source files; do not load unrelated context or references by default.
+Routing is navigation only and never grants product or artistic approval.
