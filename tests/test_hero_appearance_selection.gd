@@ -38,6 +38,7 @@ func verify() -> void:
         expect(game.mode == "heroes", "Actual hero-selection screen opens at %s" % extent)
         await click(skin.appearance_buttons[1])
         expect(game.hero_appearance == "female" and game.profile["appearance"] == "female", "Female appearance is selected and stored at %s" % extent)
+        expect(skin.appearance_notice.text == "CHOOSE AN APPEARANCE AND HERO KIT", "Player-facing selection guidance has no asset-readiness counters")
         expect(not game.presentation.home.start_button.disabled, "Pixel Vixen with a real candidate atlas can start at %s" % extent)
         for i in range(3):
             game.presentation.select_hero(i)
@@ -45,6 +46,7 @@ func verify() -> void:
             var data: Dictionary = game.HEROES[i]
             var expected: String = Appearance.display_name(str(data["id"]), "female", str(data["name"]))
             expect(skin.hero_parts[i]["name"].text == expected, "Female name shown for selected kit: " + expected)
+            expect(not skin.hero_parts[i]["role"].text.contains("PROPOSED"), "Approved source-design labels are not exposed to players: " + expected)
             expect(skin.hero_parts[i]["portrait"].texture != null, "Each female appearance has its own portrait art: " + expected)
             expect(not skin.hero_parts[i]["art_status"].visible, "Complete female art has no pending placeholder: " + expected)
             expect(not game.presentation.home.start_button.disabled, "Every canonical kit can start as female: " + expected)
@@ -65,6 +67,7 @@ func verify() -> void:
         await click(game.presentation.home.hero_destination)
         await click(skin.appearance_buttons[0])
         expect(game.hero_appearance == "original" and not game.presentation.home.start_button.disabled, "Original play remains available")
+        expect(skin.appearance_notice.text == "CHOOSE AN APPEARANCE AND HERO KIT", "Original appearance shows the same player-facing guidance")
         game.presentation.select_hero(2)
         game.start_run(2)
         expect(game.mode == "playing" and game.hero["id"] == "alpha", "Original gameplay still starts with canonical Alpha ID")
