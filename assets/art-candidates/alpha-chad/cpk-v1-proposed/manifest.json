@@ -7,7 +7,10 @@
     "path": "source/characters/alpha-chad/cpk-v1-proposed/source.png",
     "sha256": "e0fcb9b3a8512aa7118c81da160a05e22bb8e0f17a4c7d37063429e321e51d35",
     "generator": "built-in image_gen",
-    "candidate_count": 1
+    "candidate_count": 1,
+    "approval": "CPK-ART-THREE-HERO-SOURCES-2026-11-12-01",
+    "repository": "pedro-ai-coder/clutchpunks-art-pipeline",
+    "commit": "81fb725792eda2ce90075a06ac26e9459681088d"
   },
   "animation": "24 derived cutout frames; canonical state timing, no new combat events",
   "states": [
@@ -21,6 +24,9 @@
   "files": {
     "atlas.png": "6b966cfc7a45a0f511894caed7b6086d27de5d30d373f5b4f9d124a535fa4f5b",
     "hud.png": "675c060e3f28e8b23837e317940b1192ab2a3bb9ca6f2f5029991b01dcd5f747",
-    "portrait.png": "fdbfd0f09d07b94b4cd1258b06edea31a48cd41f0b93d799dfcbdec9cd0a78f9"
-  }
+    "portrait.png": "20eaa3f34a6f0ba92c986b4fb32729172d291e8bc5c19d0300d21a702a3eab7f"
+  },
+  "portrait_derivation": "Full nonempty source bounds, aspect fit within 464x464, centred on transparent 512x512; no artwork edits.",
+  "design_status": "APPROVED_EXACT_SOURCE",
+  "runtime_acceptance": "PENDING_CREATOR_GAMEPLAY_AND_VISUAL_TESTS"
 }

@@ -24,6 +24,11 @@ def validate():
     path = Path(vixen['atlas_path'])
     assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == vixen['atlas_sha256']
     sources.append(path.as_posix())
+    portrait = json.loads((ROOT/VIXEN/'selection-portrait.json').read_text())
+    path = VIXEN/'selection-portrait.png'
+    assert portrait['source_sha256'] == vixen['source_sha256']
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == portrait['sha256']
+    sources.append(path.as_posix())
     # Existing verifiers independently pin Cool Kid and all legacy female assets.
     from verify_cool_kid_cpk import validate as cool_kid
     cool_kid()

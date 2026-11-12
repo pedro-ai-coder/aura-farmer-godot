@@ -153,10 +153,7 @@ func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "sel
     if not ProposedCPK.slug(hero_id,appearance).is_empty():
         return ProposedCPK.portrait(hero_id,appearance,usage)
     if hero_id == "sigma" and appearance == "female" and pixel_vixen_cpk_atlas != null:
-        var portrait := AtlasTexture.new()
-        portrait.atlas = pixel_vixen_cpk_atlas
-        portrait.region = Rect2(0,0,96,96)
-        return portrait
+        return load("res://assets/production/pixel-vixen/cpk-v1/selection-portrait.png") as Texture2D
     return female_art.texture(hero_id,usage) if appearance == "female" else texture(hero_id)
 
 func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:

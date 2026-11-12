@@ -1,0 +1,16 @@
+{
+  "source_repository": "pedro-ai-coder/clutchpunks-art-pipeline",
+  "source_sha256": "5a16816eb51b6ca1d5e3f7f4036064243bd7152d561fdf866c5bd543ca29b490",
+  "source_bounds_xywh": [
+    50,
+    6,
+    133,
+    177
+  ],
+  "derivation": "First approved idle pose at native source resolution, isolated alpha component, 16px transparent padding",
+  "dimensions": [
+    165,
+    209
+  ],
+  "sha256": "a82f1f1576126e2d312891897689adb97e6a7bda555b15b147ac06329aec7a57"
+}

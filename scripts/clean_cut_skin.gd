@@ -194,6 +194,10 @@ func install(owner_game, source_root: String) -> void:
         for key in ["role","starter"]:Type.apply(parts[key],"hud_secondary")
         Type.apply(parts["flex"],"section_header")
         Type.apply(parts["help"],"body_s")
+        for key in ["name","role","starter","flex","help"]:
+            parts[key].vertical_alignment=VERTICAL_ALIGNMENT_TOP
+            parts[key].clip_text=false
+            parts[key].max_lines_visible=-1
         hero_parts.append(parts)
     offers_scroll=ScrollContainer.new();offers_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED;add_child(offers_scroll)
     offers_content=Control.new();offers_scroll.add_child(offers_content)
@@ -473,8 +477,8 @@ func heroes_layout() -> void:
         help.text=ui.catalog[game.HEROES[i]["id"]]["flex_help"]
         var flex_name: Label=hero_parts[i]["flex"]
         flex_name.text=game.HEROES[i]["flex"]
-        var help_top: float=350.0+maxf(48.0,text_height(flex_name,width-48.0))+12.0
-        height=maxf(height,help_top+text_height(help,width-48.0)+20.0)
+        var help_top: float=350.0+maxf(48.0,hero_text_height(flex_name,width-48.0))+12.0
+        height=maxf(height,help_top+hero_text_height(help,width-48.0)+20.0)
     place(hero_scroll,Rect2(24,188,view.x-48,maxf(86.0,view.y-276.0)))
     hero_content.custom_minimum_size=Vector2(view.x-64,ceili(3.0/columns)*(height+gap));hero_content.size=hero_content.custom_minimum_size
     for i in range(3):
@@ -500,7 +504,7 @@ func heroes_layout() -> void:
         parts["icon"].texture=ui.item_icons.texture("weapon",data["starter"]);place(parts["icon"],Rect2(24,282,45,45))
         parts["starter"].text="STARTER / "+game.WEAPONS[data["starter"]]["name"];place(parts["starter"],Rect2(80,282,width-100,55))
         parts["flex"].text=data["flex"]
-        var flex_height: float=maxf(48.0,text_height(parts["flex"],width-48.0))
+        var flex_height: float=maxf(48.0,hero_text_height(parts["flex"],width-48.0))
         var help_top: float=350.0+flex_height+12.0
         place(parts["flex"],Rect2(24,350,width-48,flex_height))
         parts["help"].text=ui.catalog[data["id"]]["flex_help"]
@@ -510,6 +514,11 @@ func heroes_layout() -> void:
     ui.home.start_button.text="START RUN" if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "ART PENDING"
     ui.home.start_button.disabled=not game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"]))
     button_skin(ui.home.return_button,"menu/secondary");button_skin(ui.home.start_button,"menu/primary")
+func hero_text_height(node: Label, width: float) -> float:
+    node.size.x=width
+    # Label shaping can wrap differently from Font multiline measurement.
+    return maxf(text_height(node,width),node.get_minimum_size().y)+4.0
+
 func text_height(node: Label, width: float) -> float:
     var font: Font=node.get_theme_font("font")
     var pixels: int=node.get_theme_font_size("font_size")

@@ -105,6 +105,7 @@ run_godot() {
     fi
 }
 run_godot import --headless --path . --import
+run_godot hero-render-integration --headless --path . --script tests/test_hero_render_integration.gd
 run_godot six-hero-selection --headless --path . --script tests/test_hero_appearance_selection.gd -- --mobile-review
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi

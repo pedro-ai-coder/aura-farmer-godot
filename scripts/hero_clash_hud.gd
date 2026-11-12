@@ -303,7 +303,7 @@ func sync_data() -> void:
     skin.portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance,"hud")
     var female_portrait: bool=game.hero_appearance=="female" or not game.ProposedCPK.slug(str(game.hero["id"]),game.hero_appearance).is_empty()
     skin.portrait.material=null if female_portrait else portrait_material
-    skin.portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED if female_portrait else TextureRect.STRETCH_SCALE
+    skin.portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED if female_portrait else TextureRect.STRETCH_SCALE
     var regions: Dictionary={"sigma":Vector4(0.18,0.07,0.49,0.54),"cool-kid":Vector4(0.12,0.02,0.65,0.63),"alpha":Vector4(0.14,0.00,0.65,0.62)}
     portrait_material.set_shader_parameter("source_region",regions[game.hero["id"]])
     skin.hp.text="HP %d / %d" % [ceili(game.hp),ceili(game.max_hp)]

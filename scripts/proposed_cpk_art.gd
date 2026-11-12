@@ -3,6 +3,8 @@ extends RefCounted
 ## Preview-only cutout candidates. Original kits, state precedence and RNG stay intact.
 const Canonical = preload("res://scripts/hero_animation.gd")
 const Female = preload("res://scripts/female_hero_animation.gd")
+# Canvas draw commands are deferred; retain resources until the frame renders.
+static var atlases: Dictionary = {}
 const ROOT := "res://assets/art-candidates/"
 static func slug(hero_id: String, appearance: String) -> String:
     if hero_id == "alpha": return "block-queen" if appearance == "female" else "alpha-chad"
@@ -23,7 +25,9 @@ static func draw(canvas: CanvasItem, pos: Vector2, hero_id: String, pose_data: D
     if not name.ends_with("-proposed"): return false
     name = name.trim_suffix("-proposed")
     if name not in ["byte-baddie","alpha-chad","block-queen"]: return false
-    var atlas := load(ROOT+name+"/cpk-v1-proposed/atlas.png") as Texture2D
+    if not atlases.has(name):
+        atlases[name] = load(ROOT+name+"/cpk-v1-proposed/atlas.png") as Texture2D
+    var atlas: Texture2D = atlases[name]
     if atlas == null: return false
     var index := clampi(int(pose_data["frame"]),0,23)
     var factor := 0.34 if hero_id == "alpha" else 0.32
