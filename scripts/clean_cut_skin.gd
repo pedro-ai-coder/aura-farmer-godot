@@ -462,10 +462,9 @@ func heroes_layout() -> void:
         var active: bool=game.hero_appearance==("original" if i==0 else "female")
         button_skin(toggle,"menu/primary" if active else "menu/secondary",active)
         place(toggle,Rect2(24.0+float(i)*(toggle_width+12.0),110.0,toggle_width,44.0))
-    var ready_count := 0
-    for data: Dictionary in game.HEROES:
-        if game.HeroAppearanceScript.can_start("female",str(data["id"])): ready_count+=1
-    appearance_notice.text=("FEMALE APPEARANCES READY · 3 / 3" if ready_count==3 else "FEMALE ART PENDING · %d / 3 READY" % ready_count) if game.hero_appearance=="female" else "CHOOSE AN APPEARANCE AND HERO KIT"
+    # Show player-facing selection guidance, never internal asset-readiness counts.
+    # Availability remains enforced by can_start() on the actual controls.
+    appearance_notice.text="CHOOSE AN APPEARANCE AND HERO KIT"
     place(appearance_notice,Rect2(24,158,view.x-48,24))
     var columns:=1 if view.x<700 else 3
     var gap:=20.0;var width: float=(view.x-64-gap*(columns-1))/columns
@@ -493,11 +492,9 @@ func heroes_layout() -> void:
         parts["portrait"].texture=game.art.cosmetic_portrait(str(data["id"]),game.hero_appearance)
         parts["portrait"].visible=parts["portrait"].texture!=null
         parts["art_status"].visible=female and not candidate_ready
-        parts["art_status"].text="ART IN PRODUCTION\nNOT YET PLAYABLE"
+        parts["art_status"].text="THIS APPEARANCE IS UNAVAILABLE"
         parts["name"].text=game.HeroAppearanceScript.display_name(str(data["id"]),game.hero_appearance,str(data["name"]))
         parts["role"].text=data["role"].to_upper()+(" · SELECTED" if selected else "")
-        if not game.ProposedCPK.slug(str(data["id"]),game.hero_appearance).is_empty():
-            parts["role"].text="PROPOSED · "+data["role"].to_upper()
         place(parts["name"],Rect2(24,44,width-48,40));place(parts["role"],Rect2(24,85,width-48,24))
         place(parts["portrait"],Rect2(40,118,width-80,160))
         place(parts["art_status"],Rect2(24,150,width-48,100))
@@ -511,7 +508,7 @@ func heroes_layout() -> void:
         place(parts["help"],Rect2(24,help_top,width-48,height-help_top-20.0))
     ui.home.return_button.show();ui.home.start_button.show()
     place(ui.home.return_button,Rect2(24,view.y-78,150,64));place(ui.home.start_button,Rect2(view.x-300,view.y-78,276,64))
-    ui.home.start_button.text="START RUN" if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "ART PENDING"
+    ui.home.start_button.text="START RUN" if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "UNAVAILABLE"
     ui.home.start_button.disabled=not game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"]))
     button_skin(ui.home.return_button,"menu/secondary");button_skin(ui.home.start_button,"menu/primary")
 func hero_text_height(node: Label, width: float) -> float:
