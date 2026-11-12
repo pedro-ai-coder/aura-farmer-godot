@@ -133,7 +133,7 @@ func layout() -> void:
     fullscreen_button.visible=false;fullscreen_status.visible=false
     pause_dim.visible=mode in ["paused","build","options","confirm_exit","won","lost"]
     pause_panel.visible=mode in ["paused","confirm_exit"]
-    pause_dim.color=Color(0.025,0.045,0.075,0.68) if mode=="paused" else Color(skin.Style.DEEP,0.94)
+    pause_dim.color=Color(0.025,0.045,0.075,0.68) if mode in ["paused","confirm_exit"] else Color(skin.Style.DEEP,0.94)
     if pause_dim.visible:
         skin.background.hide()
         skin.place(pause_dim,Rect2(-skin.shift,ui.full_view))
@@ -196,7 +196,7 @@ func layout() -> void:
         skin.fit_line(skin.heading,24)
         skin.headline_accent.hide()
         skin.Type.apply(caption,"body_m",view.x<700.0,skin.Style.INK)
-        skin.place(caption,Rect2(panel.position+Vector2(24,90),Vector2(panel_width-48,88)))
+        skin.place(caption,Rect2(panel.position+Vector2(24,90),Vector2(panel_width-48,128 if stacked else 100)))
         game.restart_button.text="STAY";game.confirm_button.text="CONFIRM QUIT"
         if stacked:
             var button_width: float=panel_width-48.0
