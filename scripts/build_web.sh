@@ -19,6 +19,7 @@ cd "$ROOT"
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_cool_kid_cpk.py
 python3 scripts/verify_six_hero_review.py
+python3 scripts/verify_proposed_cpk.py
 python3 scripts/verify_female_variants.py
 python3 scripts/verify_pickup_candidates.py
 python3 scripts/verify_weapon_presence.py

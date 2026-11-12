@@ -1,0 +1,26 @@
+{
+  "status": "PROPOSED",
+  "runtime_authorization": "PREVIEW_ONLY",
+  "hero_id": "alpha",
+  "appearance": "original",
+  "source": {
+    "path": "source/characters/alpha-chad/cpk-v1-proposed/source.png",
+    "sha256": "e0fcb9b3a8512aa7118c81da160a05e22bb8e0f17a4c7d37063429e321e51d35",
+    "generator": "built-in image_gen",
+    "candidate_count": 1
+  },
+  "animation": "24 derived cutout frames; canonical state timing, no new combat events",
+  "states": [
+    "idle",
+    "run",
+    "attack",
+    "hurt",
+    "flex",
+    "defeat"
+  ],
+  "files": {
+    "atlas.png": "6b966cfc7a45a0f511894caed7b6086d27de5d30d373f5b4f9d124a535fa4f5b",
+    "hud.png": "675c060e3f28e8b23837e317940b1192ab2a3bb9ca6f2f5029991b01dcd5f747",
+    "portrait.png": "fdbfd0f09d07b94b4cd1258b06edea31a48cd41f0b93d799dfcbdec9cd0a78f9"
+  }
+}

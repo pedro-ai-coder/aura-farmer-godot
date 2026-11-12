@@ -492,6 +492,8 @@ func heroes_layout() -> void:
         parts["art_status"].text="ART IN PRODUCTION\nNOT YET PLAYABLE"
         parts["name"].text=game.HeroAppearanceScript.display_name(str(data["id"]),game.hero_appearance,str(data["name"]))
         parts["role"].text=data["role"].to_upper()+(" · SELECTED" if selected else "")
+        if not game.ProposedCPK.slug(str(data["id"]),game.hero_appearance).is_empty():
+            parts["role"].text="PROPOSED · "+data["role"].to_upper()
         place(parts["name"],Rect2(24,44,width-48,40));place(parts["role"],Rect2(24,85,width-48,24))
         place(parts["portrait"],Rect2(40,118,width-80,160))
         place(parts["art_status"],Rect2(24,150,width-48,100))

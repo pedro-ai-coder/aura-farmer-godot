@@ -120,7 +120,7 @@ func verify_mobile_review() -> void:
             expect(game.hero_index==index and game.hero_appearance==appearance, "Touch selects the requested hero")
             await review_tap(game.presentation.home.start_button)
             expect(game.mode=="playing" and game.hero==game.HEROES[index], "Touch launches an unchanged canonical kit")
-            var sheet: String = ["sigma-cpk","cool-kid-cpk","atlas"][index] if appearance=="original" else ["pixel-vixen","byte-baddie","block-queen"][index]
+            var sheet: String = ["sigma-cpk","cool-kid-cpk","alpha-chad-proposed"][index] if appearance=="original" else ["pixel-vixen","byte-baddie-proposed","block-queen-proposed"][index]
             expect(game.hero_pose()["sheet"]==sheet, "Correct gameplay atlas: "+sheet)
             expect(game.art.cosmetic_portrait(str(game.hero["id"]),appearance)!=null, "Correct portrait available")
     var canonical = preload("res://scripts/hero_animation.gd")
@@ -132,6 +132,10 @@ func verify_mobile_review() -> void:
         var pose: Dictionary = game.art.SigmaCPK.pose(state)
         expect(pose["state"]==canonical.pose("sigma",state)["state"], "Sigma preserves state precedence: "+event)
         expect(int(pose["frame"])>=0 and int(pose["frame"])<49, "Sigma frame exists: "+event)
+        for candidate in [["cool-kid","female"],["alpha","original"],["alpha","female"]]:
+            var proposed: Dictionary = game.ProposedCPK.pose(candidate[0],candidate[1],state)
+            expect(proposed["state"]==canonical.pose(candidate[0],state)["state"], "Candidate retains canonical state: "+event)
+            expect(int(proposed["frame"])>=0 and int(proposed["frame"])<24, "Candidate cutout frame exists: "+event)
     game.queue_free()
     await process_frame
     if failures.is_empty():

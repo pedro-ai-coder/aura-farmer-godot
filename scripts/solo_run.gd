@@ -6,6 +6,7 @@ const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
 const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const HeroAppearanceScript = preload("res://scripts/hero_appearance.gd")
 const FemaleHeroAnimationScript = preload("res://scripts/female_hero_animation.gd")
+const ProposedCPK = preload("res://scripts/proposed_cpk_art.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const CleanCutSkinScript = preload("res://scripts/clean_cut_skin.gd")
@@ -2388,6 +2389,8 @@ func _draw_enemy_actor(e: Dictionary) -> void:
 func hero_pose() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
+    if not ProposedCPK.slug(str(hero["id"]),hero_appearance).is_empty():
+        return ProposedCPK.pose(str(hero["id"]),hero_appearance,state)
     if hero_appearance == "female":
         return FemaleHeroAnimationScript.pose(str(hero["id"]),state)
     if str(hero["id"]) == "sigma" and art.sigma_cpk_atlas != null:

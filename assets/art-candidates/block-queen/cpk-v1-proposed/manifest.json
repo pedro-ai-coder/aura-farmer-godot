@@ -1,0 +1,26 @@
+{
+  "status": "PROPOSED",
+  "runtime_authorization": "PREVIEW_ONLY",
+  "hero_id": "alpha",
+  "appearance": "female",
+  "source": {
+    "path": "source/characters/block-queen/cpk-v1-proposed/source.png",
+    "sha256": "7c832e825a3e261c14149583352dc738322e34c8bbd3e08a6d4143d7d93ffe30",
+    "generator": "built-in image_gen",
+    "candidate_count": 1
+  },
+  "animation": "24 derived cutout frames; canonical state timing, no new combat events",
+  "states": [
+    "idle",
+    "run",
+    "attack",
+    "hurt",
+    "flex",
+    "defeat"
+  ],
+  "files": {
+    "atlas.png": "0ba6217ff37e2d8b97cfbcde638f54421cceee65d57471e15479d2bd4a704e2f",
+    "hud.png": "6c0be97bd3e60af3af55b9520ff876ec7efa86b6183cbabde636c7585c3e649f",
+    "portrait.png": "20d632de1c70afb9d907f13f5fd95c35d47742b37e692429cf1fcc918b2743ef"
+  }
+}

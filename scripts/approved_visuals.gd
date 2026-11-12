@@ -5,6 +5,7 @@ extends RefCounted
 ## Art is SHA-verified at Web build time. Never modify gameplay or RNG here.
 
 const ROOT := "res://assets/approved/"
+const ProposedCPK = preload("res://scripts/proposed_cpk_art.gd")
 const SigmaCPK = preload("res://scripts/sigma_cpk_animation.gd")
 const SIGMA_CPK_ATLAS_PATH := "res://assets/production/the-sigma/cpk-v1/sigma-cpk-v1-atlas.png"
 const SIGMA_CPK_ATLAS_SHA256 := "89e2b2c8a9685aee38b774a0e649da54167c94114fcacc84b5eea16ac2a37f36"
@@ -149,6 +150,8 @@ func prepare_appearance(hero_id: String, appearance: String) -> bool:
     return true if appearance == "original" else female_art.prepare(hero_id)
 
 func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "selection") -> Texture2D:
+    if not ProposedCPK.slug(hero_id,appearance).is_empty():
+        return ProposedCPK.portrait(hero_id,appearance,usage)
     if hero_id == "sigma" and appearance == "female" and pixel_vixen_cpk_atlas != null:
         var portrait := AtlasTexture.new()
         portrait.atlas = pixel_vixen_cpk_atlas
@@ -157,6 +160,8 @@ func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "sel
     return female_art.texture(hero_id,usage) if appearance == "female" else texture(hero_id)
 
 func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:
+    if str(pose.get("sheet","")).ends_with("-proposed"):
+        return ProposedCPK.draw(canvas,pos,hero_id,pose)
     var sheet: String = pose["sheet"]
     if sheet == SigmaCPK.SHEET:
         if hero_id != "sigma" or sigma_cpk_atlas == null: return false
