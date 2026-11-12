@@ -19,12 +19,28 @@ changing gameplay or artwork silently.
 
 ## Folder routes
 
+Context scope: 1 layer. Creator-selected folder tiers (2026-11-12).
+Nested subfolders are included through their parent route; no second-layer context files are selected.
+
 | Folder | What's there | Context file |
 |---|---|---|
+| `assets/` | Asset provenance and manifests (tier: thin) | [Context](../assets/CONTEXT.md) |
+| `docs/` | GDD, creator decisions and history (tier: thin) | [Context](../docs/CONTEXT.md) |
+| `scenes/` | Godot scene entry points (tier: standard) | [Context](../scenes/CONTEXT.md) |
+| `scripts/` | Runtime contracts and platform/build helpers (tier: deep) | [Context](../scripts/CONTEXT.md) |
+| `tests/` | QA tests and fixtures (tier: standard) | [Context](../tests/CONTEXT.md) |
+| `web/` | Browser lifecycle/diagnostics (tier: standard) | [Context](../web/CONTEXT.md) |
 
-No folder-level CONTEXT.md files have been selected for this pilot.
-Before adding them, obtain the creator's explicit folder/tier selections
-and the allowed context depth (one or two layers).
+## Related contexts
+
+Read both when the task crosses a verified interface:
+
+| Context | Related context | Relationship / when to read |
+|---|---|---|
+| [Scenes](../scenes/CONTEXT.md) | [Scripts](../scripts/CONTEXT.md) | Main scene attaches the solo-run controller |
+| [Scripts](../scripts/CONTEXT.md) | [Tests](../tests/CONTEXT.md) | Runtime contracts have targeted QA coverage |
+| [Scripts](../scripts/CONTEXT.md) | [Web](../web/CONTEXT.md) | Godot Web export and platform adapters |
+| [Scripts](../scripts/CONTEXT.md) | [Assets](../assets/CONTEXT.md) | Runtime art bindings use manifest-tracked resources |
 
 ## Maintenance contract
 
