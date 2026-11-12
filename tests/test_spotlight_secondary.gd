@@ -47,6 +47,17 @@ func verify() -> void:
         await process_frame
         for button in [ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run]:
             check(bounds.encloses(button.get_global_rect()),"Live pause action remains in bounds at %s" % viewport)
+        ui.secondary.quit_run.emit_signal("pressed")
+        await process_frame
+        await process_frame
+        var shell: Rect2=game.clean_cut_skin.auxiliary.pause_panel.get_global_rect()
+        check(game.mode=="confirm_exit" and game.clean_cut_skin.auxiliary.pause_panel.visible,"Quit uses the live compact modal at %s" % viewport)
+        check(shell.size.x<=621.0 and shell.size.y<=405.0,"Quit modal stays compact at %s" % viewport)
+        check(bounds.encloses(shell),"Quit modal stays within viewport at %s" % viewport)
+        for button in [game.restart_button,game.confirm_button]:
+            check(shell.grow(1).encloses(button.get_global_rect()),"Quit action stays within modal at %s" % viewport)
+        game.restart_button.emit_signal("pressed")
+        check(game.mode=="paused","STAY returns to paused run at %s" % viewport)
         game.mode = "playing"
         game._finish(false)
     game.retry_button.emit_signal("pressed")
