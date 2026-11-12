@@ -131,8 +131,8 @@ func layout() -> void:
     var mode: String=game.mode
     screen_panel.visible=mode=="options"
     fullscreen_button.visible=false;fullscreen_status.visible=false
-    pause_dim.visible=mode in ["paused","build","options","won","lost"]
-    pause_panel.visible=mode=="paused"
+    pause_dim.visible=mode in ["paused","build","options","confirm_exit","won","lost"]
+    pause_panel.visible=mode in ["paused","confirm_exit"]
     pause_dim.color=Color(0.025,0.045,0.075,0.68) if mode=="paused" else Color(skin.Style.DEEP,0.94)
     if pause_dim.visible:
         skin.background.hide()
@@ -182,10 +182,31 @@ func layout() -> void:
         action(game.restart_button,Rect2(24,footer,half,64))
         action(game.confirm_button,Rect2(40+half,footer,half,64),true)
     elif mode=="confirm_exit":
+        # Keep the active run paused behind the same bounded shell as Pause.
+        # This is presentation-only: the existing STAY/CONFIRM signals remain unchanged.
         caption.text="This unfinished run will not count towards your profile.\nYour settings and completed results remain saved."
+        var stacked: bool=view.x<560.0 and view.y>=480.0
+        var panel_width: float=minf(620.0,view.x-32.0)
+        var panel_height: float=minf(404.0 if stacked else 320.0,view.y-24.0)
+        var panel:=Rect2((view-Vector2(panel_width,panel_height))*0.5,Vector2(panel_width,panel_height))
+        skin.place(pause_panel,panel)
+        skin.place(pause_accent,Rect2(24,3,112,4))
+        skin.Type.apply(skin.heading,"display_l",view.x<700.0,skin.Style.INK)
+        skin.place(skin.heading,Rect2(panel.position+Vector2(24,18),Vector2(panel_width-48,58)))
+        skin.fit_line(skin.heading,24)
+        skin.headline_accent.hide()
+        skin.Type.apply(caption,"body_m",view.x<700.0,skin.Style.INK)
+        skin.place(caption,Rect2(panel.position+Vector2(24,90),Vector2(panel_width-48,88)))
         game.restart_button.text="STAY";game.confirm_button.text="CONFIRM QUIT"
-        action(game.restart_button,Rect2(24,footer,half,64))
-        action(game.confirm_button,Rect2(40+half,footer,half,64),true)
+        if stacked:
+            var button_width: float=panel_width-48.0
+            action(game.restart_button,Rect2(panel.position+Vector2(24,panel_height-156),Vector2(button_width,60)))
+            action(game.confirm_button,Rect2(panel.position+Vector2(24,panel_height-84),Vector2(button_width,60)),true)
+        else:
+            var button_width: float=(panel_width-60.0)/2.0
+            var button_y: float=panel.position.y+panel_height-88.0
+            action(game.restart_button,Rect2(panel.position.x+24.0,button_y,button_width,64))
+            action(game.confirm_button,Rect2(panel.position.x+36.0+button_width,button_y,button_width,64),true)
     elif mode in ["won","lost"]:
         caption.text=ui.secondary.result_caption.text
         result.text=ui.secondary.result_stats.text
