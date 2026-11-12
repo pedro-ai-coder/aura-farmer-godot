@@ -12,6 +12,9 @@ class TestRun extends "res://scripts/solo_run.gd":
         pass
 
 func verify() -> void:
+    if "--mobile-review" in OS.get_cmdline_user_args():
+        await verify_mobile_review()
+        return
     if not Appearance.can_start("female","sigma"):
         push_error("Pixel Vixen V2 assets are missing from the PR. Upload the exact atlas, illustrated selection portrait and HUD portrait before accepting this feature; no V1 fallback is permitted.")
         quit(1)
@@ -75,4 +78,65 @@ func verify() -> void:
     else:
         for failure in failures:
             push_error(failure)
+        quit(1)
+
+func review_tap(button: Button) -> void:
+    var rect := button.get_global_rect()
+    var parent := button.get_parent()
+    while parent != null:
+        if parent is Control and parent.clip_contents: rect = rect.intersection(parent.get_global_rect())
+        parent = parent.get_parent()
+    expect(rect.has_area(), "Touch control has a visible region")
+    var point := root.get_final_transform()*rect.get_center()
+    for pressed in [true,false]:
+        var event := InputEventScreenTouch.new()
+        event.index=0;event.position=point;event.pressed=pressed
+        Input.parse_input_event(event)
+        Input.flush_buffered_events()
+        await process_frame
+        await process_frame
+
+func verify_mobile_review() -> void:
+    root.size = Vector2i(844,390)
+    var game := TestRun.new()
+    root.add_child(game)
+    game.set_process(false)
+    game.presentation._window_changed(true)
+    await process_frame
+    expect(game.art.sigma_cpk_atlas != null, "Sigma CPK texture is verified and active")
+    expect(game.art.cool_kid_cpk_atlas != null, "Existing Cool Kid CPK texture remains active")
+    expect(game.art.pixel_vixen_cpk_atlas != null, "Existing Pixel Vixen CPK texture is active")
+    for appearance in ["original","female"]:
+        for index in range(3):
+            game._return_to_menu()
+            game.presentation.open_heroes()
+            await process_frame
+            await review_tap(game.clean_cut_skin.appearance_buttons[0 if appearance=="original" else 1])
+            var button: Button = game.menu_buttons[index]
+            game.clean_cut_skin.hero_scroll.ensure_control_visible(button)
+            await process_frame
+            await process_frame
+            await review_tap(button)
+            expect(game.hero_index==index and game.hero_appearance==appearance, "Touch selects the requested hero")
+            await review_tap(game.presentation.home.start_button)
+            expect(game.mode=="playing" and game.hero==game.HEROES[index], "Touch launches an unchanged canonical kit")
+            var sheet: String = ["sigma-cpk","cool-kid-cpk","atlas"][index] if appearance=="original" else ["pixel-vixen","byte-baddie","block-queen"][index]
+            expect(game.hero_pose()["sheet"]==sheet, "Correct gameplay atlas: "+sheet)
+            expect(game.art.cosmetic_portrait(str(game.hero["id"]),appearance)!=null, "Correct portrait available")
+    var canonical = preload("res://scripts/hero_animation.gd")
+    for event in ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]:
+        var state := {"time":0.0,"walk":0.1,"moving":event=="run","lost":event=="defeat","defeat":0.4,
+            "hurt":0.1 if event=="hurt" else 0.0,"attack":0.1 if event=="attack" else 0.0,
+            "flex":(0.1 if event=="flex-out" else 5.0) if event.begins_with("flex") else 0.0,
+            "flex_age":0.1 if event=="flex-in" else 1.0,"heading":PI,"facing":PI}
+        var pose: Dictionary = game.art.SigmaCPK.pose(state)
+        expect(pose["state"]==canonical.pose("sigma",state)["state"], "Sigma preserves state precedence: "+event)
+        expect(int(pose["frame"])>=0 and int(pose["frame"])<49, "Sigma frame exists: "+event)
+    game.queue_free()
+    await process_frame
+    if failures.is_empty():
+        print("PASS: six real touch selections and run starts at 844x390; three CPK renderers, portraits and Sigma animation states")
+        quit(0)
+    else:
+        for failure in failures: push_error(failure)
         quit(1)

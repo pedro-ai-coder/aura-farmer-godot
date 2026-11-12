@@ -5,6 +5,12 @@ extends RefCounted
 ## Art is SHA-verified at Web build time. Never modify gameplay or RNG here.
 
 const ROOT := "res://assets/approved/"
+const SigmaCPK = preload("res://scripts/sigma_cpk_animation.gd")
+const SIGMA_CPK_ATLAS_PATH := "res://assets/production/the-sigma/cpk-v1/sigma-cpk-v1-atlas.png"
+const SIGMA_CPK_ATLAS_SHA256 := "89e2b2c8a9685aee38b774a0e649da54167c94114fcacc84b5eea16ac2a37f36"
+const SIGMA_CPK_RGBA_SHA256 := "d6ff95312425643cc261d71aec83df58a3ada59a192ab14c478a8b08729dd611"
+const SIGMA_CPK_PORTRAIT_PATH := "res://assets/production/the-sigma/cpk-v1/sigma-cpk-v1-portrait.png"
+var sigma_cpk_atlas: Texture2D = null
 const CoolKidCPK = preload("res://scripts/cool_kid_cpk_animation.gd")
 const COOL_KID_CPK_ATLAS_PATH := "res://assets/production/cool-kid/cpk-v1/cool-kid-cpk-v1-atlas.png"
 const COOL_KID_CPK_ATLAS_SHA256 := "0a190b57982dfd8556da6b8e05cf38aae4f83e392461ef8a6c2bb42c2340925d"
@@ -21,6 +27,7 @@ const VixenFrames = preload("res://scripts/pixel_vixen_frames.gd")
 ## Presentation-only gated resource: never changes Sigma weapon/Flex/stat/ID rules.
 const PIXEL_VIXEN_CPK_ATLAS_PATH := "res://assets/production/pixel-vixen/cpk-v1/pixel-vixen-cpk-v1-atlas.png"
 const PIXEL_VIXEN_CPK_ATLAS_SHA256 := "4058de734cd81eb29656267bede422756555dbf02d0680f20a91d609f9f05c63"
+const PIXEL_VIXEN_CPK_RGBA_SHA256 := "6832e25dfa8dd8bb3389fcb5332b0fe7a0848557ab0882880baee1c5732681e6"
 const FemaleArt = preload("res://scripts/female_appearance_art.gd")
 const Appearance = preload("res://scripts/hero_appearance.gd")
 const HERO_FRAMES: Dictionary = {"sigma":[[10,5,155,174],[197,6,151,172],[380,7,159,172],[554,6,169,172],[740,5,153,175],[935,4,131,176],[1103,4,143,177],[1287,4,142,177],[19,183,140,180],[210,183,127,180],[386,182,132,181],[562,181,143,182],[758,184,148,178],[943,184,141,178],[1120,184,137,176],[1303,184,127,178],[15,365,164,176],[195,365,161,177],[369,365,164,177],[543,365,159,173],[744,366,133,183],[934,367,137,182],[1120,370,136,175],[1305,367,123,178],[24,544,130,178],[218,545,109,179],[400,545,99,172],[561,544,123,178],[751,550,133,176],[934,550,133,177],[1111,547,135,180],[1303,548,127,178],[18,725,118,176],[168,728,118,172],[314,735,142,164],[454,741,179,162],[638,737,117,166],[775,752,129,152],[915,762,185,142],[1106,771,166,126],[1278,808,164,79],[29,904,142,172],[228,905,138,173],[428,905,155,172],[637,919,159,158],[832,905,190,172],[1078,909,130,168],[1282,905,121,172]],"cool-kid":[[13,8,180,181],[207,7,173,184],[394,8,155,179],[564,10,157,177],[744,7,177,180],[944,7,140,180],[1106,7,150,185],[1272,7,158,187],[13,194,162,192],[212,193,146,197],[385,199,149,191],[560,194,156,196],[751,197,167,193],[938,196,144,192],[1107,198,152,185],[1290,196,150,187],[14,395,172,204],[207,395,156,206],[395,397,156,202],[566,396,152,201],[738,396,167,203],[918,400,159,201],[1093,397,160,196],[1272,398,148,202],[7,610,172,208],[184,612,166,206],[369,612,141,209],[515,612,216,200],[704,637,200,181],[911,612,169,203],[1077,612,181,206],[1262,624,170,194],[10,948,204,112],[216,838,155,217],[387,849,165,206],[559,855,179,198],[735,886,201,164],[938,866,164,181],[1110,843,177,212],[1286,842,152,213]],"alpha":[[17,15,168,158],[212,14,156,158],[403,14,163,158],[588,14,149,159],[754,14,160,155],[934,13,166,163],[1119,13,147,161],[1282,14,157,158],[10,189,177,162],[209,190,166,160],[399,188,167,161],[583,188,165,160],[769,190,164,156],[957,185,148,166],[1129,191,137,159],[1289,193,148,160],[13,365,171,164],[211,366,164,163],[399,367,154,162],[577,365,156,164],[758,366,152,164],[937,365,154,164],[1122,363,146,166],[1287,364,146,165],[15,543,162,161],[209,544,162,164],[394,543,166,163],[578,545,158,162],[765,540,153,167],[945,540,159,166],[1127,546,126,161],[1274,545,162,155],[7,717,151,166],[166,712,164,171],[334,728,196,149],[513,712,199,167],[708,728,200,154],[917,707,162,175],[1091,732,164,148],[1265,746,175,134],[11,979,218,87],[226,886,144,184],[383,905,170,161],[567,892,157,174],[736,922,180,147],[922,930,179,140],[1119,918,155,151],[1291,893,147,173]]}
@@ -58,11 +65,10 @@ func _init() -> void:
             textures["cool-kid"] = load(COOL_KID_CPK_PORTRAIT_PATH) as Texture2D
         else:
             push_error("Cool Kid CPK atlas checksum mismatch; retaining legacy approved art.")
-    if ResourceLoader.exists(PIXEL_VIXEN_CPK_ATLAS_PATH):
-        if FileAccess.get_sha256(PIXEL_VIXEN_CPK_ATLAS_PATH) == PIXEL_VIXEN_CPK_ATLAS_SHA256:
-            pixel_vixen_cpk_atlas = load(PIXEL_VIXEN_CPK_ATLAS_PATH) as Texture2D
-        else:
-            push_error("Pixel Vixen CPK atlas checksum mismatch. Keep the last approved V2 presentation.")
+    sigma_cpk_atlas = _verified_cpk_texture(SIGMA_CPK_ATLAS_PATH, SIGMA_CPK_ATLAS_SHA256, SIGMA_CPK_RGBA_SHA256, Vector2(1008,1008))
+    if sigma_cpk_atlas != null:
+        textures["sigma"] = load(SIGMA_CPK_PORTRAIT_PATH) as Texture2D
+    pixel_vixen_cpk_atlas = _verified_cpk_texture(PIXEL_VIXEN_CPK_ATLAS_PATH, PIXEL_VIXEN_CPK_ATLAS_SHA256, PIXEL_VIXEN_CPK_RGBA_SHA256, Vector2(672,672))
     var frame_path := "res://assets/approved-enemy-frames.json"
     if FileAccess.file_exists(frame_path):
         var parsed = JSON.parse_string(FileAccess.get_file_as_string(frame_path))
@@ -72,6 +78,25 @@ func _init() -> void:
             push_error("Invalid approved enemy atlas frame data")
     else:
         push_error("Missing approved enemy atlas frame data")
+
+static func _verified_cpk_texture(path: String, source_sha: String, rgba_sha: String, dimensions: Vector2) -> Texture2D:
+    if not ResourceLoader.exists(path): return null
+    var candidate := load(path) as Texture2D
+    var source_ok := not FileAccess.file_exists(path) or FileAccess.get_sha256(path) == source_sha
+    if candidate == null or candidate.get_size() != dimensions or not source_ok:
+        push_error("CPK source/geometry mismatch: " + path)
+        return null
+    var pixels := candidate.get_image()
+    if pixels == null: return null
+    if pixels.is_compressed() and pixels.decompress() != OK: return null
+    pixels.convert(Image.FORMAT_RGBA8)
+    var hash := HashingContext.new()
+    hash.start(HashingContext.HASH_SHA256)
+    hash.update(pixels.get_data())
+    if hash.finish().hex_encode() != rgba_sha:
+        push_error("CPK imported pixels mismatch: " + path)
+        return null
+    return candidate
 
 static func _cool_kid_texture_valid(candidate: Texture2D) -> bool:
     if candidate == null or candidate.get_size() != Vector2(1008,1008): return false
@@ -124,10 +149,24 @@ func prepare_appearance(hero_id: String, appearance: String) -> bool:
     return true if appearance == "original" else female_art.prepare(hero_id)
 
 func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "selection") -> Texture2D:
+    if hero_id == "sigma" and appearance == "female" and pixel_vixen_cpk_atlas != null:
+        var portrait := AtlasTexture.new()
+        portrait.atlas = pixel_vixen_cpk_atlas
+        portrait.region = Rect2(0,0,96,96)
+        return portrait
     return female_art.texture(hero_id,usage) if appearance == "female" else texture(hero_id)
 
 func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:
     var sheet: String = pose["sheet"]
+    if sheet == SigmaCPK.SHEET:
+        if hero_id != "sigma" or sigma_cpk_atlas == null: return false
+        var factor: float = SigmaCPK.DISPLAY_SCALE
+        canvas.draw_set_transform(pos,0.0,Vector2(-1,1) if bool(pose["flip"]) else Vector2.ONE)
+        canvas.draw_texture_rect_region(sigma_cpk_atlas,
+            Rect2(-SigmaCPK.ORIGIN*factor,Vector2.ONE*SigmaCPK.CELL*factor),
+            SigmaCPK.source_rect(int(pose["frame"])))
+        canvas.draw_set_transform(Vector2.ZERO)
+        return true
     if sheet == CoolKidCPK.SHEET:
         if hero_id != "cool-kid" or cool_kid_cpk_atlas == null:
             return false

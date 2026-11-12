@@ -18,6 +18,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_cool_kid_cpk.py
+python3 scripts/verify_six_hero_review.py
 python3 scripts/verify_female_variants.py
 python3 scripts/verify_pickup_candidates.py
 python3 scripts/verify_weapon_presence.py
@@ -103,6 +104,7 @@ run_godot() {
     fi
 }
 run_godot import --headless --path . --import
+run_godot six-hero-selection --headless --path . --script tests/test_hero_appearance_selection.gd -- --mobile-review
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
@@ -132,6 +134,7 @@ python3 scripts/verify_button_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_hud_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pixel_vixen.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_cool_kid_cpk.py "build/web/$EXPORT_BASENAME.pck"
+python3 scripts/verify_six_hero_review.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_female_variants.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pickup_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_weapon_presence.py "build/web/$EXPORT_BASENAME.pck"
