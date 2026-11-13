@@ -11,8 +11,9 @@ class TestRun extends "res://scripts/solo_run.gd":
         _restore_profile(ProfileStoreScript.defaults() if initial_profile.is_empty() else initial_profile.duplicate(true))
     func _save_profile() -> void: pass
 
-class MissingArt extends "res://scripts/female_appearance_art.gd":
-    func has_assets(_hero_id: String) -> bool: return false
+class MissingArt extends "res://scripts/approved_hero_motion.gd":
+    func prepare(_hero_id: String, _appearance: String) -> bool: return false
+    func texture(_name: String, _role: String) -> Texture2D: return null
 
 func press_enter(button: Button) -> void:
     button.grab_focus()
@@ -66,7 +67,7 @@ func verify() -> void:
             if extent.x<1000: await tap(button)
             else: await press_enter(button)
             expect(game.hero_index==index,"Real keyboard/touch selects female kit %s at %s" % [id,extent])
-            expect(skin.hero_parts[index]["portrait"].texture.resource_path==Appearance.asset_path(id,"selection"),"Correct female selection illustration")
+            expect(skin.hero_parts[index]["portrait"].texture==game.art.cosmetic_portrait(id,"female"),"Correct female selection illustration")
             expect(not skin.hero_parts[index]["art_status"].visible,"Complete female art has no pending label")
             expect(not game.presentation.home.start_button.disabled,"All three female variants are startable")
             if extent.x<1000: await tap(game.presentation.home.start_button)
@@ -77,9 +78,9 @@ func verify() -> void:
                 quit(1)
                 return
             expect(game.hero==game.HEROES[index],"Appearance cannot alter any canonical hero attribute")
-            expect(game.hero_pose()["sheet"]==Appearance.asset_slug(id),"Gameplay uses the correct female atlas adapter")
+            expect(game.hero_pose()["sheet"]==Appearance.Motion.SHEET and game.hero_pose()["slug"]==Appearance.asset_slug(id),"Gameplay uses the correct female atlas adapter")
             expect(skin.hero_name.text==Appearance.FEMALE_NAMES[id],"HUD uses the correct female name")
-            expect(skin.portrait.texture.resource_path==Appearance.asset_path(id,"hud"),"HUD uses its dedicated female illustration")
+            expect(skin.portrait.texture==game.art.cosmetic_portrait(id,"female","hud"),"HUD uses its dedicated female illustration")
             expect(skin.portrait.material==null,"Female HUD cannot inherit male portrait cropping")
             expect(game.art.female_art.texture(id,"atlas").resource_path==Appearance.asset_path(id,"atlas"),"No male/V1 atlas fallback")
             if index>0:
@@ -93,9 +94,9 @@ func verify() -> void:
         for index in range(3):
             game.start_run(index)
             var id: String=game.hero["id"]
-            var original_sheet := "cool-kid-cpk" if id == "cool-kid" else "atlas"
+            var original_sheet := Appearance.Motion.SHEET
             expect(game.hero==game.HEROES[index] and game.hero_pose()["sheet"]==original_sheet,"Original kit and its approved art stay playable")
-            expect(game.art.cosmetic_portrait(id,"original")==game.art.texture(id),"Original portrait identity is preserved")
+            expect(game.art.cosmetic_portrait(id,"original").resource_path==Appearance.Motion.ROOT+Appearance.Motion.slug(id,"original")+"/portrait.png","Original portrait identity is preserved")
             game._return_to_menu()
         game.queue_free();await process_frame;await process_frame
 
@@ -119,6 +120,7 @@ func verify() -> void:
             expect(var_to_bytes(snapshot(original))==var_to_bytes(snapshot(female)),"Original/female simulation, events and RNG match for kit %d frame %d" % [index,frame])
             var pose: Dictionary=female.hero_pose()
             var state: Dictionary={"time":female.run_time,"walk":female.visual_walk,"defeat":female.visual_defeat,"lost":female.mode=="lost","hurt":female.hurt_timer,"flex":female.flex_time,"flex_age":female.flex_age,"attack":female.attack_flash,"heading":female.visual_heading,"moving":female.visual_moving,"facing":female.visual_facing}
+            female.weapon_presentation.decorate_pose(state,female.run_time)
             expect(pose["state"]==CanonicalAnimation.pose(str(female.hero["id"]),state)["state"],"Appearance preserves canonical animation/Flex phase")
         original.queue_free();await process_frame
         var id: String=female.hero["id"]
@@ -127,7 +129,7 @@ func verify() -> void:
             await process_frame;await process_frame
             var result=female.clean_cut_skin.auxiliary
             expect(result.result_hero.text==Appearance.FEMALE_NAMES[id],"Both result outcomes retain female identity")
-            expect(result.result_portrait.texture.resource_path==Appearance.asset_path(id,"selection"),"Results retain the illustrated female portrait")
+            expect(result.result_portrait.texture==female.art.cosmetic_portrait(id,"female","results"),"Results retain the illustrated female portrait")
             expect(female.profile["results"][-1]["hero"]==id,"Result storage retains canonical IDs")
             await click(female.retry_button)
             expect(female.mode=="playing" and female.hero_appearance=="female" and female.hero["id"]==id,"Real Retry preserves appearance and kit")
@@ -145,7 +147,7 @@ func verify() -> void:
 
     var missing:=TestRun.new();root.add_child(missing);missing.set_process(false)
     missing.presentation.open_heroes();missing.select_appearance("female")
-    missing.art.female_art=MissingArt.new()
+    missing.art.motion=MissingArt.new()
     for index in range(3):
         var before: Dictionary=missing.profile.duplicate(true)
         missing.start_run(index)

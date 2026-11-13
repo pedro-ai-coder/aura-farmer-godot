@@ -23,7 +23,7 @@ func verify() -> void:
                 expect(skin.hp.get_theme_font_size("font_size")>=22 and skin.shield_label.get_theme_font_size("font_size")>=18,"Critical desktop health text stays readable")
             elif hud.compact:
                 expect(is_equal_approx(game.flex_button.size.x,164),"Mobile circular Flex target retains its existing geometry")
-            expect(skin.portrait.texture==game.art.texture(game.HEROES[hero]["id"]),"Approved hero source identity remains exact")
+            expect(skin.portrait.texture==game.art.cosmetic_portrait(game.HEROES[hero]["id"],game.hero_appearance,"hud"),"Approved hero source identity remains exact")
             expect(skin.hero_name.text==str(game.hero["name"]).to_upper(),"Live hero name")
             expect(skin.flex_caption.text==str(game.hero["flex"]).to_upper(),"Canonical live ability name")
             for node in [skin.hero_name,skin.hp,skin.shield_label,skin.wave,skin.xp,skin.flex_status,skin.flex_caption]:

@@ -76,7 +76,7 @@ func verify() -> void:
                 expect(aux.result_values[0].text=="10:25" and aux.result_values[3].text==str(game.kills),"Time and kills use actual outcome state")
                 expect(aux.result_values[6].text=="%.0f" % game.run_metrics["damage"],"Damage comes from actual run metrics")
                 expect(aux.primary_stats.get_child_count()==4 and aux.secondary_stats.get_child_count()==6,"Four primary and six supporting values remain distinct")
-                expect(aux.result_portrait.texture==game.art.texture(game.hero["id"]) and aux.result_portrait.visible,"Original selected hero remains visible across layouts")
+                expect(aux.result_portrait.texture==game.art.cosmetic_portrait(game.hero["id"],game.hero_appearance,"results") and aux.result_portrait.visible,"Original selected hero remains visible across layouts")
                 expect(aux.caption.text==("BIG HATER DEFEATED" if mode=="won" else "THE STREETS WON THIS ROUND"),"Outcome copy matches actual boss defeat/loss")
                 for value in aux.result_values:expect(value.get_line_count()==1 and value.get_theme_font("font").get_string_size(value.text,HORIZONTAL_ALIGNMENT_LEFT,-1,value.get_theme_font_size("font_size")).x<=value.size.x+1,"Result value fits without clipping")
                 if extent.x>=1280:expect(aux.result_rows.get_combined_minimum_size().y<=aux.result_scroll.size.y+1,"Desktop results do not need scrolling")
