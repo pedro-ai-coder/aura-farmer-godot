@@ -101,6 +101,19 @@ func image(parent: Node) -> TextureRect:
     node.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
     node.mouse_filter=Control.MOUSE_FILTER_IGNORE
     return node
+
+func place_hero_portrait(node: TextureRect, bounds: Rect2) -> void:
+    node.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+    node.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    node.clip_contents=true
+    var extent := bounds.size
+    if node.texture!=null:
+        # The approved legacy portraits contain only ~180 source pixels. Keep
+        # those pixels at a controlled size instead of blowing them up to 700px.
+        var native_size := node.texture.get_size()
+        var ratio := minf(1.5,minf(bounds.size.x/native_size.x,bounds.size.y/native_size.y))
+        extent=native_size*ratio
+    place(node,Rect2(bounds.get_center()-extent*0.5,extent))
 func place(node: Control, rect: Rect2) -> void:
     node.position=rect.position;node.size=rect.size
     if node is Label:node.set_deferred("size",rect.size)
@@ -432,7 +445,7 @@ func home_layout() -> void:
     # Selected hero must be the visible hero on the menu, not a fixed Sigma.
     poster_hero.texture=game.art.cosmetic_portrait(str(game.HEROES[game.hero_index]["id"]), game.hero_appearance)
     var mobile_portrait: bool=narrow and view.y>=780.0
-    place(poster_hero,Rect2(view.x-188.0,view.y*0.30,164,176) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
+    place_hero_portrait(poster_hero,Rect2(view.x-188.0,view.y*0.30,164,176) if mobile_portrait else Rect2(view.x*0.49,view.y*0.18,view.x*0.48,view.y*0.66))
     poster_hero.visible=(not narrow or mobile_portrait) and poster_hero.texture!=null
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
@@ -496,7 +509,7 @@ func heroes_layout() -> void:
         parts["name"].text=game.HeroAppearanceScript.display_name(str(data["id"]),game.hero_appearance,str(data["name"]))
         parts["role"].text=data["role"].to_upper()+(" · SELECTED" if selected else "")
         place(parts["name"],Rect2(24,44,width-48,40));place(parts["role"],Rect2(24,85,width-48,24))
-        place(parts["portrait"],Rect2(40,118,width-80,160))
+        place_hero_portrait(parts["portrait"],Rect2(40,118,width-80,160))
         place(parts["art_status"],Rect2(24,150,width-48,100))
         parts["icon"].texture=ui.item_icons.texture("weapon",data["starter"]);place(parts["icon"],Rect2(24,282,45,45))
         parts["starter"].text="STARTER / "+game.WEAPONS[data["starter"]]["name"];place(parts["starter"],Rect2(80,282,width-100,55))
