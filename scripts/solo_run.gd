@@ -2389,6 +2389,9 @@ func _draw_enemy_actor(e: Dictionary) -> void:
 func hero_pose() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
+    # A full-body attack hold must not replace the gait throughout an auto-fire
+    # windup. Weapon gestures still render from the unchanged combat observer.
+    if visual_moving: state["attack"] = 0.0
     if not ProposedCPK.slug(str(hero["id"]),hero_appearance).is_empty():
         return ProposedCPK.pose(str(hero["id"]),hero_appearance,state)
     if hero_appearance == "female":
