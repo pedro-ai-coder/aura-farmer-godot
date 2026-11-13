@@ -34,10 +34,15 @@ func verify() -> void:
     for extent in [Vector2i(1280,720),Vector2i(844,390),Vector2i(390,844)]:
         root.size=extent;game.presentation._window_changed(true)
         for appearance in ["original","female"]:
+            game.mode="heroes"
             game.select_appearance(appearance)
+            expect(game.hero_appearance==appearance,"Capture requested selection appearance")
             for index in range(3):
                 game.hero_index=index;game.mode="menu";game._show_ui();game._update_text();game.queue_redraw()
                 await process_frame;await process_frame;await RenderingServer.frame_post_draw
                 root.get_texture().get_image().save_png(output.path_join("selection-%s-%s-%dx%d.png" % [game.HEROES[index].id,appearance,extent.x,extent.y]))
+            game.mode="heroes";game._show_ui();game._update_text()
+            await process_frame;await process_frame;await RenderingServer.frame_post_draw
+            root.get_texture().get_image().save_png(output.path_join("hero-cards-%s-%dx%d.png" % [appearance,extent.x,extent.y]))
     var file:=FileAccess.open(output.path_join("poses.json"),FileAccess.WRITE);file.store_string(JSON.stringify(records,"  "));file.close()
     game.queue_free();print("PASS: native six-hero movement samples and 18 selected-hero screens captured");quit()
