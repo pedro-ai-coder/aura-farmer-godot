@@ -67,7 +67,11 @@ func capture_motion_review() -> void:
     for appearance in ["original","female"]:
         for index in range(1 if pair_only else 3):
             game.fixture(["ratio-blaster","keyboard-warrior","cope-shield"][index],appearance)
-            for enemy in game.enemies:enemy.hp=10000;enemy.max=10000;enemy.born=0
+            for enemy in game.enemies:
+                enemy.hp=10000;enemy.max=10000;enemy.born=0
+                # Stationary durable targets keep the actual-zoom actor visible.
+                # This is a synthetic animation fixture, not organic combat.
+                enemy.speed=0;enemy.next_attack=1e9
             for sample in range(phases.size()):
                 game.player_pos=Vector2(770,550)
                 game.touch_direction=Vector2.RIGHT if sample in [1,5] else Vector2(1,1).normalized() if sample==2 else Vector2.LEFT if sample==3 else Vector2.ZERO

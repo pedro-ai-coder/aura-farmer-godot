@@ -57,9 +57,13 @@ func _measure_motion(args) -> void:
     Engine.max_fps=0
     var game:=ReviewRun.new();root.add_child(game);game.set_process(false)
     var results:Array=[]
-    for size in [Vector2i(1280,720),Vector2i(844,390)]:
+    var sizes:Array=[Vector2i(1280,720),Vector2i(844,390)]
+    var counts:Array=[0,25,90]
+    if "--mobile-regular" in args:
+        sizes=[Vector2i(844,390)];counts=[25]
+    for size in sizes:
         root.size=size;game.presentation._window_changed(true)
-        for count in [0,25,90]:
+        for count in counts:
             game.start_run(0);game.rng.seed=451
             for i in range(count):
                 game._spawn_enemy("npc",{"pos":game.player_pos+Vector2.from_angle(float(i)*2.399963)*float(130+i*3)})
