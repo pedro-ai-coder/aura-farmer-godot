@@ -37,8 +37,7 @@ static func pose(state: Dictionary) -> Dictionary:
             legacy = 13 + mini(2,int(elapsed*3.0/0.22))
         "run":
             var run_step: int = posmod(int(float(state.get("walk",0.0))*9.0),7)
-            var heading: float = float(state.get("heading",0.0))
-            frame = (14 if cos(heading) < 0.0 else 7) + run_step
+            frame = 7 + run_step
             legacy = 7 + run_step%6
         _:
             frame = posmod(int(float(state.get("time",0.0))*2.0),7)
@@ -49,7 +48,7 @@ static func pose(state: Dictionary) -> Dictionary:
         "state":phase,
         "frame":frame,
         "legacy_frame":legacy,
-        "flip":bool(sigma_pose["flip"]),
+        "flip":cos(float(state.get("heading",0.0))) < 0.0 if phase == "run" else bool(sigma_pose["flip"]),
         "scale":64.0/96.0,
         "legacy_scale":1.60
     }

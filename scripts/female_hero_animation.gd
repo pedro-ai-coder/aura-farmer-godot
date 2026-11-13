@@ -27,5 +27,7 @@ static func pose(hero_id: String, state: Dictionary) -> Dictionary:
         if phase == "flex-out": step=3
     elif phase == "defeat":
         row=5;step=mini(3,int(float(state.get("defeat",0.0))*8.0))
+    var flip: bool = bool(original["flip"])
+    if phase == "run": flip = cos(float(state.get("heading",0.0))) < 0.0
     return {"sheet":Appearance.asset_slug(hero_id),"state":phase,
-        "frame":row*4+step,"flip":bool(original["flip"])}
+        "frame":row*4+step,"flip":flip}
