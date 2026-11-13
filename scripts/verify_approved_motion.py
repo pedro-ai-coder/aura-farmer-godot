@@ -10,8 +10,8 @@ FOLDER = Path('assets/production/hero-motion-v3')
 
 
 def validate(pack=None):
-    manifest = json.loads((ROOT/FOLDER/'manifest.json').read_text())
-    approval = json.loads((ROOT/FOLDER/'approval.json').read_text())
+    manifest = json.loads((ROOT/FOLDER/'manifest.json').read_text(encoding='utf-8'))
+    approval = json.loads((ROOT/FOLDER/'approval.json').read_text(encoding='utf-8'))
     assert approval['status'] == 'APPROVED_FOR_INTEGRATION'
     assert manifest['cell'] == 512 and manifest['pivot'] == [256,464]
     expected = {('sigma','original'),('sigma','female'),('cool-kid','original'),('cool-kid','female'),('alpha','original'),('alpha','female')}

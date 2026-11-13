@@ -80,7 +80,7 @@ def main():
             'source': {name: digest(source/name) for name in ['run.png','portrait.png']},
             'files': files, 'frames': frames, 'body_height': float(np.median(heights)),
             'idle_height': portrait.height, 'portrait_dimensions': list(padded.size)}
-    (OUT/'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
+    (OUT/'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
     print('PASS: six approved identities, 48 isolated native-resolution poses, portraits and provenance')
 
 
