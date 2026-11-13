@@ -1,0 +1,561 @@
+{
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "renderer": "Compatibility, native Xorg llvmpipe",
+  "runtime_commit": "908392f3ce5fb14054da9c4b22ecb0e4147fe49d",
+  "full_validation": "FAIL at frame-pacing-state; unchanged later commands executed separately",
+  "godot_phases": [
+    {
+      "phase": "import",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "mobile-layout",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "card-keyboard",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "spotlight-secondary",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "spotlight-hud",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "spotlight-navigation",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "spotlight-theme",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "arcade-ui",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "enemy-navigation",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "seeded-rng",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-animation",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "cool-kid-cpk-art",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "recovery",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "survival-review-policy",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "camera-cover",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "continuous-run",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "run-acceptance",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "menu-flow",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "signature-flex",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-combat",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "run-clock",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "run-progression",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "profile-store",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "contracts",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "catalog",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "legendary",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "boss-lifecycle",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "enemy-windows",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "ranged-sources",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "bestiary",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "ruin-alley",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "passive-effects",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "approved-icon-batch",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "icon-registry",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "approved-art",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "combat-feedback",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "clean-cut-typography",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-clash-ui-candidate",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "weapon-vfx",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "legendary-combat",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "weapon-timing",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "player-projectiles",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "mobile-touch",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "flex-readability",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "playable",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "scene",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "approved-clean-cut-runtime",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "clean-cut-pointer-input",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "clean-cut-secondary-input",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "m0-ui-creator-feedback",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-clash-button-motion",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "clean-cut-deferred-legendary",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "candidate-bindings",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "candidate-navigation",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-clash-review",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "button-art-components",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "navigation-recovery",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "layout-recovery",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "mobile-fluency",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hud-v2",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "ui-cohesion",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "ui-final-polish",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "threat-indicator",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "m0-final-flows",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "frame-pacing-probe",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "frame-pacing-geometry",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "frame-pacing-state",
+      "status": "FAIL",
+      "errors": [
+        "ERROR: Irregular-frame state/RNG/event/camera hashes equal the pre-optimization baseline",
+        "ERROR: Godot frame-pacing-state process failed."
+      ]
+    },
+    {
+      "phase": "reconciled-floor-geometry",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "appearance-result-identity",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-appearance-selection",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "hero-locomotion-runtime",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "approved-hero-motion",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "selection-portrait-quality",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "vixen-isolated-render",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "pixel-vixen-appearance",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "pixel-vixen-approved-cpk-atlas",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "female-roster",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "pickup-refresh",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "weapon-presence-events",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "weapon-presence-parity",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "passive-feedback-events",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "passive-feedback-parity",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "phase": "passive-feedback-layout",
+      "status": "PASS",
+      "errors": []
+    }
+  ],
+  "initial_attempt": "An earlier mixed-edit attempt crashed at hud-v2; isolated rerun and complete stable-source attempt passed hud-v2. No crash is counted as a pass.",
+  "golden_baseline": "tests/frame_pacing/baseline_states.json, unchanged",
+  "frozen_golden": {
+    "dense": "645b257d9495b673079e415e60ae4bd7649ee960f65d0061505749e873ea3107",
+    "flex": "63ae00700184c8a1dc5e13a4fb2d6e9f5a25c2156bbd6d672c2ac623b5117311",
+    "normal": "b36b9dfab8baef81659ba3040bf90e26ac910b8bd68f1226997116eb54ad03a6"
+  },
+  "independent_recordings": {
+    "pre_optimization_f6034fc": {
+      "dense": "81965b18d1e560310f8ef8c630525ac11b745801c1ece7b4d1c37e983f9c95d3",
+      "flex": "3f235aff1150a52d56150f83ae02261d2e39bd47ada3cce60f0a55e4f5cd5060",
+      "normal": "d91735e4d6c1042fe731c8c8c775cf0a5781c9c498b905d5d1874a60b428b2b4"
+    },
+    "pr132_f9b2d3a": {
+      "dense": "81965b18d1e560310f8ef8c630525ac11b745801c1ece7b4d1c37e983f9c95d3",
+      "flex": "3f235aff1150a52d56150f83ae02261d2e39bd47ada3cce60f0a55e4f5cd5060",
+      "normal": "d91735e4d6c1042fe731c8c8c775cf0a5781c9c498b905d5d1874a60b428b2b4"
+    },
+    "followup_worktree": {
+      "dense": "81965b18d1e560310f8ef8c630525ac11b745801c1ece7b4d1c37e983f9c95d3",
+      "flex": "3f235aff1150a52d56150f83ae02261d2e39bd47ada3cce60f0a55e4f5cd5060",
+      "normal": "d91735e4d6c1042fe731c8c8c775cf0a5781c9c498b905d5d1874a60b428b2b4"
+    },
+    "followup_908392f": {
+      "dense": "81965b18d1e560310f8ef8c630525ac11b745801c1ece7b4d1c37e983f9c95d3",
+      "flex": "3f235aff1150a52d56150f83ae02261d2e39bd47ada3cce60f0a55e4f5cd5060",
+      "normal": "d91735e4d6c1042fe731c8c8c775cf0a5781c9c498b905d5d1874a60b428b2b4"
+    }
+  },
+  "comparison": "All three normal/dense/Flex full-state hashes match. Per-field binary hashes also match original and follow-up for every one of 360 frames in each fixture. Frozen golden origin remains unreproduced; not safely replaced.",
+  "reference_videos": "The three creator recordings are absent; none was watched.",
+  "web": {
+    "export_source_commit": "908392f3ce5fb14054da9c4b22ecb0e4147fe49d",
+    "engine": "4.7.2",
+    "build": "PASS, official SHA-verified templates; existing integrity and export-isolation checks",
+    "browser": "Chromium headless, SwiftShader, 1280x720, local HTTP export",
+    "actions": "All six selections through live canvas buttons; real keyboard right/left input; screenshots inspected; Escape pause/resume sent; zero page/console errors",
+    "runs": [
+      {
+        "appearance": "original",
+        "hero": 0,
+        "errors": []
+      },
+      {
+        "appearance": "original",
+        "hero": 1,
+        "errors": []
+      },
+      {
+        "appearance": "original",
+        "hero": 2,
+        "errors": []
+      },
+      {
+        "appearance": "female",
+        "hero": 0,
+        "errors": []
+      },
+      {
+        "appearance": "female",
+        "hero": 1,
+        "errors": []
+      },
+      {
+        "appearance": "female",
+        "hero": 2,
+        "errors": []
+      }
+    ],
+    "limits": "No physical device, mobile Web touch or organic level-up review in this browser run"
+  },
+  "combat_video": {
+    "duration_seconds": 24,
+    "frames": 720,
+    "resolution": [
+      1280,
+      720
+    ],
+    "simulation_step": "1/30 s",
+    "method": "Existing native recorder --combat; synthetic durable stationary enemies, normal player HP, real authoritative attacks and movement; disposable saves",
+    "segments": {
+      "sigma:original": {
+        "frames": 120,
+        "moving_attack_frames": 37,
+        "stationary_attack_frames": 14
+      },
+      "cool-kid:original": {
+        "frames": 120,
+        "moving_attack_frames": 44,
+        "stationary_attack_frames": 16
+      },
+      "alpha:original": {
+        "frames": 120,
+        "moving_attack_frames": 28,
+        "stationary_attack_frames": 19
+      },
+      "sigma:female": {
+        "frames": 120,
+        "moving_attack_frames": 37,
+        "stationary_attack_frames": 14
+      },
+      "cool-kid:female": {
+        "frames": 120,
+        "moving_attack_frames": 44,
+        "stationary_attack_frames": 16
+      },
+      "alpha:female": {
+        "frames": 120,
+        "moving_attack_frames": 28,
+        "stationary_attack_frames": 19
+      }
+    }
+  },
+  "native_matrix": {
+    "cases": [
+      "idle",
+      "run",
+      "diagonal",
+      "reverse",
+      "stop",
+      "moving-attack",
+      "stationary-attack",
+      "hurt",
+      "flex",
+      "return",
+      "stationary-left",
+      "recover-left",
+      "vertical-after-left",
+      "defeat/results"
+    ],
+    "appearances": 6,
+    "candidate": "PASS, including left-facing and actual defeat assertions",
+    "baseline": "Expected regression assertions fail on f9b2d3a and production: recovery/vertical orientation reverses after the shot",
+    "review": "Pixel Vixen and Sigma each draw one body with one embedded blaster; no duplicate overlay. Current full-body actions/transition art remain incomplete."
+  }
+}

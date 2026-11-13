@@ -1,5 +1,9 @@
 # PR #132 — hero motion recovery review
 
+**Latest follow-up:** [recovery-facing and attachment verification](followup-report.md),
+runtime `908392f3ce5fb14054da9c4b22ecb0e4147fe49d`. The report below describes the
+earlier recovery. [Exact CPK application remains blocked](cpk-application-spec.md).
+
 **Draft. Partial engineering recovery, not visual completion or creator acceptance.**
 No merge, production deployment, replacement artwork or gameplay change is included.
 The remaining idle/run transitions and authored attack/hurt/Flex actions prevent a

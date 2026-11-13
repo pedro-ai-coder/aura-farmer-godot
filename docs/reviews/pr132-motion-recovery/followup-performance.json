@@ -1,0 +1,223 @@
+{
+  "scope": "Three alternating before/after trials of the existing mobile-regular native fixture; all other Godot/browser/movie work stopped. Seed 451; 844x390, 25 synthetic initial enemies, normal HP, canonical combat, 30 warmup + 180 measured frames per trial. Not device or display-presented FPS.",
+  "before": "f9b2d3a7e06693557ff9bd773d62bca007e079c7",
+  "after_runtime": "908392f3ce5fb14054da9c4b22ecb0e4147fe49d",
+  "runs": {
+    "1-after": {
+      "engine": "4.7.2-stable (official)",
+      "method": "Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "results": [
+        {
+          "active_time": 3.49999999999999,
+          "effects": 0,
+          "end_enemies": 18,
+          "mode": "playing",
+          "pose_cpu_us": {
+            "p50": 30,
+            "p95": 71,
+            "p99": 129
+          },
+          "process_cpu_us": {
+            "p50": 307,
+            "p95": 554,
+            "p99": 799
+          },
+          "render_loop_interval_ms": {
+            "p50": 9.11,
+            "p95": 21.949,
+            "p99": 24.45
+          },
+          "samples": 180,
+          "shots": 0,
+          "synthetic_initial_enemies": 25,
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "seed": 451
+    },
+    "1-before": {
+      "engine": "4.7.2-stable (official)",
+      "method": "Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "results": [
+        {
+          "active_time": 3.49999999999999,
+          "effects": 0,
+          "end_enemies": 18,
+          "mode": "playing",
+          "pose_cpu_us": {
+            "p50": 28,
+            "p95": 61,
+            "p99": 169
+          },
+          "process_cpu_us": {
+            "p50": 305,
+            "p95": 547,
+            "p99": 1341
+          },
+          "render_loop_interval_ms": {
+            "p50": 8.922,
+            "p95": 20.713,
+            "p99": 24.449
+          },
+          "samples": 180,
+          "shots": 0,
+          "synthetic_initial_enemies": 25,
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "seed": 451
+    },
+    "2-after": {
+      "engine": "4.7.2-stable (official)",
+      "method": "Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "results": [
+        {
+          "active_time": 3.49999999999999,
+          "effects": 0,
+          "end_enemies": 18,
+          "mode": "playing",
+          "pose_cpu_us": {
+            "p50": 30,
+            "p95": 76,
+            "p99": 111
+          },
+          "process_cpu_us": {
+            "p50": 297,
+            "p95": 541,
+            "p99": 673
+          },
+          "render_loop_interval_ms": {
+            "p50": 8.901,
+            "p95": 22.41,
+            "p99": 26.843
+          },
+          "samples": 180,
+          "shots": 0,
+          "synthetic_initial_enemies": 25,
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "seed": 451
+    },
+    "2-before": {
+      "engine": "4.7.2-stable (official)",
+      "method": "Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "results": [
+        {
+          "active_time": 3.49999999999999,
+          "effects": 0,
+          "end_enemies": 18,
+          "mode": "playing",
+          "pose_cpu_us": {
+            "p50": 29,
+            "p95": 58,
+            "p99": 96
+          },
+          "process_cpu_us": {
+            "p50": 297,
+            "p95": 570,
+            "p99": 700
+          },
+          "render_loop_interval_ms": {
+            "p50": 9.1,
+            "p95": 21.158,
+            "p99": 27.026
+          },
+          "samples": 180,
+          "shots": 0,
+          "synthetic_initial_enemies": 25,
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "seed": 451
+    },
+    "3-after": {
+      "engine": "4.7.2-stable (official)",
+      "method": "Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "results": [
+        {
+          "active_time": 3.49999999999999,
+          "effects": 0,
+          "end_enemies": 18,
+          "mode": "playing",
+          "pose_cpu_us": {
+            "p50": 30,
+            "p95": 50,
+            "p99": 89
+          },
+          "process_cpu_us": {
+            "p50": 286,
+            "p95": 560,
+            "p99": 718
+          },
+          "render_loop_interval_ms": {
+            "p50": 8.947,
+            "p95": 22.384,
+            "p99": 28.019
+          },
+          "samples": 180,
+          "shots": 0,
+          "synthetic_initial_enemies": 25,
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "seed": 451
+    },
+    "3-before": {
+      "engine": "4.7.2-stable (official)",
+      "method": "Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "results": [
+        {
+          "active_time": 3.49999999999999,
+          "effects": 0,
+          "end_enemies": 18,
+          "mode": "playing",
+          "pose_cpu_us": {
+            "p50": 28,
+            "p95": 49,
+            "p99": 95
+          },
+          "process_cpu_us": {
+            "p50": 285,
+            "p95": 549,
+            "p99": 715
+          },
+          "render_loop_interval_ms": {
+            "p50": 8.841,
+            "p95": 21.55,
+            "p99": 27.667
+          },
+          "samples": 180,
+          "shots": 0,
+          "synthetic_initial_enemies": 25,
+          "viewport": [
+            844,
+            390
+          ]
+        }
+      ],
+      "seed": 451
+    }
+  }
+}
