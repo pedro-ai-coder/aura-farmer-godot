@@ -3,6 +3,7 @@ extends RefCounted
 ## are separate from serialized simulation state. No callbacks into gameplay.
 const Art=preload("res://scripts/weapon_presence_art.gd")
 const Attach=preload("res://scripts/weapon_attachments.gd")
+const Motion=preload("res://scripts/approved_hero_motion.gd")
 const INK=Color("13233a")
 const PAPER=Color("fff9e9")
 const GOLD=Color("f8c45f")
@@ -98,9 +99,27 @@ static func stage(event: Dictionary, clock: float) -> int:
     var at: float=event["model"]["at"]
     return 1 if clock<at else 2 if clock-at<0.10 else 3
 
+func resting_flip(fallback: bool, last_travel: float = -INF) -> bool:
+    # Retain the most recent horizontal attack bearing after recovery at rest.
+    # Read queued history rather than render-dependent state; cancelled events
+    # are cleared by synchronize(). Vertical aim retains the horizontal latch.
+    var latest := -INF
+    var flip := fallback
+    for event in gestures:
+        var model: Dictionary = event["model"]
+        if model.is_empty() or float(event["until"]) < 0.0 or float(event["until"]) < last_travel: continue
+        if not bool(model.get("primary",true)) and not event["shot"]: continue
+        var direction: Vector2 = model.get("direction",model.get("facing",Vector2.RIGHT))
+        if absf(direction.x) <= 0.15 or float(event["queued"]) < latest: continue
+        latest = float(event["queued"])
+        flip = direction.x < 0.0
+    return flip
+
 func decorate_pose(state: Dictionary, clock: float) -> void:
     # Only solo_run's fresh, local animation descriptor is edited. In particular
     # visual_facing (also used by canonical Flex aim) must never be written here.
+    if not bool(state.get("moving",false)) or absf(cos(float(state.get("heading",0.0)))) < 0.1:
+        state["body_flip"] = resting_flip(bool(state.get("body_flip",false)), float(state.get("last_horizontal_travel",-INF)))
     if bool(state.get("lost",false)) or float(state.get("hurt",0.0))>0 or float(state.get("flex",0.0))>0:return
     var event:=current(clock)
     if event.is_empty():return
@@ -183,6 +202,8 @@ func draw_actor(canvas: CanvasItem, point: Vector2, hero_id: String, appearance:
         var aim:=atan2(facing.y,absf(facing.x))
         var tint:=Color(1,1,1,clampf((float(event["until"])-clock)/0.08,0,1))
         var attached:=not Attach.embedded(id,hero_id,appearance)
+        var embedded: Variant=Motion.embedded_anchor(pose,id)
+        if embedded != null: grip=point+Vector2(embedded)
         if id=="no-cap":
             # Existing cap/gun silhouettes remain authored; the thrown cap is
             # rendered only by the actual projectile, never another fake shot.
@@ -220,7 +241,7 @@ func draw_actor(canvas: CanvasItem, point: Vector2, hero_id: String, appearance:
             elif id=="personal-space":attached=false
             if attached:prop(canvas,id,grip,size,angle,tint,flip)
         if id=="ratio-blaster" and age>=0 and age<0.08:
-            var muzzle:=grip+Vector2(sign_x*18,-8)
+            var muzzle:=grip if embedded != null else grip+Vector2(sign_x*18,-8)
             canvas.draw_texture_rect_region(Art.IMPACTS,Rect2(muzzle-Vector2(9,9),Vector2(18,18)),Rect2(0,0,64,64),Color(1,1,1,tint.a))
         elif id=="keyboard-warrior" and age>=0 and age<0.17:
             # Authored keyboard is already in all four character poses. Two

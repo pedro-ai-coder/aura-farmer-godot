@@ -72,6 +72,7 @@ var visual_heading := 0.0
 var visual_direction_known := false
 var visual_moving := false
 var visual_body_flip := false
+var visual_last_horizontal_travel := -INF
 var visual_facing := 0.0
 var mode := "menu"
 var hero: Dictionary = {}
@@ -466,6 +467,7 @@ func start_run(index: int) -> void:
     visual_direction_known = false
     visual_moving = false
     visual_body_flip = false
+    visual_last_horizontal_travel = -INF
     visual_facing = 0.0
     hp = hero["hp"]
     max_hp = hp
@@ -874,7 +876,9 @@ func _move_player(dt: float) -> void:
     if visual_moving:
         var travel := player_pos-previous
         var heading := roundf(travel.angle()/(PI/4))*(PI/4)
-        if absf(travel.x)>0.0001: visual_body_flip=travel.x<0.0
+        if absf(travel.x)>0.0001:
+            visual_body_flip=travel.x<0.0
+            visual_last_horizontal_travel=run_time
         if not visual_direction_known or absf(angle_difference(visual_heading,travel.angle())) > PI/8+0.105:
             visual_heading = heading
         visual_direction_known = true
@@ -2392,7 +2396,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
 func hero_pose() -> Dictionary:
-    var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing,"body_flip":visual_body_flip,"reduced_motion":bool(profile["settings"]["reducedMotion"])}
+    var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing,"body_flip":visual_body_flip,"last_horizontal_travel":visual_last_horizontal_travel,"reduced_motion":bool(profile["settings"]["reducedMotion"])}
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
     return ApprovedHeroMotion.pose(str(hero["id"]),hero_appearance,state)
 

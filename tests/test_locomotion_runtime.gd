@@ -37,6 +37,13 @@ func verify() -> void:
             game.visual_body_flip=true;game.touch_direction=Vector2.DOWN
             game._move_player(0.01)
             expect(game.hero_pose().flip,"Vertical travel retains the last horizontal body orientation")
+            for heading in range(8):
+                game.player_pos=Vector2(724,540)
+                game.touch_direction=Vector2.from_angle(heading*PI/4.0)
+                var previous_phase:float=game.visual_walk
+                game._move_player(1.0/60.0)
+                expect(absf(angle_difference(game.visual_heading,heading*PI/4.0))<0.001,"Eight-heading actual-displacement presentation")
+                expect(game.visual_walk>previous_phase,"Direction changes retain an advancing distance phase")
             var phases:Array=[]
             for hz in [30,60,120]:
                 game.start_run(index);game.player_pos=Vector2(724,540);game.touch_direction=Vector2.RIGHT
@@ -69,6 +76,46 @@ func verify() -> void:
             combat.profile.settings.reducedMotion=false
             combat.touch_direction=Vector2.ZERO;combat._move_player(0.01)
             expect(combat.hero_pose().frame==-1 and combat.hero_pose().attack_active,"Stationary attack keeps approved resting identity and active combat")
+    # Expired recovery must not turn a stationary body back toward stale input.
+    for hz in [30,60,120]:
+        combat.fixture("ratio-blaster","female")
+        combat.touch_direction=Vector2.ZERO;combat._move_player(1.0/hz)
+        combat.aim_point=combat.player_pos+Vector2(-400,0)
+        combat._fire_weapons(0.2)
+        expect(combat.hero_pose().flip,"Stationary Vixen faces the real shot")
+        var last:Dictionary=combat.weapon_presentation.current(combat.run_time)
+        combat.run_time=float(last.until)+1.0
+        expect(combat.hero_pose().flip,"Expired attack preserves stationary facing at "+str(hz)+" Hz")
+        combat.touch_direction=Vector2.DOWN;combat._move_player(1.0/hz)
+        expect(combat.hero_pose().flip,"Vertical travel preserves the latest horizontal bearing")
+        combat.touch_direction=Vector2.RIGHT;combat._move_player(1.0/hz)
+        combat.touch_direction=Vector2.ZERO;combat._move_player(1.0/hz)
+        expect(not combat.hero_pose().flip,"Later horizontal travel replaces the expired shot bearing")
+        combat.weapon_presentation.reset()
+        expect(not combat.hero_pose().flip,"Retry/reset cannot retain previous attack history")
+    # Cancellation cannot supply an idle bearing; secondary melee cannot own it.
+    var observer=preload("res://scripts/weapon_presentation.gd").new()
+    observer.queued({"id":"ratio-blaster","at":1.0,"direction":Vector2.LEFT},0.0,[],true)
+    observer.synchronize([],[],0.5)
+    expect(not observer.resting_flip(false),"Cancelled queued shot cannot change resting orientation")
+    observer.queued({"id":"chad-hands","at":1.0,"facing":Vector2.LEFT,"primary":false},0.0,[],false)
+    expect(not observer.resting_flip(false),"Secondary melee does not replace primary orientation")
+    # Attach effects to the actual embedded equipment, including mesh deformation.
+    var motion=preload("res://scripts/approved_hero_motion.gd")
+    for appearance in ["original","female"]:
+        for id in ["sigma","cool-kid"]:
+            var weapon: String="ratio-blaster" if id=="sigma" else "keyboard-warrior"
+            for moving in [false,true]:
+                var descriptor:Dictionary=motion.pose(id,appearance,{"moving":moving,"walk":0.1,"body_flip":false})
+                var anchor:Vector2=motion.embedded_anchor(descriptor,weapon)
+                expect(anchor.y< -25 and anchor.length()<80,"Embedded cue stays on the gameplay-scale upper body")
+                descriptor.flip=true
+                var reflected:Vector2=motion.embedded_anchor(descriptor,weapon)
+                expect(reflected.is_equal_approx(Vector2(-anchor.x,anchor.y)),"Embedded cue mirrors once with the body")
+                descriptor.flip=false;descriptor.torso=Vector2(2,1)
+                var reacted:Vector2=motion.embedded_anchor(descriptor,weapon)
+                expect((reacted-anchor).length()>0 and (reacted-anchor).length()<=Vector2(2,1).length()+0.001,"Cue follows bounded torso mesh influence")
+                expect(motion.embedded_anchor(descriptor,"ban-hammer")==null,"Independent props retain their existing attachment contract")
     combat.queue_free()
     game.queue_free()
     if failures.is_empty():print("PASS: six runtime locomotion routes, auto-attack, advancing gait, idle, hurt and approved authored cycles");quit()

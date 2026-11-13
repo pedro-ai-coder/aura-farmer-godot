@@ -48,6 +48,9 @@ func measure() -> void:
         var file:=FileAccess.open(path,FileAccess.WRITE);file.store_string(JSON.stringify(hashes,"  "));file.close()
     else:
         var expected: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
+        if hashes!=expected:
+            print("State trace mismatch: expected=",JSON.stringify(expected)," actual=",JSON.stringify(hashes))
+            print("Engine=",Engine.get_version_info().string," viewport=",root.size,"; keep the frozen baseline until the original capture is reproducible")
         expect(hashes==expected,"Irregular-frame state/RNG/event/camera hashes equal the pre-optimization baseline")
     game.queue_free()
     if failures.is_empty():print("PASS: Irregular-frame state hashes, canonical hero displacement, keyboard/touch, release/reversal and pause/resume ",hashes);quit()

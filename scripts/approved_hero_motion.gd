@@ -61,6 +61,36 @@ static func pose(hero_id: String, appearance: String, state: Dictionary) -> Dict
         "attack_active":attacking,"attack_stage":state.get("attack_stage",0),
         "torso":torso,"grip_offset":torso*Vector2(-1,1) if flip else torso,"tint":tint}
 
+# Measured on the unchanged hero-motion-v3 textures, in source pixels.
+# These locate embedded equipment, not invented independent weapon poses.
+const EMBEDDED_POINTS := {
+    "pixel-vixen": [Vector2(387,223), Vector2(660,550)],
+    "sigma": [Vector2(405,243), Vector2(800,765)],
+    "cool-kid": [Vector2(338,176), Vector2(245,325)],
+    "byte-baddie": [Vector2(290,220), Vector2(595,455)]
+}
+
+static func embedded_anchor(descriptor: Dictionary, weapon_id: String) -> Variant:
+    if descriptor.get("sheet", "") != SHEET: return null
+    var name: String = descriptor.get("slug", "")
+    if not EMBEDDED_POINTS.has(name): return null
+    if weapon_id != ("ratio-blaster" if name in ["sigma", "pixel-vixen"] else "keyboard-warrior"): return null
+    var running: bool = int(descriptor["frame"]) >= 0
+    var info: Dictionary = rows()[name]
+    var point: Vector2 = EMBEDDED_POINTS[name][0 if running else 1]
+    var dimensions: Array = info["portrait_dimensions"]
+    var origin := PIVOT if running else Vector2(float(dimensions[0])*0.5, float(dimensions[1])-16.0)
+    var factor: float = HEIGHT/float(info["body_height"] if running else info["idle_height"])
+    var extent: float = CELL if running else float(dimensions[1])
+    # Match the renderer's piecewise-linear mesh, including the torso reaction.
+    var band := clampf(point.y/extent*5.0, 0.0, 5.0)
+    var lower := floorf(band)
+    var influence := lerpf(1.0-smoothstep(0.40,0.88,lower/5.0),
+        1.0-smoothstep(0.40,0.88,minf(5.0,lower+1.0)/5.0),band-lower)
+    var local := (point-origin)*factor + Vector2(descriptor.get("torso",Vector2.ZERO))*influence
+    if bool(descriptor["flip"]): local.x = -local.x
+    return local
+
 func draw(canvas: CanvasItem, pos: Vector2, hero_id: String, descriptor: Dictionary) -> bool:
     if descriptor.get("sheet","")!=SHEET: return false
     var name: String=descriptor.get("slug","")
