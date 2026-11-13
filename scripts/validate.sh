@@ -1,13 +1,32 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if command -v godot >/dev/null 2>&1; then
-  GODOT_BIN="godot"
-elif command -v godot4 >/dev/null 2>&1; then
-  GODOT_BIN="godot4"
+# Respect an explicit editor selection. Otherwise discover an installed compatible
+# executable instead of blindly preferring a stale 'godot' ahead of 'godot4'.
+if [[ -n "${GODOT_BIN:-}" ]]; then
+  if ! command -v "$GODOT_BIN" >/dev/null 2>&1; then
+    echo "ERROR: GODOT_BIN executable not found: $GODOT_BIN" >&2
+    exit 2
+  fi
+  GODOT_BIN="$(command -v "$GODOT_BIN")"
 else
-  echo "ERROR: Godot 4.7.2 executable not found in PATH." >&2
-  exit 2
+  GODOT_BIN=""
+  for candidate in godot godot4; do
+    if ! command -v "$candidate" >/dev/null 2>&1; then
+      continue
+    fi
+    candidate_bin="$(command -v "$candidate")"
+    if candidate_version="$("$candidate_bin" --version 2>/dev/null)"; then
+      if [[ "$candidate_version" =~ ^4\\.7\\.2\\.stable(\\.|$) ]]; then
+        GODOT_BIN="$candidate_bin"
+        break
+      fi
+    fi
+  done
+  if [[ -z "$GODOT_BIN" ]]; then
+    echo "ERROR: No Godot 4.7.2 stable executable found in PATH (godot or godot4)." >&2
+    exit 2
+  fi
 fi
 
 godot_version="$("$GODOT_BIN" --version)"
