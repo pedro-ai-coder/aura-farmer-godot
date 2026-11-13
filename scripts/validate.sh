@@ -17,7 +17,7 @@ else
     fi
     candidate_bin="$(command -v "$candidate")"
     if candidate_version="$("$candidate_bin" --version 2>/dev/null)"; then
-      if [[ "$candidate_version" =~ ^4\\.7\\.2\\.stable(\\.|$) ]]; then
+      if [[ "$candidate_version" =~ ^4\.7\.2\.stable(\.|$) ]]; then
         GODOT_BIN="$candidate_bin"
         break
       fi
