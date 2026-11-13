@@ -12,7 +12,7 @@ func verify() -> void:
         expect(bounds.position.x>0 and bounds.position.y>0 and bounds.end.x<144 and bounds.end.y<144,"Pose isolated from neighboring cells "+str(slot))
     game.select_appearance("female");game.start_run(0)
     expect(game.mode=="playing" and game.hero.id=="sigma" and game.hero_appearance=="female","Pixel Vixen start flow preserves kit and appearance")
-    expect(game.hero_pose().sheet=="pixel-vixen","One Vixen gameplay adapter")
+    expect(game.hero_pose().sheet=="hero-motion-v3" and game.hero_pose().slug=="pixel-vixen","One Vixen gameplay adapter")
     expect(game.find_children("*","Sprite2D",true,false).is_empty(),"No duplicate sprite nodes")
     game.queue_free()
     if failures.is_empty():print("PASS: verified isolated Vixen atlas, 49 padded poses, single adapter and female Sigma run start");quit()

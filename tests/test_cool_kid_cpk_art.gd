@@ -56,8 +56,8 @@ func verify() -> void:
             for key in Trace.KEYS:
                 check(var_to_bytes(legacy.get(key)) == var_to_bytes(current.get(key)),"Art-only parity: "+key)
             check(legacy.rng.state == current.rng.state,"Exact RNG parity")
-        check(current.hero_pose()["sheet"] == ("byte-baddie" if appearance == "female" else CPK.SHEET),"Appearance isolation")
-        check(legacy.hero_pose()["sheet"] != CPK.SHEET,"Legacy fallback remains usable")
+        check(current.hero_pose()["sheet"] == "hero-motion-v3" and current.hero_pose()["slug"] == ("byte-baddie" if appearance == "female" else "cool-kid"),"Approved appearance isolation")
+        check(legacy.hero_pose()["sheet"] == "hero-motion-v3","New approved rendering is independent of archived CPK atlas availability")
         current.mode = "lost"; current.visual_defeat = 1.0
         check(current.hero_pose()["state"] == "defeat","Lost state")
         current.start_run(1)

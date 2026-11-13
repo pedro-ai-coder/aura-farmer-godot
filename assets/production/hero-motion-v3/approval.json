@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-13",
+  "status": "APPROVED_FOR_INTEGRATION",
+  "creator_instruction": "estão aprovados, podes integrar",
+  "scope": "All six reviewed run cycles, Sigma/Cool Kid high-resolution portraits, and revised Pixel Vixen design/portrait. Existing approved Alpha Chad/Byte Baddie/Block Queen portraits remain the source for idle bodies. No gameplay or release authority changed.",
+  "sources": {
+    "sigma": {
+      "run.png": "328f76cbc0ed74a100918980d3d2f7fa081411d6d45e26267f4749de27c2e8b3",
+      "portrait.png": "bd0aac408657c855c1c9c5daed924898e320d9a18c7c40eacd0aeb7aa6d17645"
+    },
+    "cool-kid": {
+      "run.png": "4ee4234fd21482e887537e2fde2c034b377318a7444d62f199aaccabb5c16405",
+      "portrait.png": "00f3edbbdb110121a4095695bd0bce9516abe34cee928af02e8e9c07cd2ea640"
+    },
+    "alpha-chad": {
+      "run.png": "acfea068a31516ff5d0e1f848ccf73c6507b62d9059288103ef46825ecb8ba6b",
+      "portrait.png": "20eaa3f34a6f0ba92c986b4fb32729172d291e8bc5c19d0300d21a702a3eab7f"
+    },
+    "pixel-vixen": {
+      "run.png": "cb47b8232970633404d9fc6031746469aab8f6dc692c203609176041bd623647",
+      "portrait.png": "00f83f078cd33f4e6a654ed9e4fe708f5751db5e2d73ffb30fb13222125621d8"
+    },
+    "byte-baddie": {
+      "run.png": "78c8c4b549ea5bf6e28a3c91e97fab9f104103c35fb948ace1480f90d36da58f",
+      "portrait.png": "6307c9fae4476640f7b9afe48414f6a55557a7a45f71dd0c48d3446b0580df3b"
+    },
+    "block-queen": {
+      "run.png": "aabc3f261a00c3ab1716a114459dfb30f82d9603449ee9356b12a1d0e64ebacb",
+      "portrait.png": "65cac41a98866aa4153a8009912fb704f63185fd2e98936526955d914cdcec0c"
+    }
+  }
+}

@@ -61,7 +61,7 @@ func verify() -> void:
         expect(not game.presentation.home.start_button.disabled, "Pixel Vixen remains selectable after other female candidates")
         game.start_run(0)
         expect(game.mode == "playing" and game.hero["id"] == "sigma", "Pixel Vixen starts a real Sigma-kit run")
-        expect(game.hero_pose()["sheet"] == "pixel-vixen", "Pixel Vixen uses its own in-world atlas")
+        expect(game.hero_pose()["sheet"] == "hero-motion-v3" and game.hero_pose()["slug"] == "pixel-vixen", "Pixel Vixen uses its own in-world atlas")
         expect(skin.portrait.texture != null, "Pixel Vixen HUD portrait exists")
         game._return_to_menu()
         await click(game.presentation.home.hero_destination)
@@ -123,7 +123,7 @@ func verify_mobile_review() -> void:
             expect(game.hero_index==index and game.hero_appearance==appearance, "Touch selects the requested hero")
             await review_tap(game.presentation.home.start_button)
             expect(game.mode=="playing" and game.hero==game.HEROES[index], "Touch launches an unchanged canonical kit")
-            var sheet: String = ["sigma-cpk","cool-kid-cpk","alpha-chad-proposed"][index] if appearance=="original" else ["pixel-vixen","byte-baddie-proposed","block-queen-proposed"][index]
+            var sheet: String = "hero-motion-v3"
             expect(game.hero_pose()["sheet"]==sheet, "Correct gameplay atlas: "+sheet)
             expect(game.art.cosmetic_portrait(str(game.hero["id"]),appearance)!=null, "Correct portrait available")
     var canonical = preload("res://scripts/hero_animation.gd")

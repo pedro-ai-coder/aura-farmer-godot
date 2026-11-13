@@ -131,6 +131,8 @@ python3 -m unittest discover -s tests -p test_pixel_vixen_pack.py
 python3 scripts/verify_pixel_vixen.py
 run_check hero-appearance-selection --headless --path . --script res://tests/test_hero_appearance_selection.gd
 run_check hero-locomotion-runtime --headless --path . --script res://tests/test_locomotion_runtime.gd
+run_check approved-hero-motion --headless --path . --script res://tests/test_approved_hero_motion.gd
+python3 scripts/verify_approved_motion.py
 run_check selection-portrait-quality --headless --path . --script res://tests/test_selection_portrait_quality.gd
 run_check vixen-isolated-render --headless --path . --script res://tests/test_vixen_isolated_render.gd
 run_check pixel-vixen-appearance --headless --path . --script res://tests/test_pixel_vixen_animation.gd

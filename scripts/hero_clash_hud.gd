@@ -301,6 +301,7 @@ func sync_data() -> void:
     update_status_feedback()
     skin.hero_name.text=game.HeroAppearanceScript.display_name(str(game.hero["id"]),game.hero_appearance,str(game.hero["name"]));skin.fit_line(skin.hero_name,20 if compact else 22)
     skin.portrait.texture=game.art.cosmetic_portrait(str(game.hero["id"]),game.hero_appearance,"hud")
+    skin.portrait.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
     var female_portrait: bool=game.hero_appearance=="female" or not game.ProposedCPK.slug(str(game.hero["id"]),game.hero_appearance).is_empty()
     skin.portrait.material=null if female_portrait else portrait_material
     skin.portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED if female_portrait else TextureRect.STRETCH_SCALE

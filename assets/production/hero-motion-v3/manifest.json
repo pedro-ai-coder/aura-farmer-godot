@@ -1,0 +1,808 @@
+{
+  "version": "hero-motion-v3",
+  "approval_date": "2026-11-13",
+  "approval": "Creator approved all remaining motion/design candidates and explicitly authorized integration in this chat.",
+  "generator": "scripts/prepare_approved_motion.py",
+  "processing": "Largest connected alpha>128 component; alpha remap (alpha-128)*255/125; unchanged RGB, no repainting, no resampling; 512px padded run cells.",
+  "cell": 512,
+  "pivot": [
+    256,
+    464
+  ],
+  "fps": 12,
+  "heroes": {
+    "sigma": {
+      "hero_id": "sigma",
+      "appearance": "original",
+      "source": {
+        "run.png": "328f76cbc0ed74a100918980d3d2f7fa081411d6d45e26267f4749de27c2e8b3",
+        "portrait.png": "bd0aac408657c855c1c9c5daed924898e320d9a18c7c40eacd0aeb7aa6d17645"
+      },
+      "files": {
+        "portrait.png": "109dd54a184e9926207ee9343463738de8df9e46041c669d4344e3e3b4fdeffa",
+        "run.png": "c0bb86bee3bec51edaeb20c9d8cfd900c5cb4b6aef50d021ddb80e23c6d88048"
+      },
+      "frames": [
+        {
+          "source_rect": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            43,
+            15,
+            373,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            127,
+            15,
+            372,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            66,
+            13,
+            374,
+            424
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            30,
+            13,
+            432,
+            400
+          ]
+        },
+        {
+          "source_rect": [
+            0,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            26,
+            13,
+            374,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            120,
+            13,
+            372,
+            425
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            39,
+            11,
+            373,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            54,
+            12,
+            427,
+            411
+          ]
+        }
+      ],
+      "body_height": 412.5,
+      "idle_height": 1376,
+      "portrait_dimensions": [
+        830,
+        1408
+      ]
+    },
+    "cool-kid": {
+      "hero_id": "cool-kid",
+      "appearance": "original",
+      "source": {
+        "run.png": "4ee4234fd21482e887537e2fde2c034b377318a7444d62f199aaccabb5c16405",
+        "portrait.png": "00f3edbbdb110121a4095695bd0bce9516abe34cee928af02e8e9c07cd2ea640"
+      },
+      "files": {
+        "portrait.png": "a4ec26c40a24450c6ecefd6eea125c7abf5192e8e498a24e2e255ca47cd35c46",
+        "run.png": "75b8fddfafcd586762298a01608f5095b4c86ecd6611419f39fc6d6879e76839"
+      },
+      "frames": [
+        {
+          "source_rect": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            44,
+            10,
+            383,
+            427
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            127,
+            16,
+            382,
+            427
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            58,
+            10,
+            383,
+            424
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            34,
+            6,
+            433,
+            373
+          ]
+        },
+        {
+          "source_rect": [
+            0,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            27,
+            11,
+            390,
+            427
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            121,
+            16,
+            382,
+            427
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            45,
+            11,
+            383,
+            427
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            51,
+            8,
+            416,
+            406
+          ]
+        }
+      ],
+      "body_height": 412.5,
+      "idle_height": 1334,
+      "portrait_dimensions": [
+        865,
+        1366
+      ]
+    },
+    "alpha-chad": {
+      "hero_id": "alpha",
+      "appearance": "original",
+      "source": {
+        "run.png": "acfea068a31516ff5d0e1f848ccf73c6507b62d9059288103ef46825ecb8ba6b",
+        "portrait.png": "20eaa3f34a6f0ba92c986b4fb32729172d291e8bc5c19d0300d21a702a3eab7f"
+      },
+      "files": {
+        "portrait.png": "6aad5dba17533f5b34b8d1ee7447732363f013de3d54b3f7c17f61466bfb96c3",
+        "run.png": "5d8b31351e2375f053c5bacf648b788bfee53862f6b2d12e14f6f858a57ebe31"
+      },
+      "frames": [
+        {
+          "source_rect": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            30,
+            21,
+            411,
+            423
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            67,
+            22,
+            407,
+            423
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            42,
+            22,
+            407,
+            422
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            60,
+            20,
+            411,
+            408
+          ]
+        },
+        {
+          "source_rect": [
+            0,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            29,
+            21,
+            411,
+            422
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            61,
+            21,
+            407,
+            423
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            41,
+            21,
+            408,
+            422
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            51,
+            18,
+            411,
+            403
+          ]
+        }
+      ],
+      "body_height": 401.0,
+      "idle_height": 462,
+      "portrait_dimensions": [
+        471,
+        494
+      ]
+    },
+    "pixel-vixen": {
+      "hero_id": "sigma",
+      "appearance": "female",
+      "source": {
+        "run.png": "cb47b8232970633404d9fc6031746469aab8f6dc692c203609176041bd623647",
+        "portrait.png": "00f83f078cd33f4e6a654ed9e4fe708f5751db5e2d73ffb30fb13222125621d8"
+      },
+      "files": {
+        "hud.png": "17015d42b68afde7b901a5685a49deec04789e5e50274281e66fa671413e32c4",
+        "portrait.png": "022ea5b0906161f4ae59afd90d5e0bff43004545d6b12ae31a7c2b1c5daa8442",
+        "run.png": "4e3bf4ad86a483225a38c2faea541d7d76c8074b262201faa911ff881023fbc9"
+      },
+      "frames": [
+        {
+          "source_rect": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            45,
+            7,
+            356,
+            438
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            90,
+            8,
+            356,
+            438
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            53,
+            8,
+            355,
+            437
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            48,
+            7,
+            431,
+            398
+          ]
+        },
+        {
+          "source_rect": [
+            0,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            24,
+            5,
+            374,
+            435
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            82,
+            7,
+            356,
+            435
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            42,
+            8,
+            357,
+            435
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            42,
+            9,
+            424,
+            412
+          ]
+        }
+      ],
+      "body_height": 428.5,
+      "idle_height": 1457,
+      "portrait_dimensions": [
+        717,
+        1489
+      ]
+    },
+    "byte-baddie": {
+      "hero_id": "cool-kid",
+      "appearance": "female",
+      "source": {
+        "run.png": "78c8c4b549ea5bf6e28a3c91e97fab9f104103c35fb948ace1480f90d36da58f",
+        "portrait.png": "6307c9fae4476640f7b9afe48414f6a55557a7a45f71dd0c48d3446b0580df3b"
+      },
+      "files": {
+        "portrait.png": "557d1adc2eb2b8e95f6dc9848f366a8954a44ac429153817578788efad30babe",
+        "run.png": "79eba976d55b3e91f7e99bc620a302abd4e9f1a2ea5996a6180b2ff2f7a52ea0"
+      },
+      "frames": [
+        {
+          "source_rect": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            24,
+            15,
+            405,
+            432
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            134,
+            19,
+            407,
+            429
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            67,
+            13,
+            406,
+            424
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            62,
+            11,
+            416,
+            398
+          ]
+        },
+        {
+          "source_rect": [
+            0,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            22,
+            10,
+            407,
+            432
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            131,
+            18,
+            407,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            52,
+            10,
+            410,
+            426
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            69,
+            7,
+            422,
+            409
+          ]
+        }
+      ],
+      "body_height": 410.5,
+      "idle_height": 1294,
+      "portrait_dimensions": [
+        1172,
+        1326
+      ]
+    },
+    "block-queen": {
+      "hero_id": "alpha",
+      "appearance": "female",
+      "source": {
+        "run.png": "aabc3f261a00c3ab1716a114459dfb30f82d9603449ee9356b12a1d0e64ebacb",
+        "portrait.png": "65cac41a98866aa4153a8009912fb704f63185fd2e98936526955d914cdcec0c"
+      },
+      "files": {
+        "portrait.png": "c55f3f4019d52363b90ab87bbcb4b0123e43bf76680b3f5d1048b846d2668793",
+        "run.png": "abf94d7bcbfe306607d84dc33e4ceaace8b4970da55bf45310314314722ebfe5"
+      },
+      "frames": [
+        {
+          "source_rect": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            48,
+            23,
+            388,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            59,
+            24,
+            388,
+            428
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            0,
+            443,
+            444
+          ],
+          "used_rect": [
+            55,
+            23,
+            388,
+            423
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            0,
+            444,
+            444
+          ],
+          "used_rect": [
+            50,
+            18,
+            408,
+            400
+          ]
+        },
+        {
+          "source_rect": [
+            0,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            47,
+            22,
+            388,
+            421
+          ]
+        },
+        {
+          "source_rect": [
+            444,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            48,
+            26,
+            389,
+            421
+          ]
+        },
+        {
+          "source_rect": [
+            887,
+            444,
+            443,
+            443
+          ],
+          "used_rect": [
+            49,
+            27,
+            388,
+            418
+          ]
+        },
+        {
+          "source_rect": [
+            1330,
+            444,
+            444,
+            443
+          ],
+          "used_rect": [
+            41,
+            22,
+            403,
+            407
+          ]
+        }
+      ],
+      "body_height": 397.0,
+      "idle_height": 464,
+      "portrait_dimensions": [
+        326,
+        496
+      ]
+    }
+  }
+}

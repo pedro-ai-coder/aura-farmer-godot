@@ -6,6 +6,7 @@ extends RefCounted
 ## Never present original male artwork as a substitute.
 const ORIGINAL := "original"
 const FEMALE := "female"
+const Motion = preload("res://scripts/approved_hero_motion.gd")
 
 const FEMALE_NAMES := {
     "sigma": "PIXEL VIXEN",
@@ -41,11 +42,9 @@ static func display_name(hero_id: String, appearance: String, original_name: Str
     return original_name
 
 static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
-    if appearance == ORIGINAL:
-        return true
-    if appearance != FEMALE or not FEMALE_ASSETS.has(hero_id): return false
-    if not FileAccess.file_exists(manifest_path(hero_id)): return false
-    if hero_id != "sigma" and not FileAccess.file_exists(manifest_path(hero_id).get_base_dir()+"/frames.json"): return false
-    for usage in ["atlas", "selection", "hud"]:
-        if not ResourceLoader.exists(asset_path(hero_id,usage)): return false
+    if not is_valid(appearance): return false
+    var name := Motion.slug(hero_id,appearance)
+    if name.is_empty() or not Motion.rows().has(name): return false
+    for role in ["run","portrait"]:
+        if not ResourceLoader.exists(Motion.ROOT+name+"/"+role+".png"): return false
     return true

@@ -21,13 +21,8 @@ func verify() -> void:
             expect(game.hero_pose().state=="idle","Stopping returns to idle")
             game.hurt_timer=0.1
             expect(game.hero_pose().state=="hurt","Damage precedence preserved")
-    var art=game.ProposedCPK
-    var left:=Vector2(80,216);var right:=Vector2(180,216)
-    expect(art.gait_vertex(left,PI/2).x<left.x and art.gait_vertex(right,PI/2).x>right.x,"Feet stride independently")
-    expect(art.gait_vertex(left,PI/2)!=art.gait_vertex(left,3*PI/2),"Opposite stride changes leg geometry")
-    expect(art.gait_vertex(Vector2(128,132),0)==Vector2(128,132),"Hip pivot remains stable")
     game.queue_free()
-    if failures.is_empty():print("PASS: six runtime locomotion routes, auto-attack, advancing gait, idle, hurt and articulated cutouts");quit()
+    if failures.is_empty():print("PASS: six runtime locomotion routes, auto-attack, advancing gait, idle, hurt and approved authored cycles");quit()
     else:
         for failure in failures:push_error(failure)
         quit(1)

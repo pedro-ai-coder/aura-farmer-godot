@@ -40,13 +40,14 @@ func _verify() -> void:
     expect(run_source.has_point(Vector2(80,130)), "Running source includes Pixel Vixen's actual running head")
     expect(not run_source.has_point(Vector2(70,101)), "Running source excludes the previous idle pose's boots (uniform-grid regression)")
     var portrait: Texture2D = visuals.cosmetic_portrait("sigma", "female")
-    expect(portrait != null and portrait.resource_path == "res://assets/production/pixel-vixen/cpk-v1/selection-portrait.png", "Selection preserves the approved CPK Vixen identity")
+    expect(portrait != null and portrait.resource_path == "res://assets/production/hero-motion-v3/pixel-vixen/portrait.png", "Selection preserves the approved CPK Vixen identity")
     var hud_portrait: Texture2D=visuals.cosmetic_portrait("sigma","female","hud")
-    expect(hud_portrait != null and hud_portrait.resource_path == portrait.resource_path, "HUD retains the six-hero review's approved CPK Vixen portrait")
+    expect(hud_portrait != null and hud_portrait.resource_path == "res://assets/production/hero-motion-v3/pixel-vixen/hud.png", "HUD follows the approved revised Pixel Vixen identity")
     expect(visuals.has_vixen_v2(), "Missing V2 art must never silently fall back to V1")
-    expect(visuals.cosmetic_portrait("cool-kid", "female").resource_path == "res://assets/art-candidates/byte-baddie/cpk-v1-proposed/selection-source.png", "Byte Baddie uses its complete approved master")
-    expect(visuals.cosmetic_portrait("alpha", "female").resource_path == "res://assets/art-candidates/block-queen/cpk-v1-proposed/portrait.png", "Block Queen retains its approved source identity")
-    expect(visuals.cosmetic_portrait("sigma", "original") == visuals.texture("sigma"), "Original Sigma portrait bytes are unchanged")
+    expect(visuals.cosmetic_portrait("cool-kid", "female").resource_path == "res://assets/production/hero-motion-v3/byte-baddie/portrait.png", "Byte Baddie uses its complete approved master")
+    expect(visuals.cosmetic_portrait("alpha", "female").resource_path == "res://assets/production/hero-motion-v3/block-queen/portrait.png", "Block Queen retains its approved source identity")
+    expect(visuals.cosmetic_portrait("sigma", "original").resource_path == "res://assets/production/hero-motion-v3/sigma/portrait.png", "Sigma selection uses the newly approved high-resolution portrait")
+    expect(visuals.texture("sigma").resource_path == Visuals.SIGMA_CPK_PORTRAIT_PATH, "Prior Sigma source remains available unchanged")
     expect(Appearance.can_start("female", "sigma"), "Pixel Vixen remains playable with all required V2 art")
     expect(Appearance.can_start("female", "cool-kid") and Appearance.can_start("female", "alpha"), "Remaining female appearances are complete while Pixel Vixen remains intact")
     var state := {"time":0.0,"walk":0.0,"defeat":0.0,"lost":false,"hurt":0.0,"flex":0.0,"flex_age":0.0,"attack":0.0,"heading":0.0,"moving":false,"facing":0.0}
@@ -75,7 +76,7 @@ func _verify() -> void:
     main.hero_appearance = "female"
     main.start_run(0)
     expect(main.mode == "playing" and main.hero["id"] == "sigma", "Pixel Vixen plays the exact Sigma gameplay kit")
-    expect(main.hero_pose()["sheet"] == "pixel-vixen", "Live gameplay renders the female appearance")
+    expect(main.hero_pose()["sheet"] == "hero-motion-v3" and main.hero_pose()["slug"] == "pixel-vixen", "Live gameplay renders the female appearance")
     expect(main.hero["starter"] == "no-cap" and main.hero["flex"] == "Deadpan Verdict", "No Cap and Deadpan Verdict stay canonical")
     main.queue_free()
     if ResourceLoader.exists(Visuals.VIXEN_V2_ATLAS_PATH):

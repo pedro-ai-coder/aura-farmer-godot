@@ -5,6 +5,8 @@ extends RefCounted
 ## Art is SHA-verified at Web build time. Never modify gameplay or RNG here.
 
 const ROOT := "res://assets/approved/"
+const ApprovedMotion = preload("res://scripts/approved_hero_motion.gd")
+var motion = ApprovedMotion.new()
 const ProposedCPK = preload("res://scripts/proposed_cpk_art.gd")
 const SigmaCPK = preload("res://scripts/sigma_cpk_animation.gd")
 const SIGMA_CPK_ATLAS_PATH := "res://assets/production/the-sigma/cpk-v1/sigma-cpk-v1-atlas.png"
@@ -152,9 +154,12 @@ func _vixen_atlas() -> Texture2D:
     return female_art.texture("sigma","atlas")
 
 func prepare_appearance(hero_id: String, appearance: String) -> bool:
-    return true if appearance == "original" else female_art.prepare(hero_id)
+    return motion.prepare(hero_id,appearance)
 
 func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "selection") -> Texture2D:
+    var name: String=ApprovedMotion.slug(hero_id,appearance)
+    if usage!="hud": return motion.texture(name,"portrait")
+    if name=="pixel-vixen": return motion.texture(name,"hud")
     if not ProposedCPK.slug(hero_id,appearance).is_empty():
         return ProposedCPK.portrait(hero_id,appearance,usage)
     if hero_id == "sigma" and appearance == "female" and pixel_vixen_cpk_atlas != null:
@@ -162,6 +167,8 @@ func cosmetic_portrait(hero_id: String, appearance: String, usage: String = "sel
     return female_art.texture(hero_id,usage) if appearance == "female" else texture(hero_id)
 
 func draw_hero_pose(canvas: CanvasItem, pos: Vector2, hero_id: String, pose: Dictionary) -> bool:
+    if pose.get("sheet","")==ApprovedMotion.SHEET:
+        return motion.draw(canvas,pos,hero_id,pose)
     if str(pose.get("sheet","")).ends_with("-proposed"):
         return ProposedCPK.draw(canvas,pos,hero_id,pose)
     var sheet: String = pose["sheet"]

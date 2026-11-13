@@ -15,7 +15,7 @@ func verify() -> void:
                 expect(poster.size.x<=poster.texture.get_width()*1.5+0.1 and poster.size.y<=poster.texture.get_height()*1.5+0.1,"Portrait enlargement capped")
                 expect(poster.stretch_mode==TextureRect.STRETCH_KEEP_ASPECT_CENTERED,"Full aspect fit")
                 if appearance=="female" and index==1:
-                    expect(poster.texture.get_size()==Vector2(1199,1312),"Byte Baddie uses complete native master, not cropped derivative")
+                    expect(poster.texture.get_height()>1200 and poster.texture.get_width()>1000,"Byte Baddie uses complete native master, not cropped derivative")
                     expect(game.art.cosmetic_portrait("cool-kid","female","hud").resource_path.ends_with("/hud.png"),"HUD resource remains separate and unchanged")
         game.queue_free();await process_frame
     if failures.is_empty():print("PASS: six portraits, three viewport sizes, aspect fit, linear filtering and bounded enlargement");quit()

@@ -7,6 +7,7 @@ const HeroAnimationScript = preload("res://scripts/hero_animation.gd")
 const HeroAppearanceScript = preload("res://scripts/hero_appearance.gd")
 const FemaleHeroAnimationScript = preload("res://scripts/female_hero_animation.gd")
 const ProposedCPK = preload("res://scripts/proposed_cpk_art.gd")
+const ApprovedHeroMotion = preload("res://scripts/approved_hero_motion.gd")
 const WebPlatformScript = preload("res://scripts/web_platform.gd")
 const ArcadePresentationScript = preload("res://scripts/arcade_presentation.gd")
 const CleanCutSkinScript = preload("res://scripts/clean_cut_skin.gd")
@@ -866,7 +867,7 @@ func _move_player(dt: float) -> void:
     var previous := player_pos
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
     if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
-    visual_moving = direction.length_squared() > 0.01
+    visual_moving = player_pos.distance_squared_to(previous) > 0.000001
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
     if visual_moving:
         var heading := roundf(direction.angle()/(PI/4))*(PI/4)
@@ -2392,15 +2393,7 @@ func hero_pose() -> Dictionary:
     # A full-body attack hold must not replace the gait throughout an auto-fire
     # windup. Weapon gestures still render from the unchanged combat observer.
     if visual_moving: state["attack"] = 0.0
-    if not ProposedCPK.slug(str(hero["id"]),hero_appearance).is_empty():
-        return ProposedCPK.pose(str(hero["id"]),hero_appearance,state)
-    if hero_appearance == "female":
-        return FemaleHeroAnimationScript.pose(str(hero["id"]),state)
-    if str(hero["id"]) == "sigma" and art.sigma_cpk_atlas != null:
-        return art.SigmaCPK.pose(state)
-    if str(hero["id"]) == "cool-kid" and art.cool_kid_cpk_atlas != null:
-        return art.CoolKidCPK.pose(state)
-    return HeroAnimationScript.pose(str(hero["id"]), state)
+    return ApprovedHeroMotion.pose(str(hero["id"]),hero_appearance,state)
 
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
