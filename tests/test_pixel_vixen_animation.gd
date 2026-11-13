@@ -44,7 +44,7 @@ func _verify() -> void:
     var hud_portrait: Texture2D=visuals.cosmetic_portrait("sigma","female","hud")
     expect(hud_portrait != null and hud_portrait.resource_path == portrait.resource_path, "HUD retains the six-hero review's approved CPK Vixen portrait")
     expect(visuals.has_vixen_v2(), "Missing V2 art must never silently fall back to V1")
-    expect(visuals.cosmetic_portrait("cool-kid", "female").resource_path == "res://assets/art-candidates/byte-baddie/cpk-v1-proposed/portrait.png", "Byte Baddie retains its approved source identity")
+    expect(visuals.cosmetic_portrait("cool-kid", "female").resource_path == "res://assets/art-candidates/byte-baddie/cpk-v1-proposed/selection-source.png", "Byte Baddie uses its complete approved master")
     expect(visuals.cosmetic_portrait("alpha", "female").resource_path == "res://assets/art-candidates/block-queen/cpk-v1-proposed/portrait.png", "Block Queen retains its approved source identity")
     expect(visuals.cosmetic_portrait("sigma", "original") == visuals.texture("sigma"), "Original Sigma portrait bytes are unchanged")
     expect(Appearance.can_start("female", "sigma"), "Pixel Vixen remains playable with all required V2 art")

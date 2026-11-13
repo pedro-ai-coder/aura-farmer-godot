@@ -13,6 +13,11 @@ static func slug(hero_id: String, appearance: String) -> String:
 static func portrait(hero_id: String, appearance: String, usage: String) -> Texture2D:
     var name := slug(hero_id,appearance)
     if name.is_empty(): return null
+    # The legacy Byte Baddie portrait derivative contains only the upper body.
+    # Its approved master already contains both boots; use those exact bytes
+    # for selection/home/results while preserving the HUD resource.
+    if name == "byte-baddie" and usage != "hud":
+        return load(ROOT+name+"/cpk-v1-proposed/selection-source.png") as Texture2D
     return load(ROOT+name+"/cpk-v1-proposed/"+("hud" if usage == "hud" else "portrait")+".png") as Texture2D
 
 static func pose(hero_id: String, appearance: String, state: Dictionary) -> Dictionary:

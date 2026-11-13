@@ -24,8 +24,10 @@
   "files": {
     "atlas.png": "e9ac9481d3a4a03c9977c3a40e5c0931a3c0e7148b47a63f4a492a96cf5f1bd6",
     "hud.png": "82981863e1ac8c26b721cfc39db4319686839ea226576f092abb58b1bfcef5f0",
-    "portrait.png": "9d208707b8ba0fd26297198beb5c81aa640c5d7aff420f5f6c018eae0d7876a7"
+    "portrait.png": "9d208707b8ba0fd26297198beb5c81aa640c5d7aff420f5f6c018eae0d7876a7",
+    "selection-source.png": "6307c9fae4476640f7b9afe48414f6a55557a7a45f71dd0c48d3446b0580df3b"
   },
+  "selection_source": "Exact approved 1199x1312 full-body master; no crop, resizing, repainting or new artwork. The previous portrait.png is preserved unchanged for compatibility.",
   "design_status": "APPROVED_EXACT_SOURCE",
   "runtime_acceptance": "PENDING_CREATOR_GAMEPLAY_AND_VISUAL_TESTS"
 }
