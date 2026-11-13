@@ -22,20 +22,20 @@ func verify() -> void:
         game.presentation.select_hero(selected_index)
         skin.refresh()
         var selected_id: String=game.HEROES[selected_index]["id"]
-        expect(skin.poster_hero.texture==game.art.texture(selected_id),"Menu shows chosen real hero artwork at %s" % viewport)
+        expect(skin.poster_hero.texture==game.art.cosmetic_portrait(selected_id,game.hero_appearance),"Menu shows chosen real hero artwork at %s" % viewport)
         if viewport.y>=780 or viewport.x>=700:
             expect(skin.poster_hero.visible,"Selected hero image is actually visible on menu at %s" % viewport)
         await click(game.presentation.home.hero_destination)
         expect(game.mode=="heroes","Real hero-selection destination opens")
         skin.refresh()
-        expect(skin.hero_parts[selected_index]["portrait"].texture==game.art.texture(selected_id),"Correct identity on hero-selection card")
+        expect(skin.hero_parts[selected_index]["portrait"].texture==game.art.cosmetic_portrait(selected_id,game.hero_appearance),"Correct identity on hero-selection card")
         expect(skin.hero_parts[selected_index]["portrait"].visible,"Hero card portrait is not hidden by legacy skin")
         game.presentation.select_hero(1)
         skin.refresh()
         expect(skin.hero_parts[1]["role"].text.contains("SELECTED"),"Selected card has distinct feedback")
         await click(game.presentation.home.start_button)
         expect(game.mode=="playing" and game.hero["id"]=="cool-kid","Start Run preserves actual selected hero and gameplay identity")
-        expect(skin.portrait.texture==game.art.texture("cool-kid"),"Actual gameplay HUD renders chosen hero")
+        expect(skin.portrait.texture==game.art.cosmetic_portrait("cool-kid",game.hero_appearance,"hud"),"Actual gameplay HUD renders chosen hero")
 
         game.hp=67.0
         game.max_hp=110.0
@@ -82,7 +82,7 @@ func verify() -> void:
         await click(game.confirm_button)
         expect(game.mode=="menu","Real CONFIRM QUIT returns to main menu")
         expect(int(game.profile["runs"])==old_runs,"Abandoned run is not recorded as completed")
-        expect(skin.poster_hero.texture==game.art.texture("cool-kid"),"Menu after quit previews previously selected hero")
+        expect(skin.poster_hero.texture==game.art.cosmetic_portrait("cool-kid",game.hero_appearance),"Menu after quit previews previously selected hero")
         game.queue_free()
         await process_frame
 

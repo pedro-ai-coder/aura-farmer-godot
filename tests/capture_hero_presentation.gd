@@ -76,7 +76,10 @@ func capture_motion_review() -> void:
                 if sample==8:
                     game.aura=100;game.flex_lock=0;game._use_flex()
                 if sample==9:
-                    # Advance the real active Flex to its normal completion.
+                    # Remove synthetic targets before waiting for the real Flex
+                    # completion; a normal-health melee hero must not die
+                    # while the fixture waits without player control.
+                    game.enemies.clear();game.hostile_shots.clear();game.hazard_zones.clear()
                     for frame in range(200):game._process(1.0/30.0)
                 for frame in range(8):game._process(1.0/30.0)
                 if sample==7:game._deal_damage_to_player(1.0)
