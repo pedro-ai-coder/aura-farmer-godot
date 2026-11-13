@@ -1,0 +1,92 @@
+{
+  "runtime_sha": "4f2f57983994170e41606d501670a343f0cf02a8",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "required_full_script": "FAIL",
+  "failed_phase": "frame-pacing-state",
+  "same_failure_reproduced_on": "d9d391db61e5f5e81a750a61c0066b7d29a8c720",
+  "golden_hashes_changed": false,
+  "godot_phases_passed": 82,
+  "godot_phases_executed": 83,
+  "remaining_phases_command": "PATH=/workspace/tools/godot-4.7.2:$PATH bash /workspace/scratch/pr132-validation-remaining.sh",
+  "remaining_phases_result": "PASS",
+  "direct_rejected_hashes": {
+    "dense": "81965b18d1e560310f8ef8c630525ac11b745801c1ece7b4d1c37e983f9c95d3",
+    "flex": "3f235aff1150a52d56150f83ae02261d2e39bd47ada3cce60f0a55e4f5cd5060",
+    "normal": "d91735e4d6c1042fe731c8c8c775cf0a5781c9c498b905d5d1874a60b428b2b4"
+  },
+  "direct_corrected_hashes": {
+    "dense": "81965b18d1e560310f8ef8c630525ac11b745801c1ece7b4d1c37e983f9c95d3",
+    "flex": "3f235aff1150a52d56150f83ae02261d2e39bd47ada3cce60f0a55e4f5cd5060",
+    "normal": "d91735e4d6c1042fe731c8c8c775cf0a5781c9c498b905d5d1874a60b428b2b4"
+  },
+  "weapon_state_comparisons": 3456,
+  "passive_feedback_state_comparisons": 5376,
+  "native_matrix_samples_per_version": 60,
+  "native_matrix_sources": [
+    "2298e39ab727a88defd7c421f95969f30a422212",
+    "d9d391db61e5f5e81a750a61c0066b7d29a8c720",
+    "4f2f57983994170e41606d501670a343f0cf02a8"
+  ],
+  "native_movie": {
+    "frames": 720,
+    "fixed_fps": 30,
+    "length_seconds": 24,
+    "runtime_fps_measurement": false
+  },
+  "web_export": {
+    "result": "PASS",
+    "build_commit": "4f2f57983994170e41606d501670a343f0cf02a8",
+    "engine": "4.7.2"
+  },
+  "browser_runs": [
+    {
+      "hero": 0,
+      "appearance": "original",
+      "mode": "playing",
+      "errors": []
+    },
+    {
+      "hero": 1,
+      "appearance": "original",
+      "mode": "playing",
+      "errors": []
+    },
+    {
+      "hero": 2,
+      "appearance": "original",
+      "mode": "playing",
+      "errors": []
+    },
+    {
+      "hero": 0,
+      "appearance": "female",
+      "mode": "playing",
+      "errors": []
+    },
+    {
+      "hero": 1,
+      "appearance": "female",
+      "mode": "playing",
+      "errors": []
+    },
+    {
+      "hero": 2,
+      "appearance": "female",
+      "mode": "playing",
+      "errors": []
+    }
+  ],
+  "mobile_browser": {
+    "viewport": [
+      844,
+      390
+    ],
+    "input": "Chromium CDP real touch start/move/end",
+    "result": "PASS",
+    "physical_device": false
+  },
+  "creator_acceptance": false,
+  "art_completion": false,
+  "production_deployed": false,
+  "merged": false
+}
