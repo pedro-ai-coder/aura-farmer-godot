@@ -108,6 +108,12 @@ func decorate_pose(state: Dictionary, clock: float) -> void:
     state["attack"]=0.22 if clock<at else maxf(0.001,0.145-(clock-at)*0.52)
     var facing: Vector2=model.get("direction",model.get("facing",Vector2.RIGHT))
     state["facing"]=facing.angle()
+    # Body and held prop consume the same authoritative windup/strike clock.
+    # This is a presentation envelope, never an additional combat activation.
+    var windup:=maxf(0.001,at-float(event["queued"]))
+    var age:=clock-at
+    state["attack_weight"]=-smoothstep(0.0,1.0,clampf((clock-float(event["queued"]))/windup,0.0,1.0)) if age<0.0 else cos(clampf(age/0.28,0.0,1.0)*PI*0.5)*exp(-age*12.0)
+    state["attack_stage"]=stage(event,clock)
 
 static func sprite(canvas: CanvasItem, texture: Texture2D, at: Vector2, size: Vector2, angle: float=0.0, tint: Color=Color.WHITE, flip: bool=false) -> void:
     canvas.draw_set_transform(at,angle,Vector2(-1,1) if flip else Vector2.ONE)
@@ -171,7 +177,7 @@ func draw_actor(canvas: CanvasItem, point: Vector2, hero_id: String, appearance:
         var id: String=event["id"];var model: Dictionary=event["model"]
         var beat:=stage(event,clock);var at: float=model["at"];var age:=clock-at
         var flip: bool=pose["flip"]
-        var grip:=point+Attach.grip(hero_id,appearance,beat,flip)
+        var grip:=point+Attach.grip(hero_id,appearance,beat,flip)+Vector2(pose.get("grip_offset",Vector2.ZERO))
         var facing: Vector2=model.get("direction",model.get("facing",Vector2.RIGHT))
         var sign_x:=-1.0 if flip else 1.0
         var aim:=atan2(facing.y,absf(facing.x))

@@ -8,6 +8,9 @@ class ReviewRun extends "res://scripts/solo_run.gd":
 func _initialize() -> void: call_deferred("_measure")
 func _measure() -> void:
     var args := OS.get_cmdline_user_args()
+    if args.size()>0 and args[0]=="--motion":
+        await _measure_motion(args)
+        return
     var width := int(args[0]) if args.size() > 0 else 1280
     var height := int(args[1]) if args.size() > 1 else 720
     root.size = Vector2i(width,height)
@@ -43,3 +46,35 @@ func _measure() -> void:
     if args.size() > 2: root.get_texture().get_image().save_png(args[2].path_join("stress-%dx%d.png" % [width,height]))
     game.queue_free()
     quit()
+
+## Focused hero recovery fixtures; shares the existing native benchmark runner.
+func motion_stats(values: Array) -> Dictionary:
+    values.sort()
+    return {"p50":values[int(values.size()*0.50)],"p95":values[int(values.size()*0.95)],"p99":values[int(values.size()*0.99)]}
+func _measure_motion(args) -> void:
+    if DisplayServer.get_name()=="headless": quit(1);return
+    DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+    Engine.max_fps=0
+    var game:=ReviewRun.new();root.add_child(game);game.set_process(false)
+    var results:Array=[]
+    for size in [Vector2i(1280,720),Vector2i(844,390)]:
+        root.size=size;game.presentation._window_changed(true)
+        for count in [0,25,90]:
+            game.start_run(0);game.rng.seed=451
+            for i in range(count):
+                game._spawn_enemy("npc",{"pos":game.player_pos+Vector2.from_angle(float(i)*2.399963)*float(130+i*3)})
+            var intervals:Array=[];var sim:Array=[];var poses:Array=[]
+            var previous:=Time.get_ticks_usec()
+            for frame in range(210):
+                game.touch_direction=Vector2.from_angle(float(frame/30)*PI/4.0) if frame<180 else Vector2.ZERO
+                var start:=Time.get_ticks_usec();game._process(1.0/60.0)
+                var cost:=Time.get_ticks_usec()-start
+                start=Time.get_ticks_usec();game.hero_pose();var pose_cost:=Time.get_ticks_usec()-start
+                game.queue_redraw();await process_frame;await RenderingServer.frame_post_draw
+                var now:=Time.get_ticks_usec()
+                if frame>=30:intervals.append((now-previous)/1000.0);sim.append(cost);poses.append(pose_cost)
+                previous=now
+            results.append({"viewport":[size.x,size.y],"synthetic_initial_enemies":count,"end_enemies":game.enemies.size(),"shots":game.player_shots.size(),"effects":game.attack_visuals.size(),"mode":game.mode,"active_time":game.run_time,"render_loop_interval_ms":motion_stats(intervals),"process_cpu_us":motion_stats(sim),"pose_cpu_us":motion_stats(poses),"samples":intervals.size()})
+    var out:String=args[1]
+    FileAccess.open(out,FileAccess.WRITE).store_string(JSON.stringify({"engine":Engine.get_version_info().string,"renderer":RenderingServer.get_video_adapter_name(),"seed":451,"method":"Fixed 60 Hz input/simulation, 30 warmup + 180 measured native rendered frames per fixture; sequential runs on Xorg llvmpipe, vsync off. Intervals include rendering/scheduler/readback synchronization; not display presentation or GPU timing. 25/90 enemy starts are synthetic, normal HP and canonical combat.","results":results},"  "))
+    print("PASS: native motion baseline ",out);game.queue_free();quit()

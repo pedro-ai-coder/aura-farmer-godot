@@ -13,6 +13,8 @@ func verify() -> void:
         expect(Presentation.Art.TEXTURES.has(id),"Exact approved weapon prop exists: "+id)
         expect(Presentation.Art.TEXTURES[id]==Presentation.Art.TEXTURES[id],"Cached immutable texture: "+id)
     expect(Presentation.Art.TEXTURES.size()==9,"Only nine canonical weapon identities")
+    for appearance in ["original","female"]:
+        expect(Attach.embedded("ratio-blaster","sigma",appearance),"Approved ranged body already owns its blaster; no duplicate prop")
     for hero in ["sigma","cool-kid","alpha"]:
         for appearance in ["original","female"]:
             for phase in range(4):

@@ -71,6 +71,7 @@ var visual_defeat := 0.0
 var visual_heading := 0.0
 var visual_direction_known := false
 var visual_moving := false
+var visual_body_flip := false
 var visual_facing := 0.0
 var mode := "menu"
 var hero: Dictionary = {}
@@ -464,6 +465,7 @@ func start_run(index: int) -> void:
     visual_heading = 0.0
     visual_direction_known = false
     visual_moving = false
+    visual_body_flip = false
     visual_facing = 0.0
     hp = hero["hp"]
     max_hp = hp
@@ -870,8 +872,10 @@ func _move_player(dt: float) -> void:
     visual_moving = player_pos.distance_squared_to(previous) > 0.000001
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
     if visual_moving:
-        var heading := roundf(direction.angle()/(PI/4))*(PI/4)
-        if not visual_direction_known or absf(angle_difference(visual_heading,direction.angle())) > PI/8+0.105:
+        var travel := player_pos-previous
+        var heading := roundf(travel.angle()/(PI/4))*(PI/4)
+        if absf(travel.x)>0.0001: visual_body_flip=travel.x<0.0
+        if not visual_direction_known or absf(angle_difference(visual_heading,travel.angle())) > PI/8+0.105:
             visual_heading = heading
         visual_direction_known = true
     else: visual_direction_known = false
@@ -2388,15 +2392,14 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
 func hero_pose() -> Dictionary:
-    var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
+    var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing,"body_flip":visual_body_flip,"reduced_motion":bool(profile["settings"]["reducedMotion"])}
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
-    # A full-body attack hold must not replace the gait throughout an auto-fire
-    # windup. Weapon gestures still render from the unchanged combat observer.
-    if visual_moving: state["attack"] = 0.0
     return ApprovedHeroMotion.pose(str(hero["id"]),hero_appearance,state)
 
 func _draw_hero_actor() -> void:
-    _draw_contact_shadow(player_pos, 19.0)
+    # The hero uses a foot pivot; the old shared +5px drop made contact poses
+    # float above their shadow. Keep enemy shadow conventions unchanged.
+    _draw_contact_shadow(player_pos-Vector2(3.0,4.0), 19.0)
     var pose:=hero_pose()
     if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose):
         draw_circle(player_pos, 16.0, hero["color"])

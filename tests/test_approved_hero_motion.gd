@@ -27,7 +27,7 @@ func verify() -> void:
             for step in range(24):
                 game._move_player(1.0/36.0)
                 var pose:Dictionary=game.hero_pose()
-                expect(pose.state=="run" and pose.frame>=0 and pose.frame<8,"Actual travel routes to approved gait during auto-attacks")
+                expect(pose.state=="attack" and pose.locomotion=="run" and pose.attack_active and pose.frame>=0 and pose.frame<8,"Attacks retain both state and gait during actual travel")
                 frames[pose.frame]=true
             expect(frames.size()==8,"Actual movement visits the complete eight-frame cycle "+name)
             for heading in [0.0,PI]:

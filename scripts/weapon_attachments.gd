@@ -17,4 +17,6 @@ static func grip(hero_id: String, appearance: String, stage: int, flip: bool) ->
 static func embedded(id: String, hero_id: String, appearance: String) -> bool:
     # Preserve existing authored keyboards, shields and gauntlets. Do not paint
     # a second unrelated weapon over those character-defining illustrations.
-    return id in ["keyboard-warrior","cope-shield","chad-hands"] or (id=="ratio-blaster" and hero_id=="sigma" and appearance=="female")
+    # Both newly integrated ranged bodies already hold their authored blaster.
+    # The previous original-only prop added a second gun beside Sigma's hand.
+    return id in ["keyboard-warrior","cope-shield","chad-hands"] or (id=="ratio-blaster" and hero_id=="sigma")

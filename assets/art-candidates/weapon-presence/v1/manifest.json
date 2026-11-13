@@ -114,7 +114,7 @@
       "path": "assets/runtime-icons/weapons/ratio-blaster/687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494.png",
       "sha256": "687c5ec21d449efa0fb8281390523fd26f3ae47d700105c82bbae9ded1c59494",
       "source_approval": "docs/art/CREATOR_ICON_APPROVAL_2026-10-24.md#creator-decision",
-      "usage": "Unmodified approved handheld prop (original Sigma); female master already contains a blaster. Existing HUD/offer icon retained."
+      "usage": "Unmodified approved icon retained for HUD/offers; both hero-motion-v3 Sigma and Pixel Vixen bodies already contain their blaster, so no second handheld prop is drawn."
     },
     {
       "id": "touch-grass",
@@ -125,7 +125,7 @@
     }
   ],
   "attachment_source": "scripts/weapon_attachments.gd",
-  "attachment_sha256": "5cd478848ea31ccf732123ce5d44e12f7d4d7fb47962055cbef5fcd6e712ed9c",
+  "attachment_sha256": "a7820636aa5b23f89e48a45021ff59de7bf498435e2d096f42788cf3a1a9d3da",
   "prop_grips_source": "scripts/weapon_presentation.gd::PROP_GRIPS",
   "pools": {
     "gestures": 24,
