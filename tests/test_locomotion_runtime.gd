@@ -3,7 +3,9 @@ extends "res://tests/test_hero_appearance_selection.gd"
 func verify() -> void:
     var game := TestRun.new();root.add_child(game);game.set_process(false)
     for appearance in ["original","female"]:
+        game.mode="heroes"
         game.select_appearance(appearance)
+        expect(game.hero_appearance==appearance,"Requested appearance selected")
         for index in range(3):
             game.start_run(index)
             game.attack_flash=0.2
