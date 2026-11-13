@@ -38,6 +38,9 @@ echo "Godot version: $godot_version"
 
 cd "$(dirname "$0")/.."
 
+# Fast, engine-independent regression for toolchain selection.
+python3 -m unittest discover -s tests -p test_godot_version_guard.py
+
 # Godot can return 0 while outputting script/resource errors.
 log_dir="$(mktemp -d)"
 trap 'rm -rf "$log_dir"' EXIT
