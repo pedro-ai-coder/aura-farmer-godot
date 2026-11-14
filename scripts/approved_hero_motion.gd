@@ -53,8 +53,23 @@ static func pose(hero_id: String, appearance: String, state: Dictionary) -> Dict
     var strength:=1.5 if hero_id=="sigma" else 2.4 if hero_id=="cool-kid" else 1.0
     var weight:=float(state.get("attack_weight",0.0))
     var torso:=Vector2(-weight*strength,absf(weight)*(0.8 if hero_id=="alpha" else 0.3))
-    if phase=="hurt": torso=Vector2(-1.4,0.6)*clampf(float(state.get("hurt",0.0))/0.18,0.0,1.0)
-    if reduced or phase=="defeat": torso=Vector2.ZERO
+    var stride:=clampf(float(state.get("stride_weight",1.0 if moving else 0.0)),0.0,1.0)
+    # Keep feet planted and use the same deformation for embedded equipment.
+    # These are candidate motion treatments of existing approved textures, not
+    # independently authored limb poses or a claim of directional-art parity.
+    var breath:=sin(float(state.get("time",0.0))*TAU/2.8)
+    torso+=Vector2(0.0,-0.65*breath*(1.0-stride))
+    torso+=Vector2(1.2*stride,0.35*stride)
+    if phase.begins_with("flex"):
+        var age:=float(state.get("flex_age",0.0))
+        var remaining:=float(state.get("flex",0.0))
+        var envelope:=smoothstep(0.0,0.25,age)*smoothstep(0.0,0.25,remaining)
+        var pulse:=0.5-0.5*cos(age*TAU/(2.0 if hero_id=="alpha" else 0.7))
+        torso+=Vector2(-0.8,1.8 if hero_id=="alpha" else -1.6)*envelope*pulse
+    if phase=="hurt": torso=Vector2(-2.0,1.0)*sin(PI*clampf(float(state.get("hurt",0.0))/0.18,0.0,1.0))
+    if phase=="defeat":
+        torso=Vector2(12.0,23.0)*smoothstep(0.0,0.45,float(state.get("defeat",0.0)))
+    if reduced: torso=Vector2.ZERO
     var tint:=Color(1.0,0.72,0.72) if phase=="hurt" else Color.WHITE
     return {"sheet":SHEET,"slug":slug(hero_id,appearance),"state":phase,
         "frame":frame,"flip":flip,"locomotion":"run" if moving else "idle",

@@ -71,6 +71,7 @@ var visual_defeat := 0.0
 var visual_heading := 0.0
 var visual_direction_known := false
 var visual_moving := false
+var visual_stride_weight := 0.0
 var visual_body_flip := false
 var visual_last_horizontal_travel := -INF
 var visual_facing := 0.0
@@ -466,6 +467,7 @@ func start_run(index: int) -> void:
     visual_heading = 0.0
     visual_direction_known = false
     visual_moving = false
+    visual_stride_weight = 0.0
     visual_body_flip = false
     visual_last_horizontal_travel = -INF
     visual_facing = 0.0
@@ -872,6 +874,8 @@ func _move_player(dt: float) -> void:
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
     if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
     visual_moving = player_pos.distance_squared_to(previous) > 0.000001
+    # Presentation-only response. Input, collisions and distance phase stay exact.
+    visual_stride_weight = lerpf(visual_stride_weight, 1.0 if visual_moving else 0.0, 1.0-exp(-dt/0.09))
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
     if visual_moving:
         var travel := player_pos-previous
@@ -2397,6 +2401,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
 
 func hero_pose() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing,"body_flip":visual_body_flip,"last_horizontal_travel":visual_last_horizontal_travel,"reduced_motion":bool(profile["settings"]["reducedMotion"])}
+    state["stride_weight"] = visual_stride_weight
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
     return ApprovedHeroMotion.pose(str(hero["id"]),hero_appearance,state)
 

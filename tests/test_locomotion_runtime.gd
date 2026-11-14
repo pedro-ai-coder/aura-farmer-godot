@@ -103,6 +103,19 @@ func verify() -> void:
     # Attach effects to the actual embedded equipment, including mesh deformation.
     var motion=preload("res://scripts/approved_hero_motion.gd")
     for appearance in ["original","female"]:
+        for id in ["sigma","cool-kid","alpha"]:
+            var idle_a:=motion.pose(id,appearance,{"time":0.0})
+            var idle_b:=motion.pose(id,appearance,{"time":0.7})
+            expect(idle_a.torso!=idle_b.torso and idle_a.frame==-1 and idle_b.frame==-1,"Idle breath retains a single standing identity")
+            var fallen:=motion.pose(id,appearance,{"lost":true,"defeat":0.45,"moving":true})
+            var settled:=motion.pose(id,appearance,{"lost":true,"defeat":2.0})
+            expect(fallen.torso==settled.torso and fallen.torso.y>20 and fallen.frame==-1,"Defeat settles without cycling gait or disappearing")
+            var reduced:=motion.pose(id,appearance,{"lost":true,"defeat":0.45,"reduced_motion":true})
+            expect(reduced.torso==Vector2.ZERO and reduced.state=="defeat","Reduced Motion preserves defeat authority without displacement")
+            var flex_start:=motion.pose(id,appearance,{"flex":4.0,"flex_age":0.0})
+            var flex_end:=motion.pose(id,appearance,{"flex":0.000001,"flex_age":3.999999})
+            expect(flex_start.torso.length()<0.001 and flex_end.torso.length()<0.001,"Flex envelope joins idle continuously at both boundaries")
+    for appearance in ["original","female"]:
         for id in ["sigma","cool-kid"]:
             var weapon: String="ratio-blaster" if id=="sigma" else "keyboard-warrior"
             for moving in [false,true]:
