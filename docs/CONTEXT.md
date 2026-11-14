@@ -12,6 +12,7 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 - `./GDD_DECISION_REGISTER.md` — recorded creator decisions.
 - `./GDD_V2_ARCHIVE.md` — superseded predecessor, for history only.
 - `./APPROVED_ART_IMPORT.md` — art provenance/migration notes, including historical checkpoints.
+- `./art/APPROVED_INDIVIDUAL_SHEETS_INTEGRATION_2026-11-14.md` — explicit six-sheet approval, actual integration/validation evidence and separate publication boundary; canonical GDD V4.0 in repo:clutchpunks-canon inherits unchanged V3 gameplay rules.
 - `./ARCHITECTURE.md` — early bootstrap/future target description; inspect current source before using its claims.
 
 ## Guardrails

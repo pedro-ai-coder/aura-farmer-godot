@@ -5,6 +5,7 @@ Uses mock version commands; no Godot binary, network or game runtime is required
 from pathlib import Path
 import os
 import subprocess
+import shutil
 import tempfile
 import unittest
 
@@ -23,15 +24,15 @@ class GodotVersionGuardTests(unittest.TestCase):
                 if version is None:
                     continue
                 executable = root / name
-                executable.write_text("#!/bin/sh\nprintf '%s\\n' '" + version + "'\n", encoding="utf-8")
+                executable.write_text("#!/bin/sh\nprintf '%s\\n' '" + version + "'\n", encoding="utf-8", newline="\n")
                 executable.chmod(0o755)
             environment = os.environ.copy()
             environment["PATH"] = str(root)
             environment.pop("GODOT_BIN", None)
             if override is not None:
-                environment["GODOT_BIN"] = str(root / override)
+                environment["GODOT_BIN"] = (root / override).as_posix()
             return subprocess.run(
-                ["/bin/bash", "-c", preflight + '\nprintf "SELECTED=%s\\n" "$GODOT_BIN"\n'],
+                [shutil.which("bash") or "/bin/bash", "-c", preflight + '\nprintf "SELECTED=%s\\n" "$GODOT_BIN"\n'],
                 env=environment, capture_output=True, text=True, check=False,
             )
 
