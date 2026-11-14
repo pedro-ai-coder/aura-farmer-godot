@@ -23,3 +23,10 @@ This is a platform-specific serialized-state fixture, not a claim of portable
 bitwise floating-point identity across every operating system. A different
 platform must record and verify its own unchanged source-main control rather
 than adopt candidate-generated values.
+
+For this approved-art branch the required GitHub workflow independently checks
+out the PR base SHA under an ignored parent, records that unchanged project's
+trace on the same Linux runner/engine and supplies `GODOT_STATE_REFERENCE` to
+the candidate validator. All simulation comparisons and the other 79 Godot
+phases still run. The original historical fixture and default diagnostic remain
+unchanged; other branches keep their original validation path.

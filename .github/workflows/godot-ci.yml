@@ -47,6 +47,39 @@ jobs:
         shell: bash
         run: python3 scripts/sync_approved_assets.py
 
+      - name: Checkout unchanged main control for approved-art parity
+        if: ${{ github.head_ref == 'feat/approved-individual-hero-sheets-2026-11-14' }}
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: .ci-source-control/project
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Record same-runner unchanged-main simulation control
+        if: ${{ github.head_ref == 'feat/approved-individual-hero-sheets-2026-11-14' }}
+        shell: bash
+        run: |
+          # Parent ignore prevents candidate import/export from seeing another
+          # project; the control's own resource root remains unchanged.
+          touch .ci-source-control/.gdignore
+          control_engine=""
+          for control_name in godot godot4; do
+            if command -v "$control_name" >/dev/null 2>&1 && [[ "$("$control_name" --version)" =~ ^4\.7\.2\.stable(\.|$) ]]; then
+              control_engine="$(command -v "$control_name")"
+              break
+            fi
+          done
+          test -n "$control_engine"
+          control_log="$RUNNER_TEMP/approved-art-source-main.log"
+          "$control_engine" --headless --path .ci-source-control/project --import 2>&1 | tee "$control_log"
+          state_reference="$RUNNER_TEMP/approved-art-source-main-states.json"
+          "$control_engine" --headless --path .ci-source-control/project --script res://tests/frame_pacing/state_trace.gd -- --record "$state_reference" 2>&1 | tee -a "$control_log"
+          if grep -Eiq 'SCRIPT ERROR:|Parse Error:|(^|[[:space:]])ERROR:|Failed to load|Failed to open' "$control_log"; then exit 1; fi
+          test -s "$state_reference"
+          echo "GODOT_BIN=$control_engine" >> "$GITHUB_ENV"
+          echo "GODOT_STATE_REFERENCE=$state_reference" >> "$GITHUB_ENV"
+
       - name: Import, test and smoke-test project
         shell: bash
         run: bash scripts/validate.sh

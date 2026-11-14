@@ -153,7 +153,11 @@ run_check m0-final-flows --headless --path . --script res://tests/m0_final/test_
 
 run_check frame-pacing-probe --headless --path . --script res://tests/frame_pacing/test_probe.gd
 run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd
-run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd -- --source-main
+state_reference_args=(--source-main)
+if [[ -n "${GODOT_STATE_REFERENCE:-}" ]]; then
+  state_reference_args=(--expected "$GODOT_STATE_REFERENCE")
+fi
+run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd -- "${state_reference_args[@]}"
 run_check reconciled-floor-geometry --headless --path . --script res://tests/main_reconciliation/test_geometry.gd
 run_check appearance-result-identity --headless --path . --script res://tests/test_appearance_result_identity.gd
 python3 -m unittest discover -s tests -p test_pixel_vixen_pack.py

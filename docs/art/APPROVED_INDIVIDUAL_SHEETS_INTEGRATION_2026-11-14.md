@@ -59,8 +59,15 @@ and portrait use the already approved idle drawing, recorded in the manifest.
 
 ## Merge, publication and costs
 
-This integration is locally tested; remote CI is intentionally skipped with
-`[skip ci]` to respect the no-cost instruction. `git.deploymentEnabled: false`
+This integration is locally tested. Early commits skipped remote CI while cost
+eligibility was unknown. GitHub then required `godot-validation` before merge;
+the repository was verified public and its standard `ubuntu-latest` runner is
+[free for public repositories](https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job).
+The required real workflow now runs without a paid runner. For this scoped art
+branch it checks out unchanged source main independently, records the control
+using the same runner/engine and compares the candidate's full simulation trace.
+It does not regenerate expected values from the candidate or fake a check result.
+`git.deploymentEnabled: false`
 prevents the connected Vercel project from automatically publishing the source
 push/merge. No remote build, release or deployment is requested by this change.
 A separately authorized publication can restore that setting and deploy the
