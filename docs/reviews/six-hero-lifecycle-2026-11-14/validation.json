@@ -1,0 +1,107 @@
+{
+  "runtime": "9542d48f641eb91b9186f8b5fcb9c7cca1d4a9af",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "mandatory_suite": "FAIL",
+  "phases_executed": 83,
+  "phases_passed": 82,
+  "failed": [
+    "frame-pacing-state"
+  ],
+  "subsequent_checks": "Executed unchanged independently; PASS",
+  "web_export": "PASS",
+  "packaged_resources": "PASS",
+  "browser": [
+    {
+      "hero": "sigma",
+      "appearance": "original",
+      "actions": [
+        "selection",
+        "start",
+        "D",
+        "A",
+        "release"
+      ],
+      "errors": []
+    },
+    {
+      "hero": "cool-kid",
+      "appearance": "original",
+      "actions": [
+        "selection",
+        "start",
+        "D",
+        "A",
+        "release"
+      ],
+      "errors": []
+    },
+    {
+      "hero": "alpha",
+      "appearance": "original",
+      "actions": [
+        "selection",
+        "start",
+        "D",
+        "A",
+        "release"
+      ],
+      "errors": []
+    },
+    {
+      "hero": "sigma",
+      "appearance": "female",
+      "actions": [
+        "selection",
+        "start",
+        "D",
+        "A",
+        "release"
+      ],
+      "errors": []
+    },
+    {
+      "hero": "cool-kid",
+      "appearance": "female",
+      "actions": [
+        "selection",
+        "start",
+        "D",
+        "A",
+        "release"
+      ],
+      "errors": []
+    },
+    {
+      "hero": "alpha",
+      "appearance": "female",
+      "actions": [
+        "selection",
+        "start",
+        "D",
+        "A",
+        "release"
+      ],
+      "errors": []
+    }
+  ],
+  "native_compatibility": "PASS with Dummy audio",
+  "native_matrix": "PASS; defeat obscured by results UI",
+  "vulkan": "VK_KHR_surface unavailable; fallback OpenGL works",
+  "movie": "720 frames, 24 seconds; controlled synthetic combat, not device performance",
+  "determinism": {
+    "frames_per_revision": 1080,
+    "revisions": [
+      "89dfce7042faae1b4a03ece08037c4aad70a23aa",
+      "edf549ae9b7b0ccbcf6051a84345be05cdc007f5",
+      "9542d48f641eb91b9186f8b5fcb9c7cca1d4a9af"
+    ],
+    "field_traces_identical": true,
+    "trace_sha256": "ae2f914ae5560c30fdc88f535ef9baf946b908a65ab21bae8cb12ac384d8d4b8",
+    "frozen_gate": "FAIL, unchanged"
+  },
+  "production_parity": "NOT_ESTABLISHED",
+  "creator_visual_acceptance": "PENDING",
+  "physical_device": "NOT_RUN",
+  "hosted_preview": "BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW",
+  "rollback": "Revert 9542d48"
+}
