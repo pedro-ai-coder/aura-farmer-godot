@@ -35,7 +35,7 @@ func verify() -> void:
         expect(skin.hero_parts[1]["role"].text.contains("SELECTED"),"Selected card has distinct feedback")
         await click(game.presentation.home.start_button)
         expect(game.mode=="playing" and game.hero["id"]=="cool-kid","Start Run preserves actual selected hero and gameplay identity")
-        expect(skin.portrait.texture==game.art.texture("cool-kid"),"Actual gameplay HUD renders chosen hero")
+        expect(skin.portrait.texture==game.art.cosmetic_portrait("cool-kid","original","hud"),"Actual gameplay HUD renders the approved chosen hero HUD crop")
 
         game.hp=67.0
         game.max_hp=110.0

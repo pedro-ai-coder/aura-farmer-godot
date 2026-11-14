@@ -2,7 +2,7 @@ class_name HeroAppearance
 extends RefCounted
 
 ## Presentation-only identity mapping. Canonical hero IDs and combat kits never change.
-## A female appearance is playable only when its real V2 visual assets exist.
+## Both appearances require their approved individual-sheet runtime assets.
 ## Never present original male artwork as a substitute.
 const ORIGINAL := "original"
 const FEMALE := "female"
@@ -41,11 +41,10 @@ static func display_name(hero_id: String, appearance: String, original_name: Str
     return original_name
 
 static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
-    if appearance == ORIGINAL:
-        return true
-    if appearance != FEMALE or not FEMALE_ASSETS.has(hero_id): return false
-    if not FileAccess.file_exists(manifest_path(hero_id)): return false
-    if hero_id != "sigma" and not FileAccess.file_exists(manifest_path(hero_id).get_base_dir()+"/frames.json"): return false
+    if not is_valid(appearance) or not FEMALE_ASSETS.has(hero_id): return false
     for usage in ["atlas", "selection", "hud"]:
-        if not ResourceLoader.exists(asset_path(hero_id,usage)): return false
+        if not ResourceLoader.exists(production_path(hero_id,appearance,usage)): return false
     return true
+
+static func production_path(hero_id: String, appearance: String, usage: String) -> String:
+    return preload("res://scripts/approved_hero_sheets.gd").path(hero_id,appearance,usage)

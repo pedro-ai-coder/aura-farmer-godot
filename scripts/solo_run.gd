@@ -2395,7 +2395,8 @@ func hero_pose() -> Dictionary:
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
     var pose:=hero_pose()
-    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose):
+    var context := {"appearance":hero_appearance,"time":run_time,"walk":visual_walk,"heading":visual_heading,"attack":attack_flash,"defeat":visual_defeat,"flex_age":flex_age,"reduced_motion":bool(profile["settings"]["reducedMotion"])}
+    if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose, context):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)
         draw_circle(player_pos + Vector2(-5, -4), 2.1, Color(0.08, 0.08, 0.10))

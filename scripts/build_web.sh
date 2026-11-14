@@ -17,6 +17,7 @@ TEMPLATE_SHA="f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 python3 scripts/verify_pixel_vixen.py
+python3 scripts/verify_approved_hero_sheets.py
 python3 scripts/verify_female_variants.py
 python3 scripts/verify_pickup_candidates.py
 python3 scripts/verify_weapon_presence.py
@@ -136,6 +137,7 @@ python3 scripts/verify_typography.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_button_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_hud_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pixel_vixen.py "build/web/$EXPORT_BASENAME.pck"
+python3 scripts/verify_approved_hero_sheets.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_female_variants.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pickup_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_weapon_presence.py "build/web/$EXPORT_BASENAME.pck"
