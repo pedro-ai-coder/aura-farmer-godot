@@ -40,6 +40,7 @@ run_check() {
 bash -n scripts/build_web.sh
 # Asset package must be self-contained before any gameplay or export validation.
 python3 scripts/sync_approved_assets.py
+python3 scripts/verify_approved_hero_sheets.py
 node tests/test_web_platform.cjs
 node tests/test_performance_web.cjs
 python3 scripts/promote_approved_icons.py
@@ -57,6 +58,7 @@ run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
+run_check approved-individual-hero-sheets --headless --path . --script res://tests/test_approved_individual_hero_sheets.gd
 run_check recovery --headless --path . --script res://tests/test_recovery.gd
 run_check survival-review-policy --headless --path . --script res://tests/test_survival_review_policy.gd
 run_check camera-cover --headless --path . --script res://tests/test_camera_cover.gd
@@ -122,7 +124,7 @@ run_check m0-final-flows --headless --path . --script res://tests/m0_final/test_
 
 run_check frame-pacing-probe --headless --path . --script res://tests/frame_pacing/test_probe.gd
 run_check frame-pacing-geometry --headless --path . --script res://tests/frame_pacing/test_geometry.gd
-run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd
+run_check frame-pacing-state --headless --path . --script res://tests/frame_pacing/state_trace.gd -- --source-main
 run_check reconciled-floor-geometry --headless --path . --script res://tests/main_reconciliation/test_geometry.gd
 run_check appearance-result-identity --headless --path . --script res://tests/test_appearance_result_identity.gd
 python3 -m unittest discover -s tests -p test_pixel_vixen_pack.py
