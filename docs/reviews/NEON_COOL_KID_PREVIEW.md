@@ -32,3 +32,26 @@ are recorded after creation.
 
 Rollback: use F8 inside the preview, or return to the current production URL.
 Closing this unmerged branch/PR does not alter production.
+
+## Deployment result
+
+- State: **READY**, Preview (API target omitted/null; no production promotion).
+- Deployment: `dpl_EFWQZsRusWpCWaYT3HbRWjXaXEMq`.
+- URL: https://aura-farmer-godot-bkdbpalpi-pedroestrela6-8110.vercel.app/.
+- Deployed commit: `42d27548a22dc658134b513423d80a2a65b7acf4`.
+- Server build: standard 2-core / 8-GB machine, about two minutes; remote
+  candidate/approved resource and PCK checks passed.
+- Authenticated Vercel fetch: HTTP 200 for `/` (CLUTCHPUNKS loader) and
+  `/build.json`, which confirms that exact commit and Godot 4.7.2.
+- Local Chromium: Neon Garage -> real Cool Kid play -> F8 A/B -> pause,
+  no JavaScript/console runtime errors. RNG and canonical-clock tests also passed.
+- Remote interactive browser: NOT_RUN, navigation failed with
+  `net::ERR_TUNNEL_CONNECTION_FAILED` from the managed environment. This is
+  distinct from the successful remote HTTP/metadata checks and local Wasm test.
+- Existing Vercel authentication protection was retained. A temporary share URL
+  was created for the creator; its access parameter is not committed here.
+- Independent Draft: https://github.com/pedro-ai-coder/aura-farmer-godot/pull/151.
+
+This documentation receipt is later than the deployed commit and does not
+change the deployed runtime. Main and the production deployment were not merged
+or promoted by this work.
