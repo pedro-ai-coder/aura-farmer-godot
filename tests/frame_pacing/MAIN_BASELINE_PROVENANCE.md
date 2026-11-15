@@ -41,3 +41,11 @@ branch. The identical control checkout/recording steps now also apply to
 assertion, runtime script, source artwork or production asset is changed by this
 CI wiring correction. A fresh required run must pass before merge; the failed
 historical comparison remains visible in GitHub.
+
+The new CPK presentation review stack (`feat/cpk-*`, the scoped Signal Breaker
+Garage branch, `fix/cpk-*`, `build/cpk-*`) also uses the same untouched-PR-base
+control when its normal mandatory workflow runs. The 2026-11-15 local aggregate
+executed 112 checks and separately compared candidate state/RNG/event/camera
+traces against stable production `0007cb62aca84e6af8a1018c82b684199c7e8cdb`.
+New review PRs remain Draft; no new Linux CI pass, merge or release is inferred
+from this preparation. Historical fixtures and mandatory assertions are retained.
