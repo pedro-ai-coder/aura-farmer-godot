@@ -1,7 +1,8 @@
 extends Control
 ## Real entry coordinator. The existing Solo scene retains all rules and saves.
 ## This candidate environment is explicitly separated from approved hero/brand pixels.
-const Design=preload("res://scripts/cpk_design_system.gd")
+const Design=preload("res://scripts/neon_arcade.gd")
+const Graphics=preload("res://scripts/neon_garage_graphics.gd")
 const Run=preload("res://scenes/main.tscn")
 const GarageEnvironment=preload("res://scripts/garage_environment.gd")
 const BACKDROP=preload("res://assets/production/garage-candidate-v1/garage-backdrop.png")
@@ -14,6 +15,8 @@ var garage_layer: CanvasLayer
 var ui: Control
 var backdrop: TextureRect
 var environment: Control
+var graphics: Control
+var footer: Label
 var sign: TextureRect
 var hero_art: TextureRect
 var info: PanelContainer
@@ -48,6 +51,7 @@ func _ready() -> void:
     ui=Control.new();ui.theme=Design.theme();ui.mouse_filter=Control.MOUSE_FILTER_IGNORE;garage_layer.add_child(ui)
     backdrop=_image(ui);backdrop.name="CandidateBackdrop";backdrop.texture=BACKDROP;backdrop.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED
     environment=GarageEnvironment.new();environment.name="SeparateLightPlatformForeground";ui.add_child(environment)
+    graphics=Graphics.new();ui.add_child(graphics)
     sign=_image(ui);sign.name="ApprovedCpkWordmark";sign.texture=WORDMARK
     hero_art=_image(ui);hero_art.name="ApprovedSelectedHero"
     title=_label(ui,"SIGNAL BREAKER GARAGE","small")
@@ -68,6 +72,7 @@ func _ready() -> void:
     select_button=_button("HERO SELECT",func():set_selection(not selection_open))
     play_button=_button("PLAY",start_selected,true)
     settings_button=_button("SETTINGS",open_settings)
+    footer=_label(ui,"01  /  GARAGE     •     CLUTCHPUNKS","micro")
     get_viewport().size_changed.connect(_layout)
     _refresh_identity();_layout()
 
@@ -121,39 +126,65 @@ func _layout() -> void:
     if view.x<=0:view=full
     ui.position=safe;ui.size=view
     _place(backdrop,Rect2(Vector2.ZERO,view));environment.size=view
+    graphics.size=view;graphics.queue_redraw()
     var portrait: bool=view.x<700
     var compact: bool=not portrait and view.y<600
-    var grid_bounds:=Rect2()
-    var logo_width: float=minf(620.0,view.x*.55) if not portrait else view.x-48
-    _place(sign,Rect2((view.x-logo_width)*.5,62 if not compact and not portrait else 18,logo_width,100 if not compact else 70))
-    _place(title,Rect2(24,18,view.x*.28,36));title.visible=not portrait
-    _place(settings_button,Rect2(view.x-154,22,130,48))
-    if portrait:
-        _place(settings_button,Rect2(view.x-174,126,154,48))
-        _place(hero_art,Rect2(30,view.y*.47,view.x-60,view.y*.34))
-        _place(info,Rect2(20,190,view.x-40,190));info.visible=not selection_open
-        hero_grid.columns=2
-        grid_bounds=Rect2(20,200,view.x-40,minf(480,view.y-365))
-        _place(select_button,Rect2(20,view.y-132,view.x-40,48));_place(play_button,Rect2(20,view.y-72,view.x-40,52))
-    elif compact:
-        _place(hero_art,Rect2(24,100,view.x*.35,view.y-175))
-        _place(info,Rect2(view.x*.42,104,view.x*.55,view.y-190));info.visible=not selection_open
-        hero_grid.columns=3
-        grid_bounds=Rect2(view.x*.42,104,view.x*.55,view.y-190)
-        _place(select_button,Rect2(24,view.y-72,210,52));_place(play_button,Rect2(view.x-254,view.y-72,230,52))
-    else:
-        _place(hero_art,Rect2(view.x*.28 if selection_open else view.x*.37,230,view.x*.35,view.y-280))
-        _place(info,Rect2(36,240,view.x*.28,300));info.visible=true
-        hero_grid.columns=2
-        grid_bounds=Rect2(view.x*.64,230,view.x*.33,view.y-350)
-        _place(select_button,Rect2(36,view.y-92,260,60));_place(play_button,Rect2(view.x-316,view.y-92,280,60))
-    hero_grid.visible=selection_open
     select_button.text="BACK" if selection_open else "HERO SELECT"
-    hero_art.visible=not(portrait and selection_open)
-    help_label.visible=not compact and not portrait
-    hero_name.add_theme_font_size_override("font_size",23 if portrait or compact else 28)
+    play_button.text="PLAY" if portrait or selection_open else "PLAY  /  START RUN"
+    for button in [play_button,select_button,settings_button]:
+        button.add_theme_font_size_override("font_size",16 if portrait else 20 if compact else 24)
+    settings_button.add_theme_font_size_override("font_size",16 if portrait else 20)
+    var grid_bounds:=Rect2()
+    info.visible=not selection_open or not portrait
+    hero_grid.columns=2
+    _place(footer,Rect2(40,view.y-36,view.x-80,24))
+    if portrait:
+        _place(sign,Rect2(24,24,view.x-48,74))
+        _place(title,Rect2(24,100,view.x-48,26))
+        _place(settings_button,Rect2(view.x-154,137,130,48))
+        _place(hero_art,Rect2(30,174,view.x-60,view.y-424))
+        _place(info,Rect2(24,view.y-242,view.x-48,126))
+        grid_bounds=Rect2(24,200,view.x-48,view.y-374)
+        _place(select_button,Rect2(24,view.y-104,(view.x-60)*.5,52))
+        _place(play_button,Rect2(view.x*.5+6,view.y-104,view.x*.5-30,52))
+        footer.text="CLUTCHPUNKS  /  GARAGE"
+    elif compact:
+        _place(sign,Rect2(32,16,280,62))
+        _place(title,Rect2(38,78,330,26))
+        _place(play_button,Rect2(38,122,270,56))
+        _place(select_button,Rect2(38,190,270,52))
+        _place(settings_button,Rect2(38,254,270,48))
+        _place(hero_art,Rect2(view.x*.51,36,view.x*.45,view.y-164))
+        _place(info,Rect2(view.x*.53,view.y-129,view.x*.43,100))
+        hero_grid.columns=3
+        grid_bounds=Rect2(view.x*.40,108,view.x*.56,view.y-150)
+        info.visible=not selection_open
+    else:
+        var nav_width: float=minf(380,view.x*.32)
+        _place(sign,Rect2(48,40,minf(490,view.x*.40),108))
+        _place(title,Rect2(60,154,view.x*.40,30))
+        var nav_y: float=view.y*.34
+        _place(play_button,Rect2(60,nav_y,nav_width,76))
+        _place(select_button,Rect2(60,nav_y+92,nav_width-18,60))
+        _place(settings_button,Rect2(60,nav_y+168,nav_width-36,56))
+        _place(hero_art,Rect2(view.x*.50,52,view.x*.47,view.y-80))
+        _place(info,Rect2(60,view.y-190,view.x*.39,142))
+        grid_bounds=Rect2(60,210,view.x*.38,view.y-420)
+        if selection_open:
+            _place(select_button,Rect2(60,view.y-104,170,52))
+            _place(play_button,Rect2(248,view.y-104,view.x*.38-188,52))
+            _place(settings_button,Rect2(view.x-220,28,180,48))
+            info.visible=false
+    hero_grid.visible=selection_open
+    hero_art.visible=not((portrait or compact) and selection_open)
+    help_label.visible=false
+    hero_name.add_theme_font_size_override("font_size",22 if portrait or compact else 30)
+    kit_label.add_theme_color_override("font_color",Design.LIME)
+    info_stack.add_theme_constant_override("separation",4)
+    for label in [starter_label,flex_label]:
+        label.add_theme_font_size_override("font_size",13 if compact else 15)
+        label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
     hero_name.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-    for label in [starter_label,flex_label]:label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
     # Grid dimensions use fixed, non-overlapping hitboxes; thumbnail pixels never own input.
     var columns: int=hero_grid.columns
     var card_width: float=(grid_bounds.size.x-12*(columns-1))/columns
