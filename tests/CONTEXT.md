@@ -10,7 +10,7 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 
 - `./test_playable_slice.gd` — menu, hero selection and basic playable integration smoke.
 - `./test_phaser_rng.gd` — seeded RNG and offer/enemy parity.
-- `./test_animation_fluency.gd` — actual blocked-movement/release regression, single-cap body selection and lazy historical texture loading.
+- `./test_animation_fluency.gd` — six-identity moving-action stride/side/priority registration, actual blocked-movement/release regression, single-cap body selection and lazy historical texture loading.
 - `./test_profile_store.gd` — profile persistence contract.
 - `./test_web_platform.cjs` — browser adapter assertions.
 - `./test_performance_web.cjs` — Web diagnostic assertions.

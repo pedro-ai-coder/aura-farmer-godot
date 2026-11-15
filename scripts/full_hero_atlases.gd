@@ -8,10 +8,12 @@ const MANIFEST := ROOT + "manifest.json"
 var manifest: Dictionary = {}
 var sequences: Dictionary = {}
 var cache: Dictionary = {}
-## A/B review switch: no new art, only registered source-rectangle composition.
-## Expansion to other identities waits for the creator's pilot review.
-var cool_kid_locomotion_pilot := true
-const COOL_KID_WAIST_Y := 142.0
+## Creator approved the Cool Kid composition and roster expansion on 2026-11-15.
+## A/B switch: existing pixels only, no mirrored lettering or invented frames.
+var layered_locomotion_enabled := true
+## Calibrated below embedded hands/props. Heavy shields require a lower seam
+## so their silhouette remains owned by the action drawing, not running legs.
+const WAIST_BY_IDENTITY := {"the-sigma":142.0,"cool-kid":142.0,"pixel-vixen":144.0,"byte-baddie":136.0,"alpha-chad":138.0,"block-queen":142.0}
 
 func _init() -> void:
     var parsed = JSON.parse_string(FileAccess.get_file_as_string(MANIFEST))
@@ -81,6 +83,16 @@ static func frame_index(phase: String, context: Dictionary) -> int:
     var idle_step := 0 if bool(context.get("reduced_motion",false)) else posmod(int(float(context.get("time",0.0))*4.0),4)
     return (36 if rear else 32)+idle_step
 
+static func composition(identity: String, phase: String, context: Dictionary) -> Dictionary:
+    if not WAIST_BY_IDENTITY.has(identity) or not bool(context.get("moving",false)):
+        return {}
+    if phase!="attack" and not phase.begins_with("flex"): return {}
+    # Attack has front/rear drawings. The shared Flex drawings are frontal:
+    # turning their legs backward would contradict the authored torso view.
+    var rear := phase=="attack" and sin(float(context.get("facing",0.0))) < -0.35
+    var step := posmod(int(float(context.get("walk",0.0))*9.0),4)
+    return {"lower_frame":(24 if rear else 8)+step,"seam":float(WAIST_BY_IDENTITY[identity])}
+
 func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: String, pose: Dictionary, context: Dictionary) -> bool:
     var identity := slug(hero_id,appearance)
     var atlas := texture(hero_id,appearance,"atlas")
@@ -95,18 +107,16 @@ func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: St
     var rect: Array = frame["cell_rect"]
     var pivot: Array = entry["foot_pivot"]
     var factor := float(entry["world_scale"])
-    if cool_kid_locomotion_pilot and identity=="cool-kid" and bool(context.get("moving",false)) and (phase=="attack" or phase.begins_with("flex")):
-        # Lower body retains the existing distance-driven gait. The two source
-        # rows share an anatomical waist at y=142 in the 192px packed cells.
-        # This calibrated seam excludes hands embedded above the run trousers.
+    var layers := composition(identity,phase,playback) if layered_locomotion_enabled else {}
+    if not layers.is_empty():
+        # Lower body retains the existing distance-driven gait. Each seam
+        # excludes hands/shield tips embedded above the run trousers/boots.
         # Front/back legs match the authored torso view; do not reflect CPK.
-        # This pilot does not claim missing eight-direction attack art exists.
-        var rear := sin(float(context.get("facing",0.0))) < -0.35
-        var step := posmod(int(float(context.get("walk",0.0))*9.0),4)
-        var lower_index := (24 if rear else 8)+step
-        var lower: Array = entry["frames"][lower_index]["cell_rect"]
-        _draw_region(canvas,position,atlas,lower,pivot,factor,COOL_KID_WAIST_Y,float(lower[3])-COOL_KID_WAIST_Y)
-        _draw_region(canvas,position,atlas,rect,pivot,factor,0.0,COOL_KID_WAIST_Y)
+        # This does not claim missing eight-direction attack art exists.
+        var lower: Array = entry["frames"][int(layers["lower_frame"])]["cell_rect"]
+        var seam: float=layers["seam"]
+        _draw_region(canvas,position,atlas,lower,pivot,factor,seam,float(lower[3])-seam)
+        _draw_region(canvas,position,atlas,rect,pivot,factor,0.0,seam)
         return true
     canvas.draw_set_transform(position)
     canvas.draw_texture_rect_region(atlas,
