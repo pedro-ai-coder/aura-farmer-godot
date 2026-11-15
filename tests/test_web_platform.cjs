@@ -18,7 +18,7 @@ function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,or
  return {context,document,canvas,events,elements,state:context.window.__auraPlatform,get calls(){return calls},get locks(){return locks},get reads(){return reads},deny(value){deny=value},gesture(type='pointerup',extra={}){return events.get(type).fn({type,target:canvas,pointerType:'touch',isTrusted:true,...extra})}};
 }
 for(const state of ['hover','focus-visible','active'])assert.ok(code.includes('.aura-secondary:'+state),'Full native-family pointer/focus states: '+state);
-assert.ok(code.includes('border-image-slice:16 64 24 64 fill'));
+assert.ok(code.includes('outline:3px solid #f3e9db'),'CPK keyboard focus retains a high-contrast outline');
 (async()=>{
  let calls=[];let diagnostic=scenario({performanceReview:{enabled:true,rasterRatio:1,setMode:mode=>calls.push(mode)}});
  assert.equal(diagnostic.canvas.width,844);assert.equal(diagnostic.canvas.height,390);
@@ -44,11 +44,12 @@ assert.ok(code.includes('border-image-slice:16 64 24 64 fill'));
  s=scenario();await s.gesture('pointerup',{pointerType:'mouse'});await s.gesture('pointerup',{isTrusted:false});assert.equal(s.calls,0);
  await s.gesture('touchend');assert.equal(s.calls,1);
  s=scenario();s.state.setMode('playing');assert.equal(s.elements.get('aura-fullscreen').hidden,true);
- for(const mode of ['heroes','choice','legendary','replace','confirm_exit','won','lost']){s.state.setMode(mode);assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Launcher must not obscure game/modal controls');}
+ for(const mode of ['garage','heroes','choice','legendary','replace','confirm_exit','won','lost']){s.state.setMode(mode);assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Launcher must not obscure game/modal controls');}
  s.state.setMode('options');assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Settings launcher waits for an unclipped live Control row');
  s.state.setFullscreenBounds([80,120,320,48]);
  const launcher=s.elements.get('aura-fullscreen');assert.equal(launcher.hidden,false);assert.equal(launcher.style.left,'80px');assert.equal(launcher.style.top,'120px');
- assert.equal(launcher.style.width,'320px');assert.equal(launcher.className,'aura-secondary');assert.equal(launcher.style.borderStyle,'solid');assert.equal(launcher.style.borderWidth,'4px 16px 6px 16px');assert.equal(launcher.style.fontWeight,'600');
+ assert.equal(launcher.style.width,'320px');assert.equal(launcher.className,'aura-secondary');assert.equal(launcher.style.borderStyle,'solid');assert.equal(launcher.style.borderWidth,'2px');assert.equal(launcher.style.fontWeight,'600');
+ assert.equal(launcher.style.background,'#24212b');assert.equal(launcher.style.color,'#f3e9db');
  const raster=s.canvas.width;const embeddedReads=s.reads;s.state.setFullscreenBounds(null);
  assert.equal(launcher.hidden,true,'Clipped settings rows never leave a floating click target');
  s.state.setFullscreenBounds([80,180,320,48]);assert.equal(launcher.style.top,'180px');assert.equal(s.canvas.width,raster);assert.equal(s.reads,embeddedReads,'Settings positioning does not resample layout or framebuffer density');

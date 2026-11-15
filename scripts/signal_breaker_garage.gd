@@ -37,6 +37,7 @@ var selected_slot: int=-1
 var touch_targets: Dictionary={}
 var touch_armed: Dictionary={}
 var swallow_emulated:=false
+var browser_poll:=0.0
 
 func _ready() -> void:
     get_window().title="CLUTCHPUNKS"
@@ -69,7 +70,7 @@ func _ready() -> void:
     play_button=_button("PLAY",start_selected,true)
     settings_button=_button("SETTINGS",open_settings)
     get_viewport().size_changed.connect(_layout)
-    _refresh_identity();_layout()
+    _refresh_identity();_layout();_sync_browser()
 
 func _create_run() -> Node:
     return Run.instantiate()
@@ -194,12 +195,23 @@ func open_settings() -> void:
     if not active:return
     _leave_garage();game.presentation.open_settings("menu")
 
-func _process(_delta: float) -> void:
+func _sync_browser() -> void:
+    if not OS.has_feature("web"):return
+    var before: String=JSON.stringify(game.web_metrics)
+    game.web_metrics=game.WebPlatformScript.metrics("garage")
+    game.touch_device=game.touch_device or bool(game.web_metrics.get("touch",false))
+    if JSON.stringify(game.web_metrics)!=before:
+        game.presentation._window_changed(true);_layout()
+
+func _process(delta: float) -> void:
     if not active and game!=null and game.mode=="menu":
         game._clear_touch();game.set_process(false);game.process_mode=Node.PROCESS_MODE_DISABLED
         game.hide();game.layer.hide();garage_layer.show();active=true;selection_open=false
-        _refresh_identity();_layout();select_button.grab_focus.call_deferred()
+        _refresh_identity();_layout();_sync_browser();select_button.grab_focus.call_deferred()
     elif active and ui!=null and (view!=game.presentation.view or ui.position!=game.presentation.position):_layout()
+    if active:
+        browser_poll-=delta
+        if browser_poll<=0:browser_poll=.5;_sync_browser()
 
 func _input(event: InputEvent) -> void:
     if (event is InputEventMouseButton or event is InputEventMouseMotion) and event.device==InputEvent.DEVICE_ID_EMULATION and swallow_emulated:
