@@ -45,16 +45,16 @@ func verify() -> void:
         skin.refresh()
         await process_frame
         var card: Button=game.offer_buttons[0]
-        var card_fx=card.get_node_or_null("ClashButtonFeedback")
+        var card_fx=card.get_node_or_null("NeonButtonFeedback")
         expect(card_fx!=null,"Real upgrade selection receives its own UI feedback")
         if card_fx!=null:
-            expect(card_fx.get("family").begins_with("cards/"),"Reward card feedback remains subtle and semantic")
+            expect(card_fx.mouse_filter==Control.MOUSE_FILTER_IGNORE,"Reward feedback never intercepts native input")
         var before: int=game.rng.state
         await click(card)
         expect(game.mode=="choice" and game.selected_card_index==0,"Card click selects, never auto-confirms")
         expect(card.scale==Vector2.ONE and card.get_global_rect().size==card.size,"Reward visuals keep their original hit target")
         if card_fx!=null:
-            expect(bool(card_fx.get("selected")),"Selected reward displays its visual selection accent")
+            expect(card.get_theme_stylebox("normal").border_color==preload("res://scripts/neon_arcade.gd").LIME,"Selected reward displays its visual selection accent")
         var selected_rng: int=game.rng.state
         skin.refresh()
         expect(game.rng.state==selected_rng,"Cosmetic updates consume no extra RNG")
@@ -62,9 +62,9 @@ func verify() -> void:
         game.profile["settings"]["reducedMotion"]=true
         skin.refresh()
         if card_fx!=null:
-            expect(bool(card_fx.get("low_motion")),"Reduced Motion is respected immediately")
-            card_fx.call("reveal",0.08)
-            expect(is_zero_approx(float(card_fx.get("reveal_remaining"))),"Reduced Motion skips decorative entrance")
+            expect(card_fx._reduced(),"Reduced Motion is respected immediately")
+            skin.neon_backdrop.refresh(skin.view)
+            expect(not skin.neon_backdrop.is_processing(),"Reduced Motion skips decorative entrance")
         expect(not skin.scene_accent.is_processing() or skin.scene_accent.current_mode=="choice","Scene accent stays cosmetic")
         await click(game.confirm_button)
         expect(game.mode in ["playing","choice","replace"],"Upgrade confirm remains live in Reduced Motion")

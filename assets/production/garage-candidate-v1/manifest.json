@@ -1,5 +1,5 @@
 {
-  "status": "PROPOSED",
+  "status": "APPROVED_EXACT_REVIEWED_GAME_USE",
   "asset_id": "cpk.garage.backdrop.candidate.v1",
   "art_repository": "pedro-ai-coder/clutchpunks-art-pipeline",
   "art_commit": "a36ad90be52c6fcdb6ee5da7bb536ddca4c59391",
@@ -7,5 +7,9 @@
   "path": "garage-backdrop.png",
   "sha256": "0dd310e9808d5acdd20862749a0a4175d0e80d113b148626e9d44065bfe01d99",
   "original_reference_recovered": false,
-  "original_reference_sha256": "69acb29bd9ea9ce6c692e6c37fe984d24ad5ff4e3d3ce32f48e55a236f588929"
+  "original_reference_sha256": "69acb29bd9ea9ce6c692e6c37fe984d24ad5ff4e3d3ce32f48e55a236f588929",
+  "approval_decision": "CPK-NEON-PRODUCTION-2026-11-15-01",
+  "approval_canon_commit": "d68a7bfbcd11c9e3f62104060fc1bbf9a2e90f1d",
+  "approval_record": "docs/art/CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md",
+  "approved_game_commit": "b6e9813c101b1ef099b1a3a170c1c6b2270a8ab3"
 }

@@ -1,3 +1,5 @@
+> **Current status — 2026-11-15:** The creator accepted the exact reviewed Neon version and authorized main integration and production publication under [CPK-NEON-PRODUCTION-2026-11-15-01](CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md). Earlier candidate/no-release wording below is historical. The exact integrated Garage background is now approved for this use; its missing older reference is still unrecovered. Gameplay, hero pixels and approved wordmark remain unchanged.
+
 # CPK presentation foundation
 
 **Status:** IMPLEMENTED_REVIEW_CANDIDATE. Visual design-system application is not final creator acceptance.

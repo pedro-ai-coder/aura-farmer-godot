@@ -8,6 +8,8 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 
 ## Key files
 
+- `./art/CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md` - explicit scoped visual/background acceptance, main merge and production authorization; historical candidate statuses are superseded for the exact reviewed version.
+
 - `./GDD.md` — GDD V3 operational rules, until a newer version is explicitly approved.
 - `./GDD_DECISION_REGISTER.md` — recorded creator decisions.
 - `./art/NEON_MENU_JOURNEY.md` � uploaded-video audit, eleven-menu Neon continuation, native review matrix, existing art/gameplay boundaries and test commands.

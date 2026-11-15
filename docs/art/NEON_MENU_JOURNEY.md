@@ -1,3 +1,5 @@
+> **Current status — 2026-11-15:** The creator accepted the exact reviewed Neon version and authorized main integration and production publication under [CPK-NEON-PRODUCTION-2026-11-15-01](CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md). Earlier candidate/no-release wording below is historical. The exact integrated Garage background is now approved for this use; its missing older reference is still unrecovered. Gameplay, hero pixels and approved wordmark remain unchanged.
+
 # Neon menu journey continuation
 
 This presentation-only candidate continues PR #146 at exact base `b8de1ff6d2676a823ce75011d81eefcabf4e0903`. The creator approved the Neon Punk Arcade direction and requested missing-menu implementation. It does not authorize merge, deployment, new art, balance or expanded Canon approval. Existing bounded Canon provenance and immutable sources remain documented in [NEON_PUNK_ARCADE.md](NEON_PUNK_ARCADE.md).
