@@ -191,6 +191,7 @@ var recovery_counts: Dictionary = {}
 var pickup_feedback: Array[Dictionary] = []
 
 func _ready() -> void:
+    get_window().title="CLUTCHPUNKS"
     rng.seed = 451
     _load_profile()
     combat_audio=CombatAudioScript.new();add_child(combat_audio)
@@ -397,7 +398,7 @@ func _show_ui() -> void:
 
 func _update_text() -> void:
     if mode in ["menu","heroes"] or hero.is_empty():
-        headline.text = "AURA FARMER"
+        headline.text = "CLUTCHPUNKS"
         headline.position = Vector2(82, 40)
         headline.add_theme_font_size_override("font_size", 54)
         metrics.text = "RUIN ALLEY  ·  FIVE WAVES  ·  ONE BIG HATER  ·  STARTER SOLO DEMO"

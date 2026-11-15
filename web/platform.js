@@ -73,7 +73,7 @@
   function explain() {
     hint.textContent = state.mode === 'options'
       ? ('standalone' in navigator ? 'Add to Home Screen for fullscreen.' : 'Open directly in your browser.')
-      : ('standalone' in navigator ? 'For fullscreen, add Aura Farmer to your Home Screen, then open it there.' : 'Fullscreen is unavailable here. Open the game directly in your browser.');
+      : ('standalone' in navigator ? 'For fullscreen, add CLUTCHPUNKS to your Home Screen, then open it there.' : 'Fullscreen is unavailable here. Open the game directly in your browser.');
     hint.hidden = false;
   }
   async function enter(event, explicit) {

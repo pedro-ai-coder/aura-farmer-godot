@@ -11,6 +11,7 @@ Browser-facing support for Godot Web exports. It is not a parallel gameplay impl
 - `./platform.js` — fullscreen, browser gesture, safe-area and canvas-raster handling.
 - `./performance.js` — opt-in development performance recorder for review exports.
 - `./aura.webmanifest` — Web app manifest.
+- `./cpk-shell.html` — CLUTCHPUNKS-branded official Godot 4.7.2 loader shell, retaining engine feature/startup behavior and stable storage identity.
 
 ## Contracts and risks
 

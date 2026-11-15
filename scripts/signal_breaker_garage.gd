@@ -39,6 +39,7 @@ var touch_armed: Dictionary={}
 var swallow_emulated:=false
 
 func _ready() -> void:
+    get_window().title="CLUTCHPUNKS"
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     game=_create_run();add_child(game)
     game.set_process(false);game.process_mode=Node.PROCESS_MODE_DISABLED

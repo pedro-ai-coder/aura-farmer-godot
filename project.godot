@@ -6,7 +6,10 @@ config_version=5
 config/name="Aura Farmer"
 run/main_scene="res://scenes/signal_breaker_garage.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/description="Godot project bootstrap — GDD-authoritative cross-platform game."
+config/description="CLUTCHPUNKS — Solo action survival in the Feedverse."
+config/icon="res://assets/production/cpk-brand-2026-11-13-v1/cpk-emblem-color-96.png"
+boot_splash/image="res://assets/production/cpk-brand-2026-11-13-v1/cpk-wordmark-color-1024.png"
+boot_splash/bg_color=Color(0.094118,0.090196,0.113725,1)
 
 [display]
 window/size/viewport_width=1280

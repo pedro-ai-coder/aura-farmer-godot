@@ -43,16 +43,14 @@ func install(owner_game, owner_presenter) -> void:
     home_stack = stack
     stack.add_theme_constant_override("separation",16)
     margin.add_child(stack)
-    var aura := UI.label("AURA","display",64,true)
-    aura.add_theme_color_override("font_color",Style.GOLD)
-    aura.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    stack.add_child(aura)
-    brand_labels.append(aura)
-    var farmer := UI.label("FARMER","display",64,true)
-    farmer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    stack.add_child(farmer)
-    brand_labels.append(farmer)
-    var caption := UI.label("FARM AURA. BE LEGENDARY.","black",16,true)
+    var brand:=TextureRect.new()
+    brand.texture=preload("res://assets/production/cpk-brand-2026-11-13-v1/cpk-wordmark-color-1024.png")
+    brand.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+    brand.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    brand.custom_minimum_size=Vector2(0,112)
+    brand.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    stack.add_child(brand)
+    var caption := UI.label("SIGNAL BREAKER GARAGE","black",16,true)
     caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     stack.add_child(caption)
     var spacer := Control.new()
