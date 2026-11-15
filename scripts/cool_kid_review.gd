@@ -1,6 +1,7 @@
 extends "res://scripts/solo_run.gd"
 ## Isolated local review entry point. Same gameplay, disposable default profile.
 var review_status: Label
+var review_overlay: CanvasLayer
 func _load_profile() -> void:
     profile=ProfileStoreScript.defaults()
 func _save_profile() -> void:
@@ -10,8 +11,8 @@ func _ready() -> void:
     art.cool_kid_rig.enabled=true
     art.cool_kid_rig.prepare()
     print("COOL_KID_REVIEW: ",art.cool_kid_rig.reason," Art=",art.cool_kid_rig.ART_COMMIT)
-    var overlay:=CanvasLayer.new();overlay.layer=100;add_child(overlay)
-    var panel:=HBoxContainer.new();panel.position=Vector2(8,132);overlay.add_child(panel)
+    review_overlay=CanvasLayer.new();review_overlay.layer=100;add_child(review_overlay)
+    var panel:=HBoxContainer.new();panel.position=Vector2(8,132);review_overlay.add_child(panel)
     var toggle:=Button.new();toggle.text="F8: A/B rig";toggle.pressed.connect(_review_toggle);panel.add_child(toggle)
     review_status=Label.new();panel.add_child(review_status)
     _review_label()

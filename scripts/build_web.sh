@@ -112,6 +112,10 @@ run_godot() {
 run_godot import --headless --path . --import
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
+if [[ "${COOL_KID_RIG_REVIEW:-0}" == "1" ]]; then
+    python3 scripts/verify_cool_kid_rig.py
+    EXPORT_PRESET="Cool Kid Rig Review"
+fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
@@ -147,5 +151,10 @@ python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
 PERFORMANCE_CHECK=()
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+if [[ "${COOL_KID_RIG_REVIEW:-0}" == "1" ]]; then
+    python3 scripts/verify_cool_kid_rig.py "build/web/$EXPORT_BASENAME.pck"
+else
+    python3 scripts/verify_cool_kid_rig.py "build/web/$EXPORT_BASENAME.pck" --production
+fi
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

@@ -65,3 +65,5 @@ bash scripts/validate.sh
 ## Related contexts
 
 [Scenes](../scenes/CONTEXT.md) describe entry points; [Tests](../tests/CONTEXT.md) cover contracts; [Web](../web/CONTEXT.md) covers the browser adapter; [Assets](../assets/CONTEXT.md) covers art provenance.
+
+`neon_cool_kid_review.gd` combines the current Neon Garage with the disposable-profile Cool Kid rig review run. `COOL_KID_RIG_REVIEW=1` selects this Web build variant; ordinary builds exclude candidate art.
