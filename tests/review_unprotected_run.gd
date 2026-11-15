@@ -10,16 +10,21 @@ class AuditedRun extends "res://scripts/solo_run.gd":
     var wave_observations: Array = []
     var boss_snapshot: Dictionary = {}
     var event_observations: Array = []
+    var area_outcomes: Dictionary = {}
+    var starter_reach_seconds:=0.0
     func start_run(index: int) -> void:
         damage_sources.clear()
         last_hit.clear()
         wave_observations.clear()
         boss_snapshot.clear()
         event_observations.clear()
+        area_outcomes.clear();starter_reach_seconds=0.0
         super.start_run(index)
     func _advance(dt: float) -> void:
         var previous_wave := wave
         super._advance(dt)
+        var reach: float=WEAPONS[hero["starter"]]["range"]
+        if not _nearest_target(reach).is_empty():starter_reach_seconds+=dt
         if wave != previous_wave:
             wave_observations.append({"wave":wave,"time":run_time,"hp":hp,"level":level,"xp_collected":total_xp,"active_enemies":enemies.size(),"weapons":weapons.duplicate(true),"passives":passives.duplicate(true)})
         if boss_spawned and boss_snapshot.is_empty():
@@ -38,6 +43,18 @@ class AuditedRun extends "res://scripts/solo_run.gd":
             event_observations.append(_event_snapshot(enemy,"defeated"))
     func _load_profile() -> void: profile = ProfileStoreScript.defaults()
     func _save_profile() -> void: pass
+    func _step_weapon_areas() -> void:
+        # Observe expired resolved areas before the existing owner erases them.
+        # Paired strikes count separately; this is not activation/proc counting.
+        for area: Dictionary in weapon_areas:
+            if run_time>float(area["end"]) and bool(area["impact_shown"]):
+                var key: String=area["id"]
+                var row: Dictionary=area_outcomes.get(key,{"resolved_areas":0,"empty_areas":0,"contacts":0})
+                row["resolved_areas"]=int(row["resolved_areas"])+1
+                row["empty_areas"]=int(row["empty_areas"])+(1 if area["hit_memory"].is_empty() else 0)
+                row["contacts"]=int(row["contacts"])+area["hit_memory"].size()
+                area_outcomes[key]=row
+        super._step_weapon_areas()
     func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: bool = false, hazard: bool = false) -> void:
         var before := hp
         var shield_before: float = run_metrics["protection"]
@@ -70,6 +87,9 @@ func _run() -> void:
     game.audit_damage = args.has("--audit")
     var strategic: bool = args.has("--strategic")
     var run_seed := int(positional[1]) if positional.size() > 1 else 451
+    var maximum_seconds:=1800.0
+    for arg: String in args:
+        if arg.begins_with("--max-seconds="):maximum_seconds=clampf(float(arg.trim_prefix("--max-seconds=")),1,1800)
     for hero_index in heroes:
         game.start_run(hero_index)
         game.rng.seed = run_seed
@@ -77,7 +97,7 @@ func _run() -> void:
         var minimum_hp: float = game.hp
         var goal_frames := {"patrol":0,"station":0,"snack":0,"magnet":0}
         for frame in range(18000):
-            if game.mode in ["won","lost"]: break
+            if game.mode in ["won","lost"] or game.run_time>=maximum_seconds: break
             if game.mode in ["choice","legendary"]:
                 var cards: Array = game.legendary_offers if game.mode == "legendary" else game.selection
                 var best := -INF
@@ -176,6 +196,6 @@ func _run() -> void:
                 game._process(0.1)
                 minimum_hp = minf(minimum_hp,game.hp)
             else: break
-        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"controller":"strategic" if strategic else ("aim-flex" if args.has("--aim-flex") else "avoidance"),"goal_frames":goal_frames if strategic else {},"damage_sources":game.damage_sources,"last_hit":game.last_hit,"waves":game.wave_observations,"events":game.event_observations,"boss_snapshot":game.boss_snapshot,"xp_collected":game.total_xp,"xp_on_ground":game.pickups.reduce(func(total,drop):return total+float(drop.get("xp",0)),0.0),"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
+        print("UNPROTECTED RESULT ",JSON.stringify({"hero":game.hero["id"],"seed":run_seed,"maximum_seconds":maximum_seconds,"censored":game.mode not in ["won","lost"],"outgoing_damage":game.run_metrics["damage"],"activations":game.weapon_activations,"area_outcomes":game.area_outcomes,"starter_reach_seconds":game.starter_reach_seconds,"controller":"strategic" if strategic else ("aim-flex" if args.has("--aim-flex") else "avoidance"),"goal_frames":goal_frames if strategic else {},"damage_sources":game.damage_sources,"last_hit":game.last_hit,"waves":game.wave_observations,"events":game.event_observations,"boss_snapshot":game.boss_snapshot,"xp_collected":game.total_xp,"xp_on_ground":game.pickups.reduce(func(total,drop):return total+float(drop.get("xp",0)),0.0),"mode":game.mode,"seconds":game.run_time,"hp":game.hp,"minimum_hp":minimum_hp,"level":game.level,"kills":game.kills,"boss":game.boss_spawned,"choices":choices,"healing":game.run_metrics["healing"],"flexes":game.run_metrics["flexes"],"signature_metrics":{"damage":game.run_metrics["flex_damage"],"prevented":game.run_metrics["flex_prevented"],"absorbed":game.run_metrics["flex_absorbed"],"finishers":game.run_metrics["flex_finishers"]},"recovery":game.recovery_counts,"station_uses":game.safe_spot_uses,"weapons":game.weapons,"passives":game.passives}))
     game.queue_free()
     quit()
