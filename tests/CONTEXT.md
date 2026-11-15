@@ -24,6 +24,8 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 - `./test_approved_individual_hero_sheets.gd` — six full-atlas resource routes, 384 transparent cells, cached textures and exclusion of the rejected Pixel Vixen derivative; assertions updated for v2, not executed for this delivery at creator request.
 - `./frame_pacing/MAIN_BASELINE_PROVENANCE.md` — unchanged-main Windows control and same-runner Linux PR-base control for the approved individual-sheet/full-atlas branches; the historical fixture is preserved rather than silently regenerated.
 
+- `./cool_kid_rig/` — experimental package, identity/fallback and finite sampled-pose checks; no artistic approval.
+
 ## Conventions
 
 Choose the smallest targeted regression first. `scripts/validate.sh` orchestrates broader checks; inspect its dependencies and side effects before execution. Distinguish human gameplay, automated normal runs, synthetic QA scenarios and performance fixtures. Do not load large evidence directories or recordings by default.

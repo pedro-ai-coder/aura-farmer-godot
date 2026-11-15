@@ -25,3 +25,5 @@ godot --headless --path . --script res://tests/test_playable_slice.gd
 ```
 
 For cross-boundary tasks, read [runtime scripts](../scripts/CONTEXT.md) and [tests](../tests/CONTEXT.md).
+
+`cool_kid_review.tscn` is an isolated candidate-review entry, with a disposable profile and F8 renderer A/B. Ordinary main scene is unchanged.

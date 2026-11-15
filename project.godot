@@ -5,6 +5,7 @@ config_version=5
 [application]
 config/name="Aura Farmer"
 run/main_scene="res://scenes/signal_breaker_garage.tscn"
+run/main_scene.cool_kid_rig_review="res://scenes/neon_cool_kid_review.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/description="CLUTCHPUNKS — Solo action survival in the Feedverse."
 config/icon="res://assets/production/cpk-brand-2026-11-13-v1/cpk-emblem-color-96.png"
