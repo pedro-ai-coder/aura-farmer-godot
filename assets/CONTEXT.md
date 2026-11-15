@@ -14,6 +14,8 @@ Approved and candidate visuals, fonts, atlases and manifests. Runtime inclusion,
 - `./production/heroes/full-atlases-v2/manifest.json` — six newly drawn 64-frame animation atlases and explicit sequence/cell/pivot mappings, pending creator game testing.
 - `./production/heroes/individual-sheets-v1/manifest.json` — exact six-sheet creator approval, retained masters, technical atlas/portrait/HUD hashes and pivots; active character presentation replaces historical derivatives.
 
+- `./art-candidates/cool-kid/articulated-rig-v1/` — immutable Art candidate pieces, review opt-in only. Never approved by runtime inclusion.
+
 ## Guardrails
 
 Keep candidates separate from approved immutable sources. Verify relevant manifest/version, hash and explicit creator approval before promoting or replacing assets; preserve stable content IDs and supersession history. Avoid opening entire binary/asset collections unless required.
