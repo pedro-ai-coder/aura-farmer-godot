@@ -1,6 +1,6 @@
 # Neon Punk Arcade frontend review candidate
 
-The creator's current task approves the **Neon Punk Arcade direction**. Exact token values, layouts and motion are **CANDIDATE**, pending visual review. This document does not promote new artwork, approve GDD V4 or authorize merge/publication. Operational authority remains GDD V3 plus scoped creator decisions. The older Garage document's V4 authority statement is not used by this change.
+The creator's current task approves the **Neon Punk Arcade direction**. Exact token values, layouts and motion are **CANDIDATE**, pending visual review. This document does not promote new artwork, broaden the bounded GDD V4 approval or authorize merge/publication. Fresh remote verification pins Canon `a1e670ff889b1a804a9c8b97b755e433a5cf3c95`: its GDD V4.0 consolidates only approved snapshot `96d1f51e066daa537680a849dc4cfcb3c1196c51` under decision CPK-GDD-V4-0-2026-11-13-01, inheriting unchanged normative V3 gameplay and its register. The broader V4 Foundation Draft remains PROPOSED. The initially provisioned local Canon checkout was older; its blanket V4-unapproved wording is not the current remote authority.
 
 Base: `56d4ff39c6c1c217acd616bff5ba680136cbb55d` (open PR #139, dependent on #138/#137). This intentionally excludes the later environment/combat branch stack. Only frontend presentation files change. The existing Solo scene remains the owner of simulation, saves, IDs, unlock checks, rules and RNG.
 
