@@ -9,6 +9,10 @@ const HudMeter=preload("res://scripts/hero_clash_hud_meter.gd")
 const HeroFlexDial=preload("res://scripts/hero_clash_flex_dial.gd")
 const ButtonFeedback=preload("res://scripts/hero_clash_button_feedback.gd")
 const SceneAccent=preload("res://scripts/hero_clash_scene_accent.gd")
+const CPK=preload("res://scripts/cpk_design_system.gd")
+const CPK_PALETTE=preload("res://assets/ui/cpk/presentation_palette.gdshader")
+const GARAGE_BACKGROUND=preload("res://assets/production/garage-candidate-v1/garage-backdrop.png")
+var cpk_ui_material: ShaderMaterial
 var game
 var gameplay_hud
 var passive_feedback_view
@@ -298,6 +302,12 @@ func install(owner_game, source_root: String) -> void:
     scene_accent=SceneAccent.new()
     scene_accent.name="HeroClashSceneAccent"
     add_child(scene_accent)
+    cpk_ui_material=ShaderMaterial.new();cpk_ui_material.shader=CPK_PALETTE
+    for node in [player_plate,xp_frame,wave_frame,boss_plate,gameplay_hud.strip,gameplay_hud.ability_plate,game.pause_button,aura_arc]:
+        if node!=null:node.material=cpk_ui_material
+    for parts in equipment:
+        for key in ["frame","tab"]:parts[key].material=cpk_ui_material
+    for card: Button in game.offer_buttons:card.material=cpk_ui_material
     refresh()
 func _process(delta: float) -> void:
     refresh()
@@ -372,6 +382,11 @@ func refresh() -> void:
     elif mode in ["choice","legendary","replace"]:cards_layout()
     else:auxiliary.layout()
     auxiliary.visible=mode in auxiliary.MODES
+    if auxiliary.visible or mode in ["choice","legendary","replace"]:
+        background.texture=GARAGE_BACKGROUND
+        background.modulate=Color(.30,.28,.32,1)
+    if mode=="playing":
+        background.modulate=Color.WHITE
     if mode_changed:
         _animate_new_screen(mode)
     ui._focus_ring()

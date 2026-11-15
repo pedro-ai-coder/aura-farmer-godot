@@ -13,6 +13,7 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 - `./art/CPK_DESIGN_SYSTEM.md` — Canon V4/active-brand references and shared native presentation foundation; application remains a review candidate.
 - `./art/SIGNAL_BREAKER_GARAGE.md` — real six-identity Garage/Solo transition, source recovery boundary, separate new environment candidate and executed local input/layout checks.
 - `./art/CPK_BRANDING_AUDIT.md` — changed visible surfaces versus retained native/browser persistence identifiers and historical records; future website integration boundary.
+- `./art/CPK_JOURNEY_COHESION.md` — shared native Theme action rendering, decorative-only palette adapter and executed journey/HUD/layout checks; immutable character/icon art remains untouched.
 - `./GDD_V2_ARCHIVE.md` — superseded predecessor, for history only.
 - `./APPROVED_ART_IMPORT.md` — art provenance/migration notes, including historical checkpoints.
 - `./art/FULL_HERO_ATLASES_V2.md` — replacement of provisional pose playback by newly drawn full atlases; creator owns game tests and finalization review.

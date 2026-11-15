@@ -40,8 +40,8 @@ func _draw() -> void:
     var x: float=40.0 if current_mode=="menu" else 30.0
     var y: float=215.0 if current_mode=="menu" else 94.0
     var end_x: float=x+minf(canvas.x*0.20,178.0)*eased
-    var gold:=Color("f8c45f")
-    var sky:=Color("4ea3ff")
+    var gold:=Color("ff6a00")
+    var sky:=Color("9b00ff")
     draw_line(Vector2(x,y),Vector2(end_x,y),Color(gold,0.80*fade),4.0,true)
     if end_x-x>22.0:
         draw_line(Vector2(end_x-20.0,y+5.0),Vector2(end_x,y+5.0),Color(sky,0.66*fade),2.0,true)

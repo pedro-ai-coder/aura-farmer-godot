@@ -11,6 +11,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./solo_run.gd` — active solo-run controller and module integration point.
 - `./cpk_design_system.gd` — shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.
 - `./signal_breaker_garage.gd` / `./garage_environment.gd` — separate application entrance, six approved identities, real Solo/Settings handoff, layered candidate environment; retains the existing Solo controller as gameplay/save authority.
+- `./hero_clash_button_art.gd` live rendering uses cached native CPK Theme StyleBoxes; historical PNG inspection remains separate. `clean_cut_skin.gd` applies a shared palette shader only to decorative HUD/card frames, never hero/world/item artwork.
 - `./game_rules.gd` — foundational limits; not the full approved gameplay catalog.
 - `./solo_clock.gd` — run clock.
 - `./solo_offer_rules.gd` — offers and legal choices.

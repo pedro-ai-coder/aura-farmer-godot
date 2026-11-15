@@ -2,16 +2,18 @@ class_name ArcadeTheme
 extends RefCounted
 
 ## Shared Clean Cut color/component adapters; lettering is owned by Typography.
-const INK := Color("253449")
-const DEEP := Color("13233a")
-const BLUE := Color("1f3e63")
-const SKY := Color("4ea3ff")
-const PAPER := Color("f7edcd")
-const CARD := Color("fff9e9")
-const GOLD := Color("f8c45f")
-const TEAL := Color("6eaab0")
-const CORAL := Color("e57461")
-const RARITY := {"common":Color("c9c5b5"),"rare":SKY,"epic":Color("a66bff"),"legendary":GOLD}
+const CPK=preload("res://scripts/cpk_design_system.gd")
+const INK := CPK.INK
+const DEEP := CPK.INK
+const BLUE := CPK.PANEL
+const SKY := CPK.ORANGE
+const PAPER := CPK.PAPER
+const CARD := CPK.PAPER
+const GOLD := CPK.ORANGE
+const TEAL := CPK.VIOLET
+const CORAL := CPK.DANGER
+# Gameplay rarity semantics stay distinct from decorative brand accents.
+const RARITY := {"common":Color("c9c5b5"),"rare":Color("4ea3ff"),"epic":Color("a66bff"),"legendary":Color("f8c45f")}
 const Typography = preload("res://scripts/clean_cut_typography.gd")
 const BODY = Typography.BODY
 const NUMBERS = Typography.BOLD

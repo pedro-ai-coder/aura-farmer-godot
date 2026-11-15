@@ -202,7 +202,8 @@ func _draw_moving_label(rect: Rect2, _accent: Color) -> void:
     while size_px>14 and font.get_string_size(action.text,HORIZONTAL_ALIGNMENT_LEFT,-1,size_px).x>available:
         size_px-=1
     var baseline: float=rect.position.y+(rect.size.y-font.get_height(size_px))*0.5+font.get_ascent(size_px)
-    var color:=Color("253449") if action.disabled else INK
+    var palette=preload("res://scripts/cpk_design_system.gd")
+    var color: Color=palette.MUTED if action.disabled else palette.INK if art_family=="primary" else palette.PAPER
     draw_string(font,Vector2((rect.size.x-available)*0.5,baseline),action.text,HORIZONTAL_ALIGNMENT_CENTER,available,size_px,color)
 
 func _draw_card_accents() -> void:

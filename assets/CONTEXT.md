@@ -10,6 +10,7 @@ Approved and candidate visuals, fonts, atlases and manifests. Runtime inclusion,
 
 - `./approved-assets.json` — approved-source commit, destinations and hashes.
 - `./ui/cpk/theme.tres` — native CPK Theme with approved brand palette and existing licensed fonts; component application remains a review candidate.
+- `./ui/cpk/presentation_palette.gdshader` — decorative HUD/card color adapter; excluded from hero, environment, item-icon and boss-portrait art.
 - `./production/cpk-brand-2026-11-13-v1/manifest.json` / `./production/garage-candidate-v1/manifest.json` — separately pinned approved-source brand derivatives and PROPOSED new Garage background; original Garage reference remains unrecovered.
 - `./approved-enemy-frames.json` — enemy-frame inventory.
 - `./ui-catalog.json` — UI display text and catalog metadata, not gameplay authority.

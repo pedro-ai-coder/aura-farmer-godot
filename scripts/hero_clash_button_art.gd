@@ -1,5 +1,6 @@
 extends RefCounted
-## Original candidate artwork; NOT an approved-art registry. Loaded once, shared by live buttons.
+## Historical candidate PNG inspection and live shared native CPK Theme rendering.
+## Neither implementation nor original candidate inventory confers artistic approval.
 const TEXTURES = {
     "primary-normal":preload("res://assets/ui-button-candidates/v1/primary-normal.png"),
     "primary-hover":preload("res://assets/ui-button-candidates/v1/primary-hover.png"),
@@ -27,6 +28,28 @@ const TEXTURES = {
     "selection-disabled":preload("res://assets/ui-button-candidates/v1/selection-disabled.png"),
 }
 static var styles: Dictionary = {}
+const CPK=preload("res://scripts/cpk_design_system.gd")
+static var live_styles: Dictionary={}
+
+static func live_style(family: String,state: String) -> StyleBox:
+    var key:=family+"-"+state
+    if live_styles.has(key):return live_styles[key]
+    var result: StyleBox
+    if family=="selection":
+        var rim: Color=CPK.ORANGE if state=="selected" else CPK.MUTED if state=="disabled" else CPK.PAPER
+        result=CPK.box(Color.TRANSPARENT,rim,0 if state=="normal" else 3)
+    elif family=="destructive":
+        result=CPK.box(CPK.PANEL,CPK.DANGER if state!="disabled" else CPK.BORDER,3 if state in ["focus","hover"] else 1)
+    else:
+        var variant: String="CpkPrimary" if family=="primary" else "Button"
+        var native_state: String="normal" if state=="selected" else state
+        if native_state=="focus":
+            result=CPK.theme().get_stylebox("normal",variant).duplicate()
+            result.border_color=CPK.PAPER;result.set_border_width_all(3)
+        else:
+            result=CPK.theme().get_stylebox(native_state,variant if CPK.theme().has_stylebox(native_state,variant) else "Button")
+    live_styles[key]=result
+    return result
 static func style(family: String, state: String) -> StyleBoxTexture:
     var key := family+"-"+state
     if styles.has(key): return styles[key]
@@ -51,9 +74,6 @@ static func family_for(action: Button, game, legacy: String) -> String:
     return "primary" if legacy == "menu/primary" else "secondary"
 
 static func draw(canvas: CanvasItem, family: String, state: String, rect: Rect2) -> void:
-    # Match source-pixel density vertically before nine-slicing horizontally.
-    # This keeps authored cap proportions at 64px, 72px and compact control sizes.
-    var scale_factor: float=rect.size.y/192.0 if family!="selection" else 0.5
-    canvas.draw_set_transform(rect.position,0,Vector2.ONE*scale_factor)
-    canvas.draw_style_box(style(family,state),Rect2(Vector2.ZERO,rect.size/scale_factor))
-    canvas.draw_set_transform(Vector2.ZERO)
+    # The shared native Theme owns live controls. Old PNG/style() stays inspectable
+    # for immutable historical provenance; no original source pixels are repainted.
+    canvas.draw_style_box(live_style(family,state),rect)

@@ -8,8 +8,8 @@ const BODY = preload("res://assets/fonts/hero-clash/Archivo.ttf")
 const SEMIBOLD = preload("res://assets/fonts/hero-clash/Archivo.ttf")
 const BOLD = preload("res://assets/fonts/hero-clash/ArchivoBlack.ttf")
 const SYMBOLS = preload("res://assets/fonts/Inter-Body.ttf")
-const INK = Color("253449")
-const PAPER = Color("fff9e9")
+const INK = Color("18171d")
+const PAPER = Color("f3e9db")
 # family, desktop px, compact px, tracking px, extra line spacing, capitalization.
 const TOKENS = {
     "display_xl":["display",54,40,0,0,"upper"],
@@ -67,7 +67,7 @@ static func apply(control: Control, role: String, compact: bool=false, color: Co
 
 static func theme() -> Theme:
     if shared_theme != null: return shared_theme
-    shared_theme = Theme.new()
+    shared_theme = preload("res://assets/ui/cpk/theme.tres").duplicate()
     shared_theme.default_font = BODY
     shared_theme.default_font_size = 19
     for kind in ["Label","Button","TextEdit","LineEdit","TooltipLabel"]:
