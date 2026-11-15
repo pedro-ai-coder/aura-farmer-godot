@@ -18,7 +18,7 @@ This uses existing approved pixels without mirroring CPK, repainting, duplicated
 
 ## Remaining scope
 
-Eight-direction torso/weapon coverage, full per-frame hand/muzzle anchors, secondary motion, impact/audio production, dense-combat hierarchy, additional directional artwork and physical-device/human review are not completed by this pilot. These remain explicit report backlog items. No merge, deployment or final artistic acceptance is inferred from tests or the creator's earlier preview approval.
+Eight-direction torso/weapon coverage, full per-frame hand/muzzle anchors, secondary motion, full dense-combat hierarchy, additional directional artwork and physical-device/human review are not completed by this pilot. The subsequent [combat feedback batch](COMBAT_FEEL_FEEDBACK.md) adds bounded event-driven audio, crowd-bar reductions and final cap/muzzle corrections with its own staged verification. These remain separate from final artistic acceptance. No merge or deployment is inferred from tests or the creator's earlier preview approval.
 
 ## Local verification
 

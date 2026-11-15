@@ -16,8 +16,16 @@ Ordinary headless gameplay checks do not allocate/play mixer voices; dedicated a
 
 Boss, elite and damageable terminal-objective bars stay visible. Ordinary full-health bars are omitted unless the enemy was recently hit; damaged enemies retain their bars. Only drawing changes: HP, healing, enemy selection, hazards, attack geometry, collision, damage, progression and RNG remain authoritative and unchanged. This reduces the repeated green-bar layer without hiding hostile telegraphs, priority targets or boss state.
 
-## Remaining work
-
 Sigma's actual No Cap projectile now samples the text-free cap region from its already prepared approved v2 atlas, without allocating another texture or changing shot models/trajectories. Generic Vixen body playback skips the baked muzzle-flash drawings; muzzle effects belong to actual weapon-event overlays. The approved PNGs themselves are unchanged.
+
+## Executed verification
+
+The creator approved roster expansion on 2026-11-15: “Aprovo: expandir a composição”. Six-identity composition stage `83e05d0a092787769d9c5c57061dc6116554a092` passed 105 independent checks. Feedback stage `3aba631be262f6da6cf5821d39b81a92d63c96a6` passed 106 independent checks, including exact-main simulation/RNG/event/camera parity and 3,456 weapon comparisons. After the final cap/muzzle/bar/mute refinements, runtime `5f0698c80746e29d68110a39396233c3a2953dba` passed eight affected focused checks and twelve ordinary Web package gates.
+
+The exact final Web build passed local Chromium menu/selection/female appearance/start/input flow without JS errors or failed requests. AudioContext ran at 48kHz; a passive output analyser observed nonzero RMS 0.029402. Seven final native fixed-step scenario recordings contain actual mixed audio (decoded peaks -25.2 to -16.4 dBFS). These automated captures do not establish human artistic/audio acceptance. Twelve short native 240-frame performance fixtures measured 59.69–59.90 rendered FPS at a 60 cap on Windows Ryzen 5900X/RX6800XT; their source is the earlier feedback stage `3aba631`, before final small presentation refinements, not a final-runtime or mobile certification.
+
+The [QA implementation follow-up](https://github.com/pedro-ai-coder/clutchpunks-qa/pull/5) retains exact commands, staged results, source/art hashes, performance summaries, artifact indexes and all 22 original backlog statuses under `reports/2026-11-15-animation-audit/implementation/`. Large movies remain local. Approved preview `5fd6c5780741e510874fc7f41de0b0037be15c87` is unchanged. No merge or deployment was performed.
+
+## Remaining work
 
 Additional directional torso art, complete per-frame hand/muzzle registration, retouched inbetweens and secondary motion, full player/hostile silhouette hierarchy, sustained Web/mobile trials, human readability review and final artistic/audio acceptance remain explicit unfinished audit items. Source PNGs are unchanged; no missing authored directions are inferred from runtime code. Merge and publication remain separate decisions.
