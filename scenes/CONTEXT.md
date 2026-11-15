@@ -10,6 +10,7 @@ These are scene resources, not a product specification. `main.tscn` defines the 
 
 - `./main.tscn` — solo-play entry scene.
 - `./signal_breaker_garage.tscn` — configured application entrance, layered candidate Garage over the unchanged Solo scene; returns to Garage when Solo exits to menu.
+- `./level_zero_environment_study.tscn` — separate EXPERIMENTAL factory navigation/entry shotboard; not a Solo replacement or approved combat contract.
 - `./player.tscn` — standalone player/camera scene.
 
 ## Conventions and change impact

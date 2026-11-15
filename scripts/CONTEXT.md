@@ -18,6 +18,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./solo_enemy_rules.gd` — enemy rules and selection.
 - `./solo_world_rules.gd` — world rules.
 - `./ruin_alley_presentation.gd` — ground-only candidate grading/contact layers and exact CPK wall paint; reads unchanged floor/cover geometry, never modifies simulation.
+- `./level_zero_environment_study.gd` — isolated reuse of existing factory candidates/source-space floor; rear-entry/camera/countdown and traversal only, no proposed encounter tuning or save writes.
 - `./solo_passive_rules.gd` — passive gameplay rules.
 - `./phaser_rng.gd` — deterministic Phaser-compatible Mulberry32 sequence.
 - `./profile_store.gd` — versioned profile and legacy-save compatibility.

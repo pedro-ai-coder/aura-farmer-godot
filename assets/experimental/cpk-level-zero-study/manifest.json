@@ -1,0 +1,22 @@
+{
+  "status": "EXPERIMENTAL_CANDIDATE",
+  "legacy_game_commit": "7b0bf708f33f4a5a601e514a1164e714838f39a3",
+  "method": "Recover exact backdrop bytes from committed base64 chunks; preserve verified existing underlay. No regeneration or new art approval.",
+  "assets": [
+    {
+      "path": "factory-backdrop.png",
+      "sha256": "0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23",
+      "bytes": 3767530,
+      "status": "EXPERIMENTAL_CANDIDATE"
+    },
+    {
+      "path": "factory-underlay.png",
+      "sha256": "ceff210f3f642457ae4bd01507b96e9be431728cb0c339b9cbe3847fd1acb76d",
+      "bytes": 377554,
+      "status": "EXPERIMENTAL_CANDIDATE"
+    }
+  ],
+  "runtime_scope": "Separate environment-navigation study only; not operational Solo, approved boss rules or final demo",
+  "art_commit": "b4cdd676f9c9de0543e4b62935612228bf0a715a",
+  "art_source_path": "source/environments/level-zero/2026-11-15-preserved-candidate"
+}
