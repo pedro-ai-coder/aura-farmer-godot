@@ -16,6 +16,7 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 - `./art/CPK_JOURNEY_COHESION.md` — shared native Theme action rendering, decorative-only palette adapter and executed journey/HUD/layout checks; immutable character/icon art remains untouched.
 - `./art/RUIN_ALLEY_PRESENTATION.md` — candidate ground grading/contact/decal layers over unchanged approved art and geometry.
 - `./art/LEVEL_ZERO_ENVIRONMENT_STUDY.md` — exact prior prototype/Art provenance, isolated source-space navigation and PROPOSED shotboard timings; combat gates stay unresolved.
+- `./art/MELEE_READABILITY.md` — bounded genuine unprotected automation, policy limitations, area outcome semantics and read-only starter-trigger-distance guide; no balance changes.
 - `./GDD_V2_ARCHIVE.md` — superseded predecessor, for history only.
 - `./APPROVED_ART_IMPORT.md` — art provenance/migration notes, including historical checkpoints.
 - `./art/FULL_HERO_ATLASES_V2.md` — replacement of provisional pose playback by newly drawn full atlases; creator owns game tests and finalization review.

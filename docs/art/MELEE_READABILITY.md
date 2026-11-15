@@ -1,0 +1,15 @@
+# Melee playability observation and presentation change
+
+**Status:** IMPLEMENTED_READ_ONLY_CUE; balance conclusions UNRESOLVED.
+
+The existing unprotected review driver was reused with its actual strategic recovery/avoidance policy, normal HP/resistance/shields, natural spawning, legal offers, ordinary damage and Flex. New optional `--max-seconds=` only censors observations; it grants no protection, XP, damage, speed or forced encounter. Default review duration remains unchanged. Read-only area telemetry counts expired resolved areas and empty hit memories; paired weapon strikes count separately, not as independent activations or failed whole attacks.
+
+Six bounded observations at source `4baef53447f9567b9840e9357a03cea8602d3b59` compare Sigma/Cool Kid/Alpha with seeds 451 and 937, up to 180 active seconds. These are **automated normal runs**, not human gameplay, fixed-spawn scenarios, full-run acceptance or performance fixtures. All six reached wave two. Sigma lost at 154.7s on seed 451; the other five were still playing at the observation cap. Cool Kid starter area empties were 17/102 and 14/126; Alpha's Cope Shield empties were 0/61 and 0/48. Paired-strike misses do not by themselves demonstrate a collision defect.
+
+The limited sample does not establish that either melee kit is numerically weaker. Existing bot steering heavily penalizes proximity and spent only 10.43/14.83 seconds in Cool Kid's starter trigger range, compared with 36.45/31.07 for Alpha and 137.70/147.10 for Sigma. Different legal upgrades/builds also diverged. Reply Guy direct attacks supplied most of Cool Kid's recorded HP loss. This supports targeted human readability/approach testing, not autonomous stat buffs or a conclusion that the creator's playability experience is invalid.
+
+`melee_readability.gd` adds a conditional low-alpha off-white ground bracket at the actual starter's **automatic trigger distance**, only when a valid nearby target is visible and the starter is equipped. It does not claim cooldown readiness or draw a different damage radius. No filled disc, pulse, camera movement or permanently visible ring. It draws below actors and hostile danger overlays and uses the same validity/line-of-sight lookup as the game. Ranged kits are excluded; future/dead targets do not produce cues. Canonical numbers, target selection, collisions, attack origin/delay, paired hits and HP are unchanged.
+
+The focused test executes actual inside/outside canonical thresholds and verifies valid-target/RNG isolation. No human improvement in survival or usability is claimed from an off-screen bot: the guide's intended benefit remains subject to creator play review. Complete observations and prioritization belong to the QA report; large recordings remain local.
+
+Next priorities: human A/B of starter range/approach and Reply Guy telegraphs; per-frame/direction weapon registration; then separate balance proposals only if normal-run evidence supports them. No new dodge/dash, range, damage, cooldown, density, HP or progression rule is introduced.

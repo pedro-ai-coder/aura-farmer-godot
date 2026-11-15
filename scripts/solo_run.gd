@@ -1,6 +1,7 @@
 extends Node2D
 const Typography = preload("res://scripts/clean_cut_typography.gd")
 const RuinPresentation=preload("res://scripts/ruin_alley_presentation.gd")
+const MeleeReadability=preload("res://scripts/melee_readability.gd")
 
 const SoloClock = preload("res://scripts/solo_clock.gd")
 const EnemyNavigationScript = preload("res://scripts/enemy_navigation.gd")
@@ -2261,6 +2262,7 @@ func _draw() -> void:
         for gy in range(0, 1087, 128):
             draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
     RuinPresentation.draw_ground(self)
+    MeleeReadability.draw_ground(self,self)
     draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
     _draw_recovery()
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)

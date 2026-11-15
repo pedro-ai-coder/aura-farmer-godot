@@ -92,6 +92,7 @@ run_check cpk-design-system --headless --path . --script res://tests/test_cpk_de
 run_check signal-breaker-garage --headless --path . --script res://tests/test_signal_breaker_garage.gd
 run_check cpk-branding --headless --path . --script res://tests/test_cpk_branding.gd
 run_check level-zero-environment-study --headless --path . --script res://tests/test_level_zero_environment_study.gd
+run_check melee-readability --headless --path . --script res://tests/test_melee_readability.gd
 python3 scripts/verify_cpk_garage_assets.py
 run_check animation-fluency --headless --path . --script res://tests/test_animation_fluency.gd
 run_check combat-audio --headless --path . --script res://tests/test_combat_audio.gd
