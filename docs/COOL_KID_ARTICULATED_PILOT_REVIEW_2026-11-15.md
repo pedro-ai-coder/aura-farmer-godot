@@ -38,7 +38,9 @@ the isolated review entry enables its candidate explicitly.
 | Art #30 handoff read | `cb3bcf591abebfcca4d35e81f55ed2f3c976f737` |
 | Art #29 defect reference read | `c377c7729769177cc164ca9a72592e7b468f2254` |
 
+Game production Draft: https://github.com/pedro-ai-coder/aura-farmer-godot/pull/150.
 Art production Draft: https://github.com/pedro-ai-coder/clutchpunks-art-pipeline/pull/32.
+Canon implementation receipt Draft: https://github.com/pedro-ai-coder/clutchpunks-canon/pull/45.
 Canon pilot-direction Draft remains https://github.com/pedro-ai-coder/clutchpunks-canon/pull/43.
 Neither documentation draft is assumed merged. Game #137–#148 were inspected as
 unmerged dependencies and were not edited, rebased or made prerequisites.
