@@ -4,7 +4,9 @@ extends Control
 const Design=preload("res://scripts/neon_arcade.gd")
 const Graphics=preload("res://scripts/neon_garage_graphics.gd")
 const Run=preload("res://scenes/main.tscn")
-const GarageEnvironment=preload("res://scripts/garage_environment.gd")
+const GarageEnvironment=preload("res://scripts/neon_garage_environment.gd")
+const Showcase=preload("res://scripts/neon_hero_showcase.gd")
+const Feedback=preload("res://scripts/neon_button_feedback.gd")
 const BACKDROP=preload("res://assets/production/garage-candidate-v1/garage-backdrop.png")
 const WORDMARK=preload("res://assets/production/cpk-brand-2026-11-13-v1/cpk-wordmark-color-1024.png")
 const IDENTITIES=[
@@ -19,6 +21,7 @@ var graphics: Control
 var footer: Label
 var sign: TextureRect
 var hero_art: TextureRect
+var showcase: Node
 var info: PanelContainer
 var info_stack: VBoxContainer
 var hero_name: Label
@@ -54,6 +57,7 @@ func _ready() -> void:
     graphics=Graphics.new();ui.add_child(graphics)
     sign=_image(ui);sign.name="ApprovedCpkWordmark";sign.texture=WORDMARK
     hero_art=_image(ui);hero_art.name="ApprovedSelectedHero"
+    showcase=Showcase.new();add_child(showcase)
     title=_label(ui,"SIGNAL BREAKER GARAGE","small")
     info=PanelContainer.new();Design.panel(info);ui.add_child(info)
     info_stack=VBoxContainer.new();info.add_child(info_stack)
@@ -69,6 +73,7 @@ func _ready() -> void:
         var portrait:=_image(card);portrait.texture=game.art.cosmetic_portrait(game.HEROES[IDENTITIES[i][0]]["id"],IDENTITIES[i][1]);portrait.set_meta("hero_card_portrait",true)
         var label:=_label(card,IDENTITIES[i][2],"micro");label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
         hero_cards.append(card);hero_card_names.append(label)
+        _feedback(card)
     select_button=_button("HERO SELECT",func():set_selection(not selection_open))
     play_button=_button("PLAY",start_selected,true)
     settings_button=_button("SETTINGS",open_settings)
@@ -85,7 +90,10 @@ func _image(parent: Node) -> TextureRect:
 func _label(parent: Node,text: String,role: String) -> Label:
     var node:=Label.new();Design.label(node,role);node.text=text;parent.add_child(node);return node
 func _button(text: String,callback: Callable,primary: bool=false) -> Button:
-    var node:=Button.new();node.text=text;Design.button(node,primary);node.pressed.connect(callback);ui.add_child(node);return node
+    var node:=Button.new();node.text=text;Design.button(node,primary);node.pressed.connect(callback);ui.add_child(node);_feedback(node);return node
+func _feedback(button: Button) -> void:
+    var feedback:=Feedback.new();button.add_child(feedback);feedback.install(button,game)
+
 func _place(node: Control,rect: Rect2) -> void:
     node.position=rect.position;node.size=rect.size
 
@@ -105,6 +113,7 @@ func _refresh_identity() -> void:
     info.tooltip_text=help_label.text
     play_button.disabled=not game.HeroAppearanceScript.can_start(game.hero_appearance,data["id"])
     environment.reduced_motion=bool(game.profile["settings"]["reducedMotion"])
+    showcase.configure(hero_art,data["id"],game.hero_appearance,environment.reduced_motion)
 
 func select_identity(slot: int) -> void:
     if slot<0 or slot>=IDENTITIES.size() or not active:return
@@ -134,6 +143,7 @@ func _layout() -> void:
     for button in [play_button,select_button,settings_button]:
         button.add_theme_font_size_override("font_size",16 if portrait else 20 if compact else 24)
     settings_button.add_theme_font_size_override("font_size",16 if portrait else 20)
+    footer.visible=not compact
     var grid_bounds:=Rect2()
     info.visible=not selection_open or not portrait
     hero_grid.columns=2
@@ -144,7 +154,8 @@ func _layout() -> void:
         _place(settings_button,Rect2(view.x-154,137,130,48))
         _place(hero_art,Rect2(30,174,view.x-60,view.y-424))
         _place(info,Rect2(24,view.y-242,view.x-48,126))
-        grid_bounds=Rect2(24,200,view.x-48,view.y-374)
+        grid_bounds=Rect2(24,410,view.x-48,view.y-540)
+        if selection_open:_place(hero_art,Rect2(60,184,view.x-120,210))
         _place(select_button,Rect2(24,view.y-104,(view.x-60)*.5,52))
         _place(play_button,Rect2(view.x*.5+6,view.y-104,view.x*.5-30,52))
         footer.text="CLUTCHPUNKS  /  GARAGE"
@@ -157,7 +168,12 @@ func _layout() -> void:
         _place(hero_art,Rect2(view.x*.51,36,view.x*.45,view.y-164))
         _place(info,Rect2(view.x*.53,view.y-129,view.x*.43,100))
         hero_grid.columns=3
-        grid_bounds=Rect2(view.x*.40,108,view.x*.56,view.y-150)
+        grid_bounds=Rect2(38,108,view.x*.55,view.y-190)
+        if selection_open:
+            _place(hero_art,Rect2(view.x*.65,82,view.x*.31,view.y-120))
+            _place(select_button,Rect2(38,view.y-76,130,48))
+            _place(play_button,Rect2(188,view.y-76,180,48))
+            _place(settings_button,Rect2(view.x-190,24,152,48))
         info.visible=not selection_open
     else:
         var nav_width: float=minf(380,view.x*.32)
@@ -169,16 +185,21 @@ func _layout() -> void:
         _place(settings_button,Rect2(60,nav_y+168,nav_width-36,56))
         _place(hero_art,Rect2(view.x*.50,52,view.x*.47,view.y-80))
         _place(info,Rect2(60,view.y-190,view.x*.39,142))
-        grid_bounds=Rect2(60,210,view.x*.38,view.y-420)
+        grid_bounds=Rect2(60,190,view.x*.38,view.y-460)
         if selection_open:
             _place(select_button,Rect2(60,view.y-104,170,52))
             _place(play_button,Rect2(248,view.y-104,view.x*.38-188,52))
             _place(settings_button,Rect2(view.x-220,28,180,48))
-            info.visible=false
+            _place(info,Rect2(60,view.y-240,view.x*.38,124))
+            info.visible=true
     hero_grid.visible=selection_open
-    hero_art.visible=not((portrait or compact) and selection_open)
-    help_label.visible=false
-    hero_name.add_theme_font_size_override("font_size",22 if portrait or compact else 30)
+    hero_art.visible=true
+    starter_label.visible=not selection_open
+    flex_label.visible=not selection_open
+    help_label.visible=selection_open and not compact and not portrait
+    help_label.add_theme_font_size_override("font_size",13)
+    footer.text=("02  /  HERO SELECT     •     1–6 / TAB / ENTER" if selection_open else "01  /  GARAGE     •     CLUTCHPUNKS") if not portrait else "CLUTCHPUNKS  /  "+("HERO SELECT" if selection_open else "GARAGE")
+    hero_name.add_theme_font_size_override("font_size",22 if portrait or compact or selection_open else 30)
     kit_label.add_theme_color_override("font_color",Design.LIME)
     info_stack.add_theme_constant_override("separation",4)
     for label in [starter_label,flex_label]:
@@ -197,22 +218,40 @@ func _layout() -> void:
         _place(hero_card_names[i],Rect2(4,card_height-26,card_width-8,22))
         hero_card_names[i].add_theme_font_size_override("font_size",13 if card_width<150 else 14)
     _place(hero_grid,grid_bounds)
-    environment.hero_feet=hero_art.position+Vector2(hero_art.size.x*.5,hero_art.size.y-4) if hero_art.visible else Vector2(-1000,-1000)
+    showcase.set_home(Rect2(hero_art.position,hero_art.size))
+    # KEEP_ASPECT_CENTERED can letterbox; ground the platform to the actual image.
+    var pixels: Vector2=hero_art.texture.get_size()
+    var image_scale: float=minf(hero_art.size.x/pixels.x,hero_art.size.y/pixels.y)
+    environment.hero_feet=showcase.home.position+Vector2(hero_art.size.x*.5,(hero_art.size.y+pixels.y*image_scale)*.5-4)
     environment.queue_redraw()
     _focus_chain()
 
 func _focus_chain() -> void:
     var buttons: Array[Button]=[]
     if selection_open:buttons.assign(hero_cards)
-    buttons.append(select_button);buttons.append(play_button);buttons.append(settings_button)
+    if selection_open:
+        buttons.append(select_button);buttons.append(play_button);buttons.append(settings_button)
+    else:
+        buttons.append(play_button);buttons.append(select_button);buttons.append(settings_button)
     for i in range(buttons.size()):
         buttons[i].focus_next=buttons[(i+1)%buttons.size()].get_path()
         buttons[i].focus_previous=buttons[(i+buttons.size()-1)%buttons.size()].get_path()
+        buttons[i].focus_neighbor_top=buttons[(i+buttons.size()-1)%buttons.size()].get_path()
+        buttons[i].focus_neighbor_bottom=buttons[(i+1)%buttons.size()].get_path()
+    if selection_open:
+        for i in range(hero_cards.size()):
+            var card: Button=hero_cards[i]
+            card.focus_neighbor_left=hero_cards[maxi(i-i%hero_grid.columns,i-1)].get_path()
+            card.focus_neighbor_right=hero_cards[mini(i-i%hero_grid.columns+hero_grid.columns-1,i+1)].get_path()
+            card.focus_neighbor_top=hero_cards[i-hero_grid.columns].get_path() if i>=hero_grid.columns else settings_button.get_path()
+            card.focus_neighbor_bottom=hero_cards[i+hero_grid.columns].get_path() if i+hero_grid.columns<6 else select_button.get_path()
     var owner=get_viewport().gui_get_focus_owner()
     if active and (owner==null or not owner.is_visible_in_tree()):select_button.grab_focus.call_deferred()
 
 func _leave_garage() -> void:
-    active=false;touch_targets.clear();touch_armed.clear()
+    active=false;showcase.enabled=false
+    if showcase.transition!=null:showcase.transition.kill()
+    touch_targets.clear();touch_armed.clear()
     garage_layer.hide();game.show();game.layer.show()
     game.process_mode=Node.PROCESS_MODE_INHERIT;game.set_process(true)
 
@@ -228,7 +267,7 @@ func open_settings() -> void:
 func _process(_delta: float) -> void:
     if not active and game!=null and game.mode=="menu":
         game._clear_touch();game.set_process(false);game.process_mode=Node.PROCESS_MODE_DISABLED
-        game.hide();game.layer.hide();garage_layer.show();active=true;selection_open=false
+        game.hide();game.layer.hide();garage_layer.show();active=true;showcase.enabled=true;selection_open=false
         _refresh_identity();_layout();select_button.grab_focus.call_deferred()
     elif active and ui!=null and (view!=game.presentation.view or ui.position!=game.presentation.position):_layout()
 
@@ -236,6 +275,16 @@ func _input(event: InputEvent) -> void:
     if (event is InputEventMouseButton or event is InputEventMouseMotion) and event.device==InputEvent.DEVICE_ID_EMULATION and swallow_emulated:
         get_viewport().set_input_as_handled();return
     if not active:return
+    # This project maps ui_accept to keys only. Keep controller acceptance local
+    # to the Garage rather than changing gameplay InputMap bindings.
+    if event is InputEventJoypadButton and event.button_index in [JOY_BUTTON_A,JOY_BUTTON_B]:
+        if event.pressed:
+            if event.button_index==JOY_BUTTON_B and selection_open:set_selection(false)
+            elif event.button_index==JOY_BUTTON_A:
+                var focused=get_viewport().gui_get_focus_owner()
+                if focused is Button and ui.is_ancestor_of(focused) and focused.is_visible_in_tree() and not focused.disabled:
+                    focused.pressed.emit()
+        get_viewport().set_input_as_handled();return
     if event is InputEventScreenTouch:
         swallow_emulated=true
         if event.pressed and not event.canceled:
