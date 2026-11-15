@@ -70,7 +70,3 @@ The exact source hashes and approved versions in those ledgers control promotion
 ## 2026-11-15 — Accepted Neon production frontend
 
 Decision **CPK-NEON-PRODUCTION-2026-11-15-01**: the creator accepted preview Game `b6e9813c101b1ef099b1a3a170c1c6b2270a8ab3`, explicitly authorized main merges, production publication and related decision records. [Exact scope and provenance](art/CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md). This supersedes D-05 cream/gold menu treatment for the accepted Neon screens; existing HUD, sources, unchanged V3 gameplay and future milestone boundaries remain. Scoped release authorization is separate from claiming all milestones complete.
-
-## 2026-11-15 - Accepted Neon production frontend
-
-Decision **CPK-NEON-PRODUCTION-2026-11-15-01**: the creator accepted preview Game `b6e9813c101b1ef099b1a3a170c1c6b2270a8ab3`, explicitly authorized main merges, production publication and related decision records. [Exact scope and provenance](art/CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md). This supersedes D-05 cream/gold menu treatment for the accepted Neon screens; existing HUD, sources, unchanged V3 gameplay and future milestone boundaries remain. Scoped release authorization is separate from claiming all milestones complete.
