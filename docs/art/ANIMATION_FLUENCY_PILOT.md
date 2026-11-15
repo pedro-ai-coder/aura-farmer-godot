@@ -19,3 +19,9 @@ This uses existing approved pixels without mirroring CPK, repainting, duplicated
 ## Remaining scope
 
 Eight-direction torso/weapon coverage, full per-frame hand/muzzle anchors, secondary motion, impact/audio production, dense-combat hierarchy, remaining identities and physical-device/human review are not completed by this pilot. These remain explicit report backlog items. No merge, deployment or final artistic acceptance is inferred from tests or the creator's earlier preview approval.
+
+## Local verification
+
+The complete existing validation command inventory plus the new regression ran as 105 independent checks, all passing, at `3d6049d`. This includes the historical state gate and separately recorded exact-main simulation/RNG/event/camera parity. After native inspection calibrated the seam to y=142 at `ad48596`, four focused checks passed again: animation fluency, six-identity atlas resources, canonical hero animation and weapon-presentation parity.
+
+Native Movie Maker recordings compare the exact approved `5fd6c57` baseline against the calibrated pilot under identical fixed-step scripted input. A matched, enlarged side-by-side clip, original full-window clips, source checksums, logs and a review page remain locally in `animation-fluency-pilot-2026-11-15/`. Their 60-fps encoding is not a rendered-FPS benchmark. No performance gain or device certification is claimed for this pilot. Creator review remains pending; the old approved Vercel deployment was not replaced.
