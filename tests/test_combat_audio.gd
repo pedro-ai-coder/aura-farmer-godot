@@ -1,0 +1,80 @@
+extends SceneTree
+const Audio=preload("res://scripts/combat_audio.gd")
+const Presentation=preload("res://scripts/weapon_presentation.gd")
+const Game=preload("res://scripts/solo_run.gd")
+class Recorder extends RefCounted:
+    var fires: Array=[]
+    var contacts: Array=[]
+    func fire(id: String,clock: float) -> void:fires.append([id,clock])
+    func contact(blocked: bool,clock: float) -> void:contacts.append([blocked,clock])
+var failures: Array[String]=[]
+func expect(ok: bool,message: String) -> void:
+    if not ok:failures.append(message)
+func _initialize() -> void:call_deferred("verify")
+func verify() -> void:
+    var audio:=Audio.new();audio.playback_enabled=true;root.add_child(audio)
+    expect(audio.voices.size()==8,"The actual audio node has a fixed eight-voice budget")
+    expect(not audio.play_event("key",0.0),"Menu/paused audio cannot emit new events")
+    audio.set_suspended(false)
+    for i in range(8):expect(audio.play_event("hurt",float(i)*0.2,4),"Priority cue occupies a reserved bounded slot")
+    expect(not audio.play_event("key",2.0,1),"Friendly low-priority SFX cannot steal all high-priority cues")
+    expect(audio.play_event("warning",2.0,5),"Hostile warnings take priority over all friendly cues")
+    audio.reset()
+    expect(audio.play_event("key",0.0),"A real event emits a cue")
+    expect(not audio.play_event("key",0.01),"Same-family crowd events are rate limited")
+    var active: Array[AudioStreamPlayer]=[]
+    for voice in audio.voices:
+        if voice.playing:active.append(voice)
+    expect(not active.is_empty(),"Pause fixture has an actual playing voice")
+    audio.set_suspended(true)
+    for voice in active:expect(voice.stream_paused,"Active voices pause with the gameplay modal state")
+    var a:=Audio.make_clip(Audio.PROFILES["key"])
+    var b:=Audio.make_clip(Audio.PROFILES["key"])
+    expect(a.data==b.data and a.data.size()>0,"Original PCM is reproducible without gameplay RNG")
+    expect(a.data.decode_s16(0)==0 and a.data.decode_s16(a.data.size()-2)==0,"Transient endpoints avoid discontinuities")
+    audio.reset();audio.set_suspended(false)
+    var warning: Dictionary={"id":4,"phase":"","attack_pose":{"start":3.0,"impact":4.0}}
+    var warning_before:=warning.duplicate(true)
+    audio.observe_enemies([warning],3.0);audio.observe_enemies([warning],3.01)
+    expect(int(audio.accepted.get("warning",0))==1,"Real scheduled boss/elite anticipation sounds once")
+    expect(warning==warning_before,"Threat audio cannot mutate the authoritative attack model")
+    audio.observe_enemies([],3.02)
+    expect(audio.warnings.is_empty(),"Removed enemies cannot leave an unbounded warning cache")
+    var recorder:=Recorder.new();var presentation:=Presentation.new();presentation.audio_feedback=recorder
+    var area: Dictionary={"id":"keyboard-warrior","at":1.0,"impact_shown":false,"primary":true}
+    presentation.queued(area,0.0,[],false)
+    presentation.synchronize([area],[],0.9)
+    expect(recorder.fires.is_empty(),"Queued windup cannot sound like a resolved strike")
+    presentation.synchronize([area],[],1.0)
+    expect(recorder.fires.is_empty(),"Elapsed deadline alone cannot manufacture an unresolved impact")
+    area["impact_shown"]=true;presentation.synchronize([area],[],1.0);presentation.synchronize([area],[],1.01)
+    expect(recorder.fires.size()==1,"Resolved strike sounds exactly once across render frames")
+    var cancelled: Dictionary={"id":"ban-hammer","at":2.0,"impact_shown":false}
+    presentation.queued(cancelled,1.1,[],false);presentation.synchronize([],[],1.5);presentation.synchronize([],[],2.1)
+    expect(recorder.fires.size()==1,"Cancelled future strikes never become audio events")
+    var enemy: Dictionary={"id":1,"hp":10.0,"shield":4.0}
+    presentation.contact("keyboard-warrior",enemy,Vector2.ZERO,Vector2.RIGHT,10.0,4.0,3.0)
+    expect(recorder.contacts.is_empty(),"No changed HP/shield means no fake contact sound")
+    presentation.contact("keyboard-warrior",enemy,Vector2.ZERO,Vector2.RIGHT,10.0,5.0,3.0)
+    expect(recorder.contacts.size()==1 and recorder.contacts[0][0],"Resolved absorption uses the blocked contact cue")
+    expect(not Game.enemy_bar_visible({"kind":"npc","hp":10,"max":10},10),"Undamaged ordinary bars do not obscure crowds")
+    expect(Game.enemy_bar_visible({"kind":"npc","hp":9,"max":10},10),"Actual damage remains visible")
+    expect(Game.enemy_bar_visible({"kind":"npc","hp":10,"max":10,"hurt_at":9.5},10),"Recent contact keeps its bar readable")
+    expect(Game.enemy_bar_visible({"kind":"boss","hp":10,"max":10},10),"Boss health remains visible at full HP")
+    expect(Game.enemy_bar_visible({"kind":"npc","elite":true,"hp":10,"max":10},10),"Elite threats retain their full-health bar")
+    expect(Game.enemy_bar_visible({"kind":"terminal","hp":10,"max":10},10),"Damageable encounter objectives retain their health information")
+    var muted:=AudioServer.is_bus_mute(0);var volume:=AudioServer.get_bus_volume_db(0)
+    var preferences:=Game.new();preferences.profile={"settings":{"sound":false,"masterVolume":0.5}}
+    preferences._apply_preferences()
+    expect(AudioServer.is_bus_mute(0),"The existing Sound OFF setting mutes new SFX through Master")
+    expect(not audio.play_event("key",5.0),"Muted gameplay cannot allocate new active mixer voices")
+    preferences.profile["settings"]["sound"]=true;preferences._apply_preferences()
+    expect(not AudioServer.is_bus_mute(0) and absf(AudioServer.get_bus_volume_db(0)-linear_to_db(0.5))<0.01,"The existing volume setting controls the SFX bus")
+    preferences.free();AudioServer.set_bus_mute(0,muted);AudioServer.set_bus_volume_db(0,volume)
+    audio.reset();audio.queue_free()
+    # Let the actual audio mixer retire stopped playback objects before exit.
+    await create_timer(0.25).timeout
+    if failures.is_empty():print("PASS: bounded priority audio, pause/rate limits, event/cancellation sync, deterministic PCM and crowd health readability");quit()
+    else:
+        for failure in failures:push_error(failure)
+        quit(1)

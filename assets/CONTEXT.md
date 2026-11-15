@@ -11,6 +11,7 @@ Approved and candidate visuals, fonts, atlases and manifests. Runtime inclusion,
 - `./approved-assets.json` — approved-source commit, destinations and hashes.
 - `./approved-enemy-frames.json` — enemy-frame inventory.
 - `./ui-catalog.json` — UI display text and catalog metadata, not gameplay authority.
+- `./production/heroes/full-atlases-v2/manifest.json` — six newly drawn 64-frame animation atlases and explicit sequence/cell/pivot mappings, pending creator game testing.
 - `./production/heroes/individual-sheets-v1/manifest.json` — exact six-sheet creator approval, retained masters, technical atlas/portrait/HUD hashes and pivots; active character presentation replaces historical derivatives.
 
 ## Guardrails

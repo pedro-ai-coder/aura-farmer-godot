@@ -30,3 +30,14 @@ trace on the same Linux runner/engine and supplies `GODOT_STATE_REFERENCE` to
 the candidate validator. All simulation comparisons and the other 79 Godot
 phases still run. The original historical fixture and default diagnostic remain
 unchanged; other branches keep their original validation path.
+
+On 2026-11-15 the creator approved preview `9775d8f75b0a0a00929b55c648d771a17ba16777`
+for merge and production. The empty trigger commit `4e3268f966d79294e627980f8f85af8d26aebccd`
+preserved its entire tree. Required Linux CI run `43726982367` reached the
+historical state comparison and failed against `baseline_states.json`; its
+workflow had scoped the same-runner control only to the preceding individual-sheet
+branch. The identical control checkout/recording steps now also apply to
+`art/full-approved-hero-atlases`, pinning the untouched PR base SHA. No fixture,
+assertion, runtime script, source artwork or production asset is changed by this
+CI wiring correction. A fresh required run must pass before merge; the failed
+historical comparison remains visible in GitHub.

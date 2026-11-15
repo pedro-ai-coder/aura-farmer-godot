@@ -70,6 +70,7 @@ bash -n scripts/build_web.sh
 # Asset package must be self-contained before any gameplay or export validation.
 python3 scripts/sync_approved_assets.py
 python3 scripts/verify_approved_hero_sheets.py
+python3 scripts/verify_full_hero_atlases.py
 node tests/test_web_platform.cjs
 node tests/test_performance_web.cjs
 python3 scripts/promote_approved_icons.py
@@ -87,6 +88,8 @@ run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
+run_check animation-fluency --headless --path . --script res://tests/test_animation_fluency.gd
+run_check combat-audio --headless --path . --script res://tests/test_combat_audio.gd
 run_check approved-individual-hero-sheets --headless --path . --script res://tests/test_approved_individual_hero_sheets.gd
 run_check recovery --headless --path . --script res://tests/test_recovery.gd
 run_check survival-review-policy --headless --path . --script res://tests/test_survival_review_policy.gd
