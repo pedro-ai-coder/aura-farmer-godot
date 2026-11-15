@@ -8,6 +8,9 @@ const MANIFEST := ROOT + "manifest.json"
 var manifest: Dictionary = {}
 var sequences: Dictionary = {}
 var cache: Dictionary = {}
+## A/B review switch: no new art, only registered source-rectangle composition.
+## Expansion to other identities waits for the creator's pilot review.
+var cool_kid_locomotion_pilot := true
 
 func _init() -> void:
     var parsed = JSON.parse_string(FileAccess.get_file_as_string(MANIFEST))
@@ -65,6 +68,11 @@ static func frame_index(phase: String, context: Dictionary) -> int:
         return [53,54,55,56][posmod(canonical_frame-43,4)]
     if phase == "attack":
         var elapsed := maxf(0.0,0.22-float(context.get("attack",0.22)))
+        # The airborne cap in the study drawings is not another projectile.
+        # Keep the authored holding pose before release, then the empty hand.
+        # Only the real No Cap projectile may depict a released cap in flight.
+        if str(context.get("hero_id",""))=="sigma" and str(context.get("appearance","original"))=="original":
+            return (44 if rear else 40)+(0 if elapsed<0.055 else 3)
         return (44 if rear else 40)+clampi(int(elapsed*4.0/0.22),0,3)
     if phase == "run":
         var direction := posmod(roundi(float(context.get("heading",0.0))/(PI/4.0)),8)
@@ -79,14 +87,35 @@ func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: St
     var entry: Dictionary = manifest[identity]
     var playback := context.duplicate()
     playback["hero_id"] = hero_id
-    var index := frame_index(str(pose.get("state","idle")),playback)
+    playback["appearance"] = appearance
+    var phase := str(pose.get("state","idle"))
+    var index := frame_index(phase,playback)
     var frame: Dictionary = entry["frames"][index]
     var rect: Array = frame["cell_rect"]
     var pivot: Array = entry["foot_pivot"]
     var factor := float(entry["world_scale"])
+    if cool_kid_locomotion_pilot and identity=="cool-kid" and bool(context.get("moving",false)) and (phase=="attack" or phase.begins_with("flex")):
+        # Lower body retains the existing distance-driven gait. The two source
+        # rows share an anatomical waist at y=120 in the 192px packed cells.
+        # Front/back legs match the authored torso view; do not reflect CPK.
+        # This pilot does not claim missing eight-direction attack art exists.
+        var rear := sin(float(context.get("facing",0.0))) < -0.35
+        var step := posmod(int(float(context.get("walk",0.0))*9.0),4)
+        var lower_index := (24 if rear else 8)+step
+        var lower: Array = entry["frames"][lower_index]["cell_rect"]
+        _draw_region(canvas,position,atlas,lower,pivot,factor,120.0,float(lower[3])-120.0)
+        _draw_region(canvas,position,atlas,rect,pivot,factor,0.0,120.0)
+        return true
     canvas.draw_set_transform(position)
     canvas.draw_texture_rect_region(atlas,
         Rect2(Vector2(-float(pivot[0]),-float(pivot[1]))*factor,Vector2(float(rect[2]),float(rect[3]))*factor),
         Rect2(float(rect[0]),float(rect[1]),float(rect[2]),float(rect[3])))
     canvas.draw_set_transform(Vector2.ZERO)
     return true
+
+static func _draw_region(canvas: CanvasItem, at: Vector2, atlas: Texture2D, rect: Array, pivot: Array, factor: float, top: float, height: float) -> void:
+    canvas.draw_set_transform(at)
+    canvas.draw_texture_rect_region(atlas,
+        Rect2(Vector2(-float(pivot[0]),top-float(pivot[1]))*factor,Vector2(float(rect[2]),height)*factor),
+        Rect2(float(rect[0]),float(rect[1])+top,float(rect[2]),height))
+    canvas.draw_set_transform(Vector2.ZERO)

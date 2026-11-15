@@ -865,7 +865,8 @@ func _move_player(dt: float) -> void:
     var previous := player_pos
     player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
     if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
-    visual_moving = direction.length_squared() > 0.01
+    # Presentation follows resolved displacement, not held input into a wall.
+    visual_moving = player_pos.distance_squared_to(previous) > 0.000001
     visual_walk += player_pos.distance_to(previous)/float(hero["speed"])
     if visual_moving:
         var heading := roundf(direction.angle()/(PI/4))*(PI/4)

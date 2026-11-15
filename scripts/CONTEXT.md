@@ -20,6 +20,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./approved_visuals.gd` — visual resource binding.
 - `./hero_animation.gd` — hero animation logic.
 - `./full_hero_atlases.gd` — authored 64-frame atlas playback: eight movement directions, front/back idle/attack/hurt, Flex and defeat; replaces provisional pose transforms.
+- `./full_hero_atlases.gd` also contains the Cool Kid registered-waist locomotion pilot; source atlas pixels remain immutable, other identities await pilot review. Released Sigma body poses exclude baked airborne caps. Historical atlas inspection is lazy in `approved_visuals.gd`.
 - `./prepare_full_hero_atlases.py` / `./verify_full_hero_atlases.py` — transparent-frame packing and structural file checks; original generated sheets/prompts stay versioned.
 - `./approved_hero_sheets.gd` — cached playback of the six creator-approved individual-sheet identities; presentation only, no reflected CPK lettering.
 - `./import_approved_hero_sheets.py` / `./verify_approved_hero_sheets.py` — deterministic original-pixel extraction and source/export hash gates.

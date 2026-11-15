@@ -28,12 +28,12 @@ var textures: Dictionary = {}
 var enemy_rows: Dictionary = {}
 var enemy_images: Dictionary = {}
 var enemy_frame_cache: Dictionary = {}
+const HISTORICAL_TEXTURES := ["sigma-atlas","cool-kid-atlas","alpha-atlas","cool-kid-flex-v2","cool-kid-rear-v2","alpha-rear-v2"]
 
 func _init() -> void:
     for asset_name in [
-        "ruin-alley", "main-menu", "sigma", "cool-kid", "alpha",
-        "phone-guy", "hater", "big-hater", "sigma-atlas", "cool-kid-atlas",
-        "alpha-atlas", "cool-kid-flex-v2", "cool-kid-rear-v2", "alpha-rear-v2",
+        "ruin-alley", "main-menu",
+        "phone-guy", "hater", "big-hater",
         "enemies-a-v2", "enemies-b-v2", "events-v2", "haters-v2", "enemies"
     ]:
         var path: String = ROOT + asset_name + ".png"
@@ -55,6 +55,11 @@ func _init() -> void:
         push_error("Missing approved enemy atlas frame data")
 
 func texture(name: String) -> Texture2D:
+    # Historical inspection remains available without paying its startup/GPU
+    # residency cost in the active v2 body-rendering route.
+    if not textures.has(name) and name in HISTORICAL_TEXTURES:
+        var resource := ROOT+name+".png"
+        if ResourceLoader.exists(resource): textures[name]=load(resource) as Texture2D
     return textures.get(name) as Texture2D
 
 func has(name: String) -> bool:
