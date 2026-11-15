@@ -19,6 +19,7 @@ cd "$ROOT"
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_approved_hero_sheets.py
 python3 scripts/verify_full_hero_atlases.py
+python3 scripts/verify_cpk_garage_assets.py
 python3 scripts/verify_female_variants.py
 python3 scripts/verify_pickup_candidates.py
 python3 scripts/verify_weapon_presence.py
@@ -140,6 +141,7 @@ python3 scripts/verify_hud_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pixel_vixen.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_approved_hero_sheets.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_full_hero_atlases.py "build/web/$EXPORT_BASENAME.pck"
+python3 scripts/verify_cpk_garage_assets.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_female_variants.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pickup_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_weapon_presence.py "build/web/$EXPORT_BASENAME.pck"
