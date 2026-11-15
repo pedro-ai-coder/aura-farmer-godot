@@ -88,6 +88,7 @@ run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
+run_check cpk-design-system --headless --path . --script res://tests/test_cpk_design_system.gd
 run_check animation-fluency --headless --path . --script res://tests/test_animation_fluency.gd
 run_check combat-audio --headless --path . --script res://tests/test_combat_audio.gd
 run_check approved-individual-hero-sheets --headless --path . --script res://tests/test_approved_individual_hero_sheets.gd

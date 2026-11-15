@@ -10,6 +10,7 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 
 - `./GDD.md` — GDD V3 operational rules, until a newer version is explicitly approved.
 - `./GDD_DECISION_REGISTER.md` — recorded creator decisions.
+- `./art/CPK_DESIGN_SYSTEM.md` — Canon V4/active-brand references and shared native presentation foundation; application remains a review candidate.
 - `./GDD_V2_ARCHIVE.md` — superseded predecessor, for history only.
 - `./APPROVED_ART_IMPORT.md` — art provenance/migration notes, including historical checkpoints.
 - `./art/FULL_HERO_ATLASES_V2.md` — replacement of provisional pose playback by newly drawn full atlases; creator owns game tests and finalization review.

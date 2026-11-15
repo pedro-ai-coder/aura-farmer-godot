@@ -9,6 +9,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 ## Key files
 
 - `./solo_run.gd` — active solo-run controller and module integration point.
+- `./cpk_design_system.gd` — shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.
 - `./game_rules.gd` — foundational limits; not the full approved gameplay catalog.
 - `./solo_clock.gd` — run clock.
 - `./solo_offer_rules.gd` — offers and legal choices.
