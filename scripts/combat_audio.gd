@@ -51,7 +51,7 @@ func set_suspended(value: bool) -> void:
     suspended=value
     for voice in voices:voice.stream_paused=value
 func play_event(kind: String, clock: float, priority: int=1) -> bool:
-    if not playback_enabled or suspended or not clips.has(kind) or voices.is_empty():return false
+    if not playback_enabled or suspended or AudioServer.is_bus_mute(0) or not clips.has(kind) or voices.is_empty():return false
     var interval:=0.12 if kind=="warning" else 0.035 if kind in ["punch","key","pickup"] else 0.055
     if clock-float(last.get(kind,-INF))<interval:return false
     var chosen:=-1

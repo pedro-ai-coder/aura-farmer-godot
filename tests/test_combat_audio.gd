@@ -67,6 +67,7 @@ func verify() -> void:
     var preferences:=Game.new();preferences.profile={"settings":{"sound":false,"masterVolume":0.5}}
     preferences._apply_preferences()
     expect(AudioServer.is_bus_mute(0),"The existing Sound OFF setting mutes new SFX through Master")
+    expect(not audio.play_event("key",5.0),"Muted gameplay cannot allocate new active mixer voices")
     preferences.profile["settings"]["sound"]=true;preferences._apply_preferences()
     expect(not AudioServer.is_bus_mute(0) and absf(AudioServer.get_bus_volume_db(0)-linear_to_db(0.5))<0.01,"The existing volume setting controls the SFX bus")
     preferences.free();AudioServer.set_bus_mute(0,muted);AudioServer.set_bus_volume_db(0,volume)

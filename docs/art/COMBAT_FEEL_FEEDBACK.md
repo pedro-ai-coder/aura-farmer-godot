@@ -8,6 +8,8 @@ This implements the next presentation-only batch of the 2026-11-15 animation aud
 
 The weapon presentation observer emits an attack-motion sound once the actual projectile/area resolves, not merely because a windup deadline elapsed. Cancelled future attacks stay silent. Real HP/shield changes produce contact/blocked cues. Existing signature-strike calls drive the actual six beats, three slams and finishers without adding events. Successful Flex activation, player damage/absorption and actual pickup cues also have sounds. Enemy warning phases and future `attack_pose.impact` models produce a bounded warning cue. Paused/modal states suspend active voices and reject new cues.
 
+Sound OFF also rejects new voice admission, rather than running inaudible transients behind the muted Master bus. Event observation still consumes its presentation-only delivery flags, so unmuting does not replay stale shots.
+
 Ordinary headless gameplay checks do not allocate/play mixer voices; dedicated audio checks explicitly enable real AudioStreamPlayer playback. Actual audiovisual verification must use rendered native/Web recording and non-silent decoded audio, not headless test counts. The short procedural sound palette remains open to subjective refinement; this is not a claim of final audio mastering or music production.
 
 ## Crowd readability
