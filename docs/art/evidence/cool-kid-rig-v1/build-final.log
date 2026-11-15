@@ -1,0 +1,5 @@
+PASS: 16 source/RGBA hashes, transparency, parent order, pinned manifest, lossless import
+PASS: 16 source/RGBA hashes, transparency, parent order, pinned manifest, lossless import; PCK inclusion/exclusion
+PASS: 24 exact asset hashes, RGBA PNG geometry, 72 registered cells, six identities and unchanged kit IDs; exported resources complete, original masters/rejected derivative excluded
+Full atlas files: six RGBA sheets, 384 individually drawn cells, hashes/rectangles registered. Gameplay tests remain creator-owned.
+LOCAL REVIEW ONLY: python3 -m http.server 8765 --bind 127.0.0.1 --directory build/cool-kid-review

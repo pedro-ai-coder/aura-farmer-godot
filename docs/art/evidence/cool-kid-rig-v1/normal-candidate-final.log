@@ -1,0 +1,3 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+{"aura":26.3749999999997,"candidate":true,"cpu_wall_ms":3112.251,"frames":7521,"hash":"0983db4e4e922027247b93205e7ea704e8da78d346f031de1f6277b65af8b647","kills":93,"mode":"choice","scenario":"automated normal Cool Kid run; no injected enemies, stats or state","seconds":125.349999999994,"seed":468,"states":{"attack":1540,"flex-in":15,"flex-loop":244,"flex-out":15,"hurt":139,"idle":2536,"run":3032}}

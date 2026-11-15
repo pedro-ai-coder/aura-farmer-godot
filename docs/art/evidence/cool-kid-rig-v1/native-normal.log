@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+CAPTURE run {"frame":0,"rig_active":true,"time":0.0166666666666667}
+CAPTURE idle {"frame":154,"rig_active":true,"time":2.58333333333333}
+CAPTURE attack {"frame":1240,"rig_active":true,"time":20.6833333333334}
+CAPTURE hurt {"frame":5572,"rig_active":true,"time":92.8833333333293}
+CAPTURE flex-loop {"frame":5893,"rig_active":true,"time":98.233333333329}
+CAPTURE flex-out {"frame":6140,"rig_active":true,"time":102.349999999995}
+{"aura":26.3749999999997,"candidate":true,"captured":{"attack":{"frame":1240,"rig_active":true,"time":20.6833333333334},"flex-loop":{"frame":5893,"rig_active":true,"time":98.233333333329},"flex-out":{"frame":6140,"rig_active":true,"time":102.349999999995},"hurt":{"frame":5572,"rig_active":true,"time":92.8833333333293},"idle":{"frame":154,"rig_active":true,"time":2.58333333333333},"run":{"frame":0,"rig_active":true,"time":0.0166666666666667}},"cpu_wall_ms":335953.157,"frames":7521,"hash":"0983db4e4e922027247b93205e7ea704e8da78d346f031de1f6277b65af8b647","kills":93,"mode":"choice","scenario":"automated normal Cool Kid run; no injected enemies, stats or state","seconds":125.349999999994,"seed":468,"states":{"attack":1540,"flex-in":15,"flex-loop":244,"flex-out":15,"hurt":139,"idle":2536,"run":3032}}

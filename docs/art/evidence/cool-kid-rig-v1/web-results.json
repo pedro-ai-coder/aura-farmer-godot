@@ -1,0 +1,84 @@
+{
+  "console": [
+    "log: Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+    "log: OpenGL API OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium)) - Compatibility - Using Device: WebKit - WebKit WebGL",
+    "log: Build configuration: Emscripten 4.0.20, single-threaded, no GDExtension support.",
+    "log: COOL_KID_REVIEW: valid pinned candidate Art=5ba1bfb24624d5c84f7d9994ebb719986b43871c"
+  ],
+  "errors": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8765/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8765/index.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8765/platform.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8765/index.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8765/index.wasm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8765/index.pck",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8765/index.icon.png",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8765/b285052e-6c62-4d14-bfc4-9e314d0b0621",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8765/b285052e-6c62-4d14-bfc4-9e314d0b0621",
+      "status": 200
+    },
+    {
+      "url": "blob:http://127.0.0.1:8765/b285052e-6c62-4d14-bfc4-9e314d0b0621",
+      "status": 200
+    }
+  ],
+  "browser": "151.0.7922.173",
+  "timing": [
+    {
+      "name": "http://127.0.0.1:8765/platform.js",
+      "duration": 72.60000000009313,
+      "transferSize": 10659
+    },
+    {
+      "name": "http://127.0.0.1:8765/index.png",
+      "duration": 72.5,
+      "transferSize": 21743
+    },
+    {
+      "name": "http://127.0.0.1:8765/index.js",
+      "duration": 73.9000000001397,
+      "transferSize": 280115
+    },
+    {
+      "name": "http://127.0.0.1:8765/index.wasm",
+      "duration": 1460.7999999998137,
+      "transferSize": 39515054
+    },
+    {
+      "name": "http://127.0.0.1:8765/index.pck",
+      "duration": 2223.6999999999534,
+      "transferSize": 71361968
+    },
+    {
+      "name": "http://127.0.0.1:8765/index.icon.png",
+      "duration": 49.699999999953434,
+      "transferSize": 6000
+    }
+  ]
+}
