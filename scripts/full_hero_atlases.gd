@@ -11,6 +11,7 @@ var cache: Dictionary = {}
 ## A/B review switch: no new art, only registered source-rectangle composition.
 ## Expansion to other identities waits for the creator's pilot review.
 var cool_kid_locomotion_pilot := true
+const COOL_KID_WAIST_Y := 142.0
 
 func _init() -> void:
     var parsed = JSON.parse_string(FileAccess.get_file_as_string(MANIFEST))
@@ -96,15 +97,16 @@ func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: St
     var factor := float(entry["world_scale"])
     if cool_kid_locomotion_pilot and identity=="cool-kid" and bool(context.get("moving",false)) and (phase=="attack" or phase.begins_with("flex")):
         # Lower body retains the existing distance-driven gait. The two source
-        # rows share an anatomical waist at y=120 in the 192px packed cells.
+        # rows share an anatomical waist at y=142 in the 192px packed cells.
+        # This calibrated seam excludes hands embedded above the run trousers.
         # Front/back legs match the authored torso view; do not reflect CPK.
         # This pilot does not claim missing eight-direction attack art exists.
         var rear := sin(float(context.get("facing",0.0))) < -0.35
         var step := posmod(int(float(context.get("walk",0.0))*9.0),4)
         var lower_index := (24 if rear else 8)+step
         var lower: Array = entry["frames"][lower_index]["cell_rect"]
-        _draw_region(canvas,position,atlas,lower,pivot,factor,120.0,float(lower[3])-120.0)
-        _draw_region(canvas,position,atlas,rect,pivot,factor,0.0,120.0)
+        _draw_region(canvas,position,atlas,lower,pivot,factor,COOL_KID_WAIST_Y,float(lower[3])-COOL_KID_WAIST_Y)
+        _draw_region(canvas,position,atlas,rect,pivot,factor,0.0,COOL_KID_WAIST_Y)
         return true
     canvas.draw_set_transform(position)
     canvas.draw_texture_rect_region(atlas,

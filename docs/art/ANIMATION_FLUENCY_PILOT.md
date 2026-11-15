@@ -12,7 +12,7 @@ The creator instructed implementation of the report. Its delivery sequence requi
 
 ## Cool Kid composition pilot
 
-The original Cool Kid combines an existing upper action rectangle with front/back running legs at a registered packed-cell waist, y=120/192. Gait phase remains distance-driven, including while attacking or using Flex; combat events/timing retain their existing owner. The selector `cool_kid_locomotion_pilot` supports matched before/after captures.
+The original Cool Kid combines an existing upper action rectangle with front/back running legs at a registered packed-cell waist, y=142/192. Native inspection rejected an earlier y=120 seam because it retained hands from the run drawing; the calibrated seam excludes those hands. Gait phase remains distance-driven, including while attacking or using Flex; combat events/timing retain their existing owner. The selector `cool_kid_locomotion_pilot` supports matched before/after captures.
 
 This uses existing approved pixels without mirroring CPK, repainting, duplicated opacity blends, source changes or procedural inbetweens. It does not invent missing side-view attack art. It must be reviewed for waist seams, proportions, directional meaning and equipped-weapon attachments before roster expansion. The other five identities retain full-body playback pending that review.
 
