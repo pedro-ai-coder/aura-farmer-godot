@@ -18,7 +18,7 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 - `./frame_pacing/README.md` — documented frame pacing fixture and device-test limitations.
 - `./test_pixel_vixen_cpk_art_gate.gd` — targeted art integration regression.
 - `./test_approved_individual_hero_sheets.gd` — six full-atlas resource routes, 384 transparent cells, cached textures and exclusion of the rejected Pixel Vixen derivative; assertions updated for v2, not executed for this delivery at creator request.
-- `./frame_pacing/MAIN_BASELINE_PROVENANCE.md` — independently measured unchanged-main Windows simulation control; historical fixture is preserved rather than silently regenerated.
+- `./frame_pacing/MAIN_BASELINE_PROVENANCE.md` — unchanged-main Windows control and same-runner Linux PR-base control for the approved individual-sheet/full-atlas branches; the historical fixture is preserved rather than silently regenerated.
 
 ## Conventions
 
