@@ -20,6 +20,19 @@ var gesture_cursor:=0
 var impact_cursor:=0
 var emitted_contacts:=0
 var audio_feedback
+var cap_atlas: Texture2D
+var cap_region:=Rect2()
+## Local to the approved Sigma release cell 42. Text-free cap and its short
+## authored motion lines only; the main body stays outside this region.
+const CAP_REGION:=Rect2(126,41,44,32)
+
+func prepare_identity(hero_id: String, appearance: String, sheets) -> void:
+    cap_atlas=null;cap_region=Rect2()
+    if hero_id!="sigma" or appearance!="original":return
+    var entry: Dictionary=sheets.manifest[sheets.slug(hero_id,appearance)]
+    var cell: Array=entry["frames"][42]["cell_rect"]
+    cap_atlas=sheets.texture(hero_id,appearance,"atlas")
+    cap_region=Rect2(Vector2(float(cell[0]),float(cell[1]))+CAP_REGION.position,CAP_REGION.size)
 
 func _init() -> void:
     for i in range(MAX_GESTURES):gestures.append({"until":-1.0,"model":{},"id":"","queued":0.0,"level":1,"legendary":false,"shot":false})
@@ -137,7 +150,11 @@ func draw_projectiles(canvas: CanvasItem, shots: Array, clock: float, reduced: b
         canvas.draw_line(point-direction*(18.0 if cap else 24.0),point,Color(TEAL,0.55),2.0)
         if cap:
             var bank:=0.0 if reduced else sin(clock*22.0)*0.18
-            sprite(canvas,Art.TEXTURES["no-cap"],point,Vector2(34,34),bank+clampf(angle,-0.55,0.55),Color.WHITE,direction.x<0)
+            if cap_atlas!=null:
+                canvas.draw_set_transform(point,bank+clampf(angle,-0.55,0.55),Vector2(-1,1) if direction.x<0 else Vector2.ONE)
+                canvas.draw_texture_rect_region(cap_atlas,Rect2(-17,-12,34,24),cap_region)
+                canvas.draw_set_transform(Vector2.ZERO)
+            else:sprite(canvas,Art.TEXTURES["no-cap"],point,Vector2(34,34),bank+clampf(angle,-0.55,0.55),Color.WHITE,direction.x<0)
         else:sprite(canvas,Art.BOLT,point,Vector2(30,12),angle)
 
 func draw_ground(canvas: CanvasItem, pending: Array, clock: float, reduced: bool) -> void:

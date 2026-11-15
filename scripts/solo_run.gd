@@ -447,6 +447,7 @@ func start_run(index: int) -> void:
     # Cache candidate frame textures before simulation starts, never per frame.
     if not art.prepare_appearance(str(HEROES[index]["id"]),hero_appearance):
         return
+    if weapon_presentation!=null:weapon_presentation.prepare_identity(str(HEROES[index]["id"]),hero_appearance,art.hero_sheets)
     if passive_feedback!=null:passive_feedback.reset()
     if combat_audio!=null:combat_audio.reset()
     hero_index = index
@@ -2400,7 +2401,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
         draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
 static func enemy_bar_visible(enemy: Dictionary, clock: float) -> bool:
-    return bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) or float(enemy["hp"])<float(enemy["max"]) or clock-float(enemy.get("hurt_at",-INF))<0.65
+    return bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) or bool(enemy.get("elite",false)) or enemy["kind"]=="terminal" or float(enemy["hp"])<float(enemy["max"]) or clock-float(enemy.get("hurt_at",-INF))<0.65
 
 func hero_animation_state() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}

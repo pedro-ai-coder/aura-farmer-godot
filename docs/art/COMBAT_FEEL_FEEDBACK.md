@@ -12,8 +12,10 @@ Ordinary headless gameplay checks do not allocate/play mixer voices; dedicated a
 
 ## Crowd readability
 
-Boss bars stay visible. Ordinary full-health bars are omitted unless the enemy was recently hit; damaged enemies retain their bars. Only drawing changes: HP, healing, enemy selection, hazards, attack geometry, collision, damage, progression and RNG remain authoritative and unchanged. This reduces the repeated green-bar layer without hiding hostile telegraphs or boss state.
+Boss, elite and damageable terminal-objective bars stay visible. Ordinary full-health bars are omitted unless the enemy was recently hit; damaged enemies retain their bars. Only drawing changes: HP, healing, enemy selection, hazards, attack geometry, collision, damage, progression and RNG remain authoritative and unchanged. This reduces the repeated green-bar layer without hiding hostile telegraphs, priority targets or boss state.
 
 ## Remaining work
+
+Sigma's actual No Cap projectile now samples the text-free cap region from its already prepared approved v2 atlas, without allocating another texture or changing shot models/trajectories. Generic Vixen body playback skips the baked muzzle-flash drawings; muzzle effects belong to actual weapon-event overlays. The approved PNGs themselves are unchanged.
 
 Additional directional torso art, complete per-frame hand/muzzle registration, retouched inbetweens and secondary motion, full player/hostile silhouette hierarchy, sustained Web/mobile trials, human readability review and final artistic/audio acceptance remain explicit unfinished audit items. Source PNGs are unchanged; no missing authored directions are inferred from runtime code. Merge and publication remain separate decisions.

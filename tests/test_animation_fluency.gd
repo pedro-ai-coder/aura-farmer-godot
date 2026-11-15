@@ -15,6 +15,13 @@ func verify() -> void:
         expect(not art.textures.has(historical),"Historical atlas must not be eagerly resident: "+historical)
     expect(art.prepare_appearance("cool-kid","original"),"Current Cool Kid resources prepare")
     expect(art.texture("sigma-atlas")!=null,"Historical inspection remains available on demand")
+    var projectile=preload("res://scripts/weapon_presentation.gd").new()
+    expect(art.prepare_appearance("sigma","original"),"Sigma atlas prepares before projectile registration")
+    projectile.prepare_identity("sigma","original",art.hero_sheets)
+    expect(projectile.cap_atlas==art.hero_sheets.texture("sigma","original","atlas"),"Released cap reuses the selected approved atlas, with no new texture allocation")
+    expect(projectile.cap_region.size==Vector2(44,32),"Registered cap extraction has its actual source proportions")
+    projectile.prepare_identity("cool-kid","female",art.hero_sheets)
+    expect(projectile.cap_atlas==null,"Identity changes cannot retain an unrelated cap override")
     for hero_id in ["sigma","cool-kid","alpha"]:
         for appearance in ["original","female"]:
             var identity: String=Sheets.slug(hero_id,appearance)
@@ -56,6 +63,8 @@ func verify() -> void:
         expect(released in [43,47],"Released body drawing cannot include another airborne cap")
         context["attack"]=0.22
         expect(Sheets.frame_index("attack",context) in [40,44],"Actual windup retains the held-cap drawing")
+        context["appearance"]="female";context["attack"]=0.14
+        expect(Sheets.frame_index("attack",context) not in [41,45],"Vixen generic body playback cannot emit a baked flash for unrelated weapon events")
     game.queue_free()
     if failures.is_empty():print("PASS: six-identity action locomotion, lifecycle priority, resolved-motion state, single-cap body playback and lazy historical resource loading");quit()
     else:

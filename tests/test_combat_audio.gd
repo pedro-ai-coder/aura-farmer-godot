@@ -61,6 +61,8 @@ func verify() -> void:
     expect(Game.enemy_bar_visible({"kind":"npc","hp":9,"max":10},10),"Actual damage remains visible")
     expect(Game.enemy_bar_visible({"kind":"npc","hp":10,"max":10,"hurt_at":9.5},10),"Recent contact keeps its bar readable")
     expect(Game.enemy_bar_visible({"kind":"boss","hp":10,"max":10},10),"Boss health remains visible at full HP")
+    expect(Game.enemy_bar_visible({"kind":"npc","elite":true,"hp":10,"max":10},10),"Elite threats retain their full-health bar")
+    expect(Game.enemy_bar_visible({"kind":"terminal","hp":10,"max":10},10),"Damageable encounter objectives retain their health information")
     var muted:=AudioServer.is_bus_mute(0);var volume:=AudioServer.get_bus_volume_db(0)
     var preferences:=Game.new();preferences.profile={"settings":{"sound":false,"masterVolume":0.5}}
     preferences._apply_preferences()

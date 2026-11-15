@@ -11,8 +11,8 @@ var cache: Dictionary = {}
 ## Creator approved the Cool Kid composition and roster expansion on 2026-11-15.
 ## A/B switch: existing pixels only, no mirrored lettering or invented frames.
 var layered_locomotion_enabled := true
-## Calibrated below embedded hands/props. Heavy shields require a lower seam
-## so their silhouette remains owned by the action drawing, not running legs.
+## Per-identity cuts calibrated against native action sheets and embedded
+## hand/prop silhouettes, without changing any original source pixels.
 const WAIST_BY_IDENTITY := {"the-sigma":142.0,"cool-kid":142.0,"pixel-vixen":144.0,"byte-baddie":136.0,"alpha-chad":138.0,"block-queen":142.0}
 
 func _init() -> void:
@@ -76,6 +76,11 @@ static func frame_index(phase: String, context: Dictionary) -> int:
         # Only the real No Cap projectile may depict a released cap in flight.
         if str(context.get("hero_id",""))=="sigma" and str(context.get("appearance","original"))=="original":
             return (44 if rear else 40)+(0 if elapsed<0.055 else 3)
+        # Vixen muzzle flashes are owned by the real weapon event overlay,
+        # not pixels baked into a generic attack drawing for every weapon.
+        if str(context.get("hero_id",""))=="sigma" and str(context.get("appearance",""))=="female":
+            var step:=clampi(int(elapsed*4.0/0.22),0,3)
+            return (44 if rear else 40)+(2 if step==1 else step)
         return (44 if rear else 40)+clampi(int(elapsed*4.0/0.22),0,3)
     if phase == "run":
         var direction := posmod(roundi(float(context.get("heading",0.0))/(PI/4.0)),8)
