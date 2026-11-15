@@ -19,6 +19,7 @@ var grades: Dictionary={}
 var gesture_cursor:=0
 var impact_cursor:=0
 var emitted_contacts:=0
+var audio_feedback
 
 func _init() -> void:
     for i in range(MAX_GESTURES):gestures.append({"until":-1.0,"model":{},"id":"","queued":0.0,"level":1,"legendary":false,"shot":false})
@@ -33,6 +34,7 @@ func queued(model: Dictionary, clock: float, weapons: Array, shot: bool) -> void
     var event: Dictionary=gestures[gesture_cursor]
     gesture_cursor=(gesture_cursor+1)%MAX_GESTURES
     event["id"]=str(model["id"]);event["model"]=model;event["queued"]=clock
+    event["audio_started"]=false
     event["until"]=float(model["at"])+0.28;event["shot"]=shot
     event["level"]=1;event["legendary"]=false
     for weapon: Dictionary in weapons:
@@ -48,11 +50,16 @@ func synchronize(areas: Array, shots: Array, clock: float) -> void:
         var unresolved: bool=clock<float(model["at"]) if event["shot"] else not bool(model["impact_shown"])
         if unresolved and not (shots.has(model) if event["shot"] else areas.has(model)):
             event["until"]=-1.0;event["model"]={}
+            continue
+        if audio_feedback!=null and not bool(event.get("audio_started",false)) and clock>=float(model["at"]) and (event["shot"] or bool(model.get("impact_shown",false))):
+            event["audio_started"]=true
+            audio_feedback.fire(str(event["id"]),clock)
 
 func contact(id: String, enemy: Dictionary, point: Vector2, direction: Vector2, hp_before: float, shield_before: float, clock: float, weight: float=1.0) -> void:
     var hp_changed:=float(enemy["hp"])<hp_before
     var shield_changed:=float(enemy.get("shield",0.0))<shield_before
     if not hp_changed and not shield_changed:return
+    if audio_feedback!=null:audio_feedback.contact(not hp_changed,clock)
     var slot:=impact_cursor;var event: Dictionary=impacts[slot]
     var old_id: int=event["enemy"]
     if reactions.get(old_id,-1)==slot:reactions.erase(old_id)

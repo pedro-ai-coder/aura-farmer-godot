@@ -19,6 +19,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./profile_store.gd` — versioned profile and legacy-save compatibility.
 - `./approved_visuals.gd` — visual resource binding.
 - `./hero_animation.gd` — hero animation logic.
+- `./combat_audio.gd` — original short PCM SFX, eight bounded priority voices, actual emission/contact/Flex/threat observers, modal pause and existing Master settings; no gameplay RNG or external service. Ordinary headless checks disable playback; the focused audio test explicitly exercises the mixer.
 - `./full_hero_atlases.gd` — authored 64-frame atlas playback: eight movement directions, front/back idle/attack/hurt, Flex and defeat; replaces provisional pose transforms.
 - `./full_hero_atlases.gd` composes distance-driven legs during attack/Flex for all six identities, with per-identity seams after creator approval of the Cool Kid pilot/expansion (2026-11-15). Source pixels remain immutable. Released Sigma body poses exclude baked airborne caps; historical atlas inspection is lazy in `approved_visuals.gd`.
 - `./prepare_full_hero_atlases.py` / `./verify_full_hero_atlases.py` — transparent-frame packing and structural file checks; original generated sheets/prompts stay versioned.

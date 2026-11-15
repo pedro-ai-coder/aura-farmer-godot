@@ -59,6 +59,8 @@ const CAP_LEVELS := {"common": 4, "rare": 3, "epic": 2, "legendary": 1}
 const RARITY_POWER := {"common": 1.0, "rare": 1.5, "epic": 2.0, "legendary": 2.6}
 var performance_probe
 var weapon_presentation=WeaponPresentationScript.new()
+const CombatAudioScript=preload("res://scripts/combat_audio.gd")
+var combat_audio
 var passive_feedback=PassiveFeedbackScript.new()
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
@@ -191,6 +193,8 @@ var pickup_feedback: Array[Dictionary] = []
 func _ready() -> void:
     rng.seed = 451
     _load_profile()
+    combat_audio=CombatAudioScript.new();add_child(combat_audio)
+    if weapon_presentation!=null:weapon_presentation.audio_feedback=combat_audio
     WebPlatformScript.install()
     web_metrics = WebPlatformScript.metrics(mode)
     touch_device = touch_device or bool(web_metrics.get("touch",false))
@@ -331,6 +335,7 @@ func _style_button(button: Button) -> void:
     button.add_theme_font_size_override("font_size", 19)
 
 func _show_ui() -> void:
+    if combat_audio!=null:combat_audio.set_suspended(mode!="playing")
     var card_mode := mode == "choice" or mode == "replace" or mode == "legendary"
     confirm_button.visible = card_mode or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
     confirm_button.disabled = card_mode and selected_card_index < 0
@@ -436,14 +441,14 @@ func _update_text() -> void:
 func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
         return
-    # No female gameplay atlas is approved yet. Never present an original sprite
-    # as a female variant or start an unrenderable run via keyboard/Retry.
+    # Every selected identity requires its own renderable approved resources.
     if not HeroAppearanceScript.can_start(hero_appearance, str(HEROES[index]["id"])):
         return
     # Cache candidate frame textures before simulation starts, never per frame.
     if not art.prepare_appearance(str(HEROES[index]["id"]),hero_appearance):
         return
     if passive_feedback!=null:passive_feedback.reset()
+    if combat_audio!=null:combat_audio.reset()
     hero_index = index
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
@@ -540,6 +545,7 @@ func _process(delta: float) -> void:
     if performance_probe!=null:performance_probe.add(&"simulation",Time.get_ticks_usec()-perf_started)
     if passive_feedback!=null:passive_feedback.synchronize(self)
     if weapon_presentation!=null:weapon_presentation.synchronize(weapon_areas,player_shots,run_time)
+    if combat_audio!=null and mode=="playing":combat_audio.observe_enemies(enemies,run_time)
     if mode == "won": finish_visual_age += clampf(delta,0.0,0.1)
     for defeated: Dictionary in defeated_visuals.duplicate():
         if run_time-float(defeated["defeated_at"])+finish_visual_age >= 0.85: defeated_visuals.erase(defeated)
@@ -654,6 +660,7 @@ func _spawn_phase_crystal() -> void:
     _pickup_cue("phase", point, "WAVE %d / +%d XP CRYSTAL" % [wave, 40 * wave])
 
 func _combat_cue(kind: String, point: Vector2, direction: Vector2 = Vector2.RIGHT) -> void:
+    if combat_audio!=null and kind=="pickup":combat_audio.play_event("pickup",run_time)
     # Bounded visual state; active simulation time, no RNG or damage callbacks.
     if combat_feedback.size() >= 64: combat_feedback.pop_front()
     combat_feedback.append({"kind": kind, "pos": point, "dir": direction,
@@ -763,6 +770,9 @@ func _flex_facing() -> Vector2:
     return movement_direction.normalized() if movement_direction.length_squared() > 0.0 else Vector2.from_angle(visual_facing)
 
 func _signature_strike(radius: float, arc: float, power: float, limit: int = 2147483647, push: bool = false) -> bool:
+    if combat_audio!=null:
+        var sound_kind := "pulse" if bool(hero_state.get("flex_finisher",false)) else "heavy" if hero["id"]=="alpha" else "key"
+        combat_audio.play_event(sound_kind,run_time,3)
     var facing := _flex_facing()
     var targets: Array[Dictionary] = []
     for enemy: Dictionary in enemies:
@@ -969,6 +979,7 @@ func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: boo
             hero_state["flex_absorbed"] = float(hero_state.get("flex_absorbed",0.0))+consumed
             run_metrics["flex_absorbed"] = float(run_metrics["flex_absorbed"])+consumed
     hp = maxf(0.0, hp - incoming + absorbed)
+    if combat_audio!=null:combat_audio.play_event("hurt" if hp<old_hp else "metal",run_time,4)
     if passive_feedback!=null:passive_feedback.absorbed(self,absorbed)
     if hero["id"] == "alpha" and not source.is_empty() and not hazard and run_time >= float(hero_state["certified_ready"]):
         hero_state["certified"] = true
@@ -1978,6 +1989,7 @@ func _use_flex() -> void:
     if _passive_level("w-squad") > 0:
         passive_timers["w_squad_until"] = run_time + 6.0
     if passive_feedback!=null:passive_feedback.flex_started(self)
+    if combat_audio!=null:combat_audio.play_event("flex",run_time,4)
     if hero["id"] == "alpha":
         _grant_weapon_shield("giga-rampage", max_hp * 0.25, 6.0)
         _signature_strike(150.0,360.0,0.40*_base_power())
@@ -2382,9 +2394,13 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     if not art.draw_enemy(self, e, run_time, -1.0, profile["settings"]["reducedMotion"],reaction):
         draw_circle(e["pos"], radius, color)
     var sprite_height := maxf(52.0, radius * (2.6 if bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"]) else 3.1))
-    var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
-    draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
-    draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+    if enemy_bar_visible(e,run_time):
+        var bar_pos: Vector2 = e["pos"] + Vector2(-radius, -sprite_height - 10.0)
+        draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
+        draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
+
+static func enemy_bar_visible(enemy: Dictionary, clock: float) -> bool:
+    return bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) or float(enemy["hp"])<float(enemy["max"]) or clock-float(enemy.get("hurt_at",-INF))<0.65
 
 func hero_animation_state() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
