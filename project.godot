@@ -4,7 +4,7 @@ config_version=5
 
 [application]
 config/name="Aura Farmer"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/signal_breaker_garage.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/description="Godot project bootstrap — GDD-authoritative cross-platform game."
 
