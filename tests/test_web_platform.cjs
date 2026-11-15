@@ -17,8 +17,8 @@ function scenario({fullscreen=true,prefixed=false,deny=false,orientation=true,or
  vm.runInNewContext(code,context);
  return {context,document,canvas,events,elements,state:context.window.__auraPlatform,get calls(){return calls},get locks(){return locks},get reads(){return reads},deny(value){deny=value},gesture(type='pointerup',extra={}){return events.get(type).fn({type,target:canvas,pointerType:'touch',isTrusted:true,...extra})}};
 }
-for(const state of ['hover','focus-visible','active'])assert.ok(code.includes('.aura-secondary:'+state),'Full native-family pointer/focus states: '+state);
-assert.ok(code.includes('border-image-slice:16 64 24 64 fill'));
+for(const state of ['hover','focus-visible','active'])assert.ok(code.includes('#aura-fullscreen:'+state),'Full native-family pointer/focus states: '+state);
+assert.ok(code.includes('border-image:none'),'Neon fullscreen must not restore the legacy cream button art');
 (async()=>{
  let calls=[];let diagnostic=scenario({performanceReview:{enabled:true,rasterRatio:1,setMode:mode=>calls.push(mode)}});
  assert.equal(diagnostic.canvas.width,844);assert.equal(diagnostic.canvas.height,390);
@@ -48,7 +48,8 @@ assert.ok(code.includes('border-image-slice:16 64 24 64 fill'));
  s.state.setMode('options');assert.equal(s.elements.get('aura-fullscreen').hidden,true,'Settings launcher waits for an unclipped live Control row');
  s.state.setFullscreenBounds([80,120,320,48]);
  const launcher=s.elements.get('aura-fullscreen');assert.equal(launcher.hidden,false);assert.equal(launcher.style.left,'80px');assert.equal(launcher.style.top,'120px');
- assert.equal(launcher.style.width,'320px');assert.equal(launcher.className,'aura-secondary');assert.equal(launcher.style.borderStyle,'solid');assert.equal(launcher.style.borderWidth,'4px 16px 6px 16px');assert.equal(launcher.style.fontWeight,'600');
+ assert.equal(launcher.style.width,'320px');assert.equal(launcher.className,'aura-secondary');assert.equal(launcher.style.borderStyle,'solid');assert.equal(launcher.style.borderWidth,'2px');assert.equal(launcher.style.fontWeight,'800');
+ assert.equal(launcher.style.background,'#16141f');assert.equal(launcher.style.color,'#f7f8ef');
  const raster=s.canvas.width;const embeddedReads=s.reads;s.state.setFullscreenBounds(null);
  assert.equal(launcher.hidden,true,'Clipped settings rows never leave a floating click target');
  s.state.setFullscreenBounds([80,180,320,48]);assert.equal(launcher.style.top,'180px');assert.equal(s.canvas.width,raster);assert.equal(s.reads,embeddedReads,'Settings positioning does not resample layout or framebuffer density');

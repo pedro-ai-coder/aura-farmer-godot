@@ -10,6 +10,7 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 
 - `./GDD.md` — GDD V3 operational rules, until a newer version is explicitly approved.
 - `./GDD_DECISION_REGISTER.md` — recorded creator decisions.
+- `./art/NEON_MENU_JOURNEY.md` � uploaded-video audit, eleven-menu Neon continuation, native review matrix, existing art/gameplay boundaries and test commands.
 - `./art/CPK_DESIGN_SYSTEM.md` — Canon V4/active-brand references and shared native presentation foundation; application remains a review candidate.
 - `./art/SIGNAL_BREAKER_GARAGE.md` — real six-identity Garage/Solo transition, source recovery boundary, separate new environment candidate and executed local input/layout checks.
 - `./art/CPK_BRANDING_AUDIT.md` — changed visible surfaces versus retained native/browser persistence identifiers and historical records; future website integration boundary.

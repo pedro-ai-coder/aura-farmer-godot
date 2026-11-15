@@ -114,7 +114,7 @@ func verify() -> void:
         var controls: Array=[ui.volume_label,ui.volume_slider,game.sound_button,game.motion_button,aux.fullscreen_button,aux.fullscreen_status]
         for i in range(controls.size()):
             for j in range(i+1,controls.size()):expect(not controls[i].get_rect().intersects(controls[j].get_rect()),"Settings controls have distinct content rectangles")
-        expect(aux.fullscreen_button.get_node("ClashButtonFeedback").art_family==game.sound_button.get_node("ClashButtonFeedback").art_family,"Native Fullscreen uses the same secondary family")
+        expect(aux.fullscreen_button.theme_type_variation==game.sound_button.theme_type_variation and aux.fullscreen_button.get_node_or_null("NeonButtonFeedback")!=null and game.sound_button.get_node_or_null("NeonButtonFeedback")!=null,"Native Fullscreen uses the same Neon secondary family and feedback")
         expect(aux.fullscreen_status.get_rect().end.y<=ui.body_content.size.y+1,"Fullscreen status remains accessible within content")
         await click(ui.back_button);expect(game.mode=="paused","Settings Back preserves pause")
         rows.append({"viewport":str(extent),"safe_view":str(skin.view),"boss_bounds":str(bounds),"settings_height":aux.screen_panel.size.y,"sampling":"20 Hz actor checks; live hostile boundaries; permanent HUD remains unchanged"})

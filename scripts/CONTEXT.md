@@ -9,6 +9,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 ## Key files
 
 - `./solo_run.gd` — active solo-run controller and module integration point.
+- `./neon_menu_backdrop.gd` with `clean_cut_skin.gd` / `clean_cut_secondary.gd` � eleven secondary/choice menus reuse Neon tokens and native input owners; bounded entry rails, reduced motion, fitted actions, dark save editor and cached responsive layouts. Gameplay HUD art and simulation remain separate.
 - `./cpk_design_system.gd` — shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.
 - `./signal_breaker_garage.gd` / `./garage_environment.gd` — separate application entrance, six approved identities, real Solo/Settings handoff, layered candidate environment; retains the existing Solo controller as gameplay/save authority.
 - `./game_rules.gd` — foundational limits; not the full approved gameplay catalog.
