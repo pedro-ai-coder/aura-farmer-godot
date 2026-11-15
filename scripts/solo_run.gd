@@ -2385,17 +2385,25 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0, 5.0)), Color(0.13, 0.11, 0.13))
     draw_rect(Rect2(bar_pos, Vector2(radius * 2.0 * maxf(0.0, float(e["hp"]) / float(e["max"])), 5.0)), Color(0.63, 0.92, 0.44))
 
-func hero_pose() -> Dictionary:
+func hero_animation_state() -> Dictionary:
     var state: Dictionary={"time":run_time,"walk":visual_walk,"defeat":visual_defeat,"lost":mode == "lost","hurt":hurt_timer,"flex":flex_time,"flex_age":flex_age,"attack":attack_flash,"heading":visual_heading,"moving":visual_moving,"facing":visual_facing}
     if weapon_presentation!=null:weapon_presentation.decorate_pose(state,run_time)
+    return state
+
+func _pose_from_animation_state(state: Dictionary) -> Dictionary:
     if hero_appearance == "female":
         return FemaleHeroAnimationScript.pose(str(hero["id"]),state)
     return HeroAnimationScript.pose(str(hero["id"]), state)
 
+func hero_pose() -> Dictionary:
+    return _pose_from_animation_state(hero_animation_state())
+
 func _draw_hero_actor() -> void:
     _draw_contact_shadow(player_pos, 19.0)
-    var pose:=hero_pose()
-    var context := {"appearance":hero_appearance,"time":run_time,"walk":visual_walk,"heading":visual_heading,"attack":attack_flash,"defeat":visual_defeat,"flex_age":flex_age,"reduced_motion":bool(profile["settings"]["reducedMotion"])}
+    var context := hero_animation_state()
+    var pose := _pose_from_animation_state(context)
+    context["appearance"] = hero_appearance
+    context["reduced_motion"] = bool(profile["settings"]["reducedMotion"])
     if not art.draw_hero_pose(self, player_pos, str(hero["id"]), pose, context):
         draw_circle(player_pos, 16.0, hero["color"])
         draw_arc(player_pos, 18.0, 0.0, TAU, 32, Color(0.06, 0.09, 0.15), 3.0)

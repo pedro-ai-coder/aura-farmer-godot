@@ -15,7 +15,7 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 - `./test_performance_web.cjs` — Web diagnostic assertions.
 - `./frame_pacing/README.md` — documented frame pacing fixture and device-test limitations.
 - `./test_pixel_vixen_cpk_art_gate.gd` — targeted art integration regression.
-- `./test_approved_individual_hero_sheets.gd` — all six active resource routes, transparent cells, retained textures and exclusion of the rejected Pixel Vixen derivative.
+- `./test_approved_individual_hero_sheets.gd` — six full-atlas resource routes, 384 transparent cells, cached textures and exclusion of the rejected Pixel Vixen derivative; assertions updated for v2, not executed for this delivery at creator request.
 - `./frame_pacing/MAIN_BASELINE_PROVENANCE.md` — independently measured unchanged-main Windows simulation control; historical fixture is preserved rather than silently regenerated.
 
 ## Conventions

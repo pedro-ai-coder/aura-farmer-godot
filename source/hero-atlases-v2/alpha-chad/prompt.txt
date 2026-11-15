@@ -1,0 +1,12 @@
+Create complete production sprite atlas ALPHA CHAD. Preserve approved reference: massively muscular blond grinning man, cream tank with small CPK chest badge, black side panels orange seams, wrist wraps, black gloves, baggy black cargo trousers orange pockets/violet cuffs, cream/black chunky sneakers. LEFT arm round shield with cream exterior orange/violet rim and CPK exterior emblem; RIGHT gloved fist. Shield inner handle/back face has no logo. Maintain anatomical shield arm across directions. No hood, armor, guns or new powers. Attack is powerful right-fist strike while left shield braces. Flex gather/raise/braced slam, then recover. Exactly 8 columns x 8 rows, 64 separate full-body newly drawn animation frames, equal imaginary square cells on TRUE TRANSPARENT alpha background. No text, labels, lines, shadows, decorations or background. Consistent drawing scale and foot baseline, all props contained in each cell with transparent gutters. Thick black contours, clean cel shading, compact chibi game art matching reference. Never mirror logos or swap anatomical handedness.
+Strict row order, left to right:
+Row1: RUN E four alternating contact/passing strides, then RUN SE four strides.
+Row2: RUN S four strides, then RUN SW four strides.
+Row3: RUN W four strides, then RUN NW four strides.
+Row4: RUN N four genuinely BACK VIEW strides, then RUN NE four rear three-quarter strides.
+Row5: IDLE FRONT four subtly distinct breathing/weight shift frames, then IDLE BACK four frames.
+Row6: ATTACK FRONT windup/execution/followthrough/recovery four frames, then ATTACK BACK same four phases.
+Row7: HURT FRONT recoil/recovery two frames; HURT BACK recoil/recovery two frames; FLEX WINDUP gather/brace two frames; FLEX EXECUTION two frames.
+Row8: FLEX RECOVERY two frames; DEFEAT six distinct anatomical poses stagger/knees buckle/fall/land/settle/final prone rest.
+Every cell unique. RUN legs must visibly alternate with opposite arm swing. Rear poses show actual back, not front face. Do not rotate standing cutouts to fake defeat. No repeated standing poses replacing action. No colored stray pixels, particles or effects outside body. All 64 frames mandatory.
+Reference1 is the approved CHARACTER IDENTITY. Reference2 Sigma is GRID AND ANIMATION SEQUENCE reference ONLY. Do not copy Sigma clothes, body or props.

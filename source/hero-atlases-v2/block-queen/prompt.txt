@@ -1,0 +1,13 @@
+Create complete sprite atlas BLOCK QUEEN. Approved identity in image1: athletic dark brown skinned woman, high tied dark dreadlocks orange headband/tie, gold hoops, cream cropped tank, baggy black cargo trousers orange/violet details yellow belt strap, chunky cream/black/orange shoes. Large circular armored RIGHT gauntlet orange/violet. Long rectangular LEFT shield cream exterior with orange edges violet corners and CPK emblem, dark inside with handle and no logo. Consistent anatomical handedness. Compact chibi thick black outlines clean cel shading. Attack right-gauntlet punch bracing shield; Flex brace/raise/slam/recover without new powers.
+Image1 is identity ONLY. Image2 Sigma is required GRID AND ANIMATION ORDER ONLY, never copy his clothing or props.
+EXACTLY EIGHT COLUMNS AND EIGHT ROWS, 64 separate full body sprites. Equal imaginary square cells, true TRANSPARENT alpha background. Absolutely NO TEXT, labels, titles, gridlines, borders, table, headers, effects, shadows or backdrop. NOT A CONCEPT BOARD. All limbs/hair/props within each cell, generous transparent gutters. Same drawing scale and foot baseline.
+Strict cell order left to right:
+ROW1: four RUN EAST screen-right frames contact-left/passing-left/contact-right/passing-right, then four RUN SOUTHEAST frames same alternating strides.
+ROW2: four RUN SOUTH front-facing strides, then four RUN SOUTHWEST strides.
+ROW3: four RUN WEST screen-left strides, then four RUN NORTHWEST rear-three-quarter strides.
+ROW4: four RUN NORTH completely BACK VIEW strides, then four RUN NORTHEAST rear-three-quarter strides.
+ROW5: four IDLE FRONT subtle distinct breathing weight shifts, then four IDLE BACK drawings.
+ROW6: four ATTACK FRONT windup/execution/followthrough/recovery, then four ATTACK BACK same action phases.
+ROW7: two HURT FRONT recoil/recover, two HURT BACK recoil/recover, two FLEX WINDUP gather/brace, two FLEX EXECUTION strike.
+ROW8: two FLEX RECOVERY settle/ready, then six DEFEAT stagger/knees buckle/fall/land/settle/final prone rest.
+Real new anatomical poses for every frame. Alternating run legs and opposite arm swing mandatory, no adjacent duplicates. Back views show actual back. Defeat is actual collapsing anatomy, not rotated standing cutouts. Do not mirror lettering or swap shield arm. All64frames mandatory. NO HEADINGS OR LABELS: only 8x8 transparent sprites as in image2.

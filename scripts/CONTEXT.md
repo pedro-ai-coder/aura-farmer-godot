@@ -19,6 +19,8 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./profile_store.gd` — versioned profile and legacy-save compatibility.
 - `./approved_visuals.gd` — visual resource binding.
 - `./hero_animation.gd` — hero animation logic.
+- `./full_hero_atlases.gd` — authored 64-frame atlas playback: eight movement directions, front/back idle/attack/hurt, Flex and defeat; replaces provisional pose transforms.
+- `./prepare_full_hero_atlases.py` / `./verify_full_hero_atlases.py` — transparent-frame packing and structural file checks; original generated sheets/prompts stay versioned.
 - `./approved_hero_sheets.gd` — cached playback of the six creator-approved individual-sheet identities; presentation only, no reflected CPK lettering.
 - `./import_approved_hero_sheets.py` / `./verify_approved_hero_sheets.py` — deterministic original-pixel extraction and source/export hash gates.
 - `./web_platform.gd` — Godot-facing browser adapter.

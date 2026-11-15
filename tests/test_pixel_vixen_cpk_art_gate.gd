@@ -1,7 +1,7 @@
 extends SceneTree
 ## The former CPK v1 atlas was rejected. Check the accepted replacement route.
 const Visuals = preload("res://scripts/approved_visuals.gd")
-const Sheets = preload("res://scripts/approved_hero_sheets.gd")
+const Sheets = preload("res://scripts/full_hero_atlases.gd")
 func _initialize() -> void:
     var visuals := Visuals.new()
     var atlas: Texture2D = visuals.hero_sheets.texture("sigma","female","atlas")

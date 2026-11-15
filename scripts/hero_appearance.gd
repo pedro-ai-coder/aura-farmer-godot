@@ -47,4 +47,4 @@ static func can_start(appearance: String, hero_id: String = "sigma") -> bool:
     return true
 
 static func production_path(hero_id: String, appearance: String, usage: String) -> String:
-    return preload("res://scripts/approved_hero_sheets.gd").path(hero_id,appearance,usage)
+    return preload("res://scripts/full_hero_atlases.gd").path(hero_id,appearance,usage)
