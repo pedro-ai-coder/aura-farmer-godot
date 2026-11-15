@@ -39,6 +39,7 @@ func verify() -> void:
                 var extent:=button.get_global_rect()
                 expect(rect.grow(1).encloses(extent),"Garage button in safe view %s / %s / %s" % [dimensions,selected,button.name])
                 expect(extent.size.y>=48,"Touch target at least 48 logical units")
+                expect(extent.size.y*root.get_final_transform().get_scale().y>=47.5,"Touch target at least 48 rendered pixels at supported viewport scale")
                 for j in range(i):expect(not extent.intersects(buttons[j].get_global_rect()),"Separate hitboxes %s / %s" % [button.name,buttons[j].name])
             if captures.size()>0 and dimensions in [Vector2i(1280,720),Vector2i(915,412),Vector2i(390,844)] and DisplayServer.get_name()!="headless":
                 await RenderingServer.frame_post_draw

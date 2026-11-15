@@ -128,26 +128,26 @@ func _layout() -> void:
     var logo_width: float=minf(620.0,view.x*.55) if not portrait else view.x-48
     _place(sign,Rect2((view.x-logo_width)*.5,62 if not compact and not portrait else 18,logo_width,100 if not compact else 70))
     _place(title,Rect2(24,18,view.x*.28,36));title.visible=not portrait
-    _place(settings_button,Rect2(view.x-154,22,130,48))
+    _place(settings_button,Rect2(view.x-178,22,154,64))
     if portrait:
-        _place(settings_button,Rect2(view.x-174,126,154,48))
+        _place(settings_button,Rect2(view.x-174,126,154,64))
         _place(hero_art,Rect2(30,view.y*.47,view.x-60,view.y*.34))
         _place(info,Rect2(20,190,view.x-40,190));info.visible=not selection_open
         hero_grid.columns=2
         grid_bounds=Rect2(20,200,view.x-40,minf(480,view.y-365))
-        _place(select_button,Rect2(20,view.y-132,view.x-40,48));_place(play_button,Rect2(20,view.y-72,view.x-40,52))
+        _place(select_button,Rect2(20,view.y-164,view.x-40,64));_place(play_button,Rect2(20,view.y-84,view.x-40,64))
     elif compact:
         _place(hero_art,Rect2(24,100,view.x*.35,view.y-175))
         _place(info,Rect2(view.x*.42,104,view.x*.55,view.y-190));info.visible=not selection_open
         hero_grid.columns=3
         grid_bounds=Rect2(view.x*.42,104,view.x*.55,view.y-190)
-        _place(select_button,Rect2(24,view.y-72,210,52));_place(play_button,Rect2(view.x-254,view.y-72,230,52))
+        _place(select_button,Rect2(24,view.y-80,210,64));_place(play_button,Rect2(view.x-254,view.y-80,230,64))
     else:
         _place(hero_art,Rect2(view.x*.28 if selection_open else view.x*.37,230,view.x*.35,view.y-280))
         _place(info,Rect2(36,240,view.x*.28,300));info.visible=true
         hero_grid.columns=2
         grid_bounds=Rect2(view.x*.64,230,view.x*.33,view.y-350)
-        _place(select_button,Rect2(36,view.y-92,260,60));_place(play_button,Rect2(view.x-316,view.y-92,280,60))
+        _place(select_button,Rect2(36,view.y-92,260,64));_place(play_button,Rect2(view.x-316,view.y-92,280,64))
     hero_grid.visible=selection_open
     select_button.text="BACK" if selection_open else "HERO SELECT"
     hero_art.visible=not(portrait and selection_open)
@@ -165,7 +165,7 @@ func _layout() -> void:
         var image: TextureRect=card.get_child(0)
         _place(image,Rect2(8,4,card_width-16,card_height-30))
         _place(hero_card_names[i],Rect2(4,card_height-26,card_width-8,22))
-        hero_card_names[i].add_theme_font_size_override("font_size",13 if card_width<150 else 14)
+        hero_card_names[i].add_theme_font_size_override("font_size",16)
     _place(hero_grid,grid_bounds)
     environment.hero_feet=hero_art.position+Vector2(hero_art.size.x*.5,hero_art.size.y-4) if hero_art.visible else Vector2(-1000,-1000)
     environment.queue_redraw()
