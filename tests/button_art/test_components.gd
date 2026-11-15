@@ -34,10 +34,10 @@ func verify() -> void:
         expect(game.mode=="playing","Real pointer activates Play once")
         game._toggle_pause();game._show_ui();skin.refresh()
         await process_frame
-        expect(game.presentation.secondary.quit_run.get_node("ClashButtonFeedback").art_family=="destructive","Quit navigation is explicitly destructive")
+        expect(game.presentation.secondary.quit_run.get_node_or_null("NeonButtonFeedback")!=null and game.presentation.secondary.quit_run.text=="QUIT RUN","Quit navigation retains its explicit destructive label and Neon feedback")
         await click(game.presentation.secondary.quit_run)
         expect(game.mode=="confirm_exit","Quit retains confirmation")
-        expect(game.confirm_button.get_node("ClashButtonFeedback").art_family=="destructive","Final confirmation retains destructive family")
+        expect(game.confirm_button.get_theme_stylebox("normal").border_color==preload("res://scripts/neon_arcade.gd").MAGENTA,"Final confirmation retains its destructive magenta outline")
         await click(game.restart_button)
         expect(game.mode=="paused","Stay preserves the current run")
         await click(game.presentation.secondary.quit_run)

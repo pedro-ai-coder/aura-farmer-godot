@@ -1,5 +1,6 @@
 extends Control
 ## Secondary journeys use the same approved sources and existing signal-bound controls.
+const Neon=preload("res://scripts/neon_arcade.gd")
 const MODES = ["paused","build","options","confirm_exit","profile_import","profile_export","won","lost"]
 var skin
 var game
@@ -33,18 +34,22 @@ func install(owner_skin) -> void:
     pause_dim=ColorRect.new();pause_dim.color=Color(0.025,0.045,0.075,0.68)
     pause_dim.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(pause_dim)
     pause_panel=Panel.new();pause_panel.mouse_filter=Control.MOUSE_FILTER_IGNORE
-    pause_panel.add_theme_stylebox_override("panel",skin.Style.box(skin.Style.PAPER,skin.Style.INK,4,3))
+    var pause_style:=Neon.box(Neon.PANEL,Neon.MAGENTA,2)
+    pause_style.skew=Vector2(-0.025,0)
+    pause_panel.add_theme_stylebox_override("panel",pause_style)
     add_child(pause_panel)
-    pause_accent=ColorRect.new();pause_accent.color=skin.Style.GOLD;pause_accent.mouse_filter=Control.MOUSE_FILTER_IGNORE
+    pause_accent=ColorRect.new();pause_accent.color=Neon.LIME;pause_accent.mouse_filter=Control.MOUSE_FILTER_IGNORE
     pause_panel.add_child(pause_accent)
     screen_panel=Panel.new();screen_panel.mouse_filter=Control.MOUSE_FILTER_IGNORE
-    screen_panel.add_theme_stylebox_override("panel",skin.Style.box(skin.Style.PAPER,skin.Style.INK,3,3))
+    var screen_style:=Neon.box(Neon.PANEL,Neon.MAGENTA,2)
+    screen_style.skew=Vector2(-0.025,0)
+    screen_panel.add_theme_stylebox_override("panel",screen_style)
     add_child(screen_panel)
-    caption=skin.label(self,18,skin.Style.INK)
-    caption.add_theme_stylebox_override("normal",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
+    caption=skin.label(self,18,Neon.WHITE)
+    caption.add_theme_stylebox_override("normal",Neon.box(Color.TRANSPARENT,Color.TRANSPARENT,0))
     result_portrait=skin.image(self)
     result_scroll=ScrollContainer.new()
-    result_scroll.add_theme_stylebox_override("panel",skin.Style.box(skin.Style.PAPER,skin.Style.PAPER,0,0))
+    result_scroll.add_theme_stylebox_override("panel",Neon.box(Color.TRANSPARENT,Color.TRANSPARENT,0))
     result_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
     add_child(result_scroll)
     result_rows=VBoxContainer.new()
@@ -82,12 +87,12 @@ func install(owner_skin) -> void:
     primary_stats.move_child(stat_parts[3]["panel"],1)
     primary_stats.move_child(stat_parts[2]["panel"],2)
     primary_stats.move_child(stat_parts[6]["panel"],3)
-    skin.Type.apply(game.profile_text,"body_s",false,skin.Style.PAPER)
+    skin.Type.apply(game.profile_text,"body_s",false,Neon.WHITE)
     for state in ["normal","read_only"]:
-        game.profile_text.add_theme_stylebox_override(state,skin.Style.box(skin.Style.DEEP,skin.Style.INK,0,0))
-    game.profile_text.add_theme_color_override("font_readonly_color",skin.Style.PAPER)
-    game.profile_text.add_theme_color_override("caret_color",skin.Style.PAPER)
-    game.profile_text.add_theme_color_override("selection_color",skin.Style.BLUE)
+        game.profile_text.add_theme_stylebox_override(state,skin.Style.box(Neon.PANEL,Neon.WHITE,0,0))
+    game.profile_text.add_theme_color_override("font_readonly_color",Neon.WHITE)
+    game.profile_text.add_theme_color_override("caret_color",Neon.WHITE)
+    game.profile_text.add_theme_color_override("selection_color",Neon.MUTED)
     skin.Type.apply(ui.volume_label,"body_m")
     for button: Button in [ui.secondary.resume,ui.secondary.build,ui.secondary.settings,ui.secondary.quit_run,ui.back_button,game.retry_button]:
         skin.adopt(button,self)
@@ -97,8 +102,8 @@ func install(owner_skin) -> void:
         parts["panel"].move_child(frame,0)
         build_frames.append(frame)
         var rim:=ColorRect.new();rim.mouse_filter=Control.MOUSE_FILTER_IGNORE;parts["panel"].add_child(rim)
-        var details: Label=skin.label(parts["panel"],16,skin.Style.INK)
-        var status: Label=skin.label(parts["panel"],13,skin.Style.BLUE)
+        var details: Label=skin.label(parts["panel"],16,Neon.WHITE)
+        var status: Label=skin.label(parts["panel"],13,Neon.MUTED)
         build_parts.append({"rim":rim,"details":details,"status":status})
     ui.body_scroll.reparent(self)
     game.profile_text.reparent(self)
@@ -106,14 +111,13 @@ func install(owner_skin) -> void:
         skin.native_children[button]=button.get_children()
     fullscreen_button=Button.new();fullscreen_button.text="FULLSCREEN";fullscreen_button.custom_minimum_size=Vector2.ZERO
     ui.body_content.add_child(fullscreen_button);skin.native_children[fullscreen_button]=[];fullscreen_button.pressed.connect(_native_fullscreen)
-    fullscreen_status=skin.label(ui.body_content,16,skin.Style.INK)
+    fullscreen_status=skin.label(ui.body_content,16,Neon.WHITE)
     ui.body_scroll.get_v_scroll_bar().value_changed.connect(func(_value):_sync_fullscreen_bounds())
 
 func panel_style(id: String) -> StyleBox:
     if not card_styles.has(id):
         var light: bool=id!="secondary"
-        var edge: Color=skin.Style.INK if light else skin.Style.BLUE
-        card_styles[id]=skin.Style.box(skin.Style.CARD if light else skin.Style.DEEP,edge,3,0)
+        card_styles[id]=Neon.box(Neon.PANEL,Neon.MAGENTA if light else Neon.MUTED,1)
     return card_styles[id]
 
 func action(button: Button, rect: Rect2, primary: bool=false) -> void:
@@ -133,7 +137,7 @@ func layout() -> void:
     fullscreen_button.visible=false;fullscreen_status.visible=false
     pause_dim.visible=mode in ["paused","build","options","won","lost"]
     pause_panel.visible=mode=="paused"
-    pause_dim.color=Color(0.025,0.045,0.075,0.68) if mode=="paused" else Color(skin.Style.DEEP,0.94)
+    pause_dim.color=Color(0.025,0.045,0.075,0.68) if mode=="paused" else Color(Neon.INK,0.20)
     if pause_dim.visible:
         skin.background.hide()
         skin.place(pause_dim,Rect2(-skin.shift,ui.full_view))
@@ -149,10 +153,11 @@ func layout() -> void:
     result_portrait.visible=mode in ["won","lost"]
     result_scroll.visible=result_portrait.visible
     caption.visible=true
-    skin.Type.apply(caption,"body_m",false,skin.Style.INK)
+    skin.Type.apply(caption,"body_m",false,Neon.WHITE)
     caption.text=ui.subtitle.text
     var titles := {"paused":"TAKE A BREATHER","build":"YOUR BUILD","options":"YOUR SETTINGS","confirm_exit":"LEAVE THIS RUN?","profile_import":"IMPORT YOUR SAVE","profile_export":"YOUR SAVE DATA","won":"VICTORY!","lost":"RUN OVER"}
     skin.headline(titles.get(mode,""))
+    skin.headline_accent.color=Neon.MAGENTA
     skin.place(caption,Rect2(28,94,view.x-56,68))
     var half: float=(view.x-64)/2
     var footer: float=view.y-78
@@ -162,7 +167,7 @@ func layout() -> void:
         var panel_size:=Vector2(minf(720 if two_columns else 600,view.x-32),304 if two_columns else 476)
         var panel:=Rect2((view-panel_size)*0.5,panel_size)
         skin.place(pause_panel,panel);skin.place(pause_accent,Rect2(24,3,112,4))
-        skin.Type.apply(skin.heading,"display_l",view.x<700,skin.Style.INK)
+        skin.Type.apply(skin.heading,"display_l",view.x<700,Neon.WHITE)
         skin.place(skin.heading,Rect2(panel.position+Vector2(24,18),Vector2(panel_size.x-48,58)))
         skin.fit_line(skin.heading,24)
         skin.headline_accent.hide()
@@ -179,13 +184,21 @@ func layout() -> void:
         settings_layout()
     elif mode in ["profile_import","profile_export"]:
         skin.place(game.profile_text,Rect2(24,174,view.x-48,maxf(64,view.y-272)))
+        for state in ["normal","read_only","focus"]:
+            var field:=Neon.box(Neon.PANEL,Neon.MUTED,1)
+            field.skew=Vector2.ZERO
+            game.profile_text.add_theme_stylebox_override(state,field)
+        game.profile_text.add_theme_color_override("font_color",Neon.WHITE)
+        game.profile_text.add_theme_color_override("font_readonly_color",Neon.WHITE)
+        game.profile_text.add_theme_color_override("selection_color",Color("643584"))
         action(game.restart_button,Rect2(24,footer,half,64))
         action(game.confirm_button,Rect2(40+half,footer,half,64),true)
     elif mode=="confirm_exit":
         caption.text="This unfinished run will not count towards your profile.\nYour settings and completed results remain saved."
         game.restart_button.text="STAY";game.confirm_button.text="CONFIRM QUIT"
-        action(game.restart_button,Rect2(24,footer,half,64))
-        action(game.confirm_button,Rect2(40+half,footer,half,64),true)
+        action(game.restart_button,Rect2(24,footer,half,64),true)
+        action(game.confirm_button,Rect2(40+half,footer,half,64))
+        game.confirm_button.add_theme_stylebox_override("normal",Neon.box(Neon.PANEL,Neon.MAGENTA,2))
     elif mode in ["won","lost"]:
         caption.text=ui.secondary.result_caption.text
         result.text=ui.secondary.result_stats.text
@@ -197,12 +210,12 @@ func layout() -> void:
 
 func screen_header(title: String, subtitle: String) -> void:
     skin.headline(title)
-    skin.Type.apply(skin.heading,"display_l",skin.view.x<700,skin.Style.PAPER)
+    skin.Type.apply(skin.heading,"display_l",skin.view.x<700,Neon.WHITE)
     skin.place(skin.heading,Rect2(28,22,skin.view.x-224,58));skin.fit_line(skin.heading,30)
     skin.place(skin.headline_accent,Rect2(30,82,116,3))
     caption.remove_theme_stylebox_override("normal")
     caption.text=subtitle
-    skin.Type.apply(caption,"body_m",false,skin.Style.PAPER)
+    skin.Type.apply(caption,"body_m",false,Neon.WHITE)
     skin.place(caption,Rect2(30,88,skin.view.x-60,30))
     action(ui.back_button,Rect2(skin.view.x-176,22,148,64));ui.back_button.text="BACK"
 
@@ -221,7 +234,7 @@ func build_layout() -> void:
     var weapon_rows: int=ceili(3.0/columns)
     var passive_y: float=36+weapon_rows*row_height+(weapon_rows-1)*gap+18
     for i in range(2):
-        skin.Type.apply(ui.equipment_headings[i],"section_header",false,skin.Style.PAPER)
+        skin.Type.apply(ui.equipment_headings[i],"section_header",false,Neon.WHITE)
         ui.equipment_headings[i].text="WEAPONS — 3 SLOTS" if i==0 else "PASSIVES — 5 SLOTS"
         skin.place(ui.equipment_headings[i],Rect2(0,0 if i==0 else passive_y,content_width,30))
     for i in range(8):
@@ -235,12 +248,12 @@ func build_layout() -> void:
         skin.place(parts["panel"],Rect2((index%columns)*(tile_width+gap),top+int(index/columns)*(row_height+gap),tile_width,row_height))
         parts["panel"].add_theme_stylebox_override("panel",panel_style("equipment"))
         parts["panel"].mouse_filter=Control.MOUSE_FILTER_PASS
-        build_frames[i].texture=skin.art.texture("equipment/"+("weapon" if weapon else "passive")+("-filled" if not item.is_empty() else "-empty"))
+        build_frames[i].hide() # Native Neon plate replaces the legacy illustrated frame.
         skin.place(build_frames[i],Rect2(10,26,62,62));skin.place(parts["image"],Rect2(20,36,42,42))
-        skin.Type.apply(parts["label"],"card_title",false,skin.Style.INK)
+        skin.Type.apply(parts["label"],"card_title",false,Neon.WHITE)
         parts["label"].add_theme_font_size_override("font_size",20)
         skin.place(parts["label"],Rect2(100,9,tile_width-114,52))
-        skin.Type.apply(parts["meta"],"hud_secondary",false,skin.Style.BLUE)
+        skin.Type.apply(parts["meta"],"hud_secondary",false,Neon.MUTED)
         parts["meta"].add_theme_font_size_override("font_size",16)
         parts["meta"].show();skin.place(parts["meta"],Rect2(100,64,tile_width-114,24))
         var description: String="Available weapon position." if weapon else "Available passive position."
@@ -258,12 +271,12 @@ func build_layout() -> void:
         if not item.is_empty() and not weapon:
             var live: Dictionary=game.PassiveFeedbackScript.slot_state(game,str(item.id))
             if not live.is_empty():extra["status"].text=str(live.short)
-        skin.Type.apply(extra["status"],"micro_label",false,skin.Style.BLUE)
+        skin.Type.apply(extra["status"],"micro_label",false,Neon.MUTED)
         extra["status"].add_theme_font_size_override("font_size",14)
         extra["status"].autowrap_mode=TextServer.AUTOWRAP_OFF
         # Status shares the icon column; rarity and actual level stay explicit.
         skin.place(extra["status"],Rect2(12,4,72,18))
-        extra["rim"].color=skin.Style.RARITY.get(item.get("rarity",""),skin.Style.BLUE)
+        extra["rim"].color=skin.Style.RARITY.get(item.get("rarity",""),Neon.MUTED)
         skin.place(extra["rim"],Rect2(0,8,4,row_height-16))
     var rows: int=ceili(5.0/columns)
     var height: float=passive_y+36+rows*row_height+(rows-1)*gap
@@ -284,10 +297,13 @@ func settings_layout() -> void:
     screen_header("YOUR SETTINGS","Preferences are saved on this device.")
     skin.place(screen_panel,panel)
     # Reuse the actual heading and Back action inside the bounded panel.
-    skin.Type.apply(skin.heading,"display_l",false,skin.Style.INK)
+    skin.Type.apply(skin.heading,"display_l",false,Neon.WHITE)
+    if panel_width<540:
+        skin.heading.text="SETTINGS"
+        skin.heading.add_theme_font_size_override("font_size",24)
     skin.place(skin.heading,Rect2(panel.position+Vector2(24,18),Vector2(panel_size.x-194,54)));skin.fit_line(skin.heading,26)
     skin.headline_accent.hide()
-    skin.Type.apply(caption,"body_s",false,skin.Style.INK)
+    skin.Type.apply(caption,"body_s",false,Neon.WHITE)
     skin.place(caption,Rect2(panel.position+Vector2(24,86),Vector2(panel_size.x-48,26)))
     action(ui.back_button,Rect2(panel.position+Vector2(panel_size.x-156,18),Vector2(132,64)))
     skin.place(ui.body_scroll,Rect2(panel.position+Vector2(24,122),panel_size-Vector2(48,140)))
@@ -315,6 +331,9 @@ func settings_layout() -> void:
             skin.place(button,Rect2((i%columns)*(cell+14),save_y+int(i/columns)*76,cell,64))
             skin.button_skin(button,"menu/secondary")
     ui.body_content.custom_minimum_size=Vector2(width,height);ui.body_content.size=ui.body_content.custom_minimum_size
+    ui.volume_label.add_theme_color_override("font_color",Neon.WHITE)
+    for key in ["slider","grabber_area","grabber_area_highlight"]:
+        ui.volume_slider.add_theme_stylebox_override(key,Neon.box(Neon.PANEL,Neon.LIME if key!="slider" else Neon.MUTED,2))
     _sync_fullscreen_bounds()
 
 func _native_fullscreen() -> void:
@@ -338,9 +357,9 @@ func _sync_fullscreen_bounds() -> void:
 func results_layout() -> void:
     var view: Vector2=skin.view
     var narrow: bool=view.x<700
-    skin.heading.add_theme_color_override("font_color",skin.Style.GOLD if game.mode=="won" else skin.Style.CORAL)
+    skin.heading.add_theme_color_override("font_color",Neon.LIME if game.mode=="won" else Neon.MAGENTA)
     caption.remove_theme_stylebox_override("normal")
-    skin.Type.apply(caption,"section_header",false,skin.Style.PAPER)
+    skin.Type.apply(caption,"section_header",false,Neon.WHITE)
     if game.mode=="won":
         var living_boss:=false
         for enemy in game.enemies:
@@ -358,16 +377,16 @@ func results_layout() -> void:
     var width: float=area.size.x-16
     result_rows.custom_minimum_size=Vector2(width,0)
     result_rows.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-    skin.Type.apply(result_hero,"card_title",false,skin.Style.PAPER)
+    skin.Type.apply(result_hero,"card_title",false,Neon.WHITE)
     for part in stat_parts:
         var primary: bool=part["primary"]
         var panel: Panel=part["panel"]
         var cell: float=(width-12)*0.5
         panel.custom_minimum_size=Vector2(cell,96 if primary else 52)
-        skin.Type.apply(part["label"],"micro_label",false,skin.Style.BLUE if primary else skin.Style.PAPER)
+        skin.Type.apply(part["label"],"micro_label",false,Neon.MUTED if primary else Neon.WHITE)
         part["label"].add_theme_font_size_override("font_size",14)
         skin.place(part["label"],Rect2(14,8 if primary else 3,cell-28,22))
-        skin.Type.apply(part["value"],"numeric_emphasis",false,skin.Style.INK if primary else skin.Style.PAPER)
+        skin.Type.apply(part["value"],"numeric_emphasis",false,Neon.WHITE if primary else Neon.WHITE)
         part["value"].add_theme_font_size_override("font_size",36 if primary else 22)
         skin.place(part["value"],Rect2(14,32 if primary else 24,cell-28,52 if primary else 25));skin.fit_line(part["value"],20)
     var gap:=14.0

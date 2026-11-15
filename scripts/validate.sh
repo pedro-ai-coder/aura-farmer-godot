@@ -88,6 +88,12 @@ run_check arcade-ui --headless --path . --script res://tests/test_arcade_ui.gd
 run_check enemy-navigation --headless --path . --script res://tests/test_enemy_navigation.gd
 run_check seeded-rng --headless --path . --script res://tests/test_phaser_rng.gd
 run_check hero-animation --headless --path . --script res://tests/test_hero_animation.gd
+run_check cpk-design-system --headless --path . --script res://tests/test_cpk_design_system.gd
+run_check signal-breaker-garage --headless --path . --script res://tests/test_signal_breaker_garage.gd
+run_check neon-frontend --headless --path . --script res://tests/test_neon_frontend.gd
+run_check neon-menu-journey --headless --path . --script res://tests/test_neon_menu_journey.gd
+run_check cpk-branding --headless --path . --script res://tests/test_cpk_branding.gd
+python3 scripts/verify_cpk_garage_assets.py
 run_check animation-fluency --headless --path . --script res://tests/test_animation_fluency.gd
 run_check combat-audio --headless --path . --script res://tests/test_combat_audio.gd
 run_check approved-individual-hero-sheets --headless --path . --script res://tests/test_approved_individual_hero_sheets.gd

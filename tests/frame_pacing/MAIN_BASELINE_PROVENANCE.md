@@ -41,3 +41,5 @@ branch. The identical control checkout/recording steps now also apply to
 assertion, runtime script, source artwork or production asset is changed by this
 CI wiring correction. A fresh required run must pass before merge; the failed
 historical comparison remains visible in GitHub.
+
+For the creator-authorized Neon production release branch `release/neon-arcade-approved-20261115`, the same existing CI unchanged-base checkout and trace procedure is selected. This compares against the actual PR base using the same Linux engine/runner; it does not regenerate a candidate reference, edit any historical fixture, or skip simulation assertions. Local Windows control was independently recorded from unchanged main `0007cb62aca84e6af8a1018c82b684199c7e8cdb`.

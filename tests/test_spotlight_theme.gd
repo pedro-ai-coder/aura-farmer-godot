@@ -32,10 +32,10 @@ func verify() -> void:
         var id: String = game.selection[0]["id"]
         var category: String = "weapon" if game.WEAPONS.has(id) else "passive"
         var selected: StyleBox = game.offer_buttons[0].get_theme_stylebox("normal")
-        expect(selected is StyleBoxTexture, "Selected card uses the correct illustrated frame")
-        if selected is StyleBoxTexture:
-            expect(selected.texture == skin.art.texture("cards/"+category+"-idle"), "Selected overlay retains category-aware approved backing")
-        expect(game.offer_buttons[0].get_node("ClashButtonFeedback").selected, "Selected card has original transparent candidate frame")
+        expect(selected is StyleBoxFlat, "Selected card uses the accepted native Neon frame")
+        if selected is StyleBoxFlat:
+            expect(selected.border_color==preload("res://scripts/neon_arcade.gd").LIME, "Selected card retains a distinct lime state")
+        expect(game.offer_buttons[0].get_node_or_null("NeonButtonFeedback")!=null, "Selected card retains mouse-ignoring Neon feedback")
         expect(ui.card_parts[0]["state"].text.contains("SELECTED"), "Selected item retains a textual, accessible state label")
         root.size = Vector2i(915,412)
         ui._window_changed(true)

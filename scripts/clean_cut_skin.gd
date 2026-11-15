@@ -1,5 +1,8 @@
 extends Control
 ## Live-Control skin. Approved sources stay immutable; HUD V2 candidates are separately inventoried.
+const Neon=preload("res://scripts/neon_arcade.gd")
+const NeonFeedback=preload("res://scripts/neon_button_feedback.gd")
+const NeonBackdrop=preload("res://scripts/neon_menu_backdrop.gd")
 const Cache=preload("res://scripts/clean_cut_assets.gd")
 const Type=preload("res://scripts/clean_cut_typography.gd")
 const Style=preload("res://scripts/arcade_theme.gd")
@@ -9,6 +12,7 @@ const HudMeter=preload("res://scripts/hero_clash_hud_meter.gd")
 const HeroFlexDial=preload("res://scripts/hero_clash_flex_dial.gd")
 const ButtonFeedback=preload("res://scripts/hero_clash_button_feedback.gd")
 const SceneAccent=preload("res://scripts/hero_clash_scene_accent.gd")
+var neon_backdrop
 var game
 var gameplay_hud
 var passive_feedback_view
@@ -128,6 +132,9 @@ func box(key: String) -> StyleBoxTexture:
     styles[key]=value;return value
 func button_skin(button: Button, family: String, selected: bool=false) -> void:
     button.custom_minimum_size=Vector2.ZERO
+    if game.mode in NeonBackdrop.MODES:
+        neon_button(button,family=="menu/primary",selected)
+        return
     var current:=state(button,selected)
     var key:=family+"-"+current
     if not art.rows.has(key):key=family+"-"+("selected" if selected and art.rows.has(family+"-selected") else "idle")
@@ -155,11 +162,30 @@ func button_skin(button: Button, family: String, selected: bool=false) -> void:
         new_feedback.install(button,game)
         feedback=new_feedback
     feedback.call("configure",family,selected)
+func neon_button(button: Button, primary: bool=false, selected: bool=false) -> void:
+    var legacy=button.get_node_or_null("ClashButtonFeedback")
+    if legacy!=null:legacy.hide();legacy.set_process(false)
+    button.flat=false
+    for key in ["normal","hover","pressed","disabled","focus"]:button.remove_theme_stylebox_override(key)
+    for key in ["font_color","font_hover_color","font_pressed_color","font_focus_color","font_disabled_color"]:button.remove_theme_color_override(key)
+    Neon.button(button,primary)
+    button.custom_minimum_size=Vector2.ZERO # Existing responsive layout owns the hitbox.
+    button.alignment=HORIZONTAL_ALIGNMENT_CENTER
+    button.clip_text=true # Text is fitted after the final responsive rectangles.
+    button.add_theme_font_size_override("font_size",18 if view.x<700 else 22)
+    if selected:button.add_theme_stylebox_override("normal",Neon.box(Neon.PANEL,Neon.LIME,3))
+    for child in native_children.get(button,[]):
+        if child is Control:child.hide()
+    if button.get_node_or_null("NeonButtonFeedback")==null:
+        var feedback:=NeonFeedback.new();feedback.name="NeonButtonFeedback"
+        button.add_child(feedback);feedback.install(button,game)
+
 func install(owner_game, source_root: String) -> void:
     game=owner_game;ui=game.presentation;art=Cache.new(source_root)
     mouse_filter=Control.MOUSE_FILTER_IGNORE
     game.layer.add_child(self)
     theme=Type.theme()
+    neon_backdrop=NeonBackdrop.new();add_child(neon_backdrop);neon_backdrop.install(game)
     background=image(self);background.stretch_mode=TextureRect.STRETCH_SCALE
     poster_surface=PosterSurface.new();poster_surface.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(poster_surface)
     wordmark=image(self);wordmark.texture=art.texture("support/wordmark")
@@ -372,6 +398,18 @@ func refresh() -> void:
     elif mode in ["choice","legendary","replace"]:cards_layout()
     else:auxiliary.layout()
     auxiliary.visible=mode in auxiliary.MODES
+    neon_backdrop.refresh(view)
+    if mode in NeonBackdrop.MODES:
+        background.hide()
+        heading.add_theme_color_override("font_color",Neon.LIME if mode=="won" else Neon.MAGENTA if mode=="lost" else Neon.WHITE)
+        headline_accent.color=Neon.MAGENTA
+        for button in native_children:
+            if not button.is_visible_in_tree() or button.text.is_empty():continue
+            var pixels: int=18 if view.x<700 else 22
+            var font: Font=button.get_theme_font("font")
+            while pixels>14 and font.get_string_size(button.text,HORIZONTAL_ALIGNMENT_LEFT,-1,pixels).x>button.size.x-48:
+                pixels-=1
+            button.add_theme_font_size_override("font_size",pixels)
     if mode_changed:
         _animate_new_screen(mode)
     ui._focus_ring()
@@ -379,8 +417,8 @@ func refresh() -> void:
 
 func _animate_new_screen(mode: String) -> void:
     var reduced: bool=bool(game.profile["settings"].get("reducedMotion",false))
-    scene_accent.play(mode,view,reduced)
-    if reduced or mode=="playing":
+    scene_accent.play(mode,view,reduced or mode in NeonBackdrop.MODES)
+    if reduced or mode=="playing" or mode in NeonBackdrop.MODES:
         return
     var reveal_buttons: Array[Button]=[]
     if mode=="menu":
@@ -432,7 +470,7 @@ func home_layout() -> void:
     poster_hero.visible=(not narrow or mobile_portrait) and poster_hero.texture!=null
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
-    home_caption.text="THE STREETS ARE YOURS.\nFARM AURA. BE LEGENDARY."
+    home_caption.text="SIGNAL BREAKER GARAGE\nRUIN ALLEY / SOLO"
     place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
@@ -450,7 +488,7 @@ func home_layout() -> void:
 func heroes_layout() -> void:
     background.texture=game.art.texture("ruin-alley");place(background,Rect2(Vector2.ZERO,view))
     background.modulate=Color(0.32,0.35,0.39)
-    headline("PICK YOUR FARMER.")
+    headline("CHOOSE YOUR HERO.")
     var toggle_width: float=minf(210.0,(view.x-60.0)/2.0)
     for i in range(2):
         var toggle: Button=appearance_buttons[i]
@@ -519,7 +557,7 @@ func cards_layout() -> void:
     var legendary: bool=game.mode=="legendary"
     background.modulate=Color.WHITE;background.texture=art.texture("support/legendary-bg" if legendary else "support/upgrade-bg")
     place(background,Rect2(Vector2.ZERO,view));headline("THE LEGENDARY DROP" if legendary else "MAKE ROOM" if game.mode=="replace" else "CHOOSE YOUR NEXT MOVE")
-    if legendary:heading.add_theme_color_override("font_color",Style.INK)
+    if legendary:heading.add_theme_color_override("font_color",Neon.WHITE)
     var items: Array=game.legendary_offers if legendary else game.replace_options if game.mode=="replace" else game.selection
     var columns:=1 if view.x<700 else 3
     var compact_cards: bool=view.y<=560.0 and columns==3
@@ -551,7 +589,7 @@ func cards_layout() -> void:
         height=maxf(height,comparison_y+comparison_height+46.0)
         metrics.append({"title":title_height,"meta":meta_y,"body":body_y,"body_height":body_height,"comparison":comparison_y,"comparison_height":comparison_height})
     if compact_cards:
-        Type.apply(heading,"display_l",true,Style.INK if legendary else Style.PAPER)
+        Type.apply(heading,"display_l",true,Neon.WHITE)
         place(heading,Rect2(18,5,view.x-36,49));fit_line(heading,19)
         place(headline_accent,Rect2(22,55,94,5))
     var scroll_y: float=68.0 if compact_cards else 106.0
@@ -571,16 +609,16 @@ func cards_layout() -> void:
         var parts: Dictionary=offer_parts[i];var measured: Dictionary=metrics[i]
         var rarity_name: String=str(item.get("rarity","legendary" if legendary else "common")).to_lower()
         var rarity_color: Color=Style.RARITY.get(rarity_name,Style.SKY)
-        parts["rim"].color=Style.SKY if selected else rarity_color;place(parts["rim"],Rect2(9,10,7,height-20))
+        parts["rim"].color=Neon.LIME if selected else rarity_color;place(parts["rim"],Rect2(9,10,7,height-20))
         parts["category"].text=("LEGENDARY · " if legendary else "")+category.to_upper()
         Type.apply(parts["category"],"micro_label",view.x<700,Style.INK)
         var category_plate: StyleBoxFlat=parts["category"].get_theme_stylebox("normal")
-        category_plate.bg_color=Style.SKY if category=="weapon" else Style.GOLD
+        category_plate.bg_color=Neon.MAGENTA if category=="weapon" else Neon.LIME
         category_plate.content_margin_left=10;category_plate.content_margin_right=10
         place(parts["category"],Rect2(16,12,width-32,44))
         var style_key: String=rarity_name+("/selected" if selected else "")
         if not card_plate_styles.has(style_key):
-            var plate_style:=StyleBoxFlat.new();plate_style.bg_color=Style.CARD;plate_style.border_color=Style.SKY if selected else rarity_color
+            var plate_style:=StyleBoxFlat.new();plate_style.bg_color=Neon.PANEL;plate_style.border_color=Neon.LIME if selected else rarity_color
             plate_style.set_border_width_all(4 if selected else 3);plate_style.set_corner_radius_all(5);card_plate_styles[style_key]=plate_style
         parts["icon_plate"].add_theme_stylebox_override("panel",card_plate_styles[style_key])
         parts["icon"].texture=ui.item_icons.texture(category,id)
@@ -623,6 +661,11 @@ func cards_layout() -> void:
             place(game.defer_button,Rect2(16,view.y-66.0,200,64.0))
         elif game.mode=="replace":
             place(game.restart_button,Rect2(16,view.y-66.0,180,64.0))
+    for i in range(items.size()):
+        var parts: Dictionary=offer_parts[i]
+        for key in ["name","body"]:parts[key].add_theme_color_override("font_color",Neon.WHITE)
+        for key in ["meta","comparison"]:parts[key].add_theme_color_override("font_color",Neon.MUTED)
+        parts["state"].add_theme_color_override("font_color",Neon.LIME)
     if game.selected_card_index>=0 and game.selected_card_index!=last_selected:
         call_deferred("reveal_selected",game.selected_card_index,signature)
     last_selected=game.selected_card_index

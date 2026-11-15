@@ -8,7 +8,11 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 
 ## Key files
 
+- `./test_neon_menu_journey.gd` � isolated eleven-menu/six-viewport contrast, action-label fit, touch, Settings header, save editor, real held card input, simulation/profile isolation and live reduced-motion cancellation; optional native screenshots.
 - `./test_playable_slice.gd` — menu, hero selection and basic playable integration smoke.
+- `./test_cpk_design_system.gd` / `./cpk_design_gallery.gd` — shared Theme contrast/state/focus/touch checks and native component review capture.
+- `./test_signal_breaker_garage.gd` — isolated actual Garage, six identities/three kits, six viewports, real mouse/key/touch, menu RNG isolation and existing Solo/Settings return.
+- `./test_cpk_branding.gd` — visible title/PWA/HTML identity with unchanged native profile directory and legacy browser keys.
 - `./test_phaser_rng.gd` — seeded RNG and offer/enemy parity.
 - `./test_animation_fluency.gd` — six-identity moving-action stride/side/priority registration, actual blocked-movement/release regression, single-cap body selection and lazy historical texture loading.
 - `./test_combat_audio.gd` — real bounded mixer/priority/pause/settings, deterministic PCM, resolved/cancelled event observation, threat-cache bounds and crowd-health visibility.
@@ -36,3 +40,5 @@ node tests/test_performance_web.cjs
 ```
 
 Related: [scripts](../scripts/CONTEXT.md), [scenes](../scenes/CONTEXT.md), [Web](../web/CONTEXT.md).
+
+The accepted Neon production continuation updates legacy illustrated-card/feedback expectations in `test_spotlight_theme.gd`, `test_hero_clash_button_motion.gd` and `button_art/test_components.gd`; actual native click, explicit confirmation, hit geometry, reduced motion and RNG assertions remain.

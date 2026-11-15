@@ -1,0 +1,19 @@
+{
+  "status": "TECHNICALLY_VERIFIED_DERIVATIVES_OF_APPROVED_SOURCE",
+  "decision": "CPK-BRAND-2026-11-13-01",
+  "art_repository": "pedro-ai-coder/clutchpunks-art-pipeline",
+  "art_commit": "6b0da4f4cee5a72caec3c12b87c3e5817d94f969",
+  "source_manifest": "production/brand/cpk/2026-11-13-v1/manifest.json",
+  "assets": [
+    {
+      "path": "cpk-wordmark-color-1024.png",
+      "sha256": "4bf207f4df1f1447da488707b95640ae435c54f0edcc409ba04e99361850ba26",
+      "source_path": "production/brand/cpk/2026-11-13-v1/cpk-wordmark-color-1024.png"
+    },
+    {
+      "path": "cpk-emblem-color-96.png",
+      "sha256": "3ac95134b2317a2e7e56d5a205ab7b7dc72a73dfb8deeecf4ba31ea42aa1037e",
+      "source_path": "production/brand/cpk/2026-11-13-v1/cpk-emblem-color-96.png"
+    }
+  ]
+}
