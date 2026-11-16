@@ -2,6 +2,20 @@ extends SceneTree
 ## Actual Neon gameplay, seed 468, ordinary health, no injected combat state.
 ## Two unchanged 60Hz simulation steps per real rendered 30fps evidence frame.
 const Review=preload("res://scripts/cool_kid_review.gd")
+class LossInset extends Node2D:
+    const Rig=preload("res://scripts/cool_kid_articulated.gd")
+    var game: Node
+    var rig=Rig.new()
+    func _ready() -> void:rig.prepare()
+    func _draw() -> void:
+        if not is_instance_valid(game) or game.mode!="lost" or not rig.valid:return
+        draw_rect(Rect2(920,390,345,238),Color("253342"))
+        draw_string(ThemeDB.fallback_font,Vector2(932,413),"LIVE DEFEAT / CANDIDATE / QA INSET",HORIZONTAL_ALIGNMENT_LEFT,-1,15)
+        draw_string(ThemeDB.fallback_font,Vector2(932,434),"Actual canonical loss clock: %.2fs"%game.visual_defeat,HORIZONTAL_ALIGNMENT_LEFT,-1,14)
+        var context: Dictionary=game.hero_animation_state()
+        rig.sample(str(game.hero_pose()["state"]),context)
+        var base:=Transform2D(0.0,Vector2.ONE*Rig.SCALE*2.4,0.0,Vector2(1160,598)-Rig.ORIGIN*Rig.SCALE*2.4)
+        rig._draw_parts(self,base,1.0);draw_set_transform_matrix(Transform2D.IDENTITY)
 var game: Node
 var stream: StreamPeerTCP
 func _initialize() -> void:call_deferred("record")
@@ -45,8 +59,10 @@ func record() -> void:
             save_frame(output,count);count+=1
     # Include the canonical loss clock and actual defeat rendering after loss.
     if game.mode=="lost":
+        var layer:=CanvasLayer.new();layer.layer=110;root.add_child(layer)
+        var inset:=LossInset.new();inset.game=game;layer.add_child(inset)
         for frame in range(45):
-            game._process(1.0/30.0);game._review_label();game.clean_cut_skin._process(1.0/30.0);game.queue_redraw()
+            game._process(1.0/30.0);game._review_label();game.clean_cut_skin._process(1.0/30.0);game.queue_redraw();inset.queue_redraw()
             await process_frame;await RenderingServer.frame_post_draw
             save_frame(output,count);count+=1
     if stream!=null:stream.disconnect_from_host()

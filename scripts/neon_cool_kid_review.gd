@@ -9,4 +9,4 @@ func _ready() -> void:
     select_identity(1)
 func _process(delta: float) -> void:
     super._process(delta)
-    game.review_overlay.visible=not active
+    game.review_overlay.visible=not active and game.mode!="settings"
