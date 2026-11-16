@@ -28,6 +28,15 @@ func _initialize() -> void:
                 count+=1
     check(max_wrist_error<3.0,"right wrist remains inside authored palm overlap (6px radius)")
     print("Maximum wrist constraint error=",max_wrist_error)
+    # A real interrupted-Flex recovery must not snap back to the hold pose.
+    rig.update_action("flex-loop",{"time":10.0,"flex_age":1.0,"flex":2.0})
+    rig.update_action("flex-loop",{"time":10.1,"flex_age":1.1,"flex":1.9})
+    var hit:=rig.update_action("hurt",{"time":10.2,"hurt":0.18})
+    check(hit==rig.Motion.action("hurt",{"hurt":0.18}),"hurt remains immediate")
+    var recovery:=rig.update_action("flex-loop",{"time":10.38,"flex_age":1.38,"flex":1.62})
+    check(recovery.distance_to(hit)<0.001,"interrupted action recovery starts continuously")
+    var held:=rig.update_action("flex-loop",{"time":10.45,"flex_age":1.45,"flex":1.55})
+    check(held.distance_to(rig.Motion.action("flex-loop",{"flex_age":1.45,"flex":1.55}))<0.001,"recovery reaches canonical hold without changing its clock")
     var locked:=0
     for direction in range(8):
         var releases_before:=rig.reach_releases

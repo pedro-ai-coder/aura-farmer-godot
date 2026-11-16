@@ -28,6 +28,10 @@ var last_time := -1.0
 var motion_gain := 0.0
 var last_draw_time := -1.0
 var displayed_state := "idle"
+var current_action := Vector3.ZERO
+var action_from := Vector3.ZERO
+var action_state := ""
+var action_changed_at := 0.0
 var contact_targets := [Vector2.ZERO,Vector2.ZERO]
 var contact_phases := [false,false]
 var contact_anchors := [Vector2.ZERO,Vector2.ZERO]
@@ -45,6 +49,7 @@ func prepare(root_path: String=ROOT, expected: String=MANIFEST_SHA) -> bool:
     valid=false;reason="invalid manifest or missing resource"
     views.clear();parts.clear();textures.clear();pivots.clear();transforms.clear()
     last_time=-1.0;last_draw_time=-1.0;motion_gain=0.0
+    current_action=Vector3.ZERO;action_from=Vector3.ZERO;action_state="";action_changed_at=0.0
     contact_valid.fill(false);contact_phases.fill(false)
     var path:=root_path+"manifest.json"
     if not FileAccess.file_exists(path) or FileAccess.get_sha256(path)!=expected:return false
@@ -145,7 +150,7 @@ func _follow_grip(torso: Transform2D) -> void:
     transforms["upper_r"]=around(shoulder,(solved-origin).angle()-(elbow-shoulder).angle(),origin-shoulder)
     transforms["fore_r"]=around(elbow,(target-solved).angle()-(wrist-elbow).angle(),solved-elbow)
 
-func sample(state: String, context: Dictionary, direction: int=-1, gain: float=-1.0, lock_contacts: bool=false) -> void:
+func sample(state: String, context: Dictionary, direction: int=-1, gain: float=-1.0, lock_contacts: bool=false, action_pose: Vector3=Vector3.INF) -> void:
     _use_view(sector(context) if direction<0 else direction)
     var time:=float(context.get("time",0.0));var walk:=float(context.get("walk",0.0))
     var moving:=bool(context.get("moving",false)) and state!="defeat"
@@ -155,7 +160,7 @@ func sample(state: String, context: Dictionary, direction: int=-1, gain: float=-
     # Authored contact compression → passing rise → landing. Twice per cycle.
     var weight:=lerpf(4.0,-1.5,smoothstep(0.0,0.48,q)) if q<0.48 else lerpf(-1.5,4.0,smoothstep(0.48,1.0,q))
     var swing:=sin(phase*TAU)*amount
-    var action:=Motion.action(state,context)
+    var action:=Motion.action(state,context) if not action_pose.is_finite() else action_pose
     var defeat:=smoothstep(0.0,0.75,float(context.get("defeat",0.0))) if state=="defeat" else 0.0
     var heading:=float(context.get("heading",0.0))
     var crouch:=8.0+5.0*maxf(0.0,-sin(heading))
@@ -178,13 +183,25 @@ func sample(state: String, context: Dictionary, direction: int=-1, gain: float=-
         var collapse:=around(Vector2(100,175),-1.45*defeat,Vector2(-10.0*defeat,-12.0*defeat))
         for id in transforms:transforms[id]=collapse*transforms[id]
 
+func update_action(state: String, context: Dictionary) -> Vector3:
+    var time:=float(context.get("time",0.0))
+    var target:=Motion.action(state,context)
+    if state!=action_state:
+        action_from=current_action;action_changed_at=time;action_state=state
+    # Hurt must recoil immediately. Recovery into an already active Flex hold
+    # blends from the interrupted pose without restarting any gameplay clock.
+    current_action=target if state=="hurt" else action_from.lerp(target,smoothstep(0.0,0.06,time-action_changed_at))
+    return current_action
+
 func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: String, pose: Dictionary, context: Dictionary) -> bool:
     var state:=str(pose.get("state","idle"))
     if not supports(hero_id,appearance,state,context):return false
     var time:=float(context.get("time",0.0))
     var dt:=clampf(time-last_time,0.0,0.1) if last_time>=0.0 else 0.0
-    if time<last_time:contact_valid.fill(false);motion_gain=0.0
+    if time<last_time:
+        contact_valid.fill(false);motion_gain=0.0;action_state="";current_action=Vector3.ZERO
     last_time=time;last_draw_time=time;displayed_state=state
+    update_action(state,context)
     var desired:=1.0 if bool(context.get("moving",false)) and state!="defeat" else 0.0
     motion_gain=move_toward(motion_gain,desired,dt/0.075)
     var next:=sector(context)
@@ -196,9 +213,9 @@ func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: St
     # Brief full-view dissolve preserves handed lettering; never reflect art.
     var blend:=smoothstep(0.0,0.075,view_age)
     if blend<1.0 and previous_view!=view:
-        sample(state,context,previous_view,motion_gain)
+        sample(state,context,previous_view,motion_gain,false,current_action)
         _draw_parts(canvas,base,1.0-blend)
-    sample(state,context,view,motion_gain,true)
+    sample(state,context,view,motion_gain,true,current_action)
     _draw_parts(canvas,base,blend if previous_view!=view else 1.0)
     canvas.draw_set_transform_matrix(Transform2D.IDENTITY)
     return true
