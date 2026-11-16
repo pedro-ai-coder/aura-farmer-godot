@@ -195,7 +195,13 @@ func update_action(state: String, context: Dictionary) -> Vector3:
 
 func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: String, pose: Dictionary, context: Dictionary) -> bool:
     var state:=str(pose.get("state","idle"))
-    if not supports(hero_id,appearance,state,context):return false
+    if not supports(hero_id,appearance,state,context):
+        if last_time>=0.0:
+            # Returning from legacy/reduced motion must never reuse an old
+            # world-space foot anchor after the actor has travelled elsewhere.
+            contact_valid.fill(false);contact_phases.fill(false)
+            last_time=-1.0;motion_gain=0.0;action_state="";current_action=Vector3.ZERO
+        return false
     var time:=float(context.get("time",0.0))
     var dt:=clampf(time-last_time,0.0,0.1) if last_time>=0.0 else 0.0
     if time<last_time:
