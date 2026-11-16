@@ -60,4 +60,5 @@ if len(sys.argv)>1:
   for e in entries:
    assert prefix+e['file']+'.import' in paths
    assert any(p.startswith('.godot/imported/'+Path(e['file']).name+'-') and p.endswith('.ctex') for p in paths)
-print('PASS: 8 directional views / 128 source/RGBA hashes, transparency, parent order, pinned manifest, lossless import'+('; PCK inclusion/exclusion' if len(sys.argv)>1 else ''))
+mode='; PCK mode=PRODUCTION_EXCLUSION (candidate absent)' if len(sys.argv)>1 and '--production' in sys.argv else '; PCK mode=REVIEW_INCLUSION (candidate present)' if len(sys.argv)>1 else ''
+print('PASS: 8 directional views / 128 source/RGBA hashes, transparency, parent order, pinned manifest, lossless import'+mode)

@@ -8,7 +8,14 @@ const fs=require('fs');
  const logs=[],errors=[],responses=[];
  page.on('console',m=>{logs.push(m.text());if(m.type()==='error')errors.push(m.text());});page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(r.status()>=400)responses.push({url:r.url(),status:r.status()});});
- await page.goto('http://127.0.0.1:8765');
+ const baseURL=process.env.REVIEW_BASE_URL||'http://127.0.0.1:8765';
+ await page.goto(baseURL);
+ let buildMetadata=null;
+ if(process.env.REVIEW_BASE_URL){
+  const response=await page.request.get(new URL('/build.json',baseURL).href);
+  buildMetadata=await response.json();
+  if(buildMetadata.review!=='cool-kid-rig-v2'||buildMetadata.preset!=='Cool Kid Rig Review')throw Error('Wrong exported review preset: '+JSON.stringify(buildMetadata));
+ }
  await page.waitForFunction(()=>document.querySelector('canvas'),{timeout:30000});
  for(let i=0;i<60&&!logs.some(s=>s.includes('valid pinned candidate / eight directions'));i++)await page.waitForTimeout(500);
  if(!logs.some(s=>s.includes('valid pinned candidate / eight directions')))throw Error('Pinned candidate did not prepare');
@@ -28,6 +35,6 @@ const fs=require('fs');
  await page.keyboard.press('Escape');await page.waitForTimeout(300);
  await page.mouse.click(640,280);await page.waitForTimeout(500);
  await page.screenshot({path:output+'/reduced-motion.png'});
- const result={browser:await browser.version(),source:'real Chromium, exported Godot Wasm; automation, not human testing',logs,errors,http_errors:responses,status:errors.length||responses.length?'FAIL':'PASS',assertions:['exported candidate decoded pixel hashes prepared','observed menu/selection/gameplay/A-B/pause screenshots require visual inspection']};
+ const result={buildMetadata,browser:await browser.version(),source:'real Chromium, exported Godot Wasm; automation, not human testing',logs,errors,http_errors:responses,status:errors.length||responses.length?'FAIL':'PASS',assertions:['exported candidate decoded pixel hashes prepared','observed menu/selection/gameplay/A-B/pause screenshots require visual inspection']};
  fs.writeFileSync(output+'/results.json',JSON.stringify(result,null,2));await browser.close();if(errors.length||responses.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1});
