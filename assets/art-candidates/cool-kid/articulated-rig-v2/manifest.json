@@ -764,8 +764,8 @@
       "sector": 3,
       "source_frame": 12,
       "source_sha256": "942aae356a803b38c4b24f8a2eb6f311cb527dee7f892dae24e087866d5a3165",
-      "master_sha256": "359305eb13059eef2af6e10053265393e97ddd7f6085ce1d80f4a1446b9245e2",
-      "ora_sha256": "7e5340522193632ec92a3a0b4604ffa81454fb7b769be6f507267f64533698f0",
+      "master_sha256": "17066743ebf5ea37a56da6a9948253ad5b6500684993abffee199f32a9e3248f",
+      "ora_sha256": "8ace61fdccb3e9aca47a9a740ff563999d69f73f0297bc9ab879b1220a2b5dca",
       "parts": [
         {
           "name": "pelvis",
@@ -820,8 +820,8 @@
             174
           ],
           "file": "view-3/foot_l.png",
-          "sha256": "3a86d95289e0bba8266f49059dfd24c63229d77ae2be268432a98afe4be8996b",
-          "rgba_sha256": "833c3fffee14f561fb2663bedf55558fd14851937ba5f09c12f5e60f407bc5f4",
+          "sha256": "5e80781a09eff325ff5649d78d29698c82c43c830dfe6daeda1bc02cf966ce4d",
+          "rgba_sha256": "24c864e262c0e97e4f972a8ce7ed26a39a8776b7b588ed3969c1cc20c5c01d89",
           "dimensions": [
             192,
             192
@@ -865,8 +865,8 @@
             174
           ],
           "file": "view-3/foot_r.png",
-          "sha256": "f9b2029c81d8a82482026e59b06584ea4e6546632c71d8c942f9dea3b7ec1640",
-          "rgba_sha256": "23ba5cf98588eef2b0e2f1b9aecd9782055de2f673296f6b74a199c0ba488d79",
+          "sha256": "12e2c4e7e9161d84dd3a98335610a4c9e9237c7e0fc1d8e0e2fb7d473cc38ce3",
+          "rgba_sha256": "34ee26a90115c01b4711a4a40b890174af7970854eabbf51cfd446fc082828c4",
           "dimensions": [
             192,
             192
@@ -1013,8 +1013,8 @@
       "sector": 4,
       "source_frame": 16,
       "source_sha256": "4f5a6468ec2903424f39732f9761c44ea31f86a370f17518a78b2b90eef26d46",
-      "master_sha256": "479392eba01d3fcc89294f680aa7a91884d12cc2a311f54fe8e60463bc7ce697",
-      "ora_sha256": "f2e0dd80c9c82b0636d4a6b187371ef7e0814e3faee02d02fad5dbc2ee12098e",
+      "master_sha256": "a2fc382f1cc86ca281f7a22ce35a3c148d2a381618e9adff9af0b59a7086bf1e",
+      "ora_sha256": "5d006fe6958053e25f8f939d4ad44d19524e50881dfeb7727bc1866d256a2b44",
       "parts": [
         {
           "name": "pelvis",
@@ -1069,8 +1069,8 @@
             174
           ],
           "file": "view-4/foot_l.png",
-          "sha256": "6834a9863abb252b9309fb482fed36557d7cc10c012b878a2f08e0d6e4104a2c",
-          "rgba_sha256": "010e66ed526bf42b61f06a138eb87eae836615b7155db17a96022652808ac79f",
+          "sha256": "11d694dcc925cf401a85b844d7cbabb5cc548a06e2da83564c83a4b8f3b08393",
+          "rgba_sha256": "fccff1c3e0bb4992a3a871fd2ff4d52725e908f6d086f95a5bdccf8de8cd4253",
           "dimensions": [
             192,
             192
@@ -1114,8 +1114,8 @@
             174
           ],
           "file": "view-4/foot_r.png",
-          "sha256": "6cd11932aec7d76bfd598541669a9739875ee24a883d4d3aad710e7d48491820",
-          "rgba_sha256": "53e13b3b77c35e91a517ddb56ca78c2978566906196f1d1aafb608f5e4a1f385",
+          "sha256": "c588aff4e760e4d193b76b04869a17c5edb5ca6397d10c9f9efad8f8636b64db",
+          "rgba_sha256": "a8b77cccd4ebd098b5bbc7f0657f72ac380df161d013bf694f61524f32de786f",
           "dimensions": [
             192,
             192
@@ -1262,8 +1262,8 @@
       "sector": 5,
       "source_frame": 20,
       "source_sha256": "b59464c20a0ece86e0fd949410b815e8dd4f296a8a94c1ac716e29e7ebf54526",
-      "master_sha256": "1869dc4b47df7e4d8ab6f3dff3fe7ab103af551b27cad0934f4ecee4d84f6f25",
-      "ora_sha256": "a29f8b415db8c119c9a4a9f4d149655cf5105dca5a67306dbe54a6ac50c3dfa6",
+      "master_sha256": "5e699d5d3a784dd7b5df0025b21b7bbc7f39fb9d56a383ac90ef57553cd1c438",
+      "ora_sha256": "ab4207e4d90c1ee34d50afd39d3829b65160ef402e1ca01776a2cb02d74ae11b",
       "parts": [
         {
           "name": "pelvis",
@@ -1318,8 +1318,8 @@
             174
           ],
           "file": "view-5/foot_l.png",
-          "sha256": "01d008f1911b5016ae6f7483bb74c48c1bc6acb1c299fbfcc296876b396e23ca",
-          "rgba_sha256": "403a5e4682a86a99d3fbf3b5bdf67f3da06290af59a33e264f46768bf87368aa",
+          "sha256": "92027e58242b866807e766c35e4146e92136fc7995407fca43d5a9783ae60742",
+          "rgba_sha256": "9a4e9e8fdd4761f2e0315dae9412fffc37f2c20086a591a360df3f4f9dd6c1e9",
           "dimensions": [
             192,
             192
@@ -1363,8 +1363,8 @@
             174
           ],
           "file": "view-5/foot_r.png",
-          "sha256": "f9b2029c81d8a82482026e59b06584ea4e6546632c71d8c942f9dea3b7ec1640",
-          "rgba_sha256": "23ba5cf98588eef2b0e2f1b9aecd9782055de2f673296f6b74a199c0ba488d79",
+          "sha256": "9774535edd9fa37cf887fee5263da2ba253d639b80d9fc6be605c0a1a1118a01",
+          "rgba_sha256": "013e22c887f7ab6889cead68845f18b09156e6f9259e9f333dfa684b5baff18b",
           "dimensions": [
             192,
             192
@@ -1511,8 +1511,8 @@
       "sector": 6,
       "source_frame": 24,
       "source_sha256": "bcecb82b989c5f6074700496471ef9089c33e4e2e6d485ceae6944bf40c1c301",
-      "master_sha256": "489186cfe359a4bc66b20214f738c85159ba4565652c8890835fac995c91a3d0",
-      "ora_sha256": "51ed860a05a4eec020f2daadbfcf02853e819ffeeeee65c1d3d35cc9b6a34668",
+      "master_sha256": "f037d8d12965c6fe05653c19b94c09f0e56072bf36572047b1cf5ce4a78cbfa4",
+      "ora_sha256": "64039d7b08254fd3284d2ae5bb4ff9345c45e7a4beed31504bea7a5945cb681a",
       "parts": [
         {
           "name": "pelvis",
@@ -1567,8 +1567,8 @@
             174
           ],
           "file": "view-6/foot_l.png",
-          "sha256": "3a86d95289e0bba8266f49059dfd24c63229d77ae2be268432a98afe4be8996b",
-          "rgba_sha256": "833c3fffee14f561fb2663bedf55558fd14851937ba5f09c12f5e60f407bc5f4",
+          "sha256": "660e2e054872183c9eb346fe293bfb74f214f780c0c0d605b8bb0ff1feea7810",
+          "rgba_sha256": "fe158d9079d1a72247216d8d6d7e90f4f4f9ce53c556b842b5622985b628e170",
           "dimensions": [
             192,
             192
@@ -1612,8 +1612,8 @@
             174
           ],
           "file": "view-6/foot_r.png",
-          "sha256": "39b15e76c3c05d76ad4187dc13f6c043769d683846498e2e927ba567ca94fc1c",
-          "rgba_sha256": "8a5915825d69fe3d7825bb685e57739364746e31ab46ecddd9d335d1d39c401c",
+          "sha256": "209dfb0ad63a15a73e1cad08deeafabd0690689d8424868dbadaedc97ff02019",
+          "rgba_sha256": "b88ab21ec3ca6dda263d908c05680e70a01248bc23a4bdfc974cf727a8da4129",
           "dimensions": [
             192,
             192
@@ -1760,8 +1760,8 @@
       "sector": 7,
       "source_frame": 28,
       "source_sha256": "b65b3d10493102c1997c009f4582cc270e5ccb809125dca1de6100c7a3aac752",
-      "master_sha256": "651474a7e8cfb3f2473b1d9fa2ddd7e89bec36784e6368cb8476eb12e9462edc",
-      "ora_sha256": "c1c4d0f818df8899c7479e72ad6b4d3ea4b21aae23091066d6767a770d154d9b",
+      "master_sha256": "53ff5457dc3a38f5142f7471ac9b7ed6fe67f257cbc19693f5514870e3ff4cf7",
+      "ora_sha256": "497c6261bc3c7648cc54c163e5bd14729375fababf3d020ac3672cb9ce8667f6",
       "parts": [
         {
           "name": "pelvis",
@@ -1816,8 +1816,8 @@
             174
           ],
           "file": "view-7/foot_l.png",
-          "sha256": "6834a9863abb252b9309fb482fed36557d7cc10c012b878a2f08e0d6e4104a2c",
-          "rgba_sha256": "010e66ed526bf42b61f06a138eb87eae836615b7155db17a96022652808ac79f",
+          "sha256": "8ba5bae79d6d4cd28a79bb40bb73f5911fe0e2be2d7c40af4e3ece7027941981",
+          "rgba_sha256": "62a646d01eae3fb7e58f32430bed38d754ee6143e75a9fd25f8e7f9be33eaf80",
           "dimensions": [
             192,
             192
@@ -1861,8 +1861,8 @@
             174
           ],
           "file": "view-7/foot_r.png",
-          "sha256": "39b15e76c3c05d76ad4187dc13f6c043769d683846498e2e927ba567ca94fc1c",
-          "rgba_sha256": "8a5915825d69fe3d7825bb685e57739364746e31ab46ecddd9d335d1d39c401c",
+          "sha256": "209dfb0ad63a15a73e1cad08deeafabd0690689d8424868dbadaedc97ff02019",
+          "rgba_sha256": "b88ab21ec3ca6dda263d908c05680e70a01248bc23a4bdfc974cf727a8da4129",
           "dimensions": [
             192,
             192

@@ -1,7 +1,7 @@
 # Cool Kid review-only candidate v2
 
 Status: CANDIDATE_NOT_APPROVED. Immutable Art package:
-`pedro-ai-coder/clutchpunks-art-pipeline@04ff7a1133e8d11553df48e416625ea34cb80ccc`,
+`pedro-ai-coder/clutchpunks-art-pipeline@e4f4a43fc166dea6bb9cea494e3c09e445f35811`,
 `production/characters/cool-kid/articulated-rig-v2/`.
 
 Eight independently drawn source views, 16 layers each. Original directional

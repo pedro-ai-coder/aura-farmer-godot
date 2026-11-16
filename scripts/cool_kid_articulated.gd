@@ -2,8 +2,8 @@ extends RefCounted
 ## CANDIDATE only. Existing immediate renderer, shared hierarchy, eight authored views.
 const Motion=preload("res://scripts/cool_kid_motion.gd")
 const ROOT := "res://assets/art-candidates/cool-kid/articulated-rig-v2/"
-const ART_COMMIT := "04ff7a1133e8d11553df48e416625ea34cb80ccc"
-const MANIFEST_SHA := "a770cf0775e1dc74081d6c0bcbd1062c0fd3c4e48a6789b63ee130833eda6d2b"
+const ART_COMMIT := "e4f4a43fc166dea6bb9cea494e3c09e445f35811"
+const MANIFEST_SHA := "53dfcae7594fe940d4a1c7f36254ef3e99a9a25a98b1ea1aabb07f353507c022"
 const SCALE := 64.0/147.0
 const ORIGIN := Vector2(96,180)
 const STATES := ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]
