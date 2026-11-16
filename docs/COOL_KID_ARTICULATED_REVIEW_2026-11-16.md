@@ -52,7 +52,7 @@ node tests/cool_kid_rig/browser_review.cjs /absolute/output/folder
 | --- | --- |
 | Approved Game main / frozen parity control | `2f7cfab5d0b498a2d7dade97ec1adf38e58fda50` |
 | Initial rejected review branch | `f405e5d791cc0923ce9e314690d3baeee70be067` |
-| Final implementation and QA source | `50cbbf7acd07563226c332301260b14822fbe7e8` |
+| Final runtime implementation | `0daa4bfed0d6246701a37e8bb93ff090045295a6` |
 | Consumed Art candidate | `e4f4a43fc166dea6bb9cea494e3c09e445f35811` |
 | Candidate manifest SHA-256 | `53dfcae7594fe940d4a1c7f36254ef3e99a9a25a98b1ea1aabb07f353507c022` |
 | Approved source atlas SHA-256 | `6f91466b63ebf3c80a427533b1d051e6b80df04654c5bd3ab318315234456bf2` |
@@ -83,7 +83,10 @@ no original lettering or keyboard is reflected.
 `cool_kid_motion.gd` centralizes authored action knots. The existing renderer
 adds distance-driven alternating contact/recovery, two-bone legs, world-space
 contact anchors, contact compression/passing rise, pelvis/torso counter-motion,
-head stabilization and delayed pompom motion. Right-arm IK follows the shared
+head stabilization and delayed pompom motion. Interrupted action recovery blends
+over 60ms on the canonical clock; hurt remains immediate and no combat timer
+is restarted. Re-entering candidate playback clears stale world foot anchors.
+Right-arm IK follows the shared
 palm/keyboard chain. Rear arms/prop pass behind the jacket with the correct
 sleeve in front. Startup/stopping blend over 75ms; view changes use a 75ms
 presentation dissolve. Defeat collapses the connected hierarchy about the
@@ -135,7 +138,7 @@ Commands below use that editor as `$GODOT_BIN`. Logs are in
 | `python3 scripts/verify_cool_kid_rig.py` | **PASS**: all eight views, 128 PNGs, parent order, dimensions, RGBA/file hashes, manifest pin and lossless imports |
 | `$GODOT_BIN --headless --path . --import` | **PASS**, official 4.7.2, no script/import errors |
 | `--script res://tests/cool_kid_rig/test_rig.gd` | **PASS**, 480 state samples, package/fallback/identity/reduced-motion and grip contracts |
-| `--script res://tests/cool_kid_rig/test_motion.gd` | **PASS**, 5,760 eight-view/state samples, finite transforms, knee/ankle continuity and palm overlap; 748 stable world-contact comparisons, zero reach releases in the straight eight-direction fixture |
+| `--script res://tests/cool_kid_rig/test_motion.gd` | **PASS**, 5,760 eight-view/state samples, finite transforms, knee/ankle continuity, palm overlap, interrupted-Flex recovery and fallback re-entry; 748 stable world-contact comparisons, zero reach releases in the straight eight-direction fixture |
 | `--script res://tests/cool_kid_rig/test_neon_preview.gd` | **PASS**, Neon/six identities/default Cool Kid, gameplay, Options HUD exclusion and pure F8 toggle |
 | Normal run, legacy and candidate | **PASS**, seed 468, 7,521 frames, 125.35s, 93 kills, earned Flex and 139 hurt frames; identical `0983db4e4e922027247b93205e7ea704e8da78d346f031de1f6277b65af8b647` |
 | Native normal/F8/Flex/death captures | **PASS executed**, actual rendering, normal HP and canonical events; no injected enemies, damage, aura or invulnerability |
@@ -147,7 +150,7 @@ Commands below use that editor as `$GODOT_BIN`. Logs are in
 | `--export-release Web ...`; verifier with `--production` | **PASS**, ordinary PCK contains no Cool Kid candidate resources |
 | Real Chromium `browser_review.cjs` | **PASS**, exported Wasm/pinned decoded hashes, observed Garage/selection/gameplay/F8/pause/Reduced Motion; no browser/script/HTTP errors |
 | Reduced Motion | **PASS**, real Settings toggle and visible explicit legacy fallback; no new rig motion |
-| Native frame-pacing measurement | **EXECUTED**, three alternating paired trials, 120 measured frames each, no image readback/video capture. See `performance-isolated.json`; median trial frame time 11.875ms legacy / 13.436ms candidate, P95 38.438 / 38.845ms. Pure sample median 56µs; software host is not device certification |
+| Native frame-pacing measurement | **EXECUTED**, three alternating paired trials, 120 measured frames each, no image readback/video capture. See `performance-isolated.json`; median trial frame time 11.724ms legacy / 13.348ms candidate, P95 38.074 / 40.189ms. Pure sample median 56µs; software host is not device certification |
 | Sustained 60fps / physical target devices | **FAIL on this software host / NOT_RUN on target devices**; do not infer a mobile performance pass |
 
 The frozen-main supplemental control is a comparison artifact, never a new

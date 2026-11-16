@@ -55,6 +55,11 @@ func _initialize() -> void:
                         check(prior[k].distance_to(world)<0.001,"world-space planted foot constraint");locked+=1
                 prior[k]=world;was_valid[k]=rig.contact_valid[k]
         print("View ",direction," reach releases=",rig.reach_releases-releases_before)
+    var canvas:=Node2D.new()
+    rig.last_time=100.0;rig.motion_gain=1.0;rig.contact_valid.fill(true);rig.enabled=false
+    check(not rig.draw(canvas,Vector2.ZERO,"cool-kid","original",{"state":"run"},{}),"legacy selection bypasses candidate draw")
+    check(not rig.contact_valid[0] and not rig.contact_valid[1] and rig.last_time<0.0 and rig.motion_gain==0.0,"fallback clears stale world contacts before re-entry")
+    canvas.free()
     print("Motion samples=",count," stable contact comparisons=",locked," reach releases=",rig.reach_releases," (numerical constraints, NOT visual acceptance)")
     if failures.is_empty():print("PASS: eight-view state coverage, finite poses, joint continuity, grip and planted world contacts");quit()
     else:

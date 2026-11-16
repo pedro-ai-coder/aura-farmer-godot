@@ -1,6 +1,6 @@
 {
   "status": "CANDIDATE_NOT_APPROVED",
-  "runtime_game_sha": "50cbbf7acd07563226c332301260b14822fbe7e8",
+  "runtime_game_sha": "0daa4bfed0d6246701a37e8bb93ff090045295a6",
   "approved_main_sha": "2f7cfab5d0b498a2d7dade97ec1adf38e58fda50",
   "art_sha": "e4f4a43fc166dea6bb9cea494e3c09e445f35811",
   "manifest_sha256": "53dfcae7594fe940d4a1c7f36254ef3e99a9a25a98b1ea1aabb07f353507c022",
@@ -19,8 +19,8 @@
   "artifacts": [
     {
       "file": "build/cool-kid-v2/ab.mp4",
-      "sha256": "3c63f23ec529234f65dd7d370eda018622dbae22a573c3469d7c3475f0ab015d",
-      "bytes": 9040426,
+      "sha256": "13a86b9aab03af94783038d7b875a5908cd3789e9d7e79cdefb5bf296554af97",
+      "bytes": 9040400,
       "status": "CANDIDATE_NOT_APPROVED",
       "storage": "local artifact; not committed or publicly deployed",
       "video": {
@@ -41,8 +41,8 @@
     },
     {
       "file": "build/cool-kid-v2/flex.mp4",
-      "sha256": "68c3e93d07c0413a0662f7a23849c4885fea0840cf4e3804963c3c7cf504470f",
-      "bytes": 17211351,
+      "sha256": "a1bff339a957ebd459bdb791e16bc41dffe0a45b7e9bcdafa0a4341a95668572",
+      "bytes": 17204821,
       "status": "CANDIDATE_NOT_APPROVED",
       "storage": "local artifact; not committed or publicly deployed",
       "video": {
@@ -63,8 +63,8 @@
     },
     {
       "file": "build/cool-kid-v2/defeat.mp4",
-      "sha256": "85c8ec0a2a514e82753d194fcd859249684cd82b8ccdf11a0373297138849b8c",
-      "bytes": 1206259,
+      "sha256": "562560b965b8ce65c61de1032920952a261a004c2e7a2b3ff62d833b889db9e1",
+      "bytes": 1207632,
       "status": "CANDIDATE_NOT_APPROVED",
       "storage": "local artifact; not committed or publicly deployed",
       "video": {
@@ -107,8 +107,8 @@
     },
     {
       "file": "build/cool-kid-v2/CLUTCHPUNKS-CoolKid-candidate-web-20261116.zip",
-      "sha256": "3ff5dbd734a79af5bdf22ced4bd9f511e2c7b19434149ca6baaa001fa3829e42",
-      "bytes": 82026501,
+      "sha256": "641d9377779bb9c74a0a7766cfb52ce4f4a07d4c028cf3eb52d737acd74ca95a",
+      "bytes": 82027093,
       "status": "CANDIDATE_NOT_APPROVED",
       "storage": "local artifact; not committed or publicly deployed"
     },
