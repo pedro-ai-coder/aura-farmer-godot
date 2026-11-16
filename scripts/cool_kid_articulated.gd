@@ -121,7 +121,7 @@ func _leg(side: String, phase: float, heading: float, pelvis: Transform2D, gain:
     target=world_hip+to.normalized()*distance
     var bend:=acos(clampf((a*a+distance*distance-b*b)/(2.0*a*distance),-1.0,1.0))
     # Knees bend in travel direction; front/rear retain separated lanes.
-    var bend_sign:=(-1.0 if cos(heading)<-0.25 else 1.0) if absf(sin(heading))<0.4 else (-1.0 if index==0 else 1.0)
+    var bend_sign:=(1.0 if cos(heading)<-0.25 else -1.0) if absf(sin(heading))<0.4 else (1.0 if index==0 else -1.0)
     var knee_target:=world_hip+Vector2.from_angle(to.angle()+bend*bend_sign)*a
     var upper:=around(hip,(knee_target-world_hip).angle()-(knee-hip).angle(),world_hip-hip)
     # Translate to the solved knee (source segment lengths remain unscaled).

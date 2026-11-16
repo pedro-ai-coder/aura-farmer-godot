@@ -20,6 +20,8 @@ func verify() -> void:
     check(snapshot==var_to_bytes([game.rng.state,game.hp,game.run_time,game.player_pos,game.weapons]),"A/B preserves simulation")
     game._review_toggle()
     check(not game.art.cool_kid_rig.supports("cool-kid","female","idle",{}),"Byte Baddie remains legacy")
+    game.presentation.open_settings("paused");garage._process(0.0)
+    check(game.mode=="options" and not game.review_overlay.visible,"review HUD hidden in canonical options mode")
     garage.queue_free()
     if failures.is_empty():print("PASS: Neon Garage, default Cool Kid, six identities, real run and pure A/B toggle");quit()
     else:
