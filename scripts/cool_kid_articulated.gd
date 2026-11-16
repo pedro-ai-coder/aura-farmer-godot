@@ -2,12 +2,17 @@ extends RefCounted
 ## CANDIDATE only. Existing immediate renderer, shared hierarchy, eight authored views.
 const Motion=preload("res://scripts/cool_kid_motion.gd")
 const ROOT := "res://assets/art-candidates/cool-kid/articulated-rig-v2/"
-const ART_COMMIT := "d7bcb6929c97e09366403363433b40235e71e580"
-const MANIFEST_SHA := "141ae5e751adf117f4a23dc5ab131e54cbd9666882b258531ea3bdf598a76640"
+const ART_COMMIT := "04ff7a1133e8d11553df48e416625ea34cb80ccc"
+const MANIFEST_SHA := "a770cf0775e1dc74081d6c0bcbd1062c0fd3c4e48a6789b63ee130833eda6d2b"
 const SCALE := 64.0/147.0
 const ORIGIN := Vector2(96,180)
+const STATES := ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]
 const STRIDE := 32.0
 const STANCE := 0.45
+const FRONT_ORDER := [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+const REAR_LEFT_ORDER := [0,1,2,3,4,5,6,8,9,11,12,13,7,10,14,15]
+const REAR_RIGHT_ORDER := [0,1,2,3,4,5,6,10,11,9,12,13,7,8,14,15]
+var sampled_view := 0
 var enabled := false
 var valid := false
 var reason := "not prepared"
@@ -28,7 +33,6 @@ var contact_phases := [false,false]
 var contact_anchors := [Vector2.ZERO,Vector2.ZERO]
 var contact_valid := [false,false]
 var reach_releases := 0
-var foot_lock := false
 var actor_position := Vector2.ZERO
 
 func _init() -> void:
@@ -68,6 +72,7 @@ func prepare(root_path: String=ROOT, expected: String=MANIFEST_SHA) -> bool:
     valid=true;reason="valid pinned candidate / eight directions";return true
 
 func _use_view(index: int) -> void:
+    sampled_view=index
     parts=views[index]["parts"];textures=views[index]["textures"];pivots=views[index]["pivots"];transforms=views[index]["transforms"]
 
 func fallback_reason(hero_id: String, appearance: String, state: String, context: Dictionary) -> String:
@@ -75,7 +80,7 @@ func fallback_reason(hero_id: String, appearance: String, state: String, context
     if not valid:return "INVALID RIG: "+reason
     if hero_id!="cool-kid" or appearance!="original":return "identity outside Cool Kid original scope"
     if bool(context.get("reduced_motion",false)):return "reduced motion: approved legacy"
-    if state not in ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]:return "unsupported state: "+state
+    if state not in STATES:return "unsupported state: "+state
     return ""
 func supports(hero_id: String, appearance: String, state: String, context: Dictionary) -> bool:
     return fallback_reason(hero_id,appearance,state,context).is_empty()
@@ -198,6 +203,7 @@ func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: St
     canvas.draw_set_transform_matrix(Transform2D.IDENTITY)
     return true
 func _draw_parts(canvas: CanvasItem, base: Transform2D, alpha: float) -> void:
-    for i in range(parts.size()):
+    var order: Array=REAR_LEFT_ORDER if (sampled_view==5 or sampled_view==6) else REAR_RIGHT_ORDER if sampled_view==7 else FRONT_ORDER
+    for i: int in order:
         canvas.draw_set_transform_matrix(base*transforms[str(parts[i]["name"])])
         canvas.draw_texture(textures[i],Vector2.ZERO,Color(1,1,1,alpha))

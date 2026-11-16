@@ -17,8 +17,8 @@
       "sector": 0,
       "source_frame": 0,
       "source_sha256": "a250ea2a652d6065fac85d5114e4b8cd7a1da9a602322e9e5ac083603c1415a5",
-      "master_sha256": "3490f05ff8b8cf8b189fa3899b8d22ac9fc4dd0cb346f961549db511429c20de",
-      "ora_sha256": "b33c7e48c31c17bf7bf5201083833bbdb59be72e84f0f56af6b73a3a38ee8075",
+      "master_sha256": "fe50e48251ab50faee6dd36a28d689d8cc6d4cc75bd1843d71a77233b5d23e5e",
+      "ora_sha256": "5efbe1ddcc9f441ed3bcb0c0301e17a564db756111fcee622607b8cc96b70966",
       "parts": [
         {
           "name": "pelvis",
@@ -133,8 +133,8 @@
             137.0
           ],
           "file": "view-0/torso.png",
-          "sha256": "efa3ffc458041be21b167701a241c6f164203e571c783af01eba2a231278a116",
-          "rgba_sha256": "b1864877171db6d9f77574df64bca6c282ad05d7842b1c35439f61c08a0d8210",
+          "sha256": "e756513652bdebc6b3ad4e1562132bb126120048762610497602d3b97c6b52f1",
+          "rgba_sha256": "403898d54da93c40319b3b0f365bb5d25ad9e3a8d4ae6d4a74b38b5f397dadc7",
           "dimensions": [
             192,
             192
@@ -148,8 +148,8 @@
             114
           ],
           "file": "view-0/upper_r.png",
-          "sha256": "a612915e2b853c12d93b9ad622a3714ed9ed132ab28572c0009b725ae6159596",
-          "rgba_sha256": "fb26c8a8fe4035e7de1fa39dd1872867f9cd1e56278bf5203e28fbcf77ed8fcd",
+          "sha256": "108c26d381da87f027f9c57bf27a5e18eadd64f6fb819778cc9d6c60bbd33a39",
+          "rgba_sha256": "4c5a1f4759e4c40cbb8a5e8d55e4b4201e14d1b6ab5fa89f0479e037d322f48c",
           "dimensions": [
             192,
             192
@@ -266,8 +266,8 @@
       "sector": 1,
       "source_frame": 4,
       "source_sha256": "3e4d9815bf21f4b946feb43b29988804fb23df031ee28c7bb60a78832e08141f",
-      "master_sha256": "2f5d4a5be07d9b36aa41128671bbc60ccbf4a1a8fb534154ab02b17c9d1f061c",
-      "ora_sha256": "cd96cd2250f21938e57f910c8e4e6ccbd34ec4f00defba0c3609a9660816af39",
+      "master_sha256": "99013fbc806f3c968652b2b26d4663c6054b311bb4875f60e343e4f62d297e10",
+      "ora_sha256": "d3ea01322f3641d8a75c9f246bbe23c22c57247e016afd9a1b7aa56b287bc62b",
       "parts": [
         {
           "name": "pelvis",
@@ -397,8 +397,8 @@
             124
           ],
           "file": "view-1/upper_r.png",
-          "sha256": "e38c3e891697a0acfee0c6fb51e25e0ad420976820012483f419010890460dcf",
-          "rgba_sha256": "ca6ccabe80d4582ad53b7e5d362eb0fe8d3776817b32076b639af842e08cda2d",
+          "sha256": "b2c9a8640512996cbd11cdb92269547bc95f9c127c3ad7573b50427ab1bf86fb",
+          "rgba_sha256": "df5c30477c6afadcfef5a17d4791064dfe09890bb90dfe91b2c84dec336714a5",
           "dimensions": [
             192,
             192
@@ -515,8 +515,8 @@
       "sector": 2,
       "source_frame": 8,
       "source_sha256": "d2ac2ec0e90f61c646cb746458bf55168d0ae9fe60b31003ec8b0a46a591f7bb",
-      "master_sha256": "ecb476028dfd8c89b9514de329124e3fa52612946e497a81ddb0b2d8cfc9ee69",
-      "ora_sha256": "fa153b23a13842affb6b7c38e83593604576ab99a9710793ca9055d2c7cf5ff0",
+      "master_sha256": "bc6422123a9558f8d13174d95650c7e052d80aff88e30719a2418dc658b32ee3",
+      "ora_sha256": "f78fd7bfa009673ab34f0cb3df2f6d8a60afa87a4b050a6c986d744e8da52b2f",
       "parts": [
         {
           "name": "pelvis",
@@ -646,8 +646,8 @@
             119
           ],
           "file": "view-2/upper_r.png",
-          "sha256": "647b74de79193bd72ee55d5f4c6436cadba102728c99d2821d025af2b36355bd",
-          "rgba_sha256": "f4d9f28bae3c7042eb20fdc9ffe8d06b68979414469b2190e9bcb95861406e3d",
+          "sha256": "b9e81531554a896d1a81c6e119bedd408ba108009ed4d6c6b390bb864b67efde",
+          "rgba_sha256": "1c8705e5316406205fba13e195903f5dba84a7d8548b811ab76a3efe99cf959a",
           "dimensions": [
             192,
             192
@@ -764,8 +764,8 @@
       "sector": 3,
       "source_frame": 12,
       "source_sha256": "942aae356a803b38c4b24f8a2eb6f311cb527dee7f892dae24e087866d5a3165",
-      "master_sha256": "7b1798ce180319fb8e57b1eba399e87ce149d037e91236593c24de7221394df5",
-      "ora_sha256": "4379214d07fbe6c48557ae0151c1244e2eaa4745dff5bd0b57ff9217f2b14199",
+      "master_sha256": "359305eb13059eef2af6e10053265393e97ddd7f6085ce1d80f4a1446b9245e2",
+      "ora_sha256": "7e5340522193632ec92a3a0b4604ffa81454fb7b769be6f507267f64533698f0",
       "parts": [
         {
           "name": "pelvis",
@@ -880,8 +880,8 @@
             137.0
           ],
           "file": "view-3/torso.png",
-          "sha256": "c80abc743ef7851df7951e8fd5eed6134c78586f0eee55371e0205f8ce3ce0ef",
-          "rgba_sha256": "b9a4c4f8369afbc1d3d6f469c73cc433abadb66826e8a20ee8c19092df63e668",
+          "sha256": "6431bd7d18dec9fffb034af25170e656ee6f6b378944384a6b8b7b45764b9989",
+          "rgba_sha256": "a92c1d9cc59ad894dc8c7166becc877462401f97505b7a866fc2e169aaaa2c6d",
           "dimensions": [
             192,
             192
@@ -895,8 +895,8 @@
             123
           ],
           "file": "view-3/upper_r.png",
-          "sha256": "180e6686402602d47559dd7db97e02905320d7e9c8570d1be7dc2260e9202976",
-          "rgba_sha256": "d488bcff9b0ffc486b6be2b2195897cfbc29746dc4b57ab19dc0a4cb3539ff74",
+          "sha256": "38889c5fa468debe5404edb9121216025d5a32afc152c908ed7457fca0995e3c",
+          "rgba_sha256": "9d5a0aa938836107e09951263e4a6d29efd841c94eaadb8d6f00c85a6010ff1a",
           "dimensions": [
             192,
             192
@@ -1013,8 +1013,8 @@
       "sector": 4,
       "source_frame": 16,
       "source_sha256": "4f5a6468ec2903424f39732f9761c44ea31f86a370f17518a78b2b90eef26d46",
-      "master_sha256": "7b1fb9e7fc95ff2c9c2ebcf2e9aac8004f88be96d8378b9665b0d54a1152ebcd",
-      "ora_sha256": "cd57abc7ef934e1cbeeca87f4971dee9f3f4efa9c434fba184c4e920076359f6",
+      "master_sha256": "479392eba01d3fcc89294f680aa7a91884d12cc2a311f54fe8e60463bc7ce697",
+      "ora_sha256": "f2e0dd80c9c82b0636d4a6b187371ef7e0814e3faee02d02fad5dbc2ee12098e",
       "parts": [
         {
           "name": "pelvis",
@@ -1144,8 +1144,8 @@
             121
           ],
           "file": "view-4/upper_r.png",
-          "sha256": "d4f771e16f427bcfc9b76bde368ed332ae61e4166b002ff87a33820f62ecc5a0",
-          "rgba_sha256": "5e32dcf333304284183bb3faeb39cd8d5e139ba45eb415818e40381cd7e5dc9b",
+          "sha256": "cb0069445dfcfcc21fdcf409abaff14a928a4028c2071dfb418c6331635d804f",
+          "rgba_sha256": "93cfecfd32b3f050bd9dd7cda09c94264e83b12ed6cb85ae001e70ae43564787",
           "dimensions": [
             192,
             192
@@ -1262,8 +1262,8 @@
       "sector": 5,
       "source_frame": 20,
       "source_sha256": "b59464c20a0ece86e0fd949410b815e8dd4f296a8a94c1ac716e29e7ebf54526",
-      "master_sha256": "dac360eda63f31a021fe254e36fa61111f0c26ea038d88fe4c2d383c0eb088d8",
-      "ora_sha256": "242ed9c3bbbfb34a66562cbb5fb18a1fcc30541d080a12450404950bc6ada694",
+      "master_sha256": "1869dc4b47df7e4d8ab6f3dff3fe7ab103af551b27cad0934f4ecee4d84f6f25",
+      "ora_sha256": "a29f8b415db8c119c9a4a9f4d149655cf5105dca5a67306dbe54a6ac50c3dfa6",
       "parts": [
         {
           "name": "pelvis",
@@ -1378,8 +1378,8 @@
             137.0
           ],
           "file": "view-5/torso.png",
-          "sha256": "69c17242cb11b7cc56efa571df220dc8bb06ad3d7f5403849e1dc2f1b9ea5a2c",
-          "rgba_sha256": "2e3273f4a16ac6bcc265656f2839eef4f88b96b38e757e69abca57d6d4cd31a2",
+          "sha256": "d13a9c4de00b2b1555b2d35775dbc64c65b74ab6d5e60d5ec3ae634cef48e7fd",
+          "rgba_sha256": "1f1848f207f09b3cfb463eef8db0f72eaed806cad04c40c8376fb04b831ece56",
           "dimensions": [
             192,
             192
@@ -1393,8 +1393,8 @@
             117
           ],
           "file": "view-5/upper_r.png",
-          "sha256": "b3354707a88909e4c564b480b303b8e59a50bbed4f6d1b6019edeb0bce071cce",
-          "rgba_sha256": "1e94a857fb112c65041573ddec8a04c2861f195bc910e85bd6221723d19ee018",
+          "sha256": "8a9fd521c16d1908cacefd911133c22b4a652404b2002bf42de79bb05d745ad9",
+          "rgba_sha256": "f4c446389fcb65a1b58417fcf18383c5a7fb2ec709c81b5598f2f4053bb0b541",
           "dimensions": [
             192,
             192
@@ -1423,8 +1423,8 @@
             120
           ],
           "file": "view-5/upper_l.png",
-          "sha256": "35a3058757e00adff3ee1b90aacb086bf9e438150ae9ca9997e429b198f30eeb",
-          "rgba_sha256": "4a36b4adbdeef9c52e5927904d61ae7cc4870a3cc9efffd8cbbc47233449e571",
+          "sha256": "c778ef053aa6d44d88556de1bae6a0009abf405a5fd7776775b764522218502c",
+          "rgba_sha256": "8709e954e8e99e835f208f302ee8aaaccbc404ed7e4f6ccf05f75083290c6136",
           "dimensions": [
             192,
             192
@@ -1453,8 +1453,8 @@
             131
           ],
           "file": "view-5/keyboard.png",
-          "sha256": "a5245cc3e21432ca1f214e2826025ed34deba708b31469f904bb5304e6e150cd",
-          "rgba_sha256": "47b06ebd6ce9010011071993ec8afce8800c1cc63e73875b64583e8455636513",
+          "sha256": "7205804dcd63ea1fbc791866d1583fbb52d8db2cfb01a1846749923f3460e053",
+          "rgba_sha256": "78bf1d4f82393943c23a3ff6337c1786e43ba6b0853cceb11f052950459026f7",
           "dimensions": [
             192,
             192
@@ -1511,8 +1511,8 @@
       "sector": 6,
       "source_frame": 24,
       "source_sha256": "bcecb82b989c5f6074700496471ef9089c33e4e2e6d485ceae6944bf40c1c301",
-      "master_sha256": "dc58fc4564b6c8cf3eb1bf5127fefafdef381f3e029ec30b3bc2c53c52625f25",
-      "ora_sha256": "0650357c74056121658672aa50a4964110e090cf950956b6704a13fca75e0a9c",
+      "master_sha256": "489186cfe359a4bc66b20214f738c85159ba4565652c8890835fac995c91a3d0",
+      "ora_sha256": "51ed860a05a4eec020f2daadbfcf02853e819ffeeeee65c1d3d35cc9b6a34668",
       "parts": [
         {
           "name": "pelvis",
@@ -1642,8 +1642,8 @@
             117
           ],
           "file": "view-6/upper_r.png",
-          "sha256": "850d1956cf8e10f01cc1cbe3230c0eb863c69253a9301603e4b2df53d04911b2",
-          "rgba_sha256": "c04b13956447c68e3658c4520ead344f1f298e3b85a38e0b3ba53812d380a5f9",
+          "sha256": "98ad6579ed49517ae7c48034d6667f45eed2b4f86fe91dc3580accc8306fa38f",
+          "rgba_sha256": "ed6454a499c1433c36090e6561a949ea0251826f2ace02d73f503c974a1fcf52",
           "dimensions": [
             192,
             192
@@ -1672,8 +1672,8 @@
             118
           ],
           "file": "view-6/upper_l.png",
-          "sha256": "e4680bf1f645482a6fd4ecb09a56561631868707814b512d43e7daed22ee43b5",
-          "rgba_sha256": "6dcbc2a5a7d6908e3823310a5379ec3a4aaeb0830ad60f515f5bf98c44703488",
+          "sha256": "6f3b4884020367cf76509a5849ae881fa57febeeaf87ce8ac3896a0e1024e353",
+          "rgba_sha256": "53524f97f6620e99d92d9aedca8166c35f3acf5a75b30898abe5319be018c4b4",
           "dimensions": [
             192,
             192
@@ -1702,8 +1702,8 @@
             129
           ],
           "file": "view-6/keyboard.png",
-          "sha256": "5c9a2415f21f74138f5c1f46e481d8b2ddfc68d7957f15e0de08493a321fadeb",
-          "rgba_sha256": "3878a33cacbc6c50b791b53786451e54ffcfbaf6daee42e75dd1a0997e09ea19",
+          "sha256": "947c4e77c1ffd995da8bf31c823b79b8db4036a2695c36d117b3dc9baa5fcaff",
+          "rgba_sha256": "190cb281adc9a448664dbc6960122209e4c5d3940e83b61e53b056720a85edca",
           "dimensions": [
             192,
             192
@@ -1760,8 +1760,8 @@
       "sector": 7,
       "source_frame": 28,
       "source_sha256": "b65b3d10493102c1997c009f4582cc270e5ccb809125dca1de6100c7a3aac752",
-      "master_sha256": "7497116eefd82fa899e46654e275d38f55a956a8858c8f6d4b6f12a5f8c39d36",
-      "ora_sha256": "c47f07bb7235cd874eceb58977a1c3b591367dbd6274f6dcd183224d88064897",
+      "master_sha256": "651474a7e8cfb3f2473b1d9fa2ddd7e89bec36784e6368cb8476eb12e9462edc",
+      "ora_sha256": "c1c4d0f818df8899c7479e72ad6b4d3ea4b21aae23091066d6767a770d154d9b",
       "parts": [
         {
           "name": "pelvis",
@@ -1876,8 +1876,8 @@
             137.0
           ],
           "file": "view-7/torso.png",
-          "sha256": "6d4e38ad02df1182ef3955e96d3bc14ec34575fa862081212351be33e5934ad2",
-          "rgba_sha256": "1470512584321386323ac2f66d080173bf19bdfdde24f6d5b9a024e0f7d962b7",
+          "sha256": "64216d1c9d5a504f3a1557ff9d903fbc1dc09e9e2bacb380888bacb0a215e933",
+          "rgba_sha256": "c14d6a3381f7ba1b465853a2f183169e6a431c4845e3e89aefac515c5131609a",
           "dimensions": [
             192,
             192
@@ -1891,8 +1891,8 @@
             123
           ],
           "file": "view-7/upper_r.png",
-          "sha256": "498ccd87ddc3acc99e947c30e2eaa87937dead859329746d5f0bff3d78bb8621",
-          "rgba_sha256": "ccdd8298a6bd57c01ae9813345db02e1a397128d692538d3d8248ed888f4ef88",
+          "sha256": "de9a8fa13a8360d84e1859260f5cd3734c83e9a5a5b9922b95b37ccd2b75516d",
+          "rgba_sha256": "46227344d96c956ead10c3d24acc4b6515fddb5d74b55a811ad14976985b4cb3",
           "dimensions": [
             192,
             192
@@ -1951,8 +1951,8 @@
             130
           ],
           "file": "view-7/keyboard.png",
-          "sha256": "fa897f4b4606fdfa6d3cd37c2842b54d7c3039d91fa8fc363400db475c10a6fd",
-          "rgba_sha256": "59825625c76d64b2064a7aaacac780443a0f8173b9e71559208334f39367e3e1",
+          "sha256": "86adda5adf6e54a63ae2cbab77bdbc237192177d65c7217bc05dfdd31aaac6eb",
+          "rgba_sha256": "2fa278ca1c37897b9897ca7093110f94d777deefe51765ca7681dc34e28a65df",
           "dimensions": [
             192,
             192
