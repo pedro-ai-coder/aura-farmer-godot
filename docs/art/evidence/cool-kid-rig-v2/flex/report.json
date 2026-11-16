@@ -1,0 +1,1325 @@
+{
+  "ab": false,
+  "candidate": true,
+  "capture_start_seconds": 90.0,
+  "events": [
+    {
+      "frame": 0,
+      "hp": 110.0,
+      "state": "run",
+      "time": 0.0166666666666667,
+      "view": 0
+    },
+    {
+      "frame": 154,
+      "hp": 110.0,
+      "state": "idle",
+      "time": 2.58333333333333,
+      "view": 0
+    },
+    {
+      "frame": 180,
+      "hp": 110.0,
+      "state": "run",
+      "time": 3.01666666666666,
+      "view": 0
+    },
+    {
+      "frame": 256,
+      "hp": 110.0,
+      "state": "idle",
+      "time": 4.28333333333332,
+      "view": 0
+    },
+    {
+      "frame": 540,
+      "hp": 110.0,
+      "state": "run",
+      "time": 9.01666666666669,
+      "view": 0
+    },
+    {
+      "frame": 595,
+      "hp": 110.0,
+      "state": "attack",
+      "time": 9.93333333333341,
+      "view": 0
+    },
+    {
+      "frame": 619,
+      "hp": 110.0,
+      "state": "run",
+      "time": 10.3333333333334,
+      "view": 0
+    },
+    {
+      "frame": 640,
+      "hp": 110.0,
+      "state": "attack",
+      "time": 10.6833333333334,
+      "view": 0
+    },
+    {
+      "frame": 664,
+      "hp": 110.0,
+      "state": "run",
+      "time": 11.0833333333335,
+      "view": 0
+    },
+    {
+      "frame": 749,
+      "hp": 110.0,
+      "state": "idle",
+      "time": 12.5000000000002,
+      "view": 0
+    },
+    {
+      "frame": 825,
+      "hp": 110.0,
+      "state": "attack",
+      "time": 13.7666666666669,
+      "view": 0
+    },
+    {
+      "frame": 849,
+      "hp": 110.0,
+      "state": "idle",
+      "time": 14.166666666667,
+      "view": 0
+    },
+    {
+      "frame": 870,
+      "hp": 110.0,
+      "state": "attack",
+      "time": 14.516666666667,
+      "view": 0
+    },
+    {
+      "frame": 883,
+      "hp": 102.4,
+      "state": "hurt",
+      "time": 14.7333333333336,
+      "view": 0
+    },
+    {
+      "frame": 894,
+      "hp": 102.4,
+      "state": "idle",
+      "time": 14.916666666667,
+      "view": 0
+    },
+    {
+      "frame": 900,
+      "hp": 102.4,
+      "state": "run",
+      "time": 15.016666666667,
+      "view": 0
+    },
+    {
+      "frame": 915,
+      "hp": 102.4,
+      "state": "attack",
+      "time": 15.266666666667,
+      "view": 0
+    },
+    {
+      "frame": 939,
+      "hp": 102.4,
+      "state": "run",
+      "time": 15.666666666667,
+      "view": 0
+    },
+    {
+      "frame": 1129,
+      "hp": 102.4,
+      "state": "idle",
+      "time": 18.8333333333335,
+      "view": 0
+    },
+    {
+      "frame": 1240,
+      "hp": 102.4,
+      "state": "attack",
+      "time": 20.6833333333334,
+      "view": 0
+    },
+    {
+      "frame": 1265,
+      "hp": 102.4,
+      "state": "run",
+      "time": 21.1000000000001,
+      "view": 0
+    },
+    {
+      "frame": 1285,
+      "hp": 104.4,
+      "state": "attack",
+      "time": 21.4333333333334,
+      "view": 0
+    },
+    {
+      "frame": 1310,
+      "hp": 104.4,
+      "state": "run",
+      "time": 21.85,
+      "view": 0
+    },
+    {
+      "frame": 1330,
+      "hp": 104.4,
+      "state": "attack",
+      "time": 22.1833333333334,
+      "view": 0
+    },
+    {
+      "frame": 1332,
+      "hp": 96.8,
+      "state": "hurt",
+      "time": 22.2166666666667,
+      "view": 0
+    },
+    {
+      "frame": 1343,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 22.4,
+      "view": 0
+    },
+    {
+      "frame": 1355,
+      "hp": 96.8,
+      "state": "run",
+      "time": 22.6,
+      "view": 0
+    },
+    {
+      "frame": 1373,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 22.9,
+      "view": 0
+    },
+    {
+      "frame": 1398,
+      "hp": 96.8,
+      "state": "run",
+      "time": 23.3166666666666,
+      "view": 0
+    },
+    {
+      "frame": 1416,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 23.6166666666666,
+      "view": 0
+    },
+    {
+      "frame": 1441,
+      "hp": 96.8,
+      "state": "run",
+      "time": 24.0333333333332,
+      "view": 0
+    },
+    {
+      "frame": 1450,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 24.1833333333332,
+      "view": 0
+    },
+    {
+      "frame": 1487,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 24.7999999999999,
+      "view": 0
+    },
+    {
+      "frame": 1512,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 25.2166666666665,
+      "view": 0
+    },
+    {
+      "frame": 1544,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 25.7499999999998,
+      "view": 0
+    },
+    {
+      "frame": 1569,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 26.1666666666665,
+      "view": 0
+    },
+    {
+      "frame": 1587,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 26.4666666666664,
+      "view": 0
+    },
+    {
+      "frame": 1612,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 26.8833333333331,
+      "view": 0
+    },
+    {
+      "frame": 1620,
+      "hp": 96.8,
+      "state": "run",
+      "time": 27.0166666666664,
+      "view": 0
+    },
+    {
+      "frame": 1679,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 27.9999999999997,
+      "view": 0
+    },
+    {
+      "frame": 1704,
+      "hp": 96.8,
+      "state": "run",
+      "time": 28.4166666666663,
+      "view": 0
+    },
+    {
+      "frame": 1729,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 28.833333333333,
+      "view": 0
+    },
+    {
+      "frame": 1754,
+      "hp": 96.8,
+      "state": "run",
+      "time": 29.2499999999996,
+      "view": 0
+    },
+    {
+      "frame": 1818,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 30.3166666666662,
+      "view": 0
+    },
+    {
+      "frame": 1980,
+      "hp": 96.8,
+      "state": "run",
+      "time": 33.0166666666661,
+      "view": 0
+    },
+    {
+      "frame": 2038,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 33.9833333333327,
+      "view": 0
+    },
+    {
+      "frame": 2063,
+      "hp": 96.8,
+      "state": "run",
+      "time": 34.3999999999993,
+      "view": 0
+    },
+    {
+      "frame": 2160,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 36.0166666666659,
+      "view": 0
+    },
+    {
+      "frame": 2249,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 37.4999999999992,
+      "view": 0
+    },
+    {
+      "frame": 2274,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 37.9166666666658,
+      "view": 0
+    },
+    {
+      "frame": 2292,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 38.2166666666658,
+      "view": 0
+    },
+    {
+      "frame": 2317,
+      "hp": 96.8,
+      "state": "idle",
+      "time": 38.6333333333324,
+      "view": 0
+    },
+    {
+      "frame": 2340,
+      "hp": 96.8,
+      "state": "run",
+      "time": 39.0166666666657,
+      "view": 0
+    },
+    {
+      "frame": 2384,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 39.749999999999,
+      "view": 0
+    },
+    {
+      "frame": 2409,
+      "hp": 96.8,
+      "state": "run",
+      "time": 40.1666666666657,
+      "view": 0
+    },
+    {
+      "frame": 2427,
+      "hp": 96.8,
+      "state": "attack",
+      "time": 40.4666666666657,
+      "view": 0
+    },
+    {
+      "frame": 2452,
+      "hp": 96.8,
+      "state": "run",
+      "time": 40.8833333333323,
+      "view": 0
+    },
+    {
+      "frame": 2469,
+      "hp": 89.2,
+      "state": "hurt",
+      "time": 41.1666666666656,
+      "view": 0
+    },
+    {
+      "frame": 2480,
+      "hp": 89.2,
+      "state": "attack",
+      "time": 41.3499999999989,
+      "view": 0
+    },
+    {
+      "frame": 2495,
+      "hp": 89.2,
+      "state": "run",
+      "time": 41.5999999999989,
+      "view": 0
+    },
+    {
+      "frame": 2582,
+      "hp": 89.2,
+      "state": "idle",
+      "time": 43.0499999999988,
+      "view": 0
+    },
+    {
+      "frame": 2688,
+      "hp": 89.2,
+      "state": "attack",
+      "time": 44.8166666666654,
+      "view": 0
+    },
+    {
+      "frame": 2713,
+      "hp": 89.2,
+      "state": "run",
+      "time": 45.233333333332,
+      "view": 0
+    },
+    {
+      "frame": 2731,
+      "hp": 89.2,
+      "state": "attack",
+      "time": 45.533333333332,
+      "view": 0
+    },
+    {
+      "frame": 2756,
+      "hp": 89.2,
+      "state": "run",
+      "time": 45.9499999999987,
+      "view": 0
+    },
+    {
+      "frame": 2844,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 47.4166666666653,
+      "view": 0
+    },
+    {
+      "frame": 2869,
+      "hp": 91.2,
+      "state": "run",
+      "time": 47.8333333333319,
+      "view": 0
+    },
+    {
+      "frame": 2875,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 47.9333333333319,
+      "view": 0
+    },
+    {
+      "frame": 2899,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 48.3333333333319,
+      "view": 0
+    },
+    {
+      "frame": 2924,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 48.7499999999985,
+      "view": 0
+    },
+    {
+      "frame": 3045,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 50.7666666666651,
+      "view": 0
+    },
+    {
+      "frame": 3070,
+      "hp": 91.2,
+      "state": "run",
+      "time": 51.1833333333317,
+      "view": 0
+    },
+    {
+      "frame": 3263,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 54.3999999999982,
+      "view": 0
+    },
+    {
+      "frame": 3420,
+      "hp": 91.2,
+      "state": "run",
+      "time": 57.0166666666647,
+      "view": 0
+    },
+    {
+      "frame": 3436,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 57.2833333333314,
+      "view": 0
+    },
+    {
+      "frame": 3461,
+      "hp": 91.2,
+      "state": "run",
+      "time": 57.699999999998,
+      "view": 0
+    },
+    {
+      "frame": 3477,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 57.9666666666647,
+      "view": 0
+    },
+    {
+      "frame": 3502,
+      "hp": 91.2,
+      "state": "run",
+      "time": 58.3833333333313,
+      "view": 0
+    },
+    {
+      "frame": 3595,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 59.9333333333312,
+      "view": 0
+    },
+    {
+      "frame": 3616,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 60.2833333333312,
+      "view": 0
+    },
+    {
+      "frame": 3641,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 60.6999999999978,
+      "view": 0
+    },
+    {
+      "frame": 3657,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 60.9666666666645,
+      "view": 0
+    },
+    {
+      "frame": 3682,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 61.3833333333311,
+      "view": 0
+    },
+    {
+      "frame": 3705,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 61.7666666666644,
+      "view": 0
+    },
+    {
+      "frame": 3730,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 62.1833333333311,
+      "view": 0
+    },
+    {
+      "frame": 3746,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 62.4499999999977,
+      "view": 0
+    },
+    {
+      "frame": 3771,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 62.8666666666644,
+      "view": 0
+    },
+    {
+      "frame": 3780,
+      "hp": 91.2,
+      "state": "run",
+      "time": 63.0166666666644,
+      "view": 0
+    },
+    {
+      "frame": 3787,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 63.133333333331,
+      "view": 0
+    },
+    {
+      "frame": 3812,
+      "hp": 91.2,
+      "state": "run",
+      "time": 63.5499999999977,
+      "view": 0
+    },
+    {
+      "frame": 3828,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 63.8166666666643,
+      "view": 0
+    },
+    {
+      "frame": 3853,
+      "hp": 91.2,
+      "state": "run",
+      "time": 64.233333333331,
+      "view": 0
+    },
+    {
+      "frame": 3869,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 64.4999999999976,
+      "view": 0
+    },
+    {
+      "frame": 3894,
+      "hp": 91.2,
+      "state": "run",
+      "time": 64.9166666666643,
+      "view": 0
+    },
+    {
+      "frame": 3931,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 65.5333333333309,
+      "view": 0
+    },
+    {
+      "frame": 3956,
+      "hp": 91.2,
+      "state": "run",
+      "time": 65.9499999999975,
+      "view": 0
+    },
+    {
+      "frame": 4022,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 67.0499999999975,
+      "view": 0
+    },
+    {
+      "frame": 4140,
+      "hp": 91.2,
+      "state": "run",
+      "time": 69.016666666664,
+      "view": 0
+    },
+    {
+      "frame": 4294,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 71.5833333333306,
+      "view": 0
+    },
+    {
+      "frame": 4319,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 71.9999999999972,
+      "view": 0
+    },
+    {
+      "frame": 4356,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 72.6166666666638,
+      "view": 0
+    },
+    {
+      "frame": 4381,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 73.0333333333305,
+      "view": 0
+    },
+    {
+      "frame": 4474,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 74.5833333333304,
+      "view": 0
+    },
+    {
+      "frame": 4499,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 74.999999999997,
+      "view": 0
+    },
+    {
+      "frame": 4500,
+      "hp": 91.2,
+      "state": "run",
+      "time": 75.0166666666637,
+      "view": 0
+    },
+    {
+      "frame": 4592,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 76.5499999999969,
+      "view": 0
+    },
+    {
+      "frame": 4617,
+      "hp": 91.2,
+      "state": "run",
+      "time": 76.9666666666636,
+      "view": 0
+    },
+    {
+      "frame": 4701,
+      "hp": 91.2,
+      "state": "idle",
+      "time": 78.3666666666635,
+      "view": 0
+    },
+    {
+      "frame": 4850,
+      "hp": 91.2,
+      "state": "attack",
+      "time": 80.8499999999967,
+      "view": 0
+    },
+    {
+      "frame": 4852,
+      "hp": 81.7,
+      "state": "hurt",
+      "time": 80.88333333333,
+      "view": 0
+    },
+    {
+      "frame": 4863,
+      "hp": 81.7,
+      "state": "attack",
+      "time": 81.0666666666634,
+      "view": 0
+    },
+    {
+      "frame": 4875,
+      "hp": 81.7,
+      "state": "run",
+      "time": 81.2666666666633,
+      "view": 0
+    },
+    {
+      "frame": 4940,
+      "hp": 81.7,
+      "state": "attack",
+      "time": 82.3499999999966,
+      "view": 0
+    },
+    {
+      "frame": 4965,
+      "hp": 81.7,
+      "state": "run",
+      "time": 82.7666666666633,
+      "view": 0
+    },
+    {
+      "frame": 5037,
+      "hp": 81.7,
+      "state": "idle",
+      "time": 83.9666666666632,
+      "view": 0
+    },
+    {
+      "frame": 5128,
+      "hp": 81.7,
+      "state": "attack",
+      "time": 85.4833333333298,
+      "view": 0
+    },
+    {
+      "frame": 5153,
+      "hp": 81.7,
+      "state": "idle",
+      "time": 85.8999999999964,
+      "view": 0
+    },
+    {
+      "frame": 5185,
+      "hp": 72.2,
+      "state": "hurt",
+      "time": 86.4333333333297,
+      "view": 0
+    },
+    {
+      "frame": 5196,
+      "hp": 72.2,
+      "state": "idle",
+      "time": 86.616666666663,
+      "view": 0
+    },
+    {
+      "frame": 5220,
+      "hp": 72.2,
+      "state": "run",
+      "time": 87.016666666663,
+      "view": 0
+    },
+    {
+      "frame": 5239,
+      "hp": 72.2,
+      "state": "attack",
+      "time": 87.3333333333297,
+      "view": 0
+    },
+    {
+      "frame": 5264,
+      "hp": 74.2,
+      "state": "run",
+      "time": 87.7499999999963,
+      "view": 0
+    },
+    {
+      "frame": 5272,
+      "hp": 66.6,
+      "state": "hurt",
+      "time": 87.8833333333296,
+      "view": 0
+    },
+    {
+      "frame": 5283,
+      "hp": 66.6,
+      "state": "attack",
+      "time": 88.066666666663,
+      "view": 0
+    },
+    {
+      "frame": 5305,
+      "hp": 66.6,
+      "state": "run",
+      "time": 88.4333333333296,
+      "view": 0
+    },
+    {
+      "frame": 5319,
+      "hp": 66.6,
+      "state": "attack",
+      "time": 88.6666666666629,
+      "view": 0
+    },
+    {
+      "frame": 5344,
+      "hp": 66.6,
+      "state": "run",
+      "time": 89.0833333333296,
+      "view": 0
+    },
+    {
+      "frame": 5462,
+      "hp": 66.6,
+      "state": "idle",
+      "time": 91.0499999999961,
+      "view": 6
+    },
+    {
+      "frame": 5561,
+      "hp": 66.6,
+      "state": "attack",
+      "time": 92.699999999996,
+      "view": 1
+    },
+    {
+      "frame": 5572,
+      "hp": 57.1,
+      "state": "hurt",
+      "time": 92.8833333333293,
+      "view": 1
+    },
+    {
+      "frame": 5583,
+      "hp": 57.1,
+      "state": "attack",
+      "time": 93.0666666666627,
+      "view": 7
+    },
+    {
+      "frame": 5586,
+      "hp": 57.1,
+      "state": "run",
+      "time": 93.1166666666627,
+      "view": 7
+    },
+    {
+      "frame": 5600,
+      "hp": 57.1,
+      "state": "attack",
+      "time": 93.349999999996,
+      "view": 7
+    },
+    {
+      "frame": 5606,
+      "hp": 49.5,
+      "state": "hurt",
+      "time": 93.449999999996,
+      "view": 7
+    },
+    {
+      "frame": 5617,
+      "hp": 49.5,
+      "state": "attack",
+      "time": 93.6333333333293,
+      "view": 7
+    },
+    {
+      "frame": 5625,
+      "hp": 49.5,
+      "state": "run",
+      "time": 93.7666666666626,
+      "view": 7
+    },
+    {
+      "frame": 5639,
+      "hp": 49.5,
+      "state": "attack",
+      "time": 93.9999999999959,
+      "view": 7
+    },
+    {
+      "frame": 5664,
+      "hp": 49.5,
+      "state": "run",
+      "time": 94.4166666666626,
+      "view": 7
+    },
+    {
+      "frame": 5757,
+      "hp": 49.5,
+      "state": "idle",
+      "time": 95.9666666666625,
+      "view": 7
+    },
+    {
+      "frame": 5776,
+      "hp": 49.5,
+      "state": "attack",
+      "time": 96.2833333333292,
+      "view": 3
+    },
+    {
+      "frame": 5801,
+      "hp": 49.5,
+      "state": "idle",
+      "time": 96.6999999999958,
+      "view": 2
+    },
+    {
+      "frame": 5815,
+      "hp": 49.5,
+      "state": "attack",
+      "time": 96.9333333333291,
+      "view": 2
+    },
+    {
+      "frame": 5840,
+      "hp": 49.5,
+      "state": "idle",
+      "time": 97.3499999999958,
+      "view": 2
+    },
+    {
+      "frame": 5854,
+      "hp": 49.5,
+      "state": "attack",
+      "time": 97.5833333333291,
+      "view": 2
+    },
+    {
+      "frame": 5855,
+      "hp": 49.5,
+      "state": "flex-in",
+      "time": 97.5999999999957,
+      "view": 3
+    },
+    {
+      "frame": 5870,
+      "hp": 49.5,
+      "state": "flex-loop",
+      "time": 97.8499999999957,
+      "view": 3
+    },
+    {
+      "frame": 5925,
+      "hp": 40.0,
+      "state": "hurt",
+      "time": 98.7666666666623,
+      "view": 1
+    },
+    {
+      "frame": 5940,
+      "hp": 30.5,
+      "state": "flex-loop",
+      "time": 99.0166666666623,
+      "view": 1
+    },
+    {
+      "frame": 6069,
+      "hp": 24.04,
+      "state": "hurt",
+      "time": 101.166666666662,
+      "view": 1
+    },
+    {
+      "frame": 6080,
+      "hp": 65.8,
+      "state": "flex-loop",
+      "time": 101.349999999996,
+      "view": 1
+    },
+    {
+      "frame": 6140,
+      "hp": 65.8,
+      "state": "flex-out",
+      "time": 102.349999999995,
+      "view": 2
+    },
+    {
+      "frame": 6155,
+      "hp": 65.8,
+      "state": "idle",
+      "time": 102.599999999995,
+      "view": 2
+    },
+    {
+      "frame": 6185,
+      "hp": 65.8,
+      "state": "attack",
+      "time": 103.099999999995,
+      "view": 2
+    },
+    {
+      "frame": 6210,
+      "hp": 65.8,
+      "state": "idle",
+      "time": 103.516666666662,
+      "view": 4
+    },
+    {
+      "frame": 6280,
+      "hp": 65.8,
+      "state": "attack",
+      "time": 104.683333333329,
+      "view": 4
+    },
+    {
+      "frame": 6305,
+      "hp": 65.8,
+      "state": "run",
+      "time": 105.099999999995,
+      "view": 3
+    },
+    {
+      "frame": 6480,
+      "hp": 65.8,
+      "state": "attack",
+      "time": 108.016666666662,
+      "view": 3
+    },
+    {
+      "frame": 6505,
+      "hp": 65.8,
+      "state": "idle",
+      "time": 108.433333333328,
+      "view": 6
+    },
+    {
+      "frame": 6533,
+      "hp": 65.8,
+      "state": "attack",
+      "time": 108.899999999995,
+      "view": 6
+    },
+    {
+      "frame": 6558,
+      "hp": 65.8,
+      "state": "idle",
+      "time": 109.316666666662,
+      "view": 7
+    },
+    {
+      "frame": 6621,
+      "hp": 65.8,
+      "state": "attack",
+      "time": 110.366666666662,
+      "view": 7
+    },
+    {
+      "frame": 6625,
+      "hp": 56.3,
+      "state": "hurt",
+      "time": 110.433333333328,
+      "view": 7
+    },
+    {
+      "frame": 6636,
+      "hp": 56.3,
+      "state": "attack",
+      "time": 110.616666666662,
+      "view": 7
+    },
+    {
+      "frame": 6646,
+      "hp": 56.3,
+      "state": "idle",
+      "time": 110.783333333328,
+      "view": 7
+    },
+    {
+      "frame": 6660,
+      "hp": 56.3,
+      "state": "attack",
+      "time": 111.016666666662,
+      "view": 7
+    },
+    {
+      "frame": 6685,
+      "hp": 56.3,
+      "state": "run",
+      "time": 111.433333333328,
+      "view": 5
+    },
+    {
+      "frame": 6734,
+      "hp": 56.3,
+      "state": "attack",
+      "time": 112.249999999995,
+      "view": 5
+    },
+    {
+      "frame": 6759,
+      "hp": 56.3,
+      "state": "run",
+      "time": 112.666666666662,
+      "view": 5
+    },
+    {
+      "frame": 6808,
+      "hp": 56.3,
+      "state": "attack",
+      "time": 113.483333333328,
+      "view": 5
+    },
+    {
+      "frame": 6833,
+      "hp": 56.3,
+      "state": "run",
+      "time": 113.899999999995,
+      "view": 5
+    },
+    {
+      "frame": 6897,
+      "hp": 56.3,
+      "state": "idle",
+      "time": 114.966666666661,
+      "view": 6
+    },
+    {
+      "frame": 7020,
+      "hp": 56.3,
+      "state": "run",
+      "time": 117.016666666661,
+      "view": 7
+    },
+    {
+      "frame": 7050,
+      "hp": 56.3,
+      "state": "attack",
+      "time": 117.516666666661,
+      "view": 7
+    },
+    {
+      "frame": 7075,
+      "hp": 56.3,
+      "state": "run",
+      "time": 117.933333333328,
+      "view": 7
+    },
+    {
+      "frame": 7110,
+      "hp": 56.3,
+      "state": "attack",
+      "time": 118.516666666661,
+      "view": 7
+    },
+    {
+      "frame": 7135,
+      "hp": 56.3,
+      "state": "run",
+      "time": 118.933333333328,
+      "view": 7
+    },
+    {
+      "frame": 7201,
+      "hp": 58.3,
+      "state": "idle",
+      "time": 120.033333333328,
+      "view": 0
+    },
+    {
+      "frame": 7282,
+      "hp": 58.3,
+      "state": "attack",
+      "time": 121.383333333328,
+      "view": 2
+    },
+    {
+      "frame": 7307,
+      "hp": 58.3,
+      "state": "idle",
+      "time": 121.799999999994,
+      "view": 2
+    },
+    {
+      "frame": 7323,
+      "hp": 58.3,
+      "state": "attack",
+      "time": 122.066666666661,
+      "view": 2
+    },
+    {
+      "frame": 7348,
+      "hp": 58.3,
+      "state": "idle",
+      "time": 122.483333333328,
+      "view": 3
+    },
+    {
+      "frame": 7364,
+      "hp": 58.3,
+      "state": "attack",
+      "time": 122.749999999994,
+      "view": 3
+    },
+    {
+      "frame": 7375,
+      "hp": 39.3,
+      "state": "hurt",
+      "time": 122.933333333328,
+      "view": 3
+    },
+    {
+      "frame": 7389,
+      "hp": 10.8,
+      "state": "run",
+      "time": 123.166666666661,
+      "view": 1
+    },
+    {
+      "frame": 7419,
+      "hp": 10.8,
+      "state": "attack",
+      "time": 123.666666666661,
+      "view": 1
+    },
+    {
+      "frame": 7444,
+      "hp": 10.8,
+      "state": "run",
+      "time": 124.083333333328,
+      "view": 1
+    },
+    {
+      "frame": 7509,
+      "hp": 10.8,
+      "state": "attack",
+      "time": 125.166666666661,
+      "view": 1
+    }
+  ],
+  "fps": 30,
+  "frames": 1061,
+  "hash": "0983db4e4e922027247b93205e7ea704e8da78d346f031de1f6277b65af8b647",
+  "hp": 14.8,
+  "mode": "choice",
+  "reach_releases": 1,
+  "seconds": 125.349999999994,
+  "seed": 468,
+  "source": "actual Neon runtime; automation controls; no invulnerability or injected gameplay events"
+}

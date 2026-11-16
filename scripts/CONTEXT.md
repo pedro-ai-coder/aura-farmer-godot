@@ -32,6 +32,10 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./validate.sh` — validation orchestrator.
 - `./build_web.sh` — Web build/export procedure.
 
+- `./cool_kid_articulated.gd` — opt-in Cool Kid-only candidate joint hierarchy; immutable Art manifest validation, canonical sampled clocks and renderer fallback. Native `--cool-kid-rig-review`, Web `?coolKidRig=1`; production defaults off.
+
+- `./cool_kid_review.gd` — disposable-profile review entry; F8 A/B without simulation changes. Separate export feature selects its scene.
+
 ## Architecture and flow
 
 The live `scenes/main.tscn` root attaches `solo_run.gd`, which preloads clock, rules, RNG, profile, visual and platform helpers. `scenes/player.tscn` separately attaches `player.gd`. Do not assume all available scenes are instantiated by the live main scene.
@@ -61,3 +65,5 @@ bash scripts/validate.sh
 ## Related contexts
 
 [Scenes](../scenes/CONTEXT.md) describe entry points; [Tests](../tests/CONTEXT.md) cover contracts; [Web](../web/CONTEXT.md) covers the browser adapter; [Assets](../assets/CONTEXT.md) covers art provenance.
+
+`neon_cool_kid_review.gd` combines the current Neon Garage with the disposable-profile Cool Kid rig review run. `COOL_KID_RIG_REVIEW=1` selects this Web build variant; ordinary builds exclude candidate art.
