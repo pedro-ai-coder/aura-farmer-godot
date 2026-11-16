@@ -20,7 +20,14 @@ func _review_label() -> void:
     if not art.cool_kid_rig.valid:
         review_status.text=" INVALID RIG: legacy fallback"
         return
-    review_status.text=" CANDIDATE (front) / legacy fallback" if art.cool_kid_rig.enabled else " LEGACY renderer"
+    var context:=hero_animation_state()
+    context["reduced_motion"]=bool(profile["settings"]["reducedMotion"])
+    var state:=str(hero_pose().get("state","idle")) if hero.has("id") else "idle"
+    var why: String=art.cool_kid_rig.fallback_reason(str(hero.get("id","cool-kid")),hero_appearance,state,context)
+    review_status.text=(" CANDIDATE v2 / view %d / %s" % [art.cool_kid_rig.view,art.cool_kid_rig.displayed_state]) if why.is_empty() else " FALLBACK: "+why
+func _process(delta: float) -> void:
+    super._process(delta)
+    if is_instance_valid(review_status):_review_label()
 func _review_toggle() -> void:
     art.cool_kid_rig.enabled=not art.cool_kid_rig.enabled
     _review_label();queue_redraw()

@@ -1,0 +1,2009 @@
+{
+  "schema_version": 2,
+  "status": "CANDIDATE_NOT_APPROVED",
+  "hero_id": "cool-kid",
+  "version": "articulated-rig-v2",
+  "source_game_commit": "2f7cfab5d0b498a2d7dade97ec1adf38e58fda50",
+  "source_atlas_sha256": "6f91466b63ebf3c80a427533b1d051e6b80df04654c5bd3ab318315234456bf2",
+  "source_approval": "Creator request 2026-11-16: all currently merged main artwork is approved; derivatives remain CANDIDATE",
+  "license": "Inherited main source provenance; no new external asset or license",
+  "foot_origin": [
+    96,
+    180
+  ],
+  "world_scale": 0.43537414965986393,
+  "views": [
+    {
+      "sector": 0,
+      "source_frame": 0,
+      "source_sha256": "a250ea2a652d6065fac85d5114e4b8cd7a1da9a602322e9e5ac083603c1415a5",
+      "master_sha256": "3490f05ff8b8cf8b189fa3899b8d22ac9fc4dd0cb346f961549db511429c20de",
+      "ora_sha256": "b33c7e48c31c17bf7bf5201083833bbdb59be72e84f0f56af6b73a3a38ee8075",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            111.0,
+            142.0
+          ],
+          "file": "view-0/pelvis.png",
+          "sha256": "d8dc9402d2579ac503d6fd3762d34a80ca97d900b3b3af4a237939bcaf006cf5",
+          "rgba_sha256": "800f45f574bebe0531a522a8b6ea035f8d18576a82b2a2eb23b29bee90402461",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            97,
+            142
+          ],
+          "file": "view-0/thigh_l.png",
+          "sha256": "869e268de06baa7ea18fd2ce4be7cf1e3e305248b00ff1610dac916a47b89e30",
+          "rgba_sha256": "b4f15d3baeec80d105c972b6258bb0f86546cf7dd2ea1a6987ed73c450729526",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            95,
+            158
+          ],
+          "file": "view-0/shin_l.png",
+          "sha256": "c8ce30817635d16f55a67e3a6acd1535aeac4bc9acff13fabcbd18bea1e74a37",
+          "rgba_sha256": "e5c261cd766428d5b505469dfbbf9486e50897f85b86f1fbdec3c4a33f3eb4ec",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            93,
+            174
+          ],
+          "file": "view-0/foot_l.png",
+          "sha256": "91926b391cda63b409d129abea166b952b697c1ed396170db49ed8beab360ce1",
+          "rgba_sha256": "e96dd618044a9627c74c114c5a8683efa5a3e424d0038ce9ea7b39df12f733b4",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            125,
+            142
+          ],
+          "file": "view-0/thigh_r.png",
+          "sha256": "9992f10be7b04df1c625f88ddf8eb4ad7d8710c4dc1e27580e5656ab853a1a51",
+          "rgba_sha256": "f58d0721be68b4cb0f409b05548ac52c8123b053889a5ac28e65fa21f6fa3dd4",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            127,
+            158
+          ],
+          "file": "view-0/shin_r.png",
+          "sha256": "58f40c7ccbcfb3e8790888601110abbf26f09c2750fe50ef0860d7005accffcc",
+          "rgba_sha256": "10ec5f202c17498a909405bbf3b85a87a92616f38ee03847c596392fb349f1f5",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            129,
+            174
+          ],
+          "file": "view-0/foot_r.png",
+          "sha256": "6e9d3cbb3b77090cbc67ef03e7660543f4768d0eb93ad94dc47ecac4b6c16b3b",
+          "rgba_sha256": "5afd76ef4da84ed58cdc7fd0e23345f546298278325423327e8c56d0bb25401f",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            111.0,
+            137.0
+          ],
+          "file": "view-0/torso.png",
+          "sha256": "efa3ffc458041be21b167701a241c6f164203e571c783af01eba2a231278a116",
+          "rgba_sha256": "b1864877171db6d9f77574df64bca6c282ad05d7842b1c35439f61c08a0d8210",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            143,
+            114
+          ],
+          "file": "view-0/upper_r.png",
+          "sha256": "a612915e2b853c12d93b9ad622a3714ed9ed132ab28572c0009b725ae6159596",
+          "rgba_sha256": "fb26c8a8fe4035e7de1fa39dd1872867f9cd1e56278bf5203e28fbcf77ed8fcd",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            139,
+            127
+          ],
+          "file": "view-0/fore_r.png",
+          "sha256": "645492c5b10cb83f77b55adfbbbae2fa350e374f69c0332d554632ed354d92f3",
+          "rgba_sha256": "070c51609efffd8ff64c6386d9b52ad4b0641aa4f154e18bb4f18c178cb0a6ee",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            109,
+            115
+          ],
+          "file": "view-0/upper_l.png",
+          "sha256": "ac3512ba0da5f5cd3f8b806aca667c2e7732ae3e15a88986b4c17c5b86d85093",
+          "rgba_sha256": "c60c4c21c7ffa11c76a1d8abd6cd61041dd1db387079c96faa61bde998295dd5",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            117,
+            123
+          ],
+          "file": "view-0/fore_l.png",
+          "sha256": "b48e117ec4953c6aaed5d0138fd01bccb932ed0f0495fe530a7a3688084624db",
+          "rgba_sha256": "7f37d6015ca6ecac2f030fec2cd1b718e1e8b60003fd4196dbd3856c516168c7",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            117,
+            123
+          ],
+          "file": "view-0/keyboard.png",
+          "sha256": "153e6c563462a81d6a56fec0fcf926dd7851de12d7a48bfac7be51c5a7450004",
+          "rgba_sha256": "78f5ab06f1ec027f45396dcdd6716f60df5035f4edf7c31333855833ce3276df",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            117,
+            123
+          ],
+          "file": "view-0/hand.png",
+          "sha256": "9ec4abad6be6e67ab342b797d6466b6a0473681d7e53ba742b507cb2749c52d1",
+          "rgba_sha256": "9a2c309a0b8718900b08031707a9b4a3f269177ec48c799e8301fed1f10e2aab",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            120,
+            105
+          ],
+          "file": "view-0/head.png",
+          "sha256": "1affcb252a4e24fdbf903939ce7843b6bb16e68c3b0f5c93602d2d4e193aaea7",
+          "rgba_sha256": "1896f344d8c0bedb7750db422e6db2ac4457c5088f2c3a87994a131ee29b2190",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            109,
+            52
+          ],
+          "file": "view-0/pompom.png",
+          "sha256": "90c672139865b21547a31c826bd407b9151a7cee038a418cc6639ef4264b8170",
+          "rgba_sha256": "55728e4a5380ff5417028201a293c5e25a6abec21cb68e25016a4279ec339299",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 1,
+      "source_frame": 4,
+      "source_sha256": "3e4d9815bf21f4b946feb43b29988804fb23df031ee28c7bb60a78832e08141f",
+      "master_sha256": "2f5d4a5be07d9b36aa41128671bbc60ccbf4a1a8fb534154ab02b17c9d1f061c",
+      "ora_sha256": "cd96cd2250f21938e57f910c8e4e6ccbd34ec4f00defba0c3609a9660816af39",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            105.0,
+            142.0
+          ],
+          "file": "view-1/pelvis.png",
+          "sha256": "f04a5d8d5cd66230c10e43b92823b0ab523b0375cd89d49d7ee690237bf0683a",
+          "rgba_sha256": "bd87614109da2dc6c5ef0d4aae15aeace193fcf87c7b56c98494d5cb9a9ee4ac",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            94,
+            142
+          ],
+          "file": "view-1/thigh_l.png",
+          "sha256": "6064abba6c8778db094a2fe57723ff3caf3273bad416c0fa37f5fd9aa21de759",
+          "rgba_sha256": "d7c874840e62084084c1b7f84d8de054b1431edc0895bcb03f23e0fffa550195",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            92,
+            158
+          ],
+          "file": "view-1/shin_l.png",
+          "sha256": "3b88adff4d03db3025ba5831d83f287ea3cb9abea094d9256c678994f70b9f4f",
+          "rgba_sha256": "558effc03bbed1cc0441a00b6a8382fb3a87ce69e44ff427145932b53c133b9e",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            90,
+            174
+          ],
+          "file": "view-1/foot_l.png",
+          "sha256": "39947270b637bde04b932ae46c23151a60626db861a5cc662e577aaa4697c62f",
+          "rgba_sha256": "e6db6fd24515cd9fc803fbde13929e0fb27fa6d91bd0a709c23af2602bf73ce4",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            116,
+            142
+          ],
+          "file": "view-1/thigh_r.png",
+          "sha256": "6bc75a0dc2b782d06b6eccb265b76df42f84c0741512d772127985372021a12f",
+          "rgba_sha256": "aac79788640a50dbeeda2a5968329c9865e22492588a34285a6fa01655361d23",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            118,
+            158
+          ],
+          "file": "view-1/shin_r.png",
+          "sha256": "b20f98fde387dc677efbe97e4f6d8ff24bd647692e208724219bcf7da1c3348a",
+          "rgba_sha256": "90a2d273501bfc1f94afe065a834d8944582279c7c7a3c5ddb9344029fc489fe",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            120,
+            174
+          ],
+          "file": "view-1/foot_r.png",
+          "sha256": "fffcbf51a3894636f6e4c6bcac29eec3bff357141f97f21dbf7f22053066cb99",
+          "rgba_sha256": "a0d4fbbf16eb84217d9f837306428d1bee2d442c0f19c37a3e0b40eab6e301eb",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            105.0,
+            137.0
+          ],
+          "file": "view-1/torso.png",
+          "sha256": "221c5b19ee3ba2448229fbd4497424b0705d6094813636198fece31e33ef3e76",
+          "rgba_sha256": "f295917c337868fb34f952497b61409f2bc1c392132789ab51c8cd219263c533",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            133,
+            124
+          ],
+          "file": "view-1/upper_r.png",
+          "sha256": "e38c3e891697a0acfee0c6fb51e25e0ad420976820012483f419010890460dcf",
+          "rgba_sha256": "ca6ccabe80d4582ad53b7e5d362eb0fe8d3776817b32076b639af842e08cda2d",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            123,
+            135
+          ],
+          "file": "view-1/fore_r.png",
+          "sha256": "d321bac697011b93ebe532b340aba408113ab200beebc9f9a359045d4894dbdb",
+          "rgba_sha256": "a3516413cb3b2f84df979c7ca66b9482f071f24bcd89b42b0ea4b07b2542f963",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            96,
+            119
+          ],
+          "file": "view-1/upper_l.png",
+          "sha256": "5782282f7541a36f2b7480589a12fbefd82379369d5090dc87c871348976daf7",
+          "rgba_sha256": "321ade0d6fc1f0a8d8707e0d5b0f358af5aab195fd204d016d68bef4b49e9c25",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            104,
+            129
+          ],
+          "file": "view-1/fore_l.png",
+          "sha256": "92b64caf5a4760b66865a31fd73425bc4d20f464b480ecbaa091d382fb4fd50c",
+          "rgba_sha256": "cf5a4a570a83905d71e1e71e01f5a007d788eec84e74c22ffbf9dd49aff8e447",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            104,
+            129
+          ],
+          "file": "view-1/keyboard.png",
+          "sha256": "b8dfe7a7276dc448eeb8d329de91b304260298ba3ffdb14104a05d43559dff37",
+          "rgba_sha256": "0ca15efe454d7451126b041707d944799d2991749e6ac57d7eb61114f4b56ddd",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            104,
+            129
+          ],
+          "file": "view-1/hand.png",
+          "sha256": "44ec1b744c90de91c4bdc7c095485e1599508257f144c4499de60c1af2c0f30b",
+          "rgba_sha256": "d4a907951310014df02abcbd5cfb5e670471e8801d455f39558ae8415339ec89",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            116,
+            112
+          ],
+          "file": "view-1/head.png",
+          "sha256": "19629a4d818e7274b921e0a04dd257ec79722f20edc7337bd296bf12f101cf86",
+          "rgba_sha256": "3a3f0c2ca3b4f8288805a51b398c06948e268573e085dae1dfcd50807714eb97",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            108,
+            52
+          ],
+          "file": "view-1/pompom.png",
+          "sha256": "7cedafa6705620ca40928a9057e66bb30811d620b1d47297124a5a287abedcfd",
+          "rgba_sha256": "424ad077ebcfd5f108e4ca8a00af1d052e16c5cf5519fbb25e9f37397295cf08",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 2,
+      "source_frame": 8,
+      "source_sha256": "d2ac2ec0e90f61c646cb746458bf55168d0ae9fe60b31003ec8b0a46a591f7bb",
+      "master_sha256": "ecb476028dfd8c89b9514de329124e3fa52612946e497a81ddb0b2d8cfc9ee69",
+      "ora_sha256": "fa153b23a13842affb6b7c38e83593604576ab99a9710793ca9055d2c7cf5ff0",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            98.5,
+            142.0
+          ],
+          "file": "view-2/pelvis.png",
+          "sha256": "fa9803d6097d3ece19308eda7c216083198a5daedda4f615ebf197ee79d771a5",
+          "rgba_sha256": "c8d9066c730c597e6fc60050c1dc33ade793789ca5ce18516dae7e8b953b4f27",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            87,
+            142
+          ],
+          "file": "view-2/thigh_l.png",
+          "sha256": "5ed38046f0e89a483e8a4b899b1152faffb094d5f76c7e00efb5b8aa2e37469b",
+          "rgba_sha256": "76d82372a8582ee02d797f927d1d927109aa6300e00ec3ca6b1e5cb315b6dbe9",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            85,
+            158
+          ],
+          "file": "view-2/shin_l.png",
+          "sha256": "8efa51b87011f9f7d3509950f1dc8f92f8ed55982fc6e2151e28490f24643b59",
+          "rgba_sha256": "281eeac327bf316802a5aaad3109b05c984c654eb9b62880ae32fa0d88ba6821",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            83,
+            174
+          ],
+          "file": "view-2/foot_l.png",
+          "sha256": "7d45a6cf85f7dea5ea455b257944747c077138a4019b8b571c046ad20a794963",
+          "rgba_sha256": "d27a2917fdf4c379e9b28fa8de59184556340946bb51dd1b7712a5526e2f642a",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            110,
+            142
+          ],
+          "file": "view-2/thigh_r.png",
+          "sha256": "56d2c04ca86fd04b89a193490e9a73fe73acfafdb452039967f3e9d05c627e4e",
+          "rgba_sha256": "173b2e3dd1fdd08c0bfcb62ec269d4dc0e6480b61ec3933a7b9ca2f34035222e",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            112,
+            158
+          ],
+          "file": "view-2/shin_r.png",
+          "sha256": "132ce1caa0359b4d354f2ea1624edfa1a0c4e3edf36a0167d8afd8ddfbf2f149",
+          "rgba_sha256": "3184bdf4a11aa40fb9b2780a74b3468f5c205db96ca98342813ee3cabb0b86aa",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            114,
+            174
+          ],
+          "file": "view-2/foot_r.png",
+          "sha256": "d8fcacae53d944632347349e9de8df815e63deb56d4a422ecf5bf92a6bfa073b",
+          "rgba_sha256": "103ab3720262dcafa59536cbdd24019e302200af58ff86773487a25c58db3f3e",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            98.5,
+            137.0
+          ],
+          "file": "view-2/torso.png",
+          "sha256": "6797a355b845d072fbafeafba4982448a76671aa5760d76453c4fb459db18b44",
+          "rgba_sha256": "6b2d58ca1e92ab94e78892c9411117715cfa804d1980d42b0115a4ebbf65d5d7",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            133,
+            119
+          ],
+          "file": "view-2/upper_r.png",
+          "sha256": "647b74de79193bd72ee55d5f4c6436cadba102728c99d2821d025af2b36355bd",
+          "rgba_sha256": "f4d9f28bae3c7042eb20fdc9ffe8d06b68979414469b2190e9bcb95861406e3d",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            122,
+            132
+          ],
+          "file": "view-2/fore_r.png",
+          "sha256": "7f57e79b4d27506bc9b30088c033adede61aaaf7e370b7a7841414969b8135e3",
+          "rgba_sha256": "f7bdada3e5e725fbdbec441838e9643a0a98f5f48c502db67fdb85258670e728",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            91,
+            120
+          ],
+          "file": "view-2/upper_l.png",
+          "sha256": "2a63e3122ec60ebcb64f094e02db338888b96f5359e4e00e895a92799b9163f6",
+          "rgba_sha256": "b0bcb2250b11e98e659f15881202dc453f8db39e9c6a301af3d79c77f8fc7092",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            99,
+            129
+          ],
+          "file": "view-2/fore_l.png",
+          "sha256": "7490e622d9f2a2957ae8786cc6ede97e67b6b506fa6c0801edb23a1d2a9c40c7",
+          "rgba_sha256": "bf960c5139b29cf9485af535eefd1b9288fe6f33537ac725a04a4a5531525f10",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            99,
+            129
+          ],
+          "file": "view-2/keyboard.png",
+          "sha256": "35a3fc8fefa3a2264ead0cee877bd8968b9275e893b2fe35636aace0a061a13c",
+          "rgba_sha256": "09128d6ab4cfea311845cad5d73c165da44d446315b370157d3e0b8ca31817bb",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            99,
+            129
+          ],
+          "file": "view-2/hand.png",
+          "sha256": "12648370ca4fb4170af334382b2cfa212e5077926d4006e80f70293de39f11a9",
+          "rgba_sha256": "5e0776e1dd3b8339e2fc273631facd2483e2b4fb7c03e25691ecbd4d349ec90c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            108,
+            112
+          ],
+          "file": "view-2/head.png",
+          "sha256": "4c66e77dd863ad22bd5808fc5114d74906318e428ce36e14816904ca391c8ebc",
+          "rgba_sha256": "c9ad1bf14f51398147bdbeeace806c639e04d80c09ecf3e3fce6d768a2186862",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            106,
+            52
+          ],
+          "file": "view-2/pompom.png",
+          "sha256": "dba4bddc8238a4f3a6a613cb030db28ae960e12f331179f070c4c81224ca71d9",
+          "rgba_sha256": "1a3eaac1c2d0ab029b2b07ed3a81dfe2240e53667b8d14d8537d94e70a4c1181",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 3,
+      "source_frame": 12,
+      "source_sha256": "942aae356a803b38c4b24f8a2eb6f311cb527dee7f892dae24e087866d5a3165",
+      "master_sha256": "7b1798ce180319fb8e57b1eba399e87ce149d037e91236593c24de7221394df5",
+      "ora_sha256": "4379214d07fbe6c48557ae0151c1244e2eaa4745dff5bd0b57ff9217f2b14199",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            105.5,
+            142.0
+          ],
+          "file": "view-3/pelvis.png",
+          "sha256": "1aa410041f211d13f06162e34904d202de385e0ff3c1fb1d52e338544a68afbd",
+          "rgba_sha256": "6026d66bc4eac043441c23bf2f603463af7a6d3f76e36e47682281618dc24ad6",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            91,
+            142
+          ],
+          "file": "view-3/thigh_l.png",
+          "sha256": "24fe2f90531fc733fe9d65e4b4db89d7b81a88ec8b421efc04857a3163f137fa",
+          "rgba_sha256": "78b53bc37d9030ac340994edd606dc71cd7bec3da15d9c8fcdcacc54f92aef7e",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            89,
+            158
+          ],
+          "file": "view-3/shin_l.png",
+          "sha256": "f402da24681223768c110acba9b2e8e822e5d132c605746d570980138d9e849c",
+          "rgba_sha256": "94107d58a5c8a8125727e9de883bedb865877dffc93eb55f0c3abbf223cdc4a5",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            87,
+            174
+          ],
+          "file": "view-3/foot_l.png",
+          "sha256": "3a86d95289e0bba8266f49059dfd24c63229d77ae2be268432a98afe4be8996b",
+          "rgba_sha256": "833c3fffee14f561fb2663bedf55558fd14851937ba5f09c12f5e60f407bc5f4",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            120,
+            142
+          ],
+          "file": "view-3/thigh_r.png",
+          "sha256": "5e98770ee365dcf0d9c72c653bfe80c6682dabe2cb94c9f2da9bf1e2e18611a2",
+          "rgba_sha256": "da35453bcd9a1e2206aa7da6a943d43d6a933135aa6973c7c830664ef119c4dd",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            122,
+            158
+          ],
+          "file": "view-3/shin_r.png",
+          "sha256": "3afb7b4d88edf436c8714343cd2085bcf2bf281a3fe1916e5b4a4f90aff83be7",
+          "rgba_sha256": "ea90ec0c3e46c2f5d26e32f7f1eb279883594435b429f548a7547a2948c7341c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            124,
+            174
+          ],
+          "file": "view-3/foot_r.png",
+          "sha256": "f9b2029c81d8a82482026e59b06584ea4e6546632c71d8c942f9dea3b7ec1640",
+          "rgba_sha256": "23ba5cf98588eef2b0e2f1b9aecd9782055de2f673296f6b74a199c0ba488d79",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            105.5,
+            137.0
+          ],
+          "file": "view-3/torso.png",
+          "sha256": "c80abc743ef7851df7951e8fd5eed6134c78586f0eee55371e0205f8ce3ce0ef",
+          "rgba_sha256": "b9a4c4f8369afbc1d3d6f469c73cc433abadb66826e8a20ee8c19092df63e668",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            127,
+            123
+          ],
+          "file": "view-3/upper_r.png",
+          "sha256": "180e6686402602d47559dd7db97e02905320d7e9c8570d1be7dc2260e9202976",
+          "rgba_sha256": "d488bcff9b0ffc486b6be2b2195897cfbc29746dc4b57ab19dc0a4cb3539ff74",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            113,
+            138
+          ],
+          "file": "view-3/fore_r.png",
+          "sha256": "24ed15fece0682fa66bc1e3c0b321ce39a894a6baafaed378d43139c64be91e2",
+          "rgba_sha256": "4b0e8d0e4e5b5311eb596a62c73c996f0c58b8854a2a118f8b3cdcac003a2742",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            99,
+            129
+          ],
+          "file": "view-3/upper_l.png",
+          "sha256": "e4853cc4753dcd53e96ac4488a22adc217c78b0d11985aabf2f66fa240fd74c0",
+          "rgba_sha256": "2d906af8d5ad7b62f55ecdb6202bb5c29919443607c7f6f46d8004593efb57b6",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            91,
+            137
+          ],
+          "file": "view-3/fore_l.png",
+          "sha256": "4d74ce448b50372b7a198e06492a9ed2da660bb2ad0b181374c1cd7d315a8317",
+          "rgba_sha256": "2d3b1f07e32cd5e5ef1a4d4c77f5e990737ae0586f24d9b96f5c008bd98d42b4",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            91,
+            137
+          ],
+          "file": "view-3/keyboard.png",
+          "sha256": "b7ab8f794f6332dca90045f95cc7800eb669f9a533e90370106a9989482eef07",
+          "rgba_sha256": "295ff2efaa6a31fe89e978a8be7995bc99c2a976a953643b417f728da98f1cb8",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            91,
+            137
+          ],
+          "file": "view-3/hand.png",
+          "sha256": "0764994f18e180f60f85d9436f0a7b349fc5cff4cb449368638f5ca29ac6a54c",
+          "rgba_sha256": "94befd8cd376eb201c0aa8a49a9b61d15a7d77456d1de59def4d2404f21c47de",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            106,
+            119
+          ],
+          "file": "view-3/head.png",
+          "sha256": "45b5c8210225a2cdbd916bb7384b147f57e72cc3c2b5a4990c220501dd7435ae",
+          "rgba_sha256": "9e5bf4e737b62e0609a53a3f6a3a5228e5d0d45aff4f6e41532ee9031da71cb9",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            113,
+            57
+          ],
+          "file": "view-3/pompom.png",
+          "sha256": "abcfe0147a8d1cb1e5ad99c9142bff1d9750fc07cb76cfa168be5e19bab1792e",
+          "rgba_sha256": "6a1dc458b00342603f7ce37b12936bc6f6d0ec9031513383271a39379f0d8242",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 4,
+      "source_frame": 16,
+      "source_sha256": "4f5a6468ec2903424f39732f9761c44ea31f86a370f17518a78b2b90eef26d46",
+      "master_sha256": "7b1fb9e7fc95ff2c9c2ebcf2e9aac8004f88be96d8378b9665b0d54a1152ebcd",
+      "ora_sha256": "cd57abc7ef934e1cbeeca87f4971dee9f3f4efa9c434fba184c4e920076359f6",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            103.5,
+            142.0
+          ],
+          "file": "view-4/pelvis.png",
+          "sha256": "a10539a0a635ab937ba6295ec2b2b2c62222ce00d4c8e20d86aa61a9f960579d",
+          "rgba_sha256": "c062de89a2c421979a2ffc3f786196d660f0ea9312978ff4626d7f6ea6c683c6",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            90,
+            142
+          ],
+          "file": "view-4/thigh_l.png",
+          "sha256": "a5aab2325b2e175cc2120343fc337fed26d96b4a91b36c1866c6346ba573f33b",
+          "rgba_sha256": "f70e1ec0b7ef518426884335c288f30c467d25f04580b17a4dad65fd29c64f81",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            88,
+            158
+          ],
+          "file": "view-4/shin_l.png",
+          "sha256": "a65e6df709b2c80c1ae70cb64b485f791f464adab0fd143fa632a171a782d5cf",
+          "rgba_sha256": "5a17fca573668d699f864d6b7a7133c6761742b08cb1160bc077f1688d4c738a",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            86,
+            174
+          ],
+          "file": "view-4/foot_l.png",
+          "sha256": "6834a9863abb252b9309fb482fed36557d7cc10c012b878a2f08e0d6e4104a2c",
+          "rgba_sha256": "010e66ed526bf42b61f06a138eb87eae836615b7155db17a96022652808ac79f",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            117,
+            142
+          ],
+          "file": "view-4/thigh_r.png",
+          "sha256": "c90913269710833b3f91968210e3a9d57305e1a172fa0b0d4ec089cc7609bc5c",
+          "rgba_sha256": "69adec9fcc4bb7a03f7e01ffcd6b11a17c80071c0e2eecf5f6965468a1eb7690",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            119,
+            158
+          ],
+          "file": "view-4/shin_r.png",
+          "sha256": "d585aec7dca2ecf4521f120a2173cdb63668383736a5a6a00a905dcf2497a3a9",
+          "rgba_sha256": "18ac860617638ead185c42dc54f021eb7767d05ef94ca0375d58b5eb5a6ddcac",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            121,
+            174
+          ],
+          "file": "view-4/foot_r.png",
+          "sha256": "6cd11932aec7d76bfd598541669a9739875ee24a883d4d3aad710e7d48491820",
+          "rgba_sha256": "53e13b3b77c35e91a517ddb56ca78c2978566906196f1d1aafb608f5e4a1f385",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            103.5,
+            137.0
+          ],
+          "file": "view-4/torso.png",
+          "sha256": "842717ca4b4d018ac9077864e18a6f909189b293efe603c31b4339e0a5b134a6",
+          "rgba_sha256": "0f54191d3a3adb2b73c7659a99d9e0614466b9c6bd74be8e17a6ec93ea83291f",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            112,
+            121
+          ],
+          "file": "view-4/upper_r.png",
+          "sha256": "d4f771e16f427bcfc9b76bde368ed332ae61e4166b002ff87a33820f62ecc5a0",
+          "rgba_sha256": "5e32dcf333304284183bb3faeb39cd8d5e139ba45eb415818e40381cd7e5dc9b",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            102,
+            133
+          ],
+          "file": "view-4/fore_r.png",
+          "sha256": "2f4b7ccf41f41520649e6f86ebeb182dc8d58ec096e11c41febf1df1c11b1ca1",
+          "rgba_sha256": "2e735963ba1494d2b6a4ab16ddeb7b39d42194e2ce3591f56c8ace8a5b2b7b67",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            89,
+            121
+          ],
+          "file": "view-4/upper_l.png",
+          "sha256": "9381b9aacc04a89cc8eab1de84a56f618da34c23d3d29a7a2c1010991ce60632",
+          "rgba_sha256": "9329ea73558d4e933af83d15271a0c2a6ba354697448c55801f7ef8c2c56cf17",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            84,
+            132
+          ],
+          "file": "view-4/fore_l.png",
+          "sha256": "56fa11732b0305bb347c65fa227d3d2437c2d3d1fea869e9bbb14677e8f67911",
+          "rgba_sha256": "0912e8d5139ba1c5c5737fc0a25082dc31686b789dc892e1454ac0d5a1f42bf7",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            84,
+            132
+          ],
+          "file": "view-4/keyboard.png",
+          "sha256": "c22074e44e568f7a6c440968cbb4314fcee3dba3532531d26ac74f578cad5635",
+          "rgba_sha256": "fef9503cf51892376a9a70d8bff5801f486254ca4688727d1ec8903fe0f3c225",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            84,
+            132
+          ],
+          "file": "view-4/hand.png",
+          "sha256": "aeda42e5cb0d839ab54172cf39cb5165c602102c3e19a9fcef5457e4eee91754",
+          "rgba_sha256": "c5458be221cb727d38b4c71860b5dcffb847193dbdf4c55d1aace8fa78439316",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            97,
+            112
+          ],
+          "file": "view-4/head.png",
+          "sha256": "7aacb2ad95f5de66c43601cb2eabf18957d45a600480e87632a5e9dde6170d44",
+          "rgba_sha256": "bcc607ba5327a764dbf72037bc6bd981c420329f146bb70d868b89909ab65052",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            109,
+            57
+          ],
+          "file": "view-4/pompom.png",
+          "sha256": "6383b748a0282de0ebc52c5c59f025a7a507667c2815ed12d11e9b3cab87b81f",
+          "rgba_sha256": "885b6e2654e4aacecaac8059483baf355934a8d73311a8de9f174d53d2f6976c",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 5,
+      "source_frame": 20,
+      "source_sha256": "b59464c20a0ece86e0fd949410b815e8dd4f296a8a94c1ac716e29e7ebf54526",
+      "master_sha256": "dac360eda63f31a021fe254e36fa61111f0c26ea038d88fe4c2d383c0eb088d8",
+      "ora_sha256": "242ed9c3bbbfb34a66562cbb5fb18a1fcc30541d080a12450404950bc6ada694",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            110.0,
+            142.0
+          ],
+          "file": "view-5/pelvis.png",
+          "sha256": "565806e0f6e575bdfcad52d75d8bac33a10bf902b171754cf8548e483c3bf629",
+          "rgba_sha256": "f934bf1f234b84521888ff6e3856ec3f82ed889d5868f1e50c9f40010875eacb",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            100,
+            142
+          ],
+          "file": "view-5/thigh_l.png",
+          "sha256": "b8ba8c1bfe045105f8706a7e8b0f5bff050919f985d045e8f57bb5e971ed3362",
+          "rgba_sha256": "707ae2a04b6c55c8d575e408a311d5fc5a62a8f9cf755f692c6bd6ee0a0bf86a",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            98,
+            158
+          ],
+          "file": "view-5/shin_l.png",
+          "sha256": "39c823bc31f056416e5358ad597168fd89e5ef0bab8743761cd86acc3169ea62",
+          "rgba_sha256": "bff61041ab3ff7f0d74fb953424da03c3c86db710da1e1278e2b61d65854f31b",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            96,
+            174
+          ],
+          "file": "view-5/foot_l.png",
+          "sha256": "01d008f1911b5016ae6f7483bb74c48c1bc6acb1c299fbfcc296876b396e23ca",
+          "rgba_sha256": "403a5e4682a86a99d3fbf3b5bdf67f3da06290af59a33e264f46768bf87368aa",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            120,
+            142
+          ],
+          "file": "view-5/thigh_r.png",
+          "sha256": "5e98770ee365dcf0d9c72c653bfe80c6682dabe2cb94c9f2da9bf1e2e18611a2",
+          "rgba_sha256": "da35453bcd9a1e2206aa7da6a943d43d6a933135aa6973c7c830664ef119c4dd",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            122,
+            158
+          ],
+          "file": "view-5/shin_r.png",
+          "sha256": "3afb7b4d88edf436c8714343cd2085bcf2bf281a3fe1916e5b4a4f90aff83be7",
+          "rgba_sha256": "ea90ec0c3e46c2f5d26e32f7f1eb279883594435b429f548a7547a2948c7341c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            124,
+            174
+          ],
+          "file": "view-5/foot_r.png",
+          "sha256": "f9b2029c81d8a82482026e59b06584ea4e6546632c71d8c942f9dea3b7ec1640",
+          "rgba_sha256": "23ba5cf98588eef2b0e2f1b9aecd9782055de2f673296f6b74a199c0ba488d79",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            110.0,
+            137.0
+          ],
+          "file": "view-5/torso.png",
+          "sha256": "69c17242cb11b7cc56efa571df220dc8bb06ad3d7f5403849e1dc2f1b9ea5a2c",
+          "rgba_sha256": "2e3273f4a16ac6bcc265656f2839eef4f88b96b38e757e69abca57d6d4cd31a2",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            132,
+            117
+          ],
+          "file": "view-5/upper_r.png",
+          "sha256": "b3354707a88909e4c564b480b303b8e59a50bbed4f6d1b6019edeb0bce071cce",
+          "rgba_sha256": "1e94a857fb112c65041573ddec8a04c2861f195bc910e85bd6221723d19ee018",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            128,
+            128
+          ],
+          "file": "view-5/fore_r.png",
+          "sha256": "38e9c1cf14615b1c5855c4119f244463a220ee971b162aaa38b01bb1eb9fef5f",
+          "rgba_sha256": "aa67544e0ea6e7c8d7f68bc11f9d85427ecfeff25a6f43b0bdba624e5f17ff2a",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            101,
+            120
+          ],
+          "file": "view-5/upper_l.png",
+          "sha256": "35a3058757e00adff3ee1b90aacb086bf9e438150ae9ca9997e429b198f30eeb",
+          "rgba_sha256": "4a36b4adbdeef9c52e5927904d61ae7cc4870a3cc9efffd8cbbc47233449e571",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            97,
+            131
+          ],
+          "file": "view-5/fore_l.png",
+          "sha256": "b478dd2ee8dbbc433f8808c4021a4efaa7c5b9fe627d1b7ef06931a18782d29b",
+          "rgba_sha256": "0aa9d0205b70ae36364cf494c3523c16bfb9320cc32d1b55523e6080b7a4f351",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            97,
+            131
+          ],
+          "file": "view-5/keyboard.png",
+          "sha256": "a5245cc3e21432ca1f214e2826025ed34deba708b31469f904bb5304e6e150cd",
+          "rgba_sha256": "47b06ebd6ce9010011071993ec8afce8800c1cc63e73875b64583e8455636513",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            97,
+            131
+          ],
+          "file": "view-5/hand.png",
+          "sha256": "e162d3312ca3a3992c7c49c7f29415aa01c7b0de52dede462e7720be4adede62",
+          "rgba_sha256": "b6ab920ea938bd0201d7af188d84ef0eb3379cffd3d329e5580a741ada8636ad",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            111,
+            110
+          ],
+          "file": "view-5/head.png",
+          "sha256": "c2f0b59ad45edc6dc8d952f3052640bb7994f34f62c45a5524e933a04fabe065",
+          "rgba_sha256": "ecc88c7a34f7e94be97d28214e7c8d4670402d70a2183c0e8b70439899e5b8b9",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            120,
+            55
+          ],
+          "file": "view-5/pompom.png",
+          "sha256": "8bf6ceacefc17e2044d14c9b8c6fc46e91b093fa3c59bbc7fce9c6417b529081",
+          "rgba_sha256": "0e2deb12db474f4fe823fbc76267b124816218c2ef6d251c36d0dbfad825e15f",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 6,
+      "source_frame": 24,
+      "source_sha256": "bcecb82b989c5f6074700496471ef9089c33e4e2e6d485ceae6944bf40c1c301",
+      "master_sha256": "dc58fc4564b6c8cf3eb1bf5127fefafdef381f3e029ec30b3bc2c53c52625f25",
+      "ora_sha256": "0650357c74056121658672aa50a4964110e090cf950956b6704a13fca75e0a9c",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            102.0,
+            142.0
+          ],
+          "file": "view-6/pelvis.png",
+          "sha256": "cf7b91be6abe560351bee3316744f18d3dceb17aa1fe96a582d1271ba49a8bb2",
+          "rgba_sha256": "45d6873c52b26c7c0a7a485fe1889938aa071e7537c72abb5cc7dc8296bcb279",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            91,
+            142
+          ],
+          "file": "view-6/thigh_l.png",
+          "sha256": "24fe2f90531fc733fe9d65e4b4db89d7b81a88ec8b421efc04857a3163f137fa",
+          "rgba_sha256": "78b53bc37d9030ac340994edd606dc71cd7bec3da15d9c8fcdcacc54f92aef7e",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            89,
+            158
+          ],
+          "file": "view-6/shin_l.png",
+          "sha256": "f402da24681223768c110acba9b2e8e822e5d132c605746d570980138d9e849c",
+          "rgba_sha256": "94107d58a5c8a8125727e9de883bedb865877dffc93eb55f0c3abbf223cdc4a5",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            87,
+            174
+          ],
+          "file": "view-6/foot_l.png",
+          "sha256": "3a86d95289e0bba8266f49059dfd24c63229d77ae2be268432a98afe4be8996b",
+          "rgba_sha256": "833c3fffee14f561fb2663bedf55558fd14851937ba5f09c12f5e60f407bc5f4",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            113,
+            142
+          ],
+          "file": "view-6/thigh_r.png",
+          "sha256": "03cd88bba2cbb438b1f1721bab9665451c2bbb889fb1513d8a9dedafed06a4e3",
+          "rgba_sha256": "c45b93eb02cf6a756c84130cc068faa02b872edf1f9cccc2bb22060bf7bf3a7c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            115,
+            158
+          ],
+          "file": "view-6/shin_r.png",
+          "sha256": "c680974245297b3268bbe87cdebba44a553347c01066a4ef85593d9693c357c8",
+          "rgba_sha256": "6035838ea564e257b564beef053f4d68212736a29bef48ee2dc1d2ee424287a2",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            117,
+            174
+          ],
+          "file": "view-6/foot_r.png",
+          "sha256": "39b15e76c3c05d76ad4187dc13f6c043769d683846498e2e927ba567ca94fc1c",
+          "rgba_sha256": "8a5915825d69fe3d7825bb685e57739364746e31ab46ecddd9d335d1d39c401c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            102.0,
+            137.0
+          ],
+          "file": "view-6/torso.png",
+          "sha256": "4ae8dbd870e03244101e2021c13a4daeebca34253387d95a881bae191b86eef8",
+          "rgba_sha256": "9d253c64b1daea97a4b37e8549929dcd9315e5f1e934491ac1be8b2a93acf51d",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            126,
+            117
+          ],
+          "file": "view-6/upper_r.png",
+          "sha256": "850d1956cf8e10f01cc1cbe3230c0eb863c69253a9301603e4b2df53d04911b2",
+          "rgba_sha256": "c04b13956447c68e3658c4520ead344f1f298e3b85a38e0b3ba53812d380a5f9",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            124,
+            127
+          ],
+          "file": "view-6/fore_r.png",
+          "sha256": "10db17aa160d40cd20ee3444f1f9be275ff683bc37a326a17062d396a6c8c4c1",
+          "rgba_sha256": "fe1e110fe08189d5cf7b14b27e0c533d03bf83a4c4a632712c040018e8445589",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            84,
+            118
+          ],
+          "file": "view-6/upper_l.png",
+          "sha256": "e4680bf1f645482a6fd4ecb09a56561631868707814b512d43e7daed22ee43b5",
+          "rgba_sha256": "6dcbc2a5a7d6908e3823310a5379ec3a4aaeb0830ad60f515f5bf98c44703488",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            89,
+            129
+          ],
+          "file": "view-6/fore_l.png",
+          "sha256": "486f04224c835c63ca4651d1eb9b2c3e51cb3253dbfe9be1c306c0c9fbb2645b",
+          "rgba_sha256": "f873bdf507c18c9570bad40d41567cde1e0391590d057896263f54d905077c50",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            89,
+            129
+          ],
+          "file": "view-6/keyboard.png",
+          "sha256": "5c9a2415f21f74138f5c1f46e481d8b2ddfc68d7957f15e0de08493a321fadeb",
+          "rgba_sha256": "3878a33cacbc6c50b791b53786451e54ffcfbaf6daee42e75dd1a0997e09ea19",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            89,
+            129
+          ],
+          "file": "view-6/hand.png",
+          "sha256": "b826dbaa307548c15d956c63c5cad7c3986dea43a949777f1b73ef2a68f769f9",
+          "rgba_sha256": "4a5cf3312714817cc4d2716b054a37937c2beeb3be4431cc54f6374f3830da99",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            107,
+            108
+          ],
+          "file": "view-6/head.png",
+          "sha256": "ab4c93cddcbf81deff1ae5825cd874fcc9554dd47560e07d6f428cee5872357e",
+          "rgba_sha256": "e77369715eb135bab9b004ef279ee07f9d3e955c0df47b2b908491348b69462c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            108,
+            55
+          ],
+          "file": "view-6/pompom.png",
+          "sha256": "1e1f75686eb04611b0a8b08112d68d9438d99e7ef422b583f180187933eb1434",
+          "rgba_sha256": "ec8ccbc2139a89a778d4c8e6bdedf7ef04f5215625a4eeb335413dc637beb9a2",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 7,
+      "source_frame": 28,
+      "source_sha256": "b65b3d10493102c1997c009f4582cc270e5ccb809125dca1de6100c7a3aac752",
+      "master_sha256": "7497116eefd82fa899e46654e275d38f55a956a8858c8f6d4b6f12a5f8c39d36",
+      "ora_sha256": "c47f07bb7235cd874eceb58977a1c3b591367dbd6274f6dcd183224d88064897",
+      "parts": [
+        {
+          "name": "pelvis",
+          "parent": "root",
+          "pivot": [
+            101.5,
+            142.0
+          ],
+          "file": "view-7/pelvis.png",
+          "sha256": "24651965e759b06040e4065379f00d23d7859f02f28de1f9c6430a93074915bf",
+          "rgba_sha256": "e0f94fd9834271f1d5d92ea925985677f4060aec65df9f42efa9072c1a960afc",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_l",
+          "parent": "pelvis",
+          "pivot": [
+            90,
+            142
+          ],
+          "file": "view-7/thigh_l.png",
+          "sha256": "a5aab2325b2e175cc2120343fc337fed26d96b4a91b36c1866c6346ba573f33b",
+          "rgba_sha256": "f70e1ec0b7ef518426884335c288f30c467d25f04580b17a4dad65fd29c64f81",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_l",
+          "parent": "thigh_l",
+          "pivot": [
+            88,
+            158
+          ],
+          "file": "view-7/shin_l.png",
+          "sha256": "a65e6df709b2c80c1ae70cb64b485f791f464adab0fd143fa632a171a782d5cf",
+          "rgba_sha256": "5a17fca573668d699f864d6b7a7133c6761742b08cb1160bc077f1688d4c738a",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_l",
+          "parent": "shin_l",
+          "pivot": [
+            86,
+            174
+          ],
+          "file": "view-7/foot_l.png",
+          "sha256": "6834a9863abb252b9309fb482fed36557d7cc10c012b878a2f08e0d6e4104a2c",
+          "rgba_sha256": "010e66ed526bf42b61f06a138eb87eae836615b7155db17a96022652808ac79f",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "thigh_r",
+          "parent": "pelvis",
+          "pivot": [
+            113,
+            142
+          ],
+          "file": "view-7/thigh_r.png",
+          "sha256": "03cd88bba2cbb438b1f1721bab9665451c2bbb889fb1513d8a9dedafed06a4e3",
+          "rgba_sha256": "c45b93eb02cf6a756c84130cc068faa02b872edf1f9cccc2bb22060bf7bf3a7c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "shin_r",
+          "parent": "thigh_r",
+          "pivot": [
+            115,
+            158
+          ],
+          "file": "view-7/shin_r.png",
+          "sha256": "c680974245297b3268bbe87cdebba44a553347c01066a4ef85593d9693c357c8",
+          "rgba_sha256": "6035838ea564e257b564beef053f4d68212736a29bef48ee2dc1d2ee424287a2",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "foot_r",
+          "parent": "shin_r",
+          "pivot": [
+            117,
+            174
+          ],
+          "file": "view-7/foot_r.png",
+          "sha256": "39b15e76c3c05d76ad4187dc13f6c043769d683846498e2e927ba567ca94fc1c",
+          "rgba_sha256": "8a5915825d69fe3d7825bb685e57739364746e31ab46ecddd9d335d1d39c401c",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "torso",
+          "parent": "pelvis",
+          "pivot": [
+            101.5,
+            137.0
+          ],
+          "file": "view-7/torso.png",
+          "sha256": "6d4e38ad02df1182ef3955e96d3bc14ec34575fa862081212351be33e5934ad2",
+          "rgba_sha256": "1470512584321386323ac2f66d080173bf19bdfdde24f6d5b9a024e0f7d962b7",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_r",
+          "parent": "torso",
+          "pivot": [
+            131,
+            123
+          ],
+          "file": "view-7/upper_r.png",
+          "sha256": "498ccd87ddc3acc99e947c30e2eaa87937dead859329746d5f0bff3d78bb8621",
+          "rgba_sha256": "ccdd8298a6bd57c01ae9813345db02e1a397128d692538d3d8248ed888f4ef88",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_r",
+          "parent": "upper_r",
+          "pivot": [
+            134,
+            132
+          ],
+          "file": "view-7/fore_r.png",
+          "sha256": "ca813f9c0646e6724214c6dc619379bfa8fb62a838981270e67c1e30b1259341",
+          "rgba_sha256": "1f186d942de1c9fd6f147376f18f51dbf260db94fec48a2b34f79544bc9f1714",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "upper_l",
+          "parent": "torso",
+          "pivot": [
+            96,
+            119
+          ],
+          "file": "view-7/upper_l.png",
+          "sha256": "5ec5feb0131e8500f105e380253d394c583a882f0c727baae25da7f5646d8a50",
+          "rgba_sha256": "d1b8305478e76433b6fe00a00e75f494dabf22a7021f4c289e0251ca1b21a967",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "fore_l",
+          "parent": "upper_l",
+          "pivot": [
+            100,
+            130
+          ],
+          "file": "view-7/fore_l.png",
+          "sha256": "d6802eff873cbae4ae5cc9dd8cd1c148c05e4e2a9fde4040fd43d41d070b96d2",
+          "rgba_sha256": "51ac630083f327c707c15116658feab36d7cfce502dde634fae5c33931519345",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "keyboard",
+          "parent": "fore_l",
+          "pivot": [
+            100,
+            130
+          ],
+          "file": "view-7/keyboard.png",
+          "sha256": "fa897f4b4606fdfa6d3cd37c2842b54d7c3039d91fa8fc363400db475c10a6fd",
+          "rgba_sha256": "59825625c76d64b2064a7aaacac780443a0f8173b9e71559208334f39367e3e1",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "hand",
+          "parent": "fore_l",
+          "pivot": [
+            100,
+            130
+          ],
+          "file": "view-7/hand.png",
+          "sha256": "019758d43436eecdad77aa8247749d5e16b6105229a5fb236c6e43184ae401c2",
+          "rgba_sha256": "49eed422a0f413223202db42b1c4551ac90697de9fe857edf88a0ddec379e8ae",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "torso",
+          "pivot": [
+            110,
+            110
+          ],
+          "file": "view-7/head.png",
+          "sha256": "014c7667b59512207387d822d6fe643337dd7e7c4c86790492ee6a9b8ce09b0d",
+          "rgba_sha256": "1374477dfe31e59da9d0c4d76381b5bd0786df4e51cf75df98d99fdc38c8b7de",
+          "dimensions": [
+            192,
+            192
+          ]
+        },
+        {
+          "name": "pompom",
+          "parent": "head",
+          "pivot": [
+            101,
+            59
+          ],
+          "file": "view-7/pompom.png",
+          "sha256": "6b2d22aaa759432f95e63ef80661f0ad680cfe9345a8579ee926b8acfa994370",
+          "rgba_sha256": "0b2cbfed71f872dc150a3f2ba591db7fe323b7cf648f7e048cc9599ac6f0d33e",
+          "dimensions": [
+            192,
+            192
+          ]
+        }
+      ]
+    }
+  ]
+}

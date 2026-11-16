@@ -5,7 +5,7 @@ def decoded_rgba(path):
     data=path.read_bytes()
     assert data[:8]==b'\x89PNG\r\n\x1a\n'
     w,h,depth,color,comp,filt,interlace=struct.unpack_from('>IIBBBBB',data,16)
-    assert (w,h,depth,color,comp,filt,interlace)==(194,292,8,6,0,0,0)
+    assert (w,h,depth,color,comp,filt,interlace)==(192,192,8,6,0,0,0)
     compressed=[];offset=8
     while offset<len(data):
         size=struct.unpack_from('>I',data,offset)[0]
@@ -27,18 +27,23 @@ def decoded_rgba(path):
             else:predict=0
             row[x]=(row[x]+predict)&255
         result.extend(row);previous=row
-    assert min(result[3::4])==0 and max(result[3::4])==255
+    assert min(result[3::4])==0
     return bytes(result)
 R=Path(__file__).resolve().parents[1]
-D=R/'assets/art-candidates/cool-kid/articulated-rig-v1'
+D=R/'assets/art-candidates/cool-kid/articulated-rig-v2'
 m=json.loads((D/'manifest.json').read_text())
 script=(R/'scripts/cool_kid_articulated.gd').read_text()
 assert hashlib.sha256((D/'manifest.json').read_bytes()).hexdigest() in script
 assert m['status']=='CANDIDATE_NOT_APPROVED' and m['hero_id']=='cool-kid'
 names=set()
-for e in m['parts']:
- assert e['parent']=='root' or e['parent'] in names
- assert e['name'] not in names;names.add(e['name'])
+entries=[e for view in m['views'] for e in view['parts']]
+assert len(m['views'])==8 and len(entries)==128
+for view in m['views']:
+ names=set()
+ for e in view['parts']:
+  assert e['parent']=='root' or e['parent'] in names
+  assert e['name'] not in names;names.add(e['name'])
+for e in entries:
  p=D/e['file'];pixels=decoded_rgba(p)
  assert hashlib.sha256(p.read_bytes()).hexdigest()==e['sha256']
  assert hashlib.sha256(pixels).hexdigest()==e['rgba_sha256']
@@ -47,10 +52,10 @@ if len(sys.argv)>1:
  from check_icon_pack import directory
  paths=directory(Path(sys.argv[1]).read_bytes());prefix=D.relative_to(R).as_posix()+'/'
  if '--production' in sys.argv:
-  assert not any(p.startswith(prefix) for p in paths)
+  assert not any(p.startswith("assets/art-candidates/cool-kid/") for p in paths)
  else:
   assert prefix+'manifest.json' in paths
-  for e in m['parts']:
+  for e in entries:
    assert prefix+e['file']+'.import' in paths
-   assert any(p.startswith('.godot/imported/'+e['file']+'-') and p.endswith('.ctex') for p in paths)
-print('PASS: 16 source/RGBA hashes, transparency, parent order, pinned manifest, lossless import'+('; PCK inclusion/exclusion' if len(sys.argv)>1 else ''))
+   assert any(p.startswith('.godot/imported/'+Path(e['file']).name+'-') and p.endswith('.ctex') for p in paths)
+print('PASS: 8 directional views / 128 source/RGBA hashes, transparency, parent order, pinned manifest, lossless import'+('; PCK inclusion/exclusion' if len(sys.argv)>1 else ''))

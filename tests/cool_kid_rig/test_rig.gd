@@ -12,7 +12,7 @@ func _initialize() -> void:
     check(not rig.supports("cool-kid","female","idle",{}),"Byte Baddie exclusion")
     check(not rig.supports("sigma","original","idle",{}),"other kit exclusion")
     check(not rig.supports("cool-kid","original","idle",{"reduced_motion":true}),"reduced motion fallback")
-    check(not rig.supports("cool-kid","original","run",{"moving":true,"heading":-PI/2}),"rear fallback")
+    check(rig.supports("cool-kid","original","run",{"moving":true,"heading":-PI/2}),"rear candidate coverage")
     check(not rig.supports("cool-kid","original","unknown",{}),"unknown state fallback")
     for state in ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]:
         for i in range(60):

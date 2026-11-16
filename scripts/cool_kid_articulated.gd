@@ -1,146 +1,203 @@
 extends RefCounted
-## EXPERIMENTAL review only. Pure sampled presentation, canonical clocks, no RNG.
-const ROOT := "res://assets/art-candidates/cool-kid/articulated-rig-v1/"
-const ART_COMMIT := "5ba1bfb24624d5c84f7d9994ebb719986b43871c"
-const MANIFEST_SHA := "748e327c37c8743d827b5ecff79dfb781455477bc11644caa86ef75132e51b24"
-const SCALE := 64.0/289.0
-const ORIGIN := Vector2(109,289)
+## CANDIDATE only. Existing immediate renderer, shared hierarchy, eight authored views.
+const Motion=preload("res://scripts/cool_kid_motion.gd")
+const ROOT := "res://assets/art-candidates/cool-kid/articulated-rig-v2/"
+const ART_COMMIT := "d7bcb6929c97e09366403363433b40235e71e580"
+const MANIFEST_SHA := "141ae5e751adf117f4a23dc5ab131e54cbd9666882b258531ea3bdf598a76640"
+const SCALE := 64.0/147.0
+const ORIGIN := Vector2(96,180)
+const STRIDE := 32.0
+const STANCE := 0.45
 var enabled := false
 var valid := false
 var reason := "not prepared"
+var views: Array = []
 var parts: Array = []
-var textures: Array[Texture2D] = []
+var textures: Array = []
 var pivots: Dictionary = {}
 var transforms: Dictionary = {}
+var view := 0
+var previous_view := 0
+var view_age := 1.0
+var last_time := -1.0
+var motion_gain := 0.0
+var last_draw_time := -1.0
+var displayed_state := "idle"
+var contact_targets := [Vector2.ZERO,Vector2.ZERO]
+var contact_phases := [false,false]
+var contact_anchors := [Vector2.ZERO,Vector2.ZERO]
+var contact_valid := [false,false]
+var reach_releases := 0
+var foot_lock := false
+var actor_position := Vector2.ZERO
 
 func _init() -> void:
-    enabled = OS.get_cmdline_user_args().has("--cool-kid-rig-review")
+    enabled=OS.get_cmdline_user_args().has("--cool-kid-rig-review")
     if OS.has_feature("web"):
-        enabled = str(JavaScriptBridge.eval("new URLSearchParams(location.search).get('coolKidRig')",true)) == "1"
-    # Candidate resources are never loaded in ordinary production playback.
-    if enabled: prepare()
+        enabled=str(JavaScriptBridge.eval("new URLSearchParams(location.search).get('coolKidRig')",true))=="1"
+    if enabled:prepare()
 
-func prepare(root_path: String = ROOT, expected: String = MANIFEST_SHA) -> bool:
-    valid = false
-    reason = "invalid manifest or missing resource"
-    parts.clear(); textures.clear(); pivots.clear(); transforms.clear()
-    var path := root_path+"manifest.json"
-    if not FileAccess.file_exists(path) or FileAccess.get_sha256(path) != expected: return false
-    var data = JSON.parse_string(FileAccess.get_file_as_string(path))
-    if not data is Dictionary or data.get("hero_id","") != "cool-kid" or data.get("status","") != "CANDIDATE_NOT_APPROVED": return false
-    var entries: Array = data.get("parts",[])
-    if entries.size() != 16: return false
-    for entry in entries:
-        var name: String = str(entry.get("name",""))
-        var parent: String = str(entry.get("parent",""))
-        var pivot: Array = entry.get("pivot",[])
-        if name.is_empty() or pivots.has(name) or pivot.size()!=2 or (parent!="root" and not pivots.has(parent)): return false
-        var resource: String = root_path+str(entry.get("file",""))
-        if not ResourceLoader.exists(resource): return false
-        var tex := load(resource) as Texture2D
-        if tex==null or tex.get_size()!=Vector2(194,292): return false
-        # PNG source bytes are removed by Godot export. Verify decoded pixels
-        # once at preparation, independent of imported texture container format.
-        var image := tex.get_image()
-        image.convert(Image.FORMAT_RGBA8)
-        var digest := HashingContext.new()
-        digest.start(HashingContext.HASH_SHA256);digest.update(image.get_data())
-        if digest.finish().hex_encode()!=str(entry.get("rgba_sha256","")):
-            reason="decoded pixel mismatch: "+name
-            return false
-        pivots[name]=Vector2(float(pivot[0]),float(pivot[1]))
-        transforms[name]=Transform2D.IDENTITY
-        parts.append(entry); textures.append(tex)
-    reason = "valid pinned candidate"
-    valid = true
-    return true
+func prepare(root_path: String=ROOT, expected: String=MANIFEST_SHA) -> bool:
+    valid=false;reason="invalid manifest or missing resource"
+    views.clear();parts.clear();textures.clear();pivots.clear();transforms.clear()
+    last_time=-1.0;last_draw_time=-1.0;motion_gain=0.0
+    contact_valid.fill(false);contact_phases.fill(false)
+    var path:=root_path+"manifest.json"
+    if not FileAccess.file_exists(path) or FileAccess.get_sha256(path)!=expected:return false
+    var data=JSON.parse_string(FileAccess.get_file_as_string(path))
+    if not data is Dictionary or data.get("hero_id","")!="cool-kid" or data.get("status","")!="CANDIDATE_NOT_APPROVED":return false
+    if data.get("views",[]).size()!=8:return false
+    for definition in data["views"]:
+        var entries: Array=definition.get("parts",[])
+        if entries.size()!=16 or int(definition.get("sector",-1))!=views.size():return false
+        var joints: Dictionary={};var images: Array=[];var matrices: Dictionary={}
+        for entry in entries:
+            var id:=str(entry.get("name",""));var parent:=str(entry.get("parent",""));var pivot: Array=entry.get("pivot",[])
+            if id.is_empty() or joints.has(id) or pivot.size()!=2 or (parent!="root" and not joints.has(parent)):return false
+            var resource:=root_path+str(entry.get("file",""))
+            if not ResourceLoader.exists(resource):return false
+            var texture=load(resource) as Texture2D
+            if texture==null or texture.get_size()!=Vector2(192,192):return false
+            var image:=texture.get_image();image.convert(Image.FORMAT_RGBA8)
+            var digest:=HashingContext.new();digest.start(HashingContext.HASH_SHA256);digest.update(image.get_data())
+            if digest.finish().hex_encode()!=str(entry.get("rgba_sha256","")):
+                reason="decoded pixel mismatch: "+resource;return false
+            joints[id]=Vector2(float(pivot[0]),float(pivot[1]));matrices[id]=Transform2D.IDENTITY;images.append(texture)
+        views.append({"parts":entries,"textures":images,"pivots":joints,"transforms":matrices})
+    _use_view(0);view=0;previous_view=0;view_age=1.0
+    valid=true;reason="valid pinned candidate / eight directions";return true
 
+func _use_view(index: int) -> void:
+    parts=views[index]["parts"];textures=views[index]["textures"];pivots=views[index]["pivots"];transforms=views[index]["transforms"]
+
+func fallback_reason(hero_id: String, appearance: String, state: String, context: Dictionary) -> String:
+    if not enabled:return "LEGACY selected"
+    if not valid:return "INVALID RIG: "+reason
+    if hero_id!="cool-kid" or appearance!="original":return "identity outside Cool Kid original scope"
+    if bool(context.get("reduced_motion",false)):return "reduced motion: approved legacy"
+    if state not in ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]:return "unsupported state: "+state
+    return ""
 func supports(hero_id: String, appearance: String, state: String, context: Dictionary) -> bool:
-    if not enabled or not valid or hero_id!="cool-kid" or appearance!="original" or bool(context.get("reduced_motion",false)): return false
-    if state not in ["idle","run","attack","hurt","flex-in","flex-loop","flex-out","defeat"]: return false
-    var heading := float(context.get("heading",0.0)) if bool(context.get("moving",false)) else float(context.get("facing",0.0))
-    return sin(heading)>=-0.35 and cos(heading)>=-0.4
-
-static func around(pivot: Vector2, angle: float, offset: Vector2 = Vector2.ZERO) -> Transform2D:
-    var result := Transform2D(angle,Vector2.ZERO)
-    result.origin = pivot+offset-result.basis_xform(pivot)
+    return fallback_reason(hero_id,appearance,state,context).is_empty()
+static func sector(context: Dictionary) -> int:
+    return posmod(roundi(float(context.get("heading",0.0) if bool(context.get("moving",false)) else context.get("facing",0.0))/(PI/4)),8)
+static func around(pivot: Vector2, angle: float, offset: Vector2=Vector2.ZERO) -> Transform2D:
+    var result:=Transform2D(angle,Vector2.ZERO)
+    result.origin=pivot+offset-result.basis_xform(pivot)
     return result
 
-func _leg(side: String, phase: float, heading: float, pelvis: Transform2D) -> void:
-    var hip: Vector2 = pivots["thigh_"+side]
-    var knee: Vector2 = pivots["shin_"+side]
-    var ankle: Vector2 = pivots["foot_"+side]
-    var q := fposmod(phase,1.0)
-    # 22% ground contact, remaining swing with lift. World-space stance travels
-    # backwards at exactly canonical speed: cycle is 60 world pixels.
-    var travel := 60.0*0.22/SCALE
-    var stride := travel*(0.5-q/0.22) if q<0.22 else lerpf(-travel*0.5,travel*0.5,(q-0.22)/0.78)
-    var lift := 0.0 if q<0.22 else sin((q-0.22)/0.78*PI)*14.0
-    var target := ankle+Vector2(cos(heading)*stride,sin(heading)*stride*0.35-lift)
-    var world_hip := pelvis*hip
-    var to := target-world_hip
-    var a := hip.distance_to(knee)
-    var b := knee.distance_to(ankle)
-    var distance := clampf(to.length(),absf(a-b)+0.01,a+b-0.01)
-    target = world_hip+to.normalized()*distance
-    var bend := acos(clampf((a*a+distance*distance-b*b)/(2.0*a*distance),-1.0,1.0))
-    var upper_angle := to.angle()+(-bend if side=="l" else bend)-(knee-hip).angle()
-    var upper := around(hip,upper_angle,world_hip-hip)
-    var new_knee := upper*knee
-    var lower_angle := (target-new_knee).angle()-(ankle-knee).angle()
-    var lower := around(knee,lower_angle,new_knee-knee)
-    transforms["thigh_"+side]=upper
-    transforms["shin_"+side]=lower
-    # The sneaker stays level rather than inheriting the shin rotation.
-    transforms["foot_"+side]=Transform2D(0.0,target-ankle)
+func _leg(side: String, phase: float, heading: float, pelvis: Transform2D, gain: float, lock_contacts: bool) -> void:
+    var index:=0 if side=="l" else 1
+    var hip: Vector2=pivots["thigh_"+side];var knee: Vector2=pivots["shin_"+side];var ankle: Vector2=pivots["foot_"+side]
+    var q:=fposmod(phase,1.0)
+    var contact_fraction:=lerpf(STANCE,0.30,absf(sin(heading)))
+    var stance:=q<contact_fraction
+    var u:=q/contact_fraction if stance else (q-contact_fraction)/(1.0-contact_fraction)
+    # Linear contact trajectory cancels canonical travel; authored lift/recovery
+    # uses smooth knots, with toe-off delayed until the planted interval ends.
+    var stride:=lerpf(0.5,-0.5,u) if stance else lerpf(-0.5,0.5,smoothstep(0.0,1.0,u))
+    var lift:=0.0 if stance else (smoothstep(0.0,0.35,u)*(1.0-smoothstep(0.65,1.0,u)))*11.0
+    var neutral:=Vector2(hip.x+(-8.0 if index==0 else 8.0),171.0)
+    var target:=neutral+Vector2.from_angle(heading)*stride*STRIDE*contact_fraction/SCALE*gain-Vector2(0,lift*gain)
+    if lock_contacts:
+        if stance and gain>0.85:
+            if not contact_phases[index] or not contact_valid[index]:
+                contact_anchors[index]=actor_position+(target-ORIGIN)*SCALE;contact_valid[index]=true
+            target=(contact_anchors[index]-actor_position)/SCALE+ORIGIN
+        else:contact_valid[index]=false
+        contact_phases[index]=stance
+    var world_hip:=pelvis*hip
+    var to:=target-world_hip
+    # Candidate hidden anatomy gives a continuous overlap at both joints.
+    var a:=hip.distance_to(knee);var b:=knee.distance_to(ankle)
+    var distance:=clampf(to.length(),absf(a-b)+1.0,a+b-0.1)
+    if lock_contacts and stance and absf(distance-to.length())>0.0001:
+        contact_valid[index]=false;reach_releases+=1
+    target=world_hip+to.normalized()*distance
+    var bend:=acos(clampf((a*a+distance*distance-b*b)/(2.0*a*distance),-1.0,1.0))
+    # Knees bend in travel direction; front/rear retain separated lanes.
+    var bend_sign:=(-1.0 if cos(heading)<-0.25 else 1.0) if absf(sin(heading))<0.4 else (-1.0 if index==0 else 1.0)
+    var knee_target:=world_hip+Vector2.from_angle(to.angle()+bend*bend_sign)*a
+    var upper:=around(hip,(knee_target-world_hip).angle()-(knee-hip).angle(),world_hip-hip)
+    # Translate to the solved knee (source segment lengths remain unscaled).
+    var lower:=around(knee,(target-knee_target).angle()-(ankle-knee).angle(),knee_target-knee)
+    transforms["thigh_"+side]=upper;transforms["shin_"+side]=lower
+    transforms["foot_"+side]=around(ankle,0.0 if stance else -0.15*sin(u*PI)*cos(heading),target-ankle)
+    contact_targets[index]=target
 
-func sample(state: String, context: Dictionary) -> void:
-    var time := float(context.get("time",0.0))
-    var walk := float(context.get("walk",0.0))
-    var moving := bool(context.get("moving",false)) and state!="defeat"
-    var phase := walk*190.0/60.0
-    var breath := sin(time*2.6)
-    var beat := sin(phase*TAU)
-    var lean := 0.012*breath
-    var action := 0.0
-    if state=="attack":
-        var u := clampf((0.22-float(context.get("attack",0.22)))/0.22,0.0,1.0)
-        # Authored anticipation, strike and recovery knots; visual only.
-        action = lerpf(0.0,-0.16,u/0.25) if u<0.25 else lerpf(-0.16,0.25,(u-0.25)/0.25) if u<0.5 else lerpf(0.25,0.0,smoothstep(0.5,1.0,u))
-        lean += action*0.3
-    elif state=="hurt":
-        lean = -0.09*sin(clampf((0.18-float(context.get("hurt",0.18)))/0.18,0.0,1.0)*PI)
-    elif state.begins_with("flex"):
-        var envelope := smoothstep(0.0,0.25,float(context.get("flex_age",0.0)))*smoothstep(0.0,0.25,float(context.get("flex",0.0)))
-        action = -0.16*envelope
-        lean = -0.025*envelope
-    elif state=="defeat":
-        lean = smoothstep(0.0,0.7,float(context.get("defeat",0.0)))*0.65
-    var pelvis := around(pivots["pelvis"],0.0,Vector2(0,5.0-absf(beat)*2.0) if moving else Vector2.ZERO)
+func _follow_grip(torso: Transform2D) -> void:
+    var shoulder: Vector2=pivots["upper_r"]
+    var elbow: Vector2=pivots["fore_r"]
+    var wrist: Vector2=pivots["fore_l"]
+    var origin:=torso*shoulder
+    var target: Vector2=transforms["fore_l"]*wrist
+    var a:=shoulder.distance_to(elbow);var b:=elbow.distance_to(wrist)
+    var to:=target-origin
+    var distance:=clampf(to.length(),absf(a-b)+0.01,a+b-0.01)
+    var bend:=acos(clampf((a*a+distance*distance-b*b)/(2.0*a*distance),-1.0,1.0))
+    var sign_bend: float=1.0 if (wrist-shoulder).cross(elbow-shoulder)>=0.0 else -1.0
+    var solved:=origin+Vector2.from_angle(to.angle()+bend*sign_bend)*a
+    transforms["upper_r"]=around(shoulder,(solved-origin).angle()-(elbow-shoulder).angle(),origin-shoulder)
+    transforms["fore_r"]=around(elbow,(target-solved).angle()-(wrist-elbow).angle(),solved-elbow)
+
+func sample(state: String, context: Dictionary, direction: int=-1, gain: float=-1.0, lock_contacts: bool=false) -> void:
+    _use_view(sector(context) if direction<0 else direction)
+    var time:=float(context.get("time",0.0));var walk:=float(context.get("walk",0.0))
+    var moving:=bool(context.get("moving",false)) and state!="defeat"
+    var amount: float=(1.0 if moving else 0.0) if gain<0.0 else gain
+    var phase:=walk*190.0/STRIDE
+    var q:=fposmod(phase,0.5)*2.0
+    # Authored contact compression → passing rise → landing. Twice per cycle.
+    var weight:=lerpf(4.0,-1.5,smoothstep(0.0,0.48,q)) if q<0.48 else lerpf(-1.5,4.0,smoothstep(0.48,1.0,q))
+    var swing:=sin(phase*TAU)*amount
+    var action:=Motion.action(state,context)
+    var defeat:=smoothstep(0.0,0.75,float(context.get("defeat",0.0))) if state=="defeat" else 0.0
+    var heading:=float(context.get("heading",0.0))
+    var crouch:=8.0+5.0*maxf(0.0,-sin(heading))
+    var pelvis:=around(pivots["pelvis"],0.018*swing,Vector2(1.3*swing,(crouch+weight)*amount+defeat*10.0))
     transforms["pelvis"]=pelvis
-    if moving:
-        var heading := float(context.get("heading",0.0))
-        _leg("l",phase,heading,pelvis);_leg("r",phase+0.5,heading,pelvis)
-    else:
-        for id in ["thigh_l","shin_l","foot_l","thigh_r","shin_r","foot_r"]:transforms[id]=pelvis
-    var torso := pelvis*around(pivots["torso"],lean+(-0.018*beat if moving else 0.0),Vector2(0,breath*0.65))
+    _leg("l",phase,heading,pelvis,amount,lock_contacts);_leg("r",phase+0.5,heading,pelvis,amount,lock_contacts)
+    var breath:=sin(time*2.6)*0.5*(1.0-amount)
+    var torso:=pelvis*around(pivots["torso"],action.y-0.045*swing,Vector2(0,breath))
     transforms["torso"]=torso
-    transforms["upper_r"]=torso*around(pivots["upper_r"],action*0.2+(0.025*beat if moving else 0.0))
-    transforms["fore_r"]=transforms["upper_r"]*around(pivots["fore_r"],action*0.2)
-    transforms["upper_l"]=torso*around(pivots["upper_l"],action+(-0.025*beat if moving else 0.0))
-    transforms["fore_l"]=transforms["upper_l"]*around(pivots["fore_l"],-action*0.25)
-    transforms["keyboard"]=transforms["fore_l"]
-    transforms["hand"]=transforms["fore_l"]
-    transforms["head"]=torso*around(pivots["head"],-lean*0.65+sin(time*2.6-0.3)*0.008)
-    transforms["pompom"]=transforms["head"]*around(pivots["pompom"],sin((phase*TAU if moving else time*2.6)-0.65)*(0.045 if moving else 0.025))
+    # Both wrists and the prop share the left grip chain. Shoulder counterdrive
+    # and the free elbow communicate action without rotating detached hands.
+    transforms["upper_l"]=torso*around(pivots["upper_l"],action.x-0.055*swing)
+    transforms["fore_l"]=transforms["upper_l"]*around(pivots["fore_l"],action.z+0.035*swing)
+    transforms["keyboard"]=transforms["fore_l"];transforms["hand"]=transforms["fore_l"]
+    _follow_grip(torso)
+    transforms["head"]=torso*around(pivots["head"],-action.y*0.75+0.03*swing,Vector2(0,-weight*amount*0.30))
+    transforms["pompom"]=transforms["head"]*around(pivots["pompom"],sin(phase*TAU-0.8)*0.10*amount+sin(time*2.6-0.5)*0.025*(1.0-amount))
+    if defeat>0.0:
+        # One connected ground-pivot collapse, followed by small settling motion.
+        var collapse:=around(Vector2(100,175),-1.45*defeat,Vector2(-10.0*defeat,-12.0*defeat))
+        for id in transforms:transforms[id]=collapse*transforms[id]
 
 func draw(canvas: CanvasItem, position: Vector2, hero_id: String, appearance: String, pose: Dictionary, context: Dictionary) -> bool:
-    var state := str(pose.get("state","idle"))
-    if not supports(hero_id,appearance,state,context): return false
-    sample(state,context)
-    var base := Transform2D(0.0,Vector2(SCALE,SCALE),0.0,position-ORIGIN*SCALE)
-    for i in range(parts.size()):
-        canvas.draw_set_transform_matrix(base*transforms[str(parts[i]["name"])])
-        canvas.draw_texture(textures[i],Vector2.ZERO)
+    var state:=str(pose.get("state","idle"))
+    if not supports(hero_id,appearance,state,context):return false
+    var time:=float(context.get("time",0.0))
+    var dt:=clampf(time-last_time,0.0,0.1) if last_time>=0.0 else 0.0
+    if time<last_time:contact_valid.fill(false);motion_gain=0.0
+    last_time=time;last_draw_time=time;displayed_state=state
+    var desired:=1.0 if bool(context.get("moving",false)) and state!="defeat" else 0.0
+    motion_gain=move_toward(motion_gain,desired,dt/0.075)
+    var next:=sector(context)
+    if next!=view:
+        previous_view=view;view=next;view_age=0.0;contact_valid.fill(false);contact_phases.fill(false)
+    view_age+=dt
+    var base:=Transform2D(0.0,Vector2(SCALE,SCALE),0.0,position-ORIGIN*SCALE)
+    actor_position=position
+    # Brief full-view dissolve preserves handed lettering; never reflect art.
+    var blend:=smoothstep(0.0,0.075,view_age)
+    if blend<1.0 and previous_view!=view:
+        sample(state,context,previous_view,motion_gain)
+        _draw_parts(canvas,base,1.0-blend)
+    sample(state,context,view,motion_gain,true)
+    _draw_parts(canvas,base,blend if previous_view!=view else 1.0)
     canvas.draw_set_transform_matrix(Transform2D.IDENTITY)
     return true
+func _draw_parts(canvas: CanvasItem, base: Transform2D, alpha: float) -> void:
+    for i in range(parts.size()):
+        canvas.draw_set_transform_matrix(base*transforms[str(parts[i]["name"])])
+        canvas.draw_texture(textures[i],Vector2.ZERO,Color(1,1,1,alpha))
