@@ -1,0 +1,17 @@
+{
+  "browser": "151.0.7922.173",
+  "source": "real Chromium, exported Godot Wasm; automation, not human testing",
+  "logs": [
+    "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+    "OpenGL API OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium)) - Compatibility - Using Device: WebKit - WebKit WebGL",
+    "Build configuration: Emscripten 4.0.20, single-threaded, no GDExtension support.",
+    "COOL_KID_REVIEW: valid pinned candidate / eight directions Art=e4f4a43fc166dea6bb9cea494e3c09e445f35811"
+  ],
+  "errors": [],
+  "http_errors": [],
+  "status": "PASS",
+  "assertions": [
+    "exported candidate decoded pixel hashes prepared",
+    "observed menu/selection/gameplay/A-B/pause screenshots require visual inspection"
+  ]
+}

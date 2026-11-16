@@ -5,6 +5,8 @@ cd "$(dirname "$0")/.."
 : "${GODOT_BIN:=godot}"
 : "${DISPLAY:=:99}"
 [[ "$("$GODOT_BIN" --version)" =~ ^4\.7\.2\.stable(\.|$) ]] || { echo 'Official Godot 4.7.2 required' >&2; exit 2; }
+mkdir -p build
+touch build/.gdignore
 kind="${1:-ab}"
 output="${2:-build/cool-kid-v2}"
 mkdir -p "$output/evidence/$kind"

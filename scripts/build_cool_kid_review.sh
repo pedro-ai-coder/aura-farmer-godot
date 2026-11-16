@@ -3,6 +3,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 : "${GODOT_BIN:=godot}"
 [[ "$("$GODOT_BIN" --version)" =~ ^4\.7\.2\.stable(\.|$) ]] || { echo 'Godot 4.7.2 stable required' >&2; exit 2; }
+mkdir -p build
+touch build/.gdignore
 python3 scripts/verify_cool_kid_rig.py
 mkdir -p build/cool-kid-review
 for phase in import export; do

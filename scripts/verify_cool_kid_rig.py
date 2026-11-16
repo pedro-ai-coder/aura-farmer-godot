@@ -50,7 +50,9 @@ for e in entries:
  assert 'process/fix_alpha_border=false' in Path(str(p)+'.import').read_text()
 if len(sys.argv)>1:
  from check_icon_pack import directory
- paths=directory(Path(sys.argv[1]).read_bytes());prefix=D.relative_to(R).as_posix()+'/'
+ paths=directory(Path(sys.argv[1]).read_bytes())
+ assert not any(p.startswith(('docs/art/evidence/cool-kid-rig-v2/','build/')) for p in paths)
+ prefix=D.relative_to(R).as_posix()+'/'
  if '--production' in sys.argv:
   assert not any(p.startswith("assets/art-candidates/cool-kid/") for p in paths)
  else:
