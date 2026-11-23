@@ -8,9 +8,24 @@ const ORANGE := Color("#ff6a00")
 const VIOLET := Color("#9b00ff")
 const GOLD := Color("#f8c45f")
 const TEAL := Color("#6eaab0")
+const FactoryPlate = preload("res://assets/art-candidates/feedverse/msg-factory-v2/arena-plate-proposed.png")
+const PressHousing = preload("res://assets/art-candidates/feedverse/msg-factory-v2/press-housing-proposed.png")
 
 static func draw_map(canvas: Node2D, data: Dictionary, floor: PackedVector2Array, world: Vector2) -> void:
     var kind := int(data.style)
+    if kind == 0:
+        # Illustrated MSG Factory V2. The plate has no cover objects; each
+        # machine sprite is placed from the original collision data below.
+        canvas.draw_texture_rect(FactoryPlate,
+            Rect2(Vector2(-43, -18), Vector2(1535, 1173)), false)
+        for cover in data.covers:
+            var center := Vector2(cover[0], cover[1])
+            var radius := float(cover[2])
+            var half := radius * 1.30
+            canvas.draw_texture_rect(PressHousing,
+                Rect2(center - Vector2(half, half), Vector2(half * 2.0, half * 2.0)),
+                false)
+        return
     var accent := Color(data.accent)
     _backdrop(canvas, kind, world, accent)
     _floor(canvas, kind, floor, world, accent)

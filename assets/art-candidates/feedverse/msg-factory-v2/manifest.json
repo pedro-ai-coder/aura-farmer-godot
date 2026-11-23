@@ -1,0 +1,42 @@
+{
+  "schema_version": "feedverse-msg-factory-v2-art-1",
+  "status": "PROPOSED_NOT_CREATOR_APPROVED",
+  "target": "MSG Factory only; PR #152 implementation acf547c8f17d7ddc0674eeb2701b7804640f992c",
+  "original_geometry": "experiments/feedverse/maps.json at b8740e7811d3d8caf607174091230e177ecf21fd",
+  "input_references": [
+    {
+      "path": "evidence/feedverse/maps/msg_factory.png",
+      "role": "layout and before screenshot",
+      "sha256": "fbbef84d1e0e781e0d725165c6b4085356cd447fc7cdfa0a76957b397f8199a6"
+    },
+    {
+      "path": "level-zero-factory/assets/experimental/level_zero/print_press_arena_candidate.png",
+      "role": "style reference; creator-uploaded experimental candidate, not copied into this branch",
+      "source_commit": "128948546f5b49f126e707445f5334ebaeea5ae7",
+      "sha256": "0eb3f31bc22d5508c4fb3553335fe3279e3de3ec46566a3581a11d0f8931ed23"
+    }
+  ],
+  "assets": [
+    {
+      "path": "arena-plate-proposed.png",
+      "sha256": "512fb94d99a69261028bcdb3c58aa4f3d3117b40a1e14091d7fb239ae8e13d62",
+      "dimensions_px": [
+        1448,
+        1086
+      ],
+      "role": "illustrated background and walkable floor; no baked covers"
+    },
+    {
+      "path": "press-housing-proposed.png",
+      "sha256": "993e551d2b38fb2f6e7251cf50fa616c8a9ffe2c5baabbaf53c6c6cf37d7588d",
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "role": "transparent reusable static cover sprite; four instances at original cover coordinates"
+    }
+  ],
+  "generation_method": "built-in image_gen with one layout/style edit, two targeted removal edits, and one transparent prop generation",
+  "mechanics": "cosmetic only; original floor polygon, covers, spawn, camera, RNG and Solo rules unchanged",
+  "approval": "creator visual review required before production promotion"
+}
