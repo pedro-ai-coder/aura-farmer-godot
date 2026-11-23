@@ -30,4 +30,4 @@ godot --headless --path /absolute/fresh/staging --import
 godot --headless --path /absolute/fresh/staging --export-release "Passive VFX Lab Windows" "/absolute/fresh/staging/build/CLUTCHPUNKS Passive VFX Lab.exe"
 ```
 
-See the [audit](../../docs/PASSIVE_VFX_AUDIT_V1.md), [architecture](../../docs/PASSIVE_VFX_ARCHITECTURE_V1.md) and [proposed style](../../docs/PASSIVE_VFX_STYLE_GUIDE_V1.md).
+See the [audit](../../docs/PASSIVE_VFX_AUDIT_V1.md), [architecture](../../docs/PASSIVE_VFX_ARCHITECTURE_V1.md), [proposed style](../../docs/PASSIVE_VFX_STYLE_GUIDE_V1.md) and [validation record](evidence/README.md).

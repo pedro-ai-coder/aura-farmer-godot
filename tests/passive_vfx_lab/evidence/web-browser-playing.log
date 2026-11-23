@@ -1,0 +1,7 @@
+{
+  frameId: 'C7FB898E354965E6584594AA27560FC3',
+  loaderId: 'E181305A99FAF7DA16281E78ECEC22E5',
+  isDownload: false
+}
+{"href":"http://127.0.0.1:61207/","title":"CLUTCHPUNKS","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36","canvas":[[1280,720]],"webgl2":true,"status":"FULLSCREEN"}
+PASS: exact production Web export, headless Chrome WebGL2, Garage -> Ruin Alley, input and active run

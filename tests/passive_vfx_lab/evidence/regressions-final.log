@@ -1,0 +1,125 @@
+
+### test_passive_effects (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: GDD passive modifiers, Aura hit caps, low-health shields and Sigma Flex
+
+
+### passive_feedback/test_contract (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 23 passive contracts, real commits, cap-aware promotion/replacement, timers, stacks, effective healing/shields, four legendaries, pause/lifecycle/input/Reduced Motion
+
+
+### passive_feedback/test_parity (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 5376 full state/RNG/profile frame comparisons, all 23 passives, six appearances, irregular frames, real Flex/primary/heal/shield, pause. SHA256 {"0/female":"d25f68df17e0e6787c9f1d55a39a13aaf8292e3fd0d6dd16c498dcf68971a09b","0/original":"96c56f889179a3326d771d9f2c99051cbde702ef7de12057ede8bdeb8079e201","1/female":"0f129a6469a635eccf05c9f985d6bcac7ac247a70c9e90135e231c3b708d7484","1/original":"db7400623c4c7ddc61de01534b14480b0481a507f1fb2eb221b2228ec7eede96","2/female":"5921f050eca0e71897d71787282c48dccbcf0e77f0028e8fb8909af9c96b4502","2/original":"d5244db085c7e8eef58cf5e81d9924387d95e7e21e744e9e438437841395f2c5"}
+
+
+### passive_feedback/test_layout (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 23 full names and notifications, inspection descriptions, input-free HUD placement across all six GDD viewports
+
+
+### weapon_presence/test_contract (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: nine weapon resources, six attachment profiles, authoritative launch/paired/delayed/miss/blocked impacts, bounded pools, pause/retry, Reduced Motion and RNG
+
+
+### weapon_presence/test_parity (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: 3456 exact per-frame simulation comparisons, nine weapons x both appearances x common L4/legendary, unchanged targets/damage/events/cadence/collisions/RNG
+
+
+### test_combat_feedback (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: combat feedback lifecycle, bounded effects, fractional HP and phase-crystal magnet
+
+
+### test_phaser_rng (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Seeded integer JavaScript parity, shared draw state, offers and enemy selection
+
+
+### test_playable_slice (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Godot solo hero, combat, progression, Flex and boss smoke tests
+
+
+### test_enemy_navigation (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PURSUIT {"end":[465.180877685547,614.268737792969],"kind":"reply-goblin","max_blocked_seconds":0.0,"reached":true,"start":[643.0,550.0],"target":[433.701690673828,618.883056640625]}
+PURSUIT {"end":[468.304931640625,614.496643066406],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[646.0,550.0],"target":[433.701690673828,618.883056640625]}
+PURSUIT {"end":[813.87109375,745.112121582031],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[992.0,680.0],"target":[773.70166015625,748.883056640625]}
+PURSUIT {"end":[731.693969726563,614.496520996094],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[554.0,550.0],"target":[766.298278808594,618.883056640625]}
+PURSUIT {"end":[1066.12902832031,614.887878417969],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[888.0,680.0],"target":[1106.29833984375,611.116943359375]}
+PURSUIT {"end":[313.457855224609,746.08349609375],"kind":"npc","max_blocked_seconds":0.0,"reached":true,"start":[831.0,950.0],"target":[280.0,740.0]}
+PURSUIT {"end":[339.486389160156,742.849975585938],"kind":"beta","max_blocked_seconds":0.0,"reached":true,"start":[830.0,935.0],"target":[300.0,735.0]}
+PASS: Actual enemy pursuit around both covers and concave floor corners preserves geometry
+
+
+### test_hero_combat (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Stable targeting/manual aim, three hero traits, signature contact mitigation, Alpha slam timing and Beta facing armor
+
+
+### test_legendary_combat (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Legendary projectile delays, secondary damage/proc isolation, shared hit memory and third-hit transformations
+
+
+### test_weapon_timing (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Fixed blast position, windup, paired hits and shared primary activation
+
+
+### test_player_projectiles (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Player projectile travel, collision, hit memory, restart and cover
+
+
+### test_boss_lifecycle (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Stagger, berserk regeneration/exposure, threshold latching, capped adds, independent event timers and expanding safe-gap ring
+
+
+### test_mobile_layout (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Six viewport UI bounds, touch targets, safe areas, selection, stable camera and focus pause
+
+
+### test_mobile_joystick (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Full-playfield circular joystick, UI priority, multitouch, safe areas and lifecycle
+
+
+### test_run_acceptance (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+HEADLESS CPU SAMPLE: 300 enemies / 150 initial projectiles, 60 simulation iterations, 1378.839 ms; not rendered FPS or device acceptance
+PASS: Controlled three-hero wave/boss/victory timeline, portal/elite/drop contracts and headless stress fixture
+
+
+### test_continuous_run (0)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CONTINUOUS RUN: sigma, time=659.766666666395, level=25, XP=9598.0, kills=729, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: cool-kid, time=660.399999999728, level=25, XP=9148.0, kills=725, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS RUN: alpha, time=753.599999999643, level=25, XP=8626.0, kills=724, choices=24, max queue=1; protected player and explicit final hit if required
+CONTINUOUS CPU ELAPSED: 22861 ms; not rendered FPS
+PASS: Continuous seeded three-hero progression, legal offers, combat drops, boss result and clean restart
