@@ -78,39 +78,39 @@ static func in_floor(point: Vector2, radius: float = 16.0) -> bool:
                 inside = not inside
     return inside
 
-static func walkable(point: Vector2, radius: float = 16.0) -> bool:
-    if not in_floor(point, radius):
+static func walkable(point: Vector2, radius: float = 16.0, map = null) -> bool:
+    if not (in_floor(point, radius) if map == null else map.in_floor(point, radius)):
         return false
-    for cover: Dictionary in COVERS:
+    for cover: Dictionary in (COVERS if map == null else map.COVERS):
         if point.distance_to(cover["pos"]) <= float(cover["radius"]) + radius:
             return false
     return true
 
-static func move(point: Vector2, delta: Vector2, radius: float = 16.0) -> Vector2:
+static func move(point: Vector2, delta: Vector2, radius: float = 16.0, map = null) -> Vector2:
     # Phaser separates axes, allowing sliding along walls instead of snapping
     # actors through the collider when both movement axes are requested.
     var horizontal := point + Vector2(delta.x, 0.0)
-    var after_x := horizontal if delta.x != 0.0 and walkable(horizontal, radius) else point
+    var after_x := horizontal if delta.x != 0.0 and walkable(horizontal, radius, map) else point
     var vertical := after_x + Vector2(0.0, delta.y)
-    return vertical if delta.y != 0.0 and walkable(vertical, radius) else after_x
+    return vertical if delta.y != 0.0 and walkable(vertical, radius, map) else after_x
 
-static func clear_line(start: Vector2, ending: Vector2) -> bool:
+static func clear_line(start: Vector2, ending: Vector2, map = null) -> bool:
     var delta := ending - start
     var squared := delta.length_squared()
-    for cover: Dictionary in COVERS:
+    for cover: Dictionary in (COVERS if map == null else map.COVERS):
         var center: Vector2 = cover["pos"]
         var fraction := clampf((center - start).dot(delta) / squared, 0.0, 1.0) if squared > 0.0 else 0.0
         if center.distance_to(start + delta * fraction) <= float(cover["radius"]):
             return false
     return true
 
-static func spawn_point(player: Vector2, rng, collision_radius: float = 24.0):
+static func spawn_point(player: Vector2, rng, collision_radius: float = 24.0, map = null):
     # Preserve the sample rectangle, 80-attempt bound and 260 U arrival distance.
     # Large enemies need their actual collider clearance at birth; 24 U was
     # insufficient for elites/events/Big Hater and could create embedded actors.
     # RandomNumberGenerator is an input: geometry itself never consumes RNG.
     for attempt in range(80):
         var position := Vector2(180.0 + rng.randf() * 1100.0, 300.0 + rng.randf() * 650.0)
-        if walkable(position, maxf(24.0,collision_radius)) and position.distance_to(player) >= 260.0:
+        if walkable(position, maxf(24.0,collision_radius), map) and position.distance_to(player) >= 260.0:
             return position
     return null

@@ -386,7 +386,7 @@ func refresh() -> void:
     hero_scroll.visible=mode=="heroes";offers_scroll.visible=mode in ["choice","legendary","replace"]
     for toggle in appearance_buttons:toggle.visible=mode=="heroes"
     appearance_notice.visible=mode=="heroes"
-    heading.visible=mode!="playing";heading_shadow.hide();headline_accent.visible=heading.visible
+    heading.visible=mode not in ["playing","maps"];heading_shadow.hide();headline_accent.visible=heading.visible
     var heading_parent: Control=auxiliary if mode in auxiliary.MODES else self
     if heading.get_parent()!=heading_parent:heading.reparent(heading_parent,false)
     if headline_accent.get_parent()!=heading_parent:headline_accent.reparent(heading_parent,false)
@@ -396,7 +396,7 @@ func refresh() -> void:
     elif mode=="heroes":heroes_layout()
     elif mode=="playing":hud_layout()
     elif mode in ["choice","legendary","replace"]:cards_layout()
-    else:auxiliary.layout()
+    elif mode in auxiliary.MODES:auxiliary.layout()
     auxiliary.visible=mode in auxiliary.MODES
     neon_backdrop.refresh(view)
     if mode in NeonBackdrop.MODES:
@@ -470,7 +470,7 @@ func home_layout() -> void:
     poster_hero.visible=(not narrow or mobile_portrait) and poster_hero.texture!=null
     heading.hide();heading_shadow.hide();headline_accent.hide()
     Type.apply(home_caption,"hud_secondary",narrow,Style.PAPER)
-    home_caption.text="SIGNAL BREAKER GARAGE\nRUIN ALLEY / SOLO"
+    home_caption.text="SIGNAL BREAKER GARAGE\nSOLO"
     place(home_caption,Rect2(40,183 if narrow or view.y<540.0 else 224,view.x-80 if narrow else view.x*0.45,64))
     var compact_landscape: bool=view.y<515
     var width:=minf(360,view.x-80)
@@ -543,7 +543,7 @@ func heroes_layout() -> void:
         place(parts["help"],Rect2(24,help_top,width-48,height-help_top-20.0))
     ui.home.return_button.show();ui.home.start_button.show()
     place(ui.home.return_button,Rect2(24,view.y-78,150,64));place(ui.home.start_button,Rect2(view.x-300,view.y-78,276,64))
-    ui.home.start_button.text="START RUN" if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "ART PENDING"
+    ui.home.start_button.text="CHOOSE MAP" if game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"])) else "ART PENDING"
     ui.home.start_button.disabled=not game.HeroAppearanceScript.can_start(game.hero_appearance,str(game.HEROES[game.hero_index]["id"]))
     button_skin(ui.home.return_button,"menu/secondary");button_skin(ui.home.start_button,"menu/primary")
 func text_height(node: Label, width: float) -> float:

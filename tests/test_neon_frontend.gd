@@ -61,13 +61,16 @@ func verify() -> void:
     expect(garage.environment.age==phase,"Reduced motion freezes ambient phase")
     expect(garage.game.rng.state==rng and garage.game.run_time==0,"Motion never consumes gameplay RNG or advances simulation")
     garage.set_selection(false);garage.select_identity(4);garage.start_selected()
-    expect(not garage.active and garage.game.mode=="playing","Start is immediate, even during an active entry transition")
+    expect(not garage.active and garage.game.mode=="maps","Map select opens even during an active entry transition")
+    garage.game.map_select.choices[garage.game.SoloMaps.RUIN_ALLEY].pressed.emit()
+    garage.game.map_select.start.pressed.emit()
+    expect(garage.game.mode=="playing","Confirming the selected map starts Solo")
     expect(garage.game.hero.id=="cool-kid" and garage.game.hero_appearance=="female","Selected identity/kit survives the transition")
     expect(not garage.showcase.enabled,"Showcase pauses during gameplay")
     garage.game._return_to_menu();await process_frame;await process_frame
     expect(garage.active and garage.showcase.enabled,"Returning restores the showcase")
     garage.queue_free();await process_frame
-    if failures.is_empty():print("PASS: Neon contrast/states, six high-resolution pose reactions, cached registration, rapid switching, reduced motion, RNG isolation, immediate start and return")
+    if failures.is_empty():print("PASS: Neon contrast/states, six high-resolution pose reactions, cached registration, rapid switching, reduced motion, RNG isolation, map selection and return")
     else:
         for failure in failures:push_error(failure)
     quit(0 if failures.is_empty() else 1)

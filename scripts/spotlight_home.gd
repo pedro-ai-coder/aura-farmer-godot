@@ -63,7 +63,7 @@ func install(owner_game, owner_presenter) -> void:
     stack.add_child(hero_destination)
     presenter.options_button.reparent(stack)
     presenter.options_button.text = "SETTINGS"
-    var footer := UI.label("RUIN ALLEY  /  SOLO","numbers",14,true)
+    var footer := UI.label("SOLO","numbers",14,true)
     footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     stack.add_child(footer)
     selection = VBoxContainer.new()
@@ -119,9 +119,9 @@ func install(owner_game, owner_presenter) -> void:
     return_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     return_button.pressed.connect(game._return_to_menu)
     actions.add_child(return_button)
-    start_button = UI.action("START RUN",true)
+    start_button = UI.action("CHOOSE MAP",true)
     start_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    start_button.pressed.connect(func():game.start_run(game.hero_index))
+    start_button.pressed.connect(func():game.open_map_select(game.hero_index))
     actions.add_child(start_button)
 
 func refresh(view: Vector2) -> void:
