@@ -70,8 +70,15 @@ func verify() -> void:
             expect(skin.hero_parts[index]["portrait"].texture.resource_path==Appearance.production_path(id,"female","selection"),"Correct approved female selection illustration")
             expect(not skin.hero_parts[index]["art_status"].visible,"Complete female art has no pending label")
             expect(not game.presentation.home.start_button.disabled,"All three female variants are startable")
-            if extent.x<1000: await tap(game.presentation.home.start_button)
-            else: await press_enter(game.presentation.home.start_button)
+            var map_choice: Button = game.map_select.choices[game.SoloMaps.RUIN_ALLEY]
+            if extent.x<1000:
+                await tap(game.presentation.home.start_button)
+                await tap(map_choice)
+                await tap(game.map_select.start)
+            else:
+                await press_enter(game.presentation.home.start_button)
+                await press_enter(map_choice)
+                await press_enter(game.map_select.start)
             expect(game.mode=="playing" and game.hero["id"]==id,"Real female run starts with canonical ID")
             if game.mode!="playing":
                 push_error("Female start failed at %s; mode=%s; window transform=%s" % [extent,game.mode,root.get_final_transform()])

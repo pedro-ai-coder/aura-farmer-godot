@@ -31,7 +31,9 @@ func verify() -> void:
         await click(game.presentation.home.return_button)
         expect(play.get_global_rect()==original_rect,"Artwork preserves original hit rectangle")
         await click(play)
-        expect(game.mode=="playing","Real pointer activates Play once")
+        expect(game.mode=="maps","Real pointer activates Play once")
+        await choose_ruin_alley(game)
+        expect(game.mode=="playing","Real pointer starts the selected map")
         game._toggle_pause();game._show_ui();skin.refresh()
         await process_frame
         expect(game.presentation.secondary.quit_run.get_node_or_null("NeonButtonFeedback")!=null and game.presentation.secondary.quit_run.text=="QUIT RUN","Quit navigation retains its explicit destructive label and Neon feedback")
