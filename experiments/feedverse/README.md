@@ -1,19 +1,21 @@
-# Feedverse map layout experiment — incomplete, not production ready
+# Feedverse map production candidates
 
-Base: `aura-farmer-godot` main `2f7cfab5d0b498a2d7dade97ec1adf38e58fda50`.
-World Bible reference: canon PR #46 head `512d34f92180797fc994120eacf3c58c9665c4ec` (draft; geographic concept approved, individual scenery and geometry proposed). GDD V4.0 and inherited V3 rules take precedence. These are temporary debug presentation names, not stable content IDs.
+Source: `aura-farmer-godot` baseline `2f7cfab5d0b498a2d7dade97ec1adf38e58fda50`; original recovered commit `b8740e7811d3d8caf607174091230e177ecf21fd` is retained as this branch's first commit. The six original `.tscn` files and `maps.json` are preserved. Original input archive and patch are separately held by the creator.
 
-This folder contains six independently addressable scene files sharing one data-driven debug viewer. Select a scene in the editor and run it, or run e.g. `godot --path . --editor` then open `experiments/feedverse/maps/msg_factory.tscn`. Use arrows/WASD to move, square brackets to switch. Ground polygons and circular cover are defined in JSON; collision is geometric and does not depend on the drawn shapes. The colors and procedural shapes are experimental code-native graybox art; no third-party assets, logos or approved-registry changes are included. The default production scene and existing runtime code are untouched.
+## Launch
 
-## Validation and limitations
+Open any `experiments/feedverse/maps/<region>.tscn` to inspect the environment and move the marker with WASD or arrows. Bracket keys switch through the six scenes using the original viewer. For an opt-in Solo combat preview, launch `experiments/feedverse/maps/<region>_combat.tscn` directly. These six scenes reuse the existing Solo controller, approved character/enemy/weapon rendering, combat, HUD and camera. They start Sigma and use the original polygon, four covers and spawn data for each map. The live Garage and default Ruin Alley scenes are unchanged.
 
-- `python3 experiments/feedverse/validate_layouts.py`: sampled spawn validity and connectivity at 20-unit steps for a 40-unit clearance. This is an offline approximation, not a physics or gameplay test.
-- Godot parsing, imports, actual scene loading, movement, camera, map switching, line-of-sight, projectile/pickup behavior, determinism, mobile rendering, performance and screenshots have **not** been tested: the environment's Godot executables are broken links to a missing binary.
-- Player marker is a debug circle, not an approved hero. No enemy, combat, pickups, touch controls, artwork production kit, gameplay adapter or encounter implementation is present. None of these maps is a playable combat prototype. Collision navigation is a first-pass layout study and must be reworked against actual actor radii and production rules.
-- Decoration is schematic; it is not commercial-quality art, approved art, or a substitute for an art pipeline. No performance claims are made.
-- Square-bracket switching is an isolated debug convenience, not a production Garage selector.
-- No simulation RNG is used. This does not prove deterministic integration with production.
+The preview maps have no campaign selector, save progression or approved encounter assignment. The combat subclass suppresses profile writes. New map rules are supplied only to these opt-in scenes; regular Solo retains `SoloWorldRules` by default. The map data does not change spawn timing, enemy catalog, weapon values, boss rules or RNG algorithm. Different geometry can alter rejection counts in existing spawn sampling, so exact RNG consumption across maps is not claimed to match Ruin Alley.
 
-## Next steps
+## Art and provenance
 
-Run Godot 4.7.2 import and scene tests; address errors before further development. Build a separate map-rules adapter and integrate it with the existing simulation without duplicating the controller or changing production defaults. Test all hero kits, obstacle clearance, LOS, spawn, pickups, mobile/desktop views and legacy deterministic behavior. Produce and review candidate regional art with provenance and actual engine captures. Obtain creator approval separately for geometry, art and gameplay decisions.
+`environment_art.gd` is a reusable, code-drawn candidate kit: shared city backdrop, readable ground, perimeter, modular panels and region-specific props. The six treatments follow the *proposed* profiles in Feedverse World Bible V1.0 (`clutchpunks-canon` PR #46, head `512d34f92180797fc994120eacf3c58c9665c4ec`): factory presses, broken valley bridges, moderation booths, rail platforms, subsurface server banks and the central broadcast citadel. These details are noninteractive scenery. They do not create hazards, powers or canon. Brand colors follow the approved CPK palette; the preview banner uses the existing exact production emblem and Inter font. Solo combat scenes reuse existing approved actor art. No third-party or newly generated binary art was added.
+
+**Status: PROPOSED environment artwork and map integration. Creator visual approval is pending.** The restored graybox commit remains separately accessible in Git history; the completed branch does not claim production map approval.
+
+## Previews and minimal checks
+
+Run `godot --path . --script res://experiments/feedverse/capture_maps.gd` on a desktop renderer to generate six 1280×720 overview PNGs in `evidence/feedverse/maps/`. Headless mode has no frame draw signal for captures. Run `godot --headless --path . --script res://experiments/feedverse/smoke_maps.gd` for a minimal scene, spawn and movement check. This is not a dedicated QA suite or proof of complete campaign balance. Godot version used: official `4.7.2.stable.official.ed1daf0bf`.
+
+The six original previews and six Solo scenes load. The default Ruin Alley scene has not been modified. Full normal-run, target-device, performance and creator visual acceptance are still pending.

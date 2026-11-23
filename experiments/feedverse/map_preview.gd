@@ -4,6 +4,9 @@ extends Node2D
 const WORLD := Vector2(1448, 1086)
 const DATA_PATH := "res://experiments/feedverse/maps.json"
 const PLAYER_RADIUS := 16.0
+const EnvironmentArt = preload("res://experiments/feedverse/environment_art.gd")
+const CpkEmblem = preload("res://assets/production/cpk-brand-2026-11-13-v1/cpk-emblem-color-96.png")
+const DisplayFont = preload("res://assets/fonts/Inter-Black.ttf")
 var maps: Array = []
 var data: Dictionary
 var floor_polygon := PackedVector2Array()
@@ -18,9 +21,21 @@ func _ready() -> void:
     label = Label.new()
     var overlay := CanvasLayer.new()
     add_child(overlay)
+    var banner := ColorRect.new()
+    banner.color = Color("13233a", 0.86)
+    banner.position = Vector2.ZERO
+    banner.size = Vector2(1280, 52)
+    banner.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    overlay.add_child(banner)
     overlay.add_child(label)
     label.position = Vector2(18, 15)
     label.add_theme_font_size_override("font_size", 18)
+    label.add_theme_font_override("font", DisplayFont)
+    var emblem := Sprite2D.new()
+    emblem.texture = CpkEmblem
+    emblem.position = Vector2(1232, 26)
+    emblem.scale = Vector2(0.44, 0.44)
+    overlay.add_child(emblem)
     _load_map(map_index)
 
 func _load_map(index: int) -> void:
@@ -30,7 +45,11 @@ func _load_map(index: int) -> void:
     for p in data.floor:
         floor_polygon.append(Vector2(p[0], p[1]))
     player = Vector2(data.spawn[0], data.spawn[1])
-    label.text = "%s  |  EXPERIMENTAL GRAYBOX  |  WASD / arrows: move  |  [ / ]: switch" % data.name
+    label.text = "%s  |  ENVIRONMENT CANDIDATE  |  WASD / arrows: move  |  [ / ]: switch" % data.name
+    label.add_theme_color_override("font_color", Color("f3e9db"))
+    label.add_theme_color_override("font_shadow_color", Color("13233a"))
+    label.add_theme_constant_override("shadow_offset_x", 2)
+    label.add_theme_constant_override("shadow_offset_y", 2)
     queue_redraw()
 
 func _physics_process(delta: float) -> void:
@@ -67,37 +86,8 @@ func _walkable(p: Vector2) -> bool:
 
 func _draw() -> void:
     if data.is_empty(): return
-    var base := Color(data.color)
-    var accent := Color(data.accent)
-    draw_rect(Rect2(Vector2.ZERO, WORLD), Color("18171d"))
-    draw_colored_polygon(floor_polygon, base)
-    # All linework is decorative and deliberately separate from collision data.
-    for i in range(floor_polygon.size()):
-        draw_line(floor_polygon[i], floor_polygon[(i + 1) % floor_polygon.size()], Color("211e25"), 12.0)
-    match int(data.style):
-        0:
-            for x in [280, 1120]:
-                draw_rect(Rect2(x, 220, 100, 560), Color(accent, 0.14), true)
-                for y in range(240, 760, 70): draw_line(Vector2(x, y), Vector2(x + 100, y), Color(accent, 0.25), 5.0)
-        1:
-            draw_line(Vector2(230, 500), Vector2(1200, 500), Color("aaa09a", 0.25), 65.0)
-            draw_line(Vector2(230, 500), Vector2(1200, 500), Color("f3e9db", 0.4), 3.0)
-        2:
-            for x in [250, 1190]: draw_line(Vector2(x, 250), Vector2(x, 800), Color(accent, 0.32), 9.0)
-        3:
-            for y in [300, 340, 790, 830]: draw_line(Vector2(240, y), Vector2(1200, y), Color(accent, 0.28), 8.0)
-        4:
-            for x in range(300, 1200, 110): draw_rect(Rect2(x, 190, 65, 30), Color(accent, 0.3))
-        5:
-            draw_arc(Vector2(720, 520), 310, 0, TAU, 64, Color(accent, 0.35), 12.0)
-            draw_arc(Vector2(720, 520), 360, 0, TAU, 64, Color("9b00ff", 0.24), 6.0)
-    for c in data.covers:
-        var p := Vector2(c[0], c[1])
-        var radius := float(c[2])
-        draw_circle(p + Vector2(7, 10), radius + 4.0, Color("25212b"))
-        draw_circle(p, radius, Color("302d35"))
-        draw_arc(p, radius - 8.0, 0, TAU, 32, accent.darkened(0.2), 6.0)
-        draw_line(p + Vector2(-radius * 0.45, 0), p + Vector2(radius * 0.45, 0), Color("f3e9db", 0.65), 4.0)
-    draw_circle(player + Vector2(0, 7), 18.0, Color(0, 0, 0, 0.45))
-    draw_circle(player, PLAYER_RADIUS, Color("f3e9db"))
-    draw_circle(player, 7.0, Color("ff6a00"))
+    EnvironmentArt.draw_map(self, data, floor_polygon, WORLD)
+    draw_circle(player + Vector2(3, 9), 20.0, Color("13233a", 0.55))
+    draw_circle(player, PLAYER_RADIUS, Color("13233a"))
+    draw_arc(player, PLAYER_RADIUS - 2.0, 0.0, TAU, 32, Color("f3e9db"), 3.0)
+    draw_circle(player, 8.0, Color("ff6a00"))
