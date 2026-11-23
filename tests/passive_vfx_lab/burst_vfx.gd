@@ -9,6 +9,7 @@ const EDGE := Color("#ff9a54")
 const HOT := Color("#fff2cd")
 const CHROME := Color("#7546ad")
 const LOBES := 9
+const SIDES := [-1.0, 1.0]
 
 class Burst:
     var at := -INF
@@ -55,7 +56,7 @@ func burst(center: Vector2, radius: float, at: float, contacts: Array[Dictionary
         slot.positions[index] = contacts[index].position
 
 func draw_armed(canvas: Node2D, feet: Vector2) -> void:
-    for side: float in [-1.0, 1.0]:
+    for side: float in SIDES:
         var base := feet + Vector2(29.0 * side, 9.0)
         var bend := base + Vector2(0, 9)
         var tip := bend - Vector2(14.0 * side, 0.0)
@@ -101,7 +102,7 @@ func draw_contacts(canvas: Node2D, now: float, reduced: bool) -> void:
         for index in slot.count:
             var point := slot.positions[index]
             var spread := 13.0 if reduced else 13.0 + age * 28.0
-            for side: float in [-1.0, 1.0]:
+            for side: float in SIDES:
                 var corner := point + Vector2(side * spread, 1)
                 var shoulder := corner + Vector2(side * 5, -8)
                 var heel := corner + Vector2(side * 5, 8)

@@ -1,6 +1,7 @@
 extends SceneTree
 
 const Lab := preload("res://tests/passive_vfx_lab/lab_run.gd")
+const Comparison := preload("res://tests/passive_vfx_lab/main.tscn")
 var failures := 0
 
 func _initialize() -> void:
@@ -63,10 +64,28 @@ func run() -> void:
     candidate.stage("six-to-seven", false, false, false, false, false)
     _boundary(candidate)
     _weapon_triggers(candidate)
-    print("Lab checks: ", comparisons, " paired frames across 23 passives, dense replay and blast truth. Failures: ", failures)
     baseline.free()
     candidate.free()
+    await _comparison_controls()
+    print("Lab checks: ", comparisons, " paired frames across 23 passives, dense replay, blast truth and HUD fit. Failures: ", failures)
     quit(1 if failures else 0)
+
+func _comparison_controls() -> void:
+    var lab = Comparison.instantiate()
+    root.add_child(lab)
+    await process_frame
+    await process_frame
+    lab.hud.set_pressed_no_signal(true)
+    lab.hud.toggled.emit(true)
+    lab.pause.pressed.emit()
+    var time: float = lab.games[0].run_time
+    await process_frame
+    check(lab.paused and lab.games[0].run_time == time, "Pause button did not hold both views")
+    for game: Lab in lab.games:
+        var view := game.get_viewport_rect().size
+        check(game.layer.visible and game.clean_cut_skin.view == view,
+            "Enabled HUD escaped its comparison viewport (%s vs %s)" % [game.clean_cut_skin.view, view])
+    lab.free()
 
 func _boundary(game: Lab) -> void:
     game.passive_timers.six_counter = 6

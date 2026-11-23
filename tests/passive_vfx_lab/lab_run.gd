@@ -38,6 +38,7 @@ func _ready() -> void:
     set_process_input(false)
     clean_cut_skin.set_process(false)
     passive_burst_resolved.connect(_observe_burst)
+    get_viewport().size_changed.connect(_on_view_resized)
 
 func stage(id: String, dense: bool, overlap: bool, reduced: bool, with_hud: bool, with_recording: bool = true) -> bool:
     scenario = id
@@ -118,7 +119,7 @@ func stage(id: String, dense: bool, overlap: bool, reduced: bool, with_hud: bool
     _show_ui()
     _update_text()
     layer.visible = hud_visible
-    clean_cut_skin.refresh()
+    _fit_hud()
     if recording:
         recorder.start(self, {"commit": build_sha})
     queue_redraw()
@@ -152,6 +153,7 @@ func tick() -> void:
     var started := Time.get_ticks_usec() if recording else 0
     super._process(STEP)
     if hud_visible:
+        _fit_hud()
         clean_cut_skin._process(STEP)
     if recording:
         recorder.frame(self, Time.get_ticks_usec() - started)
@@ -160,7 +162,24 @@ func show_hud(value: bool) -> void:
     hud_visible = value
     layer.visible = value
     if value:
-        clean_cut_skin.refresh()
+        _fit_hud()
+
+func _on_view_resized() -> void:
+    if hud_visible:
+        _fit_hud.call_deferred()
+
+func _fit_hud() -> void:
+    # Solo normally targets the entire Window. Each lab HUD fits its own viewport.
+    var arena := get_viewport_rect().size
+    if presentation.view == arena and clean_cut_skin.view == arena:
+        return
+    presentation.position = Vector2.ZERO
+    presentation.full_view = arena
+    presentation.view = arena
+    presentation.size = arena
+    touch_joystick.size = arena
+    presentation.refresh(true)
+    clean_cut_skin.refresh()
 
 func qa_context() -> Dictionary:
     return {"session_type": "synthetic_scenario", "scenario_id": scenario, "sim_start_time": START,
