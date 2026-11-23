@@ -10,6 +10,7 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 
 - `./test_neon_menu_journey.gd` � isolated eleven-menu/six-viewport contrast, action-label fit, touch, Settings header, save editor, real held card input, simulation/profile isolation and live reduced-motion cancellation; optional native screenshots.
 - `./test_playable_slice.gd` — menu, hero selection and basic playable integration smoke.
+- `./first_playable/test_factory_routes.gd` checks factory cover stops, line of sight and pursuit. `./first_playable/review_factory.gd` captures synthetic stills, comparative metrics and an automated ordinary opening run.
 - `./test_cpk_design_system.gd` / `./cpk_design_gallery.gd` — shared Theme contrast/state/focus/touch checks and native component review capture.
 - `./test_signal_breaker_garage.gd` — isolated actual Garage, six identities/three kits, six viewports, real mouse/key/touch, menu RNG isolation and existing Solo/Settings return.
 - `./test_cpk_branding.gd` — visible title/PWA/HTML identity with unchanged native profile directory and legacy browser keys.

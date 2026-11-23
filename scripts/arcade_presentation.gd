@@ -62,7 +62,7 @@ func install() -> void:
     subtitle = _label(18)
     detail = _label(20)
     detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    play_button = _button("PLAY RUIN ALLEY",func(): game.start_run(game.hero_index))
+    play_button = _button("CHOOSE MAP",func(): game.open_map_select(game.hero_index))
     options_button = _button("OPTIONS & SAVE",func(): open_settings("menu"))
     back_button = _button("BACK",close_auxiliary)
     card_scroll = ScrollContainer.new()
@@ -127,7 +127,7 @@ func install() -> void:
     rotate_hint.add_theme_constant_override("outline_size",5)
     for i in range(3):
         var button: Button = game.menu_buttons[i]
-        button.pressed.disconnect(game.start_run.bind(i))
+        button.pressed.disconnect(game.open_map_select.bind(i))
         button.pressed.connect(select_hero.bind(i))
         game.hero_portraits[i].reparent(button)
         hero_labels.append({"name":_inside_label(button,20),"role":_inside_label(button,16)})
@@ -206,6 +206,7 @@ func _window_changed(force: bool = false) -> void:
     game._clear_touch()
     last_signature = ""
     refresh()
+    if game.map_select != null: game.map_select.refresh(position, view)
 
 func select_hero(index: int) -> void:
     if game.mode not in ["menu","heroes"]: return
@@ -571,7 +572,7 @@ func hud_item_caption(at: Vector2) -> String:
 
 func _draw() -> void:
     if game == null or view.x <= 0: return
-    if game.mode in ["menu","heroes"]: return
+    if game.mode in ["menu","heroes","maps"]: return
     if game.mode != "playing":
         draw_rect(Rect2(Vector2.ZERO,view),Color(0.09,0.13,0.19,0.72))
         if game.mode in ["choice","legendary","replace"]:

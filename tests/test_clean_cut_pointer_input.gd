@@ -38,6 +38,11 @@ func click(button: Button) -> void:
     root.push_input(up, true)
     await process_frame
 
+func choose_ruin_alley(game) -> void:
+    expect(game.mode == "maps" and game.map_select.start.disabled, "Run requires an explicit map choice")
+    await click(game.map_select.choices[game.SoloMaps.RUIN_ALLEY])
+    await click(game.map_select.start)
+
 func verify() -> void:
     for extent in [Vector2i(1920,1080),Vector2i(1600,900),Vector2i(1280,720),Vector2i(915,412),Vector2i(844,390),Vector2i(390,844)]:
         root.size = extent
@@ -63,7 +68,8 @@ func verify() -> void:
         expect(game.mode == "menu", "Actual pointer click on BACK closes options at %s" % extent)
 
         await click(game.presentation.play_button)
-        expect(game.mode == "playing", "Actual pointer click on PLAY starts the run at %s" % extent)
+        await choose_ruin_alley(game)
+        expect(game.mode == "playing", "Actual pointer input starts the selected map at %s" % extent)
         expect(game.hero_index in [0,1,2] and game.run_time == 0.0, "Play uses a legitimate starting hero and clock")
         game.queue_free()
         await process_frame

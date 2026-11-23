@@ -21,6 +21,15 @@ const WeaponPresentationScript = preload("res://scripts/weapon_presentation.gd")
 const PassiveFeedbackScript = preload("res://scripts/passive_feedback.gd")
 const SoloOfferRulesScript = preload("res://scripts/solo_offer_rules.gd")
 const SoloEnemyRulesScript = preload("res://scripts/solo_enemy_rules.gd")
+const SoloMaps = preload("res://scripts/solo_maps.gd")
+const MapSelect = preload("res://scripts/map_select.gd")
+var map_select: Control
+var map_id: StringName = SoloMaps.RUIN_ALLEY
+var map_geometry
+const FactoryPresentation = preload("res://scripts/msg_factory_presentation.gd")
+var factory_plate: Sprite2D
+var map_select_return := "menu"
+
 const SoloWorldRulesScript = preload("res://scripts/solo_world_rules.gd")
 const SoloPassiveRulesScript = preload("res://scripts/solo_passive_rules.gd")
 ## Initial GDD-grounded playable solo slice.
@@ -237,7 +246,7 @@ func _ready() -> void:
     notice = _make_label(Vector2(235, 145), 28)
     for i in range(3):
         var menu_b = _make_button("", Vector2(115 + 350 * i, 527), Vector2(330, 73))
-        menu_b.pressed.connect(start_run.bind(i))
+        menu_b.pressed.connect(open_map_select.bind(i))
         menu_buttons.append(menu_b)
         var portrait := TextureRect.new()
         portrait.position = Vector2(158 + 350 * i, 272)
@@ -293,6 +302,10 @@ func _ready() -> void:
     if _use_clean_cut_skin():
         clean_cut_skin = CleanCutSkinScript.new()
         clean_cut_skin.install(self, "")
+    map_select = MapSelect.new()
+    layer.add_child(map_select)
+    map_select.install(self)
+    map_select.refresh(presentation.position, presentation.view)
     if OS.has_feature("web") and OS.has_feature("performance_review"):
         if bool(JavaScriptBridge.eval("!!window.__auraPerformance?.enabled",true)):
             performance_probe=load("res://scripts/performance_probe.gd").new(self,"creator-device",bool(JavaScriptBridge.eval("!!window.__auraPerformance?.detailed",true)))
@@ -396,12 +409,18 @@ func _show_ui() -> void:
     if presentation != null: presentation.refresh(true)
     if clean_cut_skin != null: clean_cut_skin.refresh()
 
+    if map_select != null:
+        map_select.refresh(presentation.position, presentation.view)
+
 func _update_text() -> void:
-    if mode in ["menu","heroes"] or hero.is_empty():
+    var menu_backdrop := mode in ["menu","heroes","maps"] or hero.is_empty()
+    if factory_plate != null:
+        factory_plate.visible = map_geometry != null and not menu_backdrop
+    if menu_backdrop:
         headline.text = "CLUTCHPUNKS"
         headline.position = Vector2(82, 40)
         headline.add_theme_font_size_override("font_size", 54)
-        metrics.text = "RUIN ALLEY  ·  FIVE WAVES  ·  ONE BIG HATER  ·  STARTER SOLO DEMO"
+        metrics.text = "SOLO  ·  FIVE WAVES  ·  ONE BIG HATER  ·  STARTER SOLO DEMO"
         metrics.position = Vector2(86, 120)
         notice.text = "CHOOSE YOUR ENERGY"
         notice.position = Vector2(448, 204)
@@ -439,6 +458,26 @@ func _update_text() -> void:
         notice.text = "MOUSE AIM [M]" if manual_aim else ""
     if presentation != null: presentation.refresh()
 
+func open_map_select(index: int) -> void:
+    if mode not in ["menu", "heroes"]:
+        return
+    hero_index = index
+    map_select_return = mode
+    map_select.clear_selection()
+    mode = "maps"
+    _clear_touch()
+    _show_ui()
+
+func close_map_select() -> void:
+    mode = map_select_return
+    _clear_touch()
+    _show_ui()
+
+func start_selected_map(id: StringName) -> void:
+    if mode == "maps" and SoloMaps.NAMES.has(id):
+        map_id = id
+        start_run(hero_index)
+
 func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
         return
@@ -451,6 +490,10 @@ func start_run(index: int) -> void:
     if weapon_presentation!=null:weapon_presentation.prepare_identity(str(HEROES[index]["id"]),hero_appearance,art.hero_sheets)
     if passive_feedback!=null:passive_feedback.reset()
     if combat_audio!=null:combat_audio.reset()
+    map_geometry = SoloMaps.FactoryGeometry if map_id == SoloMaps.MSG_FACTORY else null
+    if map_geometry != null and factory_plate == null:
+        factory_plate = FactoryPresentation.new()
+        add_child(factory_plate)
     hero_index = index
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
@@ -460,7 +503,7 @@ func start_run(index: int) -> void:
     hero = HEROES[index].duplicate(true)
     hero_state = {"moving_since": -1.0, "stopped_since": -1.0, "lock_id": -1, "lock_since": 0.0, "lock_lost": 0.0, "certified": false, "certified_ready": 0.0, "flex_boss_damage": 0.0, "last_contact": -1000.0}
     next_enemy_id = 1
-    player_pos = Vector2(724, 540)
+    player_pos = Vector2(724, 540) if map_geometry == null else map_geometry.SPAWN
     movement_direction = Vector2.DOWN
     defeated_visuals.clear()
     finish_visual_age = 0.0
@@ -655,7 +698,7 @@ func _spawn_phase_crystal() -> void:
     var point := player_pos
     for step in range(16):
         var candidate := player_pos + movement_direction.normalized().rotated(step * TAU / 16.0) * 96.0
-        if SoloWorldRulesScript.walkable(candidate) and SoloWorldRulesScript.clear_line(player_pos, candidate):
+        if SoloWorldRulesScript.walkable(candidate, 16.0, map_geometry) and SoloWorldRulesScript.clear_line(player_pos, candidate, map_geometry):
             point = candidate
             break
     pickups.append({"pos": point, "xp": float(40 * wave), "kind": "aura", "phase": wave})
@@ -736,7 +779,7 @@ func _nearest_target(reach: float = INF) -> Dictionary:
     var nearest := reach
     for enemy: Dictionary in enemies:
         var distance := player_pos.distance_to(enemy["pos"])
-        if run_time < float(enemy.get("born", 0.0)) or float(enemy["hp"]) <= 0.0 or distance > nearest or not SoloWorldRulesScript.clear_line(player_pos, enemy["pos"]): continue
+        if run_time < float(enemy.get("born", 0.0)) or float(enemy["hp"]) <= 0.0 or distance > nearest or not SoloWorldRulesScript.clear_line(player_pos, enemy["pos"], map_geometry): continue
         if closest.is_empty() or distance < nearest or int(enemy["id"]) < int(closest["id"]):
             closest = enemy
             nearest = distance
@@ -781,7 +824,7 @@ func _signature_strike(radius: float, arc: float, power: float, limit: int = 214
         var offset: Vector2 = enemy["pos"]-player_pos
         if run_time < float(enemy.get("born",0.0)) or float(enemy["hp"]) <= 0.0: continue
         if offset.length() > radius or absf(facing.angle_to(offset)) > deg_to_rad(arc*0.5): continue
-        if not SoloWorldRulesScript.clear_line(player_pos,enemy["pos"]): continue
+        if not SoloWorldRulesScript.clear_line(player_pos,enemy["pos"],map_geometry): continue
         targets.append(enemy)
     targets.sort_custom(func(a: Dictionary,b: Dictionary) -> bool:
         var da := player_pos.distance_squared_to(a["pos"])
@@ -798,7 +841,7 @@ func _signature_strike(radius: float, arc: float, power: float, limit: int = 214
         if push and enemies.has(enemy):
             if enemy["kind"] == "boss": _stagger_enemy(enemy,10.0)
             elif not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
-                enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"],(Vector2(enemy["pos"])-player_pos).normalized()*40.0,float(enemy["radius"]))
+                enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"],(Vector2(enemy["pos"])-player_pos).normalized()*40.0,float(enemy["radius"]),map_geometry)
     if mode != "playing": return hit
     hero_state["flex_outline"] = {"until":run_time+0.22,"origin":player_pos,"facing":facing,"radius":radius,"arc":arc}
     return hit
@@ -875,7 +918,7 @@ func _move_player(dt: float) -> void:
     var speed: float = hero["speed"] * (1.25 if flex_time > 0.0 and hero["id"] == "cool-kid" else 1.0)
     speed *= 1.0 + 0.05 * float(_passive_level("caught-4k"))
     var previous := player_pos
-    player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0)
+    player_pos = SoloWorldRulesScript.move(player_pos, direction * speed * dt, 16.0, map_geometry)
     if performance_probe!=null:performance_probe.movement_applied(previous,player_pos)
     # Presentation follows resolved displacement, not held input into a wall.
     visual_moving = player_pos.distance_squared_to(previous) > 0.000001
@@ -928,7 +971,7 @@ func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     var pos: Vector2 = special.get("pos", Vector2.ZERO)
     if not special.has("pos"):
         var spawn_radius: float=float(stats["radius"])*(1.2 if bool(special.get("elite",false)) and not bool(stats["boss"]) and kind!="terminal" else 1.0)
-        var candidate = SoloWorldRulesScript.spawn_point(player_pos, rng,spawn_radius)
+        var candidate = SoloWorldRulesScript.spawn_point(player_pos, rng,spawn_radius,map_geometry)
         if candidate == null:
             return
         pos = candidate
@@ -1012,7 +1055,7 @@ func _step_hostile_shots(dt: float) -> void:
         var ending: Vector2 = start + shot["dir"] * distance
         shot["pos"] = ending
         shot["remaining"] = float(shot["remaining"]) - distance
-        if not SoloWorldRulesScript.clear_line(start, ending) or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
+        if not SoloWorldRulesScript.clear_line(start, ending, map_geometry) or float(shot["remaining"]) <= 0.0 or not FIELD.has_point(ending):
             hostile_shots.erase(shot)
             continue
         if ending.distance_to(player_pos) < 16.0 + float(shot["radius"]):
@@ -1062,7 +1105,7 @@ func _step_hazards() -> void:
             continue
         if run_time < float(hazard["at"]) or run_time < float(hazard["next_tick"]) or bool(hazard.get("hit", false)):
             continue
-        if _hazard_contains(hazard, player_pos) and SoloWorldRulesScript.clear_line(hazard["pos"], player_pos):
+        if _hazard_contains(hazard, player_pos) and SoloWorldRulesScript.clear_line(hazard["pos"], player_pos, map_geometry):
             var source: Dictionary = hazard.get("source", {})
             _deal_damage_to_player(float(hazard["damage"]), source, false, float(hazard["end"]) - float(hazard["at"]) > 1.6 and hazard["shape"] != "tether")
             hazard["hit"] = true
@@ -1105,7 +1148,7 @@ func _enemy_auxiliary(enemy: Dictionary, facing: Vector2) -> void:
         enemy["next_aux"] = run_time + 10.0
     elif kind == "doomscroll-prime" and run_time >= terminals_interrupt_until:
         _schedule_hazard(player_pos, 100.0, 1.0, 3.0, 12.0, "circle", facing, enemy)
-        var second = SoloWorldRulesScript.spawn_point(player_pos, rng)
+        var second = SoloWorldRulesScript.spawn_point(player_pos, rng, 24.0, map_geometry)
         if second != null:
             _schedule_hazard(second, 100.0, 1.0, 3.0, 12.0, "circle", facing, enemy)
         enemy["next_aux"] = run_time + 7.0
@@ -1173,10 +1216,10 @@ func _step_enemies(dt: float) -> void:
             if enemy["phase"] == "charging":
                 # Committed charges retain their locked direction; steering
                 # must never turn a telegraphed charge around an obstacle.
-                destination = SoloWorldRulesScript.move(pos,direction*speed*dt,float(enemy["radius"]))
+                destination = SoloWorldRulesScript.move(pos,direction*speed*dt,float(enemy["radius"]),map_geometry)
             else:
                 var goal := player_pos if direction.dot(to_player) >= 0.0 else pos+direction*120.0
-                destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy)
+                destination = EnemyNavigationScript.move(pos,goal,speed*dt,float(enemy["radius"]),enemy,map_geometry)
             if perf_detail:performance_probe.add(&"navigation",Time.get_ticks_usec()-perf_navigation)
             enemy["pos"] = destination
             if EnemyNavigationScript.diagnostics_enabled and enemy["phase"]!="charging" and speed>0.0:
@@ -1205,7 +1248,7 @@ func _step_enemies(dt: float) -> void:
             enemy["phase"] = ""
             enemy["next_attack"] = run_time + (6.0 if kind == "ping-sniper" else 3.0)
         elif (kind == "hater" or kind == "ping-sniper") and enemy["phase"] == "" and run_time >= float(enemy["next_attack"]):
-            if kind == "hater" and not SoloWorldRulesScript.clear_line(pos, player_pos):
+            if kind == "hater" and not SoloWorldRulesScript.clear_line(pos, player_pos, map_geometry):
                 enemy["next_attack"] = run_time + 0.1
                 continue
             enemy["phase"] = "warning"
@@ -1270,7 +1313,7 @@ func _step_enemies(dt: float) -> void:
             if not bool(enemy["terminals_spawned"]):
                 enemy["terminals_spawned"] = true
                 _spawn_enemy("terminal", {"pos": Vector2(430, 520), "telegraph": true})
-                _spawn_enemy("terminal", {"pos": Vector2(1050, 730), "telegraph": true})
+                _spawn_enemy("terminal", {"pos": Vector2(1050, 730) if map_geometry == null else map_geometry.EAST_TERMINAL, "telegraph": true})
         elif kind == "boss":
             var slot: int = int(enemy["attack_slot"]) % 4
             enemy["attack_slot"] = slot + 1
@@ -1422,7 +1465,7 @@ func _weapon_area_reaches(area: Dictionary, enemy: Dictionary) -> bool:
             return false
     elif relative.length() > radius + float(enemy["radius"]):
         return false
-    return absf(facing.angle_to(relative)) <= deg_to_rad(float(area["arc"])*0.5) and SoloWorldRulesScript.clear_line(area["center"],enemy["pos"])
+    return absf(facing.angle_to(relative)) <= deg_to_rad(float(area["arc"])*0.5) and SoloWorldRulesScript.clear_line(area["center"],enemy["pos"],map_geometry)
 
 func _qualify_chad_activation(area: Dictionary) -> void:
     var activation: Dictionary = area["activation"]
@@ -1493,7 +1536,7 @@ func _step_weapon_areas() -> void:
                 elif area["id"] == "ban-hammer":
                     _stagger_enemy(enemy, 15.0)
                     if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]):
-                        enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]))
+                        enemy["pos"] = SoloWorldRulesScript.move(enemy["pos"], (Vector2(enemy["pos"]) - player_pos).normalized() * 40.0, float(enemy["radius"]), map_geometry)
             if primary and area["id"] == "cope-shield" and not shield_awarded:
                 shield_awarded = true
                 _grant_weapon_shield("cope-shield", max_hp * 0.04 * float(area.get("weapon_power", 1.0)), 2.0)
@@ -1533,7 +1576,7 @@ func _step_player_shots(dt: float) -> void:
         var travel: float = float(shot["speed"]) * dt
         shot["pos"] = previous + Vector2(shot["direction"]) * travel
         shot["remaining"] = float(shot["remaining"]) - travel
-        if float(shot["remaining"]) <= 0.0 or not SoloWorldRulesScript.clear_line(previous, shot["pos"]):
+        if float(shot["remaining"]) <= 0.0 or not SoloWorldRulesScript.clear_line(previous, shot["pos"], map_geometry):
             player_shots.erase(shot)
             continue
         for enemy: Dictionary in enemies.duplicate():
@@ -2075,8 +2118,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
         manual_aim = not manual_aim
         aim_point = get_global_mouse_position()
     elif event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
-        if mode in ["menu","heroes"]: start_run(hero_index)
-        else: _confirm_selection()
+        if mode in ["menu","heroes"]: open_map_select(hero_index)
+        elif mode != "maps": _confirm_selection()
     elif event.keycode == KEY_ESCAPE and mode == "confirm_exit":
         mode = "paused"
         _show_ui()
@@ -2085,6 +2128,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
         _cancel_replacement()
     elif event.keycode == KEY_ESCAPE and mode in ["options","build"]:
         presentation.close_auxiliary()
+    elif event.keycode == KEY_ESCAPE and mode == "maps":
+        close_map_select()
     elif event.keycode == KEY_ESCAPE and mode == "heroes":
         _return_to_menu()
     elif event.keycode == KEY_P or event.keycode == KEY_ESCAPE or event.keycode == KEY_B:
@@ -2208,7 +2253,7 @@ func _input(event: InputEvent) -> void:
             if focused_index >= 0 and selected_card_index != focused_index:
                 return # First ui_accept selects; a second explicit accept confirms.
         if (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER) and (mode in ["menu","heroes"] or mode in ["choice","replace","legendary"]):
-            if mode in ["menu","heroes"]: start_run(hero_index)
+            if mode in ["menu","heroes"]: open_map_select(hero_index)
             else: _confirm_selection()
             get_viewport().set_input_as_handled()
             return
@@ -2237,6 +2282,10 @@ func _input(event: InputEvent) -> void:
 
 ## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
 func _draw_contact_shadow(at: Vector2, radius: float) -> void:
+    if map_geometry != null:
+        var extent := Vector2(1.23, 0.43) * radius
+        draw_texture_rect(FactoryPresentation.contact_shadow, Rect2(at + Vector2(1, 2) - extent, extent * 2.0), false)
+        return
     draw_set_transform(at + Vector2(3.0, 5.0), 0.0, Vector2(1.05, 0.30))
     draw_circle(Vector2.ZERO, radius, Color(0.14, 0.20, 0.29, 0.23))
     draw_set_transform(Vector2.ZERO)
@@ -2246,21 +2295,15 @@ func _draw_pickup(drop: Dictionary) -> void:
 
 func _draw() -> void:
     var perf_draw_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
-    if mode in ["menu","heroes"] or hero.is_empty():
+    if mode in ["menu","heroes","maps"] or hero.is_empty():
         if not art.draw_backdrop(self, "ruin-alley", FIELD):
             draw_rect(FIELD, Color(0.12, 0.15, 0.22))
         draw_rect(FIELD, Color(0.025, 0.035, 0.06, 0.67))
         return
-    var approved_map: bool = art.draw_backdrop(self, "ruin-alley", FIELD)
-    if not approved_map:
-        draw_rect(FIELD, Color(0.12, 0.15, 0.22))
-    if not approved_map:
-        for gx in range(0, 1449, 128):
-            draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
-        for gy in range(0, 1087, 128):
-            draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
-    draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
-    draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    if map_geometry != null:
+        factory_plate.update_clock(run_time, bool(profile["settings"]["reducedMotion"]))
+    else:
+        _draw_ruin_alley()
     _draw_recovery()
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
@@ -2303,6 +2346,10 @@ func _draw() -> void:
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
+    if map_geometry != null:
+        for enemy: Dictionary in enemies:
+            if run_time >= float(enemy.get("born", 0.0)):
+                _draw_enemy_aim_warning(enemy)
     if weapon_presentation==null:
         for effect: Dictionary in attack_visuals:WeaponVisualsScript.draw_attack(self,effect)
     else:weapon_presentation.draw_impacts(self,run_time,bool(profile["settings"]["reducedMotion"]))
@@ -2356,23 +2403,53 @@ func _draw_combat_feedback() -> void:
                 draw_line(point + ray * radius * 0.45, point + ray * radius, Color("253449", life), 5.0)
                 draw_line(point + ray * radius * 0.45, point + ray * radius, Color(color, life), 2.5)
 
+func _draw_ruin_alley() -> void:
+    var approved_map: bool = art.draw_backdrop(self, "ruin-alley", FIELD)
+    if not approved_map:
+        draw_rect(FIELD, Color(0.12, 0.15, 0.22))
+    if not approved_map:
+        for gx in range(0, 1449, 128):
+            draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
+        for gy in range(0, 1087, 128):
+            draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
+    draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
+    draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+
 func _draw_depth_actors() -> void:
     var perf_actor_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
     var perf_cache_size: int=art.enemy_frame_cache.size()+art.hero_frame_cache.size() if performance_probe!=null else 0
     var actors: Array[Dictionary] = [{"kind":"hero", "pos":player_pos}]
-    for cover: Vector2 in COVERS: actors.append({"kind":"cover", "pos":cover})
+    if map_geometry == null:
+        for cover: Vector2 in COVERS:
+            actors.append({"kind": "cover", "pos": cover})
+    else:
+        for cover: Dictionary in map_geometry.COVERS:
+            actors.append({"kind": "cover", "pos": cover.pos, "factory_cover": cover})
     for enemy: Dictionary in enemies: actors.append({"kind":"enemy", "pos":enemy["pos"], "enemy":enemy})
     for defeated: Dictionary in defeated_visuals: actors.append({"kind":"defeated","pos":defeated["pos"],"enemy":defeated})
     actors.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return Vector2(a["pos"]).y < Vector2(b["pos"]).y)
     for actor: Dictionary in actors:
         if actor["kind"] == "hero": _draw_hero_actor()
-        elif actor["kind"] == "cover": art.draw_cover(self, actor["pos"])
+        elif actor["kind"] == "cover":
+            if actor.has("factory_cover"):
+                var cover: Dictionary = actor.factory_cover
+                draw_texture(cover.sprite, cover.sprite_anchor - SoloMaps.COVER_TEXTURE_ORIGIN)
+                if cover.has("detail"):
+                    var clock := 0.0 if bool(profile["settings"]["reducedMotion"]) else fposmod(run_time, FactoryPresentation.PERIOD)
+                    FactoryPresentation.draw_machine_detail(self, cover.detail, clock)
+            else:
+                art.draw_cover(self, actor.pos)
         elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
         else: _draw_enemy_actor(actor["enemy"])
 
     if performance_probe!=null:
         performance_probe.add(&"actors",Time.get_ticks_usec()-perf_actor_start)
         performance_probe.animation_created(art.enemy_frame_cache.size()+art.hero_frame_cache.size()-perf_cache_size)
+
+func _draw_enemy_aim_warning(e: Dictionary) -> void:
+    if e["phase"] == "warning" or e["phase"] == "charge-warning":
+        var locked: Vector2 = e["locked_direction"]
+        draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
 
 func _draw_enemy_actor(e: Dictionary) -> void:
     if run_time < float(e.get("born", 0.0)):
@@ -2386,9 +2463,8 @@ func _draw_enemy_actor(e: Dictionary) -> void:
         color = Color(0.79, 0.38, 0.98)
     elif e["kind"] == "boss":
         color = Color(0.99, 0.30, 0.25)
-    if e["phase"] == "warning" or e["phase"] == "charge-warning":
-        var locked: Vector2 = e["locked_direction"]
-        draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
+    if map_geometry == null:
+        _draw_enemy_aim_warning(e)
     if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
     _draw_contact_shadow(e["pos"], radius)

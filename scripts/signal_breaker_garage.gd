@@ -139,7 +139,7 @@ func _layout() -> void:
     var portrait: bool=view.x<700
     var compact: bool=not portrait and view.y<600
     select_button.text="BACK" if selection_open else "HERO SELECT"
-    play_button.text="PLAY" if portrait or selection_open else "PLAY  /  START RUN"
+    play_button.text="PLAY" if portrait or selection_open else "PLAY  /  CHOOSE MAP"
     for button in [play_button,select_button,settings_button]:
         button.add_theme_font_size_override("font_size",16 if portrait else 20 if compact else 24)
     settings_button.add_theme_font_size_override("font_size",16 if portrait else 20)
@@ -257,7 +257,7 @@ func _leave_garage() -> void:
 
 func start_selected() -> void:
     if not active or play_button.disabled:return
-    _leave_garage();game.start_run(game.hero_index)
+    _leave_garage();game.open_map_select(game.hero_index)
     game.touch_swallow_emulated_mouse=swallow_emulated
 
 func open_settings() -> void:

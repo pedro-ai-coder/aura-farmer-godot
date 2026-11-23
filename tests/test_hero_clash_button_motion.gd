@@ -36,6 +36,7 @@ func verify() -> void:
         await click(game.presentation.home.return_button)
         expect(game.mode=="menu","Back remains clickable after animation")
         await click(play)
+        await choose_ruin_alley(game)
         expect(game.mode=="playing","Primary CTA still starts the actual run")
 
         game._gain_xp(100.0)

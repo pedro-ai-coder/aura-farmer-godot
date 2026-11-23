@@ -63,7 +63,10 @@ func verify() -> void:
     tap(first.get_global_rect().get_center());await process_frame
     expect(garage.selected_slot==0,"Real touchscreen press/release selects hero")
     await click(garage.play_button.get_global_rect().get_center())
-    expect(not garage.active and garage.game.mode=="playing","PLAY starts genuine existing Solo")
+    expect(not garage.active and garage.game.mode=="maps","PLAY opens the map selector")
+    await click(garage.game.map_select.choices[garage.game.SoloMaps.RUIN_ALLEY].get_global_rect().get_center())
+    await click(garage.game.map_select.start.get_global_rect().get_center())
+    expect(garage.game.mode=="playing","Confirming the map starts genuine existing Solo")
     expect(garage.game.hero.id=="sigma" and garage.game.weapons[0].id=="no-cap","Existing kit/starter unchanged")
     garage.game._toggle_pause();expect(garage.game.mode=="paused","Existing pause remains functional")
     garage.game._return_to_menu();await process_frame;await process_frame
