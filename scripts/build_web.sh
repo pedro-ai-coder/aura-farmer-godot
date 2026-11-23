@@ -16,6 +16,13 @@ ENGINE_SHA="cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
 TEMPLATE_SHA="f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
+if [[ "${PASSIVE_VFX_REVIEW:-0}" == "1" ]]; then
+    if [[ "${VERCEL_ENV:-}" != "preview" ]]; then
+        echo "ERROR: The Passive VFX Lab export requires the Vercel Preview environment." >&2
+        exit 2
+    fi
+    python3 tests/passive_vfx_lab/prepare_web_preview.py --prepare "$ROOT"
+fi
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_approved_hero_sheets.py
 python3 scripts/verify_full_hero_atlases.py
@@ -147,5 +154,8 @@ python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
 PERFORMANCE_CHECK=()
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+if [[ "${PASSIVE_VFX_REVIEW:-0}" == "1" ]]; then
+    python3 tests/passive_vfx_lab/prepare_web_preview.py --verify "build/web/$EXPORT_BASENAME.pck"
+fi
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

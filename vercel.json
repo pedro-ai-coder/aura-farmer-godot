@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "git": { "deploymentEnabled": false },
   "framework": null,
-  "buildCommand": "bash scripts/build_web.sh",
+  "buildCommand": "PASSIVE_VFX_REVIEW=1 bash scripts/build_web.sh",
   "installCommand": "",
   "outputDirectory": "build/web",
   "headers": [
