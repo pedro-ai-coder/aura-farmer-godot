@@ -85,6 +85,15 @@ func _comparison_controls() -> void:
         var view := game.get_viewport_rect().size
         check(game.layer.visible and game.clean_cut_skin.view == view,
             "Enabled HUD escaped its comparison viewport (%s vs %s)" % [game.clean_cut_skin.view, view])
+    lab.pause.pressed.emit()
+    lab.games[0].notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
+    check(lab.paused and lab.games[0].mode == "playing" and lab.games[1].mode == "playing",
+        "Focus loss must pause the shared review clock")
+    lab.automatic = true
+    lab.pause.pressed.emit()
+    lab.games[0].notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
+    check(not lab.paused and lab.games[0].mode == "playing",
+        "Automated capture must stay independent of window focus")
     lab.free()
 
 func _boundary(game: Lab) -> void:

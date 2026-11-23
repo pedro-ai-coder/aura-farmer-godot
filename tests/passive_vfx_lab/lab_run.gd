@@ -1,5 +1,7 @@
 extends "res://scripts/solo_run.gd"
 
+signal pause_requested
+
 const BurstVfx := preload("res://tests/passive_vfx_lab/burst_vfx.gd")
 const CandidateFeedback := preload("res://tests/passive_vfx_lab/candidate_feedback.gd")
 const Builds := preload("res://tests/passive_vfx_lab/scenario_builds.gd")
@@ -163,6 +165,11 @@ func show_hud(value: bool) -> void:
     layer.visible = value
     if value:
         _fit_hud()
+
+func _toggle_pause() -> void:
+    # Redirect Solo focus events so both comparison clocks pause together.
+    _clear_touch()
+    pause_requested.emit()
 
 func _on_view_resized() -> void:
     if hud_visible:

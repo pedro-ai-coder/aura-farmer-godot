@@ -141,6 +141,7 @@ func _pane(label: String, tint: Color, candidate: bool) -> void:
     views.append(viewport)
     var game := Run.new()
     game.candidate = candidate
+    game.pause_requested.connect(_pause_comparison)
     viewport.add_child(game)
     games.append(game)
 
@@ -165,6 +166,11 @@ func replay() -> void:
 func _toggle_pause() -> void:
     paused = not paused
     pause.text = "Resume" if paused else "Pause"
+
+func _pause_comparison() -> void:
+    if not automatic:
+        paused = true
+        pause.text = "Resume"
 
 func _process(delta: float) -> void:
     if automatic or games.is_empty():
