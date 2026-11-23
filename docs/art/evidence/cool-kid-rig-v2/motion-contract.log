@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Maximum wrist constraint error=1.21352314949036
+View 0 reach releases=0
+View 1 reach releases=0
+View 2 reach releases=0
+View 3 reach releases=0
+View 4 reach releases=0
+View 5 reach releases=0
+View 6 reach releases=0
+View 7 reach releases=0
+Motion samples=5760 stable contact comparisons=748 reach releases=0 (numerical constraints, NOT visual acceptance)
+PASS: eight-view state coverage, finite poses, joint continuity, grip and planted world contacts

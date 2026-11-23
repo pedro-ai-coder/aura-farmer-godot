@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATE_NOT_APPROVED",
+  "hero_id": "cool-kid",
+  "kit_id": "cool-kid",
+  "version": "articulated-rig-v1",
+  "source_game_commit": "a33812548d5936186b99629520ad9fea107632eb",
+  "source_sha256": "2a88c499d30633f76e2da3861188995c7a4144ad73d062eecee4a91f1b1380a3",
+  "approved_sheet_sha256": "d59366663e00e5859129428bfd3499b4f72062ed463f6be5b2ed3e92a4ad9fbb",
+  "art_source_commit": "52c8618098c68034f42ec469567effc952cfdb27",
+  "license": "Inherited approved source provenance; no new external artwork",
+  "direction": "front-three-quarter only; other views require fallback",
+  "foot_origin": [
+    109,
+    289
+  ],
+  "world_scale": 0.22145328719723184,
+  "sockets": {
+    "keyboard_grip": [
+      55,
+      163
+    ],
+    "left_contact": [
+      54,
+      289
+    ],
+    "right_contact": [
+      152,
+      289
+    ]
+  },
+  "parts": [
+    {
+      "id": "cpk.cool-kid.rig.v1.pelvis",
+      "name": "pelvis",
+      "parent": "root",
+      "pivot": [
+        108,
+        213
+      ],
+      "z": 1,
+      "file": "pelvis.png",
+      "sha256": "d8826a3f028ef0b4b72bd22f14ba022cb73df5835d64568adfc71300d5d32665",
+      "rgba_sha256": "3429d612b1b42022a7a3e34dae45166601f909e1a4312fbaa7fbf66d7685a732",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "pelvis.retained.png",
+      "authored": "pelvis.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.thigh_l",
+      "name": "thigh_l",
+      "parent": "pelvis",
+      "pivot": [
+        75,
+        217
+      ],
+      "z": 2,
+      "file": "thigh_l.png",
+      "sha256": "cadc003719cacef2ae8fecf8f2fd5eda5cd27182c79d1e95bad07718dc05a7d5",
+      "rgba_sha256": "cf22646c343c564e0c021e0c5f95d9dc7529c1a010eee64765c5cc1c0674df51",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "thigh_l.retained.png",
+      "authored": "thigh_l.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.shin_l",
+      "name": "shin_l",
+      "parent": "thigh_l",
+      "pivot": [
+        62,
+        244
+      ],
+      "z": 3,
+      "file": "shin_l.png",
+      "sha256": "874e4eab91b0760ae91a65ad22159cab0847a4e581ecff1e23f3e96ec99d3ea4",
+      "rgba_sha256": "f8d8cd0c22b15cc934c8c034cc2a112249e4541b6b838ad04aa485441c793eca",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "shin_l.retained.png",
+      "authored": "shin_l.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.foot_l",
+      "name": "foot_l",
+      "parent": "shin_l",
+      "pivot": [
+        54,
+        267
+      ],
+      "z": 4,
+      "file": "foot_l.png",
+      "sha256": "9ac5a5dbe21b1dda305591931abc8b4a3a68661f6071b12bda7598f5fe38b8dc",
+      "rgba_sha256": "4f62fe8b69ad8a3e44d25a86c4f325bf7fb0c487ad80a397b7809b49f41c54cd",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "foot_l.retained.png",
+      "authored": "foot_l.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.thigh_r",
+      "name": "thigh_r",
+      "parent": "pelvis",
+      "pivot": [
+        137,
+        217
+      ],
+      "z": 5,
+      "file": "thigh_r.png",
+      "sha256": "f9c8b359ec49bf0bd0209fb2169de8eb6cce1230e51d855169e0a436ec8979eb",
+      "rgba_sha256": "956bf9ccd355865955da3336bb238d86c043f568f8eb008bad99a14b50996416",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "thigh_r.retained.png",
+      "authored": "thigh_r.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.shin_r",
+      "name": "shin_r",
+      "parent": "thigh_r",
+      "pivot": [
+        148,
+        246
+      ],
+      "z": 6,
+      "file": "shin_r.png",
+      "sha256": "df1b33082bab8eb1e3108d0973469a7f9525f645f618a694f80cfcdda5c0f475",
+      "rgba_sha256": "7b4a00c2c5ea536643022c1979143b9002defd8e97cb538a1bdcb686319c7443",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "shin_r.retained.png",
+      "authored": "shin_r.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.foot_r",
+      "name": "foot_r",
+      "parent": "shin_r",
+      "pivot": [
+        152,
+        269
+      ],
+      "z": 7,
+      "file": "foot_r.png",
+      "sha256": "c6f888610d21f4c759d79eb1e1e9825e5078152114bd7939f0ef32759b27b295",
+      "rgba_sha256": "d026b5247ee7d55f0533cbadca61812c5e8fb7ca3e4c11cd54648aba5b82ebc4",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "foot_r.retained.png",
+      "authored": "foot_r.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.torso",
+      "name": "torso",
+      "parent": "pelvis",
+      "pivot": [
+        109,
+        207
+      ],
+      "z": 8,
+      "file": "torso.png",
+      "sha256": "51f14b424071a854102cc2a2594210160e5fb7ef6de6dedca5be43378d486bd7",
+      "rgba_sha256": "d912ba0c47f3cbc3ad92e477671e87b4d547112984b6f6d249118194378214c1",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "torso.retained.png",
+      "authored": "torso.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.upper_r",
+      "name": "upper_r",
+      "parent": "torso",
+      "pivot": [
+        148,
+        151
+      ],
+      "z": 9,
+      "file": "upper_r.png",
+      "sha256": "01d3d7275160a80bf61550c0b4fa249621aa024966d1b378122eaeb052ab28b0",
+      "rgba_sha256": "b8470aab5159550120f661fb0b1fb9d53ca7d21335344a788ffd39ebc610157b",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "upper_r.retained.png",
+      "authored": "upper_r.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.fore_r",
+      "name": "fore_r",
+      "parent": "upper_r",
+      "pivot": [
+        153,
+        177
+      ],
+      "z": 10,
+      "file": "fore_r.png",
+      "sha256": "c9932b3c8f4e3f0f9d592618c633e70e9bb4c9e7f6e97ccd0ec5d6a9ee817bb1",
+      "rgba_sha256": "00c2463b3afd8e69f6e71958276ca1043934c5117255ead539ae0c047acb1594",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "fore_r.retained.png",
+      "authored": "fore_r.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.upper_l",
+      "name": "upper_l",
+      "parent": "torso",
+      "pivot": [
+        80,
+        151
+      ],
+      "z": 11,
+      "file": "upper_l.png",
+      "sha256": "c3f711787c42bbb7ae6f983c95c5a4e4a6bb1ed8d98af1bf89b4a5205b4deb83",
+      "rgba_sha256": "73a6680a5cd18d4095408f0c93f7b5f75d8fc88679d4d155b0b94166955be0e7",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "upper_l.retained.png",
+      "authored": "upper_l.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.fore_l",
+      "name": "fore_l",
+      "parent": "upper_l",
+      "pivot": [
+        66,
+        175
+      ],
+      "z": 12,
+      "file": "fore_l.png",
+      "sha256": "cc76087b3f70516d4d1f1d074c7f875d50a42b428f147f4d76eaa108f5a5c141",
+      "rgba_sha256": "560f466f7655f26518c32dc3ddbe0ace0710fb766fbc16f692d27eb213b4ebb8",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "fore_l.retained.png",
+      "authored": "fore_l.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.keyboard",
+      "name": "keyboard",
+      "parent": "fore_l",
+      "pivot": [
+        55,
+        163
+      ],
+      "z": 13,
+      "file": "keyboard.png",
+      "sha256": "08dab56e63e789d07d10f51deabd23ffb5289ef326b149921bd71f9050c51fde",
+      "rgba_sha256": "27469660e9e363c58a8caa23ce881d9529d9e94e5cffb49fb4345bea2bbe28aa",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "keyboard.retained.png",
+      "authored": "keyboard.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.hand",
+      "name": "hand",
+      "parent": "fore_l",
+      "pivot": [
+        80,
+        179
+      ],
+      "z": 14,
+      "file": "hand.png",
+      "sha256": "f20e34f6819669a75177a243767d3ebf9c1527de26fe609bf6e0c9b5aa0ff941",
+      "rgba_sha256": "c9d13ca234cf4196ee9099dfa093aeb7b8a8a8e167fc681aedf6f7aa5a57b287",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "hand.retained.png",
+      "authored": "hand.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.head",
+      "name": "head",
+      "parent": "torso",
+      "pivot": [
+        111,
+        133
+      ],
+      "z": 15,
+      "file": "head.png",
+      "sha256": "43ca8c619a355d0fcf2c83b2d20e49ec450ae842b74d513afdc1183ed70575de",
+      "rgba_sha256": "d47857699250671df445b5403ace94a58a6f742986d97cfdac3f7dbac80682f4",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "head.retained.png",
+      "authored": "head.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    },
+    {
+      "id": "cpk.cool-kid.rig.v1.pompom",
+      "name": "pompom",
+      "parent": "head",
+      "pivot": [
+        94,
+        36
+      ],
+      "z": 16,
+      "file": "pompom.png",
+      "sha256": "6f1814498a2a7ed951b64dcb43f7d3c4da01c977b40cd8a5317df36feed1bce6",
+      "rgba_sha256": "ba91dc31ecee5b5dd448485c06d57367f452f0b40d28274da9fa6680d9517d8d",
+      "dimensions": [
+        194,
+        292
+      ],
+      "retained": "pompom.retained.png",
+      "authored": "pompom.hidden.svg",
+      "origin": "Exclusive approved pixels over CANDIDATE vector hidden-surface underpainting"
+    }
+  ],
+  "master_sha256": "28b3b95bac05fd7c628dcecddf461ce469830e8e1559fbe1741ae960e659be8f",
+  "ora_sha256": "649db32353847e796c854afd83108b1cc8e4455aa5dbf5f03e9ea0f25377f040"
+}

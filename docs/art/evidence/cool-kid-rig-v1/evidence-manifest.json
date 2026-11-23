@@ -1,0 +1,93 @@
+{
+  "base-historical-gate.log": {
+    "bytes": 348,
+    "sha256": "9dc819a8352810b80d1f5831834663b02faae24c8c24a59028e0559a3e9aa4dd"
+  },
+  "base-trace.log": {
+    "bytes": 422,
+    "sha256": "a91c7d20624bb822e157066029e9e219100dab7e9d3c92a246ab516893c20424"
+  },
+  "build-final.log": {
+    "bytes": 617,
+    "sha256": "d3dc75f5fd1fd7b12c7eebe00dea5e82207e70661ca159b2697c0124357e3f8a"
+  },
+  "candidate-trace.log": {
+    "bytes": 422,
+    "sha256": "a91c7d20624bb822e157066029e9e219100dab7e9d3c92a246ab516893c20424"
+  },
+  "frozen-main-states.json": {
+    "bytes": 239,
+    "sha256": "62514987be9b01eba1cc49293a8dc3ad7ecad64896f6fb035b44059e031d4c32"
+  },
+  "native-attack.webp": {
+    "bytes": 1137078,
+    "sha256": "994e0541e40bc6b31505d026fdf5f8344d94b5691c0e114d5fb275f7bb63be3d"
+  },
+  "native-flex.webp": {
+    "bytes": 1170480,
+    "sha256": "33fc1d403a5a16666f7785f478594a4359e7c39dbc0f6d8b57dc7650cba5a861"
+  },
+  "native-hurt.webp": {
+    "bytes": 1154988,
+    "sha256": "e9ba0cb79ac75db02d65056fac4ce1009e86e33adfdf38463f1462f937df3def"
+  },
+  "native-normal.log": {
+    "bytes": 1602,
+    "sha256": "b52782ea7bb2701b2ff12b656cdccaea9674006e7578aa4033addfbcebaf1784"
+  },
+  "normal-candidate-final.log": {
+    "bytes": 474,
+    "sha256": "3dbef7d3efc3a5e7c371314220a09266770304e4d07972dfeb57d282c7797f2f"
+  },
+  "normal-legacy-final.log": {
+    "bytes": 475,
+    "sha256": "d6f503fbee6fac2875b4ca811d87d38a4ed40a17e5cd310bb60912ef624dd86a"
+  },
+  "production-exclusion.log": {
+    "bytes": 115,
+    "sha256": "8e814ccffe1a53551bcb04504a191c46f82aed8ae264bdde6fc9f4523c6e3ed8"
+  },
+  "rig-contract-final.log": {
+    "bytes": 196,
+    "sha256": "771fc0fededef9e3dfbe024af264687b2df12f492dac380b4396d9c823c17df5"
+  },
+  "state-board.webp": {
+    "bytes": 477112,
+    "sha256": "69223b7ed0fc50f81e550c960732f6f951dc2ef10377e445484aefa06c4f5770"
+  },
+  "validate-frozen-control.log": {
+    "bytes": 25983,
+    "sha256": "2662e7371b2d34abd9433d5fa02971ec2f6f2227998627ed4d78b13e38033446"
+  },
+  "validate.log": {
+    "bytes": 21099,
+    "sha256": "72649f831f00b929037dbdbe90d1a31bf9d1a98b7c085794c8a97ff149452e87"
+  },
+  "web-frame-metrics.json": {
+    "bytes": 278,
+    "sha256": "a615e3011bc876ed7f6dcf73caddff2f7c865c34c5c381f068fe49481182d3e5"
+  },
+  "web-play.webp": {
+    "bytes": 971796,
+    "sha256": "d09ad391a0283f85ab7dd48fceeca3f0a2a00cfdf3fa1f91b5f070e892c9c8a2"
+  },
+  "web-results.json": {
+    "bytes": 2177,
+    "sha256": "a15af538a020bc9585767d93e783a3ae1e248c28ddc6261f8cff96b4cf8b315d"
+  },
+  "/workspace/scratch/cool-kid-pilot/evidence/native-final.mp4": {
+    "bytes": 3524531,
+    "sha256": "5c161ef3db8458337dda14c518a7903d4294c5460aa9e81f49f2db1c99a4d61e",
+    "status": "SUPERSEDED: before final 64-pixel scale correction"
+  },
+  "/workspace/scratch/cool-kid-pilot/evidence/native-normal.mp4": {
+    "bytes": 88732951,
+    "sha256": "e26d5751f6bcf2366500b747241c905fff688c570211a6596747839b95a7276b",
+    "status": "LOCAL_ONLY; actual X11 capture, not human playtesting"
+  },
+  "native-normal-excerpt.mp4": {
+    "bytes": 820678,
+    "sha256": "85fb2128d413554165b6d95646e27f2ca5d2f3b41c988c0acc68c40b6788b7b5",
+    "description": "Actual X11 normal-run excerpt, wall-clock 0\u201312 seconds, real-time playback; not human playtesting"
+  }
+}

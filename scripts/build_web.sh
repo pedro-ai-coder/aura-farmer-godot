@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/web_review_mode.sh"
+configure_web_review_mode
+printf "WEB_EXPORT_CONTEXT env=%s ref=%s cool_kid_review=%s\n" "${VERCEL_ENV:-local}" "${VERCEL_GIT_COMMIT_REF:-none}" "${COOL_KID_RIG_REVIEW:-0}"
 # Only this development branch family opts Vercel previews into diagnostics.
 # Production and every ordinary local Web export retain the standard preset.
 if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == perf/m0-mobile-* ]]; then
@@ -112,6 +115,11 @@ run_godot() {
 run_godot import --headless --path . --import
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
+if [[ "${COOL_KID_RIG_REVIEW:-0}" == "1" ]]; then
+    python3 scripts/verify_cool_kid_rig.py
+    EXPORT_PRESET="Cool Kid Rig Review"
+fi
+echo "WEB_EXPORT_PRESET=$EXPORT_PRESET"
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
@@ -125,7 +133,10 @@ done
 cp assets/fonts/hero-clash/Archivo.ttf build/web/fullscreen-archivo.ttf
 cp assets/fonts/hero-clash/OFL-Archivo.txt build/web/fullscreen-font-license.txt
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then cp web/performance.js build/web/; fi
-printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
+REVIEW_MODE="none"
+if [[ "${COOL_KID_RIG_REVIEW:-0}" == 1 ]]; then REVIEW_MODE="cool-kid-rig-v2"; fi
+printf '{"commit":"%s","engine":"%s","executable":"%s","preset":"%s","review":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" "$EXPORT_PRESET" "$REVIEW_MODE" > build/web/build.json
+cat build/web/build.json
 
 for file in platform.js aura.webmanifest fullscreen-button.png fullscreen-button-hover.png fullscreen-button-focus.png fullscreen-button-pressed.png fullscreen-archivo.ttf fullscreen-font-license.txt index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
     if [[ ! -s "build/web/$file" ]]; then
@@ -147,5 +158,10 @@ python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
 PERFORMANCE_CHECK=()
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+if [[ "${COOL_KID_RIG_REVIEW:-0}" == "1" ]]; then
+    python3 scripts/verify_cool_kid_rig.py "build/web/$EXPORT_BASENAME.pck"
+else
+    python3 scripts/verify_cool_kid_rig.py "build/web/$EXPORT_BASENAME.pck" --production
+fi
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web
