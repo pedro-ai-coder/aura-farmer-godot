@@ -5,11 +5,11 @@ extends RefCounted
 const World = preload("res://scripts/solo_world_rules.gd")
 const ARC_STEP := PI/8.0
 
-static func _blocked_cover(position: Vector2, target: Vector2, radius: float) -> int:
+static func _blocked_cover(position: Vector2, target: Vector2, radius: float, world = World) -> int:
     var chosen := -1
     var nearest := INF
-    for index in range(World.COVERS.size()):
-        var cover: Dictionary = World.COVERS[index]
+    for index in range(world.COVERS.size()):
+        var cover: Dictionary = world.COVERS[index]
         var center: Vector2 = cover["pos"]
         # Keep a small clearance outside the axis-separated collision solver.
         # A mathematically tangent diagonal can lose an axis and re-enter the
@@ -23,17 +23,17 @@ static func _blocked_cover(position: Vector2, target: Vector2, radius: float) ->
             nearest = distance
     return chosen
 
-static func move(position: Vector2, target: Vector2, distance: float, radius: float, state: Dictionary) -> Vector2:
+static func move(position: Vector2, target: Vector2, distance: float, radius: float, state: Dictionary, world = World) -> Vector2:
     if distance <= 0.0: return position
     var heading := target-position
     if heading.length_squared() < 0.000001: return position
-    var blocked := _blocked_cover(position,target,radius)
+    var blocked := _blocked_cover(position,target,radius,world)
     var waypoint := target
     if blocked >= 0:
-        var center: Vector2 = World.COVERS[blocked]["pos"]
+        var center: Vector2 = world.COVERS[blocked]["pos"]
         # Margin and a short arc keep the chord outside the expanded collider,
         # including the initial approach from just outside its actual boundary.
-        var ring := (float(World.COVERS[blocked]["radius"])+radius+1.0)/cos(ARC_STEP)+0.5
+        var ring := (float(world.COVERS[blocked]["radius"])+radius+1.0)/cos(ARC_STEP)+0.5
         var angle := (position-center).angle()
         if int(state.get("navigation_cover",-1)) != blocked or Vector2(state.get("navigation_target",target)).distance_to(target)>64.0:
             var clockwise := center+Vector2.from_angle(angle+ARC_STEP)*ring
@@ -52,14 +52,14 @@ static func move(position: Vector2, target: Vector2, distance: float, radius: fl
         state.erase("navigation_waypoint")
     var desired := waypoint-position
     var step := desired.normalized()*minf(distance,desired.length())
-    var result := World.move(position,step,radius)
+    var result := world.move(position,step,radius)
     if result.distance_to(position) >= distance*0.2: return result
     # At floor edges try both sides. Commit the better side for ties rather
     # than repeating a known blocked perpendicular step forever.
     var side: float = state.get("navigation_edge_side",1.0)
     var perpendicular := Vector2(-heading.y,heading.x).normalized()*distance
-    var first := World.move(position,perpendicular*side,radius)
-    var second := World.move(position,-perpendicular*side,radius)
+    var first := world.move(position,perpendicular*side,radius)
+    var second := world.move(position,-perpendicular*side,radius)
     var first_travel := first.distance_to(position)
     var second_travel := second.distance_to(position)
     if second_travel > first_travel+0.01:
