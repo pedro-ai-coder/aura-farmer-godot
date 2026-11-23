@@ -1,0 +1,18 @@
+# Passive VFX Architecture V1
+
+Godot Solo remains the combat authority. The sole runtime extension emits `passive_burst_resolved(id, center, radius, at, hits)` after Six → Seven applies damage. Each hit contains a stable enemy ID, contact position and positive effective HP loss. Damage guards, shields, death, XP, RNG and victim selection still execute in the original order. Ordinary launches have no listener. Read-only listeners must not write back to the run.
+
+The lab adapter consumes that event once. It records the complete result independently of the renderer and reads the armed state from the real counter. The candidate feedback adapter skips the legacy Six → Seven ring and delegates the remaining world and HUD behavior to the existing presenter. The simulation, HUD feedback, Reduced Motion setting and recorder each have separate ownership. No candidate script or scene is referenced by the production entry point.
+
+| Presentation family | Current implementation and next integration point |
+| --- | --- |
+| Impact | Reusable bounded burst fields accept a resolved origin, extent and contacts. Six → Seven is the only candidate binding. No U needs separate post-resolution damage and weaken results before it can share the renderer. Secondary weapon effects can reuse the existing launch/contact observer when their source is known. |
+| Defense | Existing `shield_granted`, `absorbed` and exact source entries drive the baseline HUD and shield rendering. A later candidate needs source-specific absorption and expiration outcomes, including refresh, depletion and cap. |
+| Recovery | Existing `healed` consumes positive effective HP, distinct from layers and shield amounts. A later recovery renderer can reuse the player anchor and active time; scheduled or full-HP ticks remain silent. |
+| Buff | Existing `flex_started`, confirmed progress and slot deadlines drive the baseline. Exact zone geometry and strongest-frequency evaluation stay with the existing rules. A later renderer can consume zone transitions, threshold progress and authoritative expiry. |
+
+The candidate caches wedge geometry and three reusable burst slots. It shows at most 16 contact marks per burst and keeps all confirmed contacts in the recorder. The current run's 2 s lockout outlasts every candidate cue. No particle nodes, per-frame gameplay polling collections, runtime asset service, whole-screen flash, random inputs or material dependency were added. The effect stops drawing once its active-time lifetime elapses. Pausing the lab keeps both clocks fixed, replay clears the slots, and victory hides candidate world marks. Reduced Motion uses static silhouettes and short opacity fades with no radial travel or source flash.
+
+Ground artwork draws below actors. Contact chevrons draw at target feet, before hostile geometry and shots, and use the matched contact location even if the actor was defeated. A shape budget can suppress extra cosmetic emphasis while the authoritative record keeps every resolved contact. Higher-density camera framing and palette in the lab are part of the proposal only.
+
+The Scenario Mode kit/build validator and bounded QA Recorder are reused from the isolated [PR #105 snapshot](https://github.com/pedro-ai-coder/aura-farmer-godot/tree/8900fcf9576fce89d75be2b6dd8c69fcb093888a/qa). The lab is under `tests/passive_vfx_lab`, already excluded by the production presets. It composes two independent copies of Solo using an in-memory profile, the same seed, fixed 60 Hz steps, legal staging, and ordinary collisions, passive timers, damage, healing and Flex. It records its fixture type and authority references alongside in-world evidence.

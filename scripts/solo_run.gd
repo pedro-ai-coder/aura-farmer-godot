@@ -1,4 +1,7 @@
 extends Node2D
+
+## Optional post-resolution observer. Ordinary runs have no subscriber.
+signal passive_burst_resolved(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary])
 const Typography = preload("res://scripts/clean_cut_typography.gd")
 
 const SoloClock = preload("res://scripts/solo_clock.gd")
@@ -765,10 +768,22 @@ func _primary_activation(target: Vector2) -> void:
             sixth_count = 0
             passive_timers["six_ready"] = run_time + 2.0
             var amount: float = _base_power() * (0.35 + 0.15 * float(_passive_level("six-to-seven") - 1))
+            const RADIUS := 90.0
+            var observed := passive_burst_resolved.has_connections()
+            var hits: Array[Dictionary] = []
             for e: Dictionary in enemies.duplicate():
-                if Vector2(e["pos"]).distance_to(target) <= 90.0:
+                if Vector2(e["pos"]).distance_to(target) <= RADIUS:
+                    var hp_before := float(e["hp"]) if observed else 0.0
                     _hit_enemy(e, amount)
-        passive_timers["six_counter"] = sixth_count
+                    if observed:
+                        var effective := hp_before - maxf(0.0, float(e["hp"]))
+                        if effective > 0.0:
+                            hits.append({"id": int(e["id"]), "position": Vector2(e["pos"]), "hp_lost": effective})
+            passive_timers["six_counter"] = sixth_count
+            if observed:
+                passive_burst_resolved.emit(&"six-to-seven", target, RADIUS, run_time, hits)
+        else:
+            passive_timers["six_counter"] = sixth_count
     if passive_feedback!=null:passive_feedback.primary(self,target,feedback_cook,feedback_six)
 
 func _base_power() -> float:
