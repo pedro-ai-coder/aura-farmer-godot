@@ -26,6 +26,8 @@ const MapSelect = preload("res://scripts/map_select.gd")
 var map_select: Control
 var map_id: StringName = SoloMaps.RUIN_ALLEY
 var map_geometry
+const FactoryPresentation = preload("res://scripts/msg_factory_presentation.gd")
+var factory_plate: Sprite2D
 var map_select_return := "menu"
 
 const SoloWorldRulesScript = preload("res://scripts/solo_world_rules.gd")
@@ -411,7 +413,10 @@ func _show_ui() -> void:
         map_select.refresh(presentation.position, presentation.view)
 
 func _update_text() -> void:
-    if mode in ["menu","heroes","maps"] or hero.is_empty():
+    var menu_backdrop := mode in ["menu","heroes","maps"] or hero.is_empty()
+    if factory_plate != null:
+        factory_plate.visible = map_geometry != null and not menu_backdrop
+    if menu_backdrop:
         headline.text = "CLUTCHPUNKS"
         headline.position = Vector2(82, 40)
         headline.add_theme_font_size_override("font_size", 54)
@@ -486,6 +491,9 @@ func start_run(index: int) -> void:
     if passive_feedback!=null:passive_feedback.reset()
     if combat_audio!=null:combat_audio.reset()
     map_geometry = SoloMaps.FactoryGeometry if map_id == SoloMaps.MSG_FACTORY else null
+    if map_geometry != null and factory_plate == null:
+        factory_plate = FactoryPresentation.new()
+        add_child(factory_plate)
     hero_index = index
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
@@ -2274,6 +2282,10 @@ func _input(event: InputEvent) -> void:
 
 ## Option A visual motifs mirror the Phaser browser renderer; collision stays in _advance().
 func _draw_contact_shadow(at: Vector2, radius: float) -> void:
+    if map_geometry != null:
+        var extent := Vector2(1.23, 0.43) * radius
+        draw_texture_rect(FactoryPresentation.contact_shadow, Rect2(at + Vector2(1, 2) - extent, extent * 2.0), false)
+        return
     draw_set_transform(at + Vector2(3.0, 5.0), 0.0, Vector2(1.05, 0.30))
     draw_circle(Vector2.ZERO, radius, Color(0.14, 0.20, 0.29, 0.23))
     draw_set_transform(Vector2.ZERO)
@@ -2289,7 +2301,7 @@ func _draw() -> void:
         draw_rect(FIELD, Color(0.025, 0.035, 0.06, 0.67))
         return
     if map_geometry != null:
-        draw_texture_rect(SoloMaps.FACTORY_ARENA, FIELD, false)
+        factory_plate.update_clock(run_time, bool(profile["settings"]["reducedMotion"]))
     else:
         _draw_ruin_alley()
     _draw_recovery()
@@ -2334,6 +2346,10 @@ func _draw() -> void:
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
+    if map_geometry != null:
+        for enemy: Dictionary in enemies:
+            if run_time >= float(enemy.get("born", 0.0)):
+                _draw_enemy_aim_warning(enemy)
     if weapon_presentation==null:
         for effect: Dictionary in attack_visuals:WeaponVisualsScript.draw_attack(self,effect)
     else:weapon_presentation.draw_impacts(self,run_time,bool(profile["settings"]["reducedMotion"]))
@@ -2408,15 +2424,19 @@ func _draw_depth_actors() -> void:
             actors.append({"kind": "cover", "pos": cover})
     else:
         for cover: Dictionary in map_geometry.COVERS:
-            actors.append({"kind": "cover", "pos": cover.pos, "sprite": cover.sprite})
+            actors.append({"kind": "cover", "pos": cover.pos, "factory_cover": cover})
     for enemy: Dictionary in enemies: actors.append({"kind":"enemy", "pos":enemy["pos"], "enemy":enemy})
     for defeated: Dictionary in defeated_visuals: actors.append({"kind":"defeated","pos":defeated["pos"],"enemy":defeated})
     actors.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return Vector2(a["pos"]).y < Vector2(b["pos"]).y)
     for actor: Dictionary in actors:
         if actor["kind"] == "hero": _draw_hero_actor()
         elif actor["kind"] == "cover":
-            if actor.has("sprite"):
-                draw_texture(actor.sprite, actor.pos - SoloMaps.COVER_TEXTURE_ORIGIN)
+            if actor.has("factory_cover"):
+                var cover: Dictionary = actor.factory_cover
+                draw_texture(cover.sprite, cover.sprite_anchor - SoloMaps.COVER_TEXTURE_ORIGIN)
+                if cover.has("detail"):
+                    var clock := 0.0 if bool(profile["settings"]["reducedMotion"]) else fposmod(run_time, FactoryPresentation.PERIOD)
+                    FactoryPresentation.draw_machine_detail(self, cover.detail, clock)
             else:
                 art.draw_cover(self, actor.pos)
         elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
@@ -2425,6 +2445,11 @@ func _draw_depth_actors() -> void:
     if performance_probe!=null:
         performance_probe.add(&"actors",Time.get_ticks_usec()-perf_actor_start)
         performance_probe.animation_created(art.enemy_frame_cache.size()+art.hero_frame_cache.size()-perf_cache_size)
+
+func _draw_enemy_aim_warning(e: Dictionary) -> void:
+    if e["phase"] == "warning" or e["phase"] == "charge-warning":
+        var locked: Vector2 = e["locked_direction"]
+        draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
 
 func _draw_enemy_actor(e: Dictionary) -> void:
     if run_time < float(e.get("born", 0.0)):
@@ -2438,9 +2463,8 @@ func _draw_enemy_actor(e: Dictionary) -> void:
         color = Color(0.79, 0.38, 0.98)
     elif e["kind"] == "boss":
         color = Color(0.99, 0.30, 0.25)
-    if e["phase"] == "warning" or e["phase"] == "charge-warning":
-        var locked: Vector2 = e["locked_direction"]
-        draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
+    if map_geometry == null:
+        _draw_enemy_aim_warning(e)
     if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
     _draw_contact_shadow(e["pos"], radius)

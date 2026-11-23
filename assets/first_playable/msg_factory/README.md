@@ -7,7 +7,15 @@
 - The V4 study's boundary and centers were diagram coordinates. The runtime floor follows the visible walls and fixed machinery and the four collider centers register to the extracted sprites. All four cover radii come from the study. The player starts at the scaled V4 center. The eastern Silence Terminal has a factory-specific position clear of the dispatch rack.
 - The layout history and shared Solo integration follow [PR #152](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/152) and [PR #153](https://github.com/pedro-ai-coder/aura-farmer-godot/pull/153).
 
-## Runtime captures
+## V4.1 candidate treatment
+
+**PROPOSED.** V4.1 reuses all five V4 textures byte for byte. The plate shader confines print motion and lighting to the existing press and terminal, with quieter floor wear around the machine bases. Existing printed sheets, ink equipment, dispatch racks and the CPK-painted door convey the factory's function. The effects introduce no new marks or narrative content.
+
+The four factory footprints now follow the width and depth of the illustrated bases. The west boundary follows the visible pallet stack. The art anchors, four cover locations, arena bounds, spawn point and existing encounter placements are retained. The footprint corrections affect factory movement and lines of sight, especially around the shoulders of each base. Review those routes on their own merits before accepting the candidate.
+
+Run the Godot collision and navigation checks with `godot --headless --path . --script res://tests/first_playable/test_factory_routes.gd`. Run `godot --path . --script res://tests/first_playable/review_factory.gd -- <absolute-output-dir> stills` for native captures. Use `benchmark` in place of `stills` for the seeded performance fixture. For an automated ordinary opening run, pass `--write-movie <absolute-output.avi> --fixed-fps 30` before the script and use `movie` after the output directory.
+
+## V4 baseline captures
 
 [Map select](../../../tests/first_playable/evidence/map-select.webp) · [Ruin Alley](../../../tests/first_playable/evidence/ruin-alley.webp) · [MSG Factory](../../../tests/first_playable/evidence/msg-factory.webp) · [Factory door and cover detail](../../../tests/first_playable/evidence/msg-factory-door-and-cover.webp)
 

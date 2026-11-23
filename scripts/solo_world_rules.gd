@@ -82,7 +82,11 @@ static func walkable(point: Vector2, radius: float = 16.0, map = null) -> bool:
     if not (in_floor(point, radius) if map == null else map.in_floor(point, radius)):
         return false
     for cover: Dictionary in (COVERS if map == null else map.COVERS):
-        if point.distance_to(cover["pos"]) <= float(cover["radius"]) + radius:
+        if cover.has("axes"):
+            var local: Vector2 = (point - cover.pos) / (Vector2(cover.axes) + Vector2.ONE * radius)
+            if local.length_squared() <= 1.0:
+                return false
+        elif point.distance_to(cover["pos"]) <= float(cover["radius"]) + radius:
             return false
     return true
 
@@ -98,11 +102,25 @@ static func clear_line(start: Vector2, ending: Vector2, map = null) -> bool:
     var delta := ending - start
     var squared := delta.length_squared()
     for cover: Dictionary in (COVERS if map == null else map.COVERS):
+        if cover.has("axes"):
+            if cover_segment_distance(cover, start, ending, cover.axes) <= 1.0:
+                return false
+            continue
         var center: Vector2 = cover["pos"]
         var fraction := clampf((center - start).dot(delta) / squared, 0.0, 1.0) if squared > 0.0 else 0.0
         if center.distance_to(start + delta * fraction) <= float(cover["radius"]):
             return false
     return true
+
+# Unit-circle distance in the obstacle's own space. Used by line of sight
+# and the existing tangent steering so both agree on the same footprint.
+static func cover_segment_distance(cover: Dictionary, start: Vector2, ending: Vector2, axes: Vector2) -> float:
+    var center: Vector2 = cover.pos
+    var from := (start - center) / axes
+    var to := (ending - center) / axes
+    if from == to:
+        return from.length_squared()
+    return Geometry2D.get_closest_point_to_segment(Vector2.ZERO, from, to).length_squared()
 
 static func spawn_point(player: Vector2, rng, collision_radius: float = 24.0, map = null):
     # Preserve the sample rectangle, 80-attempt bound and 260 U arrival distance.

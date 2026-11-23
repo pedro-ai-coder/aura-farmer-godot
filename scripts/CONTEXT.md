@@ -17,6 +17,8 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./solo_offer_rules.gd` — offers and legal choices.
 - `./solo_enemy_rules.gd` — enemy rules and selection.
 - `./solo_world_rules.gd` — world rules.
+- `./solo_maps.gd` and `./enemy_navigation.gd` define V4.1 candidate footprints and cover steering in obstacle space. Existing circular covers remain supported.
+- `./msg_factory_presentation.gd` and `./msg_factory_plate.gdshader` apply proposed press, terminal, cover and pavement effects using the existing active run clock and reduced-motion setting.
 - `./solo_passive_rules.gd` — passive gameplay rules.
 - `./phaser_rng.gd` — deterministic Phaser-compatible Mulberry32 sequence.
 - `./profile_store.gd` — versioned profile and legacy-save compatibility.

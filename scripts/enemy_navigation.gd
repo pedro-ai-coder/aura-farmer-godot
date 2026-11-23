@@ -14,9 +14,16 @@ static func _blocked_cover(position: Vector2, target: Vector2, radius: float, co
         # Keep a small clearance outside the axis-separated collision solver.
         # A mathematically tangent diagonal can lose an axis and re-enter the
         # blocked branch on the following frame, oscillating indefinitely.
-        var clearance := float(cover["radius"])+radius+2.0
-        var closest := Geometry2D.get_closest_point_to_segment(center,position,target)
-        if center.distance_squared_to(closest) >= clearance*clearance: continue
+        var elliptical := cover.has("axes")
+        if elliptical:
+            var axes := Vector2(cover.axes) + Vector2.ONE * (radius + 2.0)
+            if World.cover_segment_distance(cover, position, target, axes) >= 1.0:
+                continue
+        var closest := Geometry2D.get_closest_point_to_segment(center, position, target)
+        if not elliptical:
+            var clearance := float(cover["radius"]) + radius + 2.0
+            if center.distance_squared_to(closest) >= clearance * clearance:
+                continue
         var distance := position.distance_squared_to(closest)
         if distance < nearest:
             chosen = index
@@ -31,14 +38,22 @@ static func move(position: Vector2, target: Vector2, distance: float, radius: fl
     var blocked := _blocked_cover(position,target,radius,covers)
     var waypoint := target
     if blocked >= 0:
-        var center: Vector2 = covers[blocked]["pos"]
+        var cover: Dictionary = covers[blocked]
+        var center: Vector2 = cover.pos
         # Margin and a short arc keep the chord outside the expanded collider,
         # including the initial approach from just outside its actual boundary.
-        var ring := (float(covers[blocked]["radius"])+radius+1.0)/cos(ARC_STEP)+0.5
-        var angle := (position-center).angle()
+        var axes: Vector2
+        var angle: float
+        if not cover.has("axes"):
+            axes = Vector2.ONE * ((float(cover.radius) + radius + 1.0) / cos(ARC_STEP) + 0.5)
+            angle = (position - center).angle()
+        else:
+            var clearance := Vector2(cover.axes) + Vector2.ONE * (radius + 1.5)
+            axes = clearance / cos(ARC_STEP)
+            angle = ((position - center) / clearance).angle()
         if int(state.get("navigation_cover",-1)) != blocked or Vector2(state.get("navigation_target",target)).distance_to(target)>64.0:
-            var clockwise := center+Vector2.from_angle(angle+ARC_STEP)*ring
-            var counter := center+Vector2.from_angle(angle-ARC_STEP)*ring
+            var clockwise := center+Vector2.from_angle(angle+ARC_STEP) * axes
+            var counter := center+Vector2.from_angle(angle-ARC_STEP) * axes
             state["navigation_side"] = 1.0 if clockwise.distance_squared_to(target) <= counter.distance_squared_to(target) else -1.0
             state["navigation_cover"] = blocked
             state["navigation_target"] = target
@@ -46,7 +61,7 @@ static func move(position: Vector2, target: Vector2, distance: float, radius: fl
         # Arrival tolerance must exceed a frame's integration error. Requiring
         # 0.05 U left actors alternating beside an almost-reached arc waypoint.
         if not state.has("navigation_waypoint") or position.distance_to(state["navigation_waypoint"]) <= maxf(2.0,distance*1.5):
-            state["navigation_waypoint"] = center+Vector2.from_angle(angle+ARC_STEP*float(state["navigation_side"]))*ring
+            state["navigation_waypoint"] = center+Vector2.from_angle(angle+ARC_STEP*float(state["navigation_side"])) * axes
         waypoint = state["navigation_waypoint"]
     else:
         state.erase("navigation_cover")
