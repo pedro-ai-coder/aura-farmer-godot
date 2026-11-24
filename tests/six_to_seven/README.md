@@ -18,6 +18,14 @@ Use --target web to stage an equivalent local Web review. Run the existing Web p
 
 ## Creator acceptance
 
+In the protected Vercel preview, pick a hero in the Garage and choose Solo.
+Select Ruin Alley or MSG Factory, turn on **QA: SIX → SEVEN**, and select
+**Start Run**. The run starts with the legal Epic Level 1 passive equipped.
+Keep enemies in your starter weapon's range. Watch for the cue on hit six,
+then the burst and contact marks on hit seven. **Play Again** repeats the
+QA loadout. Return to the Garage and leave the toggle off for standard
+progression. QA run results are never recorded in the profile.
+
 - [ ] Acquire Six → Seven through the normal upgrade flow and identify 6/7 from the player cue.
 - [ ] Follow the seventh strike to the burst center. Identify which enemies lost HP and where the 90 U boundary sits.
 - [ ] Check that hostile projectiles and warning geometry remain readable in a crowd in Ruin Alley and MSG Factory.

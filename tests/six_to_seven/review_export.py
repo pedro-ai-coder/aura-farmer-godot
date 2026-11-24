@@ -14,7 +14,8 @@ def stage(destination: Path, target: str) -> None:
         raise ValueError("Stage the export in a fresh folder outside this checkout")
     destination.mkdir(parents=True, exist_ok=False)
     for name in ("scripts", "assets", "scenes", "web"):
-        shutil.copytree(ROOT / name, destination / name, ignore=shutil.ignore_patterns("__pycache__"))
+        shutil.copytree(ROOT / name, destination / name, ignore=shutil.ignore_patterns(
+            "__pycache__", "performance_probe.gd*", "performance.js"))
     project = (ROOT / "project.godot").read_text(encoding="utf-8")
     project = re.sub(r"(?m)^config/name=.*$", 'config/name="CLUTCHPUNKS Six to Seven Review"', project)
     (destination / "project.godot").write_text(project, encoding="utf-8")

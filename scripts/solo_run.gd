@@ -76,6 +76,8 @@ var combat_audio
 var passive_feedback=PassiveFeedbackScript.new()
 const SIX_TO_SEVEN_VFX_PATH := "res://scripts/vfx/six_to_seven.gd"
 var six_to_seven_vfx: RefCounted
+var six_to_seven_qa := false
+var six_to_seven_qa_label: Label
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -297,6 +299,13 @@ func _ready() -> void:
     export_button = _make_button("SAVE DATA", Vector2(25, 290), Vector2(220, 46))
     export_button.pressed.connect(_open_profile_export)
     build_details = _make_label(Vector2(285, 285), 18)
+    if OS.has_feature("six_to_seven_review"):
+        six_to_seven_qa_label = _make_label(Vector2(24, 106), 19)
+        six_to_seven_qa_label.text = "QA RUN · SIX → SEVEN"
+        six_to_seven_qa_label.add_theme_color_override("font_color", Color("#d8ff56"))
+        six_to_seven_qa_label.add_theme_color_override("font_outline_color", Color.BLACK)
+        six_to_seven_qa_label.add_theme_constant_override("outline_size", 7)
+        six_to_seven_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     profile_text = TextEdit.new()
     profile_text.position = Vector2(260, 265)
     profile_text.size = Vector2(760, 300)
@@ -356,6 +365,8 @@ func _style_button(button: Button) -> void:
     button.add_theme_font_size_override("font_size", 19)
 
 func _show_ui() -> void:
+    if six_to_seven_qa_label != null:
+        six_to_seven_qa_label.visible = six_to_seven_qa and mode in ["playing", "paused", "won", "lost"]
     if combat_audio!=null:combat_audio.set_suspended(mode!="playing")
     var card_mode := mode == "choice" or mode == "replace" or mode == "legendary"
     confirm_button.visible = card_mode or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
@@ -480,9 +491,10 @@ func close_map_select() -> void:
     _clear_touch()
     _show_ui()
 
-func start_selected_map(id: StringName) -> void:
+func start_selected_map(id: StringName, qa_requested: bool = false) -> void:
     if mode == "maps" and SoloMaps.NAMES.has(id):
         map_id = id
+        six_to_seven_qa = qa_requested and OS.has_feature("six_to_seven_review") and six_to_seven_vfx != null
         start_run(hero_index)
 
 func start_run(index: int) -> void:
@@ -506,8 +518,9 @@ func start_run(index: int) -> void:
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
     run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
-    profile["selected"] = HEROES[index]["id"]
-    _save_profile()
+    if not six_to_seven_qa:
+        profile["selected"] = HEROES[index]["id"]
+        _save_profile()
     hero = HEROES[index].duplicate(true)
     hero_state = {"moving_since": -1.0, "stopped_since": -1.0, "lock_id": -1, "lock_since": 0.0, "lock_lost": 0.0, "certified": false, "certified_ready": 0.0, "flex_boss_damage": 0.0, "last_contact": -1000.0}
     next_enemy_id = 1
@@ -581,6 +594,9 @@ func start_run(index: int) -> void:
     sigma_target = {}
     rng.seed = 451 + 17 * index
     mode = "playing"
+    if six_to_seven_qa:
+        _apply_card({"type": "passive", "id": "six-to-seven", "rarity": "epic", "level": 1})
+        print("Six to Seven QA start: map=%s hero=%s equipped=%d" % [map_id, hero["id"], _passive_level("six-to-seven")])
     _show_ui()
     _update_text()
     _update_camera(0.0, true)
@@ -2077,6 +2093,9 @@ func _enable_six_to_seven_review() -> void:
 func _present_passive_burst(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary]) -> void:
     if id == &"six-to-seven" and mode in ["playing", "won"]:
         six_to_seven_vfx.burst(center, radius, at, hits)
+        if six_to_seven_qa:
+            print("Six to Seven QA burst: ", JSON.stringify({"primary_hits": primary_hits,
+                "time": at, "center": [center.x, center.y], "radius": radius, "contacts": hits}))
 
 func _toggle_pause() -> void:
     if mode == "playing":
@@ -2106,8 +2125,9 @@ func _finish(won: bool) -> void:
         "xp": total_xp, "damage": run_metrics["damage"], "healing": run_metrics["healing"],
         "protection": run_metrics["protection"], "flexes": run_metrics["flexes"]
     }
-    profile = ProfileStoreScript.record(profile, result, mode)
-    _save_profile()
+    if not six_to_seven_qa:
+        profile = ProfileStoreScript.record(profile, result, mode)
+        _save_profile()
     _show_ui()
 
 func _load_profile() -> void:
@@ -2137,6 +2157,7 @@ func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
+    six_to_seven_qa = false
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     mode = "menu"
