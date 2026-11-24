@@ -17,7 +17,7 @@ TEMPLATE_SHA="f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 SIX_TO_SEVEN_REVIEW=0
-if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-gameplay-v1" ]]; then
+if [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-gameplay-v1" || "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-neon-impact-v3" ) ]]; then
     SIX_TO_SEVEN_REVIEW=1
 fi
 python3 scripts/verify_pixel_vixen.py

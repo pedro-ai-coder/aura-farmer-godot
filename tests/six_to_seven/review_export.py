@@ -7,6 +7,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 RENDERER = "scripts/vfx/six_to_seven.gd"
+NEON_RENDERER = "scripts/vfx/six_to_seven_neon_impact.gd"
 
 
 def stage(destination: Path, target: str) -> None:
@@ -45,7 +46,8 @@ def verify(path: Path, included: bool) -> None:
     entries = directory(path.read_bytes())
     assert not any(name.startswith("tests/") or name.startswith("qa/") for name in entries), "QA resources in gameplay pack"
     renderer = {name for name in entries if name.startswith("scripts/vfx/")}
-    expected = {RENDERER + ".remap", RENDERER + "c"} if included else set()
+    expected = {path + suffix for path in (RENDERER, NEON_RENDERER)
+                for suffix in (".remap", "c")} if included else set()
     if renderer != expected:
         raise ValueError(f"Unexpected renderer packaging: {renderer!r}")
     print(f"PASS: {'review includes' if included else 'ordinary excludes'} renderer; gameplay pack excludes QA resources")

@@ -48,6 +48,7 @@ func state(game: ReviewRun) -> Array:
         game.shield, game.pickups, game.kills, game.mode, game.profile]
 
 func run() -> void:
+    var neon := "v3" in OS.get_cmdline_user_args()
     var before := ReviewRun.new()
     var after := ReviewRun.new()
     root.add_child(before)
@@ -55,8 +56,10 @@ func run() -> void:
     before.set_process(false)
     after.set_process(false)
     check(before.six_to_seven_vfx == null and not before.passive_burst_resolved.has_connections(), "Ordinary boot must leave renderer and burst observer off")
-    after._enable_six_to_seven_review()
-    after._enable_six_to_seven_review()
+    if neon:
+        before._enable_six_to_seven_review()
+    after._enable_six_to_seven_review(neon)
+    after._enable_six_to_seven_review(neon)
     check(after.six_to_seven_vfx != null and after.passive_burst_resolved.get_connections().size() == 1, "Review presentation must connect exactly once")
     after.passive_burst_resolved.connect(observe)
     for map: StringName in Maps.NAMES:
@@ -92,6 +95,15 @@ func run() -> void:
         and contact_layer < canvas_source.find("for shot: Dictionary in hostile_shots"), "Threat layers must draw above VFX")
     check(canvas_source.contains('draw_ground(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))')
         and canvas_source.contains('draw_contacts(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))'), "Both VFX layers must respect Reduced Motion")
+    check(canvas_source.contains('int(passive_timers.get("six_counter", 0)) == 6'), "Sixth-hit cue is no longer gated to six")
+    if neon:
+        var renderer = after.six_to_seven_vfx
+        var hits: Array[Dictionary] = [{"position": Vector2(10, 0), "hp_lost": 0.0},
+            {"position": Vector2(0, 10), "hp_lost": 1.0}]
+        for index in 12:
+            renderer.burst(Vector2.ZERO, 90.0, float(index), hits)
+        check(renderer.slots.size() == 3 and renderer.slots[2].count == 1
+            and renderer.slots[2].positions[0] == Vector2(0, 10), "V3 retained invalid contacts or grew its burst pool")
     events.clear()
     var center := fixture(after, Maps.MSG_FACTORY, 0)
     after._primary_activation(center)
@@ -119,7 +131,8 @@ func run() -> void:
     check(after.six_to_seven_vfx.slots[0].at == -INF, "Menu retained victory burst")
     before.free()
     after.free()
-    print("Six to Seven integration: 390 paired frames, both maps, all weapon slots, exact contacts, acquisition and lifecycle; failures: ", failures)
+    print("Six to Seven %s: 390 paired frames, both maps, all weapon slots, exact contacts, acquisition and lifecycle; failures: %d" %
+        ["V2 vs V3" if neon else "ordinary vs V2", failures])
     quit(1 if failures else 0)
 
 func observe(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary]) -> void:
