@@ -300,7 +300,9 @@ func _ready() -> void:
     export_button.pressed.connect(_open_profile_export)
     build_details = _make_label(Vector2(285, 285), 18)
     if OS.has_feature("six_to_seven_review"):
-        six_to_seven_qa_label = _make_label(Vector2(24, 106), 19)
+        six_to_seven_qa_label = _make_label(Vector2(0, 78), 19)
+        six_to_seven_qa_label.size.x = 1280.0
+        six_to_seven_qa_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
         six_to_seven_qa_label.text = "QA RUN · SIX → SEVEN"
         six_to_seven_qa_label.add_theme_color_override("font_color", Color("#d8ff56"))
         six_to_seven_qa_label.add_theme_color_override("font_outline_color", Color.BLACK)
