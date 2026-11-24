@@ -48,16 +48,16 @@ jobs:
         run: python3 scripts/sync_approved_assets.py
 
       - name: Checkout unchanged main control for approved-art parity
-        if: ${{ github.head_ref == 'feat/approved-individual-hero-sheets-2026-11-14' || github.head_ref == 'art/full-approved-hero-atlases' || github.head_ref == 'release/neon-arcade-approved-20261115' || github.head_ref == 'feat/msg-factory-v4-1' }}
+        if: ${{ github.head_ref == 'feat/approved-individual-hero-sheets-2026-11-14' || github.head_ref == 'art/full-approved-hero-atlases' || github.head_ref == 'release/neon-arcade-approved-20261115' || github.head_ref == 'feat/msg-factory-v4-1' || (github.head_ref == 'review/six-to-seven-gameplay-v1' && github.base_ref == 'feat/passive-vfx-lab-v1' && github.event.pull_request.head.repo.full_name == github.repository) }}
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ (github.head_ref == 'review/six-to-seven-gameplay-v1' && github.base_ref == 'feat/passive-vfx-lab-v1' && github.event.pull_request.head.repo.full_name == github.repository) && '34767716e1c9b5ecb6e7361e6aced6d13d052817' || github.event.pull_request.base.sha }}
           path: .ci-source-control/project
           fetch-depth: 1
           persist-credentials: false
 
       - name: Record same-runner unchanged-main simulation control
-        if: ${{ github.head_ref == 'feat/approved-individual-hero-sheets-2026-11-14' || github.head_ref == 'art/full-approved-hero-atlases' || github.head_ref == 'release/neon-arcade-approved-20261115' || github.head_ref == 'feat/msg-factory-v4-1' }}
+        if: ${{ github.head_ref == 'feat/approved-individual-hero-sheets-2026-11-14' || github.head_ref == 'art/full-approved-hero-atlases' || github.head_ref == 'release/neon-arcade-approved-20261115' || github.head_ref == 'feat/msg-factory-v4-1' || (github.head_ref == 'review/six-to-seven-gameplay-v1' && github.base_ref == 'feat/passive-vfx-lab-v1' && github.event.pull_request.head.repo.full_name == github.repository) }}
         shell: bash
         run: |
           # Parent ignore prevents candidate import/export from seeing another
