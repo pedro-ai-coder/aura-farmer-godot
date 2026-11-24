@@ -20,6 +20,7 @@ const SPARKS := [1, 4, 9, 15, 19, 25, 28]
 var front := PackedVector2Array()
 var extent := PackedVector2Array()
 var core := PackedVector2Array()
+var pressure_fans: Array[PackedVector2Array] = []
 var streak := PackedVector2Array([Vector2(-0.26, 0), Vector2(0.12, -0.036),
     Vector2(0.22, 0), Vector2(0.05, 0.018)])
 var contact := PackedVector2Array([Vector2(-23, -11), Vector2(-12, -6),
@@ -36,6 +37,16 @@ func _init() -> void:
         extent.append(direction)
     front.append(front[0])
     extent.append(extent[0])
+    # Each fan follows a different part of the front and tapers into the wake.
+    for start: int in [2, 13, 22]:
+        var fan := PackedVector2Array()
+        for index in range(start, start + 7):
+            fan.append(front[index])
+        fan.append(front[start + 5] * 0.88)
+        fan.append(front[start + 4] * 0.74)
+        fan.append(front[start + 2] * 0.85)
+        fan.append(front[start + 1] * 0.91)
+        pressure_fans.append(fan)
     var points := [0.94, 0.37, 0.59, 0.29, 1.0, 0.44, 0.85, 0.28,
         0.68, 0.35, 0.97, 0.32, 0.71, 0.36, 0.61, 0.40]
     for index in points.size():
@@ -72,6 +83,10 @@ func draw_ground(canvas: Node2D, now: float, reduced: bool) -> void:
         var pressure := alpha * (1.0 - smoothstep(RELEASE, 0.26, age))
         var width := lerpf(0.145, 0.044, travel)
         canvas.draw_set_transform(slot.center, 0, Vector2.ONE * slot.radius * reach)
+        var wake := pressure * (1.0 - smoothstep(0.055, RELEASE, age))
+        if wake > 0.0:
+            for fan in pressure_fans:
+                canvas.draw_colored_polygon(fan, Color(WINE, wake * 0.76))
         canvas.draw_polyline(front, Color(VOID, pressure * 0.96), width, true)
         canvas.draw_polyline(front, Color(NEON, pressure * 0.91), width * 0.53, true)
         canvas.draw_polyline(front, Color(WHITE_HOT, pressure * 0.95), width * 0.16, true)

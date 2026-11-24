@@ -70,6 +70,7 @@ func run() -> void:
     var index := 0
     var wall_times := PackedFloat64Array()
     var burst_times := PackedFloat64Array()
+    var anticipation_frame := 0
     var output_error := DirAccess.make_dir_recursive_absolute(out)
     if output_error != OK:
         push_error(error_string(output_error))
@@ -109,6 +110,9 @@ func run() -> void:
                 index += 1
             if not visual.is_empty():
                 var phase := frame - focus
+                if anticipation_frame == 0 and frame < focus and int(game.passive_timers.get("six_counter", 0)) == 6:
+                    anticipation_frame = frame
+                    pixels.save_png(out.path_join("sixth-hit.png"))
                 if absi(phase) <= 32:
                     pixels.save_jpg(out.path_join("slow-%03d.jpg" % (phase + 32)), 0.92)
                 if phase in [0, 3, 8, 16]:
@@ -119,6 +123,7 @@ func run() -> void:
                 pixels.save_png(out.path_join("anticipation.png"))
     var report := {"kind": "automated_ordinary_gameplay", "candidate": candidate, "map": str(map),
         "visual": visual, "reduced_motion": reduced, "qa_loadout": qa_loadout, "focus": focus,
+        "anticipation_capture_frame": anticipation_frame,
         "seed": seed, "seconds": game.run_time, "level": game.level, "acquisition": acquisition,
         "burst_events": bursts, "peak_enemies": peak_enemies, "frames": frame, "rng": game.rng.state,
         "kills": game.kills, "hp": game.hp, "damage": game.run_metrics.damage, "mode": game.mode}
