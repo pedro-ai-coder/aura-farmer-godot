@@ -2352,7 +2352,7 @@ func _draw() -> void:
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
-    if weapon_presentation==null:_draw_danger_geometry()
+    if weapon_presentation == null and six_to_seven_vfx == null: _draw_danger_geometry()
     if weapon_presentation==null:
         for area: Dictionary in weapon_areas:
             if area.get("shape", "sector") == "line":
@@ -2389,10 +2389,10 @@ func _draw() -> void:
     if flex_time > 0.0 and hero["id"] == "sigma" and enemies.has(sigma_target):
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
+    _draw_depth_actors()
     if six_to_seven_vfx != null:
         six_to_seven_vfx.draw_contacts(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
-    _draw_depth_actors()
-    if map_geometry != null:
+    if map_geometry != null or six_to_seven_vfx != null:
         for enemy: Dictionary in enemies:
             if run_time >= float(enemy.get("born", 0.0)):
                 _draw_enemy_aim_warning(enemy)
@@ -2400,7 +2400,7 @@ func _draw() -> void:
         for effect: Dictionary in attack_visuals:WeaponVisualsScript.draw_attack(self,effect)
     else:weapon_presentation.draw_impacts(self,run_time,bool(profile["settings"]["reducedMotion"]))
     _draw_combat_feedback()
-    if weapon_presentation!=null:_draw_danger_geometry()
+    if weapon_presentation != null or six_to_seven_vfx != null: _draw_danger_geometry()
     for shot: Dictionary in hostile_shots:
         var shot_pos: Vector2 = shot["pos"]
         var shot_dir: Vector2 = shot["dir"]
@@ -2509,7 +2509,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
         color = Color(0.79, 0.38, 0.98)
     elif e["kind"] == "boss":
         color = Color(0.99, 0.30, 0.25)
-    if map_geometry == null:
+    if map_geometry == null and six_to_seven_vfx == null:
         _draw_enemy_aim_warning(e)
     if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)
