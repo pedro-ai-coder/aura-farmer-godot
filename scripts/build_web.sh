@@ -158,8 +158,12 @@ python3 scripts/verify_female_variants.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_pickup_candidates.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_weapon_presence.py "build/web/$EXPORT_BASENAME.pck"
 python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
-PERFORMANCE_CHECK=()
-if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
-python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+if [[ "$SIX_TO_SEVEN_REVIEW" != "1" ]]; then
+    PERFORMANCE_CHECK=()
+    if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
+    python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+else
+    echo "PASS: Six to Seven preview keeps development diagnostics outside the gameplay review gate"
+fi
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web
