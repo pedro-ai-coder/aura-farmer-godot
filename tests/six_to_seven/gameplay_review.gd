@@ -37,6 +37,11 @@ func run() -> void:
     var focus := int(args[3])
     var out := args[4]
     var candidate := OS.get_environment("CPK_VFX_CANDIDATE") == "1"
+    var visual := OS.get_environment("CPK_VFX_VARIANT")
+    var neon := visual == "v3"
+    candidate = candidate or neon or visual == "v2"
+    var reduced := OS.get_environment("CPK_VFX_REDUCED") == "1"
+    var qa_loadout := OS.get_environment("CPK_VFX_QA_LOADOUT") == "1"
     if action != "search" and DisplayServer.get_name() == "headless":
         push_error("Native renderer required for capture or timing")
         quit(2)
@@ -49,12 +54,15 @@ func run() -> void:
     root.add_child(game)
     game.set_process(false)
     game.clean_cut_skin.set_process(false)
+    game.profile.settings.reducedMotion = reduced
     if candidate:
-        game.call("_enable_six_to_seven_review")
+        game.call("_enable_six_to_seven_review", neon)
     if game.has_signal("passive_burst_resolved") and action != "measure":
         game.connect("passive_burst_resolved", observe)
     game.open_map_select(0)
     game.start_selected_map(map)
+    if qa_loadout:
+        game._apply_card({"type": "passive", "id": "six-to-seven", "rarity": "epic", "level": 1})
     game.rng.seed = seed
     var begin := maxi(1, focus - 174)
     var end := 43200 if action == "search" else focus + 144
@@ -75,7 +83,7 @@ func run() -> void:
         if acquisition < 0.0 and game._passive_level("six-to-seven") > 0:
             acquisition = game.run_time
         if action == "measure" and frame == begin:
-            probe = Probe.new(game, "candidate" if candidate else "unchanged-main")
+            probe = Probe.new(game, visual if not visual.is_empty() else ("candidate" if candidate else "unchanged-main"))
             game.performance_probe = probe
         var measured := action == "measure" and frame >= begin
         var before := Time.get_ticks_usec() if measured else 0
@@ -91,18 +99,26 @@ func run() -> void:
             if frame >= focus and frame < focus + 29:
                 burst_times.append(elapsed)
             await process_frame
-        elif frame % 2 == 0:
+        elif frame % 2 == 0 or (not visual.is_empty() and absi(frame - focus) <= 32):
             await RenderingServer.frame_post_draw
             var pixels := root.get_texture().get_image()
-            if pixels.save_jpg(out.path_join("frame-%04d.jpg" % index), 0.92) != OK:
-                quit(2)
-                return
+            if frame % 2 == 0:
+                if pixels.save_jpg(out.path_join("frame-%04d.jpg" % index), 0.92) != OK:
+                    quit(2)
+                    return
+                index += 1
+            if not visual.is_empty():
+                var phase := frame - focus
+                if absi(phase) <= 32:
+                    pixels.save_jpg(out.path_join("slow-%03d.jpg" % (phase + 32)), 0.92)
+                if phase in [0, 3, 8, 16]:
+                    pixels.save_png(out.path_join("phase-%02d.png" % phase))
             if absi(frame - (focus + 6)) <= 1:
                 pixels.save_png(out.path_join("impact.png"))
             if absi(frame - (focus - 20)) <= 1:
                 pixels.save_png(out.path_join("anticipation.png"))
-            index += 1
     var report := {"kind": "automated_ordinary_gameplay", "candidate": candidate, "map": str(map),
+        "visual": visual, "reduced_motion": reduced, "qa_loadout": qa_loadout, "focus": focus,
         "seed": seed, "seconds": game.run_time, "level": game.level, "acquisition": acquisition,
         "burst_events": bursts, "peak_enemies": peak_enemies, "frames": frame, "rng": game.rng.state,
         "kills": game.kills, "hp": game.hp, "damage": game.run_metrics.damage, "mode": game.mode}

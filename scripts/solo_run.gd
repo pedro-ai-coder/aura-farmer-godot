@@ -75,7 +75,9 @@ const CombatAudioScript=preload("res://scripts/combat_audio.gd")
 var combat_audio
 var passive_feedback=PassiveFeedbackScript.new()
 const SIX_TO_SEVEN_VFX_PATH := "res://scripts/vfx/six_to_seven.gd"
+const SIX_TO_SEVEN_NEON_PATH := "res://scripts/vfx/six_to_seven_neon_impact.gd"
 var six_to_seven_vfx: RefCounted
+var six_to_seven_neon := false
 var six_to_seven_qa := false
 var six_to_seven_qa_label: Label
 var art = ApprovedVisualsScript.new()
@@ -497,9 +499,12 @@ func close_map_select() -> void:
     _clear_touch()
     _show_ui()
 
-func start_selected_map(id: StringName, qa_requested: bool = false) -> void:
+func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false) -> void:
     if mode == "maps" and SoloMaps.NAMES.has(id):
         map_id = id
+        if OS.has_feature("six_to_seven_review"):
+            _enable_six_to_seven_review(neon_requested)
+            six_to_seven_qa_label.text = "QA RUN / SIX TO SEVEN / %s" % ("V3 NEON IMPACT" if six_to_seven_neon else "V2")
         six_to_seven_qa = qa_requested and OS.has_feature("six_to_seven_review") and six_to_seven_vfx != null
         start_run(hero_index)
 
@@ -2084,24 +2089,27 @@ func _use_flex() -> void:
             if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
                 enemy["taunt_until"] = run_time + 2.0
 
-func _enable_six_to_seven_review() -> void:
-    if six_to_seven_vfx != null:
+func _enable_six_to_seven_review(neon: bool = false) -> void:
+    if six_to_seven_vfx != null and six_to_seven_neon == neon:
         return
-    var renderer := load(SIX_TO_SEVEN_VFX_PATH) as Script
+    var renderer := load(SIX_TO_SEVEN_NEON_PATH if neon else SIX_TO_SEVEN_VFX_PATH) as Script
     if renderer == null:
         push_error("Six to Seven review renderer is missing from the review build")
         return
     six_to_seven_vfx = renderer.new()
+    six_to_seven_neon = neon
     if passive_feedback != null:
         passive_feedback.suppress_six_to_seven_ring = true
-    passive_burst_resolved.connect(_present_passive_burst)
+    if not passive_burst_resolved.is_connected(_present_passive_burst):
+        passive_burst_resolved.connect(_present_passive_burst)
 
 func _present_passive_burst(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary]) -> void:
     if id == &"six-to-seven" and mode in ["playing", "won"]:
         six_to_seven_vfx.burst(center, radius, at, hits)
         if six_to_seven_qa:
             print("Six to Seven QA burst: ", JSON.stringify({"primary_hits": primary_hits,
-                "time": at, "center": [center.x, center.y], "radius": radius, "contacts": hits}))
+                "time": at, "center": [center.x, center.y], "radius": radius, "contacts": hits,
+                "visual": "v3" if six_to_seven_neon else "v2", "reduced_motion": profile.settings.reducedMotion}))
 
 func _toggle_pause() -> void:
     if mode == "playing":
