@@ -2,7 +2,7 @@ extends "res://scripts/solo_run.gd"
 
 signal pause_requested
 
-const BurstVfx := preload("res://tests/passive_vfx_lab/burst_vfx.gd")
+const BurstVfx := preload("res://scripts/vfx/six_to_seven.gd")
 const CandidateFeedback := preload("res://tests/passive_vfx_lab/candidate_feedback.gd")
 const Builds := preload("res://tests/passive_vfx_lab/scenario_builds.gd")
 const Recorder := preload("res://tests/passive_vfx_lab/qa_recorder.gd")

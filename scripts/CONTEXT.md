@@ -20,7 +20,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./solo_maps.gd` and `./enemy_navigation.gd` define V4.1 candidate footprints and cover steering in obstacle space. Existing circular covers remain supported.
 - `./msg_factory_presentation.gd` and `./msg_factory_plate.gdshader` apply proposed press, terminal, cover and pavement effects using the existing active run clock and reduced-motion setting.
 - `./solo_passive_rules.gd` — passive gameplay rules.
-- `./solo_run.gd` exposes resolved Six to Seven burst results to optional read-only observers. Candidate effects remain in `tests/passive_vfx_lab/`.
+- `./solo_run.gd` exposes resolved Six to Seven burst results to optional read-only observers. The opt-in gameplay review uses `scripts/vfx/six_to_seven.gd`; ordinary exports exclude it.
 - `./phaser_rng.gd` — deterministic Phaser-compatible Mulberry32 sequence.
 - `./profile_store.gd` — versioned profile and legacy-save compatibility.
 - `./approved_visuals.gd` — visual resource binding.
