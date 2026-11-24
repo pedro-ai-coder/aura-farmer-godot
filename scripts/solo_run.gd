@@ -299,15 +299,6 @@ func _ready() -> void:
     export_button = _make_button("SAVE DATA", Vector2(25, 290), Vector2(220, 46))
     export_button.pressed.connect(_open_profile_export)
     build_details = _make_label(Vector2(285, 285), 18)
-    if OS.has_feature("six_to_seven_review"):
-        six_to_seven_qa_label = _make_label(Vector2(0, 78), 19)
-        six_to_seven_qa_label.size.x = 1280.0
-        six_to_seven_qa_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-        six_to_seven_qa_label.text = "QA RUN · SIX → SEVEN"
-        six_to_seven_qa_label.add_theme_color_override("font_color", Color("#d8ff56"))
-        six_to_seven_qa_label.add_theme_color_override("font_outline_color", Color.BLACK)
-        six_to_seven_qa_label.add_theme_constant_override("outline_size", 7)
-        six_to_seven_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     profile_text = TextEdit.new()
     profile_text.position = Vector2(260, 265)
     profile_text.size = Vector2(760, 300)
@@ -324,6 +315,16 @@ func _ready() -> void:
     layer.add_child(map_select)
     map_select.install(self)
     map_select.refresh(presentation.position, presentation.view)
+    if OS.has_feature("six_to_seven_review"):
+        # Install outside the legacy gameplay controls hidden by Clean Cut.
+        six_to_seven_qa_label = _make_label(Vector2.ZERO, 19)
+        six_to_seven_qa_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+        six_to_seven_qa_label.text = "QA RUN · SIX → SEVEN"
+        six_to_seven_qa_label.add_theme_color_override("font_color", Color("#d8ff56"))
+        six_to_seven_qa_label.add_theme_color_override("font_outline_color", Color.BLACK)
+        six_to_seven_qa_label.add_theme_constant_override("outline_size", 7)
+        six_to_seven_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        six_to_seven_qa_label.hide()
     if OS.has_feature("web") and OS.has_feature("performance_review"):
         if bool(JavaScriptBridge.eval("!!window.__auraPerformance?.enabled",true)):
             performance_probe=load("res://scripts/performance_probe.gd").new(self,"creator-device",bool(JavaScriptBridge.eval("!!window.__auraPerformance?.detailed",true)))
@@ -433,6 +434,9 @@ func _show_ui() -> void:
         map_select.refresh(presentation.position, presentation.view)
 
 func _update_text() -> void:
+    if six_to_seven_qa_label != null and six_to_seven_qa_label.visible:
+        six_to_seven_qa_label.position = presentation.position + Vector2(0, 78)
+        six_to_seven_qa_label.size.x = presentation.view.x
     var menu_backdrop := mode in ["menu","heroes","maps"] or hero.is_empty()
     if factory_plate != null:
         factory_plate.visible = map_geometry != null and not menu_backdrop

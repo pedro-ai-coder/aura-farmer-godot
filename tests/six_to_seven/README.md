@@ -22,7 +22,7 @@ In the protected Vercel preview, pick a hero in the Garage and choose Solo.
 Select Ruin Alley or MSG Factory, turn on **QA: SIX → SEVEN**, and select
 **Start Run**. The run starts with the legal Epic Level 1 passive equipped.
 Keep enemies in your starter weapon's range. Watch for the cue on hit six,
-then the burst and contact marks on hit seven. **Play Again** repeats the
+then the burst and contact marks on hit seven. **Try Again** repeats the
 QA loadout. Return to the Garage and leave the toggle off for standard
 progression. QA run results are never recorded in the profile.
 
