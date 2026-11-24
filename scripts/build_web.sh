@@ -5,6 +5,12 @@ set -euo pipefail
 if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == perf/m0-mobile-* ]]; then
     PERFORMANCE_REVIEW="${PERFORMANCE_REVIEW:-1}"
 fi
+# The dedicated Six -> Seven review branch is opt-in and never affects ordinary
+# previews or production. It includes the review renderer and authoritative hook.
+SIX_TO_SEVEN_REVIEW="${SIX_TO_SEVEN_REVIEW:-0}"
+if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == preview/six-to-seven-vercel-v1 ]]; then
+    SIX_TO_SEVEN_REVIEW=1
+fi
 # Reproducible Godot Web export for Vercel's standard Linux build image.
 # Uses only official Godot 4.7.2 binaries, verified against published SHA-256.
 VERSION="4.7.2"
@@ -112,6 +118,9 @@ run_godot() {
 run_godot import --headless --path . --import
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
+if [[ "$SIX_TO_SEVEN_REVIEW" == "1" ]]; then
+    EXPORT_PRESET="Web Six to Seven Review"
+fi
 run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
