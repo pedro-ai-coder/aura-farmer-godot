@@ -23,7 +23,7 @@ var layout: BoxContainer
 var accumulator := 0.0
 var paused := false
 var automatic := false
-var build_sha := "uncommitted"
+var build_sha := str(ProjectSettings.get_setting("qa/passive_vfx_lab_commit", "uncommitted"))
 
 func _ready() -> void:
     var canvas := ColorRect.new()
@@ -51,7 +51,10 @@ func _ready() -> void:
     column.add_child(controls)
     passive = _picker(controls, [], 186)
     for id: String in Offers.PASSIVE_DATA:
-        passive.add_item(Offers.PASSIVE_DATA[id].name)
+        var title_text: String = Offers.PASSIVE_DATA[id].name
+        if OS.has_feature("web") and id == "six-to-seven":
+            title_text = "Six to Seven"
+        passive.add_item(title_text)
         passive.set_item_metadata(passive.item_count - 1, id)
         if id == "six-to-seven":
             passive.select(passive.item_count - 1)
@@ -191,14 +194,45 @@ func _update_clock() -> void:
 
 func _screenshot() -> void:
     await RenderingServer.frame_post_draw
-    var path := "user://passive-vfx-%d.png" % Time.get_ticks_msec()
-    var error := get_viewport().get_texture().get_image().save_png(path)
+    var filename := "passive-vfx-%d.png" % Time.get_ticks_msec()
+    var image := get_viewport().get_texture().get_image()
+    if OS.has_feature("web"):
+        JavaScriptBridge.download_buffer(image.save_png_to_buffer(), filename, "image/png")
+        status.text = "Screenshot download requested"
+        return
+    var path := "user://" + filename
+    var error := image.save_png(path)
     status.text = ProjectSettings.globalize_path(path) if error == OK else error_string(error)
 
 func _save_traces() -> void:
     var stem := "user://passive-vfx-%d" % Time.get_ticks_msec()
-    var errors := _export(stem)
-    status.text = ("Saved both traces in " + ProjectSettings.globalize_path("user://")) if not errors else "Trace error: " + error_string(errors)
+    var error := _export(stem)
+    if error == OK and OS.has_feature("web"):
+        error = _download_traces(stem)
+        status.text = "Trace download requested" if error == OK else error_string(error)
+        return
+    status.text = ("Saved both traces in " + ProjectSettings.globalize_path("user://")) if error == OK else "Trace error: " + error_string(error)
+
+func _download_traces(stem: String) -> Error:
+    var bundle := stem + "-traces.zip"
+    var zip := ZIPPacker.new()
+    var error := zip.open(bundle)
+    if error != OK:
+        return error
+    for variant: String in ["baseline", "candidate"]:
+        var data := FileAccess.get_file_as_bytes(stem + "-" + variant + ".zip")
+        error = zip.start_file(variant + ".zip")
+        if error == OK:
+            error = zip.write_file(data)
+        if error == OK:
+            error = zip.close_file()
+        if error != OK:
+            zip.close()
+            return error
+    error = zip.close()
+    if error == OK:
+        JavaScriptBridge.download_buffer(FileAccess.get_file_as_bytes(bundle), bundle.get_file(), "application/zip")
+    return error
 
 func _export(stem: String) -> Error:
     for game in games:

@@ -21,7 +21,6 @@ if [[ "${PASSIVE_VFX_REVIEW:-0}" == "1" ]]; then
         echo "ERROR: The Passive VFX Lab export requires the Vercel Preview environment." >&2
         exit 2
     fi
-    python3 tests/passive_vfx_lab/prepare_web_preview.py --prepare "$ROOT"
 fi
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_approved_hero_sheets.py
@@ -34,6 +33,9 @@ if [[ -z "$BUILD_SHA" ]]; then BUILD_SHA="$(git rev-parse HEAD)"; fi
 if [[ ! "$BUILD_SHA" =~ ^[a-fA-F0-9]{7,40}$ ]]; then
     echo "ERROR: Invalid build revision." >&2
     exit 2
+fi
+if [[ "${PASSIVE_VFX_REVIEW:-0}" == "1" ]]; then
+    python3 tests/passive_vfx_lab/prepare_web_preview.py --prepare "$ROOT" --revision "$BUILD_SHA"
 fi
 EXPORT_BASENAME="game-${BUILD_SHA:0:12}"
 rm -rf "$ROOT/build/web"

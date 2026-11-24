@@ -11,7 +11,7 @@ REVIEW_PATH = "qa/passive_vfx_lab"
 SCENE = f"res://{REVIEW_PATH}/main.tscn"
 
 
-def prepare(root: Path) -> None:
+def prepare(root: Path, revision: str | None) -> None:
     destination = root / REVIEW_PATH
     destination.mkdir(parents=True, exist_ok=True)
     for name in LAB_FILES:
@@ -27,6 +27,13 @@ def prepare(root: Path) -> None:
     )
     if replaced != 1:
         raise ValueError("Expected one Godot main scene setting")
+    if revision is not None:
+        if re.fullmatch(r"[a-fA-F0-9]{7,40}", revision) is None:
+            raise ValueError("Invalid preview revision")
+        setting = f'passive_vfx_lab_commit="{revision}"'
+        config, updated = re.subn(r"(?m)^passive_vfx_lab_commit=.*$", setting, config)
+        if updated == 0:
+            config += "\n[qa]\n\n" + setting + "\n"
     project.write_text(config, encoding="utf-8")
 
 
@@ -48,8 +55,9 @@ if __name__ == "__main__":
     operation = parser.add_mutually_exclusive_group(required=True)
     operation.add_argument("--prepare", type=Path)
     operation.add_argument("--verify", type=Path)
+    parser.add_argument("--revision")
     args = parser.parse_args()
     if args.prepare is not None:
-        prepare(args.prepare.resolve())
+        prepare(args.prepare.resolve(), args.revision)
     else:
         verify(args.verify.resolve())
