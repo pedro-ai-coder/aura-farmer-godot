@@ -74,6 +74,8 @@ var weapon_presentation=WeaponPresentationScript.new()
 const CombatAudioScript=preload("res://scripts/combat_audio.gd")
 var combat_audio
 var passive_feedback=PassiveFeedbackScript.new()
+const SIX_TO_SEVEN_VFX_PATH := "res://scripts/vfx/six_to_seven.gd"
+var six_to_seven_vfx: RefCounted
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -205,6 +207,8 @@ var pickup_feedback: Array[Dictionary] = []
 func _ready() -> void:
     get_window().title="CLUTCHPUNKS"
     rng.seed = 451
+    if OS.has_feature("six_to_seven_review"):
+        _enable_six_to_seven_review()
     _load_profile()
     combat_audio=CombatAudioScript.new();add_child(combat_audio)
     if weapon_presentation!=null:weapon_presentation.audio_feedback=combat_audio
@@ -492,6 +496,7 @@ func start_run(index: int) -> void:
         return
     if weapon_presentation!=null:weapon_presentation.prepare_identity(str(HEROES[index]["id"]),hero_appearance,art.hero_sheets)
     if passive_feedback!=null:passive_feedback.reset()
+    if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if combat_audio!=null:combat_audio.reset()
     map_geometry = SoloMaps.FactoryGeometry if map_id == SoloMaps.MSG_FACTORY else null
     if map_geometry != null and factory_plate == null:
@@ -2057,6 +2062,22 @@ func _use_flex() -> void:
             if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
                 enemy["taunt_until"] = run_time + 2.0
 
+func _enable_six_to_seven_review() -> void:
+    if six_to_seven_vfx != null:
+        return
+    var renderer := load(SIX_TO_SEVEN_VFX_PATH) as Script
+    if renderer == null:
+        push_error("Six to Seven review renderer is missing from the review build")
+        return
+    six_to_seven_vfx = renderer.new()
+    if passive_feedback != null:
+        passive_feedback.suppress_six_to_seven_ring = true
+    passive_burst_resolved.connect(_present_passive_burst)
+
+func _present_passive_burst(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary]) -> void:
+    if id == &"six-to-seven" and mode in ["playing", "won"]:
+        six_to_seven_vfx.burst(center, radius, at, hits)
+
 func _toggle_pause() -> void:
     if mode == "playing":
         mode = "paused"
@@ -2075,6 +2096,8 @@ func _finish(won: bool) -> void:
     hero_state["flex_caption_until"] = 0.0
     for key in ["flex_beats","flex_success","flex_slams","verdict_count","flex_absorbed","flex_finisher"]: hero_state.erase(key)
     mode = "won" if won else "lost"
+    # A killing burst is emitted after this reset and remains visible briefly.
+    if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     _clear_touch()
     var result := {
@@ -2114,6 +2137,7 @@ func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
+    if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     mode = "menu"
     _clear_touch()
@@ -2320,6 +2344,11 @@ func _draw() -> void:
     else:
         _draw_ruin_alley()
     _draw_recovery()
+    var six_vfx_time := run_time + (finish_visual_age if mode == "won" else 0.0)
+    if six_to_seven_vfx != null:
+        if mode == "playing" and int(passive_timers.get("six_counter", 0)) == 6 and _passive_level("six-to-seven") > 0:
+            six_to_seven_vfx.draw_armed(self, player_pos)
+        six_to_seven_vfx.draw_ground(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
@@ -2360,6 +2389,8 @@ func _draw() -> void:
     if flex_time > 0.0 and hero["id"] == "sigma" and enemies.has(sigma_target):
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
+    if six_to_seven_vfx != null:
+        six_to_seven_vfx.draw_contacts(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
     _draw_depth_actors()
     if map_geometry != null:
         for enemy: Dictionary in enemies:

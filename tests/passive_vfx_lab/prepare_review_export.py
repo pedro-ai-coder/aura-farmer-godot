@@ -8,7 +8,7 @@ import shutil
 SOURCE = Path(__file__).resolve().parents[2]
 ENTRY = "res://tests/passive_vfx_lab/main.tscn"
 LAB_FILES = (
-    "main.tscn", "lab.gd", "lab_run.gd", "burst_vfx.gd", "candidate_feedback.gd",
+    "main.tscn", "lab.gd", "lab_run.gd", "candidate_feedback.gd",
     "scenario_builds.gd", "qa_recorder.gd",
 )
 
@@ -33,7 +33,7 @@ def stage(output: Path) -> None:
     web = presets.split("[preset.0.options]", 1)[0]
     include = next(line for line in web.splitlines() if line.startswith("include_filter="))
     exclude = next(line for line in web.splitlines() if line.startswith("exclude_filter="))
-    exclude = exclude.replace(",tests/*", "")
+    exclude = exclude.replace(",tests/*", "").replace(",scripts/vfx/*", "")
     (output / "export_presets.cfg").write_text(
         f'''[preset.0]
 name="Passive VFX Lab Windows"
