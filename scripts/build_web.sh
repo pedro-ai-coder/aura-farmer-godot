@@ -34,6 +34,11 @@ if [[ ! "$BUILD_SHA" =~ ^[a-fA-F0-9]{7,40}$ ]]; then
     echo "ERROR: Invalid build revision." >&2
     exit 2
 fi
+# Git-source API deployments may omit VERCEL_GIT_COMMIT_REF; the dedicated
+# preview commit remains an explicit opt-in fallback for that deployment path.
+if git log -1 --format=%s | grep -Fq "Six to Seven Vercel Preview"; then
+    SIX_TO_SEVEN_REVIEW=1
+fi
 EXPORT_BASENAME="game-${BUILD_SHA:0:12}"
 rm -rf "$ROOT/build/web"
 mkdir -p build/web
