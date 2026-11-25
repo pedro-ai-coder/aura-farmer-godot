@@ -31,3 +31,5 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 Read only task-relevant sections. Distinguish APPROVED, PROPOSED, EXPERIMENTAL, UNRESOLVED and SUPERSEDED; preserve exact links, approval evidence and historical supersession.
 
 - `NO_U_REVERSE_IMPACT_V2.md` records experimental rules and acceptance. `AI_ACTION_AUDIT_NO_U_V2.md` maintains the append-only action audit.
+
+- `NO_U_REVERSE_IMPACT_V2_DELIVERY.md` records the protected playable source, native/Web evidence, QA results and unresolved creator decisions.
