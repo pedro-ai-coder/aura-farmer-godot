@@ -1,0 +1,762 @@
+{
+  "source": "81a47c47872124a2a91021e285fdea0ac15765e6",
+  "suites": {
+    "normal": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 32,
+        "impact": 72,
+        "ready": 190,
+        "recovery": 102
+      },
+      "suite": "normal",
+      "synthetic": true,
+      "viewport": "(1280.0, 789.0)",
+      "framebuffer_pixels": [
+        1200,
+        739
+      ]
+    },
+    "slow": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 31,
+        "impact": 71,
+        "recovery": 101
+      },
+      "suite": "slow",
+      "synthetic": true,
+      "viewport": "(1280.0, 789.0)",
+      "framebuffer_pixels": [
+        1200,
+        739
+      ]
+    },
+    "dense": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            },
+            {
+              "hp_lost": 21.0,
+              "id": 20,
+              "position": [
+                881.955078125,
+                467.019287109375
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 24,
+              "position": [
+                897.40576171875,
+                525.631896972656
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            },
+            {
+              "hp_lost": 21.0,
+              "id": 20,
+              "position": [
+                881.955078125,
+                467.019287109375
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 24,
+              "position": [
+                897.40576171875,
+                525.631896972656
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 31,
+        "impact": 71,
+        "recovery": 101
+      },
+      "suite": "dense",
+      "synthetic": true,
+      "viewport": "(1280.0, 789.0)",
+      "framebuffer_pixels": [
+        1200,
+        739
+      ]
+    },
+    "reduced": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            },
+            {
+              "hp_lost": 21.0,
+              "id": 20,
+              "position": [
+                881.955078125,
+                467.019287109375
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 24,
+              "position": [
+                897.40576171875,
+                525.631896972656
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            },
+            {
+              "hp_lost": 21.0,
+              "id": 20,
+              "position": [
+                881.955078125,
+                467.019287109375
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 24,
+              "position": [
+                897.40576171875,
+                525.631896972656
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 31,
+        "impact": 71,
+        "recovery": 101
+      },
+      "suite": "reduced",
+      "synthetic": true,
+      "viewport": "(1280.0, 789.0)",
+      "framebuffer_pixels": [
+        1200,
+        739
+      ]
+    },
+    "mobile": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            },
+            {
+              "hp_lost": 21.0,
+              "id": 20,
+              "position": [
+                881.955078125,
+                467.019287109375
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 24,
+              "position": [
+                897.40576171875,
+                525.631896972656
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            },
+            {
+              "hp_lost": 21.0,
+              "id": 20,
+              "position": [
+                881.955078125,
+                467.019287109375
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 24,
+              "position": [
+                897.40576171875,
+                525.631896972656
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 31,
+        "impact": 71,
+        "recovery": 101
+      },
+      "suite": "mobile",
+      "synthetic": true,
+      "viewport": "(1125.0, 520.0)",
+      "framebuffer_pixels": [
+        843,
+        390
+      ]
+    },
+    "portrait": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 32,
+        "impact": 72,
+        "ready": 190,
+        "recovery": 102
+      },
+      "suite": "portrait",
+      "synthetic": true,
+      "viewport": "(520.0, 1125.0)",
+      "framebuffer_pixels": [
+        390,
+        843
+      ]
+    },
+    "hud": {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "baseline": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "candidate": [
+        {
+          "active_s": 3.11666666666666,
+          "center": [
+            875.0,
+            540.0
+          ],
+          "contacts": [
+            {
+              "hp_lost": 35.0,
+              "id": 1,
+              "position": [
+                875.0,
+                540.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 2,
+              "position": [
+                911.0,
+                486.0
+              ]
+            },
+            {
+              "hp_lost": 35.0,
+              "id": 3,
+              "position": [
+                918.0,
+                586.0
+              ]
+            }
+          ],
+          "frame": 67,
+          "id": "six-to-seven",
+          "radius": 90.0
+        }
+      ],
+      "engine": "4.7.2-stable (official)",
+      "rendered_movie_fps": 30,
+      "seed": 451,
+      "shots": {
+        "armed": 32,
+        "impact": 72,
+        "ready": 190,
+        "recovery": 102
+      },
+      "suite": "hud",
+      "synthetic": true,
+      "viewport": "(1280.0, 789.0)",
+      "framebuffer_pixels": [
+        1200,
+        739
+      ]
+    }
+  }
+}

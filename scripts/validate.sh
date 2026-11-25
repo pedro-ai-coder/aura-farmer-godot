@@ -188,6 +188,9 @@ python3 -m unittest discover -s tests -p test_weapon_presence_pack.py
 run_check weapon-presence-events --headless --path . --script res://tests/weapon_presence/test_contract.gd
 run_check weapon-presence-parity --headless --path . --script res://tests/weapon_presence/test_parity.gd
 
+# Regression: creator-approved Six to Seven V3 is active in ordinary runs.
+run_check six-to-seven-production --headless --path . --script res://tests/six_to_seven/test_integration.gd -- v3
+run_check six-to-seven-lab --headless --path . --script res://tests/passive_vfx_lab/test_lab.gd
 run_check passive-feedback-events --headless --path . --script res://tests/passive_feedback/test_contract.gd
 run_check passive-feedback-parity --headless --path . --script res://tests/passive_feedback/test_parity.gd
 run_check passive-feedback-layout --headless --path . --script res://tests/passive_feedback/test_layout.gd

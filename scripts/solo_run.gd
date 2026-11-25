@@ -1,4 +1,7 @@
 extends Node2D
+
+## Optional post-resolution observer. Ordinary runs have no subscriber.
+signal passive_burst_resolved(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary])
 const Typography = preload("res://scripts/clean_cut_typography.gd")
 
 const SoloClock = preload("res://scripts/solo_clock.gd")
@@ -71,6 +74,12 @@ var weapon_presentation=WeaponPresentationScript.new()
 const CombatAudioScript=preload("res://scripts/combat_audio.gd")
 var combat_audio
 var passive_feedback=PassiveFeedbackScript.new()
+const SIX_TO_SEVEN_VFX_PATH := "res://scripts/vfx/six_to_seven.gd"
+const SIX_TO_SEVEN_NEON_PATH := "res://scripts/vfx/six_to_seven_neon_impact.gd"
+var six_to_seven_vfx: RefCounted
+var six_to_seven_neon := false
+var six_to_seven_qa := false
+var six_to_seven_qa_label: Label
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -202,6 +211,12 @@ var pickup_feedback: Array[Dictionary] = []
 func _ready() -> void:
     get_window().title="CLUTCHPUNKS"
     rng.seed = 451
+    if OS.has_feature("six_to_seven_review"):
+        # The existing comparison preview keeps its V2-first selection.
+        _enable_six_to_seven_review()
+    else:
+        # Creator-approved V3 is the normal in-game presentation; no QA controls.
+        _enable_six_to_seven_review(true)
     _load_profile()
     combat_audio=CombatAudioScript.new();add_child(combat_audio)
     if weapon_presentation!=null:weapon_presentation.audio_feedback=combat_audio
@@ -306,6 +321,16 @@ func _ready() -> void:
     layer.add_child(map_select)
     map_select.install(self)
     map_select.refresh(presentation.position, presentation.view)
+    if OS.has_feature("six_to_seven_review"):
+        # Install outside the legacy gameplay controls hidden by Clean Cut.
+        six_to_seven_qa_label = _make_label(Vector2.ZERO, 19)
+        six_to_seven_qa_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+        six_to_seven_qa_label.text = "QA RUN · SIX → SEVEN"
+        six_to_seven_qa_label.add_theme_color_override("font_color", Color("#d8ff56"))
+        six_to_seven_qa_label.add_theme_color_override("font_outline_color", Color.BLACK)
+        six_to_seven_qa_label.add_theme_constant_override("outline_size", 7)
+        six_to_seven_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        six_to_seven_qa_label.hide()
     if OS.has_feature("web") and OS.has_feature("performance_review"):
         if bool(JavaScriptBridge.eval("!!window.__auraPerformance?.enabled",true)):
             performance_probe=load("res://scripts/performance_probe.gd").new(self,"creator-device",bool(JavaScriptBridge.eval("!!window.__auraPerformance?.detailed",true)))
@@ -349,6 +374,8 @@ func _style_button(button: Button) -> void:
     button.add_theme_font_size_override("font_size", 19)
 
 func _show_ui() -> void:
+    if six_to_seven_qa_label != null:
+        six_to_seven_qa_label.visible = six_to_seven_qa and mode in ["playing", "paused", "won", "lost"]
     if combat_audio!=null:combat_audio.set_suspended(mode!="playing")
     var card_mode := mode == "choice" or mode == "replace" or mode == "legendary"
     confirm_button.visible = card_mode or mode == "confirm_exit" or mode == "profile_import" or mode == "profile_export"
@@ -413,6 +440,9 @@ func _show_ui() -> void:
         map_select.refresh(presentation.position, presentation.view)
 
 func _update_text() -> void:
+    if six_to_seven_qa_label != null and six_to_seven_qa_label.visible:
+        six_to_seven_qa_label.position = presentation.position + Vector2(0, 78)
+        six_to_seven_qa_label.size.x = presentation.view.x
     var menu_backdrop := mode in ["menu","heroes","maps"] or hero.is_empty()
     if factory_plate != null:
         factory_plate.visible = map_geometry != null and not menu_backdrop
@@ -473,9 +503,13 @@ func close_map_select() -> void:
     _clear_touch()
     _show_ui()
 
-func start_selected_map(id: StringName) -> void:
+func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false) -> void:
     if mode == "maps" and SoloMaps.NAMES.has(id):
         map_id = id
+        if OS.has_feature("six_to_seven_review"):
+            _enable_six_to_seven_review(neon_requested)
+            six_to_seven_qa_label.text = "QA RUN / SIX TO SEVEN / %s" % ("V3 NEON IMPACT" if six_to_seven_neon else "V2")
+        six_to_seven_qa = qa_requested and OS.has_feature("six_to_seven_review") and six_to_seven_vfx != null
         start_run(hero_index)
 
 func start_run(index: int) -> void:
@@ -489,6 +523,7 @@ func start_run(index: int) -> void:
         return
     if weapon_presentation!=null:weapon_presentation.prepare_identity(str(HEROES[index]["id"]),hero_appearance,art.hero_sheets)
     if passive_feedback!=null:passive_feedback.reset()
+    if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if combat_audio!=null:combat_audio.reset()
     map_geometry = SoloMaps.FactoryGeometry if map_id == SoloMaps.MSG_FACTORY else null
     if map_geometry != null and factory_plate == null:
@@ -498,8 +533,9 @@ func start_run(index: int) -> void:
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
     run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
-    profile["selected"] = HEROES[index]["id"]
-    _save_profile()
+    if not six_to_seven_qa:
+        profile["selected"] = HEROES[index]["id"]
+        _save_profile()
     hero = HEROES[index].duplicate(true)
     hero_state = {"moving_since": -1.0, "stopped_since": -1.0, "lock_id": -1, "lock_since": 0.0, "lock_lost": 0.0, "certified": false, "certified_ready": 0.0, "flex_boss_damage": 0.0, "last_contact": -1000.0}
     next_enemy_id = 1
@@ -573,6 +609,9 @@ func start_run(index: int) -> void:
     sigma_target = {}
     rng.seed = 451 + 17 * index
     mode = "playing"
+    if six_to_seven_qa:
+        _apply_card({"type": "passive", "id": "six-to-seven", "rarity": "epic", "level": 1})
+        print("Six to Seven QA start: map=%s hero=%s equipped=%d" % [map_id, hero["id"], _passive_level("six-to-seven")])
     _show_ui()
     _update_text()
     _update_camera(0.0, true)
@@ -765,10 +804,22 @@ func _primary_activation(target: Vector2) -> void:
             sixth_count = 0
             passive_timers["six_ready"] = run_time + 2.0
             var amount: float = _base_power() * (0.35 + 0.15 * float(_passive_level("six-to-seven") - 1))
+            const RADIUS := 90.0
+            var observed := passive_burst_resolved.has_connections()
+            var hits: Array[Dictionary] = []
             for e: Dictionary in enemies.duplicate():
-                if Vector2(e["pos"]).distance_to(target) <= 90.0:
+                if Vector2(e["pos"]).distance_to(target) <= RADIUS:
+                    var hp_before := float(e["hp"]) if observed else 0.0
                     _hit_enemy(e, amount)
-        passive_timers["six_counter"] = sixth_count
+                    if observed:
+                        var effective := hp_before - maxf(0.0, float(e["hp"]))
+                        if effective > 0.0:
+                            hits.append({"id": int(e["id"]), "position": Vector2(e["pos"]), "hp_lost": effective})
+            passive_timers["six_counter"] = sixth_count
+            if observed:
+                passive_burst_resolved.emit(&"six-to-seven", target, RADIUS, run_time, hits)
+        else:
+            passive_timers["six_counter"] = sixth_count
     if passive_feedback!=null:passive_feedback.primary(self,target,feedback_cook,feedback_six)
 
 func _base_power() -> float:
@@ -2042,6 +2093,28 @@ func _use_flex() -> void:
             if not bool(SoloEnemyRulesScript.DATA[enemy["kind"]]["boss"]) and player_pos.distance_to(enemy["pos"]) <= 180.0:
                 enemy["taunt_until"] = run_time + 2.0
 
+func _enable_six_to_seven_review(neon: bool = false) -> void:
+    if six_to_seven_vfx != null and six_to_seven_neon == neon:
+        return
+    var renderer := load(SIX_TO_SEVEN_NEON_PATH if neon else SIX_TO_SEVEN_VFX_PATH) as Script
+    if renderer == null:
+        push_error("Six to Seven review renderer is missing from the review build")
+        return
+    six_to_seven_vfx = renderer.new()
+    six_to_seven_neon = neon
+    if passive_feedback != null:
+        passive_feedback.suppress_six_to_seven_ring = true
+    if not passive_burst_resolved.is_connected(_present_passive_burst):
+        passive_burst_resolved.connect(_present_passive_burst)
+
+func _present_passive_burst(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary]) -> void:
+    if id == &"six-to-seven" and mode in ["playing", "won"]:
+        six_to_seven_vfx.burst(center, radius, at, hits)
+        if six_to_seven_qa:
+            print("Six to Seven QA burst: ", JSON.stringify({"primary_hits": primary_hits,
+                "time": at, "center": [center.x, center.y], "radius": radius, "contacts": hits,
+                "visual": "v3" if six_to_seven_neon else "v2", "reduced_motion": profile.settings.reducedMotion}))
+
 func _toggle_pause() -> void:
     if mode == "playing":
         mode = "paused"
@@ -2060,6 +2133,8 @@ func _finish(won: bool) -> void:
     hero_state["flex_caption_until"] = 0.0
     for key in ["flex_beats","flex_success","flex_slams","verdict_count","flex_absorbed","flex_finisher"]: hero_state.erase(key)
     mode = "won" if won else "lost"
+    # A killing burst is emitted after this reset and remains visible briefly.
+    if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     _clear_touch()
     var result := {
@@ -2068,8 +2143,9 @@ func _finish(won: bool) -> void:
         "xp": total_xp, "damage": run_metrics["damage"], "healing": run_metrics["healing"],
         "protection": run_metrics["protection"], "flexes": run_metrics["flexes"]
     }
-    profile = ProfileStoreScript.record(profile, result, mode)
-    _save_profile()
+    if not six_to_seven_qa:
+        profile = ProfileStoreScript.record(profile, result, mode)
+        _save_profile()
     _show_ui()
 
 func _load_profile() -> void:
@@ -2099,6 +2175,8 @@ func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
+    six_to_seven_qa = false
+    if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     mode = "menu"
     _clear_touch()
@@ -2305,10 +2383,15 @@ func _draw() -> void:
     else:
         _draw_ruin_alley()
     _draw_recovery()
+    var six_vfx_time := run_time + (finish_visual_age if mode == "won" else 0.0)
+    if six_to_seven_vfx != null:
+        if mode == "playing" and int(passive_timers.get("six_counter", 0)) == 6 and _passive_level("six-to-seven") > 0:
+            six_to_seven_vfx.draw_armed(self, player_pos)
+        six_to_seven_vfx.draw_ground(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
-    if weapon_presentation==null:_draw_danger_geometry()
+    if weapon_presentation == null and six_to_seven_vfx == null: _draw_danger_geometry()
     if weapon_presentation==null:
         for area: Dictionary in weapon_areas:
             if area.get("shape", "sector") == "line":
@@ -2346,7 +2429,9 @@ func _draw() -> void:
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
-    if map_geometry != null:
+    if six_to_seven_vfx != null:
+        six_to_seven_vfx.draw_contacts(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
+    if map_geometry != null or six_to_seven_vfx != null:
         for enemy: Dictionary in enemies:
             if run_time >= float(enemy.get("born", 0.0)):
                 _draw_enemy_aim_warning(enemy)
@@ -2354,7 +2439,7 @@ func _draw() -> void:
         for effect: Dictionary in attack_visuals:WeaponVisualsScript.draw_attack(self,effect)
     else:weapon_presentation.draw_impacts(self,run_time,bool(profile["settings"]["reducedMotion"]))
     _draw_combat_feedback()
-    if weapon_presentation!=null:_draw_danger_geometry()
+    if weapon_presentation != null or six_to_seven_vfx != null: _draw_danger_geometry()
     for shot: Dictionary in hostile_shots:
         var shot_pos: Vector2 = shot["pos"]
         var shot_dir: Vector2 = shot["dir"]
@@ -2463,7 +2548,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
         color = Color(0.79, 0.38, 0.98)
     elif e["kind"] == "boss":
         color = Color(0.99, 0.30, 0.25)
-    if map_geometry == null:
+    if map_geometry == null and six_to_seven_vfx == null:
         _draw_enemy_aim_warning(e)
     if float(e.get("shield", 0.0)) > 0.0 and run_time < float(e.get("shield_until", 0.0)):
         draw_arc(e["pos"], radius + 6.0, 0.0, TAU, 32, Color(0.50, 0.81, 0.98), 3.0)

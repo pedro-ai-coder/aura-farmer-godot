@@ -16,6 +16,10 @@ ENGINE_SHA="cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
 TEMPLATE_SHA="f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
+SIX_TO_SEVEN_REVIEW=0
+if [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-gameplay-v1" || "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-neon-impact-v3" ) ]]; then
+    SIX_TO_SEVEN_REVIEW=1
+fi
 python3 scripts/verify_pixel_vixen.py
 python3 scripts/verify_approved_hero_sheets.py
 python3 scripts/verify_full_hero_atlases.py
@@ -109,10 +113,16 @@ run_godot() {
         exit 5
     fi
 }
-run_godot import --headless --path . --import
+EXPORT_ROOT="$ROOT"
+if [[ "$SIX_TO_SEVEN_REVIEW" == "1" ]]; then
+    EXPORT_ROOT="$WORKDIR/six-to-seven-review"
+    python3 tests/six_to_seven/review_export.py --stage "$EXPORT_ROOT" --target web
+    echo "Exporting Six to Seven gameplay review"
+fi
+run_godot import --headless --path "$EXPORT_ROOT" --import
 EXPORT_PRESET="Web"
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then EXPORT_PRESET="Web Performance Review"; fi
-run_godot export --headless --path . --export-release "$EXPORT_PRESET" "build/web/$EXPORT_BASENAME.html"
+run_godot export --headless --path "$EXPORT_ROOT" --export-release "$EXPORT_PRESET" "$ROOT/build/web/$EXPORT_BASENAME.html"
 mv "build/web/$EXPORT_BASENAME.html" build/web/index.html
 cp web/platform.js web/aura.webmanifest build/web/
 # Reuse the exact approved button face and already licensed display font for
@@ -125,7 +135,11 @@ done
 cp assets/fonts/hero-clash/Archivo.ttf build/web/fullscreen-archivo.ttf
 cp assets/fonts/hero-clash/OFL-Archivo.txt build/web/fullscreen-font-license.txt
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then cp web/performance.js build/web/; fi
-printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
+if [[ "$SIX_TO_SEVEN_REVIEW" == "1" ]]; then
+    printf '{"commit":"%s","engine":"%s","executable":"%s","review":"six_to_seven_review"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
+else
+    printf '{"commit":"%s","engine":"%s","executable":"%s"}\n' "$BUILD_SHA" "$VERSION" "$EXPORT_BASENAME" > build/web/build.json
+fi
 
 for file in platform.js aura.webmanifest fullscreen-button.png fullscreen-button-hover.png fullscreen-button-focus.png fullscreen-button-pressed.png fullscreen-archivo.ttf fullscreen-font-license.txt index.html "$EXPORT_BASENAME.js" "$EXPORT_BASENAME.wasm" "$EXPORT_BASENAME.pck" build.json; do
     if [[ ! -s "build/web/$file" ]]; then
@@ -147,5 +161,11 @@ python3 scripts/verify_passive_feedback.py "build/web/$EXPORT_BASENAME.pck"
 PERFORMANCE_CHECK=()
 if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); fi
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
+if [[ "$SIX_TO_SEVEN_REVIEW" == "1" ]]; then
+    python3 tests/six_to_seven/review_export.py --verify "build/web/$EXPORT_BASENAME.pck" --review
+else
+    # Release gate: approved V3 class and its V2 base must be packaged in normal builds.
+    python3 tests/six_to_seven/review_export.py --verify "build/web/$EXPORT_BASENAME.pck"
+fi
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web

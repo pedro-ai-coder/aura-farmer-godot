@@ -11,6 +11,8 @@ var choices: Dictionary[StringName, Button]
 var previews: Dictionary[StringName, Rect2]
 var back: Button
 var start: Button
+var qa: Button
+var visual: Button
 
 func install(owner_game) -> void:
     game = owner_game
@@ -24,8 +26,20 @@ func install(owner_game) -> void:
         choices[id] = _button(Maps.NAMES[id], _select.bind(id))
         choices[id].toggle_mode = true
     back = _button("BACK", game.close_map_select)
-    start = _button("START RUN", func(): game.start_selected_map(selected), true)
+    start = _button("START RUN", _start_run, true)
+    if OS.has_feature("six_to_seven_review"):
+        qa = _button("QA: SIX → SEVEN OFF", func(): pass)
+        qa.toggle_mode = true
+        qa.toggled.connect(func(enabled: bool):
+            qa.text = "QA: SIX → SEVEN ON" if enabled else "QA: SIX → SEVEN OFF")
+        visual = _button("VFX: V2 BASELINE", func(): pass)
+        visual.toggle_mode = true
+        visual.toggled.connect(func(neon: bool):
+            visual.text = "VFX: V3 NEON IMPACT" if neon else "VFX: V2 BASELINE")
     clear_selection()
+
+func _start_run() -> void:
+    game.start_selected_map(selected, qa != null and qa.button_pressed, visual != null and visual.button_pressed)
 
 func _button(caption: String, action: Callable, primary: bool = false) -> Button:
     var button := Button.new()
@@ -37,6 +51,9 @@ func _button(caption: String, action: Callable, primary: bool = false) -> Button
     return button
 
 func clear_selection() -> void:
+    if qa != null:
+        qa.button_pressed = false
+        visual.button_pressed = false
     _select(&"")
 
 func _select(id: StringName) -> void:
@@ -52,7 +69,11 @@ func _select(id: StringName) -> void:
     queue_redraw()
 
 func _update_focus_order() -> void:
-    var buttons: Array[Button] = [choices[Maps.RUIN_ALLEY], choices[Maps.MSG_FACTORY], back]
+    var buttons: Array[Button] = [choices[Maps.RUIN_ALLEY], choices[Maps.MSG_FACTORY]]
+    if qa != null:
+        buttons.append(qa)
+        buttons.append(visual)
+    buttons.append(back)
     if not start.disabled:
         buttons.append(start)
     for i in range(buttons.size()):
@@ -67,9 +88,10 @@ func refresh(offset: Vector2, extent: Vector2) -> void:
     position = offset
     size = extent
     var card_width := minf(440, (size.x - 64) / 2)
-    var preview_height := clampf(size.y - 250, 0, card_width * 0.75)
+    var qa_height := 60 if qa != null else 0
+    var preview_height := clampf(size.y - 250 - qa_height, 0, card_width * 0.75)
     var center := size * 0.5
-    var top := center.y - (preview_height + 190) * 0.5
+    var top := center.y - (preview_height + 190 + qa_height) * 0.5
     heading.position = Vector2(0, top)
     heading.size = Vector2(size.x, 48)
     heading.add_theme_font_size_override("font_size", 38)
@@ -86,6 +108,11 @@ func refresh(offset: Vector2, extent: Vector2) -> void:
     back.size = Vector2(card_width, 52)
     start.position = Vector2(right, bottom + 75)
     start.size = Vector2(card_width, 52)
+    if qa != null:
+        qa.position = Vector2(left, bottom + 135)
+        qa.size = Vector2(card_width, 48)
+        visual.position = Vector2(right, bottom + 135)
+        visual.size = Vector2(card_width, 48)
     if entering:
         choices[Maps.RUIN_ALLEY].grab_focus()
     queue_redraw()

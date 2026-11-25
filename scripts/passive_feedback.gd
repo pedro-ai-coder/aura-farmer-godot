@@ -15,6 +15,7 @@ const COVERAGE={
 }
 const MAX_PENDING=6
 const MAX_RINGS=4
+var suppress_six_to_seven_ring := false
 var pending: Array[Dictionary]=[]
 var current: Dictionary={}
 var current_until: float=0.0
@@ -97,7 +98,8 @@ func primary(game, target: Vector2, old_cook: int, old_six: int) -> void:
     var count: int=int(game.passive_timers.get("six_counter",0))
     if game._passive_level("six-to-seven")>0 and old_six==6 and count==0:
         notify(game,"six-to-seven","SIX → SEVEN","Seventh hit · burst activated")
-        ring(game,target,90.0,"six-to-seven")
+        if not suppress_six_to_seven_ring:
+            ring(game,target,90.0,"six-to-seven")
 
 func flex_started(game) -> void:
     for id in ["aura-viral","absolute-cinema","w-squad"]:

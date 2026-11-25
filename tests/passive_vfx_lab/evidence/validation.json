@@ -1,0 +1,138 @@
+{
+  "date_europe_lisbon": "2026-11-23",
+  "base_game_sha": "34767716e1c9b5ecb6e7361e6aced6d13d052817",
+  "tested_game_sha": "81a47c47872124a2a91021e285fdea0ac15765e6",
+  "branch": "feat/passive-vfx-lab-v1",
+  "seed": 451,
+  "lab_frames_compared": 9660,
+  "existing_regression_suites": 19,
+  "approved_assets_byte_diff": false,
+  "windows_standalone": {
+    "CLUTCHPUNKS Passive VFX Lab.exe": {
+      "size": 109268480,
+      "sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562"
+    },
+    "CLUTCHPUNKS Passive VFX Lab.pck": {
+      "size": 67679264,
+      "sha256": "2b0ea1012f95c3d6d21e88517e118be827a9e22fe2150edee299e4c61cfc265a"
+    }
+  },
+  "production_web_pck": {
+    "size": 75651096,
+    "sha256": "c86cd764f244b00701790f312b15dede70ceb30031fb054e9d7e51fa0304fca3"
+  },
+  "performance": {
+    "unit": "milliseconds",
+    "statistic": "median of three per-block P95s",
+    "native_synthetic": true,
+    "groups": {
+      "low_baseline": {
+        "median_full_frame_p95_ms": 1.316,
+        "median_burst_window_p95_ms": 1.187,
+        "median_draw_cpu_p95_ms": 0.528,
+        "median_gpu_p95_ms": 0.23
+      },
+      "low_candidate": {
+        "median_full_frame_p95_ms": 1.275,
+        "median_burst_window_p95_ms": 1.829,
+        "median_draw_cpu_p95_ms": 0.569,
+        "median_gpu_p95_ms": 0.225
+      },
+      "dense_baseline": {
+        "median_full_frame_p95_ms": 1.973,
+        "median_burst_window_p95_ms": 2.119,
+        "median_draw_cpu_p95_ms": 1.024,
+        "median_gpu_p95_ms": 0.271
+      },
+      "dense_candidate": {
+        "median_full_frame_p95_ms": 2.206,
+        "median_burst_window_p95_ms": 2.404,
+        "median_draw_cpu_p95_ms": 1.121,
+        "median_gpu_p95_ms": 0.328
+      }
+    }
+  },
+  "physical_mobile": "NOT RUN",
+  "evidence_artifacts": {
+    "captures.json": {
+      "size": 17143,
+      "sha256": "4aff689a7d1e60838cfddf35f1f0c2c6bce9efc594de2f2abd8ec56ba051f70c"
+    },
+    "hud-ready.webp": {
+      "size": 162690,
+      "sha256": "4624624e95ea2838413444ea165cbe6d66e289d046300e74a4888bce66ad3e93"
+    },
+    "hud-recovery.webp": {
+      "size": 159970,
+      "sha256": "939c675640ec9f271fd483f8eacb97bfd381f558c740bc79aed34eb339c8484c"
+    },
+    "lab-tests.log": {
+      "size": 178,
+      "sha256": "8b86bf63bb106e361b46b845fb41f340761863b7e11596a4f16bdb032fabbae2"
+    },
+    "landscape.webp": {
+      "size": 80514,
+      "sha256": "5ef09d4c25df0db4503a834057ddc62429eb2f9003d66efe97814d25b74e7570"
+    },
+    "performance.json.gz": {
+      "size": 91474,
+      "sha256": "24896315d0f82c3515635fb1d2a4f3f6c096feb54f60778da51d761f564d5f46"
+    },
+    "portrait.webp": {
+      "size": 64666,
+      "sha256": "034ed4b19f3ac4c49d31177146add571162ef40d9e77ad95ff034e8b6f295dd1"
+    },
+    "production-pack-check.log": {
+      "size": 63,
+      "sha256": "c344f9a825d04722b07e1b7cb3179fc13d5ac83719b8cb507f3010e403d593ee"
+    },
+    "README.md": {
+      "size": 6532,
+      "sha256": "64797b0b434f301eccbc499c808b9bdd7b4099f56df482c4ca2d5acac16f3035"
+    },
+    "regressions-final.log": {
+      "size": 6543,
+      "sha256": "9e0f92fe9112ecf7e70091e617dba92afbf7d8a1d4fee48b0a9f32bf0f5f2bbc"
+    },
+    "review-pack-check.log": {
+      "size": 73,
+      "sha256": "376ae47a961f078a2ab481845073775354c1bbb1d8d512272b7b763e3e673b0a"
+    },
+    "session-traces.zip": {
+      "size": 44619,
+      "sha256": "4af2cf4f578952cf1463b7c4de962eb014babf435a9591ff10b4caeb2c742fc3"
+    },
+    "six-to-seven-armed.webp": {
+      "size": 147500,
+      "sha256": "893fbe49ad97b6c078580824916754e25193c3420d37a21159b86b9a10a0a3d0"
+    },
+    "six-to-seven-dense.mp4": {
+      "size": 850295,
+      "sha256": "24f851e42da7a3ffda081b6fa37957f5292f0da0b1b2dccf37de84ef39e93d73"
+    },
+    "six-to-seven-dense.webp": {
+      "size": 192228,
+      "sha256": "3c447e1dc5823d32ada83d093c4a269e1c6f6f970601245a18fbba847f7c285a"
+    },
+    "six-to-seven-impact.webp": {
+      "size": 150436,
+      "sha256": "b90a23acc87e913d919cb18f997c96af9355f4ac601cd90ec79868c7573242a7"
+    },
+    "six-to-seven-normal.mp4": {
+      "size": 402276,
+      "sha256": "a3072987e8a7502f78c28a8a832b2ae2198a1306c0d2aefc992cdc68f82b9ca1"
+    },
+    "six-to-seven-reduced.webp": {
+      "size": 191650,
+      "sha256": "757aca84542d85ad0baf64280504281a54ff3a9bd70b33ac777aa9fcaa97bda1"
+    },
+    "six-to-seven-slow.mp4": {
+      "size": 585750,
+      "sha256": "50a49d6f15264083bb317aada7a2702796edf2aaec252f24f5cc3c2ba8d95393"
+    },
+    "web-browser-playing.log": {
+      "size": 477,
+      "sha256": "876ce59efe167b631e4c1a65d5bb2b8f99c97a3e1266ccf337a025cbf4f7ec67"
+    }
+  }
+}
