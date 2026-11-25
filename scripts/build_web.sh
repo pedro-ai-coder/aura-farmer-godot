@@ -18,7 +18,10 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 REVIEW_FEATURE=""
 REVIEW_ARGS=()
-if [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-gameplay-v1" || "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-neon-impact-v3" ) ]]; then
+if [[ "${VERCEL_ENV:-}" == "preview" && "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/passive-vfx-batch-01" ]]; then
+    REVIEW_FEATURE="passive_batch_review"
+    REVIEW_ARGS+=(--batch)
+elif [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-gameplay-v1" || "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-neon-impact-v3" ) ]]; then
     REVIEW_FEATURE="six_to_seven_review"
     REVIEW_ARGS+=(--review)
 elif [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "codex/no-u-counter-pulse" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v2" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v3" ) ]]; then

@@ -13,6 +13,10 @@ var back: Button
 var start: Button
 var qa: Button
 var visual: Button
+var batch_selected := 0
+var batch_density := 1
+var batch_candidate := true
+const BATCH_NAMES := ["BIG CHAD", "TOO SIGMA TO FALL", "SO BACK", "W SQUAD", "ABSOLUTE CINEMA", "COMBINED BUILD"]
 var no_u_density := 0
 var no_u_case := 0
 var contract_button: Button
@@ -43,6 +47,17 @@ func install(owner_game) -> void:
         visual.toggle_mode = true
         visual.toggled.connect(func(neon: bool):
             visual.text = "VFX: V3 NEON IMPACT" if neon else "VFX: V2 BASELINE")
+    elif OS.has_feature("passive_batch_review"):
+        qa = _button("BATCH QA NORMAL", func():
+            batch_density = 2 if batch_density == 1 else 1
+            qa.text = "BATCH QA DENSE" if batch_density == 2 else "BATCH QA NORMAL")
+        visual = _button(BATCH_NAMES[batch_selected], func():
+            batch_selected = (batch_selected+1)%BATCH_NAMES.size()
+            visual.text = BATCH_NAMES[batch_selected])
+        contract_button = _button("TREATMENT / CANDIDATE", func():
+            batch_candidate = not batch_candidate
+            contract_button.text = "TREATMENT / CANDIDATE" if batch_candidate else "TREATMENT / PRODUCTION BASELINE")
+        contract_button.tooltip_text = "EXPERIMENTAL artwork. Same canonical mechanics in both treatments. Controlled inputs at 1.25s; R retries. Combined = Big Chad + So Back + W Squad (one legendary)."
     elif OS.has_feature("no_u_review"):
         qa = _button(NO_U_SCENARIOS[0], _cycle_no_u)
         qa.tooltip_text = "EXPERIMENTAL / NOT FOR PRODUCTION. Choose Normal or Dense, then choose a treatment. V4 retaliates only after surviving HP loss; V1 is periodic."
@@ -65,6 +80,9 @@ func _cycle_no_u() -> void:
     _update_focus_order()
 
 func _start_run() -> void:
+    if OS.has_feature("passive_batch_review"):
+        game.start_batch_map(selected,batch_selected,batch_density,batch_candidate)
+        return
     game.start_selected_map(selected, qa != null and qa.button_pressed,
         visual != null and (no_u_treatment > 0 if OS.has_feature("no_u_review") else visual.button_pressed), no_u_density, no_u_treatment, no_u_case)
 

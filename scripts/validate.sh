@@ -198,3 +198,5 @@ python3 scripts/verify_passive_feedback.py
 
 run_check no-u-production --headless --path . --script res://tests/no_u/test_production.gd
 run_check no-u-boundaries --headless --path . --script res://tests/no_u/test_production_boundaries.gd
+
+run_check passive-batch --headless --path . --script res://tests/no_u/test_passive_batch.gd

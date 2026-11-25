@@ -1,0 +1,65 @@
+{
+  "status": "EXPERIMENTAL",
+  "creator_art_approval": false,
+  "baseline": "125604db7f78ae9ee48e82c63e37eea8a7ac57f4",
+  "tool": "built-in image_gen",
+  "prompts": "prompts.json",
+  "assets": [
+    {
+      "id": "absolute-cinema",
+      "file": "absolute-cinema.png",
+      "sha256": "39c9c1189dc565166148cf08969f553ea050cf281d483c19f49ddb459bba461b",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 2199627
+    },
+    {
+      "id": "big-chad",
+      "file": "big-chad.png",
+      "sha256": "80ed68c246667c9d62fa37596506b4055cb581d9d854579765650e845840c112",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 2010752
+    },
+    {
+      "id": "so-back",
+      "file": "so-back.png",
+      "sha256": "07ac1f6112f58a6088c5414a98742a925e252f4969fa9a7d836cd14939f481df",
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "bytes": 1212865
+    },
+    {
+      "id": "too-sigma",
+      "file": "too-sigma.png",
+      "sha256": "6eb4723ad2f8dc3e6bcc9afd16bb144fe334d1e913102c071fb99f8cd2f85b18",
+      "dimensions": [
+        1169,
+        1345
+      ],
+      "mode": "RGBA",
+      "bytes": 1534898
+    },
+    {
+      "id": "w-squad",
+      "file": "w-squad.png",
+      "sha256": "1b65541d2b19d303a97afbcc9a1faa76e84547cedd44cfd653709e8460779727",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "mode": "RGBA",
+      "bytes": 1127658
+    }
+  ],
+  "license_provenance": "Original AI-generated proposals made for this authorized CLUTCHPUNKS task; no external stock or additional service."
+}

@@ -85,6 +85,7 @@ const NO_U_REVIEW_PATH := "res://scripts/review/no_u_scenario.gd"
 const NoUReactive := preload("res://scripts/no_u_reactive.gd")
 const NoUV4 := preload("res://scripts/vfx/no_u_v4.gd")
 var no_u_runtime: RefCounted
+var batch_review: RefCounted
 var no_u_review: RefCounted
 var no_u_vfx: RefCounted
 var no_u_qa_label: Label
@@ -339,7 +340,7 @@ func _ready() -> void:
         six_to_seven_qa_label.add_theme_constant_override("outline_size", 7)
         six_to_seven_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
         six_to_seven_qa_label.hide()
-    if OS.has_feature("no_u_review"):
+    if OS.has_feature("no_u_review") or OS.has_feature("passive_batch_review"):
         no_u_qa_label = _make_label(Vector2.ZERO, 19)
         no_u_qa_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
         no_u_qa_label.add_theme_color_override("font_color", Color("#9ff7ff"))
@@ -391,7 +392,7 @@ func _style_button(button: Button) -> void:
 
 func _show_ui() -> void:
     if no_u_qa_label != null:
-        no_u_qa_label.visible = no_u_review != null and mode in ["playing", "paused", "won", "lost", "choice"]
+        no_u_qa_label.visible = (no_u_review != null or batch_review != null) and mode in ["playing", "paused", "won", "lost", "choice"]
     if six_to_seven_qa_label != null:
         six_to_seven_qa_label.visible = six_to_seven_qa and mode in ["playing", "paused", "won", "lost"]
     if combat_audio!=null:combat_audio.set_suspended(mode!="playing")
@@ -458,13 +459,16 @@ func _show_ui() -> void:
         map_select.refresh(presentation.position, presentation.view)
 
 func _update_text() -> void:
+    if no_u_qa_label != null and batch_review != null:
+        no_u_qa_label.text = batch_review.status_label(self)
+        no_u_qa_label.add_theme_font_size_override("font_size",14)
     if no_u_qa_label != null and no_u_review != null and no_u_review.has_method("status_label"):
         no_u_qa_label.text = no_u_review.status_label(self)
     if no_u_qa_label != null and no_u_qa_label.visible:
-        no_u_qa_label.position = presentation.position + Vector2(0, 78)
+        no_u_qa_label.position = presentation.position + (Vector2(0,112) if batch_review != null else Vector2(0,78))
         no_u_qa_label.size.x = presentation.view.x
     if six_to_seven_qa_label != null and six_to_seven_qa_label.visible:
-        six_to_seven_qa_label.position = presentation.position + Vector2(0, 78)
+        six_to_seven_qa_label.position = presentation.position + (Vector2(0,112) if batch_review != null else Vector2(0,78))
         six_to_seven_qa_label.size.x = presentation.view.x
     var menu_backdrop := mode in ["menu","heroes","maps"] or hero.is_empty()
     if factory_plate != null:
@@ -566,7 +570,7 @@ func start_run(index: int) -> void:
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
     run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
-    if not six_to_seven_qa and no_u_review == null:
+    if not six_to_seven_qa and no_u_review == null and batch_review == null:
         profile["selected"] = HEROES[index]["id"]
         _save_profile()
     hero = HEROES[index].duplicate(true)
@@ -647,6 +651,7 @@ func start_run(index: int) -> void:
         print("Six to Seven QA start: map=%s hero=%s equipped=%d" % [map_id, hero["id"], _passive_level("six-to-seven")])
     if no_u_review != null:
         no_u_vfx = no_u_review.prepare(self)
+    if batch_review != null: batch_review.prepare(self)
     _show_ui()
     _update_text()
     _update_camera(0.0, true)
@@ -690,6 +695,7 @@ func _process(delta: float) -> void:
         if performance_probe!=null:performance_probe.add(&"text",Time.get_ticks_usec()-perf_started)
     queue_redraw()
     if performance_probe!=null:performance_probe.process_finished()
+    if batch_review != null: batch_review.frame(self)
 
 func _update_camera(delta: float, snap: bool = false) -> void:
     var view := get_viewport_rect().size
@@ -703,6 +709,9 @@ func _advance(dt: float) -> void:
     if mode != "playing":
         return
     run_time += dt
+    if batch_review != null:
+        batch_review.tick_inputs(self)
+        if mode != "playing": return
     if no_u_review != null and no_u_review.has_method("tick_inputs"):
         no_u_review.tick_inputs(self)
         if mode != "playing": return
@@ -2216,7 +2225,7 @@ func _finish(won: bool) -> void:
         "xp": total_xp, "damage": run_metrics["damage"], "healing": run_metrics["healing"],
         "protection": run_metrics["protection"], "flexes": run_metrics["flexes"]
     }
-    if not six_to_seven_qa and no_u_review == null:
+    if not six_to_seven_qa and no_u_review == null and batch_review == null:
         profile = ProfileStoreScript.record(profile, result, mode)
         _save_profile()
     _show_ui()
@@ -2248,6 +2257,11 @@ func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
+    if batch_review != null:
+        batch_review.finish(self)
+        batch_review = null
+        passive_feedback = PassiveFeedbackScript.new()
+        passive_feedback.suppress_six_to_seven_ring = true
     six_to_seven_qa = false
     no_u_review = null
     no_u_runtime = null
@@ -2260,6 +2274,11 @@ func _return_to_menu() -> void:
     _update_text()
 
 func _unhandled_key_input(event: InputEvent) -> void:
+    if batch_review != null and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_R:
+        batch_review.finish(self)
+        start_run(hero_index)
+        get_viewport().set_input_as_handled()
+        return
     if not event.pressed or event.echo:
         return
     if event.keycode in [KEY_ENTER,KEY_KP_ENTER] and mode in ["menu","heroes"]:
@@ -2726,3 +2745,14 @@ func _exit_tree() -> void:
 
 func _no_u_is_reactive() -> bool:
     return no_u_review == null or (no_u_review.has_method("is_reactive") and no_u_review.is_reactive())
+
+func start_batch_map(id: StringName, selected: int, density: int, candidate: bool) -> void:
+    if not OS.has_feature("passive_batch_review") or mode != "maps" or not SoloMaps.NAMES.has(id): return
+    map_id = id
+    batch_review = load("res://scripts/review/passive_batch_scenario.gd").new(selected,density,candidate)
+    # The controlled builds use the canonical Tank kit so Big Chad is legal.
+    start_run(2)
+
+func qa_context() -> Dictionary:
+    return {"session_type":"scenario","scenario_id":"passive-vfx-batch-01",
+        "scenario_config":{"passive":batch_review.IDS[batch_review.selected],"candidate":batch_review.candidate,"density":batch_review.density,"map":map_id}} if batch_review != null else {"session_type":"normal_run"}
