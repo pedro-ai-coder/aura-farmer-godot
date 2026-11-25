@@ -69,3 +69,5 @@ bash scripts/validate.sh
 - `review/no_u_reverse_scenario.gd` and `vfx/no_u_reverse_impact.gd` provide experimental A/B/C fixtures, HP-loss retaliation and bounded VFX; ordinary exports exclude review resources.
 
 - V3 adds `vfx/no_u_reverse_impact_v3.gd`: read-only resolved lethal classification, 50 ms compression, irregular scissor ribbons, bounded tails, broken-attack badges and expiration; V2 renderer and V1 remain byte-identical. Review-only audio uses the existing bounded mixer. No combat-rule change.
+
+- `build_web.sh` explicitly enables `no_u_review` for the `experiment/no-u-reverse-impact-v3` branch only when VERCEL_ENV is preview; production and unrelated branches retain ordinary exports.

@@ -21,7 +21,7 @@ REVIEW_ARGS=()
 if [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-gameplay-v1" || "${VERCEL_GIT_COMMIT_REF:-}" == "review/six-to-seven-neon-impact-v3" ) ]]; then
     REVIEW_FEATURE="six_to_seven_review"
     REVIEW_ARGS+=(--review)
-elif [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "codex/no-u-counter-pulse" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v2" ) ]]; then
+elif [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "codex/no-u-counter-pulse" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v2" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v3" ) ]]; then
     REVIEW_FEATURE="no_u_review"
     REVIEW_ARGS+=(--no-u)
 fi
