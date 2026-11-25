@@ -70,3 +70,8 @@ The exact source hashes and approved versions in those ledgers control promotion
 ## 2026-11-15 — Accepted Neon production frontend
 
 Decision **CPK-NEON-PRODUCTION-2026-11-15-01**: the creator accepted preview Game `b6e9813c101b1ef099b1a3a170c1c6b2270a8ab3`, explicitly authorized main merges, production publication and related decision records. [Exact scope and provenance](art/CREATOR_NEON_PRODUCTION_APPROVAL_2026-11-15.md). This supersedes D-05 cream/gold menu treatment for the accepted Neon screens; existing HUD, sources, unchanged V3 gameplay and future milestone boundaries remain. Scoped release authorization is separate from claiming all milestones complete.
+
+
+## CPK-NO-U-V4-2026-11-25-01 — 2026-11-25 — APPROVED
+
+The creator explicitly approves exact No U V4 reactive gameplay/art reviewed at `5bb1bbb0769bcf336c5db1fbea21065a4a098373`, with production integration authorized after final validation. [Canonical decision](https://github.com/pedro-ai-coder/clutchpunks-canon/blob/main/decisions/CREATOR_NO_U_V4_APPROVAL_2026-11-25.md). §9 No U periodic activation is superseded; original rule retained in Git history and the canonical V3 annex. Surviving post-shield positive HP loss (including environment), ready acquisition, 15 s cooldown, same-time/recursion guard, 200 U/0.30P, normal weaken 20%/4 s, boss 10%/2 s. Future-born weaken remains UNRESOLVED and unchanged. Atlas/source hashes: `assets/production/no-u-v4/manifest.json`. Six → Seven V3 and all unrelated rules unchanged. Batch 01 is EXPERIMENTAL only.

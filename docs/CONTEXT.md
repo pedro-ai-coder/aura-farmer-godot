@@ -23,8 +23,15 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 - `./art/COMBAT_FEEL_FEEDBACK.md` — bounded event-driven original SFX, threat priority, pause/settings, crowd-health drawing and explicit remaining acceptance scope.
 - `./art/APPROVED_INDIVIDUAL_SHEETS_INTEGRATION_2026-11-14.md` — explicit six-sheet approval, actual integration/validation evidence and separate publication boundary; canonical GDD V4.0 in repo:clutchpunks-canon inherits unchanged V3 gameplay rules.
 - `./ARCHITECTURE.md` — early bootstrap/future target description; inspect current source before using its claims.
+- `./NO_U_COUNTER_PULSE_REVIEW.md` records the proposed No U review, evidence and creator acceptance checklist.
 - `./PASSIVE_VFX_AUDIT_V1.md`, `./PASSIVE_VFX_ARCHITECTURE_V1.md` and `./PASSIVE_VFX_STYLE_GUIDE_V1.md` cover Solo passive feedback and the proposed visual direction.
 
 ## Guardrails
 
 Read only task-relevant sections. Distinguish APPROVED, PROPOSED, EXPERIMENTAL, UNRESOLVED and SUPERSEDED; preserve exact links, approval evidence and historical supersession.
+
+- `NO_U_REVERSE_IMPACT_V2.md` records experimental rules and acceptance. `AI_ACTION_AUDIT_NO_U_V2.md` maintains the append-only action audit.
+
+- `NO_U_REVERSE_IMPACT_V2_DELIVERY.md` records the protected playable source, native/Web evidence, QA results and unresolved creator decisions.
+
+- `NO_U_REVERSE_IMPACT_V3_DELIVERY.md` records the isolated V3 visual proposal, measured smooth-wave tradeoff, exact playable source, native evidence and creator-review limits. `AI_ACTION_AUDIT_NO_U_V3.md` is append-only; V1/V2 records remain preserved.

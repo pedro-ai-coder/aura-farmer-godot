@@ -15,6 +15,7 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 - `./test_signal_breaker_garage.gd` — isolated actual Garage, six identities/three kits, six viewports, real mouse/key/touch, menu RNG isolation and existing Solo/Settings return.
 - `./test_cpk_branding.gd` — visible title/PWA/HTML identity with unchanged native profile directory and legacy browser keys.
 - `./test_phaser_rng.gd` — seeded RNG and offer/enemy parity.
+- `./no_u/` covers No U gameplay parity, expiry, draw priority and review lifecycle.
 - `./six_to_seven/` verifies ordinary/V2 and V2/V3 gameplay parity, stages isolated review builds, and captures matched real gameplay and frame timings.
 - `./passive_vfx_lab/` provides side-by-side synthetic replays, QA Recorder traces, native captures and performance checks for the proposed Six to Seven effect.
 - `./test_animation_fluency.gd` — six-identity moving-action stride/side/priority registration, actual blocked-movement/release regression, single-cap body selection and lazy historical texture loading.
@@ -45,3 +46,9 @@ node tests/test_performance_web.cjs
 Related: [scripts](../scripts/CONTEXT.md), [scenes](../scenes/CONTEXT.md), [Web](../web/CONTEXT.md).
 
 The accepted Neon production continuation updates legacy illustrated-card/feedback expectations in `test_spotlight_theme.gd`, `test_hero_clash_button_motion.gd` and `button_art/test_components.gd`; actual native click, explicit confirmation, hit geometry, reduced motion and RNG assertions remain.
+
+- `no_u/test_reverse_impact.gd` verifies V2 trigger, recursion, cooldown, weaken, lethal feedback, isolation and determinism. `no_u/capture_reverse.gd` captures real A/B/C gameplay.
+
+- V3 extends the existing reactive capture stages and adds resolved damage/lethal classification checks. All five experimental resources are excluded from ordinary exports and checked in real PCKs.
+
+- V4 extends No U contracts with default-renderer and reactive description/readiness assertions; ordinary/review PCK verification includes V4 script and artwork isolation.

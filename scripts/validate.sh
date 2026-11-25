@@ -195,3 +195,6 @@ run_check passive-feedback-events --headless --path . --script res://tests/passi
 run_check passive-feedback-parity --headless --path . --script res://tests/passive_feedback/test_parity.gd
 run_check passive-feedback-layout --headless --path . --script res://tests/passive_feedback/test_layout.gd
 python3 scripts/verify_passive_feedback.py
+
+run_check no-u-production --headless --path . --script res://tests/no_u/test_production.gd
+run_check no-u-boundaries --headless --path . --script res://tests/no_u/test_production_boundaries.gd

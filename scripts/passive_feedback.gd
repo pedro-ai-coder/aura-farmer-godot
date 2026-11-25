@@ -136,8 +136,8 @@ func committed_card(game, card: Dictionary, before: Dictionary, replaced: String
         var added_hp: float=maxf(0,game.max_hp-float(before.max_hp))
         if added_hp>0:detail+=" · +%s max HP" % number(added_hp)
         elif not weapon and COVERAGE.get(id,"") in ["stat","conditional","support"] and replaced.is_empty():
-            detail+="\n"+brief(id,int(actual.level))
-        elif not weapon and actual.rarity=="legendary" and replaced.is_empty():detail+="\n"+brief(id,int(actual.level))
+            detail+="\n"+brief(id,int(actual.level),game)
+        elif not weapon and actual.rarity=="legendary" and replaced.is_empty():detail+="\n"+brief(id,int(actual.level),game)
         notify(game,id,title,detail,"legendary" if actual.rarity=="legendary" else "upgrade")
     committed+=1
 
@@ -183,6 +183,9 @@ static func slot_state(game, id: String) -> Dictionary:
     var now: float=game.run_time
     var lv: int=game._passive_level(id)
     if lv<=0:return {}
+    if id=="no-u" and game._no_u_is_reactive():
+        var recovery: float=maxf(0.0,float(t.get("no_u_next",0.0))-now)
+        return state("%.1fs" % recovery if recovery>0 else "READY", "Recharge / %.1fs" % recovery if recovery>0 else "Retaliates after surviving HP loss", 1.0-recovery/15.0,"65fff0")
     if id=="let-him-cook" and now<game.cook_expires and game.cook_stacks>0:
         return state("%d/5" % game.cook_stacks,"%d / 5 stacks · %.1fs remaining" % [game.cook_stacks,game.cook_expires-now],(game.cook_expires-now)/3.0,"ffce30")
     if id=="six-to-seven":
@@ -211,7 +214,9 @@ static func slot_state(game, id: String) -> Dictionary:
         return state("OUT" if outside else "%.0fs" % ceilf(until-now),"Outside Wi-Fi zone · no zone bonus" if outside else "+%s%% %s · %.1fs" % [number(actual*100),"frequency (strongest)" if strongest else "weapon damage",until-now],(until-now)/(4.0 if id=="w-wifi" else 5.0 if id=="aura-viral" else 6.0),"9caebb" if outside else "6ff3df")
     return {}
 
-static func brief(id: String, lv: int) -> String:
+static func brief(id: String, lv: int, game = null) -> String:
+    if id=="no-u" and game != null and game._no_u_is_reactive():
+        return "Survive HP loss: retaliate; 15s recharge"
     match id:
         "main-character":return "+%d%% weapon damage" % (6*lv)
         "terminally-online":return "+%d%% weapon frequency" % (5*lv)
@@ -229,7 +234,9 @@ static func brief(id: String, lv: int) -> String:
         "no-u":return "Pulse / 15s; weakens foes in range"
     return ""
 
-static func inspection(id: String, lv: int) -> String:
+static func inspection(id: String, lv: int, game = null) -> String:
+    if id=="no-u" and game != null and game._no_u_is_reactive():
+        return "Survive HP loss: retaliate within 200 U, 0.30 x base power. 15s recharge. Enemy ATK -20% / 4s; boss -10% / 2s. Shield-only hits do not activate."
     # Compact real values for the existing eight-tile build layout. Full
     # conditions remain in describe()/the existing inspection tooltip.
     if id in ["main-character","terminally-online","built-different","thick-skin","caught-4k","big-meme","timeline","hands-on-sight","cope-harder","certified-w"]:
@@ -276,6 +283,8 @@ static func describe(game, id: String, lv: int) -> String:
         "w-squad":description="+25% support permanently. Flex: +10% weapon damage for 6s."
         "too-sigma":description="Cross below 25% HP: 25% max HP shield × support, 5s; 60s recovery. No revive."
         "no-u":description="Every 15s in combat: 200 U pulse, 0.30 × base power. Enemy damage −20% for 4s; bosses −10% for 2s."
+    if id=="no-u" and game._no_u_is_reactive():
+        description=inspection(id,lv,game)
     var live: Dictionary=slot_state(game,id)
     if not live.is_empty():description+="\nNOW: "+str(live.detail)
     return description

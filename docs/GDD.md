@@ -335,7 +335,7 @@ Every passive retains a unique stable ID and its approved class eligibility. The
 | `absolute-cinema` — Absolute Cinema | **+25% weapon damage** always; **+20% additional weapon damage** while Flex is active | Does not multiply support or Flex-generated damage; one legendary total |
 | `w-squad` — W Squad | **+25% healing/shields granted**; on Flex activation grant self/allies within **200 U +10% weapon damage** | Team buff lasts **6 s**, same-source buffs do not stack; no Flex recharge |
 | `too-sigma` — Too Sigma to Fall | Shield self/allies within **200 U** for **25% of caster max HP** | Trigger only on damage crossing caster HP **from ≥25% to below 25%**; shield lasts **5 s**, **60 s** cooldown; no fatal-hit prevention/revive |
-| `no-u` — No U | Control pulse within **200 U** deals **0.30P** and reduces normal-enemy damage by **20%** | Every **15 s in combat**, debuff **4 s**, first trigger at 15 s; boss instead **10% reduction for 2 s**; no reflected damage/recursive procs |
+| `no-u` — No U | After surviving actual HP loss, pulse within **200 U** deals **0.30P**; normal-enemy damage **−20% / 4 s**, boss **−10% / 2 s** | Ready on acquisition; **15 s active-time cooldown**; fully absorbed/fatal hits do not trigger, environmental HP loss qualifies; same-timestamp/recursive activations blocked. Approved V4 supersedes periodic activation only; see decision register. |
 
 **Design balance principle:** legitimate support builds contribute via effective healing, shielding, prevention and amplified allied damage. They must not be judged only by direct DPS, nor assumed to grant all support advantages plus peak damage.
 

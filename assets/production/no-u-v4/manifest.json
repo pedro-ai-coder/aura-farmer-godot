@@ -1,0 +1,19 @@
+{
+  "status": "APPROVED",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: transparent game VFX sprite atlas, proposed CLUTCHPUNKS No U Reverse Impact V4. Create a 1024x1024 square sheet with exactly four isolated sprites in an evenly spaced 2x2 grid, each contained within its own quadrant with generous transparent margins. Hand painted anime sakuga impact meets punk screenprint ink, razor torn brush edges, layered rich hot magenta and electric mint cyan with concentrated ivory white heat and deep plum ink shadows. Upper left: spectacular irregular thick broken shockwave viewed overhead, organic asymmetric brush flares around a hollow transparent center, no perfect circles. Upper right: compact explosive white hot impact star, expressive asymmetrical hooked flame petals and ink chips, not geometric. Lower left: long directional returning energy slash pointing RIGHT, hooked double backflow brush strokes with white hot tip and cyan/magenta torn trailing wisps. Lower right: loose ground-level debris spray, dark angular ink fragments with pale pink and mint lit edges, sparse organic dust brush wisps. Actual transparent background, no checkerboard baked in, no text, no characters, no scene, no framing, no repeated lightning or neon rings. Premium crisp game-ready painted textures, strong readable silhouettes, expressive negative space. Each sprite separated, no crossing quadrant boundaries.",
+  "asset": "reversal-atlas.png",
+  "layout": "1254 x 1254 RGBA; four 627 x 627 cells: shockwave, impact, returning slash, fragments",
+  "decision": "CPK-NO-U-V4-2026-11-25-01",
+  "reviewed_commit": "5bb1bbb0769bcf336c5db1fbea21065a4a098373",
+  "reviewed_preview": "https://aura-farmer-godot-9uyjw360p-pedroestrela6-8110.vercel.app/",
+  "sha256": "67fa7966f4d37c3f15f006cef2d92c0ac6789270b95bbe0f7046a7e6e51c5471",
+  "derivation": "Exact atlas copy; draw methods unchanged; production-only state base excludes historical draw implementations.",
+  "reviewed_sources": {
+    "scripts/review/no_u_reverse_scenario.gd": "22dfb926e09c7a2f8d4e31e9ea6259e92bd39a9b2ea86ae6a3e989e31885f819",
+    "scripts/vfx/no_u_counter_pulse.gd": "5c8862b0903eb7df7597942c5f535a4f5088ec10e27017e54570331f3a5c75dc",
+    "scripts/vfx/no_u_reverse_impact_v3.gd": "07fd534bf3a96bb4f923d1cbe76883ef2c00700e98667f98cdfb385b1ac283d0",
+    "scripts/vfx/no_u_reverse_impact_v4.gd": "4074332a0289bd7f31a24c2a7e27c0b3f10174256ff21b1fd2066237b94c731d",
+    "assets/experimental/no-u-v4/manifest.json": "7a0626c7d7f1f0a5618e8cca2fc31662aa43243b2f2bbdc92e6605fb6e85df76"
+  }
+}

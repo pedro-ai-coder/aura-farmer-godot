@@ -13,6 +13,13 @@ var back: Button
 var start: Button
 var qa: Button
 var visual: Button
+var no_u_density := 0
+var no_u_case := 0
+var contract_button: Button
+const NO_U_CASES := ["LIVE COMBAT", "HP HIT", "SHIELD ONLY", "SIMULTANEOUS", "RECHARGE", "FATAL", "ENVIRONMENT"]
+var no_u_treatment := 3
+const NO_U_TREATMENTS := ["A / BASELINE", "B / COUNTER-PULSE V1", "C / REVERSE IMPACT V3", "D / REVERSE IMPACT V4"]
+const NO_U_SCENARIOS := ["NO U QA OFF", "NO U QA NORMAL", "NO U QA DENSE"]
 
 func install(owner_game) -> void:
     game = owner_game
@@ -36,10 +43,30 @@ func install(owner_game) -> void:
         visual.toggle_mode = true
         visual.toggled.connect(func(neon: bool):
             visual.text = "VFX: V3 NEON IMPACT" if neon else "VFX: V2 BASELINE")
+    elif OS.has_feature("no_u_review"):
+        qa = _button(NO_U_SCENARIOS[0], _cycle_no_u)
+        qa.tooltip_text = "EXPERIMENTAL / NOT FOR PRODUCTION. Choose Normal or Dense, then choose a treatment. V4 retaliates only after surviving HP loss; V1 is periodic."
+        visual = _button(NO_U_TREATMENTS[no_u_treatment], func():
+            no_u_treatment = (no_u_treatment + 1) % NO_U_TREATMENTS.size()
+            visual.text = NO_U_TREATMENTS[no_u_treatment])
+        visual.tooltip_text = "A: unchanged baseline. B: preserved periodic V1. C: preserved V3. D: premium reactive V4, 200 U, 15s recharge after surviving HP loss."
+        contract_button = _button("INPUT / " + NO_U_CASES[0], func():
+            no_u_case = (no_u_case + 1) % NO_U_CASES.size()
+            contract_button.text = "INPUT / " + NO_U_CASES[no_u_case])
     clear_selection()
 
+func _cycle_no_u() -> void:
+    no_u_density = (no_u_density + 1) % NO_U_SCENARIOS.size()
+    qa.text = NO_U_SCENARIOS[no_u_density]
+    if no_u_density == 1:
+        no_u_treatment = 3
+        visual.text = NO_U_TREATMENTS[no_u_treatment]
+    visual.disabled = no_u_density == 0
+    _update_focus_order()
+
 func _start_run() -> void:
-    game.start_selected_map(selected, qa != null and qa.button_pressed, visual != null and visual.button_pressed)
+    game.start_selected_map(selected, qa != null and qa.button_pressed,
+        visual != null and (no_u_treatment > 0 if OS.has_feature("no_u_review") else visual.button_pressed), no_u_density, no_u_treatment, no_u_case)
 
 func _button(caption: String, action: Callable, primary: bool = false) -> Button:
     var button := Button.new()
@@ -54,6 +81,14 @@ func clear_selection() -> void:
     if qa != null:
         qa.button_pressed = false
         visual.button_pressed = false
+        if OS.has_feature("no_u_review"):
+            no_u_case = 0
+            contract_button.text = "INPUT / " + NO_U_CASES[0]
+            no_u_treatment = 3
+            visual.text = NO_U_TREATMENTS[no_u_treatment]
+            no_u_density = 0
+            qa.text = NO_U_SCENARIOS[0]
+            visual.disabled = true
     _select(&"")
 
 func _select(id: StringName) -> void:
@@ -72,7 +107,10 @@ func _update_focus_order() -> void:
     var buttons: Array[Button] = [choices[Maps.RUIN_ALLEY], choices[Maps.MSG_FACTORY]]
     if qa != null:
         buttons.append(qa)
-        buttons.append(visual)
+        if not visual.disabled:
+            buttons.append(visual)
+    if contract_button != null:
+        buttons.append(contract_button)
     buttons.append(back)
     if not start.disabled:
         buttons.append(start)
@@ -88,7 +126,7 @@ func refresh(offset: Vector2, extent: Vector2) -> void:
     position = offset
     size = extent
     var card_width := minf(440, (size.x - 64) / 2)
-    var qa_height := 60 if qa != null else 0
+    var qa_height := (112 if contract_button != null else 60) if qa != null else 0
     var preview_height := clampf(size.y - 250 - qa_height, 0, card_width * 0.75)
     var center := size * 0.5
     var top := center.y - (preview_height + 190 + qa_height) * 0.5
@@ -113,6 +151,9 @@ func refresh(offset: Vector2, extent: Vector2) -> void:
         qa.size = Vector2(card_width, 48)
         visual.position = Vector2(right, bottom + 135)
         visual.size = Vector2(card_width, 48)
+    if contract_button != null:
+        contract_button.position = Vector2(left, bottom + 187)
+        contract_button.size = Vector2(card_width * 2 + 20, 44)
     if entering:
         choices[Maps.RUIN_ALLEY].grab_focus()
     queue_redraw()
