@@ -50,3 +50,5 @@ The accepted Neon production continuation updates legacy illustrated-card/feedba
 - `no_u/test_reverse_impact.gd` verifies V2 trigger, recursion, cooldown, weaken, lethal feedback, isolation and determinism. `no_u/capture_reverse.gd` captures real A/B/C gameplay.
 
 - V3 extends the existing reactive capture stages and adds resolved damage/lethal classification checks. All five experimental resources are excluded from ordinary exports and checked in real PCKs.
+
+- V4 extends No U contracts with default-renderer and reactive description/readiness assertions; ordinary/review PCK verification includes V4 script and artwork isolation.

@@ -17,8 +17,8 @@ var no_u_density := 0
 var no_u_case := 0
 var contract_button: Button
 const NO_U_CASES := ["LIVE COMBAT", "HP HIT", "SHIELD ONLY", "SIMULTANEOUS", "RECHARGE", "FATAL", "ENVIRONMENT"]
-var no_u_treatment := 2
-const NO_U_TREATMENTS := ["A / BASELINE", "B / COUNTER-PULSE V1", "C / REVERSE IMPACT V3"]
+var no_u_treatment := 3
+const NO_U_TREATMENTS := ["A / BASELINE", "B / COUNTER-PULSE V1", "C / REVERSE IMPACT V3", "D / REVERSE IMPACT V4"]
 const NO_U_SCENARIOS := ["NO U QA OFF", "NO U QA NORMAL", "NO U QA DENSE"]
 
 func install(owner_game) -> void:
@@ -45,11 +45,11 @@ func install(owner_game) -> void:
             visual.text = "VFX: V3 NEON IMPACT" if neon else "VFX: V2 BASELINE")
     elif OS.has_feature("no_u_review"):
         qa = _button(NO_U_SCENARIOS[0], _cycle_no_u)
-        qa.tooltip_text = "EXPERIMENTAL / NOT FOR PRODUCTION. Choose Normal or Dense, then A/B/C. V3 retaliates only after surviving HP loss; V1 is periodic."
+        qa.tooltip_text = "EXPERIMENTAL / NOT FOR PRODUCTION. Choose Normal or Dense, then choose a treatment. V4 retaliates only after surviving HP loss; V1 is periodic."
         visual = _button(NO_U_TREATMENTS[no_u_treatment], func():
             no_u_treatment = (no_u_treatment + 1) % NO_U_TREATMENTS.size()
             visual.text = NO_U_TREATMENTS[no_u_treatment])
-        visual.tooltip_text = "A: unchanged baseline. B: preserved periodic V1. C: reactive Reverse Impact V3, 200 U, 15s recharge after activation."
+        visual.tooltip_text = "A: unchanged baseline. B: preserved periodic V1. C: preserved V3. D: premium reactive V4, 200 U, 15s recharge after surviving HP loss."
         contract_button = _button("INPUT / " + NO_U_CASES[0], func():
             no_u_case = (no_u_case + 1) % NO_U_CASES.size()
             contract_button.text = "INPUT / " + NO_U_CASES[no_u_case])
@@ -58,6 +58,9 @@ func install(owner_game) -> void:
 func _cycle_no_u() -> void:
     no_u_density = (no_u_density + 1) % NO_U_SCENARIOS.size()
     qa.text = NO_U_SCENARIOS[no_u_density]
+    if no_u_density == 1:
+        no_u_treatment = 3
+        visual.text = NO_U_TREATMENTS[no_u_treatment]
     visual.disabled = no_u_density == 0
     _update_focus_order()
 
@@ -81,7 +84,7 @@ func clear_selection() -> void:
         if OS.has_feature("no_u_review"):
             no_u_case = 0
             contract_button.text = "INPUT / " + NO_U_CASES[0]
-            no_u_treatment = 2
+            no_u_treatment = 3
             visual.text = NO_U_TREATMENTS[no_u_treatment]
             no_u_density = 0
             qa.text = NO_U_SCENARIOS[0]

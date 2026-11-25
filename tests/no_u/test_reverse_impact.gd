@@ -39,9 +39,13 @@ func run() -> void:
     for item: ReviewRun in [game, twin]:
         root.add_child(item)
         item.set_process(false)
+    check(game.map_select.no_u_treatment == 3, "V4 picker default")
     game.no_u_resolved.connect(observe)
     for map: StringName in Maps.NAMES:
         v2(game, map)
+        check(game.no_u_vfx.get_script().resource_path.ends_with("no_u_reverse_impact_v4.gd"), "V4 default renderer")
+        check("Survive HP loss" in game.PassiveFeedbackScript.describe(game,"no-u",1), "Reactive inspection text")
+        check("V4" in game.no_u_review.status_label(game), "V4 readiness identity")
         check(game.passive_timers.no_u_next == 0.0, "Acquisition must start ready")
         game._deal_damage_to_player(0.0)
         game._deal_damage_to_player(-10.0)
@@ -149,6 +153,6 @@ func run() -> void:
     check(game.no_u_review == null and game.no_u_vfx == null and game.profile_writes == 0
         and twin.profile_writes == 0, "Experiment leaked state/progression")
     game.free(); twin.free()
-    print("Reverse Impact V3 / V2 parity: %d assertions, %d identical-input paired frames; failures: %d" % [assertions, paired_frames, failures])
+    print("Reverse Impact V4 / V2 parity: %d assertions, %d identical-input paired frames; failures: %d" % [assertions, paired_frames, failures])
     quit(1 if failures else 0)
 

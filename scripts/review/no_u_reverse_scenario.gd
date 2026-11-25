@@ -1,25 +1,25 @@
 extends "res://scripts/review/no_u_scenario.gd"
-## V3 PRESENTATION / V2 GAMEPLAY. EXPERIMENTAL — NOT CANONICAL — NOT APPROVED FOR PRODUCTION.
+## V4/V3 PRESENTATION / V2 GAMEPLAY. EXPERIMENTAL — NOT CANONICAL — NOT APPROVED FOR PRODUCTION.
 ## Positive HP loss after mitigation/shields, including environment; survival required.
 const ReverseImpact := preload("res://scripts/vfx/no_u_reverse_impact_v3.gd")
-var treatment := 2
+var treatment := 3
 var contract_case := 0
 var input_stage := 0
 const CASES := ["LIVE COMBAT", "HP HIT", "SHIELD ONLY", "SIMULTANEOUS", "RECHARGE", "FATAL", "ENVIRONMENT"]
 
-func _init(selected_density: int, counter_pulse: bool, selected_treatment: int = 2, selected_case: int = 0) -> void:
+func _init(selected_density: int, counter_pulse: bool, selected_treatment: int = 3, selected_case: int = 0) -> void:
     super(selected_density, counter_pulse)
     treatment = selected_treatment
     contract_case = selected_case
 
 func is_reactive() -> bool:
-    return treatment == 2
+    return treatment >= 2
 
 var resolving := false
 var last_activation := -INF
 
 func label() -> String:
-    return "QA / %s / %s / %s" % [["A ORIGINAL", "B COUNTER-PULSE V1", "C REVERSE IMPACT V3 / REACTIVE"][treatment], "DENSE" if density == 2 else "NORMAL", CASES[contract_case]]
+    return "QA / %s / %s / %s" % [["A ORIGINAL", "B COUNTER-PULSE V1", "C REVERSE IMPACT V3 / REACTIVE", "D REVERSE IMPACT V4 / REACTIVE"][treatment], "DENSE" if density == 2 else "NORMAL", CASES[contract_case]]
 
 func prepare(game) -> RefCounted:
     var original := super.prepare(game)
@@ -30,7 +30,9 @@ func prepare(game) -> RefCounted:
     last_activation = -INF
     game.passive_timers["no_u_next"] = 0.0
     if game.combat_audio != null and game.combat_audio.playback_enabled:
-        game.combat_audio.clips["no_u_reverse_v3"] = game.combat_audio.make_clip([0.19, 760.0, 58.0, 0.32])
+        game.combat_audio.clips["no_u_reverse_v3"] = game.combat_audio.make_clip([0.26, 1050.0, 47.0, 0.40] if treatment == 3 else [0.19, 760.0, 58.0, 0.32])
+    if treatment == 3:
+        return load("res://scripts/vfx/no_u_reverse_impact_v4.gd").new()
     return ReverseImpact.new()
 
 func on_equipment_committed(game, previous_ids: Array) -> void:
@@ -39,7 +41,7 @@ func on_equipment_committed(game, previous_ids: Array) -> void:
 
 func status_label(game) -> String:
     var remaining := maxf(0.0, float(game.passive_timers.get("no_u_next", 0.0)) - game.run_time)
-    var identity := "NO U V3 · EXP" if is_reactive() else ("NO U A" if treatment == 0 else "NO U B")
+    var identity := ("NO U V4 · EXP" if treatment == 3 else "NO U V3 · EXP") if is_reactive() else ("NO U A" if treatment == 0 else "NO U B")
     var readiness := "READY ON HP LOSS" if is_reactive() else "PERIODIC READY"
     return "%s / %s" % [identity, readiness if remaining <= 0.0 else "RECHARGE %.1fs" % remaining]
 
@@ -70,7 +72,7 @@ func on_player_damage(game, old_hp: float, source: Dictionary, hazard: bool) -> 
         game.combat_audio.play_event("no_u_reverse_v3", game.run_time, 5)
     game.no_u_resolved.emit(center, 200.0, game.run_time, hits, weakened)
     if OS.has_feature("no_u_review"):
-        print("No U V3 trigger: ", JSON.stringify({"at": game.run_time, "hp_loss": old_hp - game.hp,
+        print("No U V%d trigger: " % (4 if treatment == 3 else 3), JSON.stringify({"at": game.run_time, "hp_loss": old_hp - game.hp,
             "survived": true, "environment": source.is_empty(), "hazard": hazard}))
         report(game, center, 200.0, hits, weakened)
     if game.passive_feedback != null:

@@ -22,6 +22,8 @@ if [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "revie
     REVIEW_FEATURE="six_to_seven_review"
     REVIEW_ARGS+=(--review)
 elif [[ "${VERCEL_ENV:-}" == "preview" && ( "${VERCEL_GIT_COMMIT_REF:-}" == "codex/no-u-counter-pulse" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v2" || "${VERCEL_GIT_COMMIT_REF:-}" == "experiment/no-u-reverse-impact-v3" ) ]]; then
+    # PR #164 continues on the existing V3 branch; staged review includes proposed V4
+    # atlas + renderer and defaults to V4. This gate never runs in production.
     REVIEW_FEATURE="no_u_review"
     REVIEW_ARGS+=(--no-u)
 fi
