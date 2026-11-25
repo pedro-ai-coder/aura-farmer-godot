@@ -24,6 +24,20 @@ class ReviewRun extends "res://scripts/solo_run.gd":
         return {"session_type": "scenario", "scenario_id": "no-u-reverse-impact-comparison",
             "scenario_config": {"map": map_id, "caption": no_u_review.label()}}
 
+class HistoricalRenderer extends "res://scripts/vfx/no_u_reverse_impact.gd":
+    func classify(_hits: Array[Dictionary], _survivors: Array[Dictionary]) -> void:
+        pass
+
+class NoGround extends "res://scripts/vfx/no_u_reverse_impact_v3.gd":
+    func draw_ground(_canvas: CanvasItem, _now: float, _reduced: bool) -> void:
+        pass
+class NoStatus extends "res://scripts/vfx/no_u_reverse_impact_v3.gd":
+    func draw_weakened(_canvas: CanvasItem, _enemies: Array[Dictionary], _now: float) -> void:
+        pass
+class NoContacts extends "res://scripts/vfx/no_u_reverse_impact_v3.gd":
+    func draw_contacts(_canvas: CanvasItem, _now: float, _reduced: bool) -> void:
+        pass
+
 var game: ReviewRun
 var recorder := Recorder.new()
 var events: Array[Dictionary] = []
@@ -59,6 +73,12 @@ func run() -> void:
     game.open_map_select(0)
     game.no_u_review = ReverseScenario.new(int(args[1]), true) if treatment in ["reverse", "reduced"] else Scenario.new(int(args[1]), treatment != "baseline")
     game.start_selected_map(map)
+    if OS.get_environment("CPK_NO_U_RENDERER") == "v2" and treatment == "reverse":
+        game.no_u_vfx = HistoricalRenderer.new()
+    match OS.get_environment("CPK_NO_U_DIAGNOSTIC"):
+        "ground": game.no_u_vfx = NoGround.new()
+        "status": game.no_u_vfx = NoStatus.new()
+        "contacts": game.no_u_vfx = NoContacts.new()
     if capture:
         recorder.start(game, {"commit": args[5]})
     game.no_u_resolved.connect(observe)
@@ -106,9 +126,9 @@ func run() -> void:
             image.save_png(destination.path_join("weaken.png"))
         if frame == pulse_frame + 30:
             image.save_png(destination.path_join("dissipation.png"))
-        if frame == pulse_frame + 247:
+        if frame == pulse_frame + 247 and game.run_time >= float(events[-1].active_s) + 4.0:
             image.save_png(destination.path_join("expiration.png"))
-        if frame == pulse_frame + 147:
+        if frame == pulse_frame + 147 and game.run_time >= float(events[-1].active_s) + 2.0:
             image.save_png(destination.path_join("normal-weaken-after-boss-expiry.png"))
     if capture:
         recorder.stop(game, "capture complete")
