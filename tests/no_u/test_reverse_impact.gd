@@ -39,6 +39,9 @@ func run() -> void:
     for map: StringName in Maps.NAMES:
         v2(game, map)
         check(game.passive_timers.no_u_next == 0.0, "Acquisition must start ready")
+        game._deal_damage_to_player(0.0)
+        game._deal_damage_to_player(-10.0)
+        check(events.is_empty() and game.hp == game.max_hp, "Nonpositive damage triggered V2")
         game.run_time = 20.0
         game._tick_passives(STEP)
         check(events.is_empty(), "V2 must not fire periodically")
@@ -96,6 +99,17 @@ func run() -> void:
         game._schedule_hazard(game.player_pos, 50.0, 0.0, 2.0, 10.0)
         game._step_hazards()
         check(events.size() == 1, "Source-less environmental hazard must meet experimental HP-loss rule")
+        v2(game, map)
+        game.enemies.clear()
+        game._spawn_enemy("hater", {"pos": game.player_pos + Vector2(10, 0)})
+        var attacker: Dictionary = game.enemies[-1]
+        attacker.hp = 1.0
+        attacker.phase = "warning"
+        attacker.attack_at = 0.0
+        attacker.locked_direction = Vector2.RIGHT
+        game._step_enemies(0.0)
+        check(events.size() == 1 and game.hostile_shots.is_empty() and not game.enemies.has(attacker),
+            "Attacker killed by retaliation emitted a posthumous attack")
         v2(game, map)
         game.enemies.clear()
         game._deal_damage_to_player(1.0)

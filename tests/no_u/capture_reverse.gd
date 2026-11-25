@@ -66,7 +66,8 @@ func run() -> void:
     var burst_samples := PackedFloat64Array()
     var peak_enemies := 0
     var video_frames := 0
-    var horizon := 348
+    # Keep performance runs before the Dense fixture's defeat/frozen simulation.
+    var horizon := 348 if capture else 216
     for step in horizon:
         frame = step + 1
         if game.mode in ["choice", "legendary", "replace"]:

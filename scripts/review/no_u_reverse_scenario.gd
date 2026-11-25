@@ -37,7 +37,9 @@ func on_equipment_committed(game, previous_ids: Array) -> void:
 
 func status_label(game) -> String:
     var remaining := maxf(0.0, float(game.passive_timers.get("no_u_next", 0.0)) - game.run_time)
-    return "%s  /  %s" % [label(), "READY · HP HIT → RETALIATE" if remaining <= 0.0 else "RECHARGING %.1fs" % remaining]
+    var identity := "NO U V2 · EXP" if is_reactive() else ("NO U A" if treatment == 0 else "NO U B")
+    var readiness := "READY ON HP LOSS" if is_reactive() else "PERIODIC READY"
+    return "%s / %s" % [identity, readiness if remaining <= 0.0 else "RECHARGE %.1fs" % remaining]
 
 func on_player_damage(game, old_hp: float, source: Dictionary, hazard: bool) -> void:
     if not is_reactive() or resolving or game.mode != "playing" or game.hp <= 0.0 or game.hp >= old_hp \
