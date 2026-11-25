@@ -55,7 +55,11 @@ func run() -> void:
     root.add_child(after)
     before.set_process(false)
     after.set_process(false)
-    check(before.six_to_seven_vfx == null and not before.passive_burst_resolved.has_connections(), "Ordinary boot must leave renderer and burst observer off")
+    check(before.six_to_seven_vfx != null and before.six_to_seven_neon
+        and before.passive_burst_resolved.get_connections().size() == 1,
+        "Ordinary boot must activate approved V3 exactly once")
+    check(before.map_select.qa == null and before.map_select.visual == null,
+        "Ordinary build must not show review-only map controls")
     if neon:
         before._enable_six_to_seven_review()
     after._enable_six_to_seven_review(neon)
