@@ -73,5 +73,3 @@ bash scripts/validate.sh
 - `build_web.sh` explicitly enables `no_u_review` for the `experiment/no-u-reverse-impact-v3` branch only when VERCEL_ENV is preview; production and unrelated branches retain ordinary exports.
 
 - PR #164 V4 adds a proposed four-cell painted atlas renderer, default D treatment, reactive inspection/readiness and richer existing-mixer cue. Gameplay resolver values remain unchanged; the existing experimental V3 branch preview gate stages V4 explicitly via review_export.py.
-
-- PR #164 V4 adds a proposed four-cell painted atlas renderer, default D treatment, reactive inspection/readiness and richer existing-mixer cue. Gameplay resolver values remain unchanged; the existing experimental V3 branch preview gate stages V4 explicitly via review_export.py.
