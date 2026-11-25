@@ -1,5 +1,7 @@
 """Stage a local Windows or Web review export with the game's original entry scene."""
 import argparse
+import os
+import subprocess
 from pathlib import Path
 import re
 import shutil
@@ -13,7 +15,9 @@ NO_U_RESOURCES = ("scripts/review/no_u_scenario.gd", "scripts/vfx/no_u_counter_p
                   "scripts/review/no_u_reverse_scenario.gd", "scripts/vfx/no_u_reverse_impact.gd", "scripts/vfx/no_u_reverse_impact_v3.gd", "scripts/vfx/no_u_reverse_impact_v4.gd")
 
 
-def stage(destination: Path, target: str, no_u: bool = False) -> None:
+BATCH_RESOURCES = ['scripts/review/passive_batch_feedback.gd', 'scripts/review/passive_batch_scenario.gd', 'scripts/review/passive_batch_recorder.gd', 'assets/experimental/passive-batch-01/*']
+
+def stage(destination: Path, target: str, no_u: bool = False, batch: bool = False) -> None:
     if destination == ROOT or ROOT in destination.parents:
         raise ValueError("Stage the export in a fresh folder outside this checkout")
     destination.mkdir(parents=True, exist_ok=False)
@@ -26,8 +30,15 @@ def stage(destination: Path, target: str, no_u: bool = False) -> None:
     (destination / "project.godot").write_text(project, encoding="utf-8")
     presets = (ROOT / "export_presets.cfg").read_text(encoding="utf-8")
     preset = presets.split("[preset.1]", 1)[0]
-    feature = "no_u_review" if no_u else "six_to_seven_review"
+    feature = "passive_batch_review" if batch else "no_u_review" if no_u else "six_to_seven_review"
     preset = preset.replace('custom_features=""', f'custom_features="{feature}"')
+    if batch:
+        for name in BATCH_RESOURCES:
+            preset = preset.replace(name+",", "").replace(","+name, "")
+        preset = preset.replace('include_filter="','include_filter="assets/experimental/passive-batch-01/manifest.json,')
+        revision = os.environ.get("VERCEL_GIT_COMMIT_SHA") or subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
+        with (destination/"project.godot").open("a",encoding="utf-8") as out:
+            out.write('\n[qa]\nsource_commit="'+revision+'"\n')
     if no_u:
         preset = preset.replace(",assets/experimental/no-u-v4/*", "")
         for name in NO_U_RESOURCES:
@@ -47,12 +58,20 @@ codesign/enable=false
     (destination / "build").mkdir()
 
 
-def verify(path: Path, included: bool, no_u: bool = False) -> None:
+def verify(path: Path, included: bool, no_u: bool = False, batch: bool = False) -> None:
     sys.path.insert(0, str(ROOT / "scripts"))
     from check_icon_pack import directory
 
     entries = directory(path.read_bytes())
     assert not any(name.startswith("tests/") or name.startswith("qa/") for name in entries), "QA resources in gameplay pack"
+    batch_entries = [name for name in entries if "passive_batch_" in name or "assets/experimental/passive-batch-01/" in name]
+    assert bool(batch_entries) == batch, f"Unexpected batch packaging: {batch_entries!r}"
+    if batch:
+        for name in BATCH_RESOURCES[:3]:
+            assert name+"c" in entries, f"Missing batch resource {name}"
+        assert "assets/experimental/passive-batch-01/manifest.json" in entries
+        for id in ("big-chad","too-sigma","so-back","w-squad","absolute-cinema"):
+            assert f"assets/experimental/passive-batch-01/{id}.png.import" in entries
     artwork = [name for name in entries if name.startswith("assets/experimental/no-u-v4/")]
     if bool(artwork) != no_u:
         raise ValueError(f"Unexpected V4 artwork packaging: {artwork!r}")
@@ -80,8 +99,9 @@ if __name__ == "__main__":
     parser.add_argument("--target", choices=("windows", "web"), default="windows")
     parser.add_argument("--review", action="store_true")
     parser.add_argument("--no-u", action="store_true")
+    parser.add_argument("--batch", action="store_true")
     args = parser.parse_args()
     if args.stage:
-        stage(args.stage.resolve(), args.target, args.no_u)
+        stage(args.stage.resolve(), args.target, args.no_u, args.batch)
     else:
-        verify(args.verify.resolve(), args.review or args.no_u, args.no_u)
+        verify(args.verify.resolve(), args.review or args.no_u or args.batch, args.no_u, args.batch)
