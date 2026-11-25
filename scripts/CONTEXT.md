@@ -65,3 +65,5 @@ bash scripts/validate.sh
 ## Related contexts
 
 [Scenes](../scenes/CONTEXT.md) describe entry points; [Tests](../tests/CONTEXT.md) cover contracts; [Web](../web/CONTEXT.md) covers the browser adapter; [Assets](../assets/CONTEXT.md) covers art provenance.
+
+- `review/no_u_reverse_scenario.gd` and `vfx/no_u_reverse_impact.gd` provide experimental A/B/C fixtures, HP-loss retaliation and bounded VFX; ordinary exports exclude review resources.

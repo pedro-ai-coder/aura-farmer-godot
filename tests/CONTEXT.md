@@ -46,3 +46,5 @@ node tests/test_performance_web.cjs
 Related: [scripts](../scripts/CONTEXT.md), [scenes](../scenes/CONTEXT.md), [Web](../web/CONTEXT.md).
 
 The accepted Neon production continuation updates legacy illustrated-card/feedback expectations in `test_spotlight_theme.gd`, `test_hero_clash_button_motion.gd` and `button_art/test_components.gd`; actual native click, explicit confirmation, hit geometry, reduced motion and RNG assertions remain.
+
+- `no_u/test_reverse_impact.gd` verifies V2 trigger, recursion, cooldown, weaken, lethal feedback, isolation and determinism. `no_u/capture_reverse.gd` captures real A/B/C gameplay.
