@@ -212,7 +212,11 @@ func _ready() -> void:
     get_window().title="CLUTCHPUNKS"
     rng.seed = 451
     if OS.has_feature("six_to_seven_review"):
+        # The existing comparison preview keeps its V2-first selection.
         _enable_six_to_seven_review()
+    else:
+        # Creator-approved V3 is the normal in-game presentation; no QA controls.
+        _enable_six_to_seven_review(true)
     _load_profile()
     combat_audio=CombatAudioScript.new();add_child(combat_audio)
     if weapon_presentation!=null:weapon_presentation.audio_feedback=combat_audio
