@@ -46,11 +46,12 @@ def verify(path: Path, included: bool) -> None:
     entries = directory(path.read_bytes())
     assert not any(name.startswith("tests/") or name.startswith("qa/") for name in entries), "QA resources in gameplay pack"
     renderer = {name for name in entries if name.startswith("scripts/vfx/")}
-    expected = {path + suffix for path in (RENDERER, NEON_RENDERER)
-                for suffix in (".remap", "c")} if included else set()
+    # V3 is now approved for both regular gameplay and review packages.
+    expected = {name + suffix for name in (RENDERER, NEON_RENDERER)
+                for suffix in (".remap", "c")}
     if renderer != expected:
         raise ValueError(f"Unexpected renderer packaging: {renderer!r}")
-    print(f"PASS: {'review includes' if included else 'ordinary excludes'} renderer; gameplay pack excludes QA resources")
+    print(f"PASS: {'review' if included else 'production'} includes approved V3 renderer; gameplay pack excludes QA resources")
 
 
 if __name__ == "__main__":
