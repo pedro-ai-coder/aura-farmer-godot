@@ -82,3 +82,11 @@ python tests/six_to_seven/review_export.py --no-u --verify <absolute-output.pck>
 ```
 
 The bundle's capture/measurement/assembly scripts run from the shared workspace root and record exact source SHA. CPK_NO_U_RENDERER=v2 switches only the measurement renderer to preserved V2; diagnostics can omit presentation layers without changing gameplay. These switches exist only in the excluded capture harness.
+
+## Protected playable Web Preview — 2026-11-25
+
+[Open the exact V3 Preview](https://aura-farmer-godot-gfdh1727g-pedroestrela6-8110.vercel.app/) — Vercel sign-in required. READY deployment `dpl_29hPbEnS1hZKwcwPcKoHHa8uKbCY`, Preview (API staging), source `3c18a36a8dd03de1b9c1e4dcb24868bf4ea403b3`. The build now explicitly supports `experiment/no-u-reverse-impact-v3` in Preview only; validated V3 runtime and visuals are unchanged.
+
+Ten authenticated hardware WebGL2 cases passed: C HP-hit, Dense live combat, shield-only and Reduced Motion on both maps, plus unchanged periodic A/B controls. Every C pulse matched a surviving positive-HP-loss V3 trigger; no periodic C pulse, runtime error or QA localStorage write occurred. Captured Web burst and picker labels were inspected. [CI #366](https://github.com/pedro-ai-coder/aura-farmer-godot/actions/runs/45671608785) passed for the deployed source, including ordinary/review export exclusions. Full deployment, verification and the test-harness timing retry are appended to `AI_ACTION_AUDIT_NO_U_V3.md`; raw Web evidence is in `../no-u-v3-preview-evidence/`.
+
+To play: choose a hero → Solo → either map → enable Normal or Dense QA → **C / REVERSE IMPACT V3** (default). Select **INPUT / HP HIT** for an explicit eligible hit or **LIVE COMBAT** for real enemy damage. C responds to surviving HP loss; A/B remain periodic. This update establishes desktop WebGL2 smoke coverage, and does not re-certify mobile/software-renderer performance. Preview only; no merge, production change, paid feature or plan upgrade. Creator approval remains pending.
