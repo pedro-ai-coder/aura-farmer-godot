@@ -20,3 +20,9 @@ EXPERIMENTAL — PROPOSED — NOT FOR PRODUCTION. No creator approval claimed.
 - Capture harness now checks actual active time before labeling expiration. Frozen Dense captures retained under frozen-before-* filenames. Explicitly labeled controlled real-resolver tableaux cover the exact boss and normal expiration stages on both maps.
 - Exported review PCK passed 12 real A/B/C picker/activation/profile-isolation cases. Release executable ignored diagnostic --script overrides, so the attempted instance was stopped and the actual exported PCK was loaded through Godot for diagnostic assertions; this is not claimed as a human executable playtest.
 - First complete CI #363 passed for fcb18f5. Final optimized source will be validated again. Ordinary PCK excludes all five experimental resources. Windows review EXE/PCK package built successfully and will be rebuilt from optimized source.
+
+## 2026-11-25 — final visual QA tradeoff
+
+- The fully batched wave showed rough disconnected joins in native screenshots. Restored the original connected, antialiased V3 ground ribbons and varied stroke widths; retained batched enemy badges/contacts and the distinct lethal-only finisher. This deliberate quality tradeoff costs more than the fully batched diagnostic version.
+- Smooth-wave Dense pilot: 4.254 ms frame P95 / 5.735 ms activation P95. Final source and complete matrix/captures supersede all pilots. Earlier unbatched and fully batched captures/timings remain in history.
+- Native audio diagnostic initially failed GDScript inference in the external test script; retained native-audio-smoke.log. Explicit typing fixed it; native-audio-smoke-fixed.log passed real mixer cue acceptance, eight-voice bound, mute, modal suspension and audio-only RNG isolation using Dummy audio output. No audible/human listening approval is claimed.

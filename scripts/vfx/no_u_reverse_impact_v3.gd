@@ -32,7 +32,7 @@ func clear() -> void:
 
 func _stroke(canvas: CanvasItem, points: PackedVector2Array, color: Color, alpha: float, width: float) -> void:
     canvas.draw_polyline(points, Color(VOID, alpha), width + 5.0, true)
-    canvas.draw_polyline(points, Color(color, alpha), width, false)
+    canvas.draw_polyline(points, Color(color, alpha), width, true)
     canvas.draw_polyline(points, Color(WHITE, alpha * 0.92), maxf(1.0, width * 0.22), true)
 
 func draw_ground(canvas: CanvasItem, now: float, reduced: bool) -> void:
@@ -41,14 +41,10 @@ func draw_ground(canvas: CanvasItem, now: float, reduced: bool) -> void:
         return
     var fade := 1.0 - smoothstep(0.29, LIFE, age)
     # Exact 200 U extent is separate from the irregular silhouette; all glow stays inside it.
-    var rim := PackedVector2Array()
     for sector in 8:
         var angle := TAU * sector / 8.0
-        for step in 10:
-            rim.append(_origin + Vector2.from_angle(angle + 0.03 + step * 0.061) * (_radius - 2.0))
-            rim.append(_origin + Vector2.from_angle(angle + 0.03 + (step + 1) * 0.061) * (_radius - 2.0))
-    canvas.draw_multiline(rim, Color(VOID, fade * 0.9), 4.0, true)
-    canvas.draw_multiline(rim, Color(ICE, fade * 0.76), 2.0, true)
+        canvas.draw_arc(_origin, _radius - 2.0, angle + 0.03, angle + 0.64, 12, Color(VOID, fade * 0.9), 4.0, true)
+        canvas.draw_arc(_origin, _radius - 1.0, angle + 0.03, angle + 0.64, 12, Color(ICE, fade * 0.76), 2.0, true)
     if age < CHARGE and not reduced:
         var squeeze := smoothstep(0.0, CHARGE, age)
         for side in 4:
@@ -62,28 +58,20 @@ func draw_ground(canvas: CanvasItem, now: float, reduced: bool) -> void:
     var front := _radius * (0.91 if reduced else lerpf(0.18, 0.94, ease))
     var pressure := 1.0 - smoothstep(0.16, 0.46, age)
     # Unequal scissor-cut ribbons, asymmetric lengths and dogleg crests: never a technical ring.
-    var ribbons: Array[PackedVector2Array] = [PackedVector2Array(), PackedVector2Array()]
-    var wakes: Array[PackedVector2Array] = [PackedVector2Array(), PackedVector2Array()]
     for sector in 8:
-        var previous := Vector2.ZERO
-        var previous_wake := Vector2.ZERO
+        var ribbon := PackedVector2Array()
+        var wake := PackedVector2Array()
         var heading := TAU * sector / 8.0 + 0.07
         for step in 7:
             var angle := heading + float(step) * (0.082 if sector % 3 else 0.092)
             var axis := Vector2.from_angle(angle)
             var tooth: float = TEETH[(sector * 3 + step) % TEETH.size()]
-            var point := _origin + axis * front * tooth
-            var wake := _origin + axis * maxf(20.0, front * tooth - (11.0 if reduced else 22.0 * pressure + 8.0))
-            if step > 0:
-                ribbons[sector % 2].append(previous); ribbons[sector % 2].append(point)
-                wakes[sector % 2].append(previous_wake); wakes[sector % 2].append(wake)
-            previous = point
-            previous_wake = wake
-    var thickness := 6.0 if reduced else lerpf(15.0, 6.0, ease)
-    for palette in 2:
-        var pigment := PINK if palette == 0 else ICE
-        _batch(canvas, wakes[palette], pigment, fade * 0.28, thickness * 0.58)
-        _batch(canvas, ribbons[palette], pigment, fade, thickness)
+            ribbon.append(_origin + axis * front * tooth)
+            wake.append(_origin + axis * maxf(20.0, front * tooth - (11.0 if reduced else 22.0 * pressure + 8.0)))
+        var thickness := (6.0 if reduced else lerpf(15.0, 6.0, ease)) * (0.85 if sector % 3 == 0 else 1.0)
+        var pigment := PINK if sector % 2 == 0 else ICE
+        _stroke(canvas, wake, pigment, fade * 0.28, thickness * 0.58)
+        _stroke(canvas, ribbon, pigment, fade, thickness)
     # Reversed double hooks make the center signature compact; no player-covering fill or flash.
     if age < 0.28:
         var accent := 1.0 - smoothstep(0.12, 0.28, age)
