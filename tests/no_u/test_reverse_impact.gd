@@ -45,6 +45,7 @@ func run() -> void:
         v2(game, map)
         check(game.no_u_vfx.get_script().resource_path.ends_with("no_u_reverse_impact_v4.gd"), "V4 default renderer")
         check("Survive HP loss" in game.PassiveFeedbackScript.describe(game,"no-u",1), "Reactive inspection text")
+        check("Survive HP loss" in game.PassiveFeedbackScript.brief("no-u",1,game), "Reactive acquisition notice")
         check("V4" in game.no_u_review.status_label(game), "V4 readiness identity")
         check(game.passive_timers.no_u_next == 0.0, "Acquisition must start ready")
         game._deal_damage_to_player(0.0)

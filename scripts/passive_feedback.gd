@@ -136,8 +136,8 @@ func committed_card(game, card: Dictionary, before: Dictionary, replaced: String
         var added_hp: float=maxf(0,game.max_hp-float(before.max_hp))
         if added_hp>0:detail+=" · +%s max HP" % number(added_hp)
         elif not weapon and COVERAGE.get(id,"") in ["stat","conditional","support"] and replaced.is_empty():
-            detail+="\n"+brief(id,int(actual.level))
-        elif not weapon and actual.rarity=="legendary" and replaced.is_empty():detail+="\n"+brief(id,int(actual.level))
+            detail+="\n"+brief(id,int(actual.level),game)
+        elif not weapon and actual.rarity=="legendary" and replaced.is_empty():detail+="\n"+brief(id,int(actual.level),game)
         notify(game,id,title,detail,"legendary" if actual.rarity=="legendary" else "upgrade")
     committed+=1
 
@@ -214,7 +214,9 @@ static func slot_state(game, id: String) -> Dictionary:
         return state("OUT" if outside else "%.0fs" % ceilf(until-now),"Outside Wi-Fi zone · no zone bonus" if outside else "+%s%% %s · %.1fs" % [number(actual*100),"frequency (strongest)" if strongest else "weapon damage",until-now],(until-now)/(4.0 if id=="w-wifi" else 5.0 if id=="aura-viral" else 6.0),"9caebb" if outside else "6ff3df")
     return {}
 
-static func brief(id: String, lv: int) -> String:
+static func brief(id: String, lv: int, game = null) -> String:
+    if id=="no-u" and game != null and game.no_u_review != null and game.no_u_review.has_method("is_reactive") and game.no_u_review.is_reactive():
+        return "Survive HP loss: retaliate; 15s recharge"
     match id:
         "main-character":return "+%d%% weapon damage" % (6*lv)
         "terminally-online":return "+%d%% weapon frequency" % (5*lv)
