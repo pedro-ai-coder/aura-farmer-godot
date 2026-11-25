@@ -36,6 +36,11 @@ func _ready() -> void:
     if candidate:
         passive_feedback = CandidateFeedback.new()
     super._ready()
+    # Lab remains an isolated V2 baseline/candidate fixture even after V3 ships.
+    if passive_burst_resolved.is_connected(_present_passive_burst):
+        passive_burst_resolved.disconnect(_present_passive_burst)
+    six_to_seven_vfx = null
+    passive_feedback.suppress_six_to_seven_ring = candidate
     set_process(false)
     set_process_input(false)
     clean_cut_skin.set_process(false)
