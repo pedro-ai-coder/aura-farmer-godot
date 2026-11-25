@@ -1,6 +1,7 @@
 extends Node2D
 
 ## Optional post-resolution observer. Ordinary runs have no subscriber.
+signal no_u_resolved(center: Vector2, radius: float, at: float, hits: Array[Dictionary], weakened: Dictionary)
 signal passive_burst_resolved(id: StringName, center: Vector2, radius: float, at: float, hits: Array[Dictionary])
 const Typography = preload("res://scripts/clean_cut_typography.gd")
 
@@ -80,6 +81,10 @@ var six_to_seven_vfx: RefCounted
 var six_to_seven_neon := false
 var six_to_seven_qa := false
 var six_to_seven_qa_label: Label
+const NO_U_REVIEW_PATH := "res://scripts/review/no_u_scenario.gd"
+var no_u_review: RefCounted
+var no_u_vfx: RefCounted
+var no_u_qa_label: Label
 var art = ApprovedVisualsScript.new()
 var movement_direction := Vector2.DOWN
 var defeated_visuals: Array[Dictionary] = []
@@ -331,6 +336,14 @@ func _ready() -> void:
         six_to_seven_qa_label.add_theme_constant_override("outline_size", 7)
         six_to_seven_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
         six_to_seven_qa_label.hide()
+    if OS.has_feature("no_u_review"):
+        no_u_qa_label = _make_label(Vector2.ZERO, 19)
+        no_u_qa_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+        no_u_qa_label.add_theme_color_override("font_color", Color("#9ff7ff"))
+        no_u_qa_label.add_theme_color_override("font_outline_color", Color.BLACK)
+        no_u_qa_label.add_theme_constant_override("outline_size", 7)
+        no_u_qa_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        no_u_qa_label.hide()
     if OS.has_feature("web") and OS.has_feature("performance_review"):
         if bool(JavaScriptBridge.eval("!!window.__auraPerformance?.enabled",true)):
             performance_probe=load("res://scripts/performance_probe.gd").new(self,"creator-device",bool(JavaScriptBridge.eval("!!window.__auraPerformance?.detailed",true)))
@@ -374,6 +387,8 @@ func _style_button(button: Button) -> void:
     button.add_theme_font_size_override("font_size", 19)
 
 func _show_ui() -> void:
+    if no_u_qa_label != null:
+        no_u_qa_label.visible = no_u_review != null and mode in ["playing", "paused", "won", "lost", "choice"]
     if six_to_seven_qa_label != null:
         six_to_seven_qa_label.visible = six_to_seven_qa and mode in ["playing", "paused", "won", "lost"]
     if combat_audio!=null:combat_audio.set_suspended(mode!="playing")
@@ -440,6 +455,9 @@ func _show_ui() -> void:
         map_select.refresh(presentation.position, presentation.view)
 
 func _update_text() -> void:
+    if no_u_qa_label != null and no_u_qa_label.visible:
+        no_u_qa_label.position = presentation.position + Vector2(0, 78)
+        no_u_qa_label.size.x = presentation.view.x
     if six_to_seven_qa_label != null and six_to_seven_qa_label.visible:
         six_to_seven_qa_label.position = presentation.position + Vector2(0, 78)
         six_to_seven_qa_label.size.x = presentation.view.x
@@ -503,13 +521,18 @@ func close_map_select() -> void:
     _clear_touch()
     _show_ui()
 
-func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false) -> void:
+func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false, no_u_density: int = 0) -> void:
     if mode == "maps" and SoloMaps.NAMES.has(id):
         map_id = id
         if OS.has_feature("six_to_seven_review"):
             _enable_six_to_seven_review(neon_requested)
             six_to_seven_qa_label.text = "QA RUN / SIX TO SEVEN / %s" % ("V3 NEON IMPACT" if six_to_seven_neon else "V2")
         six_to_seven_qa = qa_requested and OS.has_feature("six_to_seven_review") and six_to_seven_vfx != null
+        if OS.has_feature("no_u_review") and no_u_density > 0:
+            var scenario := load(NO_U_REVIEW_PATH) as Script
+            if scenario != null:
+                no_u_review = scenario.new(no_u_density, neon_requested)
+                no_u_qa_label.text = no_u_review.label()
         start_run(hero_index)
 
 func start_run(index: int) -> void:
@@ -523,6 +546,7 @@ func start_run(index: int) -> void:
         return
     if weapon_presentation!=null:weapon_presentation.prepare_identity(str(HEROES[index]["id"]),hero_appearance,art.hero_sheets)
     if passive_feedback!=null:passive_feedback.reset()
+    no_u_vfx = null
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if combat_audio!=null:combat_audio.reset()
     map_geometry = SoloMaps.FactoryGeometry if map_id == SoloMaps.MSG_FACTORY else null
@@ -533,7 +557,7 @@ func start_run(index: int) -> void:
     selected_card_index = -1
     run_id = Crypto.new().generate_random_bytes(16).hex_encode()
     run_metrics = {"damage": 0.0, "healing": 0.0, "protection": 0.0, "flexes": 0, "flex_damage": 0.0, "flex_prevented": 0.0, "flex_absorbed": 0.0, "flex_finishers": 0}
-    if not six_to_seven_qa:
+    if not six_to_seven_qa and no_u_review == null:
         profile["selected"] = HEROES[index]["id"]
         _save_profile()
     hero = HEROES[index].duplicate(true)
@@ -612,6 +636,8 @@ func start_run(index: int) -> void:
     if six_to_seven_qa:
         _apply_card({"type": "passive", "id": "six-to-seven", "rarity": "epic", "level": 1})
         print("Six to Seven QA start: map=%s hero=%s equipped=%d" % [map_id, hero["id"], _passive_level("six-to-seven")])
+    if no_u_review != null:
+        no_u_vfx = no_u_review.prepare(self)
     _show_ui()
     _update_text()
     _update_camera(0.0, true)
@@ -763,15 +789,29 @@ func _tick_passives(dt: float) -> void:
         _grant_weapon_shield("big-chad", amount, 4.0)
     if _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
         passive_timers["no_u_next"] = run_time + 15.0
-        _damage_nearby(200.0, 0.30 * _base_power())
+        const RADIUS := 200.0
+        var center := player_pos
+        var review_diagnostics := no_u_review != null and OS.has_feature("no_u_review")
+        var observed := no_u_vfx != null or no_u_resolved.has_connections() or review_diagnostics
+        var hits := _damage_nearby(RADIUS, 0.30 * _base_power(), observed)
+        var weakened: Dictionary = {}
         for e: Dictionary in enemies:
-            if player_pos.distance_to(e["pos"]) <= 200.0:
+            if player_pos.distance_to(e["pos"]) <= RADIUS:
                 var is_boss: bool = bool(SoloEnemyRulesScript.DATA[e["kind"]]["boss"])
                 e["weaken"] = 0.10 if is_boss else 0.20
                 e["weaken_until"] = run_time + (2.0 if is_boss else 4.0)
+                if observed:
+                    weakened[e["id"]] = [e["weaken"], e["weaken_until"]]
+        if no_u_vfx != null and mode in ["playing", "won"]:
+            no_u_vfx.pulse(center, RADIUS, run_time, hits, weakened)
+        if no_u_resolved.has_connections():
+            no_u_resolved.emit(center, RADIUS, run_time, hits, weakened)
+        if review_diagnostics:
+            no_u_review.report(self, center, RADIUS, hits, weakened)
         if passive_feedback!=null:
             passive_feedback.notify(self,"no-u","No U","Pulse activated · 200 U")
-            passive_feedback.ring(self,player_pos,200.0,"no-u")
+            if no_u_vfx == null:
+                passive_feedback.ring(self,center,RADIUS,"no-u")
     if int(passive_timers.get("so_back_remaining", 0)) > 0 and run_time >= float(passive_timers.get("so_back_next", 1e9)):
         passive_timers["so_back_remaining"] = int(passive_timers["so_back_remaining"]) - 1
         passive_timers["so_back_next"] = run_time + 1.0
@@ -2056,10 +2096,17 @@ func _import_profile_text(raw: String) -> bool:
     _return_to_menu()
     return true
 
-func _damage_nearby(radius: float, amount: float) -> void:
+func _damage_nearby(radius: float, amount: float, observed: bool = false) -> Array[Dictionary]:
+    var hits: Array[Dictionary] = []
     for e: Dictionary in enemies.duplicate():
         if player_pos.distance_to(e["pos"]) <= radius:
+            var before: float = float(e["hp"]) if observed else 0.0
             _hit_enemy(e, amount)
+            if observed:
+                var loss := maxf(0.0, before) - maxf(0.0, float(e["hp"]))
+                if loss > 0.0:
+                    hits.append({"id": e["id"], "pos": e["pos"], "hp_loss": loss})
+    return hits
 
 func _use_flex() -> void:
     if mode != "playing" or aura < 100.0 or flex_lock > 0.0:
@@ -2135,6 +2182,7 @@ func _finish(won: bool) -> void:
     mode = "won" if won else "lost"
     # A killing burst is emitted after this reset and remains visible briefly.
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
+    if no_u_vfx != null: no_u_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     _clear_touch()
     var result := {
@@ -2143,7 +2191,7 @@ func _finish(won: bool) -> void:
         "xp": total_xp, "damage": run_metrics["damage"], "healing": run_metrics["healing"],
         "protection": run_metrics["protection"], "flexes": run_metrics["flexes"]
     }
-    if not six_to_seven_qa:
+    if not six_to_seven_qa and no_u_review == null:
         profile = ProfileStoreScript.record(profile, result, mode)
         _save_profile()
     _show_ui()
@@ -2176,6 +2224,8 @@ func _save_profile() -> void:
 
 func _return_to_menu() -> void:
     six_to_seven_qa = false
+    no_u_review = null
+    no_u_vfx = null
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
     mode = "menu"
@@ -2388,6 +2438,8 @@ func _draw() -> void:
         if mode == "playing" and int(passive_timers.get("six_counter", 0)) == 6 and _passive_level("six-to-seven") > 0:
             six_to_seven_vfx.draw_armed(self, player_pos)
         six_to_seven_vfx.draw_ground(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
+    if no_u_vfx != null:
+        no_u_vfx.draw_ground(self, six_vfx_time, bool(profile.settings.reducedMotion))
     if passive_feedback!=null:passive_feedback.draw_ground(self,self)
     for drop: Dictionary in pickups:
         _draw_pickup(drop)
@@ -2431,6 +2483,10 @@ func _draw() -> void:
     _draw_depth_actors()
     if six_to_seven_vfx != null:
         six_to_seven_vfx.draw_contacts(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
+    if no_u_vfx != null:
+        no_u_vfx.draw_contacts(self, six_vfx_time, bool(profile.settings.reducedMotion))
+        if mode not in ["won", "lost"]:
+            no_u_vfx.draw_weakened(self, enemies, run_time)
     if map_geometry != null or six_to_seven_vfx != null:
         for enemy: Dictionary in enemies:
             if run_time >= float(enemy.get("born", 0.0)):

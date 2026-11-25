@@ -19,6 +19,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./solo_world_rules.gd` â€” world rules.
 - `./solo_maps.gd` and `./enemy_navigation.gd` define V4.1 candidate footprints and cover steering in obstacle space. Existing circular covers remain supported.
 - `./msg_factory_presentation.gd` and `./msg_factory_plate.gdshader` apply proposed press, terminal, cover and pavement effects using the existing active run clock and reduced-motion setting.
+- `./review/no_u_scenario.gd` and `./vfx/no_u_counter_pulse.gd` provide the opt-in No U review. Solo emits separate effective HP losses and weaken applications. The renderer tracks those exact applications against live enemy state and active run time. The ordinary pack excludes both review resources.
 - `./solo_passive_rules.gd` â€” passive gameplay rules.
 - `./solo_run.gd` exposes resolved Six to Seven burst results to optional read-only observers. The opt-in map picker selects the unchanged V2 renderer or the proposed V3 Neon Impact renderer. Both use the active combat clock and resolved positions. Ordinary exports include the approved V3 Neon Impact renderer with no QA picker controls; the opt-in V2/V3 review preset remains isolated.
 - `./phaser_rng.gd` â€” deterministic Phaser-compatible Mulberry32 sequence.

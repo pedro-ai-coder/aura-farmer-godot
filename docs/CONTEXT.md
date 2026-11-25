@@ -23,6 +23,7 @@ Navigate operational GDD V3, creator decisions, historical migration/QA records 
 - `./art/COMBAT_FEEL_FEEDBACK.md` — bounded event-driven original SFX, threat priority, pause/settings, crowd-health drawing and explicit remaining acceptance scope.
 - `./art/APPROVED_INDIVIDUAL_SHEETS_INTEGRATION_2026-11-14.md` — explicit six-sheet approval, actual integration/validation evidence and separate publication boundary; canonical GDD V4.0 in repo:clutchpunks-canon inherits unchanged V3 gameplay rules.
 - `./ARCHITECTURE.md` — early bootstrap/future target description; inspect current source before using its claims.
+- `./NO_U_COUNTER_PULSE_REVIEW.md` records the proposed No U review, evidence and creator acceptance checklist.
 - `./PASSIVE_VFX_AUDIT_V1.md`, `./PASSIVE_VFX_ARCHITECTURE_V1.md` and `./PASSIVE_VFX_STYLE_GUIDE_V1.md` cover Solo passive feedback and the proposed visual direction.
 
 ## Guardrails

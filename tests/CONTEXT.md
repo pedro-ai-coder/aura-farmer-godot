@@ -15,6 +15,7 @@ Headless Godot contract/smoke tests, Python checks, Node.js Web adapter tests an
 - `./test_signal_breaker_garage.gd` — isolated actual Garage, six identities/three kits, six viewports, real mouse/key/touch, menu RNG isolation and existing Solo/Settings return.
 - `./test_cpk_branding.gd` — visible title/PWA/HTML identity with unchanged native profile directory and legacy browser keys.
 - `./test_phaser_rng.gd` — seeded RNG and offer/enemy parity.
+- `./no_u/` covers No U gameplay parity, expiry, draw priority and review lifecycle.
 - `./six_to_seven/` verifies ordinary/V2 and V2/V3 gameplay parity, stages isolated review builds, and captures matched real gameplay and frame timings.
 - `./passive_vfx_lab/` provides side-by-side synthetic replays, QA Recorder traces, native captures and performance checks for the proposed Six to Seven effect.
 - `./test_animation_fluency.gd` — six-identity moving-action stride/side/priority registration, actual blocked-movement/release regression, single-cap body selection and lazy historical texture loading.

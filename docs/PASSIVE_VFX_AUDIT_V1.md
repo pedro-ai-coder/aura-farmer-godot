@@ -41,3 +41,7 @@ Runtime evidence is in `scripts/solo_run.gd`, `scripts/solo_passive_rules.gd`, `
 - **Scope limits.** No multiplayer implementation or device measurements were used to classify this Solo audit. Team recipients, exact Phaser parity beyond the existing scoped rules, and final dense creator judgment remain separate acceptance work.
 
 Future-only `get-ratiod`, `ego-check`, `uno-reverse`, `brainrot-rain`, and `take-l` are excluded from the lab and the playable proposal. The icon registry carries their approved illustrative resources.
+
+## 2026-11-25 · No U Counter-Pulse review
+
+**PROPOSED.** Counter-Pulse now has an opt-in Solo review. Confirmed HP loss and weaken applications are recorded independently. The future-born weaken discrepancy recorded above remains unresolved. See [review and acceptance](NO_U_COUNTER_PULSE_REVIEW.md) and [issue #160](https://github.com/pedro-ai-coder/aura-farmer-godot/issues/160).

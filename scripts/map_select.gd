@@ -13,6 +13,8 @@ var back: Button
 var start: Button
 var qa: Button
 var visual: Button
+var no_u_density := 0
+const NO_U_SCENARIOS := ["NO U QA OFF", "NO U QA NORMAL", "NO U QA DENSE"]
 
 func install(owner_game) -> void:
     game = owner_game
@@ -36,10 +38,23 @@ func install(owner_game) -> void:
         visual.toggle_mode = true
         visual.toggled.connect(func(neon: bool):
             visual.text = "VFX: V3 NEON IMPACT" if neon else "VFX: V2 BASELINE")
+    elif OS.has_feature("no_u_review"):
+        qa = _button(NO_U_SCENARIOS[0], _cycle_no_u)
+        visual = _button("VFX BASELINE", func(): pass)
+        visual.toggle_mode = true
+        visual.toggled.connect(func(candidate: bool):
+            visual.text = "COUNTER-PULSE" if candidate else "VFX BASELINE")
     clear_selection()
 
+func _cycle_no_u() -> void:
+    no_u_density = (no_u_density + 1) % NO_U_SCENARIOS.size()
+    qa.text = NO_U_SCENARIOS[no_u_density]
+    visual.disabled = no_u_density == 0
+    _update_focus_order()
+
 func _start_run() -> void:
-    game.start_selected_map(selected, qa != null and qa.button_pressed, visual != null and visual.button_pressed)
+    game.start_selected_map(selected, qa != null and qa.button_pressed,
+        visual != null and visual.button_pressed, no_u_density)
 
 func _button(caption: String, action: Callable, primary: bool = false) -> Button:
     var button := Button.new()
@@ -54,6 +69,10 @@ func clear_selection() -> void:
     if qa != null:
         qa.button_pressed = false
         visual.button_pressed = false
+        if OS.has_feature("no_u_review"):
+            no_u_density = 0
+            qa.text = NO_U_SCENARIOS[0]
+            visual.disabled = true
     _select(&"")
 
 func _select(id: StringName) -> void:
@@ -72,7 +91,8 @@ func _update_focus_order() -> void:
     var buttons: Array[Button] = [choices[Maps.RUIN_ALLEY], choices[Maps.MSG_FACTORY]]
     if qa != null:
         buttons.append(qa)
-        buttons.append(visual)
+        if not visual.disabled:
+            buttons.append(visual)
     buttons.append(back)
     if not start.disabled:
         buttons.append(start)
