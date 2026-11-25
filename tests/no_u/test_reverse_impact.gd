@@ -1,6 +1,10 @@
 extends "res://tests/no_u/test_counter_pulse.gd"
-## V2 contracts use the real incoming/outgoing resolvers, hazards and legal equipment.
+## V2 gameplay / V3 presentation contracts use the real incoming/outgoing resolvers, hazards and legal equipment.
 const ReverseScenario := preload("res://scripts/review/no_u_reverse_scenario.gd")
+class HistoricalRenderer extends "res://scripts/vfx/no_u_reverse_impact.gd":
+    func classify(_hits: Array[Dictionary], _survivors: Array[Dictionary]) -> void:
+        pass
+
 var recurse := false
 var assertions := 0
 
@@ -59,6 +63,9 @@ func run() -> void:
             check(hit_ids == [1, 3, 6, 7], "Shield/future/lethal/radius effective HP recipients changed")
             check(events[0].weakened.keys() == [1,2,3,4,6], "Weaken eligibility changed")
             check(events[0].weakened[1] == [0.2, 4.0] and events[0].weakened[3] == [0.1, 2.0], "Weaken values")
+        check(game.no_u_vfx._lethal.keys() == [7], "Lethal feedback must identify only removed HP recipients")
+        check(game.no_u_vfx._contacts.size() == 4 and not game.enemies[1].pos in game.no_u_vfx._contacts,
+            "Shield-only enemy received damage accents")
         var renderer: RefCounted = game.no_u_vfx
         check(not renderer.has_weaken_marker(game.enemies[3], 0.0)
             and renderer.has_weaken_marker(game.enemies[3], float(game.enemies[3].born)), "Future-born discrepancy was changed")
@@ -128,6 +135,7 @@ func run() -> void:
                 item.open_map_select(0)
                 item.no_u_review = ReverseScenario.new(density,true)
                 item.start_selected_map(map)
+            twin.no_u_vfx = HistoricalRenderer.new()
             for frame in 1200:
                 if frame % 120 == 60:
                     for item: ReviewRun in [game,twin]: item._deal_damage_to_player(1.0)
@@ -141,6 +149,6 @@ func run() -> void:
     check(game.no_u_review == null and game.no_u_vfx == null and game.profile_writes == 0
         and twin.profile_writes == 0, "Experiment leaked state/progression")
     game.free(); twin.free()
-    print("Reverse Impact V2: %d assertions, %d identical-input paired frames; failures: %d" % [assertions, paired_frames, failures])
+    print("Reverse Impact V3 / V2 parity: %d assertions, %d identical-input paired frames; failures: %d" % [assertions, paired_frames, failures])
     quit(1 if failures else 0)
 

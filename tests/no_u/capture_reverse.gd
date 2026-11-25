@@ -67,7 +67,7 @@ func run() -> void:
     var peak_enemies := 0
     var video_frames := 0
     # Keep performance runs before the Dense fixture's defeat/frozen simulation.
-    var horizon := 348 if capture else 216
+    var horizon := 480 if capture else 216
     for step in horizon:
         frame = step + 1
         if game.mode in ["choice", "legendary", "replace"]:
@@ -94,10 +94,20 @@ func run() -> void:
             quit(2)
             return
         video_frames += 1
+        if frame == pulse_frame:
+            image.save_png(destination.path_join("trigger.png"))
+        if frame == pulse_frame + 2:
+            image.save_png(destination.path_join("anticipation.png"))
         if frame == pulse_frame + 5:
             image.save_png(destination.path_join("damage.png"))
-        if frame == pulse_frame + 14:
+        if frame == pulse_frame + 9:
             image.save_png(destination.path_join("pulse.png"))
+        if frame == pulse_frame + 38:
+            image.save_png(destination.path_join("weaken.png"))
+        if frame == pulse_frame + 30:
+            image.save_png(destination.path_join("dissipation.png"))
+        if frame == pulse_frame + 247:
+            image.save_png(destination.path_join("expiration.png"))
         if frame == pulse_frame + 147:
             image.save_png(destination.path_join("normal-weaken-after-boss-expiry.png"))
     if capture:

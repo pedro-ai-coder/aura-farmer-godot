@@ -48,3 +48,5 @@ Related: [scripts](../scripts/CONTEXT.md), [scenes](../scenes/CONTEXT.md), [Web]
 The accepted Neon production continuation updates legacy illustrated-card/feedback expectations in `test_spotlight_theme.gd`, `test_hero_clash_button_motion.gd` and `button_art/test_components.gd`; actual native click, explicit confirmation, hit geometry, reduced motion and RNG assertions remain.
 
 - `no_u/test_reverse_impact.gd` verifies V2 trigger, recursion, cooldown, weaken, lethal feedback, isolation and determinism. `no_u/capture_reverse.gd` captures real A/B/C gameplay.
+
+- V3 extends the existing reactive capture stages and adds resolved damage/lethal classification checks. All five experimental resources are excluded from ordinary exports and checked in real PCKs.

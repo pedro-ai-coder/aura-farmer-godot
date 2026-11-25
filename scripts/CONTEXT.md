@@ -67,3 +67,5 @@ bash scripts/validate.sh
 [Scenes](../scenes/CONTEXT.md) describe entry points; [Tests](../tests/CONTEXT.md) cover contracts; [Web](../web/CONTEXT.md) covers the browser adapter; [Assets](../assets/CONTEXT.md) covers art provenance.
 
 - `review/no_u_reverse_scenario.gd` and `vfx/no_u_reverse_impact.gd` provide experimental A/B/C fixtures, HP-loss retaliation and bounded VFX; ordinary exports exclude review resources.
+
+- V3 adds `vfx/no_u_reverse_impact_v3.gd`: read-only resolved lethal classification, 50 ms compression, irregular scissor ribbons, bounded tails, broken-attack badges and expiration; V2 renderer and V1 remain byte-identical. Review-only audio uses the existing bounded mixer. No combat-rule change.

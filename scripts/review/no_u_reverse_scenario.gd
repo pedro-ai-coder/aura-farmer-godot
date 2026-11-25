@@ -1,7 +1,7 @@
 extends "res://scripts/review/no_u_scenario.gd"
-## EXPERIMENTAL — NOT CANONICAL — NOT APPROVED FOR PRODUCTION.
+## V3 PRESENTATION / V2 GAMEPLAY. EXPERIMENTAL — NOT CANONICAL — NOT APPROVED FOR PRODUCTION.
 ## Positive HP loss after mitigation/shields, including environment; survival required.
-const ReverseImpact := preload("res://scripts/vfx/no_u_reverse_impact.gd")
+const ReverseImpact := preload("res://scripts/vfx/no_u_reverse_impact_v3.gd")
 var treatment := 2
 var contract_case := 0
 var input_stage := 0
@@ -19,7 +19,7 @@ var resolving := false
 var last_activation := -INF
 
 func label() -> String:
-    return "QA / %s / %s / %s" % [["A ORIGINAL", "B COUNTER-PULSE V1", "C V2 EXPERIMENTAL"][treatment], "DENSE" if density == 2 else "NORMAL", CASES[contract_case]]
+    return "QA / %s / %s / %s" % [["A ORIGINAL", "B COUNTER-PULSE V1", "C REVERSE IMPACT V3 / REACTIVE"][treatment], "DENSE" if density == 2 else "NORMAL", CASES[contract_case]]
 
 func prepare(game) -> RefCounted:
     var original := super.prepare(game)
@@ -29,6 +29,8 @@ func prepare(game) -> RefCounted:
     resolving = false
     last_activation = -INF
     game.passive_timers["no_u_next"] = 0.0
+    if game.combat_audio != null and game.combat_audio.playback_enabled:
+        game.combat_audio.clips["no_u_reverse_v3"] = game.combat_audio.make_clip([0.19, 760.0, 58.0, 0.32])
     return ReverseImpact.new()
 
 func on_equipment_committed(game, previous_ids: Array) -> void:
@@ -37,7 +39,7 @@ func on_equipment_committed(game, previous_ids: Array) -> void:
 
 func status_label(game) -> String:
     var remaining := maxf(0.0, float(game.passive_timers.get("no_u_next", 0.0)) - game.run_time)
-    var identity := "NO U V2 · EXP" if is_reactive() else ("NO U A" if treatment == 0 else "NO U B")
+    var identity := "NO U V3 · EXP" if is_reactive() else ("NO U A" if treatment == 0 else "NO U B")
     var readiness := "READY ON HP LOSS" if is_reactive() else "PERIODIC READY"
     return "%s / %s" % [identity, readiness if remaining <= 0.0 else "RECHARGE %.1fs" % remaining]
 
@@ -61,11 +63,14 @@ func on_player_damage(game, old_hp: float, source: Dictionary, hazard: bool) -> 
     # Reserve before observers: reentrant callbacks cannot trigger a second activation.
     game.passive_timers["no_u_next"] = game.run_time + 15.0
     if game.no_u_vfx != null and game.mode in ["playing", "won"]:
+        game.no_u_vfx.classify(hits, game.enemies)
         game.no_u_vfx.incoming(source.get("pos", center), center, hazard)
         game.no_u_vfx.pulse(center, 200.0, game.run_time, hits, weakened)
+    if game.combat_audio != null:
+        game.combat_audio.play_event("no_u_reverse_v3", game.run_time, 5)
     game.no_u_resolved.emit(center, 200.0, game.run_time, hits, weakened)
     if OS.has_feature("no_u_review"):
-        print("No U V2 trigger: ", JSON.stringify({"at": game.run_time, "hp_loss": old_hp - game.hp,
+        print("No U V3 trigger: ", JSON.stringify({"at": game.run_time, "hp_loss": old_hp - game.hp,
             "survived": true, "environment": source.is_empty(), "hazard": hazard}))
         report(game, center, 200.0, hits, weakened)
     if game.passive_feedback != null:
