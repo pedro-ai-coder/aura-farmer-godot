@@ -45,3 +45,7 @@ Future-only `get-ratiod`, `ego-check`, `uno-reverse`, `brainrot-rain`, and `take
 ## 2026-11-25 · No U Counter-Pulse review
 
 **PROPOSED.** Counter-Pulse now has an opt-in Solo review. Confirmed HP loss and weaken applications are recorded independently. The future-born weaken discrepancy recorded above remains unresolved. See [review and acceptance](NO_U_COUNTER_PULSE_REVIEW.md) and [issue #160](https://github.com/pedro-ai-coder/aura-farmer-godot/issues/160).
+
+## 2026-11-25 - No U Reverse Impact V2 experiment
+
+EXPERIMENTAL - NOT CANONICAL - NOT APPROVED FOR PRODUCTION. Separate Draft PR #163 preserves #162/V1 and the existing future-born weaken discrepancy. See NO_U_REVERSE_IMPACT_V2.md, NO_U_REVERSE_IMPACT_V2_DELIVERY.md and append-only AI_ACTION_AUDIT_NO_U_V2.md. Canonical No U remains periodic; positive-HP-loss retaliation and environmental eligibility are prototype assumptions only. No production release is authorized by these technical results.

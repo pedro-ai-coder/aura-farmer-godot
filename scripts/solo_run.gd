@@ -455,6 +455,8 @@ func _show_ui() -> void:
         map_select.refresh(presentation.position, presentation.view)
 
 func _update_text() -> void:
+    if no_u_qa_label != null and no_u_review != null and no_u_review.has_method("status_label"):
+        no_u_qa_label.text = no_u_review.status_label(self)
     if no_u_qa_label != null and no_u_qa_label.visible:
         no_u_qa_label.position = presentation.position + Vector2(0, 78)
         no_u_qa_label.size.x = presentation.view.x
@@ -521,7 +523,7 @@ func close_map_select() -> void:
     _clear_touch()
     _show_ui()
 
-func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false, no_u_density: int = 0) -> void:
+func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false, no_u_density: int = 0, no_u_treatment: int = -1, no_u_case: int = 0) -> void:
     if mode == "maps" and SoloMaps.NAMES.has(id):
         map_id = id
         if OS.has_feature("six_to_seven_review"):
@@ -529,9 +531,9 @@ func start_selected_map(id: StringName, qa_requested: bool = false, neon_request
             six_to_seven_qa_label.text = "QA RUN / SIX TO SEVEN / %s" % ("V3 NEON IMPACT" if six_to_seven_neon else "V2")
         six_to_seven_qa = qa_requested and OS.has_feature("six_to_seven_review") and six_to_seven_vfx != null
         if OS.has_feature("no_u_review") and no_u_density > 0:
-            var scenario := load(NO_U_REVIEW_PATH) as Script
+            var scenario := load("res://scripts/review/no_u_reverse_scenario.gd" if no_u_treatment == 2 or no_u_case > 0 else NO_U_REVIEW_PATH) as Script
             if scenario != null:
-                no_u_review = scenario.new(no_u_density, neon_requested)
+                no_u_review = scenario.new(no_u_density, neon_requested, no_u_treatment, no_u_case) if no_u_treatment == 2 or no_u_case > 0 else scenario.new(no_u_density, neon_requested)
                 no_u_qa_label.text = no_u_review.label()
         start_run(hero_index)
 
@@ -694,6 +696,9 @@ func _advance(dt: float) -> void:
     if mode != "playing":
         return
     run_time += dt
+    if no_u_review != null and no_u_review.has_method("tick_inputs"):
+        no_u_review.tick_inputs(self)
+        if mode != "playing": return
     for cue: Dictionary in combat_feedback.duplicate():
         if run_time >= float(cue["until"]): combat_feedback.erase(cue)
     _tick_recovery(dt)
@@ -787,7 +792,7 @@ func _tick_passives(dt: float) -> void:
         passive_timers["big_chad_next"] = run_time + 10.0
         var amount: float = max_hp * (0.05 + 0.02 * float(_passive_level("big-chad") - 1))
         _grant_weapon_shield("big-chad", amount, 4.0)
-    if _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
+    if not (no_u_review != null and no_u_review.has_method("on_player_damage") and no_u_review.is_reactive()) and _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
         passive_timers["no_u_next"] = run_time + 15.0
         const RADIUS := 200.0
         var center := player_pos
@@ -1131,6 +1136,8 @@ func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: boo
     if old_hp >= max_hp * 0.25 and hp < max_hp * 0.25 and _passive_level("too-sigma") > 0 and run_time >= float(passive_timers.get("too_sigma_ready", 0.0)):
         passive_timers["too_sigma_ready"] = run_time + 60.0
         _grant_weapon_shield("too-sigma", max_hp * 0.25, 5.0)
+    if no_u_review != null and no_u_review.has_method("on_player_damage"):
+        no_u_review.on_player_damage(self, old_hp, source, hazard)
 
 func _spawn_hostile_shot(enemy: Dictionary) -> void:
     var dir: Vector2 = enemy["locked_direction"]
@@ -1334,6 +1341,9 @@ func _step_enemies(dt: float) -> void:
                 _deal_damage_to_player(float(enemy["damage"]) * boss_mult, enemy, true)
         if mode != "playing":
             return
+        # A reactive pulse can kill the attacker during its contact callback.
+        if no_u_review != null and no_u_review.has_method("is_reactive") and no_u_review.is_reactive() and not enemies.has(enemy):
+            continue
         if enemy["phase"] == "warning" and run_time >= float(enemy["attack_at"]):
             _spawn_hostile_shot(enemy)
             enemy["phase"] = ""
@@ -1986,6 +1996,8 @@ func _apply_card(card: Dictionary, replace_id: String = "") -> void:
     for id in periodic:
         var data: Array = periodic[id]
         if _passive_level(id) > 0 and not passive_timers.has(data[0]): passive_timers[data[0]] = run_time + float(data[1])
+    if no_u_review != null and no_u_review.has_method("on_equipment_committed"):
+        no_u_review.on_equipment_committed(self, previous_ids)
     if rarity == "legendary": legendary_spent = true
     else: pending_choices = maxi(0, pending_choices - 1)
     replace_card.clear()

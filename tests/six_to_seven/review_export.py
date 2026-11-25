@@ -8,7 +8,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 RENDERER = "scripts/vfx/six_to_seven.gd"
 NEON_RENDERER = "scripts/vfx/six_to_seven_neon_impact.gd"
-NO_U_RESOURCES = ("scripts/review/no_u_scenario.gd", "scripts/vfx/no_u_counter_pulse.gd")
+NO_U_RESOURCES = ("scripts/review/no_u_scenario.gd", "scripts/vfx/no_u_counter_pulse.gd",
+                  "scripts/review/no_u_reverse_scenario.gd", "scripts/vfx/no_u_reverse_impact.gd")
 
 
 def stage(destination: Path, target: str, no_u: bool = False) -> None:
