@@ -33,3 +33,5 @@ Read only task-relevant sections. Distinguish APPROVED, PROPOSED, EXPERIMENTAL, 
 - `NO_U_REVERSE_IMPACT_V2.md` records experimental rules and acceptance. `AI_ACTION_AUDIT_NO_U_V2.md` maintains the append-only action audit.
 
 - `NO_U_REVERSE_IMPACT_V2_DELIVERY.md` records the protected playable source, native/Web evidence, QA results and unresolved creator decisions.
+
+- `NO_U_REVERSE_IMPACT_V3_DELIVERY.md` records the isolated V3 visual proposal, measured smooth-wave tradeoff, exact playable source, native evidence and creator-review limits. `AI_ACTION_AUDIT_NO_U_V3.md` is append-only; V1/V2 records remain preserved.

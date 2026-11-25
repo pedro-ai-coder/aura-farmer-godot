@@ -531,9 +531,9 @@ func start_selected_map(id: StringName, qa_requested: bool = false, neon_request
             six_to_seven_qa_label.text = "QA RUN / SIX TO SEVEN / %s" % ("V3 NEON IMPACT" if six_to_seven_neon else "V2")
         six_to_seven_qa = qa_requested and OS.has_feature("six_to_seven_review") and six_to_seven_vfx != null
         if OS.has_feature("no_u_review") and no_u_density > 0:
-            var scenario := load("res://scripts/review/no_u_reverse_scenario.gd" if no_u_treatment == 2 or no_u_case > 0 else NO_U_REVIEW_PATH) as Script
+            var scenario := load("res://scripts/review/no_u_reverse_scenario.gd" if no_u_treatment >= 2 or no_u_case > 0 else NO_U_REVIEW_PATH) as Script
             if scenario != null:
-                no_u_review = scenario.new(no_u_density, neon_requested, no_u_treatment, no_u_case) if no_u_treatment == 2 or no_u_case > 0 else scenario.new(no_u_density, neon_requested)
+                no_u_review = scenario.new(no_u_density, neon_requested, no_u_treatment, no_u_case) if no_u_treatment >= 2 or no_u_case > 0 else scenario.new(no_u_density, neon_requested)
                 no_u_qa_label.text = no_u_review.label()
         start_run(hero_index)
 

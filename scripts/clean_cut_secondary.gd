@@ -262,7 +262,7 @@ func build_layout() -> void:
             parts["meta"].text="%d / %d" % [index+1,3 if weapon else 5]
         else:
             description=str(ui.catalog[item["id"]].get("description",""))
-            if not weapon:description=game.PassiveFeedbackScript.inspection(str(item.id),int(item.level))
+            if not weapon:description=game.PassiveFeedbackScript.inspection(str(item.id),int(item.level),game)
         extra["details"].text=description
         extra["details"].add_theme_font_size_override("font_size",15 if view.y>=580 else 16)
         skin.place(extra["details"],Rect2(12,90,tile_width-24,row_height-96))

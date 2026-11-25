@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RENDERER = "scripts/vfx/six_to_seven.gd"
 NEON_RENDERER = "scripts/vfx/six_to_seven_neon_impact.gd"
 NO_U_RESOURCES = ("scripts/review/no_u_scenario.gd", "scripts/vfx/no_u_counter_pulse.gd",
-                  "scripts/review/no_u_reverse_scenario.gd", "scripts/vfx/no_u_reverse_impact.gd")
+                  "scripts/review/no_u_reverse_scenario.gd", "scripts/vfx/no_u_reverse_impact.gd", "scripts/vfx/no_u_reverse_impact_v3.gd", "scripts/vfx/no_u_reverse_impact_v4.gd")
 
 
 def stage(destination: Path, target: str, no_u: bool = False) -> None:
@@ -28,6 +28,7 @@ def stage(destination: Path, target: str, no_u: bool = False) -> None:
     feature = "no_u_review" if no_u else "six_to_seven_review"
     preset = preset.replace('custom_features=""', f'custom_features="{feature}"')
     if no_u:
+        preset = preset.replace(",assets/experimental/no-u-v4/*", "")
         for name in NO_U_RESOURCES:
             preset = preset.replace("," + name, "")
     if target == "windows":
@@ -51,6 +52,9 @@ def verify(path: Path, included: bool, no_u: bool = False) -> None:
 
     entries = directory(path.read_bytes())
     assert not any(name.startswith("tests/") or name.startswith("qa/") for name in entries), "QA resources in gameplay pack"
+    artwork = [name for name in entries if name.startswith("assets/experimental/no-u-v4/")]
+    if bool(artwork) != no_u:
+        raise ValueError(f"Unexpected V4 artwork packaging: {artwork!r}")
     renderer = {name for name in entries if name.startswith("scripts/vfx/")}
     # V3 is now approved for both regular gameplay and review packages.
     expected = {name + suffix for name in (RENDERER, NEON_RENDERER)
