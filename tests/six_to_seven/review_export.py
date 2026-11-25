@@ -7,6 +7,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 RENDERER = "scripts/vfx/six_to_seven.gd"
+PRODUCTION_NO_U = ("scripts/vfx/no_u_v4.gd", "scripts/vfx/no_u_v4_state.gd")
 NEON_RENDERER = "scripts/vfx/six_to_seven_neon_impact.gd"
 NO_U_RESOURCES = ("scripts/review/no_u_scenario.gd", "scripts/vfx/no_u_counter_pulse.gd",
                   "scripts/review/no_u_reverse_scenario.gd", "scripts/vfx/no_u_reverse_impact.gd", "scripts/vfx/no_u_reverse_impact_v3.gd", "scripts/vfx/no_u_reverse_impact_v4.gd")
@@ -55,9 +56,11 @@ def verify(path: Path, included: bool, no_u: bool = False) -> None:
     artwork = [name for name in entries if name.startswith("assets/experimental/no-u-v4/")]
     if bool(artwork) != no_u:
         raise ValueError(f"Unexpected V4 artwork packaging: {artwork!r}")
+    assert "scripts/no_u_reactive.gdc" in entries, "Approved resolver missing"
+    assert "assets/production/no-u-v4/reversal-atlas.png.import" in entries, "Approved atlas missing"
     renderer = {name for name in entries if name.startswith("scripts/vfx/")}
     # V3 is now approved for both regular gameplay and review packages.
-    expected = {name + suffix for name in (RENDERER, NEON_RENDERER)
+    expected = {name + suffix for name in (RENDERER, NEON_RENDERER, *PRODUCTION_NO_U)
                 for suffix in (".remap", "c")}
     no_u_entries = {name + suffix for name in NO_U_RESOURCES for suffix in (".remap", "c")}
     actual_no_u = {name for name in entries if name.startswith(NO_U_RESOURCES)}

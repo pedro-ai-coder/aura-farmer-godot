@@ -123,8 +123,8 @@ func verify() -> void:
     game._spawn_enemy("npc",{"pos":game.player_pos+Vector2(60,0)})
     game._spawn_enemy("boss",{"pos":game.player_pos+Vector2(160,0)})
     for enemy: Dictionary in game.enemies:enemy.hp=1000;enemy.max=1000
-    game._tick_passives(0)
-    expect(observer.rings.size()==1 and observer.rings[0].radius==200,"No U cosmetic uses real activation/radius")
+    game._deal_damage_to_player(1.0)
+    expect(game.no_u_vfx._radius==200 and game.no_u_vfx._at==15,"No U cosmetic uses real activation/radius")
     expect(game.enemies[0].weaken_until==19 and game.enemies[1].weaken_until==17,"No U does not homogenize normal/boss expiry")
     observer.synchronize(game)
     game._return_to_menu()

@@ -183,7 +183,7 @@ static func slot_state(game, id: String) -> Dictionary:
     var now: float=game.run_time
     var lv: int=game._passive_level(id)
     if lv<=0:return {}
-    if id=="no-u" and game.no_u_review != null and game.no_u_review.has_method("is_reactive") and game.no_u_review.is_reactive():
+    if id=="no-u" and game._no_u_is_reactive():
         var recovery: float=maxf(0.0,float(t.get("no_u_next",0.0))-now)
         return state("%.1fs" % recovery if recovery>0 else "READY", "Recharge / %.1fs" % recovery if recovery>0 else "Retaliates after surviving HP loss", 1.0-recovery/15.0,"65fff0")
     if id=="let-him-cook" and now<game.cook_expires and game.cook_stacks>0:
@@ -215,7 +215,7 @@ static func slot_state(game, id: String) -> Dictionary:
     return {}
 
 static func brief(id: String, lv: int, game = null) -> String:
-    if id=="no-u" and game != null and game.no_u_review != null and game.no_u_review.has_method("is_reactive") and game.no_u_review.is_reactive():
+    if id=="no-u" and game != null and game._no_u_is_reactive():
         return "Survive HP loss: retaliate; 15s recharge"
     match id:
         "main-character":return "+%d%% weapon damage" % (6*lv)
@@ -235,7 +235,7 @@ static func brief(id: String, lv: int, game = null) -> String:
     return ""
 
 static func inspection(id: String, lv: int, game = null) -> String:
-    if id=="no-u" and game != null and game.no_u_review != null and game.no_u_review.has_method("is_reactive") and game.no_u_review.is_reactive():
+    if id=="no-u" and game != null and game._no_u_is_reactive():
         return "Survive HP loss: retaliate within 200 U, 0.30 x base power. 15s recharge. Enemy ATK -20% / 4s; boss -10% / 2s. Shield-only hits do not activate."
     # Compact real values for the existing eight-tile build layout. Full
     # conditions remain in describe()/the existing inspection tooltip.
@@ -283,7 +283,7 @@ static func describe(game, id: String, lv: int) -> String:
         "w-squad":description="+25% support permanently. Flex: +10% weapon damage for 6s."
         "too-sigma":description="Cross below 25% HP: 25% max HP shield × support, 5s; 60s recovery. No revive."
         "no-u":description="Every 15s in combat: 200 U pulse, 0.30 × base power. Enemy damage −20% for 4s; bosses −10% for 2s."
-    if id=="no-u" and game.no_u_review != null and game.no_u_review.has_method("is_reactive") and game.no_u_review.is_reactive():
+    if id=="no-u" and game._no_u_is_reactive():
         description=inspection(id,lv,game)
     var live: Dictionary=slot_state(game,id)
     if not live.is_empty():description+="\nNOW: "+str(live.detail)

@@ -67,3 +67,11 @@ EXPERIMENTAL — PROPOSED — NOT FOR PRODUCTION. No creator approval claimed.
 - Existing Preview-only branch gate explicitly stages V4; no merge, production promotion, protection change, new service or costs authorized. Status: EXPERIMENTAL - CREATOR APPROVAL PENDING.
 
 - Authenticated hardware WebGL2 V4 preview on 3d22a06 loaded and reactive HP-loss activation passed. Screenshot inspection caught stale periodic text in acquisition toast; fixed brief(game) only for reactive experiment, with explicit regression assertion. Final candidate supersedes that initial preview. Initial SHA-only deployment was canceled because Vercel overwrote the branch gate ref; recreated with exact sha plus branch ref. No production target used.
+
+
+## 2026-11-25 — Explicit approval and production extraction
+
+- Creator task explicitly approves V4 exact mechanic/art at `5bb1bbb`; conditional production authorization recorded as CPK-NO-U-V4-2026-11-25-01. Canon registration uses a dedicated PR. GitHub profile verified pedro-ai-coder / pestrela@proton.me; local author/committer match.
+- Isolated integration worktree extracts resolver into `scripts/no_u_reactive.gd`, copies exact painted atlas to production, and flattens reviewed state/marker dependencies without importing historical draw implementations. Reviewed source hashes pinned in production manifest. Six → Seven scripts untouched.
+- Production resolver passes 9,600 exact reviewed-state paired frames (both maps/densities/Reduced Motion) and 62 boundary assertions. Initial extraction missed two marker color constants; import exposed it, corrected before tests. Parity harness initially compared intentionally different ordinary-vs-QA result persistence; normalized only profile results and retained gameplay/RNG/event comparisons. An old QA retry assertion expected pre-equipped No U; adapted to ordinary reset. No failed run reported PASS.
+- Full mandatory validation and actual ordinary export checks follow. Pre-integration rollback deployment verified READY at 1c2ec76. No production publication yet.

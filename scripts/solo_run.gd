@@ -82,6 +82,9 @@ var six_to_seven_neon := false
 var six_to_seven_qa := false
 var six_to_seven_qa_label: Label
 const NO_U_REVIEW_PATH := "res://scripts/review/no_u_scenario.gd"
+const NoUReactive := preload("res://scripts/no_u_reactive.gd")
+const NoUV4 := preload("res://scripts/vfx/no_u_v4.gd")
+var no_u_runtime: RefCounted
 var no_u_review: RefCounted
 var no_u_vfx: RefCounted
 var no_u_qa_label: Label
@@ -548,9 +551,13 @@ func start_run(index: int) -> void:
         return
     if weapon_presentation!=null:weapon_presentation.prepare_identity(str(HEROES[index]["id"]),hero_appearance,art.hero_sheets)
     if passive_feedback!=null:passive_feedback.reset()
-    no_u_vfx = null
+    no_u_runtime = NoUReactive.new()
+    no_u_vfx = NoUV4.new()
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
-    if combat_audio!=null:combat_audio.reset()
+    if combat_audio!=null:
+        combat_audio.reset()
+        if combat_audio.playback_enabled and not combat_audio.clips.has("no_u_reverse_v3"):
+            combat_audio.clips["no_u_reverse_v3"] = combat_audio.make_clip([0.26, 1050.0, 47.0, 0.40])
     map_geometry = SoloMaps.FactoryGeometry if map_id == SoloMaps.MSG_FACTORY else null
     if map_geometry != null and factory_plate == null:
         factory_plate = FactoryPresentation.new()
@@ -792,7 +799,7 @@ func _tick_passives(dt: float) -> void:
         passive_timers["big_chad_next"] = run_time + 10.0
         var amount: float = max_hp * (0.05 + 0.02 * float(_passive_level("big-chad") - 1))
         _grant_weapon_shield("big-chad", amount, 4.0)
-    if not (no_u_review != null and no_u_review.has_method("on_player_damage") and no_u_review.is_reactive()) and _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
+    if not _no_u_is_reactive() and _passive_level("no-u") > 0 and not enemies.is_empty() and run_time >= float(passive_timers.get("no_u_next", 15.0)):
         passive_timers["no_u_next"] = run_time + 15.0
         const RADIUS := 200.0
         var center := player_pos
@@ -1136,8 +1143,11 @@ func _deal_damage_to_player(amount: float, source: Dictionary = {}, contact: boo
     if old_hp >= max_hp * 0.25 and hp < max_hp * 0.25 and _passive_level("too-sigma") > 0 and run_time >= float(passive_timers.get("too_sigma_ready", 0.0)):
         passive_timers["too_sigma_ready"] = run_time + 60.0
         _grant_weapon_shield("too-sigma", max_hp * 0.25, 5.0)
-    if no_u_review != null and no_u_review.has_method("on_player_damage"):
-        no_u_review.on_player_damage(self, old_hp, source, hazard)
+    if no_u_review != null:
+        if no_u_review.has_method("on_player_damage"):
+            no_u_review.on_player_damage(self, old_hp, source, hazard)
+    elif no_u_runtime != null:
+        no_u_runtime.on_player_damage(self, old_hp, source, hazard)
 
 func _spawn_hostile_shot(enemy: Dictionary) -> void:
     var dir: Vector2 = enemy["locked_direction"]
@@ -1342,7 +1352,7 @@ func _step_enemies(dt: float) -> void:
         if mode != "playing":
             return
         # A reactive pulse can kill the attacker during its contact callback.
-        if no_u_review != null and no_u_review.has_method("is_reactive") and no_u_review.is_reactive() and not enemies.has(enemy):
+        if _no_u_is_reactive() and not enemies.has(enemy):
             continue
         if enemy["phase"] == "warning" and run_time >= float(enemy["attack_at"]):
             _spawn_hostile_shot(enemy)
@@ -1996,8 +2006,11 @@ func _apply_card(card: Dictionary, replace_id: String = "") -> void:
     for id in periodic:
         var data: Array = periodic[id]
         if _passive_level(id) > 0 and not passive_timers.has(data[0]): passive_timers[data[0]] = run_time + float(data[1])
-    if no_u_review != null and no_u_review.has_method("on_equipment_committed"):
-        no_u_review.on_equipment_committed(self, previous_ids)
+    if no_u_review != null:
+        if no_u_review.has_method("on_equipment_committed"):
+            no_u_review.on_equipment_committed(self, previous_ids)
+    elif no_u_runtime != null:
+        no_u_runtime.on_equipment_committed(self, previous_ids)
     if rarity == "legendary": legendary_spent = true
     else: pending_choices = maxi(0, pending_choices - 1)
     replace_card.clear()
@@ -2237,6 +2250,7 @@ func _save_profile() -> void:
 func _return_to_menu() -> void:
     six_to_seven_qa = false
     no_u_review = null
+    no_u_runtime = null
     no_u_vfx = null
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if passive_feedback!=null:passive_feedback.reset()
@@ -2709,3 +2723,6 @@ func _draw_recovery() -> void:
 
 func _exit_tree() -> void:
     if performance_probe!=null:performance_probe.close()
+
+func _no_u_is_reactive() -> bool:
+    return no_u_review == null or (no_u_review.has_method("is_reactive") and no_u_review.is_reactive())
