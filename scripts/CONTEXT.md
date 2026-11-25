@@ -8,32 +8,32 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 
 ## Key files
 
-- `./solo_run.gd` — active solo-run controller and module integration point.
-- `./neon_menu_backdrop.gd` with `clean_cut_skin.gd` / `clean_cut_secondary.gd` � eleven secondary/choice menus reuse Neon tokens and native input owners; bounded entry rails, reduced motion, fitted actions, dark save editor and cached responsive layouts. Gameplay HUD art and simulation remain separate.
-- `./cpk_design_system.gd` — shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.
-- `./signal_breaker_garage.gd` / `./garage_environment.gd` — separate application entrance, six approved identities, real Solo/Settings handoff, layered candidate environment; retains the existing Solo controller as gameplay/save authority.
-- `./game_rules.gd` — foundational limits; not the full approved gameplay catalog.
-- `./solo_clock.gd` — run clock.
-- `./solo_offer_rules.gd` — offers and legal choices.
-- `./solo_enemy_rules.gd` — enemy rules and selection.
-- `./solo_world_rules.gd` — world rules.
+- `./solo_run.gd` â€” active solo-run controller and module integration point.
+- `./neon_menu_backdrop.gd` with `clean_cut_skin.gd` / `clean_cut_secondary.gd` — eleven secondary/choice menus reuse Neon tokens and native input owners; bounded entry rails, reduced motion, fitted actions, dark save editor and cached responsive layouts. Gameplay HUD art and simulation remain separate.
+- `./cpk_design_system.gd` â€” shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.
+- `./signal_breaker_garage.gd` / `./garage_environment.gd` â€” separate application entrance, six approved identities, real Solo/Settings handoff, layered candidate environment; retains the existing Solo controller as gameplay/save authority.
+- `./game_rules.gd` â€” foundational limits; not the full approved gameplay catalog.
+- `./solo_clock.gd` â€” run clock.
+- `./solo_offer_rules.gd` â€” offers and legal choices.
+- `./solo_enemy_rules.gd` â€” enemy rules and selection.
+- `./solo_world_rules.gd` â€” world rules.
 - `./solo_maps.gd` and `./enemy_navigation.gd` define V4.1 candidate footprints and cover steering in obstacle space. Existing circular covers remain supported.
 - `./msg_factory_presentation.gd` and `./msg_factory_plate.gdshader` apply proposed press, terminal, cover and pavement effects using the existing active run clock and reduced-motion setting.
-- `./solo_passive_rules.gd` — passive gameplay rules.
-- `./solo_run.gd` exposes resolved Six to Seven burst results to optional read-only observers. The opt-in map picker selects the unchanged V2 renderer or the proposed V3 Neon Impact renderer. Both use the active combat clock and resolved positions. Ordinary exports exclude both renderers and omit the picker controls.
-- `./phaser_rng.gd` — deterministic Phaser-compatible Mulberry32 sequence.
-- `./profile_store.gd` — versioned profile and legacy-save compatibility.
-- `./approved_visuals.gd` — visual resource binding.
-- `./hero_animation.gd` — hero animation logic.
-- `./combat_audio.gd` — original short PCM SFX, eight bounded priority voices, actual emission/contact/Flex/threat observers, modal pause and existing Master settings; no gameplay RNG or external service. Ordinary headless checks disable playback; the focused audio test explicitly exercises the mixer.
-- `./full_hero_atlases.gd` — authored 64-frame atlas playback: eight movement directions, front/back idle/attack/hurt, Flex and defeat; replaces provisional pose transforms.
+- `./solo_passive_rules.gd` â€” passive gameplay rules.
+- `./solo_run.gd` exposes resolved Six to Seven burst results to optional read-only observers. The opt-in map picker selects the unchanged V2 renderer or the proposed V3 Neon Impact renderer. Both use the active combat clock and resolved positions. Ordinary exports include the approved V3 Neon Impact renderer with no QA picker controls; the opt-in V2/V3 review preset remains isolated.
+- `./phaser_rng.gd` â€” deterministic Phaser-compatible Mulberry32 sequence.
+- `./profile_store.gd` â€” versioned profile and legacy-save compatibility.
+- `./approved_visuals.gd` â€” visual resource binding.
+- `./hero_animation.gd` â€” hero animation logic.
+- `./combat_audio.gd` â€” original short PCM SFX, eight bounded priority voices, actual emission/contact/Flex/threat observers, modal pause and existing Master settings; no gameplay RNG or external service. Ordinary headless checks disable playback; the focused audio test explicitly exercises the mixer.
+- `./full_hero_atlases.gd` â€” authored 64-frame atlas playback: eight movement directions, front/back idle/attack/hurt, Flex and defeat; replaces provisional pose transforms.
 - `./full_hero_atlases.gd` composes distance-driven legs during attack/Flex for all six identities, with per-identity seams after creator approval of the Cool Kid pilot/expansion (2026-11-15). Source pixels remain immutable. Released Sigma body poses exclude baked airborne caps; historical atlas inspection is lazy in `approved_visuals.gd`.
-- `./prepare_full_hero_atlases.py` / `./verify_full_hero_atlases.py` — transparent-frame packing and structural file checks; original generated sheets/prompts stay versioned.
-- `./approved_hero_sheets.gd` — cached playback of the six creator-approved individual-sheet identities; presentation only, no reflected CPK lettering.
-- `./import_approved_hero_sheets.py` / `./verify_approved_hero_sheets.py` — deterministic original-pixel extraction and source/export hash gates.
-- `./web_platform.gd` — Godot-facing browser adapter.
-- `./validate.sh` — validation orchestrator.
-- `./build_web.sh` — Web build/export procedure.
+- `./prepare_full_hero_atlases.py` / `./verify_full_hero_atlases.py` â€” transparent-frame packing and structural file checks; original generated sheets/prompts stay versioned.
+- `./approved_hero_sheets.gd` â€” cached playback of the six creator-approved individual-sheet identities; presentation only, no reflected CPK lettering.
+- `./import_approved_hero_sheets.py` / `./verify_approved_hero_sheets.py` â€” deterministic original-pixel extraction and source/export hash gates.
+- `./web_platform.gd` â€” Godot-facing browser adapter.
+- `./validate.sh` â€” validation orchestrator.
+- `./build_web.sh` â€” Web build/export procedure.
 
 ## Architecture and flow
 
