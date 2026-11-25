@@ -65,12 +65,17 @@ func verify() -> void:
     expect(Feedback.slot_state(game,"let-him-cook").short=="5/5","Cook badge reads actual stacks")
     expect(Feedback.slot_state(game,"six-to-seven").short=="6/7","Sixth hit warning")
     game._primary_activation(game.player_pos)
-    expect(game.passive_timers.six_counter==0 and observer.rings.size()==1,"Seventh real primary hit produces one cosmetic ring")
+    expect(game.passive_timers.six_counter==0 and observer.rings.is_empty()
+        and game.six_to_seven_vfx != null and game.six_to_seven_neon
+        and game.six_to_seven_vfx.slots[0].at == game.run_time,
+        "Seventh hit must trigger approved V3 without duplicating the legacy ring")
     expect(Feedback.slot_state(game,"six-to-seven").detail=="Burst recovery","Counter lockout read from authoritative timer")
-    var ring_until: float=observer.rings[0].until
+    var burst_at: float=game.six_to_seven_vfx.slots[0].at
     observer.synchronize(game);var before_pause:=var_to_bytes([observer.current,observer.current_until,observer.rings,observer.statuses])
     game._toggle_pause();game._process(0.25);game._process(0.25)
-    expect(before_pause==var_to_bytes([observer.current,observer.current_until,observer.rings,observer.statuses]),"Pause freezes all feedback deadlines/queues")
+    expect(before_pause==var_to_bytes([observer.current,observer.current_until,observer.rings,observer.statuses])
+        and game.six_to_seven_vfx.slots[0].at == burst_at,
+        "Pause freezes all feedback deadlines/queues and approved burst")
     game._toggle_pause();game.run_time=3.01;observer.synchronize(game)
     expect(Feedback.slot_state(game,"let-him-cook").is_empty() and any_notice(observer,"Stacks expired"),"Cook actually expires, stale canonical count does not linger visually")
     expect(observer.rings.is_empty(),"Short cosmetic lifetime expires on active clock")
