@@ -163,6 +163,9 @@ if [[ "${PERFORMANCE_REVIEW:-0}" == "1" ]]; then PERFORMANCE_CHECK+=(--review); 
 python3 scripts/verify_performance_export.py "build/web/$EXPORT_BASENAME.pck" "${PERFORMANCE_CHECK[@]}"
 if [[ "$SIX_TO_SEVEN_REVIEW" == "1" ]]; then
     python3 tests/six_to_seven/review_export.py --verify "build/web/$EXPORT_BASENAME.pck" --review
+else
+    # Release gate: approved V3 class and its V2 base must be packaged in normal builds.
+    python3 tests/six_to_seven/review_export.py --verify "build/web/$EXPORT_BASENAME.pck"
 fi
 echo "SUCCESS: Official Godot Web export prepared in build/web"
 du -sh build/web
