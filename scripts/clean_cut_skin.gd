@@ -585,7 +585,7 @@ func cards_layout() -> void:
         Type.apply(parts["comparison"],"hud_secondary",compact_cards)
         var title_height: float=maxf(52.0 if compact_cards else 84.0,text_height(parts["name"],width-132.0))
         var meta_y: float=68.0+title_height+(4.0 if compact_cards else 10.0)
-        var body_y: float=meta_y if legendary else meta_y+(24.0 if compact_cards else 38.0)
+        var body_y: float=meta_y if legendary else meta_y+(32.0 if compact_cards else 38.0)
         var body_height: float=maxf(80.0,text_height(parts["body"],width-32.0))
         var comparison_y: float=body_y+body_height+12.0
         var comparison_height: float=0.0 if legendary else text_height(parts["comparison"],width-32.0)
