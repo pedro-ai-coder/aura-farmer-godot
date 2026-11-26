@@ -413,7 +413,8 @@ jobs:
           PY
           (
             cd build/web
-            find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+            find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+            sha256sum --check --status SHA256SUMS
             zip -X -q -r "$GITHUB_WORKSPACE/CLUTCHPUNKS-M0-RC-4850be290105.zip" .
           )
           sha256sum CLUTCHPUNKS-M0-RC-4850be290105.zip > CLUTCHPUNKS-M0-RC-4850be290105.zip.sha256
