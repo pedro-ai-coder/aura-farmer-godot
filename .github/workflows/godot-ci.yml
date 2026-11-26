@@ -372,3 +372,63 @@ jobs:
           name: gameplay-hud-v2-native-six-viewports
           path: ${{ runner.temp }}/hud-v2
           retention-days: 14
+
+  # Ephemeral, non-production M0 export. This job is intentionally scoped to
+  # a short-lived build branch and checks out the exact merged main commit.
+  m0-main-web-archive:
+    if: ${{ github.head_ref == 'build/m0-main-4850be29' && github.base_ref == 'main' && github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact creator-approved main commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: 4850be29010542984ebcedf47c926612dfbeab02
+          persist-credentials: false
+
+      - name: Install official Godot 4.7.2 and export templates
+        uses: chickensoft-games/setup-godot@f166999204a4f2722c6fe042fbaa3b3ea0d9c789 # v2.4.1
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+          cache: true
+
+      - name: Build and archive exact-main ordinary Web candidate
+        shell: bash
+        env:
+          GODOT_SKIP_TEMPLATE_DOWNLOAD: "1"
+          VERCEL_GIT_COMMIT_SHA: "4850be29010542984ebcedf47c926612dfbeab02"
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$VERCEL_GIT_COMMIT_SHA"
+          bash scripts/build_web.sh
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          info = json.loads(Path("build/web/build.json").read_text())
+          assert info["commit"] == "4850be29010542984ebcedf47c926612dfbeab02", info
+          assert info["engine"] == "4.7.2", info
+          assert "review" not in info, info
+          PY
+          (
+            cd build/web
+            find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+            zip -X -q -r "$GITHUB_WORKSPACE/CLUTCHPUNKS-M0-RC-4850be290105.zip" .
+          )
+          sha256sum CLUTCHPUNKS-M0-RC-4850be290105.zip > CLUTCHPUNKS-M0-RC-4850be290105.zip.sha256
+          printf '%s\n' 'CLUTCHPUNKS M0 - exact main 4850be29010542984ebcedf47c926612dfbeab02' 'Unzip; run python -m http.server 8765 from the extracted directory; open http://127.0.0.1:8765/' 'This build is not a deployment or M0 release approval.' > BUILD-README.txt
+          test -s CLUTCHPUNKS-M0-RC-4850be290105.zip
+          cat CLUTCHPUNKS-M0-RC-4850be290105.zip.sha256
+
+      - name: Upload portable Web build (no deployment)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: CLUTCHPUNKS-M0-RC-4850be290105
+          path: |
+            CLUTCHPUNKS-M0-RC-4850be290105.zip
+            CLUTCHPUNKS-M0-RC-4850be290105.zip.sha256
+            BUILD-README.txt
+          if-no-files-found: error
+          retention-days: 21
+          compression-level: 0
