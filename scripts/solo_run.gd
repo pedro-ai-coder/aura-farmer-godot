@@ -2526,30 +2526,53 @@ func _draw() -> void:
         var shot_pos: Vector2 = shot["pos"]
         var shot_dir: Vector2 = shot["dir"]
         draw_line(shot_pos - shot_dir * 16.0, shot_pos, Color(0.89, 0.45, 0.38), 6.0)
-        draw_circle(shot_pos, 5.0, Color(1.0, 0.45, 0.49))
+        draw_circle(shot_pos,7.0,Color("13233a"))
+        draw_circle(shot_pos,5.0,Color("ff555d"))
+        draw_arc(shot_pos,3.0,0,TAU,12,Color("fff9e9"),1.0,true)
     if run_time < float(hero_state.get("flex_caption_until",0.0)):
         draw_string(Typography.font("hud_secondary"),player_pos+Vector2(-40,-48),str(hero_state.get("flex_caption","")),HORIZONTAL_ALIGNMENT_LEFT,-1,22,Color("253449"))
 
     if performance_probe!=null:performance_probe.add(&"draw",Time.get_ticks_usec()-perf_draw_start)
 
+func _draw_hostile_path(points: PackedVector2Array, warning: bool) -> void:
+    # Dashed = preparing; solid, dark-backed = damaging. Same real boundary.
+    var tint:=Color("ffb34f") if warning else Color("ff555d")
+    if warning:
+        var distance:=0.0
+        for i in range(points.size()-1):
+            var length: float=points[i].distance_to(points[i+1])
+            var start:=0.0
+            while start<length:
+                var span: float=minf(length-start,10.0-fmod(distance,10.0))
+                if fmod(distance,20.0)<10.0:
+                    var from: Vector2=points[i].lerp(points[i+1],start/maxf(0.001,length))
+                    var to: Vector2=points[i].lerp(points[i+1],(start+span)/maxf(0.001,length))
+                    draw_line(from,to,Color("13233a"),5.0,true)
+                    draw_line(from,to,tint,2.5,true)
+                start+=maxf(0.001,span);distance+=maxf(0.001,span)
+    else:
+        draw_polyline(points,Color("13233a"),8.0,true)
+        draw_polyline(points,tint,4.0,true)
+
 func _draw_danger_geometry() -> void:
     for zone: Dictionary in hazard_zones:
-        var warning: bool = run_time < float(zone["at"])
-        var tint := Color(1.0, 0.61, 0.22, 0.8) if warning else Color(0.98, 0.29, 0.31, 0.8)
-        var center: Vector2 = zone["pos"]
-        var facing: Vector2 = zone["dir"]
-        if zone["shape"] == "ring":
-            var radius := 80.0 if warning else 80.0 + 200.0 * clampf((run_time - float(zone["at"])) / 1.5, 0.0, 1.0)
-            draw_arc(center, radius, facing.angle() + deg_to_rad(35.0), facing.angle() + TAU - deg_to_rad(35.0), 48, tint, 4.0 if warning else 6.0)
-        elif zone["shape"] == "tether":
-            draw_line(center, player_pos, tint, 3.0)
-        elif zone["shape"] == "line":
-            draw_line(center, center + facing * float(zone["radius"]), Color(tint, 0.18), 60.0)
-            draw_line(center, center + facing * float(zone["radius"]), tint, 3.0)
-        elif zone["shape"] == "cone":
-            draw_arc(center, float(zone["radius"]), facing.angle() - PI / 3.0, facing.angle() + PI / 3.0, 32, tint, 4.0)
+        var warning: bool=run_time<float(zone["at"])
+        var center: Vector2=zone["pos"]
+        var facing: Vector2=zone["dir"]
+        var radius: float=zone["radius"]
+        var points:=PackedVector2Array()
+        if zone["shape"] in ["line","tether"]:
+            var end: Vector2=player_pos if zone["shape"]=="tether" else center+facing*radius
+            if zone["shape"]=="line":draw_line(center,end,Color(1.0,0.3,0.3,0.06 if warning else 0.18),60.0)
+            points=PackedVector2Array([center,end])
         else:
-            draw_arc(center, float(zone["radius"]), 0.0, TAU, 48, tint, 4.0 if warning else 6.0)
+            var start:=0.0;var end:=TAU
+            if zone["shape"]=="ring":
+                radius=80.0 if warning else 80.0+200.0*clampf((run_time-float(zone["at"]))/1.5,0,1)
+                start=facing.angle()+deg_to_rad(35);end=facing.angle()+TAU-deg_to_rad(35)
+            elif zone["shape"]=="cone":start=facing.angle()-PI/3;end=facing.angle()+PI/3
+            for i in range(49):points.append(center+Vector2.from_angle(lerpf(start,end,i/48.0))*radius)
+        _draw_hostile_path(points,warning)
 
 func _draw_combat_feedback() -> void:
     var reduced: bool = profile["settings"]["reducedMotion"]
@@ -2616,7 +2639,7 @@ func _draw_depth_actors() -> void:
 func _draw_enemy_aim_warning(e: Dictionary) -> void:
     if e["phase"] == "warning" or e["phase"] == "charge-warning":
         var locked: Vector2 = e["locked_direction"]
-        draw_line(Vector2(e["pos"]), Vector2(e["pos"]) + locked * 420.0, Color(1.0, 0.58, 0.24, 0.70), 3.0)
+        _draw_hostile_path(PackedVector2Array([Vector2(e["pos"]),Vector2(e["pos"])+locked*420.0]),true)
 
 func _draw_enemy_actor(e: Dictionary) -> void:
     if run_time < float(e.get("born", 0.0)):

@@ -486,6 +486,12 @@ func _cards(rect: Rect2) -> void:
         parts["image"].visible = icon_texture != null
         parts["name"].text = data.get("name",id)
         parts["body"].text = data.get("legendary_description",data.get("description","")) if rarity == "legendary" else data.get("description","")
+        if game.WEAPONS.has(id):
+            var exact: String=str(data.get("description",""))
+            if rarity=="legendary":exact+="\n"+str(data.get("legendary_description",""))
+            parts["body"].text=game.PassiveFeedbackScript.purpose(id)+"\n\n"+exact
+        if game.PASSIVES.has(id):
+            parts["body"].text=game.PassiveFeedbackScript.purpose(id)+"\n\n"+game.PassiveFeedbackScript.describe(game,id,level_value)
         var category := "WEAPON" if game.WEAPONS.has(id) else ("PASSIVE" if catalog.has(id) else "RECOVERY")
         var level_caption := "LV %d/%d" % [level_value,int(game.CAP_LEVELS.get(rarity,1))]
         OfferCard.layout(parts,Vector2(width,height),game.mode == "legendary",rarity,category,level_caption)

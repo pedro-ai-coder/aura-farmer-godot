@@ -349,7 +349,7 @@ func refresh() -> void:
         interactions += str(button.get_instance_id())+state(button)+str(button.visible)
     var boss_hp := 0.0
     for enemy: Dictionary in game.enemies:
-        if enemy["kind"]=="boss":boss_hp=float(enemy["hp"]);break
+        if enemy["kind"]=="boss" or game.SoloEnemyRulesScript.is_event(str(enemy["kind"])):boss_hp+=float(enemy["hp"])
     var next_key := str([ui.revision,view,shift,game.mode,game.hero_index,game.hero_appearance,game.selected_card_index,interactions,
         ceili(game.hp),game.max_hp,ceili(game.shield),game.xp,game.level,int(game.run_time),game.wave,
         int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),bool(game.profile["settings"].get("reducedMotion",false)),game.legendary_spent,boss_hp])
@@ -577,12 +577,15 @@ func cards_layout() -> void:
         parts["comparison"].text=native["comparison"].text
         parts["meta"].text=str(item.get("rarity",native["meta"].text)).to_upper()+" / "+native["category"].text
         Type.apply(parts["name"],"card_title",compact_cards or view.x<700)
-        Type.apply(parts["body"],"body_m",compact_cards)
+        # Landscape cards have a short viewport, but must still show the
+        # purpose line and canonical value change without a first scroll.
+        # Keep the explanation complete; compact only its presentation.
+        Type.apply(parts["body"],"body_s" if compact_cards else "body_m",compact_cards)
         Type.apply(parts["meta"],"hud_secondary",view.x<700)
         Type.apply(parts["comparison"],"hud_secondary",compact_cards)
-        var title_height: float=maxf(84.0,text_height(parts["name"],width-132.0))
-        var meta_y: float=68.0+title_height+10.0
-        var body_y: float=meta_y if legendary else meta_y+38.0
+        var title_height: float=maxf(52.0 if compact_cards else 84.0,text_height(parts["name"],width-132.0))
+        var meta_y: float=68.0+title_height+(4.0 if compact_cards else 10.0)
+        var body_y: float=meta_y if legendary else meta_y+(32.0 if compact_cards else 38.0)
         var body_height: float=maxf(80.0,text_height(parts["body"],width-32.0))
         var comparison_y: float=body_y+body_height+12.0
         var comparison_height: float=0.0 if legendary else text_height(parts["comparison"],width-32.0)

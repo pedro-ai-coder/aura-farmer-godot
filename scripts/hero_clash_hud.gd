@@ -126,6 +126,21 @@ func _init(owner_skin) -> void:
 
 func update_threat_readability(force: bool=false) -> void:
     threat_overlay.sample(force)
+    if game.mode!="playing":return
+    var transform: Transform2D=skin.get_global_transform_with_canvas().affine_inverse()*game.get_global_transform_with_canvas()
+    var hero_bounds: Rect2=transform*Rect2(game.player_pos-Vector2(28,76),Vector2(56,90))
+    # Release the world behind decoration when the player enters an edge HUD.
+    # Values and native hit targets remain fully available; no input changes.
+    for nodes in [[skin.player_plate,skin.portrait],[skin.wave_frame],[strip],[skin.xp_frame,max_level_plate],[ability_plate],[skin.boss_plate,boss_portrait]]:
+        for node: CanvasItem in nodes:
+            var control: Control=node
+            control.self_modulate=Color(1,1,1,0.20 if hero_bounds.intersects(Rect2(control.get_global_rect().position-skin.shift,control.size)) else 1.0)
+    for parts in skin.equipment:
+        for key in ["frame","icon","tab"]:
+            var control: Control=parts[key]
+            control.self_modulate=Color(1,1,1,0.20 if hero_bounds.intersects(Rect2(control.get_global_rect().position-skin.shift,control.size)) else 1.0)
+    var flex_rect:=Rect2(game.flex_button.get_global_rect().position-skin.shift,game.flex_button.size)
+    skin.aura_arc.self_modulate=Color(1,1,1,0.3 if hero_bounds.intersects(flex_rect) else 1.0)
 
 func move_into(id: String, nodes: Array) -> void:
     for node in nodes:node.reparent(modules[id],false)
@@ -156,7 +171,10 @@ func layout() -> void:
     game.flex_button.show();game.flex_button.text=""
     for state in ["normal","hover","focus","pressed","disabled"]:
         game.flex_button.add_theme_stylebox_override(state,skin.empty_style)
-    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,game.touch_device,game.level>=25,not game.SoloClock.warning(game.run_time).is_empty()])
+    has_boss=false
+    for enemy: Dictionary in game.enemies:
+        if float(enemy["hp"])>0 and (enemy["kind"]=="boss" or game.SoloEnemyRulesScript.is_event(str(enemy["kind"]))):has_boss=true
+    var next_geometry: String=str([skin.view,skin.shift,skin.ui.revision,game.boss_spawned,has_boss,game.touch_device,game.level>=25,not game.SoloClock.warning(game.run_time).is_empty()])
     if geometry_key!=next_geometry:
         geometry_key=next_geometry;geometry_count+=1
         layout_geometry()
@@ -180,20 +198,20 @@ func layout_geometry() -> void:
     desktop=not compact and not game.touch_device
     # Logical dimensions, anchored against the actual safe viewport. The
     # presenter's CSS/DPR scaling and touch-coordinate transform stay intact.
-    var wave_size:=Vector2(270 if compact else 300,72)
-    var status_width: float=minf(450.0 if desktop else 350.0,view.x*0.5-wave_size.x*0.5-12.0)
+    var wave_size:=Vector2(240 if compact else 260,60)
+    var status_width: float=minf(340.0 if desktop else 310.0,view.x*0.5-wave_size.x*0.5-12.0)
     if portrait:status_width=minf(340,view.x-90)
-    var status_size:=Vector2(status_width,112 if compact else 132)
+    var status_size:=Vector2(status_width,94 if compact else 100)
     var status:=anchor("TopLeftHeroStatus",Vector2.ZERO,status_size,Vector2(4,4))
     var local_status:=Rect2(Vector2.ZERO,status_size)
     place(skin.player_plate,local_status)
-    place(skin.portrait,rect_in(local_status,26,22,154,118))
-    place(skin.hero_name,rect_in(local_status,207,23,342,48))
-    text_style(skin.hero_name,"section_header",24 if compact else 30,INK)
-    hp_rect=rect_in(local_status,197,81,373,36)
+    place(skin.portrait,rect_in(local_status,26,30,130,110))
+    place(skin.hero_name,rect_in(local_status,175,16,400,45))
+    text_style(skin.hero_name,"section_header",20 if compact else 22,INK)
+    hp_rect=rect_in(local_status,172,71,400,45)
     place(skin.hp,Rect2(hp_rect.position+Vector2(10,0),hp_rect.size-Vector2(16,0)))
     text_style(skin.hp,"hud_stat",20 if compact else 24,PAPER)
-    shield_rect=rect_in(local_status,186,124,369,29)
+    shield_rect=rect_in(local_status,172,122,400,36)
     place(skin.shield_track,shield_rect);skin.shield_track.color=Color("082b4b")
     place(shield_mark,Rect2(shield_rect.position+Vector2(6,2),Vector2(16,shield_rect.size.y-4)))
     place(skin.shield_label,Rect2(shield_rect.position+Vector2(28,0),shield_rect.size-Vector2(34,0)))
@@ -202,11 +220,11 @@ func layout_geometry() -> void:
     var wave_module:=anchor("TopCenterWaveTimer",Vector2(0.5,0),wave_size,Vector2(0,wave_top))
     skin.wave_frame.stretch_mode=TextureRect.STRETCH_SCALE
     place(skin.wave_frame,Rect2(Vector2.ZERO,wave_size))
-    place(skin.wave,Rect2(24,3,wave_size.x-48,32))
+    place(skin.wave,Rect2(24,1,wave_size.x-48,28))
     text_style(skin.wave,"section_header",23 if compact else 25,INK)
-    place(wave_clock,Rect2(24,34,wave_size.x-48,28))
+    place(wave_clock,Rect2(24,29,wave_size.x-48,26))
     text_style(wave_clock,"hud_stat",24,INK);wave_clock.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-    var pause_size:=Vector2(72,68) if compact else Vector2(80,76)
+    var pause_size:=Vector2(68,68)
     var pause_module:=anchor("TopRightPause",Vector2(1,0),pause_size,Vector2(-4,4))
     place(game.pause_button,Rect2(Vector2.ZERO,pause_size))
     var boss_width: float=300 if compact else 320
@@ -227,12 +245,12 @@ func layout_geometry() -> void:
     skin.warning.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
     # The 3+5 rail is centered independently from the XP and Flex end modules.
     # Portrait/constrained fallback puts a full-width rail on the bottom edge.
-    var diameter: float=164.0 if compact else 184.0
-    var xp_width: float=200.0 if compact else 260.0
-    var strip_width: float=minf(660,view.x-2.0*(xp_width+14.0))
-    stacked_bottom=portrait or strip_width<480
-    if stacked_bottom:strip_width=minf(660,view.x-8)
-    var slot: float=minf(72,floorf((strip_width-66.0)/8.0))
+    var diameter: float=144.0 if compact else 136.0
+    var xp_width: float=180.0 if compact else 210.0
+    var strip_width: float=minf(490,view.x-2.0*(xp_width+14.0))
+    stacked_bottom=portrait or strip_width<360
+    if stacked_bottom:strip_width=minf(490,view.x-8)
+    var slot: float=minf(50,floorf((strip_width-66.0)/8.0))
     var pitch: float=slot+6
     var strip_height: float=slot+28
     var strip_module:=anchor("BottomCenterEquipment",Vector2(0.5,1),Vector2(strip_width,strip_height),Vector2(0,-4))
@@ -268,7 +286,7 @@ func layout_geometry() -> void:
     place(game.flex_button,Rect2(0,34,diameter,diameter))
     place(skin.aura_arc,Rect2(Vector2.ZERO,Vector2.ONE*diameter));skin.aura_arc.show()
     place(skin.flex_title,Rect2(diameter*0.13,diameter*0.39,diameter*0.74,diameter*0.25))
-    text_style(skin.flex_title,"section_header",32 if compact else 38,PAPER)
+    text_style(skin.flex_title,"section_header",26 if compact else 28,PAPER)
     skin.flex_title.text="FLEX"
     place(skin.flex_status,Rect2(diameter*0.08,diameter*0.66,diameter*0.84,diameter*0.18))
     text_style(skin.flex_status,"hud_stat",18 if compact else 20,PAPER)
@@ -287,15 +305,16 @@ func layout_geometry() -> void:
     reserved.assign([status.get_rect(),wave_module.get_rect(),pause_module.get_rect(),strip_module.get_rect(),xp_module.get_rect(),Rect2(flex_module.position+game.flex_button.position,game.flex_button.size)])
     # The nameplate extends left of the circular target but never intercepts input.
     reserved.append(Rect2(flex_module.position+Vector2(caption_left,0),Vector2(caption_width,34)))
-    if game.boss_spawned or not game.SoloClock.warning(game.run_time).is_empty():reserved.append(boss_rect)
+    if has_boss or not game.SoloClock.warning(game.run_time).is_empty():reserved.append(boss_rect)
 
 func sync_data() -> void:
     var inventory: String=""
     for item: Dictionary in game.weapons+game.passives:inventory+=str([item["id"],item["level"],item["rarity"]])
     var boss: Dictionary={}
     for enemy: Dictionary in game.enemies:
-        if enemy["kind"]=="boss":boss=enemy;break
-    var key: String=str([skin.ui.revision,game.hero.get("id"),game.hero_appearance,game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("hp",0),boss.get("max",0),inventory])
+        if enemy["kind"]=="boss" or game.SoloEnemyRulesScript.is_event(str(enemy["kind"])):
+            if float(enemy["hp"])>0:boss=enemy
+    var key: String=str([skin.ui.revision,game.hero.get("id"),game.hero_appearance,game.hp,game.max_hp,game.shield,game.level,int(game.xp),int(game.run_time),game.wave,int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),game.flex_button.disabled,skin.state(game.flex_button),game.profile["settings"].get("reducedMotion",false),game.legendary_spent,boss.get("id",-1),boss.get("hp",0),boss.get("max",0),inventory])
     if data_key==key:return
     data_key=key;data_count+=1
     update_status_feedback()
@@ -328,7 +347,13 @@ func sync_data() -> void:
         skin.warning.add_theme_color_override("font_outline_color",INK)
     if not boss.is_empty():
         skin.warning.add_theme_color_override("font_color",GOLD if game.run_time>=game.SoloClock.BERSERK_AT else PAPER)
-        skin.boss_text.text="BIG HATER"
+        skin.boss_text.text=str(game.SoloEnemyRulesScript.DATA[boss["kind"]].name).to_upper()
+        boss_portrait.texture=game.art.enemy_frame(game.art.enemy_visual_kind(boss,game.run_time),0)
+        # Introduce newly arrived threats, but never hide the active Berserk phase.
+        if game.run_time-float(boss.get("born",0))<2.0 and game.run_time<game.SoloClock.BERSERK_AT:
+            skin.warning.text="THREAT ARRIVING"
+            skin.warning.show()
+        skin.fit_line(skin.boss_text,14)
         boss_hp.text="%d / %d HP" % [ceili(boss["hp"]),ceili(boss["max"])]
         boss_fill.update_meter(Rect2(76,53,boss_rect.size.x-108,9),float(boss["hp"])/maxf(1.0,float(boss["max"])))
     var active_flex: bool=game.flex_time>0.0

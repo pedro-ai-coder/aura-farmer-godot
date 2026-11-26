@@ -214,6 +214,42 @@ static func slot_state(game, id: String) -> Dictionary:
         return state("OUT" if outside else "%.0fs" % ceilf(until-now),"Outside Wi-Fi zone · no zone bonus" if outside else "+%s%% %s · %.1fs" % [number(actual*100),"frequency (strongest)" if strongest else "weapon damage",until-now],(until-now)/(4.0 if id=="w-wifi" else 5.0 if id=="aura-viral" else 6.0),"9caebb" if outside else "6ff3df")
     return {}
 
+static func purpose(id: String) -> String:
+    return {
+        "ratio-blaster":"Automatically fire an aimed shot; cover blocks it.",
+        "no-cap":"Automatically throw a piercing cap along your aim.",
+        "brainrot-feed":"Automatically mark a spot for a delayed area explosion.",
+        "keyboard-warrior":"Automatically strike twice in front of you.",
+        "ban-hammer":"Automatically swing a heavy blow after winding up.",
+        "touch-grass":"Automatically sweep a wide area and slow enemies hit.",
+        "cope-shield":"Automatically bash enemies; successful hits grant a shield.",
+        "chad-hands":"Automatically punch; every third successful combo adds a slam.",
+        "personal-space":"Automatically pulse around you, weakening enemies hit.",
+        "main-character":"Your weapons hit harder all the time.",
+        "terminally-online":"Your weapons attack more often.",
+        "built-different":"Increase your health capacity; heal the added amount.",
+        "thick-skin":"Take less damage from incoming hits.",
+        "caught-4k":"Move faster to escape threats and collect drops.",
+        "big-meme":"Your area attacks reach more enemies.",
+        "timeline":"Your ranged attacks reach farther.",
+        "hands-on-sight":"Your weapons hit nearby enemies harder.",
+        "cope-harder":"Strengthen shields granted by Tank weapons.",
+        "certified-w":"Get more health and shields when they are granted.",
+        "no-cap-streak":"Every fifth directional attack hits harder and pierces more enemies.",
+        "w-wifi":"A temporary zone appears around you. Stay inside to attack faster.",
+        "let-him-cook":"Keep landing primary hits to build and maintain bonus damage.",
+        "homie-check":"Landing primary hits periodically heals you.",
+        "big-chad":"Automatically gain a temporary shield at regular intervals.",
+        "its-over":"Your weapons deal extra damage to low-health enemies.",
+        "aura-viral":"Use Flex to briefly speed up your weapons.",
+        "so-back":"Dropping to low health triggers healing and a temporary shield.",
+        "six-to-seven":"Every seventh primary hit bursts around the target.",
+        "absolute-cinema":"Your weapons hit harder, with an extra bonus during Flex.",
+        "w-squad":"Strengthen healing and shields; Flex briefly boosts weapon damage.",
+        "too-sigma":"Dropping to critical health grants a temporary shield.",
+        "no-u":"Survive a hit to your HP to retaliate and weaken nearby enemies."
+    }.get(id,"")
+
 static func brief(id: String, lv: int, game = null) -> String:
     if id=="no-u" and game != null and game._no_u_is_reactive():
         return "Survive HP loss: retaliate; 15s recharge"

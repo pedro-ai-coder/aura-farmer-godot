@@ -169,7 +169,7 @@ func draw_ground(canvas: CanvasItem, pending: Array, clock: float, reduced: bool
         var warning:=age<0.0
         var center: Vector2=area["center"];var facing: Vector2=area["facing"]
         var radius: float=area["radius"];var half:=deg_to_rad(float(area["arc"])*0.5)
-        var color:=Color(GOLD if bool(event["legendary"]) else TEAL,(0.42 if warning else 0.64)*fade)
+        var color:=Color(GOLD if bool(event["legendary"]) else TEAL,(0.22 if warning else 0.46)*fade)
         if area["shape"]=="line":
             canvas.draw_line(center,center+facing*radius,color,2.0)
         else:

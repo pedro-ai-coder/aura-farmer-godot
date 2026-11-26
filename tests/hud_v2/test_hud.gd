@@ -22,7 +22,7 @@ func verify() -> void:
                 expect(occupied<275406.0*0.82,"Desktop HUD releases at least 18% of its previous reserved area")
                 expect(skin.hp.get_theme_font_size("font_size")>=22 and skin.shield_label.get_theme_font_size("font_size")>=18,"Critical desktop health text stays readable")
             elif hud.compact:
-                expect(is_equal_approx(game.flex_button.size.x,164),"Mobile circular Flex target retains its existing geometry")
+                expect(is_equal_approx(game.flex_button.size.x,144),"Compact mobile Flex keeps its reviewed 144-unit target")
             expect(skin.portrait.texture==game.art.cosmetic_portrait(game.HEROES[hero]["id"],"original","hud"),"Approved hero HUD identity remains exact")
             expect(skin.hero_name.text==str(game.hero["name"]).to_upper(),"Live hero name")
             expect(skin.flex_caption.text==str(game.hero["flex"]).to_upper(),"Canonical live ability name")
@@ -158,6 +158,26 @@ func verify() -> void:
             for j in range(i+1,hud.reserved.size()):expect(not hud.reserved[i].intersects(hud.reserved[j]),"Constrained safe-area HUD peers do not overlap")
         var point: Vector2=hud.strip.get_global_rect().get_center()
         expect(game._touch_ui_at(game.layer,point)==null,"Passive equipment rail does not steal terrain input")
+    # Existing canonical schedule, read-only presentation of all five arrivals.
+    game.web_metrics={};root.size=Vector2i(1600,900)
+    game.presentation._window_changed(true)
+    for event in game.SoloClock.EVENT_SCHEDULE+[{"at":600.0,"kind":"boss"}]:
+        game.start_run(0);game.run_time=float(event.at)
+        game._spawn_enemy(str(event.kind),{"pos":Vector2(850,500),"telegraph":true})
+        game._update_text();skin.layout_key="";skin.refresh()
+        expect(skin.boss_text.text==str(game.SoloEnemyRulesScript.DATA[event.kind].name).to_upper(),"Actual encounter name at canonical arrival")
+        expect(skin.warning.text=="THREAT ARRIVING" and skin.warning.visible,"Short unobstructed arrival introduction")
+        expect(hud.boss_hp.text=="%d / %d HP" % [ceili(game.enemies[-1].hp),ceili(game.enemies[-1].max)],"Actual event HP")
+        game.run_time+=3.0;game._update_text();skin.refresh()
+        expect(skin.warning.text!="THREAT ARRIVING","Arrival copy expires on active clock")
+        game.player_pos=Vector2(28,65);game._update_camera(0,true)
+        hud.update_threat_readability(true)
+    var to_hud: Transform2D=skin.get_global_transform_with_canvas().affine_inverse()*game.get_global_transform_with_canvas()
+    var local_center: Vector2=skin.player_plate.get_global_rect().get_center()-skin.shift
+    game.player_pos=to_hud.affine_inverse()*(local_center+Vector2(0,25))
+    hud.update_threat_readability(true)
+    expect(skin.player_plate.self_modulate.a<0.3 and skin.hp.self_modulate.a==1.0,"Edge overlap releases decoration while preserving HP text")
+    # Presentation edits never mutate attack geometry or the seeded simulation.
     game.queue_free()
     if failures.is_empty():print("PASS: HUD V2 all heroes/six viewports, live damage/heal/shield/XP, 3+5 icons, state lifecycle, geometry cache and real Pause/Quit");quit()
     else:
