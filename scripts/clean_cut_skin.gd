@@ -349,7 +349,7 @@ func refresh() -> void:
         interactions += str(button.get_instance_id())+state(button)+str(button.visible)
     var boss_hp := 0.0
     for enemy: Dictionary in game.enemies:
-        if enemy["kind"]=="boss":boss_hp=float(enemy["hp"]);break
+        if enemy["kind"]=="boss" or game.SoloEnemyRulesScript.is_event(str(enemy["kind"])):boss_hp+=float(enemy["hp"])
     var next_key := str([ui.revision,view,shift,game.mode,game.hero_index,game.hero_appearance,game.selected_card_index,interactions,
         ceili(game.hp),game.max_hp,ceili(game.shield),game.xp,game.level,int(game.run_time),game.wave,
         int(game.aura),int(game.flex_time*10),int(game.flex_lock*10),bool(game.profile["settings"].get("reducedMotion",false)),game.legendary_spent,boss_hp])

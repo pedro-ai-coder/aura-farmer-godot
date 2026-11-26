@@ -221,7 +221,7 @@ func screen_header(title: String, subtitle: String) -> void:
 
 func build_layout() -> void:
     var view: Vector2=skin.view
-    screen_header("YOUR BUILD","Three weapons. Five passives. Your current run.")
+    screen_header("YOUR BUILD","Dashed orange: warning. Solid red: danger. Thin teal: your attacks. Orbs: XP.")
     var width: float=minf(1120,view.x-48)
     skin.place(ui.body_scroll,Rect2((view.x-width)*0.5,130,width,view.y-150))
     var content_width: float=width-16

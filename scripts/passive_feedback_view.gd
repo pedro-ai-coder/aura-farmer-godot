@@ -52,7 +52,10 @@ func refresh() -> void:
         slots_key=""
         return
     var entry: Dictionary=observer.current
-    plate.visible=not entry.is_empty()
+    # Frequent counters remain on the existing slot tabs and in paused Build.
+    # Repeated proc messages must not become a permanent combat explanation.
+    plate.visible=not entry.is_empty() and str(entry.get("kind","")) in ["upgrade","legendary","healing","shield"]
+    if plate.visible and game.run_time-float(entry.get("started",game.run_time))>1.35:plate.hide()
     var status: Control=skin.gameplay_hud.modules["TopLeftHeroStatus"]
     var width: float=minf(420,skin.view.x-16)
     if not skin.gameplay_hud.portrait:

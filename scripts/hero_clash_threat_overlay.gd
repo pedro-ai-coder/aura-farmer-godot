@@ -175,7 +175,7 @@ func update_traces(transform: Transform2D) -> void:
         if float(enemy["hp"])<=0 or game.run_time<float(enemy.get("born",0)):continue
         if enemy["phase"] in ["warning","charge-warning"]:
             var start: Vector2=enemy["pos"]
-            add_path(PackedVector2Array([transform*start,transform*(start+Vector2(enemy["locked_direction"])*420)]),Color(1,0.58,0.24,0.9))
+            add_path(PackedVector2Array([transform*start,transform*(start+Vector2(enemy["locked_direction"])*420)]),Color(1,0.58,0.24,0.9),true)
     for zone: Dictionary in game.hazard_zones:
         var points:=PackedVector2Array()
         var center: Vector2=zone["pos"];var heading: float=Vector2(zone["dir"]).angle()
@@ -191,7 +191,7 @@ func update_traces(transform: Transform2D) -> void:
                 start=heading+deg_to_rad(35);end=heading+TAU-deg_to_rad(35)
             elif zone["shape"]=="cone":start=heading-PI/3;end=heading+PI/3;steps=32
             for i in range(steps+1):points.append(transform*(center+Vector2.from_angle(lerpf(start,end,float(i)/steps))*radius))
-        add_path(points,Color(1,0.61,0.22,0.95) if warning else Color(0.98,0.29,0.31,0.95))
+        add_path(points,Color(1,0.61,0.22,0.95) if warning else Color(0.98,0.29,0.31,0.95),warning)
     if had_traces or not traces.is_empty():queue_redraw()
 
 func enemy_bounds(enemy: Dictionary, transform: Transform2D) -> Rect2:
@@ -212,7 +212,7 @@ func enemy_bounds(enemy: Dictionary, transform: Transform2D) -> Rect2:
     var flash: float=0 if game.profile["settings"]["reducedMotion"] else clampf(1-(game.run_time-float(enemy.get("hurt_at",-100)))/0.12,0,1)
     return transform*Transform2D(0,Vector2(-1 if left else 1,1)*Vector2(1+flash*0.05,1-flash*0.05)*scale,0,enemy["pos"])*Rect2(-Vector2(data["pivot"]),image.get_size())
 
-func add_path(points: PackedVector2Array, color: Color) -> void:
+func add_path(points: PackedVector2Array, color: Color, warning: bool=false) -> void:
     # Clip real boundary segments to reserved HUD rectangles, not their AABBs.
     if points.size()<2:return
     var bounds:=Rect2(points[0],Vector2.ZERO)
@@ -221,9 +221,10 @@ func add_path(points: PackedVector2Array, color: Color) -> void:
     for id in hud.modules:
         if hud.modules[id].visible and bounds.grow(4).intersects(regions[index]):
             for i in range(points.size()-1):
+                if warning and points.size()>2 and i%2==1:continue
                 var segment:=clip_segment(points[i],points[i+1],regions[index])
                 if not segment.is_empty():
-                    traces.append({"points":segment,"color":color})
+                    traces.append({"points":segment,"color":color,"warning":warning})
         index+=1
 
 static func clip_segment(a: Vector2,b: Vector2,rect: Rect2) -> PackedVector2Array:
@@ -272,8 +273,12 @@ func place_cue(bounds: Rect2,text: String,offscreen: bool=false) -> void:
 
 func _draw() -> void:
     for trace in traces:
-        draw_polyline(trace["points"],hud.INK,7,true)
-        draw_polyline(trace["points"],trace["color"],3,true)
+        if trace.get("warning",false):
+            draw_dashed_line(trace.points[0],trace.points[-1],hud.INK,5,10,true)
+            draw_dashed_line(trace.points[0],trace.points[-1],trace.color,2.5,10,true)
+        else:
+            draw_polyline(trace["points"],hud.INK,7,true)
+            draw_polyline(trace["points"],trace["color"],3,true)
     if cue!=null and cue.visible:
         var center: Vector2=cue.position+Vector2(-10,15)
         var normal:=cue_direction.orthogonal()
