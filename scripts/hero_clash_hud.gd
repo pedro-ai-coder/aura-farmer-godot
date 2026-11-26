@@ -349,8 +349,8 @@ func sync_data() -> void:
         skin.warning.add_theme_color_override("font_color",GOLD if game.run_time>=game.SoloClock.BERSERK_AT else PAPER)
         skin.boss_text.text=str(game.SoloEnemyRulesScript.DATA[boss["kind"]].name).to_upper()
         boss_portrait.texture=game.art.enemy_frame(game.art.enemy_visual_kind(boss,game.run_time),0)
-        # Keep canonical clock warnings (especially Berserk) authoritative.
-        if game.run_time-float(boss.get("born",0))<2.0 and skin.warning.text.is_empty():
+        # Introduce newly arrived threats, but never hide the active Berserk phase.
+        if game.run_time-float(boss.get("born",0))<2.0 and game.run_time<game.SoloClock.BERSERK_AT:
             skin.warning.text="THREAT ARRIVING"
             skin.warning.show()
         skin.fit_line(skin.boss_text,14)
