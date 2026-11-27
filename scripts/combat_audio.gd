@@ -13,7 +13,9 @@ const BOSS_GAIN := {"boss_entrance": -10.0, "boss_impact": -14.0, "boss_hit": -2
 const BOSS_LOOP = preload("res://assets/audio/big-hater-v1/boss-loop.wav")
 const BOSS_VICTORY = preload("res://assets/audio/big-hater-v1/victory.wav")
 const WaveMusic = preload("res://scripts/m0_wave_music.gd")
-const WAVE_SCORE_DB := [-22.0, -21.0, -20.0, -19.0, -18.0]
+## Original wave score was mixed around -43 dBFS in Wave 1. Keep this music audible at default Master volume.
+## Preserve SFX priorities and headroom; the authored PCM remains below clipping before the Master bus.
+const WAVE_SCORE_DB := [-10.0, -10.0, -9.0, -9.0, -8.0]
 const CROSSFADE_SECONDS := 0.85
 const BOSS_HANDOFF_SECONDS := 0.55
 static var clips: Dictionary={}
