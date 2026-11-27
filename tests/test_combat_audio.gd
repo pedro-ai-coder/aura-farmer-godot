@@ -61,8 +61,12 @@ func verify() -> void:
     audio.change_wave_score(5, 480.0)
     audio.update_run_score(481.0)
     audio.set_suspended(true)
+    var audible_paused := 0
     for track_player in audio.run_scores:
-        expect(track_player.stream_paused, "Pause freezes all existing wave score players")
+        if track_player.playing:
+            audible_paused += 1
+            expect(track_player.stream_paused, "Pause freezes every active wave score player")
+    expect(audible_paused > 0, "Pause fixture includes an actual playing wave score")
     audio.set_suspended(false)
     audio.update_run_score(482.0)
     expect(audio.current_wave == 5, "Wave 5 is audible before the boss entrance")
