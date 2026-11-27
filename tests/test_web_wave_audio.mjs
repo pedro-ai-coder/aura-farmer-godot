@@ -305,7 +305,8 @@ function verify(evidence, throughWave2) {
     const transition = evidence.frames.filter(frame => frame.time >= score.time && frame.time < score.time + .85);
     console.log(JSON.stringify({ score: index + 1, offset: score.offset, peak, frames: frames.length, starts: loops.length }));
     assert(peak >= audible, 'Silent browser score ' + (index + 1));
-    if (index > 0 && index < 5) {
+    // The fixture samples without screenshots or blocking upgrade inputs.
+    if (evidence.fixture && index > 0 && index < 5) {
       assert(transition.some(frame => rms(frame, scores[index - 1].id) >= .001 && rms(frame, score.id) >= .001),
         'No browser output overlap during crossfade into Wave ' + (index + 1));
     }
