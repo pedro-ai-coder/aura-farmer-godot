@@ -19,3 +19,11 @@ The existing `scripts/combat_audio.gd` mixer owns two bounded run-score players 
 **Validation gate:** Run Godot 4.7.2 import/contract tests, ordinary Web export, a real-browser listening session from Wave 1 to victory and defeat, both maps and the sound/mute/retry flow. A synthetic fast-forward fixture is not proof of uninterrupted real-browser audio. Do not merge, treat this candidate as approved, or release to production before creator listening acceptance.
 
 **Reproduction:** Source alone produces the exact PCM streams via `WaveMusic.render(1..5)` on ordinary audio mixer initialization. `WaveMusic.defeat_stinger()` produces the loss cue. No generated audio binary is required in Git.
+
+## Creator's full-playback acceptance checklist
+
+Listen in the real ordinary Web game from Garage → Run Start to victory and at least one defeat. The soundtrack must be audible from Wave 1 (00:00), develop distinctly at each actual two-minute wave transition, remain below combat warnings and player SFX, then hand off musically to the creator-approved Big Hater V1 entrance and boss score at 10:00. The original approved boss victory cue must remain unchanged.
+
+Test Sound OFF, non-default Master volume, pause/upgrade offer suspension, retry and returning to menu. Confirm that music does not replay over itself, hang after leaving the run, trigger during a sound-disabled menu or alter the existing deterministic gameplay state.
+
+This list is an acceptance target, **not a claim of successful browser/audio end-to-end listening or creator approval**.
