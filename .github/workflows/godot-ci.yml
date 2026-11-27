@@ -63,6 +63,17 @@ jobs:
           # Parent ignore prevents candidate import/export from seeing another
           # project; the control's own resource root remains unchanged.
           touch .ci-source-control/.gdignore
+          control_project=".ci-source-control/project"
+          if [[ "${{ github.event.pull_request.number }}" == "169" ]]; then
+            # Keep the independent editor import outside the candidate's resource tree
+            # and give it its own Godot editor data and cache directories.
+            control_root="$RUNNER_TEMP/ruin-alley-control"
+            mv .ci-source-control "$control_root"
+            control_project="$control_root/project"
+            export XDG_CONFIG_HOME="$control_root/config"
+            export XDG_CACHE_HOME="$control_root/cache"
+            export XDG_DATA_HOME="$control_root/data"
+          fi
           control_engine=""
           for control_name in godot godot4; do
             if command -v "$control_name" >/dev/null 2>&1 && [[ "$("$control_name" --version)" =~ ^4\.7\.2\.stable(\.|$) ]]; then
@@ -72,9 +83,9 @@ jobs:
           done
           test -n "$control_engine"
           control_log="$RUNNER_TEMP/approved-art-source-main.log"
-          "$control_engine" --headless --path .ci-source-control/project --import 2>&1 | tee "$control_log"
+          "$control_engine" --headless --path "$control_project" --import 2>&1 | tee "$control_log"
           state_reference="$RUNNER_TEMP/approved-art-source-main-states.json"
-          "$control_engine" --headless --path .ci-source-control/project --script res://tests/frame_pacing/state_trace.gd -- --record "$state_reference" 2>&1 | tee -a "$control_log"
+          "$control_engine" --headless --path "$control_project" --script res://tests/frame_pacing/state_trace.gd -- --record "$state_reference" 2>&1 | tee -a "$control_log"
           if grep -Eiq 'SCRIPT ERROR:|Parse Error:|(^|[[:space:]])ERROR:|Failed to load|Failed to open' "$control_log"; then exit 1; fi
           test -s "$state_reference"
           echo "GODOT_BIN=$control_engine" >> "$GITHUB_ENV"
