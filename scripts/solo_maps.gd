@@ -4,6 +4,7 @@ const RUIN_ALLEY := &"ruin-alley"
 const MSG_FACTORY := &"msg-factory"
 const NAMES := {RUIN_ALLEY: "Ruin Alley", MSG_FACTORY: "MSG Factory"}
 const ALLEY_ARENA = preload("res://assets/approved/ruin-alley.png")
+const ALLEY_V1_ARENA = preload("res://assets/art-candidates/ruin-alley/v1/alley.webp")
 const FACTORY_ARENA = preload("res://assets/first_playable/msg_factory/arena.webp")
 const COVER_TEXTURE_ORIGIN := Vector2(160, 188)
 

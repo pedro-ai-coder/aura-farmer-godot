@@ -2594,16 +2594,11 @@ func _draw_combat_feedback() -> void:
                 draw_line(point + ray * radius * 0.45, point + ray * radius, Color(color, life), 2.5)
 
 func _draw_ruin_alley() -> void:
-    var approved_map: bool = art.draw_backdrop(self, "ruin-alley", FIELD)
-    if not approved_map:
-        draw_rect(FIELD, Color(0.12, 0.15, 0.22))
-    if not approved_map:
-        for gx in range(0, 1449, 128):
-            draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
-        for gy in range(0, 1087, 128):
-            draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
-    draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
-    draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    draw_texture_rect(SoloMaps.ALLEY_V1_ARENA, FIELD, false)
+    var reduced_motion := bool(profile["settings"]["reducedMotion"])
+    var signal_alpha := 0.14 if reduced_motion else 0.14 + 0.06 * sin(run_time * 1.4)
+    draw_line(Vector2(552, 160), Vector2(583, 156), Color(0.83, 0.56, 0.59, signal_alpha), 2.0)
+
 
 func _draw_depth_actors() -> void:
     var perf_actor_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
