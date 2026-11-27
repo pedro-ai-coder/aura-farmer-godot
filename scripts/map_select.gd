@@ -163,10 +163,14 @@ func _draw() -> void:
     for id: StringName in previews:
         var rect := previews[id]
         var factory := id == Maps.MSG_FACTORY
-        draw_texture_rect(Maps.FACTORY_ARENA if factory else Maps.ALLEY_V2_ARENA, rect, false)
+        draw_texture_rect(Maps.FACTORY_ARENA if factory else Maps.ALLEY_V3_ARENA, rect, false)
+        var scale := rect.size / World.SIZE
         if factory:
-            var scale := rect.size / World.SIZE
             for cover: Dictionary in Maps.FactoryGeometry.COVERS:
                 var sprite: Texture2D = cover.sprite
                 draw_texture_rect(sprite, Rect2(rect.position + (cover.pos - Maps.COVER_TEXTURE_ORIGIN) * scale, sprite.get_size() * scale), false)
+        else:
+            for cover: Dictionary in World.COVERS:
+                var offset: Vector2 = cover.pos + Maps.ALLEY_COVER_RECT.position
+                draw_texture_rect(Maps.ALLEY_V3_COVER, Rect2(rect.position + offset * scale, Maps.ALLEY_COVER_RECT.size * scale), false)
         draw_rect(rect, Neon.LIME if id == selected else Neon.MUTED.darkened(0.5), false, 2)

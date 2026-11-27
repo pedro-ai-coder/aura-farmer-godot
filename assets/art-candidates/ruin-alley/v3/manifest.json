@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "pack_version": "ruin-alley-v3",
+  "status": "CANDIDATE",
+  "creator_art_approval": null,
+  "source_repo": "pedro-ai-coder/clutchpunks-art-pipeline",
+  "source_commit": "b8539477c29ceb0f68e0eda65062752ea85c845e",
+  "source_manifest": "source/environments/ruin-alley/v3/manifest.json",
+  "source_manifest_sha256": "16e26783fa669e0bd50ec4f5eead7b6c994d5873cca882c2f8011511197c75d7",
+  "approved_original_sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+  "assets": [
+    {
+      "id": "ruin-alley-environment-v3",
+      "role": "World-aligned plate and map preview",
+      "export": "alley.webp",
+      "sha256": "3700d67afa1f91ef93d0d7a807e13b5242fc6dba4783ad8a7da236ed5e5ae072",
+      "bytes": 581102,
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "ruin-alley-crate-v3",
+      "role": "Depth-sorted reskin of the existing Ruin Alley cover",
+      "export": "crate.png",
+      "sha256": "7497ac31407fbd4e9eafcf4bdb8cde09c2739070f1995b8bae90accc5f20ec4c",
+      "bytes": 142613,
+      "dimensions": [
+        343,
+        286
+      ]
+    }
+  ]
+}

@@ -18,6 +18,7 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 - `./solo_enemy_rules.gd` â€” enemy rules and selection.
 - `./solo_world_rules.gd` â€” world rules.
 - `./solo_maps.gd` and `./enemy_navigation.gd` define V4.1 candidate footprints and cover steering in obstacle space. Existing circular covers remain supported.
+- `./map_select.gd` and `./solo_run.gd` use the same review-only Ruin Alley V3 plate and crate sprite from `./solo_maps.gd`. Crate anchors and collision remain owned by the existing world rules and actor draw path.
 - `./msg_factory_presentation.gd` and `./msg_factory_plate.gdshader` apply proposed press, terminal, cover and pavement effects using the existing active run clock and reduced-motion setting.
 - `./review/no_u_scenario.gd` and `./vfx/no_u_counter_pulse.gd` provide the opt-in No U review. Solo emits separate effective HP losses and weaken applications. The renderer tracks those exact applications against live enemy state and active run time. The ordinary pack excludes both review resources.
 - `./solo_passive_rules.gd` â€” passive gameplay rules.

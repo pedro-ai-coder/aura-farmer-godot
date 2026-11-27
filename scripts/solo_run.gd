@@ -2594,7 +2594,7 @@ func _draw_combat_feedback() -> void:
                 draw_line(point + ray * radius * 0.45, point + ray * radius, Color(color, life), 2.5)
 
 func _draw_ruin_alley() -> void:
-    draw_texture_rect(SoloMaps.ALLEY_V2_ARENA, FIELD, false)
+    draw_texture_rect(SoloMaps.ALLEY_V3_ARENA, FIELD, false)
 
 
 func _draw_depth_actors() -> void:
@@ -2620,7 +2620,9 @@ func _draw_depth_actors() -> void:
                     var clock := 0.0 if bool(profile["settings"]["reducedMotion"]) else fposmod(run_time, FactoryPresentation.PERIOD)
                     FactoryPresentation.draw_machine_detail(self, cover.detail, clock)
             else:
-                draw_texture(SoloMaps.ALLEY_V2_COVER, actor.pos - Vector2(40, 68))
+                var cover_rect := SoloMaps.ALLEY_COVER_RECT
+                cover_rect.position += Vector2(actor.pos)
+                draw_texture_rect(SoloMaps.ALLEY_V3_COVER, cover_rect, false)
         elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
         else: _draw_enemy_actor(actor["enemy"])
 

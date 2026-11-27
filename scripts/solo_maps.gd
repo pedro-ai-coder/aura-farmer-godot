@@ -4,8 +4,9 @@ const RUIN_ALLEY := &"ruin-alley"
 const MSG_FACTORY := &"msg-factory"
 const NAMES := {RUIN_ALLEY: "Ruin Alley", MSG_FACTORY: "MSG Factory"}
 const ALLEY_ARENA = preload("res://assets/approved/ruin-alley.png")
-const ALLEY_V2_ARENA = preload("res://assets/art-candidates/ruin-alley/v2/alley.webp")
-const ALLEY_V2_COVER = preload("res://assets/art-candidates/ruin-alley/v2/relay-cover.png")
+const ALLEY_V3_ARENA = preload("res://assets/art-candidates/ruin-alley/v3/alley.webp")
+const ALLEY_V3_COVER = preload("res://assets/art-candidates/ruin-alley/v3/crate.png")
+const ALLEY_COVER_RECT := Rect2(-40, -68, 80, 80)
 const FACTORY_ARENA = preload("res://assets/first_playable/msg_factory/arena.webp")
 const COVER_TEXTURE_ORIGIN := Vector2(160, 188)
 
