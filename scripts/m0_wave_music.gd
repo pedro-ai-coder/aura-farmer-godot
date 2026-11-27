@@ -10,7 +10,7 @@ const BASS_STEPS := [0, -1, 0, 7, 0, 12, 7, -1]
 const LEAD_STEPS := [12, -1, 15, -1, 17, 15, -1, 12]
 const LAYERS := [
     # [bass, pad, drums, top line, glitch], staged by the five canonical waves.
-    [0.26, 0.19, 0.12, 0.00, 0.00], # FIRST POST — establish a subdued pulse
+    [0.29, 0.20, 0.18, 0.11, 0.00], # FIRST POST — establish a subdued pulse
     [0.31, 0.21, 0.17, 0.09, 0.00], # COMMENT SECTION — add rhythmic reply
     [0.32, 0.22, 0.20, 0.14, 0.06], # GOING VIRAL — more syncopation
     [0.35, 0.23, 0.25, 0.17, 0.10], # CANCEL STORM — sharper accents
@@ -53,7 +53,7 @@ static func render(wave: int) -> AudioStreamWAV:
         var hat := noise * exp(-44.0 * half_phase) if wave >= 2 else 0.0
         var lead := 0.0
         var lead_note := int(LEAD_STEPS[bass_slot])
-        if lead_note >= 0 and wave >= 2:
+        if lead_note >= 0:
             var lead_frequency := _frequency(root + 24 + lead_note)
             lead = (sin(TAU * lead_frequency * t + 0.32 * sin(TAU * lead_frequency * 2.0 * t))
                 * exp(-4.5 * half_phase))
