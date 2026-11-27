@@ -12,6 +12,10 @@ const BOSS_EFFECTS := {
 const BOSS_GAIN := {"boss_entrance": -10.0, "boss_impact": -14.0, "boss_hit": -23.0}
 const BOSS_LOOP = preload("res://assets/audio/big-hater-v1/boss-loop.wav")
 const BOSS_VICTORY = preload("res://assets/audio/big-hater-v1/victory.wav")
+const WaveMusic = preload("res://scripts/m0_wave_music.gd")
+const WAVE_SCORE_DB := [-22.0, -21.0, -20.0, -19.0, -18.0]
+const CROSSFADE_SECONDS := 0.85
+const BOSS_HANDOFF_SECONDS := 0.55
 static var clips: Dictionary={}
 static var clip_users:=0
 var voices: Array[AudioStreamPlayer]=[]
@@ -26,6 +30,15 @@ var score: AudioStreamPlayer
 var boss_loop: AudioStreamWAV
 var score_at := INF
 var victory_audio := false
+var run_scores: Array[AudioStreamPlayer] = []
+var run_tracks: Array[AudioStreamWAV] = []
+var defeat_stream: AudioStreamWAV
+var current_wave := 0
+var active_run_score := 0
+var previous_run_score := -1
+var previous_gain_db := -22.0
+var crossfade_at := 0.0
+var boss_fade_at := INF
 ## Non-interactive contract tests do not need mixer voices. Dedicated audio
 ## tests explicitly enable the real mixer, and native/Web builds enable it.
 var playback_enabled:=DisplayServer.get_name()!="headless"
@@ -40,6 +53,14 @@ func _ready() -> void:
     boss_loop.loop_end = roundi(boss_loop.get_length() * boss_loop.mix_rate)
     score = AudioStreamPlayer.new()
     add_child(score)
+    for i in range(2):
+        var music := AudioStreamPlayer.new()
+        music.volume_db = -60.0
+        add_child(music)
+        run_scores.append(music)
+    for wave in range(1, 6):
+        run_tracks.append(WaveMusic.render(wave))
+    defeat_stream = WaveMusic.defeat_stinger()
     for i in range(VOICES):
         var voice:=AudioStreamPlayer.new();voice.volume_db=-22.0;add_child(voice)
         voices.append(voice);priorities.append(0);stamps.append(0)
@@ -65,15 +86,63 @@ static func make_clip(profile: Array) -> AudioStreamWAV:
 func reset() -> void:
     for voice in voices:voice.stop()
     finish_boss(false)
+    current_wave = 0
+    previous_run_score = -1
+    boss_fade_at = INF
+    for music in run_scores:music.stop()
     last.clear();warnings.clear();accepted.clear();serial=0
 func set_suspended(value: bool) -> void:
     suspended=value
     for voice in voices:voice.stream_paused=value
     if score != null:
         score.stream_paused = value and not victory_audio
+    for music in run_scores:
+        music.stream_paused = value
+
+func begin_run_score(clock: float) -> void:
+    change_wave_score(1, clock)
+
+func change_wave_score(number: int, clock: float) -> void:
+    if run_scores.size() != 2 or number < 1 or number > 5 or current_wave == number or is_finite(boss_fade_at):
+        return
+    var incoming := 0 if current_wave == 0 else 1 - active_run_score
+    if previous_run_score >= 0:
+        run_scores[previous_run_score].stop()
+    previous_run_score = active_run_score if current_wave > 0 else -1
+    previous_gain_db = float(WAVE_SCORE_DB[current_wave - 1]) if current_wave > 0 else -60.0
+    var from_position := run_scores[active_run_score].get_playback_position() if current_wave > 0 else 0.0
+    run_scores[incoming].stop()
+    run_scores[incoming].stream = run_tracks[number - 1]
+    run_scores[incoming].volume_db = -60.0
+    run_scores[incoming].stream_paused = suspended
+    run_scores[incoming].play(from_position)
+    crossfade_at = clock
+    active_run_score = incoming
+    current_wave = number
+
+func update_run_score(clock: float) -> void:
+    if run_scores.size() != 2 or suspended or current_wave == 0:
+        return
+    if is_finite(boss_fade_at):
+        var fade := clampf((clock - boss_fade_at) / BOSS_HANDOFF_SECONDS, 0.0, 1.0)
+        for music in run_scores:
+            if music.playing:
+                music.volume_db = lerpf(previous_gain_db, -60.0, fade)
+                if fade >= 1.0:music.stop()
+        return
+    var t := clampf((clock - crossfade_at) / CROSSFADE_SECONDS, 0.0, 1.0)
+    run_scores[active_run_score].volume_db = lerpf(-60.0, float(WAVE_SCORE_DB[current_wave - 1]), t)
+    if previous_run_score >= 0:
+        run_scores[previous_run_score].volume_db = lerpf(previous_gain_db, -60.0, t)
+        if t >= 1.0:
+            run_scores[previous_run_score].stop()
+            previous_run_score = -1
+
 func begin_boss(clock: float) -> void:
     if score == null:
         return
+    boss_fade_at = clock
+    previous_gain_db = float(WAVE_SCORE_DB[maxi(0, current_wave - 1)])
     play_event("boss_entrance", clock, 6)
     score_at = clock + 0.84
 func update_boss(clock: float) -> void:
@@ -86,6 +155,8 @@ func update_boss(clock: float) -> void:
 func finish_boss(victory: bool) -> void:
     score_at = INF
     victory_audio = victory
+    for music in run_scores:
+        music.stop()
     if score == null:
         return
     score.stop()
@@ -94,6 +165,17 @@ func finish_boss(victory: bool) -> void:
         score.volume_db = -11.0
         score.stream_paused = false
         score.play()
+
+func play_defeat() -> void:
+    if score == null or defeat_stream == null:
+        return
+    # The result cue is allowed to finish after the gameplay mixer suspends.
+    victory_audio = true
+    score.stream = defeat_stream
+    score.volume_db = -12.0
+    score.stream_paused = false
+    score.play()
+
 func play_event(kind: String, clock: float, priority: int=1) -> bool:
     if not playback_enabled or suspended or AudioServer.is_bus_mute(0) or not clips.has(kind) or voices.is_empty():return false
     var interval:=0.12 if kind in ["warning","boss_hit"] else 0.035 if kind in ["punch","key","pickup"] else 0.055
@@ -117,6 +199,7 @@ func contact(blocked: bool, clock: float) -> void:
     play_event("metal" if blocked else "punch",clock,2)
 func observe_enemies(enemies: Array, clock: float) -> void:
     if not playback_enabled:return
+    update_run_score(clock)
     update_boss(clock)
     var present: Dictionary={}
     for enemy: Dictionary in enemies:
