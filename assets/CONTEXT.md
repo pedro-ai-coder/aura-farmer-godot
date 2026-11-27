@@ -22,3 +22,5 @@ Approved and candidate visuals, fonts, atlases and manifests. Runtime inclusion,
 Keep candidates separate from approved immutable sources. Verify relevant manifest/version, hash and explicit creator approval before promoting or replacing assets; preserve stable content IDs and supersession history. Avoid opening entire binary/asset collections unless required.
 
 - `experimental/no-u-v4/` contains a proposed built-in imagegen atlas and prompt/provenance manifest. Ordinary exports exclude the entire directory; isolated No U review staging includes it. No art approval is implied.
+
+- `./audio/big-hater-v1/SOURCE.md` records the synthesis source, rights provenance and PCM hashes for the Big Hater candidate cues.

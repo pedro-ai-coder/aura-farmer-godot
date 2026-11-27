@@ -52,3 +52,5 @@ The accepted Neon production continuation updates legacy illustrated-card/feedba
 - V3 extends the existing reactive capture stages and adds resolved damage/lethal classification checks. All five experimental resources are excluded from ordinary exports and checked in real PCKs.
 
 - V4 extends No U contracts with default-renderer and reactive description/readiness assertions; ordinary/review PCK verification includes V4 script and artwork isolation.
+
+- `./capture_big_hater_av.gd` records a synthetic 9:59 start and finishing-HP preset through Godot Movie Maker with mixer audio. Ordinary exports exclude the fixture.

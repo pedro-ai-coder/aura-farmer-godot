@@ -74,6 +74,8 @@ var performance_probe
 var weapon_presentation=WeaponPresentationScript.new()
 const CombatAudioScript=preload("res://scripts/combat_audio.gd")
 var combat_audio
+const BigHaterPresentation = preload("res://scripts/big_hater_presentation.gd")
+var big_hater_presentation: Node2D
 var passive_feedback=PassiveFeedbackScript.new()
 const SIX_TO_SEVEN_VFX_PATH := "res://scripts/vfx/six_to_seven.gd"
 const SIX_TO_SEVEN_NEON_PATH := "res://scripts/vfx/six_to_seven_neon_impact.gd"
@@ -240,6 +242,8 @@ func _ready() -> void:
     add_child(camera)
     layer = CanvasLayer.new()
     add_child(layer)
+    big_hater_presentation = BigHaterPresentation.new()
+    big_hater_presentation.install(self)
     touch_joystick = FloatingJoystickScript.new()
     touch_joystick.position = Vector2.ZERO
     touch_joystick.size = Vector2(1280.0, 720.0)
@@ -576,6 +580,7 @@ func start_run(index: int) -> void:
     movement_direction = Vector2.DOWN
     defeated_visuals.clear()
     finish_visual_age = 0.0
+    big_hater_presentation.reset()
     visual_walk = 0.0
     visual_defeat = 0.0
     visual_heading = 0.0
@@ -666,6 +671,7 @@ func _process(delta: float) -> void:
     if weapon_presentation!=null:weapon_presentation.synchronize(weapon_areas,player_shots,run_time)
     if combat_audio!=null and mode=="playing":combat_audio.observe_enemies(enemies,run_time)
     if mode == "won": finish_visual_age += clampf(delta,0.0,0.1)
+    big_hater_presentation.update()
     for defeated: Dictionary in defeated_visuals.duplicate():
         if run_time-float(defeated["defeated_at"])+finish_visual_age >= 0.85: defeated_visuals.erase(defeated)
     if mode == "lost": visual_defeat += clampf(delta,0.0,0.1)
@@ -746,7 +752,7 @@ func _advance(dt: float) -> void:
     if performance_probe!=null:performance_probe.add(&"projectiles",Time.get_ticks_usec()-perf_step_hostile_shots)
     if mode != "playing": return
     var perf_step_hazards: int=Time.get_ticks_usec() if performance_probe!=null else 0
-    _step_hazards()
+    _step_hazards(dt)
     if performance_probe!=null:performance_probe.add(&"hazards",Time.get_ticks_usec()-perf_step_hazards)
     if mode != "playing":
         return
@@ -1051,6 +1057,8 @@ func _spawn_logic(dt: float) -> void:
         hostile_shots.clear()
         hazard_zones.clear()
         _spawn_enemy("boss", {"pos":Vector2(724.0, 445.0), "telegraph": true})
+        big_hater_presentation.entrance_at = run_time
+        combat_audio.begin_boss(run_time)
     spawn_timer -= dt
     if spawn_timer > 0.0 or enemies.size() >= 100:
         return
@@ -1198,7 +1206,7 @@ func _hazard_contains(hazard: Dictionary, point: Vector2, radius: float = 16.0) 
         return offset.length() <= float(hazard["radius"]) + radius and absf(facing.angle_to(offset)) <= PI / 3.0
     return offset.length() <= float(hazard["radius"]) + radius
 
-func _step_hazards() -> void:
+func _step_hazards(dt: float = 0.0) -> void:
     for hazard: Dictionary in hazard_zones.duplicate():
         if mode != "playing":
             break
@@ -1211,10 +1219,13 @@ func _step_hazards() -> void:
         if run_time > float(hazard["end"]):
             hazard_zones.erase(hazard)
             continue
+        var source: Dictionary = hazard.get("source", {})
+        var impact_at: float = hazard["at"]
+        if source.get("kind") == "boss" and run_time >= impact_at and run_time - dt < impact_at:
+            combat_audio.play_event("boss_impact", run_time, 5)
         if run_time < float(hazard["at"]) or run_time < float(hazard["next_tick"]) or bool(hazard.get("hit", false)):
             continue
         if _hazard_contains(hazard, player_pos) and SoloWorldRulesScript.clear_line(hazard["pos"], player_pos, map_geometry):
-            var source: Dictionary = hazard.get("source", {})
             _deal_damage_to_player(float(hazard["damage"]), source, false, float(hazard["end"]) - float(hazard["at"]) > 1.6 and hazard["shape"] != "tether")
             hazard["hit"] = true
         # Persistent ground zones tick once per second. Expanding rings hit once.
@@ -1742,6 +1753,8 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
         _combat_cue("hit", Vector2(enemy["pos"]) + Vector2(0, -18), (Vector2(enemy["pos"]) - player_pos).normalized())
     enemy["hp"] = float(enemy["hp"]) - amount
     if enemy["kind"] == "boss":
+        if amount > 0.0 and float(enemy["hp"]) > 0.0:
+            combat_audio.play_event("boss_hit", run_time, 3)
         if float(enemy["hp"]) <= float(enemy["max"]) * 0.70: enemy["ring_phase"] = true
         if float(enemy["hp"]) <= float(enemy["max"]) * 0.35: enemy["beam_phase"] = true
     if float(enemy["hp"]) <= 0.0:
@@ -1755,6 +1768,7 @@ func _hit_enemy(enemy: Dictionary, amount: float, primary: bool = false, weapon:
         enemies.erase(enemy)
         kills += 1
         if enemy["kind"] == "boss":
+            big_hater_presentation.depart(enemy["pos"])
             _finish(true)
             return
         if enemy["kind"] == "terminal":
@@ -2205,6 +2219,7 @@ func _finish(won: bool) -> void:
     hero_state["flex_caption_until"] = 0.0
     for key in ["flex_beats","flex_success","flex_slams","verdict_count","flex_absorbed","flex_finisher"]: hero_state.erase(key)
     mode = "won" if won else "lost"
+    combat_audio.finish_boss(won and big_hater_presentation.celebrating)
     # A killing burst is emitted after this reset and remains visible briefly.
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if no_u_vfx != null: no_u_vfx.clear()
@@ -2248,6 +2263,8 @@ func _save_profile() -> void:
     storage_available = ProfileStoreScript.save_profile(profile)
 
 func _return_to_menu() -> void:
+    combat_audio.reset()
+    big_hater_presentation.reset()
     six_to_seven_qa = false
     no_u_review = null
     no_u_runtime = null
@@ -2507,6 +2524,7 @@ func _draw() -> void:
         draw_line(player_pos,sigma_target["pos"],Color("6eaab0"),1.0)
         draw_rect(Rect2(Vector2(sigma_target["pos"])-Vector2(24,28),Vector2(48,56)),Color("f8c45f"),false,2.0)
     _draw_depth_actors()
+    big_hater_presentation.draw_departure(self, player_pos, bool(profile.settings.reducedMotion))
     if six_to_seven_vfx != null:
         six_to_seven_vfx.draw_contacts(self, six_vfx_time, bool(profile["settings"]["reducedMotion"]))
     if no_u_vfx != null:
@@ -2636,8 +2654,15 @@ func _draw_enemy_aim_warning(e: Dictionary) -> void:
         _draw_hostile_path(PackedVector2Array([Vector2(e["pos"]),Vector2(e["pos"])+locked*420.0]),true)
 
 func _draw_enemy_actor(e: Dictionary) -> void:
+    var reduced: bool = profile.settings.reducedMotion
+    var arrival_age: float = run_time - big_hater_presentation.entrance_at if e["kind"] == "boss" else INF
+    big_hater_presentation.draw_arrival(self, e["pos"], arrival_age, reduced)
     if run_time < float(e.get("born", 0.0)):
         draw_arc(e["pos"], float(e["radius"]) + 8.0, 0.0, TAU, 32, Color(0.97, 0.77, 0.37, 0.75), 3.0)
+        if arrival_age < BigHaterPresentation.ENTRANCE_LENGTH:
+            var lift := 0.0 if reduced else -52.0 * (1.0 - smoothstep(0.0, 0.48, arrival_age))
+            var frame := 0 if reduced else (4 if arrival_age < 0.44 else 5)
+            art.draw_enemy(self, e, run_time, -1.0, reduced, Vector2(0, lift), frame)
         return
     var radius: float = float(e["radius"])
     var color := Color(0.89, 0.33, 0.40)

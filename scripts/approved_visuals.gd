@@ -217,7 +217,7 @@ static func enemy_visual_kind(enemy: Dictionary, animation_time: float) -> Strin
         return "boss-berserk"
     return kind
 
-func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0, reduced_motion: bool = false, draw_offset: Vector2 = Vector2.ZERO) -> bool:
+func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0.0, death_age: float = -1.0, reduced_motion: bool = false, draw_offset: Vector2 = Vector2.ZERO, frame_override: int = -1) -> bool:
     var kind := enemy_visual_kind(enemy,animation_time)
     if kind == "terminal":
         var atlas := texture("enemies")
@@ -228,7 +228,7 @@ func draw_enemy(canvas: CanvasItem, enemy: Dictionary, animation_time: float = 0
         return true
     if not enemy_rows.has(kind):
         return false
-    var frame_index := enemy_pose_frame(enemy,animation_time,death_age)
+    var frame_index := frame_override if frame_override >= 0 else enemy_pose_frame(enemy,animation_time,death_age)
     var phase := str(enemy.get("phase",""))
     var image: Texture2D = enemy_frame(kind, frame_index)
     if image == null:
