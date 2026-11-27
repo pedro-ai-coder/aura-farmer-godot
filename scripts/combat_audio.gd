@@ -112,7 +112,11 @@ func change_wave_score(number: int, clock: float) -> void:
         run_scores[previous_run_score].stop()
     previous_run_score = active_run_score if current_wave > 0 else -1
     previous_gain_db = float(WAVE_SCORE_DB[current_wave - 1]) if current_wave > 0 else -60.0
-    var from_position := run_scores[active_run_score].get_playback_position() if current_wave > 0 else 0.0
+    var from_position := 0.0
+    # Web sample playback reports cumulative time across loops and reuses the
+    # initial offset on every loop restart. Start the incoming full loop at zero.
+    if current_wave > 0 and not OS.has_feature("web"):
+        from_position = run_scores[active_run_score].get_playback_position()
     run_scores[incoming].stop()
     run_scores[incoming].stream = run_tracks[number - 1]
     run_scores[incoming].volume_db = -60.0
