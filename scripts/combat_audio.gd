@@ -9,7 +9,7 @@ const BOSS_EFFECTS := {
     "boss_impact": preload("res://assets/audio/big-hater-v1/attack-impact.wav"),
     "boss_hit": preload("res://assets/audio/big-hater-v1/contact.wav"),
 }
-const BOSS_GAIN := {"boss_entrance": -12.0, "boss_impact": -16.0, "boss_hit": -23.0}
+const BOSS_GAIN := {"boss_entrance": -10.0, "boss_impact": -14.0, "boss_hit": -23.0}
 const BOSS_LOOP = preload("res://assets/audio/big-hater-v1/boss-loop.wav")
 const BOSS_VICTORY = preload("res://assets/audio/big-hater-v1/victory.wav")
 static var clips: Dictionary={}
@@ -81,7 +81,7 @@ func update_boss(clock: float) -> void:
         return
     score_at = INF
     score.stream = boss_loop
-    score.volume_db = -18.0
+    score.volume_db = -15.0
     score.play()
 func finish_boss(victory: bool) -> void:
     score_at = INF
@@ -91,7 +91,7 @@ func finish_boss(victory: bool) -> void:
     score.stop()
     if victory:
         score.stream = BOSS_VICTORY
-        score.volume_db = -13.0
+        score.volume_db = -11.0
         score.stream_paused = false
         score.play()
 func play_event(kind: String, clock: float, priority: int=1) -> bool:

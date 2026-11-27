@@ -2660,7 +2660,7 @@ func _draw_enemy_actor(e: Dictionary) -> void:
     if run_time < float(e.get("born", 0.0)):
         draw_arc(e["pos"], float(e["radius"]) + 8.0, 0.0, TAU, 32, Color(0.97, 0.77, 0.37, 0.75), 3.0)
         if arrival_age < BigHaterPresentation.ENTRANCE_LENGTH:
-            var lift := 0.0 if reduced else -52.0 * (1.0 - smoothstep(0.0, 0.48, arrival_age))
+            var lift := 0.0 if reduced else -30.0 * (1.0 - smoothstep(0.0, 0.48, arrival_age))
             var frame := 0 if reduced else (4 if arrival_age < 0.44 else 5)
             art.draw_enemy(self, e, run_time, -1.0, reduced, Vector2(0, lift), frame)
         return

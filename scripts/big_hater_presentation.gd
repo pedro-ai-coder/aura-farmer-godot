@@ -85,7 +85,8 @@ func _draw() -> void:
         if age >= 0.0 and age < ENTRANCE_LENGTH:
             var opacity := 1.0 if reduced else 1.0 - smoothstep(1.31, ENTRANCE_LENGTH, age)
             var slide := 0.0 if reduced else 14.0 * (1.0 - smoothstep(0.0, 0.24, age))
-            _title(view, maxf(108.0, view.y * 0.24) - slide, "BIG HATER", CORAL, opacity)
+            # Reserve the center for the boss, player and world-space attack cues.
+            _title(view, view.y * 0.72 - slide, "BIG HATER", CORAL, opacity)
     elif game.mode == "won" and celebrating:
         var age: float = game.finish_visual_age
         var reveal := results_at()
