@@ -41,6 +41,47 @@ func verify() -> void:
     audio.observe_enemies([],3.02)
     expect(audio.warnings.is_empty(),"Removed enemies cannot leave an unbounded warning cache")
     audio.reset()
+    audio.begin_run_score(0.0)
+    expect(audio.current_wave == 1 and audio.run_tracks.size() == 5,
+        "The full five-wave score begins in an ordinary run")
+    expect(audio.run_scores[audio.active_run_score].playing,
+        "Wave 1 plays music before any miniboss or Big Hater")
+    for i in range(audio.run_tracks.size()):
+        var track: AudioStreamWAV = audio.run_tracks[i]
+        expect(track.data.size() > 50000 and track.loop_end > 0,
+            "Every authored wave has nonempty loopable PCM")
+        # A silent PCM stream and excessively quiet mix must fail even when Godot reports 'playing'.
+        var power := 0.0
+        var samples := 0
+        for offset in range(0, track.data.size() - 1, 74):
+            var normalized := float(track.data.decode_s16(offset)) / 32768.0
+            power += normalized * normalized
+            samples += 1
+        var integrated_db := linear_to_db(sqrt(power / maxf(1.0, float(samples)))) + float(Audio.WAVE_SCORE_DB[i])
+        expect(integrated_db >= -34.0 and integrated_db <= -18.0,
+            "Wave %d music is audible without dominating combat: %.1f dBFS" % [i + 1, integrated_db])
+    audio.update_run_score(1.0)
+    expect(absf(audio.run_scores[audio.active_run_score].volume_db - float(Audio.WAVE_SCORE_DB[0])) < 0.02,
+        "Wave 1 reaches its bounded mix level")
+    audio.change_wave_score(2, 120.0)
+    expect(audio.current_wave == 2 and audio.previous_run_score >= 0,
+        "Wave boundary crossfades instead of cutting the old song")
+    audio.update_run_score(120.90)
+    expect(audio.previous_run_score == -1,
+        "Outgoing wave song stops after the crossfade")
+    audio.change_wave_score(5, 480.0)
+    audio.update_run_score(481.0)
+    var active_before_pause: Array[AudioStreamPlayer] = []
+    for track_player in audio.run_scores:
+        if track_player.playing: active_before_pause.append(track_player)
+    expect(not active_before_pause.is_empty(), "A real wave score is playing before pause")
+    audio.set_suspended(true)
+    for track_player in active_before_pause:
+        expect(track_player.stream_paused, "Pause freezes every active wave score stream")
+    audio.set_suspended(false)
+    audio.update_run_score(482.0)
+    expect(audio.run_scores[audio.active_run_score].playing, "Unpause resumes the current wave soundtrack")
+    expect(audio.current_wave == 5, "Wave 5 is audible before the boss entrance")
     audio.begin_boss(600.0)
     expect(audio.accepted.get("boss_entrance",0)==1 and not audio.score.playing,"Boss entrance has a dedicated pickup into the score")
     audio.update_boss(600.83)
@@ -57,6 +98,12 @@ func verify() -> void:
     expect(audio.score.playing and not audio.score.stream_paused and audio.score.stream==Audio.BOSS_VICTORY,"Victory replaces the boss score and plays over results")
     audio.reset()
     expect(not audio.score.playing and not audio.victory_audio and is_inf(audio.score_at),"Replay clears the score and its pending entrance")
+    expect(audio.current_wave == 0 and not audio.run_scores[0].playing and not audio.run_scores[1].playing,
+        "Replay also clears the five-wave score and crossfade")
+    audio.play_defeat()
+    expect(audio.score.playing and audio.score.stream == audio.defeat_stream,
+        "An early normal defeat has a short stinger on the results screen")
+    audio.reset()
     var recorder:=Recorder.new();var presentation:=Presentation.new();presentation.audio_feedback=recorder
     var area: Dictionary={"id":"keyboard-warrior","at":1.0,"impact_shown":false,"primary":true}
     presentation.queued(area,0.0,[],false)

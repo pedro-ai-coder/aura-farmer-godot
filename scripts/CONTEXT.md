@@ -76,3 +76,5 @@ bash scripts/validate.sh
 - PR #164 V4 adds a proposed four-cell painted atlas renderer, default D treatment, reactive inspection/readiness and richer existing-mixer cue. Gameplay resolver values remain unchanged; the existing experimental V3 branch preview gate stages V4 explicitly via review_export.py.
 
 - `./big_hater_presentation.gd` uses the active run clock for the entrance and the existing finish clock for the results reveal. `combat_audio.gd` plays the candidate cues through the existing audio preferences and modal lifecycle.
+
+- Wave music streams start at the beginning of their authored loop on Web. The Godot Sample position can exceed one loop. Native playback keeps the position-based handoff.
