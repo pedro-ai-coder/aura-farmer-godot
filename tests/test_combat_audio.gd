@@ -41,6 +41,31 @@ func verify() -> void:
     audio.observe_enemies([],3.02)
     expect(audio.warnings.is_empty(),"Removed enemies cannot leave an unbounded warning cache")
     audio.reset()
+    audio.begin_run_score(0.0)
+    expect(audio.current_wave == 1 and audio.run_tracks.size() == 5,
+        "The full five-wave score begins in an ordinary run")
+    expect(audio.run_scores[audio.active_run_score].playing,
+        "Wave 1 plays music before any miniboss or Big Hater")
+    for track in audio.run_tracks:
+        expect(track.data.size() > 50000 and track.loop_end > 0,
+            "Every authored wave has nonempty loopable PCM")
+    audio.update_run_score(1.0)
+    expect(absf(audio.run_scores[audio.active_run_score].volume_db - float(Audio.WAVE_SCORE_DB[0])) < 0.02,
+        "Wave 1 reaches its bounded mix level")
+    audio.change_wave_score(2, 120.0)
+    expect(audio.current_wave == 2 and audio.previous_run_score >= 0,
+        "Wave boundary crossfades instead of cutting the old song")
+    audio.update_run_score(120.90)
+    expect(audio.previous_run_score == -1,
+        "Outgoing wave song stops after the crossfade")
+    audio.change_wave_score(5, 480.0)
+    audio.update_run_score(481.0)
+    audio.set_suspended(true)
+    for track_player in audio.run_scores:
+        expect(track_player.stream_paused, "Pause freezes all existing wave score players")
+    audio.set_suspended(false)
+    audio.update_run_score(482.0)
+    expect(audio.current_wave == 5, "Wave 5 is audible before the boss entrance")
     audio.begin_boss(600.0)
     expect(audio.accepted.get("boss_entrance",0)==1 and not audio.score.playing,"Boss entrance has a dedicated pickup into the score")
     audio.update_boss(600.83)
@@ -57,6 +82,12 @@ func verify() -> void:
     expect(audio.score.playing and not audio.score.stream_paused and audio.score.stream==Audio.BOSS_VICTORY,"Victory replaces the boss score and plays over results")
     audio.reset()
     expect(not audio.score.playing and not audio.victory_audio and is_inf(audio.score_at),"Replay clears the score and its pending entrance")
+    expect(audio.current_wave == 0 and not audio.run_scores[0].playing and not audio.run_scores[1].playing,
+        "Replay also clears the five-wave score and crossfade")
+    audio.play_defeat()
+    expect(audio.score.playing and audio.score.stream == audio.defeat_stream,
+        "An early normal defeat has a short stinger on the results screen")
+    audio.reset()
     var recorder:=Recorder.new();var presentation:=Presentation.new();presentation.audio_feedback=recorder
     var area: Dictionary={"id":"keyboard-warrior","at":1.0,"impact_shown":false,"primary":true}
     presentation.queued(area,0.0,[],false)
