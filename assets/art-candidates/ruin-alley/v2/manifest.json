@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "pack_version": "v2",
+  "status": "CANDIDATE",
+  "creator_approval": null,
+  "toolchain": "Python 3.14.5 / Pillow 13.0.0",
+  "reproduce": "python draw_alley.py",
+  "rights": "Original artwork authored for CLUTCHPUNKS and an existing source-derived CPK emblem. Pending G1A exact art approval.",
+  "assets": [
+    {
+      "asset_id": "ruin-alley-environment-v2",
+      "role": "world-aligned street plate",
+      "source": "draw_alley.py",
+      "source_sha256": "32c753dcd489068d3a8138399b54015fa2015b1c5f041dad380e8433f3391a3e",
+      "export": "alley.webp",
+      "export_sha256": "80fc467d26d3a6b4ab0de676793fb88d541a218a80f6b5bfcc31ccbd1e72d1f2",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 120262
+    },
+    {
+      "asset_id": "ruin-alley-relay-cover-v2",
+      "role": "depth-sorted relayed cover skin",
+      "source": "draw_alley.py",
+      "source_sha256": "32c753dcd489068d3a8138399b54015fa2015b1c5f041dad380e8433f3391a3e",
+      "export": "relay-cover.png",
+      "export_sha256": "d91596abb86c8687069205495deb6e09e362922163f7639703d57c7e6871c674",
+      "width": 80,
+      "height": 80,
+      "bytes": 1078
+    }
+  ],
+  "references": {
+    "game_baseline": "pedro-ai-coder/aura-farmer-godot@4850be29010542984ebcedf47c926612dfbeab02",
+    "geometry": "scripts/solo_world_rules.gd",
+    "original_source": "pedro-ai-coder/aura-farmer@fdbc67b9d79b1d2bfbbcaad40305da1677bc626f:public/assets/cartoon/option-a-v1/maps/ruin-alley.png",
+    "original_sha256": "cc08e19cfc3a88dc9da81adc4b4e6f4e50394ff0660605eb868ae8cb4a616f50",
+    "canon_review": "pedro-ai-coder/clutchpunks-canon@4480752692fe229ccf11ec483acb25365d4455ae",
+    "brand": "brand/cpk/2026-11-13/APPROVED_BRAND_IDENTITY.md",
+    "frontend": "approvals/neon-arcade/2026-11-15/CREATOR_APPROVAL.md",
+    "v1_review_art": "pedro-ai-coder/clutchpunks-art-pipeline@bf0e9e22fe26b39c20a065d407582349d26b43df",
+    "v1_export_sha256": "c1cb31b43a901c0f66562b4a22dcefcf4124d3a7432bbb9c1b67c6668512f391",
+    "v1_review_game": "pedro-ai-coder/aura-farmer-godot@32e51e6621cdf252c7b911c7be09a842962e53fe",
+    "creator_feedback": "https://github.com/pedro-ai-coder/clutchpunks-qa-evidence/issues/6#issuecomment-7214731307",
+    "emblem": "production/brand/cpk/2026-11-13-v1/cpk-emblem-off-white.png",
+    "emblem_sha256": "be96893191f8ef8060872cc812406866bd0ae93b42f0a09f4492511f2bb8fdf0"
+  }
+}

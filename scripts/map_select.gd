@@ -163,7 +163,7 @@ func _draw() -> void:
     for id: StringName in previews:
         var rect := previews[id]
         var factory := id == Maps.MSG_FACTORY
-        draw_texture_rect(Maps.FACTORY_ARENA if factory else Maps.ALLEY_ARENA, rect, false)
+        draw_texture_rect(Maps.FACTORY_ARENA if factory else Maps.ALLEY_V2_ARENA, rect, false)
         if factory:
             var scale := rect.size / World.SIZE
             for cover: Dictionary in Maps.FactoryGeometry.COVERS:
