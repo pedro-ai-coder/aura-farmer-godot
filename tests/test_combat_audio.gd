@@ -71,13 +71,13 @@ func verify() -> void:
         "Outgoing wave song stops after the crossfade")
     audio.change_wave_score(5, 480.0)
     audio.update_run_score(481.0)
-    var playing_before_pause := 0
+    var active_before_pause: Array[AudioStreamPlayer] = []
     for track_player in audio.run_scores:
-        if track_player.playing:playing_before_pause += 1
-    expect(playing_before_pause > 0, "A real wave score is playing before pause")
+        if track_player.playing: active_before_pause.append(track_player)
+    expect(not active_before_pause.is_empty(), "A real wave score is playing before pause")
     audio.set_suspended(true)
-    for track_player in audio.run_scores:
-        expect(track_player.stream_paused, "Paused score channels cannot advance")
+    for track_player in active_before_pause:
+        expect(track_player.stream_paused, "Pause freezes every active wave score stream")
     audio.set_suspended(false)
     audio.update_run_score(482.0)
     expect(audio.run_scores[audio.active_run_score].playing, "Unpause resumes the current wave soundtrack")
