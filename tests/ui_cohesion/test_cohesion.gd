@@ -44,6 +44,10 @@ func verify() -> void:
             elif mode=="options":game._toggle_pause();ui.open_settings("paused")
             elif mode=="won":
                 game.boss_spawned=true;game._spawn_enemy("boss",{"pos":Vector2(850,680)});game._hit_enemy(game.enemies[-1],1000000)
+                expect(not game.layer.visible,"Victory beat temporarily hides results before the reveal")
+                game.finish_visual_age=game.big_hater_presentation.results_at()+0.02
+                game.big_hater_presentation.update()
+                expect(game.layer.visible,"Completed cinematic reveals the native result controls")
             else:game._deal_damage_to_player(1000000)
             await settle(game)
             if mode=="build":

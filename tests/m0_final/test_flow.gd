@@ -90,10 +90,18 @@ func verify() -> void:
         expect(game.mode=="playing" and game.run_time==0,"Actual Retry starts a fresh selected hero")
         game.run_time=625;game.boss_spawned=true;game._spawn_enemy("boss",{"pos":Vector2(850,680)})
         game._hit_enemy(game.enemies[-1],1000000);await settle(game)
-        expect(game.mode=="won","Actual boss defeat opens Victory")
+        expect(game.mode=="won" and not game.layer.visible,"Actual boss defeat commits Victory before revealing results")
         var runs: int=game.profile["runs"]
-        await click(game.restart_button)
-        expect(game.mode=="menu" and game.profile["runs"]==runs,"Result Main Menu does not duplicate outcomes")
+        var rng_after_win: int=game.rng.state
+        for tick in range(18): game._process(0.1)
+        expect(game.layer.visible and game.run_time==625 and game.rng.state==rng_after_win,"Victory reveal advances only presentation time")
+        if extent==Vector2i(1280,720):
+            await click(game.retry_button)
+            expect(game.mode=="playing" and game.run_time==0 and game.layer.visible and not game.big_hater_presentation.celebrating,
+                "Actual Victory Retry clears the encounter presentation")
+        else:
+            await click(game.restart_button)
+            expect(game.mode=="menu" and game.profile["runs"]==runs,"Result Main Menu does not duplicate outcomes")
     var saved=game.ProfileStoreScript.read_data(game.ProfileStoreScript.parse_json(FileAccess.get_file_as_string("user://m0-final-test-profile.json")))
     expect(saved["runs"]==game.profile["runs"] and saved["results"]==game.profile["results"],"Native isolated profile reload preserves actual outcome records")
     var args:=OS.get_cmdline_user_args()
