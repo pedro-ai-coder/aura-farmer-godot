@@ -653,6 +653,7 @@ func start_run(index: int) -> void:
     if no_u_review != null:
         no_u_vfx = no_u_review.prepare(self)
     _show_ui()
+    combat_audio.begin_run_score(run_time)
     _update_text()
     _update_camera(0.0, true)
 
@@ -732,6 +733,7 @@ func _advance(dt: float) -> void:
     var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
         wave += 1
+        combat_audio.change_wave_score(wave, run_time)
         _spawn_phase_crystal()
     _spawn_logic(dt)
     _check_legendary_window()
@@ -2220,6 +2222,7 @@ func _finish(won: bool) -> void:
     for key in ["flex_beats","flex_success","flex_slams","verdict_count","flex_absorbed","flex_finisher"]: hero_state.erase(key)
     mode = "won" if won else "lost"
     combat_audio.finish_boss(won and big_hater_presentation.celebrating)
+    if not won:combat_audio.play_defeat()
     # A killing burst is emitted after this reset and remains visible briefly.
     if six_to_seven_vfx != null: six_to_seven_vfx.clear()
     if no_u_vfx != null: no_u_vfx.clear()
