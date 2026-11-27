@@ -2594,16 +2594,8 @@ func _draw_combat_feedback() -> void:
                 draw_line(point + ray * radius * 0.45, point + ray * radius, Color(color, life), 2.5)
 
 func _draw_ruin_alley() -> void:
-    var approved_map: bool = art.draw_backdrop(self, "ruin-alley", FIELD)
-    if not approved_map:
-        draw_rect(FIELD, Color(0.12, 0.15, 0.22))
-    if not approved_map:
-        for gx in range(0, 1449, 128):
-            draw_line(Vector2(gx, 0), Vector2(gx, FIELD.size.y), Color(0.19, 0.24, 0.31), 2.0)
-        for gy in range(0, 1087, 128):
-            draw_line(Vector2(0, gy), Vector2(FIELD.size.x, gy), Color(0.19, 0.24, 0.31), 2.0)
-    draw_rect(FIELD, Color(0.10, 0.15, 0.21, 0.12))
-    draw_rect(FIELD, Color(0.42, 0.49, 0.53), false, 10.0)
+    draw_texture_rect(SoloMaps.ALLEY_V3_ARENA, FIELD, false)
+
 
 func _draw_depth_actors() -> void:
     var perf_actor_start: int=Time.get_ticks_usec() if performance_probe!=null else 0
@@ -2628,7 +2620,9 @@ func _draw_depth_actors() -> void:
                     var clock := 0.0 if bool(profile["settings"]["reducedMotion"]) else fposmod(run_time, FactoryPresentation.PERIOD)
                     FactoryPresentation.draw_machine_detail(self, cover.detail, clock)
             else:
-                art.draw_cover(self, actor.pos)
+                var cover_rect := SoloMaps.ALLEY_COVER_RECT
+                cover_rect.position += Vector2(actor.pos)
+                draw_texture_rect(SoloMaps.ALLEY_V3_COVER, cover_rect, false)
         elif actor["kind"] == "defeated": art.draw_enemy(self,actor["enemy"],run_time,run_time-float(actor["enemy"]["defeated_at"])+finish_visual_age,profile["settings"]["reducedMotion"])
         else: _draw_enemy_actor(actor["enemy"])
 
