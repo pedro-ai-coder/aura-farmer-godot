@@ -46,9 +46,20 @@ func verify() -> void:
         "The full five-wave score begins in an ordinary run")
     expect(audio.run_scores[audio.active_run_score].playing,
         "Wave 1 plays music before any miniboss or Big Hater")
-    for track in audio.run_tracks:
+    for i in range(audio.run_tracks.size()):
+        var track: AudioStreamWAV = audio.run_tracks[i]
         expect(track.data.size() > 50000 and track.loop_end > 0,
             "Every authored wave has nonempty loopable PCM")
+        # A silent PCM stream and excessively quiet mix must fail even when Godot reports 'playing'.
+        var power := 0.0
+        var samples := 0
+        for offset in range(0, track.data.size() - 1, 74):
+            var normalized := float(track.data.decode_s16(offset)) / 32768.0
+            power += normalized * normalized
+            samples += 1
+        var integrated_db := linear_to_db(sqrt(power / maxf(1.0, float(samples)))) + float(Audio.WAVE_SCORE_DB[i])
+        expect(integrated_db >= -34.0 and integrated_db <= -18.0,
+            "Wave %d music is audible without dominating combat: %.1f dBFS" % [i + 1, integrated_db])
     audio.update_run_score(1.0)
     expect(absf(audio.run_scores[audio.active_run_score].volume_db - float(Audio.WAVE_SCORE_DB[0])) < 0.02,
         "Wave 1 reaches its bounded mix level")
@@ -60,15 +71,16 @@ func verify() -> void:
         "Outgoing wave song stops after the crossfade")
     audio.change_wave_score(5, 480.0)
     audio.update_run_score(481.0)
-    audio.set_suspended(true)
-    var audible_paused := 0
+    var playing_before_pause := 0
     for track_player in audio.run_scores:
-        if track_player.playing:
-            audible_paused += 1
-            expect(track_player.stream_paused, "Pause freezes every active wave score player")
-    expect(audible_paused > 0, "Pause fixture includes an actual playing wave score")
+        if track_player.playing:playing_before_pause += 1
+    expect(playing_before_pause > 0, "A real wave score is playing before pause")
+    audio.set_suspended(true)
+    for track_player in audio.run_scores:
+        expect(track_player.stream_paused, "Paused score channels cannot advance")
     audio.set_suspended(false)
     audio.update_run_score(482.0)
+    expect(audio.run_scores[audio.active_run_score].playing, "Unpause resumes the current wave soundtrack")
     expect(audio.current_wave == 5, "Wave 5 is audible before the boss entrance")
     audio.begin_boss(600.0)
     expect(audio.accepted.get("boss_entrance",0)==1 and not audio.score.playing,"Boss entrance has a dedicated pickup into the score")
