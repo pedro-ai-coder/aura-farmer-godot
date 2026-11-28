@@ -66,7 +66,13 @@ func verify() -> void:
     expect(not garage.active and garage.game.mode=="maps","PLAY opens the map selector")
     await click(garage.game.map_select.choices[garage.game.SoloMaps.RUIN_ALLEY].get_global_rect().get_center())
     await click(garage.game.map_select.start.get_global_rect().get_center())
-    expect(garage.game.mode=="playing","Confirming the map starts genuine existing Solo")
+    expect(garage.game.mode=="entrance","Confirming the map stages the selected hero")
+    await click(garage.game.hero_entrance.skip.get_global_rect().get_center())
+    expect(garage.game.mode=="playing","Skip starts genuine existing Solo")
+    if garage.game.mode != "playing":
+        for failure in failures: push_error(failure)
+        quit(1)
+        return
     expect(garage.game.hero.id=="sigma" and garage.game.weapons[0].id=="no-cap","Existing kit/starter unchanged")
     garage.game._toggle_pause();expect(garage.game.mode=="paused","Existing pause remains functional")
     garage.game._return_to_menu();await process_frame;await process_frame

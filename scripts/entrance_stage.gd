@@ -30,8 +30,9 @@ func _draw() -> void:
         # Light falls across the existing floor; distinct directions describe
         # the open alley and machine-side factory doors.
         var direction := -1.0 if factory else 1.0
-        var beam := PackedVector2Array([anchor + Vector2(direction * 160, -370),
-            anchor + Vector2(direction * 200, -370), anchor + Vector2(105, 96), anchor + Vector2(-95, 96)])
+        var beam_origin := anchor + Vector2(direction * 180, -370)
+        var beam := PackedVector2Array([beam_origin + Vector2.LEFT * 20, beam_origin + Vector2.RIGHT * 20,
+            anchor + Vector2(105, 96), anchor + Vector2(-95, 96)])
         draw_colored_polygon(beam, Color(accent, entrance_mix * 0.14))
     if factory:
         for cover: Dictionary in Maps.FactoryGeometry.COVERS:
@@ -51,7 +52,8 @@ func _draw() -> void:
 
 func _factory_cover(cover: Dictionary) -> void:
     draw_texture(cover.sprite, cover.sprite_anchor - Maps.COVER_TEXTURE_ORIGIN)
-    Factory.draw_machine_detail(self, cover.detail, 0.0 if reduced else fposmod(age, Factory.PERIOD))
+    if cover.has("detail"):
+        Factory.draw_machine_detail(self, cover.detail, 0.0 if reduced else fposmod(age, Factory.PERIOD))
 
 func _alley_cover(point: Vector2) -> void:
     var rect := Maps.ALLEY_COVER_RECT
