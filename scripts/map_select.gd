@@ -66,7 +66,8 @@ func _cycle_no_u() -> void:
 
 func _start_run() -> void:
     game.start_selected_map(selected, qa != null and qa.button_pressed,
-        visual != null and (no_u_treatment > 0 if OS.has_feature("no_u_review") else visual.button_pressed), no_u_density, no_u_treatment, no_u_case)
+        visual != null and (no_u_treatment > 0 if OS.has_feature("no_u_review") else visual.button_pressed),
+        no_u_density, no_u_treatment, no_u_case, true)
 
 func _button(caption: String, action: Callable, primary: bool = false) -> Button:
     var button := Button.new()

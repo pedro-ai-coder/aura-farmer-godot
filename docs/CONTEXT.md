@@ -35,3 +35,4 @@ Read only task-relevant sections. Distinguish APPROVED, PROPOSED, EXPERIMENTAL, 
 - `NO_U_REVERSE_IMPACT_V2_DELIVERY.md` records the protected playable source, native/Web evidence, QA results and unresolved creator decisions.
 
 - `NO_U_REVERSE_IMPACT_V3_DELIVERY.md` records the isolated V3 visual proposal, measured smooth-wave tradeoff, exact playable source, native evidence and creator-review limits. `AI_ACTION_AUDIT_NO_U_V3.md` is append-only; V1/V2 records remain preserved.
+- `./M0_1_HERO_ENTRANCE.md` records the candidate storyboard, asset provenance, handoff and rollback.
