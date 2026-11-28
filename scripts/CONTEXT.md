@@ -8,6 +8,8 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 
 ## Key files
 
+- `./hero_entrance.gd` directs the M0.1 candidate before run initialization. `./entrance_choreography.gd`, `./entrance_cast.gd` and `./entrance_stage.gd` own the camera, approved pose playback and arena staging. The normal Solo start owns the gameplay handoff and Retry.
+
 - `./solo_run.gd` â€” active solo-run controller and module integration point.
 - `./neon_menu_backdrop.gd` with `clean_cut_skin.gd` / `clean_cut_secondary.gd` — eleven secondary/choice menus reuse Neon tokens and native input owners; bounded entry rails, reduced motion, fitted actions, dark save editor and cached responsive layouts. Gameplay HUD art and simulation remain separate.
 - `./cpk_design_system.gd` â€” shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.

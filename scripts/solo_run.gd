@@ -75,7 +75,9 @@ var weapon_presentation=WeaponPresentationScript.new()
 const CombatAudioScript=preload("res://scripts/combat_audio.gd")
 var combat_audio
 const BigHaterPresentation = preload("res://scripts/big_hater_presentation.gd")
+const HeroEntranceScript = preload("res://scripts/hero_entrance.gd")
 var big_hater_presentation: Node2D
+var hero_entrance: Node2D
 var passive_feedback=PassiveFeedbackScript.new()
 const SIX_TO_SEVEN_VFX_PATH := "res://scripts/vfx/six_to_seven.gd"
 const SIX_TO_SEVEN_NEON_PATH := "res://scripts/vfx/six_to_seven_neon_impact.gd"
@@ -244,6 +246,9 @@ func _ready() -> void:
     add_child(layer)
     big_hater_presentation = BigHaterPresentation.new()
     big_hater_presentation.install(self)
+    hero_entrance = HeroEntranceScript.new()
+    hero_entrance.install(self)
+    hero_entrance.finished.connect(_finish_hero_entrance)
     touch_joystick = FloatingJoystickScript.new()
     touch_joystick.position = Vector2.ZERO
     touch_joystick.size = Vector2(1280.0, 720.0)
@@ -530,7 +535,7 @@ func close_map_select() -> void:
     _clear_touch()
     _show_ui()
 
-func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false, no_u_density: int = 0, no_u_treatment: int = -1, no_u_case: int = 0) -> void:
+func start_selected_map(id: StringName, qa_requested: bool = false, neon_requested: bool = false, no_u_density: int = 0, no_u_treatment: int = -1, no_u_case: int = 0, present_entrance: bool = false) -> void:
     if mode == "maps" and SoloMaps.NAMES.has(id):
         map_id = id
         if OS.has_feature("six_to_seven_review"):
@@ -542,7 +547,23 @@ func start_selected_map(id: StringName, qa_requested: bool = false, neon_request
             if scenario != null:
                 no_u_review = scenario.new(no_u_density, neon_requested, no_u_treatment, no_u_case) if no_u_treatment >= 2 or no_u_case > 0 else scenario.new(no_u_density, neon_requested)
                 no_u_qa_label.text = no_u_review.label()
+        if not present_entrance or six_to_seven_qa or no_u_review != null:
+            start_run(hero_index)
+        else:
+            var selected: Dictionary = HEROES[hero_index]
+            if not HeroAppearanceScript.can_start(hero_appearance, selected.id) or not art.prepare_appearance(selected.id, hero_appearance):
+                return
+            _clear_touch()
+            mode = "entrance"
+            layer.hide()
+            hero_entrance.begin(selected, hero_appearance, map_id, _arena_spawn())
+
+func _finish_hero_entrance() -> void:
+    if mode == "entrance":
         start_run(hero_index)
+
+func _arena_spawn() -> Vector2:
+    return SoloMaps.FactoryGeometry.SPAWN if map_id == SoloMaps.MSG_FACTORY else Vector2(724, 540)
 
 func start_run(index: int) -> void:
     if index < 0 or index >= HEROES.size():
@@ -576,7 +597,7 @@ func start_run(index: int) -> void:
     hero = HEROES[index].duplicate(true)
     hero_state = {"moving_since": -1.0, "stopped_since": -1.0, "lock_id": -1, "lock_since": 0.0, "lock_lost": 0.0, "certified": false, "certified_ready": 0.0, "flex_boss_damage": 0.0, "last_contact": -1000.0}
     next_enemy_id = 1
-    player_pos = Vector2(724, 540) if map_geometry == null else map_geometry.SPAWN
+    player_pos = _arena_spawn()
     movement_direction = Vector2.DOWN
     defeated_visuals.clear()
     finish_visual_age = 0.0
