@@ -647,6 +647,7 @@ func start_run(index: int) -> void:
     sigma_target = {}
     rng.seed = 451 + 17 * index
     mode = "playing"
+    big_hater_presentation.cue(BigHaterPresentation.INTRO)
     if six_to_seven_qa:
         _apply_card({"type": "passive", "id": "six-to-seven", "rarity": "epic", "level": 1})
         print("Six to Seven QA start: map=%s hero=%s equipped=%d" % [map_id, hero["id"], _passive_level("six-to-seven")])
@@ -709,7 +710,10 @@ func _update_camera(delta: float, snap: bool = false) -> void:
 func _advance(dt: float) -> void:
     if mode != "playing":
         return
+    var previous_time := run_time
     run_time += dt
+    if previous_time < SoloClock.BOSS_WARNING and run_time >= SoloClock.BOSS_WARNING:
+        big_hater_presentation.cue(BigHaterPresentation.WARNING)
     if no_u_review != null and no_u_review.has_method("tick_inputs"):
         no_u_review.tick_inputs(self)
         if mode != "playing": return
@@ -733,6 +737,8 @@ func _advance(dt: float) -> void:
     var new_wave := mini(5, 1 + int(run_time / SoloClock.WAVE_SECONDS))
     while wave < new_wave and not boss_spawned:
         wave += 1
+        if wave == 3:
+            big_hater_presentation.cue(BigHaterPresentation.VIRAL)
         combat_audio.change_wave_score(wave, run_time)
         _spawn_phase_crystal()
     _spawn_logic(dt)
@@ -1074,7 +1080,10 @@ func _spawn_logic(dt: float) -> void:
         for living: Dictionary in enemies:
             if bool(living.get("elite", false)): elites += 1
         var elite: bool = wave >= 3 and elites < 2 and rng.randf() < 0.07
+        var first_encounter := next_enemy_id == 1 and wave == 1
         _spawn_enemy(selected, {"telegraph": true, "elite": elite})
+        if first_encounter:
+            big_hater_presentation.cue(BigHaterPresentation.FIRST_POST)
 
 func _spawn_enemy(kind: String, special: Dictionary = {}) -> void:
     if not SoloEnemyRulesScript.DATA.has(kind):

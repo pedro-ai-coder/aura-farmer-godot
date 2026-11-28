@@ -56,3 +56,4 @@ The accepted Neon production continuation updates legacy illustrated-card/feedba
 - `./capture_big_hater_av.gd` records a synthetic 9:59 start and finishing-HP preset through Godot Movie Maker with mixer audio. Ordinary exports exclude the fixture.
 
 - `test_web_wave_audio.mjs` records Chromium output and checks post-gain wave audio through an ordinary Web run or a separate labelled synthetic audio fixture built by `build_wave_audio_fixture.py`.
+`test_m0_cinematics.gd` probes the candidate cards against the ordinary run, pause, outcome, retry and Reduced Motion paths.
