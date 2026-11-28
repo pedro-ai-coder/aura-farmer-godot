@@ -8,6 +8,8 @@ Godot gameplay, presentation, persistence and build/validation helpers. This nav
 
 ## Key files
 
+- `./big_hater_presentation.gd` owns the M0 candidate cue cards and results accent on the existing Big Hater canvas. Solo supplies active-clock encounter events. The layer owns no gameplay or input.
+
 - `./solo_run.gd` â€” active solo-run controller and module integration point.
 - `./neon_menu_backdrop.gd` with `clean_cut_skin.gd` / `clean_cut_secondary.gd` — eleven secondary/choice menus reuse Neon tokens and native input owners; bounded entry rails, reduced motion, fitted actions, dark save editor and cached responsive layouts. Gameplay HUD art and simulation remain separate.
 - `./cpk_design_system.gd` â€” shared native CPK Theme and reusable button/card/panel/label helpers; candidate presentation, no gameplay ownership.

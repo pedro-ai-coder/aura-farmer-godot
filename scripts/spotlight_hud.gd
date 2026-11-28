@@ -26,9 +26,12 @@ func sync(view: Vector2) -> void:
         banner_until = 0.0
     if game.wave != last_wave:
         last_wave = game.wave
-        banner_title = "WAVE %d" % game.wave
-        banner_subtitle = WAVES[clampi(game.wave-1,0,4)]
-        banner_until = game.run_time+1.8
+        if game.wave == 3:
+            banner_until = 0.0 # Wave 3 is covered by the candidate cinematic card.
+        else:
+            banner_title = "WAVE %d" % game.wave
+            banner_subtitle = WAVES[clampi(game.wave-1,0,4)]
+            banner_until = game.run_time+1.8
     var berserk: bool = game.boss_spawned and game.run_time >= game.SoloClock.BERSERK_AT
     if berserk and not last_berserk:
         banner_title = "FULL HATER MODE"
